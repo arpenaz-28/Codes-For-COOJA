@@ -1,0 +1,40 @@
+﻿Translating the process into Horn clauses...
+Completing...
+Starting query event(DeviceDataAccepted(d,p,t)) ==> event(AS_Replies(d,p,t))
+RESULT event(DeviceDataAccepted(d,p,t)) ==> event(AS_Replies(d,p,t)) is true.
+-- Query event(GW_DataAccepted(p)) ==> event(AS_TokenSent(p)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query event(GW_DataAccepted(p)) ==> event(AS_TokenSent(p))
+RESULT event(GW_DataAccepted(p)) ==> event(AS_TokenSent(p)) is true.
+-- Query inj-event(AS_Authenticates(d,p,t)) ==> inj-event(DeviceStarts(d,p,t)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query inj-event(AS_Authenticates(d,p,t)) ==> inj-event(DeviceStarts(d,p,t))
+RESULT inj-event(AS_Authenticates(d,p,t)) ==> inj-event(DeviceStarts(d,p,t)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(sQ_sesskey[]) is true.
+
+Query not attacker(sQ_mnew[]) is true.
+
+Query not attacker(sQ_Rd[]) is true.
+
+Query not attacker(sQ_devid[]) is true.
+
+Query not attacker(K_AD[]) is true.
+
+Query not attacker(K_GA[]) is true.
+
+Query event(AS_Authenticates(d,p,t)) ==> event(DeviceStarts(d,p,t)) is true.
+
+Query event(DeviceDataAccepted(d,p,t)) ==> event(AS_Replies(d,p,t)) is true.
+
+Query event(GW_DataAccepted(p)) ==> event(AS_TokenSent(p)) is true.
+
+Query inj-event(AS_Authenticates(d,p,t)) ==> inj-event(DeviceStarts(d,p,t)) is true.
+
+--------------------------------------------------------------
+

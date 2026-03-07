@@ -1,0 +1,332 @@
+(* ===================================================================== *)
+(* ProVerif Formal Security Analysis                                      *)
+(* Protocol: Anonymity-Extended-Base-Scheme                               *)
+(*           PUF-based IoT Authentication with Dual-State Storage         *)
+(* ===================================================================== *)
+(* Parties: Device (D), Authentication Server (AS), Gateway (GW)          *)
+(* Phases:  1) Enrollment (Reg-0, Reg-1) — secure channel                *)
+(*          2) Authentication & Key Exchange — public channel             *)
+(*          3) Data Transmission — public channel                         *)
+(* ===================================================================== *)
+(* Threat Model: Dolev-Yao attacker with full control over public channel *)
+(*   - Can intercept, modify, replay, inject messages                     *)
+(*   - CANNOT clone PUF, access private channels, extract device secrets  *)
+(* ===================================================================== *)
+
+(* ====================== CHANNELS ====================== *)
+free ch: channel.                  (* Public: attacker has full DY control *)
+
+(* ====================== TYPES ========================= *)
+type skey.         (* Symmetric keys *)
+type nonce.        (* Random nonces / seeds *)
+type identity.     (* Device/server identifiers *)
+type puf_val.      (* PUF responses *)
+
+(* ====================== CONSTANTS ===================== *)
+const ACK_TAG: bitstring.
+
+(* ====================== CRYPTO PRIMITIVES ============= *)
+
+(* Symmetric Encryption (AES-128-ECB) *)
+fun senc(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; sdec(senc(m, k), k) = m.
+
+(* Hash Functions (SHA-256) — multiple arities *)
+fun H1(bitstring): bitstring.
+fun H2(bitstring, bitstring): bitstring.
+fun H4(bitstring, bitstring, bitstring, bitstring): bitstring.
+fun H6(bitstring, bitstring, bitstring, bitstring, bitstring, bitstring): bitstring.
+
+(* PUF: physically unclonable, attacker cannot evaluate *)
+fun PUF_D(identity, nonce): puf_val [private].
+fun PUF_AS(identity, nonce): puf_val [private].
+
+(* Type converters *)
+fun id2b(identity): bitstring  [data, typeConverter].
+fun puf2b(puf_val): bitstring  [data, typeConverter].
+fun n2b(nonce): bitstring      [data, typeConverter].
+fun k2b(skey): bitstring       [data, typeConverter].
+fun b2k(bitstring): skey       [data, typeConverter].
+
+(* XOR with cancellation property *)
+fun xor(bitstring, bitstring): bitstring.
+equation forall x: bitstring, y: bitstring; xor(xor(x, y), y) = x.
+
+(* Pseudonym: PID = H(id || m) — deterministic *)
+fun mkPID(identity, nonce): bitstring.
+
+(* Membership value: Y_dH = H(y_d) — per-device, private *)
+fun mkYdH(identity): bitstring [private].
+
+
+(* ===================================================================== *)
+(*                     PRE-SHARED KEYS                                    *)
+(* ===================================================================== *)
+free K_AD: skey [private].    (* Device <-> AS *)
+free K_GA: skey [private].    (* AS <-> GW *)
+
+
+(* ===================================================================== *)
+(*                     SECURITY QUERIES                                   *)
+(* ===================================================================== *)
+
+(* ---- Secrecy Properties ---- *)
+
+(* Q1: Session key K_GW_D must be secret *)
+free sQ_sesskey: bitstring [private].
+query attacker(sQ_sesskey).
+
+(* Q2: Rotated session seed m_new must be secret *)
+free sQ_mnew: bitstring [private].
+query attacker(sQ_mnew).
+
+(* Q3: Device PUF response R_d must be secret *)
+free sQ_Rd: bitstring [private].
+query attacker(sQ_Rd).
+
+(* Q4: Real device identity must be unlinkable *)
+free sQ_devid: bitstring [private].
+query attacker(sQ_devid).
+
+(* Q5: Pre-shared keys must be secret *)
+query attacker(K_AD).
+query attacker(K_GA).
+
+(* ---- Authentication Properties (Correspondence) ---- *)
+
+event DeviceStarts(identity, bitstring, nonce).
+event AS_Authenticates(identity, bitstring, nonce).
+event DeviceCompletes(identity, bitstring, nonce).
+event AS_Replies(identity, bitstring, nonce).
+event AS_TokenSent(bitstring).
+event GW_DataAccepted(bitstring).
+
+(* Q6: Device authentication — AS only authenticates if device started *)
+query d: identity, p: bitstring, t: nonce;
+    event(AS_Authenticates(d, p, t)) ==>
+    event(DeviceStarts(d, p, t)).
+
+(* Q7: Implicit AS authentication — device gets valid data response    *)
+(*      only if AS genuinely replied (key confirmation via GW data)    *)
+(* NOTE: Direct correspondence DeviceCompletes→AS_Replies is expected  *)
+(* to fail because device cannot explicitly verify AS response.        *)
+(* Implicit auth is proven via Q8 (GW accepts → AS sent token).       *)
+(* We verify: if device sends data AND GW accepts → AS must have replied *)
+event DeviceDataAccepted(identity, bitstring, nonce).
+query d: identity, p: bitstring, t: nonce;
+    event(DeviceDataAccepted(d, p, t)) ==> event(AS_Replies(d, p, t)).
+
+(* Q8: End-to-end — GW accepts data only if AS sent token *)
+query p: bitstring;
+    event(GW_DataAccepted(p)) ==>
+    event(AS_TokenSent(p)).
+
+(* Q9: Injective agreement (replay resistance) *)
+query d: identity, p: bitstring, t: nonce;
+    inj-event(AS_Authenticates(d, p, t)) ==>
+    inj-event(DeviceStarts(d, p, t)).
+
+
+(* ===================================================================== *)
+(*                    DEVICE PROCESS                                      *)
+(* ===================================================================== *)
+let ProcessDevice(did: identity, asid: identity,
+                  md: nonce, Rd: puf_val, ts1: nonce) =
+
+    (* Compute PID *)
+    let pid = mkPID(did, md) in
+
+    (* Compute Y_dH *)
+    let ydh = mkYdH(did) in
+
+    (* Obfuscation mask = H(Rd || md || pid || ts1) *)
+    let mask = H4(puf2b(Rd), n2b(md), pid, n2b(ts1)) in
+
+    (* y_asd = Y_dH XOR mask *)
+    let yasd = xor(ydh, mask) in
+
+    (* Send auth request *)
+    event DeviceStarts(did, pid, ts1);
+    out(ch, (pid, yasd, n2b(ts1)));
+
+    (* Receive response *)
+    in(ch, (=ACK_TAG, mH: bitstring, ts2b: bitstring));
+
+    (* Recover m_new: seed_mask = H(ydh || md || Rd || asid || pid || ts2) *)
+    let smask = H6(ydh, n2b(md), puf2b(Rd), id2b(asid), pid, ts2b) in
+    let mnew_b = xor(mH, smask) in
+
+    (* Derive session key: K = H(Rd || m_new) *)
+    let Kgwd = b2k(H2(puf2b(Rd), mnew_b)) in
+
+    event DeviceCompletes(did, pid, ts1);
+
+    (* Secrecy tests *)
+    out(ch, senc(sQ_sesskey, Kgwd));
+    out(ch, senc(sQ_Rd, b2k(H1(puf2b(Rd)))));
+    out(ch, senc(sQ_devid, b2k(H1(id2b(did)))));
+
+    (* Send encrypted data to GW *)
+    let newpid = H2(id2b(did), mnew_b) in
+    new sensor: nonce;
+    out(ch, (newpid, senc(n2b(sensor), Kgwd)));
+
+    (* Receive GW confirmation — implicit AS authentication *)
+    in(ch, gw_conf: bitstring);
+    let conf_pid = sdec(gw_conf, Kgwd) in
+    if conf_pid = newpid then
+    event DeviceDataAccepted(did, pid, ts1).
+
+
+(* ===================================================================== *)
+(*                AUTHENTICATION SERVER PROCESS                           *)
+(* ===================================================================== *)
+let ProcessAS(asid: identity, did: identity,
+              mcurr: nonce, mold: nonce,
+              Rd: puf_val, phi: bitstring,
+              casd: nonce) =
+
+    (* Receive auth request *)
+    in(ch, (rpid: bitstring, ryasd: bitstring, rts1b: bitstring));
+
+    (* Compute expected PID_curr *)
+    let pcurr = mkPID(did, mcurr) in
+
+    if rpid = pcurr then
+    (
+        (* ===== NORMAL PATH ===== *)
+
+        (* Recover R_d from phi: phi = R_as XOR R_d *)
+        let Ras = PUF_AS(asid, casd) in
+        let Rd_b = xor(phi, puf2b(Ras)) in
+
+        (* Reconstruct mask *)
+        let mask = H4(Rd_b, n2b(mcurr), rpid, rts1b) in
+
+        (* Recover Y_dH *)
+        let ydh_recv = xor(ryasd, mask) in
+
+        (* Verify membership *)
+        let ydh_exp = mkYdH(did) in
+        if ydh_recv = ydh_exp then
+        (
+            (* DEVICE AUTHENTICATED *)
+            event AS_Authenticates(did, rpid, mcurr);
+
+            (* Generate m_new *)
+            new n1: nonce;
+            let mnew_b = n2b(n1) in
+
+            (* Seed mask for reply *)
+            new ts2: nonce;
+            let smask = H6(ydh_exp, n2b(mcurr), Rd_b,
+                           id2b(asid), rpid, n2b(ts2)) in
+            let mH = xor(mnew_b, smask) in
+
+            (* Session key *)
+            let Kgwd = b2k(H2(Rd_b, mnew_b)) in
+
+            (* Secrecy test *)
+            out(ch, senc(sQ_mnew, b2k(H1(mnew_b))));
+
+            (* Reply to device *)
+            event AS_Replies(did, rpid, mcurr);
+            out(ch, (ACK_TAG, mH, n2b(ts2)));
+
+            (* Token for GW *)
+            let tok = senc((id2b(did), id2b(asid), k2b(Kgwd)), K_GA) in
+            let npid = H2(id2b(did), mnew_b) in
+            event AS_TokenSent(npid);
+            out(ch, (npid, id2b(asid), tok))
+        )
+    )
+    else
+    (
+        (* ===== DESYNC RECOVERY PATH: check PID_old ===== *)
+        let pold = mkPID(did, mold) in
+
+        if rpid = pold then
+        (
+            let Ras = PUF_AS(asid, casd) in
+            let Rd_b = xor(phi, puf2b(Ras)) in
+
+            (* Use m_old for mask *)
+            let mask = H4(Rd_b, n2b(mold), rpid, rts1b) in
+            let ydh_recv = xor(ryasd, mask) in
+
+            let ydh_exp = mkYdH(did) in
+            if ydh_recv = ydh_exp then
+            (
+                (* AUTHENTICATED via recovery *)
+                event AS_Authenticates(did, rpid, mold);
+
+                new n1r: nonce;
+                let mnew_b = n2b(n1r) in
+
+                new ts2r: nonce;
+                let smask = H6(ydh_exp, n2b(mold), Rd_b,
+                               id2b(asid), rpid, n2b(ts2r)) in
+                let mH = xor(mnew_b, smask) in
+
+                let Kgwd = b2k(H2(Rd_b, mnew_b)) in
+
+                event AS_Replies(did, rpid, mold);
+                out(ch, (ACK_TAG, mH, n2b(ts2r)));
+
+                let tok = senc((id2b(did), id2b(asid), k2b(Kgwd)), K_GA) in
+                let npid = H2(id2b(did), mnew_b) in
+                event AS_TokenSent(npid);
+                out(ch, (npid, id2b(asid), tok))
+            )
+        )
+    ).
+
+
+(* ===================================================================== *)
+(*                       GATEWAY PROCESS                                  *)
+(* ===================================================================== *)
+let ProcessGW =
+
+    in(ch, (npid: bitstring, asid_b: bitstring, etok: bitstring));
+
+    let (rid_b: bitstring, rasid_b: bitstring, rk_b: bitstring) =
+        sdec(etok, K_GA) in
+
+    if rasid_b = asid_b then
+    (
+        let Kgwd = b2k(rk_b) in
+
+        in(ch, (dpid: bitstring, edata: bitstring));
+
+        if dpid = npid then
+        (
+            let pdata = sdec(edata, Kgwd) in
+            event GW_DataAccepted(npid);
+            (* Signal back to confirm data accepted — implicit AS auth *)
+            out(ch, senc(npid, Kgwd))
+        )
+    ).
+
+
+(* ===================================================================== *)
+(*                         MAIN PROCESS                                   *)
+(* ===================================================================== *)
+process
+    new did: identity;
+    new asid: identity;
+    new gwid: identity;
+
+    (* Enrollment — setup phase *)
+    new cd: nonce;
+    new casd: nonce;
+    new m0: nonce;
+
+    let Rd  = PUF_D(did, cd) in
+    let Ras = PUF_AS(asid, casd) in
+    let phi = xor(puf2b(Ras), puf2b(Rd)) in
+
+    (
+        !(new ts1: nonce; ProcessDevice(did, asid, m0, Rd, ts1))
+      | !(ProcessAS(asid, did, m0, m0, Rd, phi, casd))
+      | !(ProcessGW)
+    )

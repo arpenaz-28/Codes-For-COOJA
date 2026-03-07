@@ -1,0 +1,2699 @@
+
+================================================================================
+PAGE 1
+================================================================================
+Computers & Security 140 (2024) 103770
+Available online 20 February 2024
+0167-4048/© 2024 Elsevier Ltd. All rights reserved.
+Contents lists available at ScienceDirect
+Computers & Security
+journal homepage: www.elsevier.com/locate/cose
+LAAKA: Lightweight Anonymous Authentication and Key Agreement 
+Scheme for Secure Fog-Driven IoT Systems
+Hala Ali ∗, Irfan Ahmed
+Department of Computer Science, Virginia Commonwealth University, Richmond, 23284, VA, United States
+A R T I C L E 
+I N F O
+A B S T R A C T
+Keywords:
+Fog Computing
+IoT
+Lightweight Authentication
+Key Agreement
+BAN Logic
+Random Oracle Model
+Scyther
+Fog computing is a new computing model with limited resources located near the Internet of Things (IoT) devices 
+to provide low transmission delay, mobility, and location awareness services. However, fog technology not only 
+extends the cloud resources but also inherits its properties and security problems, such as device capture, man-
+in-the-middle, secret key compromise, identity impersonation, and message replay attacks. These vulnerabilities 
+pose signiﬁcant risks to the integrity of IoT-fog communications. Nevertheless, the existing mutual authentication 
+approaches either suﬀer from high computational overheads or fail to provide secure mutual authentication. To 
+address this gap, this paper introduces LAAKA, a Lightweight Anonymous Authentication and Key Agreement 
+scheme. Considering the constrained resources of IoT and fog devices, LAAKA utilizes lightweight operations 
+such as hash function and bitwise XOR. Its main objective is to facilitate mutual authentication and establish 
+secure session keys between IoT devices and fog servers, making it useful for various IoT applications. We 
+validate the robustness of LAAKA against various security threats by conducting comprehensive formal security 
+analysis, including Burrows-Abadi-Needham (BAN) logic and Random Oracle Model (ROM), as well as informal 
+analysis. The eﬃcacy of our scheme is further demonstrated through evaluation with the Scyther tool. Compared 
+to other proposed authentication approaches, the results illustrate the superior performance and eﬃciency of 
+our approach in enhancing the security features, minimizing the computational cost, and optimizing storage 
+utilization.
+1. Introduction
+The rapidly increasing number of Internet of Things (IoT) devices 
+results in generating massive amounts of data (Guo et al. (2020)). Due 
+to the limited processing capacity of IoT devices, this generated data 
+is usually submitted to the cloud servers for processing. Cloud com-
+puting has high processing capacity and unbounded storage resources 
+to execute the assigned tasks and store the received data eﬃciently 
+(Almurisi and Tadisetty (2022); Ali and Sridevi (2023)). However, the 
+cloud nodes are located physically far from the IoT data sources, leading 
+to high network latency and thus aﬀecting the response time of the IoT 
+application (Ali et al. (2021a)). Moreover, the centralized processing 
+of tasks by the cloud makes it an unsuitable and ineﬃcient comput-
+ing paradigm for processing location-aware and real-time applications. 
+Thus, a new computing technology was introduced by Cisco in 2012 
+(Jiang et al. (2020)) called fog computing to overcome the limitations 
+of the cloud and shift its resources to the network edge near the IoT 
+data sources. The features of fog computing help in reducing the com-
+* Corresponding author.
+E-mail addresses: alih16@vcu.edu (H. Ali), iahmed3@vcu.edu (I. Ahmed).
+munication delay and supporting mobility along with the geographical 
+distribution of the IoT devices while serving them (Rana et al. (2021b)).
+Despite fog computing being more secure than the cloud and pro-
+viding a wide range of services eﬃciently, this computing paradigm 
+still faces many security issues that should be mitigated (Guo et al. 
+(2020)). Authentication of IoT and fog devices is considered one of the 
+most critical security issues in fog architecture that should be consid-
+ered. However, authentication of devices faces many challenges, such as 
+location tracking (Nandy et al. (2019)), impersonating the device iden-
+tity (Tu et al. (2018)), and capturing the device physically (Ometov et 
+al. (2022)). These challenges result from insuﬃcient protection for the 
+distributed IoT and fog devices and their constrained resources, which 
+leads to penetration, destruction, and stealing of these devices easily 
+(Roman et al. (2018)). Therefore, the following security requirements 
+should be addressed in fog computing:
+• Authentication: This essential security service prevents the attacker 
+from pretending to be a legitimate IoT or fog device. However, the 
+https://doi.org/10.1016/j.cose.2024.103770
+Received 4 September 2023; Received in revised form 25 December 2023; Accepted 11 February 2024
+
+================================================================================
+PAGE 2
+================================================================================
+Computers & Security 140 (2024) 103770
+2
+H. Ali and I. Ahmed
+limited computational capacity of the IoT and fog devices is a bar-
+rier to implementing authentication in the IoT-fog environment. So, 
+traditional methods such as public key cryptography-based meth-
+ods are not preferred to be used (Mukherjee et al. (2017)).
+• Anonymity: This security service is necessary to hide the identity of 
+the devices during the authentication phase to prevent the device 
+tractability by the attacker (Kaur et al. (2020)).
+• Forward and backward secrecy: This service ensures that if an at-
+tacker somehow obtains the current session key, it cannot be used 
+to decrypt previous messages or future communications. (Weng et 
+al. (2021); Kunal et al. (2019)).
+• Secure communication: The transmitted sensitive IoT data must be 
+conﬁdential and accessible by authorized devices only. This service 
+is achieved by encrypting the exchanged data over the wireless 
+communications between the IoT devices and fog nodes, which can 
+be eavesdropped easily (AbuTaha et al. (2011)).
+• Independency of session keys: This service ensures that compro-
+mising a session key does not compromise other established session 
+keys, as it generates distinct and random session keys for each de-
+vice (Ibrahim (2016)).
+As automation becomes increasingly integral across diverse do-
+mains, including smart industrial settings (Panda et al. (2022)), smart 
+home (Jan et al. (2022)), and healthcare systems (Chen et al. (2022)), 
+the capability of embedded systems to autonomously gather and trans-
+mit real-time data for intelligent decision-making has become crucial. 
+This automation, which often involves direct communication between 
+IoT devices and local fog or cloud servers, is carried out with mini-
+mal human interference. In this context, the communication link from 
+IoT to server is critical, enabling direct machine-to-machine interac-
+tions and playing a main role in the automation environments. Ensuring 
+the authenticity of communication partners is a key security concern in 
+these IoT-fog communication frameworks, serving as a countermeasure 
+against diﬀerent security threats like replay, man-in-the-middle, imper-
+sonation, and denial-of-service (Wazid et al. (2020)).
+The absence of robust authentication could allow malicious actors 
+to disrupt the decision-making process, for instance, by feeding erro-
+neous data to the controllers in an Industry 4.0 setting. However, the 
+application of intensive cryptographic operations for authentication is 
+impractical for IoT devices, which are constrained by their process-
+ing power, communication bandwidth, storage capacity, and energy 
+resources (Jan et al. (2022)). This requires the adoption of a mutual 
+authentication and key agreement protocol that is not only lightweight 
+but also eﬃcient, ensuring the preservation of security within IoT-fog 
+communication networks.
+Despite the numerous mutual authentication and key agreement 
+protocols designed to secure IoT-fog communication, a majority of these 
+protocols encounter several challenges. These include vulnerability to 
+Ephemeral-Secret-Leakage (ESL) attack (Guo et al. (2020); Jia et al. 
+(2019); Zhang et al. (2020)), Denial of Service (DoS) attack (Vinoth 
+et al. (2020); Guo and Guo (2021); Wazid et al. (2019b)), susceptibil-
+ity to device capture attack (Wang et al. (2020); Vinoth et al. (2020); 
+Wazid et al. (2019b)), and a lack of user and device anonymity (Ibrahim 
+(2016); Ma et al. (2019); Li et al. (2020); Das et al. (2019)). Further 
+issues include the absence of Perfect Forward Secrecy (PFS) (Kalaria 
+et al. (2021)), the risk of user and device traceability attack (Ibrahim 
+(2016); Wazid et al. (2019b); Ma et al. (2019); Kalaria et al. (2021)), 
+high communication latency (Hamada et al. (2022); Weng et al. (2021); 
+Singh and Chaurasiya (2021)) and high computational cost (Wang et 
+al. (2020); Amor et al. (2017); Wu et al. (2021b); Lansky et al. (2022)). 
+Moreover, many of these protocols depend on the presence of a regis-
+tration authority to establish and distribute the session keys between 
+the IoT devices and fog servers (Rahman and Wen (2019); Weng et al. 
+(2021); Wu et al. (2021a)), which can be a signiﬁcant limitation.
+In contrast, some authentication protocols are designed based on 
+lightweight operations, such as hash function and bitwise XOR, con-
+sidering the limited resources of IoT and fog servers. However, these 
+approaches also come with their own limitations. For instance, the 
+protocol proposed by Abdussami et al. (2022) requires a cloud server 
+for mutual authentication between IoT devices and fog servers, while 
+Masud et al. (2021)’s scheme is vulnerable to key impersonation, mas-
+querade gateway, and privileged insider attacks. Similarly, Suganthi et 
+al. (2020)’s approach is vulnerable to impersonation and privileged in-
+sider attacks, while Dhillon and Kalra (2017)’s approach is not resistant 
+against user impersonation, and stolen mobile device attacks. It also 
+does not provide user anonymity and session key agreement.
+Although the literature proposes various authentication and key 
+agreement protocols, a fully eﬀective solution for these vulnerabilities 
+is still absent. Moreover, given the constrained computational, storage, 
+and power capabilities of IoT and fog devices, designing an authen-
+tication scheme that is both resource-eﬃcient and secure remains a 
+challenge. This gap in the ﬁeld has motivated us to develop a ro-
+bust, lightweight mutual authentication and key agreement protocol 
+that overcomes these vulnerabilities and ensures secure communication 
+between IoT devices and fog servers.
+Therefore, in this paper, we aim to leverage the primary advantage 
+of fog computing, which is minimizing the network delay for IoT data 
+transmission. To this end, we strategically place the trusted party reg-
+istration authority within the fog layer, close to the IoT devices and 
+fog servers, rather than in the cloud. This setup leads us to introduce 
+LAAKA, a Lightweight Anonymous Authentication and Key Agreement 
+scheme. LAAKA is designed to address the vulnerabilities in existing 
+authentication schemes by ensuring robust mutual authentication be-
+tween IoT devices and fog servers. It facilitates creating secure session 
+keys, generated through distinct random numbers, without the need 
+to involve the registration authority. Furthermore, this scheme main-
+tains low computational and storage requirements by employing only 
+lightweight operations, such as hash functions and bitwise XOR.
+We summarize the contributions of this work as follows:
+• Propose an eﬃcient lightweight authentication scheme between 
+the IoT devices and fog servers, using hash function and bitwise 
+XOR operations.
+• Implement the authentication mutually between the IoT devices 
+and fog servers without the help of the Registration Authority.
+• Establish a distinct secret session key for each connection of the 
+IoT device with the fog server to secure their transmissions.
+• Analyze the scheme’s performance using BAN logic, Random Ora-
+cle Model (ROM), and Scyther tool, then compare it to the perfor-
+mance of other existing authentication schemes in terms of security 
+features, computational cost, and storage requirements.
+The remainder of the paper is sketched as follows: Section 2 intro-
+duces some related works. Section 3 presents the system architecture 
+and threat models. Section 4 discusses the proposed authentication and 
+key agreement scheme (LAAKA), while its security analysis (i.e., formal 
+and informal) is conducted in Section 5. Section 6 shows the perfor-
+mance analysis of our scheme and the results of comparison with other 
+presented schemes. Finally, the work is concluded in Section 7 in addi-
+tion to some suggestions for future directions.
+2. Related work
+This section shows some recently proposed mutual authentication 
+and key agreement schemes in fog computing. Ali and Sridevi (2022)
+designed an authentication mechanism that enables the IoT device to 
+mutually authenticate with the fog server, using hash function and 
+asymmetric key cryptography. However, this mechanism causes a high 
+computational cost to achieve anonymity and provide secure transmis-
+sion between the IoT and fog devices. Ibrahim (2016) presented a secure 
+authentication protocol to enable the user and fog server to authen-
+ticate each other with cooperation from the cloud as the registration 
+
+================================================================================
+PAGE 3
+================================================================================
+Computers & Security 140 (2024) 103770
+3
+H. Ali and I. Ahmed
+authority. This protocol also adopted hash function and asymmetric en-
+cryption. Although the proposed work reduces the computational and 
+storage cost, it does not provide identity anonymity, exposing it to the 
+man-in-the-middle attack. Furthermore, the secret keys are stored in 
+clear form in the user device’s memory and also in the fog server’s 
+memory, causing the device capture attack to access this conﬁdential 
+information. These limitations have been solved with the proposed au-
+thentication approach by Rahman and Wen (2019), using hash-based 
+message authentication code along with symmetric key encryption. De-
+spite this approach being protected from the man-in-the-middle attack 
+and providing the user identity anonymity, there are no details about 
+how the secret key was shared previously between the fog user and 
+the registration authority. Moreover, establishing the session key re-
+quires the existence of the cloud as the registration authority, leading 
+to more communication overhead and high network latency. One more 
+disadvantage of this approach is that the long-term secret key is stored 
+in clear form in the memory of the fog and user devices and used to 
+generate the session key. In contrast, Hamada et al. (2022) enhanced 
+this work by establishing the session key without resorting to the regis-
+tration authority, using ECC operation and symmetric key encryption. 
+However, this scheme is limited in the Canetti-Krawczyk (CK) threat 
+model, where the secret keys can be extracted from the memory of the 
+compromised or stolen user or fog device.
+Wang et al. (2020) also used hash function and symmetric encryp-
+tion in their proposed lightweight authentication scheme to generate 
+dynamic session keys. However, many keys are used in this protocol 
+while transmitting the authentication messages, causing high compu-
+tational overhead and time consumption. Additionally, this protocol is 
+not resistant to the device capture attack. The same cryptographic op-
+erations have been used in the scheme proposed by Vinoth et al. (2020)
+to implement multi-factor mutual authentication between the users and 
+sensors in an industrial IoT environment. However, their scheme is in-
+secure against device capture, denial of service, and replay attacks. 
+Amor et al. (2017) designed a mutual authentication protocol in fog 
+architecture, considering techniques such as using hash, ECC, and bilin-
+ear pairing. This protocol is immune to replay, man-in-the-middle, and 
+eavesdropping attacks. In contrast, it causes a high computational cost 
+and suﬀerers from session key compromising and fog server Imperson-
+ation attacks.
+Lightweight authentication schemes often focus on the use of hash 
+functions and bitwise XOR operations for enhanced eﬃciency. Weng et 
+al. (2021) developed mutual authentication and key agreement between 
+users and edge devices with fog servers, utilizing hash function and 
+bitwise XOR operation to reduce computational costs and enhance secu-
+rity. However, this scheme involves the cloud registration authority in 
+session key generation, leading to increased load on the cloud, potential 
+exposure of conﬁdential data, and added network delays. Additionally, 
+the absence of timestamps in message exchanges makes it susceptible to 
+replay attack. Similarly, Rana et al. (2021a) employed hash functions 
+and bitwise XOR in developing a lightweight authentication protocol for 
+IoT devices. As analyzed by Das et al. (2021), this protocol fails to eﬃ-
+ciently protect the session key, does not oﬀer user anonymity, presents 
+a risk of user traceability, and is vulnerable to ESL attack. Guo and 
+Guo (2021) also adopted hash functions and XOR operations in their 
+protocol for anonymous authentication and key a between mobile IoT 
+devices and fog nodes. Despite its beneﬁts, this protocol faces several 
+challenges, such as vulnerability to DoS attack, potential for user trace-
+ability, risk of oﬄine password guessing, and insuﬃcient security for 
+the shared session key.
+Elliptic Curve Cryptography (ECC) is widely used in fog computing 
+authentication schemes along with hash functions and bitwise XOR op-
+erations due to its suitability for devices with limited resources. Wazid 
+et al. (2019b) presented a user authentication scheme called SAKA-FC, 
+using secure hash function, bitwise XOR, and ECC operation. Although 
+the SAKA-FC scheme provides robust security functionalities and low 
+computational cost, it is still insecure against clogging, user imperson-
+ation, traceability, and device capture attacks. Ali et al. (2021b) pre-
+sented an authentication approach for smart devices in fog computing to 
+overcome the vulnerabilities of Wazid et al. (2019b)’s scheme. Although 
+this approach is more secure and robust against many attacks, it causes 
+more computational cost and high delay due to involving the cloud 
+server in the proposed approach. Patonico et al. (2019) also proposed 
+an ECC-based protocol in fog computing, focusing on mutual authen-
+tication and key agreement. This protocol ensures identity anonymity 
+and secure session keys under the Canetti-Krawczyk (CK) threat model, 
+but it doesn’t protect against replay and device capture/stolen attacks. 
+Singh and Chaurasiya (2021) presented another lightweight authenti-
+cation scheme using hash function and ECC operation. Despite its low 
+computational cost, this scheme is vulnerable to internal spooﬁng at-
+tacks in fog-cloud computing and requires the cloud as part of the 
+authentication procedure, leading to a high load on the cloud and net-
+work latency.
+Various studies have focused on developing mutual authentication 
+schemes independent of third-party involvement. Guo et al. (2020) pre-
+sented an eﬃcient authentication scheme that excludes cloud servers 
+as a third party. This scheme employs hash functions, symmetric poly-
+nomials, and bitwise XOR operations, yet it remains vulnerable to ESL 
+attack as per the Canetti-Krawczyk adversary model. Similarly, Gope 
+(2019) introduced three privacy-preserving lightweight authentication 
+protocols in fog-cloud environment. These protocols are applicable in 
+three distinct scenarios: authentication of end devices by a centralized 
+server, authentication among authenticated end devices themselves, 
+and authentication of end devices by network access devices or base 
+stations. Utilizing lightweight cryptographic techniques, including hash 
+functions, bitwise XOR, and symmetric encryption (AES), these schemes 
+oﬀer operational eﬃciency. However, they exhibit vulnerabilities to 
+several security threats, such as capturing the end device or network 
+access device, known session key, masquerading, and DoS attacks in 
+addition to the absence of perfect forward secrecy. Kalaria et al. (2021)
+also proposed mutual authentication and key exchange scheme between 
+the fog users and servers, without involving the could server. Although 
+this scheme uses only hash function and ECC operation, it does not oﬀer 
+perfect forward secrecy feature, and is vulnerable to user traceability, 
+data forgery, and oﬄine password guessing attacks.
+Other studies have focused on implementing mutual authentication 
+between IoT devices and fog servers in fog-driven healthcare systems. 
+Jia et al. (2019) designed an authentication and key agreement proto-
+col that uses bilinear pairings to enable mutual authentication between 
+the IoT and fog devices in the healthcare system. This protocol uses the 
+cloud as the third party and shares the generated session key with the 
+IoT, fog, and cloud parties. Although this protocol is immune to man-
+in-the-middle, message replay, and stolen device attacks, it increases 
+the computational cost and transmission delay, which is unsuitable 
+for limited resource devices and real-time applications. Both Chen et 
+al. (2021) and Wu et al. (2021b) found that Jia’s scheme is vulnera-
+ble to ESL attack, compromising session key security. They proposed 
+enhanced schemes addressing this issue and ensuring secure communi-
+cation but also increasing computational demands and communication 
+latency due to reliance on cloud server while establishing the session 
+key.
+In the context of Internet of Vehicular (IoV) networks, Ma et al. 
+(2019) proposed three-party authenticated key Agreement scheme be-
+tween fog user, fog server, and could server in a fog-based vehicular 
+IoT network. Their scheme increased the number of scalar point multi-
+plications up to 17 and removed the bilinear pairings, compared with 
+Jia’s scheme. However, this scheme doesn’t provide the user’s identity 
+anonymity and untraceability features and is vulnerable to ESL attack 
+(Zhang et al. (2020)). To overcome these limitations, Eftekhari et al. 
+(2021) proposed an enhanced scheme that reduced the scalar point mul-
+tiplications to nine. Despite this improvement, their scheme does not 
+oﬀer perfect forward secrecy feature. Wazid et al. (2019a) introduced 
+mutual authentication and key management protocol between vehicles 
+
+================================================================================
+PAGE 4
+================================================================================
+Computers & Security 140 (2024) 103770
+4
+H. Ali and I. Ahmed
+and fog servers, RSUs (Roadside Units) and fog servers, and between 
+fog and cloud servers in IoV environment. This protocol employs hash 
+functions, bitwise XOR, ECC encryption, and fuzzy extractors. However, 
+it does not ensure conﬁdential communication sessions and is vulner-
+able to IoT/fog impersonation and known session key attacks. Wu et 
+al. (2021a) also adopted the same cryptographic operations for their 
+scheme, which facilitates mutual authentication and key exchange be-
+tween vehicles and fog nodes in a VANET (Vehicular Ad-hoc Network). 
+Nevertheless, their approach results in high computational cost and 
+requires the presence of a registration authority for establishing the 
+session key.
+Our approach, in contrast, uses only secure hash function and bit-
+wise XOR operation. This strategy ensures lightweight mutual authen-
+tication, ideally suited for resource-constrained devices. By avoiding 
+cloud involvement and integrating a trusted node within the fog layer 
+for registration, our method signiﬁcantly reduces communication la-
+tency. It maintains mutual and independent authentication between IoT 
+and fog devices and oﬀers enhanced security and functionality, eﬀec-
+tively countering various security threats.
+The above-mentioned studies are summarized in Table 1, which out-
+lines the proposed security schemes, the cryptographic techniques they 
+utilize, the methods applied for security veriﬁcation, and their limi-
+tations. In this context, various cryptographic models and algorithms 
+are referenced. ROM refers to the Random Oracle Model, ROR to the 
+Real-Or-Random model, and BAN to the Burrows-Abadi-Needham logic. 
+Additionally, AES stands for the Advanced Encryption Standard algo-
+rithm, DES for the Data Encryption Standard algorithm, RSA for the 
+Rivest-Shamir-Adleman encryption algorithm, HMAC for Hash-based 
+Message Authentication Code, DoS for Denial of Service attack, MiTM 
+for Man-in-The-Middle attack, and RSU for Road Side Unit.
+3. System architecture and threat model
+This section presents the system architecture and deﬁnes two threat 
+models to evaluate the security of our scheme.
+3.1. System architecture
+Fig. 1 presents the typical system architecture of fog computing that 
+comprises the cloud, fog, and IoT devices layers. The topmost layer 
+is the cloud, which has many data centers with unlimited computa-
+tional and storage capacities. However, these data centers are located 
+physically far from the IoT devices. In contrast, the fog layer is located 
+between the cloud layer and IoT devices and includes one central node 
+called the Registration Authority (𝑅𝐴) and many processing fog servers 
+(𝐹) with limited resources. The registration authority is a trusted cen-
+tral fog server that registers the IoT and fog devices securely in the fog 
+layer. However, we assume that the registration authority is not faulty 
+and is working in good condition close to the fog servers and connected 
+with them by high-speed links, making the communication delay neg-
+ligible in the fog layer. In contrast, the registration authority connects 
+with the cloud over the Internet. The lowest layer of the architecture 
+is the IoT devices layer, which involves various IoT devices (𝐷) such 
+as vehicles, smartphones, robots, etc. The IoT devices are connected 
+to the fog servers wirelessly, and both the IoT devices and fog servers 
+are considered untrusted parties. Therefore, when the IoT device wants 
+to interact securely with the fog server, they should authenticate each 
+other without resorting to the registration authority.
+3.2. Threat model
+In this work, we adhere to the Dolev-Yao (DY) threat model (Dolev 
+and Yao (1983)). Based on this model, we have the following assump-
+tions:
+• The network links between the IoT devices and fog servers are in-
+secure and public.
+Fig. 1. Fog computing architecture.
+• The attacker has full control of the public links between the IoT 
+devices and fog servers, which means that the attacker can replay, 
+delay, eavesdrop, modify, delete, and reorder the transmitted mes-
+sages over these links.
+• The endpoints of the link (i.e., IoT device, fog server) are not 
+trusted parties, while the registration authority is considered a 
+trusted party and can not be penetrated.
+We also consider the Canetti-Krawczyk (CK) adversary model 
+(Canetti and Krawczyk (2001)). According to this model, there are the 
+following assumptions:
+• The adversary can get the secret keys and other information stored 
+in the captured IoT device or fog server using a power analysis 
+attack.
+• The adversary can use the compromised data to apply many at-
+tacks, such as session key exposure, man-in-the-middle, identity 
+impersonation, and replay attacks.
+4. Proposed scheme
+This section presents LAAKA, a Lightweight Anonymous Authentica-
+tion and Key Agreement scheme in fog-driven IoT systems. This scheme 
+enables IoT devices and fog servers to authenticate each other with-
+out the help of the registration authority. The notations adopted in this 
+work and their meaning are illustrated in Table 2. The proposed scheme 
+consists of the three following phases.
+4.1. Initialization phase
+The registration authority (RA) should do this phase before register-
+ing the IoT and fog devices. RA generates a long-term master secret key 
+(K) and store it securely in a protected place. It also chooses a secure 
+hash function h(.). We assume that the registration authority is a fully 
+trusted party in the fog layer, which stores all the information of the 
+registered IoT devices and fog servers in a secure database.
+4.2. Registration phase
+Each IoT device or fog server should register itself with the registra-
+tion authority when it joins the network as follows:
+
+================================================================================
+PAGE 5
+================================================================================
+Computers & Security 140 (2024) 103770
+5
+H. Ali and I. Ahmed
+Table 1
+Summary of related work.
+Reference
+Authentication Scheme
+Cryptographic Technique
+Security Veriﬁcation
+Limitation (s)
+Ali and Sridevi (2022)
+Credential-based mutual 
+authentication protocol between 
+IoT devices and fog servers.
+Hash function & symmetric 
+encryption (DES) & asymmetric 
+encryption (RSA)
+iFogSim
+∙Authentication requires cooperation 
+from the registration authority.
+∙Vulnerable to device capture attack.
+∙High computational cost.
+Ibrahim (2016)
+Lightweight mutual authentication 
+protocol for fog users with both 
+existing and newly joined fog 
+servers.
+Hash function & asymmetric 
+encryption (RSA)
+BAN logic
+∙Lack of user anonymity.
+∙Vulnerable to IoT device traceability 
+attack.
+∙Not resistant against MiTM attack.
+Rahman and Wen (2019)
+Anonymous mutual authentication 
+and key agreement between edge 
+devices and fog servers.
+HMAC & symmetric encryption 
+(AES)
+BAN logic
+∙Utilizes a long-term master key for 
+session key generation.
+∙Requires the presence of registration 
+authority to establish and distribute 
+the session key.
+∙High communication latency.
+Hamada et al. (2022)
+Lightweight anonymous mutual 
+authentication and key agreement 
+scheme between fog users and 
+servers, independent of the 
+registration authority
+Hash function & XOR, symmetric 
+encryption (AES) & ECC 
+encryption
+BAN logic
+∙No resistance against device capture 
+attack.
+∙High computational cost.
+∙High communication latency.
+Wang et al. (2020)
+Anonymous mutual authentication 
+protocol between fog gateways and 
+cloud server, with dynamic session 
+key updates among fog gateways.
+Hash function & XOR & symmetric 
+encryption (AES)
+AVISPA & BAN logic
+∙Vulnerable to device capture attack.
+∙High computational cost.
+Vinoth et al. (2020)
+Secure multi-factor authenticated 
+key agreement scheme between 
+the user and sensor in Industrial 
+IoT.
+Hash function & XOR & symmetric 
+encryption (AES)
+ROR model
+∙Vulnerable to sensor node capture.
+∙Not resistant against DoS attack.
+∙Not resistant against replay attack.
+Amor et al. (2017)
+Anonymous mutual authentication 
+protocol for fog users and servers.
+Hash function & ECC encryption & 
+bilinear pairing
+AVISPA
+∙High computational cost.
+∙No protection of the session key 
+between the user and server.
+∙Vulnerability to fog server 
+impersonation attack.
+Weng et al. (2021)
+Lightweight anonymous mutual 
+authentication between the edge 
+user/device and fog server.
+Hash function & XOR
+BAN logic
+∙Authentication requires cooperation 
+from the registration authority.
+∙Vulnerable to replay attack.
+∙High communication latency.
+Rana et al. (2021a)
+Lightweight mutual authentication 
+protocol between the fog user and 
+remote server
+Hash function. & XOR
+ROM
+∙Vulnerable to user impersonation.
+∙Vulnerable to ESL attack.
+∙Does not provide user anonymity.
+∙Potential to user traceability.
+Guo and Guo (2021)
+Anonymous handover 
+authentication and key agreement 
+protocol between the mobile IoT 
+device and fog node.
+Hash function& XOR
+ROR model
+∙Vulnerable to DoS attack.
+∙Potential to user traceability.
+∙Lack of shared session key security.
+Wazid et al. (2019b)
+Secure key management and user 
+authentication scheme (SAKA-FC) 
+in fog computing
+Hash function. & XOR & ECC 
+encryption
+AVISPA& ROR 
+model
+∙Prone to clogging attack.
+∙Vulnerable to user impersonation.
+∙Susceptible to DoS attack.
+∙Exposes traceability risk.
+∙Vulnerable to device capture attack.
+Ali et al. (2021b)
+Improve the security of SAKA-FC 
+scheme proposed by Wazid et al. 
+(2019b).
+Hash function & XOR& ECC 
+encryption
+AVISPA & BAN logic
+∙Vulnerable to fog node impersonate 
+attack.
+∙High computational cost.
+Patonico et al. (2019)
+Identity-based mutual 
+authentication and key agreement 
+protocol between the IoT device 
+and fog server.
+Hash function & ECC encryption
+ROM
+∙Vulnerable to device capture/ stolen 
+attack.
+∙Vulnerable to replay attack.
+Singh and Chaurasiya (2021)
+Anonymous mutual authentication 
+scheme between IoT devices and 
+fog nodes and between fog and 
+cloud servers without key 
+management
+Hash function & ECC encryption
+AVISPA & BAN logic
+∙Vulnerable to internal spooﬁng 
+attack.
+∙Involving the could server in the 
+authentication procedure.
+∙High communication latency.
+Guo et al. (2020)
+Mutual authentication between 
+remote users and fog servers in 
+smart home environment, 
+excluding centralized cloud 
+servers.
+Hash function & XOR & symmetric 
+bivariate polynomial
+ROR model
+∙Vulnerable to ESL attack.
+∙Vulnerable to fog device capture 
+attack.
+(continued on next page)
+
+================================================================================
+PAGE 6
+================================================================================
+Computers & Security 140 (2024) 103770
+6
+H. Ali and I. Ahmed
+Table 1 (continued)
+Reference
+Authentication Scheme
+Cryptographic Technique
+Security Veriﬁcation
+Limitation (s)
+Gope (2019)
+Three privacy-preserving, 
+lightweight authentication 
+protocols in fog-cloud 
+environment.
+Hash function & XOR & symmetric 
+encryption (AES)
+BR93- Model Bellare 
+and Rogaway (1993)
+∙Vulnerable to IoT device capture.
+∙Susceptibility to known key session 
+attack.
+∙Prone to masquerading attack.
+∙Vulnerable to DoS attack.
+∙Lack of Perfect Forward Secrecy.
+Kalaria et al. (2021)
+Mutual authentication and key 
+exchange between the user and fog 
+server, excluding centralized cloud 
+servers
+Hash function & ECC encryption
+AVISPA & BAN Logic
+∙Lack of Perfect Forward Secrecy.
+∙Potential for user traceability.
+∙Risk of data forgery.
+∙Susceptibility to oﬄine password 
+guessing attack.
+Jia et al. (2019)
+Mutual authentication and key 
+agreement scheme for IoT users 
+and fog servers in healthcare 
+systems.
+Hash function & XOR & ECC 
+encryption & bilinear pairing
+BRP model Bellare et 
+al. (2000)
+∙Lacks security of the session key.
+∙Vulnerable to ESL attack.
+Chen et al. (2021)
+Mutual authentication and key 
+exchange scheme for IoT users and 
+fog servers in healthcare systems.
+Hash function & XOR & ECC 
+encryption & bilinear pairing & 
+fuzzy extractor
+ProVerif
+∙Dependent on the registration 
+authority for establishing and 
+distributing the session key.
+∙High communication latency.
+Wu et al. (2021b)
+Mutual authenticated key 
+agreement protocol for IoT users 
+and fog servers in healthcare 
+systems.
+Hash function & XOR& ECC 
+encryption & bilinear pairing
+ProVerif
+∙Dependent on the registration 
+authority for establishing and 
+distributing the session key.
+∙Vulnerable to oﬄine guessing attack.
+∙High computational cost.
+Ma et al. (2019)
+Three-party authenticated key 
+agreement protocol involving fog 
+users, fog servers, and cloud 
+servers within a fog-based 
+vehicular IoT network.
+Hash function & XOR& ECC 
+encryption
+BRP model Bellare et 
+al. (2000)
+∙Lack of user anonymity.
+∙Potential to user traceability.
+∙Vulnerable to ESL attack.
+Eftekhari et al. (2021)
+Three-party authenticated key 
+agreement protocol involving fog 
+users, fog servers, and cloud 
+servers within a fog-based 
+vehicular IoT network.
+Hash function & XOR& ECC 
+encryption
+ProVerif
+∙Absence of Perfect Forward Secrecy 
+feature.
+Wazid et al. (2019a)
+Mutual authentication and key 
+management protocol between 
+vehicles and fog servers, RSUs and 
+fog servers, fog servers and cloud 
+servers in Internet of Vehicles 
+environment.
+Hash function & XOR& ECC 
+encryption & fuzzy extractor
+AVISPAs & ROR 
+model
+∙No conﬁdential communication 
+session.
+∙Vulnerable to IoT/ fog impersonation 
+attack.
+∙Vulnerable to known session key 
+attack.
+∙Vulnerable to ESL attack.
+Wu et al. (2021a)
+Mutual authentication and 
+key-exchange system between 
+vehicles and fog nodes in VANET 
+network.
+Hash function & XOR& ECC 
+encryption & fuzzy extractor
+ProVerif & BAN logic
+∙Establish the session key requires the 
+presence of the registration authority.
+∙High computational cost.
+LAAKA
+Lightweight anonymous mutual 
+authentication and key agreement 
+scheme between the IoT device 
+and fog server.
+Hash function & XOR
+Scyther & BAN logic 
+& ROM
+4.2.1. Registration of fog server
+The fog server 𝐹𝑖picks a unique identiﬁer 𝐼𝐷𝑓and a secret ran-
+dom number 𝑟1, which are hashed to yield output 𝐴𝑓. This output is 
+securely transmitted to the registration authority 𝑅𝐴, which then is-
+sues a temporary identiﬁer 𝑇𝐼𝐷𝑓. This 𝑇𝐼𝐷𝑓is securely conveyed to 
+the fog server for storage, while the 𝑅𝐴also keeps a secure record of 
+both 𝑇𝐼𝐷𝑓and 𝐴𝑓, thereby preserving the system’s integrity and con-
+ﬁdentiality as shown in Fig. 2.
+4.2.2. Registration of IoT device
+The IoT device 𝐷𝑗picks a unique identiﬁer 𝐼𝐷𝑑and generates 
+a secret random number 𝑟2. It then registers with 𝑅𝐴by calculat-
+ing 𝐴𝑑= ℎ(𝐼𝐷𝑑∥𝑟2) and sending it securely. Upon receiving 𝐴𝑑, 𝑅𝐴
+generates a temporary identiﬁer 𝑇𝐼𝐷𝑑and a unique secret value 𝐵𝑘, 
+calculated as ℎ(𝐴𝑑∥𝐴𝑓∥𝐾), storing them all securely. 𝑅𝐴then sends 
+(𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑓, 𝐵𝑘) to the IoT device and (𝑇𝐼𝐷𝑑, 𝐴𝑑, 𝐵𝑘) to the as-
+sociated fog server through secure channels. Both the IoT device and 
+Table 2
+Main notations.
+Notation
+Deﬁnition
+𝑅𝐴
+Registration Authority
+𝐷𝑗,𝐹𝑖
+𝑗𝑡ℎIoT device and 𝑖𝑡ℎfog server
+𝐾
+Long-term master secret key
+𝑆𝐾
+Session Key
+𝐼𝐷𝑑,𝐼𝐷𝑓
+Unique Identiﬁer of IoT device, fog server, respectively
+𝑇𝐼𝐷𝑑,𝑇𝐼𝐷𝑓
+Temporary Identiﬁer of IoT device, fog server, respectively
+𝑟1,𝑟𝑓
+Random numbers generated by the fog server
+𝑟2,𝑟𝑑
+Random numbers generated by the IoT device
+𝑇𝑑,𝑇𝑓,𝑇𝑠
+Timestamps
+ℎ(.)
+Collision-free hash function
+⊕
+Bitwise XOR operation
+∥
+Concatenation operation
+the fog server store the received values in memory as shown in Fig. 3. 
+For each IoT device, 𝑅𝐴generates a unique 𝐵𝑘to be shared with its 
+
+================================================================================
+PAGE 7
+================================================================================
+Computers & Security 140 (2024) 103770
+7
+H. Ali and I. Ahmed
+Fig. 2. Registration of fog server.
+Fig. 3. Registration of IoT device.
+associated fog server, reﬂecting the speciﬁc fog area deployment of the 
+IoT device. Notably, the real identiﬁers of the IoT device and fog server 
+remain unknown to 𝑅𝐴, and the device generates a new random num-
+ber each time it registers with 𝑅𝐴, ensuring the unpredictability and 
+uniqueness of the registration credentials.
+4.3. Authentication and key agreement phase
+We assume that the IoT device 𝐷𝑗is deployed in a speciﬁc area of 
+the fog server 𝐹𝑖and is prepared to transmit data to 𝐹𝑖. Before this data 
+submission, 𝐷𝑗and 𝐹𝑖must complete a mutual authentication process, 
+as depicted in Fig. 4. Unlike the scheme proposed by Weng et al. (2021), 
+where the registration authority (𝑅𝐴) in the cloud is involved in both 
+authentication and key generation, our proposed phase is implemented 
+without the assistance of 𝑅𝐴. This design emphasizes a more direct 
+connection between the device and the fog server, potentially reducing 
+complexity and dependence on additional entities.
+Step 1: 𝐷𝑗generates a timestamp 𝑇𝑑and a unique random number 
+𝑟𝑑to compute 𝐶𝑑= ℎ(𝑇𝑑∥𝑟𝑑), ensuring freshness and replay attack 
+prevention. 𝐷𝑗then responds to a challenge 𝐴𝑓from 𝐹𝑖by calcu-
+lating 𝐸𝑑= 𝑟𝑑⊕ℎ(𝐵𝑘∥𝐴𝑓), conﬁrming the response’s origin from 
+𝐷𝑗. To guarantee 𝐹𝑖derives the accurate 𝑟𝑑value, a new tempo-
+rary identiﬁer is computed as 𝑇𝐼𝐷𝑑
+𝑛𝑒𝑤= 𝑇𝐼𝐷𝑑⊕𝑟𝑑. Additionally, 
+𝐺𝑑= ℎ(𝐴𝑑∥𝑇𝐼𝐷𝑑
+𝑛𝑒𝑤∥𝐵𝑘∥𝑟𝑑) ensures that 𝐹𝑖discerns the cor-
+rect 𝑇𝐼𝐷𝑑and 𝑟𝑑. By integrating 𝐴𝑑= ℎ(𝐼𝐷𝑑∥𝑟2) within 𝐺𝑑, 𝐹𝑖
+can validate 𝐷𝑗’s identity. These components, packaged as 𝐴𝑢𝑡ℎ𝑅𝑒𝑞=
+{𝑇𝐼𝐷𝑑, 𝑇𝑑, 𝐶𝑑, 𝐸𝑑, 𝐺𝑑}, are transmitted to 𝐹𝑖over a public channel.
+Step 2: Upon receiving the authentication request 𝐴𝑢𝑡ℎ𝑅𝑒𝑞from 𝐷𝑗, 
+the fog server 𝐹𝑖ﬁrst validates the temporary identiﬁer 𝑇𝐼𝐷𝑑by com-
+paring it with the one received earlier from 𝑅𝐴. It also veriﬁes the 
+timestamp’s authenticity by ensuring that the diﬀerence between the 
+current timestamp 𝑇𝑐and the received 𝑇𝑑is within the allowed network 
+latency Δ𝑇. If the message is delayed beyond this limit, 𝐹𝑖recognizes 
+it as a potential replay attack and dismisses it. 𝐹𝑖will proceed with the 
+authentication process only if both 𝑇𝐼𝐷𝑑and 𝑇𝑑successfully pass these 
+checks. Otherwise, the request is rejected, and the session is terminated.
+Step 3: 𝐹𝑖knows its generated random 𝑟1 and 𝐼𝐷𝑓that are used 
+to calculate 𝐴𝑓. It also knows 𝐵𝑘, since it was received from 𝑅𝐴. 𝐹𝑖
+ﬁrst extracts the received 𝑟𝑑
+∗as 𝑟𝑑
+∗= 𝐸𝑑⊕ℎ(𝐵𝑘∥𝐴𝑓). It then scruti-
+nizes 𝑟𝑑to detect any manipulation by calculating 𝐶𝑑
+∗= ℎ(𝑇𝑑∥𝑟𝑑
+∗)
+and comparing it with the received 𝐶𝑑. Furthermore, 𝐹𝑖calculates 
+𝑇𝐼𝐷𝑑
+𝑛𝑒𝑤∗= 𝑇𝐼𝐷𝑑⊕𝑟𝑑∗and 𝐺𝑑
+∗= ℎ(𝐴𝑑∥𝑇𝐼𝐷𝑑
+𝑛𝑒𝑤∗∥𝐵𝑘∥𝑟𝑑∗) to 
+verify if 𝐺𝑑
+∗matches the received 𝐺𝑑. This procedure conﬁrms that 𝐹𝑖
+is interacting with the legitimate IoT device 𝐷𝑗, guarantees the accu-
+rate submission of 𝐴𝑑, and ensures that no illicit device has intruded. 
+Upon successful authentication, 𝐹𝑖proceeds to the next step; otherwise, 
+the session is terminated.
+Step 4: 𝐹𝑖begins by generating a timestamp 𝑇𝑓to ensure the fresh-
+ness of its authentication reply 𝐴𝑢𝑡ℎ𝑟𝑒𝑝, and selects a random number 
+𝑟𝑓. It then computes 𝐶𝑓= ℎ(𝑇𝑓∥𝑟𝑓). To maintain the session key’s 
+freshness, 𝐹𝑖also creates a timestamp 𝑇𝑠and calculates a session key 
+𝑆𝐾= ℎ(𝑟𝑑∥𝑟𝑓∥𝑇𝑠), which varies with each new session due to its 
+reliance on randomly generated numbers and timestamps.
+Step 5: 𝐹𝑖then computes 𝐸𝑓= 𝑟𝑓⊕ℎ(𝑇𝐼𝐷𝑑
+𝑛𝑒𝑤∗), to aﬃrm to 𝐷𝑗
+that it has received the correct 𝑟𝑑. Additionally, it calculates 𝑇𝐼𝐷𝑓
+𝑛𝑒𝑤=
+𝑇𝐼𝐷𝑓⊕𝑟𝑓, and 𝐺𝑓= ℎ(𝑇𝐼𝐷𝑓
+𝑛𝑒𝑤∥𝐵𝑘∥𝑟𝑓∥𝑆𝐾∥𝑇𝑠). These compu-
+tations are designed to securely transmit the session key 𝑆𝐾and thwart 
+impersonation attacks by rendering the random number 𝑟𝑓impervious 
+to prediction. Finally, 𝐹𝑖sends 𝐴𝑢𝑡ℎ𝑟𝑒𝑝= 𝑇𝐼𝐷𝑓, 𝑇𝑓, 𝑇𝑠𝐶𝑓, 𝐸𝑓, 𝐺𝑓to 
+𝐷𝑗over a public channel.
+Step 6: Once 𝐷𝑗receives 𝐴𝑢𝑡ℎ𝑟𝑒𝑝, it veriﬁes if the received 𝑇𝐼𝐷𝑓
+is consistent with what was previously received from 𝑅𝐴. It then 
+ensures that this reply has been received within the allowable time 
+frame by comparing it with its current time, according to the condi-
+tion 𝑇𝑐−𝑇𝑓<= Δ𝑇. If both 𝑇𝐼𝐷𝑓and 𝑇𝑓are found to be valid, then 
+𝐷𝑗will proceed with the next phase of the authentication process. Oth-
+erwise, the message 𝐴𝑢𝑡ℎ𝑟𝑒𝑝will be rejected, and the session will be 
+terminated.
+Step 7: To validate the associated 𝐹𝑖’s knowledge of the exact 𝑟𝑑
+value, 𝐷𝑗retrieves the 𝑇𝐼𝐷𝑑identiﬁer from its memory and cal-
+culates 𝑇𝐼𝐷𝑑
+𝑛𝑒𝑤= 𝑇𝐼𝐷𝑑⊕𝑟𝑑. This value helps 𝐷𝑗to derive the 
+𝑟𝑓
+∗value as 𝑟𝑓
+∗= 𝐸𝑓⊕𝑇𝐼𝐷𝑑
+𝑛𝑒𝑤. Next, 𝐷𝑗determines the legiti-
+macy of 𝑟𝑓
+∗by calculating 𝐶𝑓
+∗= ℎ(𝑇𝑓∥𝑟𝑓
+∗), and comparing it with 
+the received 𝐶𝑓. Additionally, 𝐷𝑗validates 𝑇𝑠, calculates the ses-
+sion key as 𝑆𝐾∗= ℎ(𝑟𝑑∥𝑟𝑓∗∥𝑇𝑠), 𝑇𝐼𝐷𝑓
+𝑛𝑒𝑤∗= 𝑇𝐼𝐷𝑓⊕𝑟𝑓∗, and 
+𝐺𝑓
+∗= ℎ(𝑇𝐼𝐷𝑓
+𝑛𝑒𝑤∗∥𝐵𝑘∥𝑟𝑓∗∥𝑆𝐾∗∥𝑇𝑠). If 𝐺𝑓
+∗matches 𝐺𝑓, 𝐷𝑗
+conﬁrms that both the correct 𝑟𝑓value and valid session key 𝑆𝑘were 
+received, while 𝐹𝑖obtained the correct 𝑟𝑑value. Consequently, 𝐷𝑗rec-
+ognizes 𝐹𝑖as a legitimate entity, progressing to the next step; otherwise, 
+the session is terminated by 𝐷𝑗.
+Step 8: After establishing trust with 𝐹𝑖, 𝐷𝑗proceeds to prove that 
+it possesses the correct session key. To do this, it sends an acknowledg-
+ment over a public channel to 𝐹𝑖. The acknowledgment is computed as 
+𝐴𝑐𝑘 = ℎ(𝑟𝑓
+∗∥𝐵𝑘∥𝑆𝐾∗), ensuring that only the party with the correct 
+session key can validate this proof. By providing this acknowledgment, 
+𝐷𝑗conﬁrms the legitimacy of the session key to 𝐹𝑖.
+Step 9: Upon receipt of the acknowledgment (𝐴𝑐𝑘) from 𝐷𝑗, 𝐹𝑖
+calculates the hash value of ℎ(𝑟𝑓∥𝐵𝑘∥𝑆𝐾) and compares it with the 
+received 𝐴𝑐𝑘. A match between these values not only substantiates the 
+authenticity of both the IoT device and the fog server but also veriﬁes 
+that they both possess the same session key. This established key is then 
+utilized to encrypt subsequent communications between them, ensuring 
+a secure connection.
+5. Security analysis
+This section provides a comprehensive examination of the security 
+measures within our scheme, demonstrating its robust defenses against 
+various cyberattacks. Along with an informal security analysis that il-
+lustrates the scheme’s resilience, we also explore more formalized meth-
+ods. By using Burrows-Abadi-Needham (BAN) logic and Random Oracle 
+Model (ROM), we conduct a rigorous security assessment to validate the 
+theoretical soundness of our design. Additionally, we utilize the Scyther 
+tool, a prominent tool in security analysis, to empirically evaluate the 
+robustness of the proposed protocol, further solidifying its reliability 
+and eﬀectiveness in real-world applications.
+
+================================================================================
+PAGE 8
+================================================================================
+Computers & Security 140 (2024) 103770
+8
+H. Ali and I. Ahmed
+Fig. 4. Mutual authentication and key agreement.
+5.1. Informal security analysis
+Our scheme (LAAKA) is robust against various cyberattacks, as ex-
+plained below:
+Man-in-The-Middle (MiTM) attack: This type of attack occurs 
+when an unauthorized party intercepts the messages transmitted be-
+tween the IoT device 𝐷𝑗and fog server 𝐹𝑖. The proposed protocol coun-
+ters this threat by utilizing hash functions to create secret values (𝐶𝑑, 
+𝐶𝑓, 𝐺𝑑, 𝐺𝑓, 𝑆𝐾). This construction ensures that reversing the hash 
+to ﬁnd the original values is computationally intractable. Furthermore, 
+the protocol employs comprehensive authentication checks, including 
+the veriﬁcation of hash values, temporary identiﬁers, and timestamps. 
+So, a MiTM attacker needs to forge these values accurately to imper-
+sonate one of the parties, which should be diﬃcult without access to 
+the secret values 𝐴𝑑, 𝐴𝑓, 𝐵𝑘. The session key (𝑆𝐾), derived from se-
+curely exchanged random values (𝑟𝑑, 𝑟𝑓), further fortiﬁes the protocol. 
+A MiTM attacker, despite intercepting messages, ﬁnds calculating the 
+session key impossible due to the inaccessibility of these random val-
+ues. Consequently, the integrity and authenticity of the communication 
+remain intact, making the protocol highly resilient to MiTM attacks.
+Replay attack: Occurs when an attacker intercepts a valid message 
+and resends it later, intending to deceive the recipient into believing 
+it’s legitimate. Our scheme counters this threat through multiple strate-
+gies. Firstly, we use timestamps (𝑇𝑑, 𝑇𝑓, 𝑇𝑠) to ensure messages are 
+time-sensitive; both the IoT device and the fog server check their fresh-
+ness, dismissing any that fall outside a designated time window. Next, 
+for each session, distinct random values 𝑟𝑑, 𝑟𝑓) are generated, adding 
+another layer of complexity for any attacker trying to resend a previ-
+ous message. The session key (𝑆𝐾) is calculated based on these random 
+values and the timestamp 𝑇𝑠. So, it is a session-speciﬁc key and can’t 
+be reused. Additionally, the protocol can detect any altered timestamps 
+(𝑇′
+𝑑or 𝑇′
+𝑓). If an attacker generates new random numbers (𝑟𝑎) and cal-
+culates corresponding hash values as ℎ(𝑇′
+𝑑∥𝑟𝑎) or ℎ(𝑇′
+𝑓∥𝑟𝑎), it still 
+cannot compute 𝐺𝑑, and 𝐺𝑓without accessing the secret values 𝐴𝑑, 
+𝐴𝑓, and 𝐵𝑘. These combined measures create a robust defense against 
+replay attacks.
+Ephemeral-Secret-Leakage (ESL) attack: Aims to reveal temporary 
+secrets used during the authentication and establish the session key. In 
+this protocol, the ephemeral secrets that might be targeted in an ESL 
+attack would include the random numbers (𝑟𝑑, 𝑟𝑓) and potentially the 
+session keys derived from them. These random numbers are encrypted 
+
+================================================================================
+PAGE 9
+================================================================================
+Computers & Security 140 (2024) 103770
+9
+H. Ali and I. Ahmed
+using a bitwise XOR operation with hash values. These hash values in-
+clude secret parameters like (𝐴𝑑, 𝐴𝑓, 𝐵𝐾), making it challenging for an 
+attacker to extract the original random numbers without knowing these 
+values. These random numbers are used in hash functions with other 
+parameters and sent over the public channel. Since the hash function is 
+considered one-way, extracting the original values should be computa-
+tionally infeasible for an attacker. The session key 𝑆𝐾is derived using 
+these random numbers along with a timestamp 𝑇𝑠and hashed with 
+other values before submitting, making the exposure of the session key 
+unlikely.
+Stolen Veriﬁer attack: Occurs when an attacker obtains the veriﬁ-
+cation data used during authentication. In the context of our protocol, 
+the threat is mitigated by not storing the real identiﬁers (𝐼𝐷𝑑, 𝐼𝐷𝑓), 
+which are essential for generating 𝐴𝑑or 𝐴𝑓. Consequently, even if an 
+attacker accesses the stored veriﬁcation information, it will not have 
+enough details to impersonate a legitimate device. The protocol’s incor-
+poration of secret random numbers (𝑟1, 𝑟2, 𝑟𝑑, 𝑟𝑓) that remain unknown 
+to the attacker adds to the complexity, as these numbers are required to 
+produce accurate authentication values. The attacker’s inability to gen-
+erate the correct 𝐴𝑑and the subsequent 𝐺𝑑, both dependent on the real 
+identiﬁer and the random numbers, will result in authentication failure. 
+Without the correct random values, the attacker also can’t compute the 
+proper session key, further hindering their impersonation attempts.
+Key Exposure attack: In our proposal, the fog server generates a 
+unique session key (𝑆𝐾) for each connection with an IoT device. This 
+speciﬁcity ensures that the security of one session doesn’t compromise 
+others. The session key is exclusively known to the fog server and the 
+associated IoT device. Other parties, such as the Registration Author-
+ity (𝑅𝐴), do not have access to this secret key. This restriction further 
+isolates the session, ensuring that even if other parts of the system are 
+compromised, the session key remains secure. The attacker’s inability to 
+access the randomly generated numbers by the IoT device and the fog 
+server during the authentication process prevents them from reverse-
+engineering or otherwise exposing the session key.
+Known Session Key attack: The adversary may obtain an old 
+known session key to access the secret parameters and session keys 
+of the subsequent communication sessions. According to our proposed 
+approach, the session key is a hashed value of random numbers. It is 
+computationally infeasible to know these numbers by obtaining the 
+hash value because of the one-way characteristic of the hash function. 
+However, the adversary is unable to get the current generated random 
+numbers to deduce a new session key by knowing of previously compro-
+mised keys. Consequently, our scheme is immune to the known session 
+key attack.
+Unknown Key-Share attack: During the registration phase, the 
+Registration Authority (𝑅𝐴) securely transmits 𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑓to 
+the IoT device and 𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑑to the fog server, thereby en-
+abling them to recognize each other. If an unauthorized third entity 
+(with identiﬁers 𝐼𝐷𝑎and 𝑇𝐼𝐷𝑎) attempts to create a session key with 
+the fog server, it will be unable to do so. The failure arises because the 
+unauthorized entity cannot produce a value for 𝐺𝑎that matches 𝐺𝑑, 
+due to a lack of knowledge about 𝐴𝑑, causing a validation failure at the 
+fog server. Similarly, if this party tries to create a session key with the 
+IoT device, it also fails. Without knowledge of the random value 𝑟𝑑, it 
+can’t extract 𝑟𝑓, causing validation of 𝑇𝐼𝐷𝑎with 𝑇𝐼𝐷𝑓to fail at the 
+IoT device side. Thus, our scheme thwarts the attacker’s eﬀorts to trick 
+the IoT device and fog server into establishing a shared secret key with 
+it, thereby reinforcing the protocol’s immunity to unknown key-share 
+attacks.
+IoT device impersonation attack: An attacker attempting to pose 
+as a legal IoT device to create a session key with the fog server will 
+face insurmountable barriers due to the unknown secret parameters 𝐵𝑘
+and 𝐴𝑑, as well as the actual random numbers (𝑟2, 𝑟𝑑) generated by the 
+IoT device. Without knowledge of the real identiﬁer of the IoT device 
+𝐼𝐷𝑑and its generated random number 𝑟2, the attacker is unable to cal-
+culate the correct 𝐺𝑑, thus rendering impersonation infeasible, even if 
+𝐸𝑑, 𝐺𝑑are publicly transmitted. Adding to this, the fog server issues a 
+challenge 𝐴𝑓through secure channels known only to the trusted 𝑅𝐴
+and IoT device. This challenge is hashed with the secret value 𝐵𝑘, and 
+combined with the unique random number 𝑟𝑑for each session, fur-
+ther complicating the attacker’s ability to impersonate. Moreover, the 
+session validation process rigorously compares various calculated and 
+received values such as 𝐶∗
+𝑑and 𝐶𝑑, 𝐺∗
+𝑑and 𝐺𝑑, ensuring that even if 
+an attacker intercepts the authentication request, they cannot extract 
+the random number 𝑟𝑓from the fog server due to the unknown random 
+number 𝑟𝑑, nor validate 𝐺𝑓without knowledge of 𝐵𝑘and 𝐴𝑓. This 
+multi-layered approach guarantees robust protection against IoT device 
+impersonation.
+Fog server impersonation attack: The attacker tries to present as 
+a legal fog server to create a session key and share it with the IoT de-
+vice. However, it lacks knowledge of the random numbers 𝑟𝑑and 𝑟𝑓, as 
+well as the secret parameters 𝐵𝑘and 𝐴𝑓shared between the legitimate 
+fog server and the IoT device. Thus, the attacker is unable to calculate 
+the correct value of 𝐺𝑓, making it detectable by the IoT device. The 
+attacker’s lack of access to 𝐵𝑘and 𝐴𝑓will also prevent the correct cal-
+culation of 𝐸𝑓, which relies on the XOR operation with these values. 
+The IoT device, knowing the legitimate values, can recognize the incor-
+rect 𝐸𝑓coming from an impersonator. A discrepancy in any of these 
+values would lead to the termination of the session, preventing the im-
+personation attack from progressing.
+Physical Capture/Stolen/Lost of IoT device attack: In the event 
+of an IoT device being physically captured, lost, or stolen, the proto-
+col still protects against this type of attack due to its secure design. 
+An attacker (even with access to stored parameters (𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑓, 
+𝐵𝑘) and the ability to eavesdrop on exchanged messages) can’t know 
+the real identiﬁer of the IoT device (𝐼𝐷𝑑) and its generated random 
+numbers 𝑟2 and 𝑟𝑑. This lack of information prevents the attacker from 
+generating the correct 𝐴𝑑, thereby making it impossible to produce the 
+correct 𝐺𝑑value. The fog server’s rigorous validation checks (includ-
+ing 𝑇𝐼𝐷𝑑, 𝑇𝑑, 𝐶𝑑, 𝐸𝑑, and 𝐺𝑑) ensure that any incorrect information 
+leads to the rejection of the authentication request. The protocol’s un-
+predictability and uniqueness, achieved through the generation of new 
+random numbers each time the device registers, further prevent imper-
+sonation attempts. Without knowing the correct 𝐴𝑑value, the attacker 
+cannot ascertain the long master key 𝐾, which is concatenated with 𝐴𝑑
+and 𝐴𝑓to generate 𝐵𝑘. Also, the attacker’s ignorance about the gen-
+erated random number 𝑟𝑑means it cannot derive the current session 
+key shared with the fog server. By generating distinct random numbers 
+for diﬀerent sessions, the system ensures that compromising one IoT de-
+vice doesn’t lead to compromising others connected with the fog server, 
+thereby resisting capture/stolen/loss of IoT device attacks.
+Physical Capture of Fog server attack: If a fog server storing pa-
+rameters 𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑑, and 𝐵𝑘, is captured by an attacker, the at-
+tacker can access these stored secret values and eavesdrop on exchanged 
+messages. However, the protocol’s design ensures that the attacker still 
+lacks knowledge of the random number 𝑟1 generated by the fog server 
+and, consequently, the value of 𝐴𝑓. This makes the attacker incapable 
+of determining the value of 𝑟𝑑, deﬁned as 𝑟𝑑= 𝐸𝑑⊕ℎ(𝐵𝑘∥𝐴𝑓). As a 
+result, even if the attacker captures the fog server, it remains unable to 
+generate a session key and share it with the IoT device. Furthermore, 
+the threat does not spread to other servers, as each fog server generates 
+distinct keys for its associated IoT devices, ensuring that compromising 
+one fog server will not lead to compromising others.
+Traceability of IoT device attack: The attacker may aim to know 
+the physical location of the IoT device by monitoring the transmitted 
+messages. Using identical parameters for each communication with the 
+fog server makes the IoT device traceable by the attacker. However, 
+our scheme mitigates this risk by requiring both the IoT device and fog 
+server to generate unique hashed values 𝐴𝑑and 𝐴𝑓for each registra-
+tion with the Registration Authority (𝑅𝐴). The RA then creates diﬀerent 
+temporal identiﬁers 𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓for each communication session, ef-
+
+================================================================================
+PAGE 10
+================================================================================
+Computers & Security 140 (2024) 103770
+10
+H. Ali and I. Ahmed
+fectively thwarting the ability of an attacker to trace the location of the 
+IoT device.
+Anonymity attack: The real identities of the parties remain anony-
+mous, even if an attacker intercepts all messages transmitted over public 
+channels. This is ensured through the embedding of the real identi-
+ﬁers (𝐼𝐷𝑑, 𝐼𝐷𝑓) in hash functions with the random numbers (𝑟1, 𝑟2), 
+which remain inaccessible to the attacker. The robustness of this secu-
+rity feature is further highlighted by the fact that even the Registration 
+Authority (𝑅𝐴) cannot discern the real identity of the parties, eﬀec-
+tively thwarting an attacker’s ability to compromise the anonymity of 
+the involved IoT device and fog server.
+Denial of Service (DoS) attack: The proposed protocol is designed 
+to be lightweight and resistant against DoS attacks. Unlike many crypto-
+graphic schemes that rely on computationally heavy operations such as 
+scalar multiplication or asymmetric encryption, this protocol primar-
+ily utilizes hash functions and XOR operations, which are generally 
+less resource-intensive. This design choice makes it particularly suit-
+able for IoT and fog devices with limited computational capabilities. 
+By rejecting any duplicated requests with the same nonce and times-
+tamp, the fog server ensures that the protocol is resilient against replay 
+attacks, further enhancing its defense against DoS. Message validation 
+at each step, including the comparison of timestamp and hash values, 
+adds robustness by terminating any sessions that present inconsisten-
+cies, thus preventing attackers from overloading the system. Finally, 
+mutual authentication between the IoT device and the fog server safe-
+guards against unauthorized communication, providing a comprehen-
+sive defense strategy. Thus, all these measures contribute to resisting 
+DoS attacks.
+Assuming that the adversary can obtain 𝐵𝑘, it can’t get any useful 
+information through 𝐵𝑘, because 𝐵𝑘is always contained by the hash 
+function and the adversary has no access to other information.
+However, the session key 𝑆𝐾is calculated as 𝑆𝐾= ℎ(𝑟𝑑∥𝑟𝑓∥𝑇𝑠), 
+where 𝑟𝑑, 𝑟𝑓are unique random numbers generated by the IoT device, 
+and fog server, respectively for each session. The adversary can’t ob-
+tain these random numbers. Moreover, assuming that the adversary 
+can access the messages transmitted over the public channels. Although 
+knowing 𝐵𝑘by the adversary, it still can’t get the correct hash values of 
+𝐶𝑑, 𝐸𝑑, 𝐺𝑑, 𝐶𝑓, 𝐸𝑓, 𝐺𝑓due to unknowing the distinct generated random 
+numbers 𝑟𝑑, 𝑟𝑓. Therefore, our scheme provides PFS security feature.
+Ensuring Perfect Forward Secrecy (PFS): As described by Günther 
+(1990), PFS requires that leakage of the long-term secret key used to 
+generate the session key will not cause the leakage of the session key 
+used in previous communication. In our scheme, the registration author-
+ity (RA) creates and securely stores a long-term master secret key (K). 
+For each pair of IoT devices and fog servers, RA computes a secret value 
+𝐵𝑘, calculated as 𝐵𝑘= ℎ(𝐴𝑑∥𝐴𝑓∥𝐾). Even if the adversary can obtain 
+𝐵𝑘, it will not get any signiﬁcant information through it. This is because 
+𝐵𝑘is always contained by the hash function, and the adversary lacks 
+access to other critical information such as the random numbers 𝑟1, 𝑟2
+and real identiﬁer 𝐼𝐷𝑑, 𝐼𝐷𝑓of the IoT device and fog server. However, 
+the session key 𝑆𝐾is calculated as 𝑆𝐾= ℎ(𝑟𝑑∥𝑟𝑓∥𝑇𝑠), where 𝑟𝑑, 𝑟𝑓
+represent unique, randomly generated numbers by the IoT device and 
+fog server, respectively, for each session. These random numbers re-
+main unknown to the adversary. Therefore, even if the adversary could 
+monitor the public channel communications, knowledge of 𝐵𝑘does not 
+enable it to deduce the correct hash values of 𝐶𝑑, 𝐸𝑑, 𝐺𝑑, 𝐶𝑓, 𝐸𝑓, 𝐺𝑓, as 
+it remains unaware of the speciﬁc random numbers 𝑟𝑑, 𝑟𝑓used. Hence, 
+our scheme robustly provides the PFS security feature.
+Privileged-insider attack: Assuming the adversary is a privileged 
+insider within the RA server, with access to the RA’s secure storage 
+(where the master secret key 𝐾, temporary identiﬁers 𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, and 
+the secret values 𝐴𝑑, 𝐴𝑓are stored). Despite possessing this informa-
+tion, the adversary cannot successfully obtain the session key. This is 
+due to their inability to predict the random numbers 𝑟𝑑, 𝑟𝑓which are 
+securely encapsulated within hash values and exclusively shared be-
+tween the IoT device and fog server. Owing to the inherent security 
+properties of the hash functions, it becomes computationally infeasible 
+to accurately guess the random numbers, which are critical for deriving 
+the correct transmitted values such as 𝐶𝑑, 𝐸𝑑, 𝐺𝑑, 𝐶𝑓, 𝐸𝑓, 𝐺𝑓. There-
+fore, we can say that our scheme is resistant against privileged-insider 
+attack.
+5.2. Security proof using BAN logic
+We adopt BAN logic (Burrows et al. (1989)) to demonstrate our 
+scheme security and to show how it achieves the mutual authentication 
+goals. We use the symbols 𝐴, and 𝐵to indicate the involved parties 
+in the authentication protocol, while 𝐾represents the secret session 
+key, and both 𝑆, and 𝑌represent the statement that builds up the ex-
+changed messages such as random number, timestamp, etc Sowjanya et 
+al. (2020). The BAN logic notations which are used here are:
+• 𝐴 ∣≡𝑆: 𝐴believes that 𝑆is true.
+• 𝐴 ⊲𝑆: 𝐴sees 𝑆, 𝐴can read and repeat a received message contains 
+𝑆.
+• 𝐴 ∣⟹𝑆: 𝐴has control over 𝑆, 𝐴is authoritative about 𝑆, and it 
+should be trusted based on that.
+• 𝐴 ∣∼𝑆: 𝐴once said 𝑆, i.e., 𝐴sent a message contains 𝑆at some 
+time.
+• ⟨𝑆⟩𝑌: 𝑆is combined with 𝑌, 𝑌is secret, and it conﬁrms the iden-
+tity of whoever said 𝑆.
+• #(𝑆): The statement 𝑆is fresh, 𝑆has not been transmitted before 
+the current protocol execution.
+• 𝐴 
+𝐾
+←←←→𝐵, 𝐴and 𝐵share and utilize a secret key 𝐾for communica-
+tion.
+The BAN logic rules are:
+• Message-meaning rule: 𝐴∣≡𝐴
+𝐾
+←←←→𝐵,𝐴⊲⟨𝑆⟩𝐵
+𝐴∣≡𝐵∣∼𝑆
+• Nonce veriﬁcation rule: 𝐴∣≡#(𝑆),𝐴∣≡𝐵∣∼𝑆
+𝐴∣≡𝐵∣≡𝑆
+• Jurisdiction rule: 𝐴∣≡(𝐵∣⟹𝑆),𝐴∣≡𝐵∣≡𝑆
+𝐴∣≡𝑆
+• Belief rule: 𝐴∣≡𝐵∣≡(𝑆,𝑌)
+𝐴∣≡𝐵∣≡𝑆
+, 𝐴∣≡𝑆,𝐴∣≡𝑌
+𝐴∣≡(𝑆,𝑌)
+• Freshness-conjuncatenation rule:
+𝐴∣≡#(𝑆)
+𝐴∣≡#(𝑆,𝑌)
+To prove our scheme, there are some assumptions:
+• A1: 𝐷𝑗∣≡#(𝑟𝑑)
+• A2: 𝐹𝑖∣≡#(𝑟𝑓)
+• A3: 𝐷𝑗∣≡#(𝑇𝑓)
+• A4: 𝐹𝑖∣≡#(𝑇𝑑)
+• A5: 𝐷𝑗∣≡𝐹𝑖∣⟹𝑇𝐼𝐷𝑓
+• A6: 𝐹𝑖∣≡𝐷𝑗∣⟹𝑇𝐼𝐷𝑑
+• A7: 𝐷𝑗∣≡𝐷𝑗
+𝐵𝑘
+←←←←→𝐹𝑖
+• A8: 𝐹𝑖∣≡𝐷𝑗
+𝐵𝑘
+←←←←→𝐹𝑖
+• A9: 𝐹𝑖∣≡𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖, #(𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖)
+• A10: 𝐷𝑗∣≡𝐹𝑖∣⟹𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖, #(𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖)
+• A11: 𝐹𝑖∣≡𝐷𝑗
+𝐴𝑓
+←←←←←→𝐹𝑖
+• A12: 𝐷𝑗∣≡𝐷𝑗
+𝐴𝑑
+←←←←→𝐹𝑖
+The goals of our scheme are:
+• G1: 𝐹𝑖∣≡𝐷𝑗∣≡𝑟𝑑
+• G2: 𝐹𝑖∣≡𝐷𝑗∣≡𝑇𝐼𝐷𝑑
+• G3: 𝐹𝑖∣≡𝑇𝐼𝐷𝑑
+
+================================================================================
+PAGE 11
+================================================================================
+Computers & Security 140 (2024) 103770
+11
+H. Ali and I. Ahmed
+• G4: 𝐷𝑗∣≡𝐹𝑖∣≡𝑟𝑓
+• G5: 𝐷𝑗∣≡𝐹𝑖∣≡𝑇𝐼𝐷𝑓
+• G6: 𝐷𝑗∣≡𝑇𝐼𝐷𝑓
+• G7: 𝐷𝑗∣≡𝐹𝑖∣≡𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖
+• G8: 𝐷𝑗∣≡𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖
+• G9: 𝐹𝑖∣≡𝐷𝑗∣≡𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖
+The ideal forms of the proposed scheme messages are:
+• Msg1: ⟨𝑟𝑑⟩𝐾,𝑟1,𝑟2, ℎ(𝑇𝑑, 𝑟𝑑), ℎ(𝑇𝐼𝐷𝑑
+𝑛𝑒𝑤, 𝐵𝑘, 𝑟𝑑)
+• Msg2: ⟨𝑟𝑓⟩𝑟𝑑, ℎ(𝑇𝑓, 𝑟𝑓), ℎ(𝑇𝐼𝐷𝑓
+𝑛𝑒𝑤, 𝑟𝑓, 𝐵𝑘, 𝑆𝐾)
+• Msg3: ℎ(𝑟𝑓, 𝐵𝑘, 𝑆𝐾)
+Where 𝑀𝑠𝑔1 represents the authentication request 𝐴𝑢𝑡ℎ𝑟𝑒𝑞, 𝑀𝑠𝑔2 rep-
+resents the authentication reply 𝐴𝑢𝑡ℎ𝑟𝑒𝑞, and 𝑀𝑠𝑔3 represents the ac-
+knowledgment 𝐴𝑐𝑘.
+According to the deﬁned assumptions, rules, and goals, the analysis 
+steps of our scheme using BAN logic are presented as follows:
+H1: There are three secret variables 𝐴𝑑, 𝐴𝑓, 𝐵𝑘known by the fog server 
+and IoT device. So, considering Msg1, A8, A11, A12, and Message-
+meaning rule, 𝐹𝑖believes that 𝐷𝑗has sent 𝑀𝑠𝑔1:
+𝐹𝑖∣≡𝐷𝑗
+𝐴𝑑,𝐴𝑓,𝐵𝑘
+←←←←←←←←←←←←←←←←←→𝐹𝑖,𝐹𝑖⊲⟨𝑀𝑠𝑔1⟩𝐴𝑑,𝐴𝑓,𝐵𝑘
+𝐹𝑖∣≡𝐷𝑗∣∼𝑀𝑠𝑔1
+H2: This step ensures the freshness of the timestamp (𝑇𝑑) and the ran-
+dom number (𝑟𝑑). In accordance with A4, Freshness-conjuncatenation 
+rule and because of ℎ(𝑇𝑑, 𝑟𝑑) is one-way hash function, we get:
+#𝑇𝑑
+#ℎ(𝑇𝑑,𝑟𝑑)
+#𝑟𝑑
+H3: In accordance with H2, A4, and Freshness- conjuncatenation 
+rule, 𝐹𝑖believes 𝑀𝑠𝑔1 is fresh, and we get:
+𝐹𝑖∣≡#𝑀𝑠𝑔1
+H4: By checking the freshness of 𝑀𝑠𝑔1 and believing that 𝐷𝑗has sent 
+𝑀𝑠𝑔1, 𝐹𝑖believes that 𝐷𝑗has knowledge of 𝑀𝑠𝑔1 which includes 𝑟𝑑. 
+In accordance with H1,H3, and Nonce veriﬁcation rule, we get:
+𝐹𝑖∣≡#(𝑀𝑠𝑔1),𝐹𝑖∣≡𝐷𝑗∣∼𝑀𝑠𝑔1
+𝐹𝑖∣≡𝐷𝑗∣≡𝑀𝑠𝑔1
+H5:: 𝐹𝑖believes that 𝐷𝑗knows 𝑟𝑑(as it’s part of 𝑀𝑠𝑔1), satisfying the 
+goalG1. In accordance with H4, and Belief rule, we get:
+𝐹𝑖∣≡𝐷𝑗∣≡𝑀𝑠𝑔1
+𝐹𝑖∣≡𝐷𝑗∣≡𝑟𝑑
+H6: Once 𝐹𝑖beliefs that 𝐷𝑗possesses 𝑀𝑠𝑔1 that includes 𝑇𝐼𝐷𝑑, it also 
+believes that 𝐷𝑗knows 𝑇𝐼𝐷𝑑, satisfying G2. In accordance with H4, 
+and Belief rule, we get:
+𝐹𝑖∣≡𝐷𝑗∣≡𝑀𝑠𝑔1
+𝐹𝑖∣≡𝐷𝑗∣≡𝑇𝐼𝐷𝑑
+H7: If 𝐹𝑖believes that 𝐷𝑗has authority over 𝑇𝐼𝐷𝑑, and if 𝐹𝑖also 
+believes that 𝐷𝑗knows 𝑇𝐼𝐷𝑑, then 𝐹𝑖can believe 𝑇𝐼𝐷𝑑as well. In 
+accordance with H6, A6, and Jurisdiction rule, we get:
+𝐹𝑖∣≡(𝐷𝑗∣⟹𝑇𝐼𝐷𝑑),𝐹𝑖∣≡𝐷𝑗∣≡𝑇𝐼𝐷𝑑
+𝐹𝑖∣≡𝑇𝐼𝐷𝑑
+Therefore,G3 is achieved, and the fog server authenticates the IoT de-
+vice.
+H8: If 𝐷𝑗believes that it shares a secret value (𝐵𝑘) with 𝐹𝑖, and if 𝐷𝑗
+sees a message (Msg2) encrypted with 𝐵𝑘, then 𝐷𝑗believes that 𝐹𝑖has 
+sent message 𝑀𝑠𝑔2. According to Msg2, A7, and Message-meaning 
+rule, we obtain:
+𝐷𝑗∣≡𝐷𝑗
+𝐵𝑘
+←←←←→𝐹𝑖,𝐷𝑗⊲⟨𝑀𝑠𝑔2⟩𝐵𝑘
+𝐷𝑗∣≡𝐹𝑖∣∼𝑀𝑠𝑔2
+H9: If the timestamp 𝑇𝑓is fresh and it is hashed with 𝑟𝑓, it means that 
+𝑟𝑓is also fresh. According to A3, Freshness-conjuncatenation rule, 
+we obtain:
+#𝑇𝑓
+#ℎ(𝑇𝑓,𝑟𝑓)
+#𝑟𝑓
+H10: If 𝑟𝑓is fresh and it is part from 𝑀𝑠𝑔2, then 𝑀𝑠𝑔2 is also fresh. 
+In accordance with H9, A3, and Freshness-conjuncatenation rule, we 
+obtain:
+𝐷𝑗∣≡#𝑀𝑠𝑔2
+H11: If 𝐷𝑗believes a message (𝑀𝑠𝑔2) is fresh and 𝐹𝑖has sent this mes-
+sage, then 𝐷𝑗can believe that 𝐹𝑖indeed knows 𝑀𝑠𝑔2. In accordance 
+with H8, H10, and Nonce veriﬁcation rule, we obtain:
+𝐷𝑗∣≡#(𝑀𝑠𝑔2),𝐷𝑗∣≡𝐹𝑖∣∼𝑀𝑠𝑔2
+𝐷𝑗∣≡𝐹𝑖∣≡𝑀𝑠𝑔2
+H12: If 𝐷𝑗believes that 𝐹𝑖knows a message (𝑀𝑠𝑔2), then 𝐷𝑗can 
+believe that 𝐹𝑖knows the elements of 𝑀𝑠𝑔2. In this case, 𝐷𝑗believes 
+that 𝐹𝑖knows 𝑟𝑓which satisﬁes G4. In accordance with H11, and Belief 
+rule, we get:
+𝐷𝑗∣≡𝐹𝑖∣≡𝑀𝑠𝑔2
+𝐷𝑗∣≡𝐹𝑖∣≡𝑟𝑓
+H13: 𝑇𝐼𝐷𝑓is also part from the 𝑀𝑠𝑔2. So, 𝐷𝑗believes that 𝐹𝑖knows 
+𝑇𝐼𝐷𝑓that satisﬁes G5. In accordance with H11, and Belief rule, we 
+get:
+𝐷𝑗∣≡𝐹𝑖∣≡𝑀𝑠𝑔2
+𝐷𝑗∣≡𝐹𝑖∣≡𝑇𝐼𝐷𝑓
+H14: If 𝐷𝑗believes that 𝐹𝑖has authority over 𝑇𝐼𝐷𝑓, and if 𝐷𝑗also 
+believes that 𝐹𝑖knows 𝑇𝐼𝐷𝑓, then 𝐷𝑗can believe 𝑇𝐼𝐷𝑓as well. In 
+accordance with H13,A5, and Jurisdiction rule, we get:
+𝐷𝑗∣≡(𝐹𝑖∣⟹𝑇𝐼𝐷𝑓),𝐷𝑗∣≡𝐹𝑖∣≡𝑇𝐼𝐷𝑓
+𝐷𝑗∣≡𝑇𝐼𝐷𝑓
+Therefore,G6 is achieved and the IoT device authenticated the fog 
+server.
+H15: If 𝐷𝑗believes that 𝐹𝑖has knowledge of the 𝑀𝑠𝑔2 which also in-
+cludes the secret session key 𝑆𝐾, then 𝐷𝑗believes that 𝐹𝑖knows 𝑆𝐾
+that is shared between them, satisfying G7. In accordance with H11, 
+and Belief rule, we obtain:
+𝐷𝑗∣≡𝐹𝑖∣≡𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖
+H16: If 𝐷𝑗believes that 𝐹𝑖has authority over the shared session key 
+(𝑆𝐾), and it knows 𝑆𝐾, then 𝐷𝑗believes that (𝑆𝐾) does exist between 
+itself and 𝐹𝑖. In accordance with H15,A10, and Jurisdiction rule, we 
+get:
+𝐷𝑗∣≡𝐹𝑖∣⟹𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖,𝐷𝑗∣≡𝐹𝑖∣≡𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖
+𝐷𝑗∣≡𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖
+Therefore, G8 is accomplished.
+H17: If 𝐹𝑖believes that there are secret values 𝐵𝑘, 𝑆𝐾shared with 
+𝐷𝑗, and it receives encrypted message (𝑀𝑠𝑔3) by them, it means that 
+this message comes from 𝐷𝑗. In accordance with Msg3, A8, A9, and
+Message-meaning rule, we get:
+
+================================================================================
+PAGE 12
+================================================================================
+Computers & Security 140 (2024) 103770
+12
+H. Ali and I. Ahmed
+𝐹𝑖∣≡𝐷𝑗
+𝐵𝑘,𝑆𝐾
+←←←←←←←←←←←←→𝐹𝑖,𝐹𝑠⊲⟨𝑀𝑠𝑔3⟩𝐵𝑘,𝑆𝐾
+𝐹𝑖∣≡𝐷𝑗∣∼𝑀𝑠𝑔3
+H18: Both 𝑟𝑓and 𝑆𝐾are proved as fresh values, so the message 
+(𝑀𝑠𝑔3) that includes then is also fresh. In accordance with A2, A9, 
+and Freshness-conjuncatenation rule, we obtain:
+𝐷𝑗∣≡#𝑀𝑠𝑔3
+H19: If 𝐹𝑖believes a message (𝑀𝑠𝑔3) and 𝐷𝑗has sent this message, 
+then 𝐹𝑖can believe that 𝐷𝑗indeed knows 𝑀𝑠𝑔3. In accordance with
+H17, H18, and Nonce veriﬁcation rule, we get:
+𝐹𝑖∣≡#(𝑀𝑠𝑔3),𝐹𝑖∣≡𝐷𝑗∣∼𝑀𝑠𝑔3
+𝐹𝑖∣≡𝐷𝑗∣≡𝑀𝑠𝑔3
+H20: 𝐹𝑖, after verifying the freshness and authenticity of the message 
+(𝑀𝑠𝑔3), acknowledges that 𝐷𝑗holds the correct established session key 
+(𝑆𝐾). In accordance with H19, and Belief rule, we obtain:
+𝐹𝑖∣≡𝐷𝑗∣≡𝐷𝑗
+𝑆𝐾
+←←←←←←→𝐹𝑖
+Thus, G9 is achieved, and the fog server believes that the corresponding 
+authenticated IoT devices have the correct established session key.
+Considering Goals 1–9, we ensure that our scheme enables the IoT 
+device to mutually authenticate with the fog server in addition to cre-
+ating a session key to maintain the transmissions conﬁdential between 
+them.
+5.3. Security proof using the random oracle model
+To further prove the robustness of our proposed scheme, we intro-
+duce a formal security analysis using the Random Oracle Model (ROM). 
+Recognized as a crucial method for cryptographic veriﬁcation, the ROM 
+model plays an essential role in demonstrating the resilience of crypto-
+graphic protocols against sophisticated adversarial strategies (Koblitz 
+and Menezes (2015)), especially in the ﬁelds of the Internet of Things 
+(IoT) and fog computing.
+To prove that our scheme is secure under ROM, we must prove 
+that any adversary, particularly one that is bound by probabilistic 
+polynomial-time (PPT) constraints, cannot compromise our scheme 
+without solving the underlying hard problem, given that the hash func-
+tions are assumed to behave like ideal random oracles. This implies 
+that for each unique input, h(.) returns a random output from its out-
+put space, and this output is consistent for repeated queries with the 
+same input. Under ROM, we assume that h(.) is idealized, providing 
+collision-resistant and preimage-resistant properties that are crucial for 
+our security analysis. Prior to proving the session key security of our 
+scheme in Theorem 1, we brieﬂy discuss the ROM model.
+Deﬁnition. Consider a hash function ℎdeﬁned over binary strings 
+{0, 1}∗to {0, 1}𝑤, representing a deterministic algorithm that pro-
+duces a ﬁxed-size 𝑤-bit binary string, termed as the hash value or 
+message digest, for any input binary string of arbitrary length. The 
+likelihood of an adversary discovering two distinct inputs that re-
+sult in identical hash outputs within a time frame 𝑡is expressed as 
+AdvHASH
+
+(𝑡) = Pr[(𝑥1, 𝑥2) 
+𝑅
+←←←←←← ∶𝑥1 ≠𝑥2 ∧ℎ(𝑥1) = ℎ(𝑥2)]. : indicates 
+that the adversary picked the input pairs (𝑥1, 𝑥2) randomly.
+Participants. Let Π𝑎
+𝐷𝑗and Π𝑏
+𝐹𝑖denote the instance a, b of the IoT device 
+𝐷𝑗and fog server 𝐹𝑖, respectively.
+Freshness. If the adversary can’t get the session key 𝑆𝐾between 
+Π𝑎
+𝐷𝑗and Π𝑏
+𝐹𝑖through applying the Reveal query, then they are fresh.
+Adversary’s Model: Adversary can eavesdrop, modify, and replay 
+the transmitted information over the communication link between Π𝑎
+𝐷𝑗
+and Π𝑏
+𝐹𝑖via the following oracle queries:
+• Execute (Π𝑎
+𝐷𝑗, Π𝑏
+𝐹𝑖): Represents a passive attack where eaves-
+drops the communication between Π𝑎
+𝐷𝑗and Π𝑏
+𝐹𝑖.
+• Send (Π𝑎
+𝐷𝑗, Π𝑏
+𝐹𝑖) : Represents an active attack, allowing to create, 
+modify, intercept and resend intercept to Π𝑎
+𝐷𝑗or Π𝑏
+𝐹𝑖.
+• Reveal (Π𝑏
+𝐹𝑖): The session key 𝑆𝐾that is generated by Π𝑏
+𝐹𝑖can be 
+uncovered to the adversary while executing this query.
+• CorruptIoT (Π𝑎
+𝐷𝑗): This query simulates a compromise of 𝐷𝑗, re-
+vealing the stored data in Π𝑎
+𝐷𝑗.
+• CorruptFog (Π𝑏
+𝐹𝑖): This query simulates a compromise of 𝐹𝑖, re-
+vealing the stored data in Π𝑏
+𝐹𝑖.
+• Test (Π𝑏
+𝐹𝑖): Involves ﬂipping a coin 𝑐to decide whether Π𝑏
+𝐹𝑖will 
+return the actual session key 𝑆𝐾or a random value, based on the 
+coin’s outcome, kept secret from .
+Semantic Security of the Session Key. The indistinguishability of our 
+protocol ensures that the session key (SK) generation process is suf-
+ﬁciently random to mitigate the risk of informational disclosure. The 
+adversary can pose a series of test quires to either Π𝑎
+𝐷𝑗or Π𝑏
+𝐹𝑖. 
+is challenged to identify the value of the ﬂipped result 𝑐(i.e., the real 
+𝑆𝐾). As the process concludes, the adversary proﬁts a predicted bit, la-
+beled as 𝑐′. A successful match is declared if 𝑐′ is equal to the ﬂipped 
+result 𝑐. Let succ represent the scenario where wins this challenge, 
+and 𝑃is our protocol. Since there are only two possible values for 𝑐, 
+namely 0 or 1, can win this game with a probability of 1
+2 by ran-
+dom guessing (Bellare and Rogaway (2005)). Therefore, the advantage 
+of , or the excess probability over 1
+2 in breaking the semantic security 
+of protocol 𝑃, is deﬁned as:
+Adv() = |2 ⋅Pr[Succ] −1|
+(1)
+If AdvAKE
+𝑃
+is negligible, then our scheme is considered secure under 
+the random oracle model.
+Theorem 1. Consider the random oracle model where an adversary, de-
+noted as , operates within a polynomial time frame 𝑡to challenge our 
+scheme. Deﬁne 𝑞ℎas the total number of hash queries, 𝑞s as the number 
+of send queries, and 𝑞ex as the number of execute queries made by , the 
+advantage of in compromising the security of our 𝑃is given as:
+AdvAKE
+𝑃
+≤
+𝑞2
+ℎ
+2|𝐻𝑎𝑠ℎ| + (𝑞𝑠+ 𝑞𝑒𝑥)2
+2|𝑅𝑎𝑛𝑑|
++
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑|−2
+(2)
+where 2|𝐻𝑎𝑠ℎ| is the range space of the hash function, while 2|𝑅𝑎𝑛𝑑| repre-
+sents the range space of the random number.
+We establish a sequence of games 𝐺𝑖(𝑖 = 0, 1, 2, 4). The adversary in 
+each game tries to guess the value of ﬂipped result 𝑐. Let 𝑃𝑟[𝑆𝑢𝑐𝑐𝑖]
+represent the probability of guessing the correct value of 𝑐by during 
+the game 𝑖.
+• Game (G0): performs a real attack on 𝑃at the start of the game, 
+where the value of 𝑐is randomly selected. Therefore:
+AdvAKE
+𝑃
+= |2 ⋅Pr[Succ_0] −1|
+(3)
+• Game (G1): The adversary, denoted as , aims to increase its 
+chance of correctly guessing the ﬂipped value 𝑐. To achieve this, 
+runs Execute queries to intercept communications between the 
+Π𝑎
+𝐷𝑗and Π𝑏
+𝐹𝑖. Subsequently, performs Test (Π𝑏
+𝐹𝑖) query to iden-
+tify the value of 𝑐. In our protocol, the secret key 𝑆𝐾is computed 
+by hashing random numbers 𝑟𝑑and 𝑟𝑓. For to determine the 
+correct value of 𝑆𝐾, it must gain access to 𝑟𝑑and 𝑟𝑓. However, 
+these random values are not transmitted, and uncovering them re-
+quires knowing the values of 𝐴𝑑, 𝐴𝑓, and 𝐵𝑘. The computation 
+
+================================================================================
+PAGE 13
+================================================================================
+Computers & Security 140 (2024) 103770
+13
+H. Ali and I. Ahmed
+of 𝐵𝑘relies on the values of both 𝐴𝑑and 𝐴𝑓, which consist of 
+random numbers and real identiﬁers, all hashed and unknown. 
+Consequently, cannot derive these secret values simply through 
+eavesdropping on 𝐶𝑑, 𝐸𝑑, 𝐺𝑑, 𝐶𝑓, 𝐸𝑓, and 𝐺𝑓. Therefore, this type 
+of eavesdropping can’t improve ’s probability of success, making 
+Games G1 and G0 indistinguishable:
+Pr[Succ_1] = Pr[Succ_0]
+(4)
+• Game (G2): Based on G1, can send hash queries, and Send 
+(Π𝑎
+𝐷𝑗, Π𝑏
+𝐹𝑖) to create, modify, and reply the transmitted messages 
+between Π𝑎
+𝐷𝑗and Π𝑏
+𝐹𝑖. In our proposed protocol, if wants to tar-
+get one of the participants by sending a forged message, it needs 
+to access the secret values 𝑟𝑑, 𝑟𝑓, and 𝐵𝑘to generate the authentic 
+message. These values are embedded in the values of hash. More-
+over, all of the transmitted parameters 𝐶𝑑, 𝐸𝑑, 𝐺𝑑, 𝐶𝑓, 𝐸𝑓, and 
+𝐺𝑓are timestamp dependent and consists of random numbers. 
+Therefore, no collision will occur in hash outputs. According to 
+the birthday paradox, the output hash value might collide with a 
+probability 
+𝑞2
+ℎ
+2|𝐻𝑎𝑠ℎ|+1 . All the random numbers used in our proto-
+col are uniformly randomized and the probability of collision for 
+random numbers is (𝑞𝑠+𝑞𝑒𝑥)2
+2|𝑅𝑎𝑛𝑑|+1 . Because can’t ﬁnd any collision be-
+tween any two messages due to containing timestamps and random 
+values in these messages. Thus, we have:
+|Pr[Succ_2] −Pr[Succ_1]| ≤
+𝑞2
+ℎ
+2|𝐻𝑎𝑠ℎ|+1 + (𝑞𝑠+ 𝑞𝑒𝑥)2
+2|𝑅𝑎𝑛𝑑|+1
+(5)
+• Game (G3): In this game, applies CorruptIoT (Π𝑎
+𝐷𝑗) to access the 
+stored information (𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑓, 𝐵𝑘) in the IoT device 𝑑. 
+In our protocol, can’t know the real identiﬁer of the IoT device 
+(𝐼𝐷𝑑) and its generated random numbers 𝑟2 and 𝑟𝑑. This lack of 
+information prevents the adversary from reconstructing the session 
+key 𝑆𝐾. The probability of random numbers is 
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑| . Hence, we 
+have:
+|Pr[Succ_3] −Pr[Succ_2]| ≤
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑|
+(6)
+• Game (G4): In this game, applies CorruptFog (Π𝑏
+𝐹𝑖) to access the 
+stored information (𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑑, 𝐵𝑘) in the fog server 𝑓. 
+In our protocol, can’t know the real identiﬁer of the fog server 
+(𝐼𝐷𝑓) and its generated random numbers 𝑟1 and 𝑟𝑓. This lack of 
+information prevents the adversary from reconstructing the session 
+key 𝑆𝐾. The probability of random numbers is 
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑| . Hence, we 
+have:
+|Pr[Succ_4] −Pr[Succ_3]| ≤
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑|
+(7)
+Finally, can’t guess the correct ﬂipped value 𝑐as both 𝐷𝑗and 𝐹𝑖
+generate independent and random session keys 𝑆𝐾. Therefore:
+Pr[Succ_4] = 1
+2
+(8)
+Pr[Succ_3] ≤
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑| + 1
+2
+(9)
+Pr[Succ_2] ≤
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑| +
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑| + 1
+2
+(10)
+So,
+Pr[Succ_2] ≤
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑|−1 + 1
+2
+(11)
+By combining equation (11) and (5), we get:
+Pr[Succ_1] ≤
+𝑞2
+ℎ
+2|𝐻𝑎𝑠ℎ|+1 + (𝑞𝑠+ 𝑞𝑒𝑥)2
+2|𝑅𝑎𝑛𝑑|+1 +
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑|−1 + 1
+2
+(12)
+By combining equation (12), (4) and (3), we get:
+Adv() ≤
+|||||
+2 ⋅
+(
+𝑞2
+ℎ
+2|𝐻𝑎𝑠ℎ|+1 + (𝑞𝑠+ 𝑞𝑒𝑥)2
+2|𝑅𝑎𝑛𝑑|+1 +
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑|−1 + 1
+2
+)
+−1
+|||||
+(13)
+So,
+Adv() ≤
+|||||
+𝑞2
+ℎ
+2|𝐻𝑎𝑠ℎ| + (𝑞𝑠+ 𝑞𝑒𝑥)2
+2|𝑅𝑎𝑛𝑑|
++
+𝑞𝑠
+2|𝑅𝑎𝑛𝑑|−2
+|||||
+(14)
+5.4. Security proof using Scyther tool
+Scyther is an eﬃcient tool used to identify potential attacks and 
+vulnerabilities in security protocols by automatically analyzing the pro-
+tocols and scrutinizing their behavior (Cremers (2008)). It oﬀers more 
+security features than other tools and veriﬁes the security properties 
+of the protocol against a variety of attacks. Scyther operates based on 
+a pattern reﬁnement algorithm, providing concise representations of 
+(inﬁnite) sets of protocol cases. This functionality enables the tool to 
+evaluate various types of attacks and potential protocol behaviors. The 
+security protocols are veriﬁed against threats such as Dolev-Yao adver-
+sary (Dolev and Yao (1983)) and internal attacks (Basin and Cremers 
+(2014)). This tool has proven useful in checking several authentication 
+protocols (Anand and Saifulla (2023); Kumar and Hussain (2023); Hos-
+seinzadeh et al. (2020); Seno et al. (2021)). Leveraging the Security 
+Protocol Description Language (SPDL), Scyther evaluates the validity of 
+protocol security claims. Moreover, it automates their generation and 
+validation processes, ensuring a thorough protocol assessment.
+Fig. 5 shows the implementation code of our proposed protocol in 
+Scyther, which includes two roles: the IoT device 𝐷𝑗and the fog server 
+𝐹𝑖. The security claims of the roles within the protocol are described as 
+follows (Rehman et al. (2021); Klevstad (2016)):
+• Secrecy: This claim safeguards parameters that must be kept hid-
+den from potential attackers. In our protocol, random numbers 
+𝑟𝑑, 𝑟𝑓are deemed conﬁdential.
+• Session-Key Reveal (SKR): This claim is used in the protocol to 
+identify the session key 𝑆𝐾and claim that it is secret.
+• Non-injective agreement (Niagree): The claim ensures that both 
+𝐷𝑗and 𝐹𝑖agreed on the data values and veriﬁed the noninjective 
+agreement, preventing any device injection attack.
+• Non-injective synchronization (Nisynch): This claim considers 
+the timestamps as nonces securely transmitted over public chan-
+nels, thus preventing replay attacks.
+• Alive: This claim ascertains the active participation of the coun-
+terparties in the protocol (𝐷𝑗or 𝐹𝑖). If 𝐷𝑗completes a protocol 
+run with 𝐹𝑖, then it conﬁrms that 𝐹𝑖has previously initiated the 
+protocol.
+• Weak agreement (Weakagree): This claim ensures that if 𝐷𝑗suc-
+cessfully complete a protocol run with 𝐹𝑖, then 𝐹𝑖believes that 
+it run recently the protocol with 𝐷𝑗. This claim conﬁrms that our 
+protocol provides identiﬁer authentication and data source authen-
+tication using 𝐴𝑑, 𝐴𝑓, which helps to prevent impersonation and 
+Man-in-the-Middle attacks.
+Fig. 6 shows the veriﬁcation results of LAAKA using the Scyther tool. If 
+the status is OK, it implies the protocol satisﬁes the given property. Con-
+versely, a Fail status denotes the protocol’s failure to satisfy a speciﬁc 
+security property.
+6. Performance evaluation
+This section investigates the security and eﬃciency of our scheme 
+by comparing its performance with the performance of authentication 
+
+================================================================================
+PAGE 14
+================================================================================
+Computers & Security 140 (2024) 103770
+14
+H. Ali and I. Ahmed
+Fig. 5. Implementation code of LAAKA in Scyther.
+Fig. 6. Veriﬁcation results of LAAKA in Scyther.
+and key agreement schemes presented by Weng et al. (2021), Jia et al. 
+(2019), Ma et al. (2019), Hamada et al. (2022), Wu et al. (2021b), Rah-
+man and Wen (2019), Wu et al. (2021a), Chen et al. (2021), Eftekhari 
+et al. (2021), and Wazid et al. (2019a), in terms of security features, 
+computational cost, and storage requirements.
+6.1. Security features
+Table 3 shows the security features provided by our scheme LAAKA
+compared with other introduced schemes. We use “Yes” to indicate that 
+the security feature is provided by the corresponding scheme, whereas 
+“No” indicates that the security feature is not provided by the scheme.
+According to Table 3, all evaluated schemes, including ours, suc-
+cessfully implement mutual authentication and oﬀer resistance to Man-
+in-the-Middle (MiTM) attack. Weng et al. (2021)’s scheme is unique in 
+its use of hash functions and bitwise XOR operations, yet it is the only 
+one among them not resistant to replay attacks. Excluding Wazid et al. 
+(2019a)’s scheme, all others eﬀectively defend against impersonation 
+attacks targeting IoT devices and fog servers. However, the schemes in-
+troduced by Weng et al. (2021) and Wazid et al. (2019a) do not provide 
+protection against key exposure attacks. Additionally, Perfect Forward 
+Secrecy (PFS) is a feature in all the reviewed schemes except for those 
+by Rahman and Wen (2019) and Eftekhari et al. (2021).
+The schemes proposed by Hamada et al. (2022) and Rahman and 
+Wen (2019) assume that the secret shared key is stored in clear form 
+in the device’s memory, making them vulnerable to the unknown key-
+share attack and the device (i.e., IoT device, fog server) physical capture 
+attack.
+However, a common limitation of these schemes is the increased 
+communication latency, attributed to the registration authority being 
+located in the cloud layer, which is involved in device registration and 
+authentication processes. In contrast, our proposed scheme (LAAKA) is 
+more robust and reliable, oﬀering greater resistance against a wider 
+range of well-known attacks and enhanced security features.
+6.2. Computational cost
+The computational cost is computed by determining the number 
+of the used cryptographic operations and their required computational 
+time. The computational time of the operations is taken from (Hamada 
+et al. (2022)) and shown in Table 4. The authors used a machine with 
+CPU (Intel Pentium 2.20 GHz), RAM (2 GB), and OS (Ubuntu 12.04.1 
+LTS 32-bit).
+We assume that the key derivation function used in (Rahman and 
+Wen (2019)) is a hmac function, so it requires computational time as 
+the hash function. We also assume that the time required for the bitwise 
+XOR operation is negligible.
+Table 5 presents a comparison of various schemes based on com-
+putational cost. Our scheme achieves the lowest computational cost 
+of 0.0437𝑚𝑠. Weng et al. (2021)’s scheme, while oﬀering a compa-
+rable minimal cost of 0.0529𝑚𝑠, has vulnerabilities that our scheme 
+addresses, as discussed in section 6.1.
+Jia et al. (2019)’s scheme leads to a higher cost of 33.0633𝑚𝑠due 
+to its use of extensive computational operations like scalar multiplica-
+tion and bilinear pairings. Wu et al. (2021b)’s scheme enhances Jia’s 
+model but raises the computational cost to 39.7413𝑚𝑠by increasing 
+scalar multiplications to ten.
+Ma et al. (2019)’s scheme, while improving Jia et al. (2019)’s ap-
+proach and eliminating bilinear pairings, results in a higher computa-
+tional cost of 37.8857 due to increased scalar multiplications. This ap-
+proach has been further reﬁned by Eftekhari et al. (2021), who reduced 
+the number of scalar multiplications to nine, consequently lowering the 
+computational cost to 20.2366.
+Using a fuzzy extractor with scalar multiplication results in lower 
+costs compared to using bilinear pairings. The methods by Wazid et al. 
+(2019a), Chen et al. (2021), and Wu et al. (2021a) demonstrate costs of 
+15.6982𝑚𝑠, 22.3106𝑚𝑠, and 24.5458𝑚𝑠, respectively.
+Hamada et al. (2022) and Rahman and Wen (2019) show that using 
+symmetric and asymmetric encryption can be more cost-eﬀective than 
+scalar multiplications and bilinear pairings, with costs of 22.9093𝑚𝑠and 
+11.7885𝑚𝑠, respectively.
+However, the number of operations used in our scheme is illustrated 
+as follows:
+• IoT device 𝐷𝑗: There is no computational operation required from 
+the device at the initialization. When it asks for registration, it 
+performs one hash function to compute 𝐴𝑑and then receives 
+𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑓, 𝐵𝑘parameters to store them in the memory. 
+In the authentication phase, the IoT device performs three hash 
+functions to calculate 𝐶𝑑, 𝐸𝑑, 𝐺𝑑parameters in 𝐴𝑢𝑡ℎ𝑟𝑒𝑞, four hash 
+functions once it receives 𝐴𝑢𝑡ℎ𝑟𝑒𝑝to extract 𝑟𝑓, verify both 𝐶𝑓, 
+and 𝐺𝑓, and calculate 𝑆𝐾. It also performs one more hash func-
+tion when it submits 𝐴𝑐𝑘to the fog server. Thus, the total number 
+
+================================================================================
+PAGE 15
+================================================================================
+Computers & Security 140 (2024) 103770
+15
+H. Ali and I. Ahmed
+Table 3
+Security features comparison.
+Security Feature
+Weng et 
+al. (2021)
+Jia et al. 
+(2019)
+Ma et al. 
+(2019)
+Hamada 
+et al. 
+(2022)
+Wu et al. 
+(2021b)
+Rahman 
+and Wen 
+(2019)
+Wu et al. 
+(2021a)
+Chen et 
+al. (2021)
+Eftekhari 
+et al. 
+(2021)
+Wazid et 
+al. (2019a)
+LAAKA
+Mutual authentication
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Establish session key 
+without involving 
+registration authority
+No
+No
+No
+Yes
+No
+No
+No
+No
+No
+No
+Yes
+Immune to 
+Man-in-The-Middle 
+(MiTM) attack
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Immune to replay 
+Attack
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Immune to key exposure 
+attack
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+Yes
+Immune to known 
+session key attack
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+Yes
+Immune to IoT device 
+impersonation attack
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+Yes
+Immune to fog server 
+impersonation attack
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+Yes
+Immune to IoT device 
+physical capture attack
+Yes
+Yes
+Yes
+No
+Yes
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+Immune to fog server 
+physical capture attack
+Yes
+Yes
+Yes
+No
+Yes
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+Immune to IoT device 
+traceability attack
+Yes
+Yes
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Immune to unknown 
+key-share attack
+Yes
+Yes
+Yes
+No
+Yes
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+Immune to Ephemeral-
+Secret-Leakage (ESL) 
+attack
+Yes
+No
+No
+Yes
+Yes
+No
+Yes
+Yes
+Yes
+No
+Yes
+Perfect Forward Secrecy 
+(PFS)
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+Yes
+Yes
+No
+Yes
+Yes
+Conﬁdential 
+communication session
+No
+No
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+No
+Yes
+Immune to privileged 
+insider attack
+Yes
+No
+No
+No
+Yes
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+Identity Anonymity
+Yes
+Yes
+No
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Low latency 
+authentication
+No
+No
+No
+No
+No
+No
+No
+No
+No
+Yes
+Yes
+Lightweight
+Yes
+No
+No
+No
+No
+No
+No
+No
+No
+No
+Yes
+Table 4
+Computational time of cryptographic operations.
+Notation
+Meaning
+Computational Time (ms)
+𝑇ℎ
+Hash/Hmac function time
+0.0023
+𝑇𝑠𝑚
+ECC scalar multiplication time
+2.226
+𝑇𝑝𝑎
+ECC point adding time
+0.0288
+𝑇𝑠𝑒𝑑
+Symmetric encryption/decryption time
+0.0046
+𝑇𝑎𝑒𝑑
+Asymmetric encryption/decryption time
+3.85
+𝑇𝑠
+Sign operation time
+3.85
+𝑇𝑣
+Signature veriﬁcation time
+0.1925
+𝑇𝑓𝑒
+Fuzzy extraction time
+2.226
+𝑇𝑏
+Bilinear pairing time
+5.811
+of hash functions performed by the IoT device is nine hash func-
+tions.
+• Fog server 𝐹𝑖: At the registration phase, the fog server performs 
+one hash function to compute 𝐴𝑓, while it performs seven hash 
+functions at the authentication phase once it receives 𝐴𝑢𝑡ℎ𝑟𝑒𝑝to 
+extract 𝑟𝑑, verify both 𝐶𝑑and 𝐺𝑑, calculate 𝐶𝑓, 𝐸𝑓, 𝐺𝑓, 𝑆𝐾. Fi-
+nally, the fog server performs one more hash function to verify the 
+received message 𝐴𝑐𝑘. So, the total hash functions required by the 
+fog server are nine functions.
+• Registration authority 𝑅𝐴: It performs only one hash function to 
+calculate 𝐵𝑘at the registration phase.
+Based on that, our scheme requires (19) hash functions as shown in 
+Table 5, which makes it lightweight and suitable for limited resources 
+devices such as IoT and fog devices.
+6.3. Storage requirements
+To calculate the storage requirements of our scheme to be compared 
+with the other schemes, we suppose that the hash output length is 160 
+bits, the required bits for the random number, password, and identiﬁer 
+is 128, while the timestamp is only 32 bits, and the symmetric encryp-
+tion key is 128 bits (Hamada et al. (2022); Rana et al. (2021b)). Using 
+the elliptic curve 𝐸(𝑎, 𝑝), we suppose that the length of 𝑎and 𝑏is 8 
+bits, while 𝑝is 512 bits and 𝑞is 160 bits. The public and private keys 
+length with ECC is 160 bits. Moreover, the length of the master secret 
+key and generated certiﬁcate is also 160 bits (Hamada et al. (2022)). 
+On the other hand, the length of the keys is 1024 bits with other pub-
+lic key cryptography (i.e., RSA) (Wazid et al. (2019b)). According to 
+Hamada et al. (2022), the identiﬁer length of the user is 32 bits, while 
+the identiﬁer of the fog area and fog server is 8 bits. We calculate the 
+required bits for their scheme according to our assumptions. Therefore, 
+the required number of bits diﬀers from what they mentioned in their 
+paper. To further clarify, we indicate the public and private key of the 
+fog server as 𝑃𝑢𝑏𝑓, 𝑃𝑟𝑖𝑣𝑓, respectively, while the public and private 
+key of the registration authority as 𝑃𝑢𝑏𝑅𝐴, 𝑃𝑟𝑖𝑣𝑅𝐴, respectively.
+
+================================================================================
+PAGE 16
+================================================================================
+Computers & Security 140 (2024) 103770
+16
+H. Ali and I. Ahmed
+Table 5
+Computational cost comparison.
+Reference
+IoT device/User
+Fog Server
+Registration Authority
+Total Operations
+Total Time (ms)
+Weng et al. (2021)
+5𝑇ℎ
+5𝑇ℎ
+13𝑇ℎ
+23𝑇ℎ
+0.0529
+Jia et al. (2019)
+2𝑇𝑠𝑚+ 6𝑇ℎ+ 1𝑇𝑏
+2𝑇𝑠𝑚+ 4𝑇ℎ+ 1𝑇𝑏
+3𝑇𝑠𝑚+ 11𝑇ℎ+ 1𝑇𝑏
+7𝑇𝑠𝑚+ 21𝑇ℎ+ 3𝑇𝑏
+33.0633
+Ma et al. (2019)
+3𝑇𝑠𝑚+ 4𝑇ℎ
+4𝑇𝑠𝑚+ 4𝑇ℎ
+10𝑇𝑠𝑚+ 11𝑇ℎ
+17𝑇𝑠𝑚+ 19𝑇ℎ
+37.8857
+Hamada et al. (2022)
+2𝑇𝑠𝑚+ 3𝑇𝑠𝑒𝑑+ 2𝑇ℎ
+2𝑇𝑠𝑚+ 3𝑇𝑠𝑒𝑑+ 1𝑇𝑎𝑒𝑑+ 1𝑇𝑣+ 1𝑇ℎ
+1𝑇𝑠𝑚+ 1𝑇𝑎𝑒𝑑+ 𝑇𝑠+ 1𝑇ℎ
+5𝑇𝑠𝑚+ 6𝑇𝑠𝑒𝑑+ 2𝑇𝑎𝑒𝑑+ 1𝑇𝑠+ 1𝑇𝑣+ 4𝑇ℎ
+22.9093
+Wu et al. (2021b)
+3𝑇𝑠𝑚+ 7𝑇ℎ+ 𝑇𝑏
+3𝑇𝑠𝑚+ 4𝑇ℎ+ 𝑇𝑏
+4𝑇𝑠𝑚+ 10𝑇ℎ+ 𝑇𝑏
+10𝑇𝑠𝑚+ 21𝑇ℎ+ 3𝑇𝑏
+39.7413
+Rahman and Wen (2019)
+2𝑇𝑠𝑒𝑑+ 6𝑇ℎ
+1𝑇𝑎𝑒𝑑+ 1𝑇𝑣+ 4𝑇ℎ
+2𝑇𝑠𝑒𝑑+ 1𝑇𝑎𝑒𝑑+ 1𝑇𝑠+ 2𝑇ℎ
+4𝑇𝑠𝑒𝑑+ 2𝑇𝑎𝑒𝑑+ 1𝑇𝑠+ 1𝑇𝑣+ 12𝑇ℎ
+11.7885
+Wu et al. (2021a)
+2𝑇𝑠𝑚+ 8𝑇ℎ+ 𝑇𝑓𝑒
+4𝑇𝑠𝑚+ 5𝑇ℎ
+4𝑇𝑠𝑚+ 13𝑇ℎ
+10𝑇𝑠𝑚+ 26𝑇ℎ+ 𝑇𝑓𝑒
+24.5458
+Chen et al. (2021)
+2𝑇𝑠𝑚+ 6𝑇ℎ+ 𝑇𝑓𝑒
+3𝑇𝑠𝑚+ 12𝑇ℎ
+4𝑇𝑠𝑚+ 4𝑇ℎ
+9𝑇𝑠𝑚+ 22𝑇ℎ+ 𝑇𝑓𝑒
+22.3106
+Eftekhari et al. (2021)
+3𝑇𝑠𝑚+ 11𝑇ℎ+ 𝑇𝑝𝑎
+3𝑇𝑠𝑚+ 12𝑇ℎ+ 𝑇𝑝𝑎
+3𝑇𝑠𝑚+ 15𝑇ℎ+ 2𝑇𝑝𝑎
+9𝑇𝑠𝑚+ 38𝑇ℎ+ 4𝑇𝑝𝑎
+20.2366
+Wazid et al. (2019a)
+3𝑇𝑠𝑚+ 22𝑇ℎ+ 2𝑇𝑓𝑒
+2𝑇𝑠𝑚+ 14𝑇ℎ+ 𝑇𝑝𝑎
+2𝑇ℎ
+5𝑇𝑠𝑚+ 38𝑇ℎ+ 2𝑇𝑓𝑒+ 𝑇𝑝𝑎
+15.6982
+LAAKA
+9𝑇ℎ
+9𝑇ℎ
+1𝑇ℎ
+19𝑇ℎ
+0.0437
+In Weng et al. (2021)’s approach, they deﬁne 𝑀𝐾as the master key. 
+𝐾𝑐𝑑is the shared secret key between the edge device and the cloud, 
+and 𝐾𝑐𝑓is the shared secret key between the fog server and the cloud. 
+Additionally, 𝐵𝑑and 𝐵𝑓are identiﬁed as secure hash values. Rahman 
+and Wen (2019) and Hamada et al. (2022) consider other keys in their 
+studies: 𝐾𝑓𝑢−𝑅𝐴is the shared secret key between the fog user and the 
+RA, 𝐾𝑓𝑢−𝑓is the shared secret key between the fog user and the fog 
+server, and 𝐾𝑓𝑢is identiﬁed as the secret key of the fog user. While 
+𝐼𝐷𝑓𝑢, 𝐼𝐷𝑓𝑎, and 𝐼𝐷𝑓represent the identiﬁers of the fog user, fog area, 
+and fog server, respectively.
+Wu et al. (2021b) enhanced the scheme originally proposed by Jia 
+et al. (2019). In both schemes, the 𝑅𝐴maintains identiﬁers of IoT and 
+fog devices, along with randomly generated numbers 𝑥𝑖, 𝑦𝑗. In Jia et al. 
+(2019)’s approach, the IoT device stores a hashed value 𝑅𝑖provided 
+by 𝑅𝐴. This value is derived from the IoT device’s password and iden-
+tiﬁer, combined with the random numbers 𝑥𝑖, 𝑠. Conversely, Wu et al. 
+(2021b) introduce an additional parameter 𝑉𝑖to be stored alongside 𝑅𝑖. 
+This parameter is derived from the IoT device’s identiﬁer, 𝑥𝑖, 𝑠, and an-
+other random number 𝑟𝑖. Regarding the fog server, in Jia et al. (2019)’s 
+method, the server stores a hashed value 𝑅𝑗, also sent by the RA, which 
+is calculated using the fog server’s identiﬁer and the random numbers 
+𝑦𝑗and 𝑠. On the other hand, Wu et al. (2021b) have the fog server store 
+𝑔𝑗, which is computed similarly to 𝑅𝑗.
+In Ma et al. (2019)’s study, the cloud server holds the fog user’s 
+ID, 𝐼𝐷𝑓𝑢. It also stores two key components: 𝐷𝐼𝐷𝑖= ℎ(𝐼𝐷𝑓𝑢||𝑠)𝑃and 
+𝐷𝐼𝐷𝑗= ℎ(𝐼𝐷𝑓||𝑠)𝑃, which are respectively stored by the IoT device 
+and the fog server. Here, the scalar output from the hash function is 
+exponentiated with the generator point in Elliptic Curve Cryptography 
+(ECC), where P is 512 bits. In the approach introduced by Eftekhari 
+et al. (2021), diﬀerent elements are used. 𝑅𝑛𝑑𝑑and 𝑅𝑛𝑑𝑓are random 
+numbers. 𝑅𝐼𝐷𝑓𝑢, 𝑅𝐼𝐷𝑓refers to hashed values derived from a random 
+value, a secret value (such as the user’s password or the fog server’s 
+secret key), and an identiﬁer. The parameter 𝑅𝑃𝑤𝑓𝑢is an XOR of a 
+hashed value of the user’s password and a random value shared between 
+the user and RA, further hashed with the user’s RID and the RA’s private 
+key. Likewise, 𝑅𝐾𝐸𝑌is an XOR of a hashed value of the fog server’s 
+secret key with a random value shared between the fog server and RA, 
+and is then hashed with the fog server’s RID and the RA’s private key.
+In the scheme proposed by Chen et al. (2021), the biometric pa-
+rameter, 𝐵𝐼𝑂, has a length of 512 bits. The value 𝑆𝐼𝐷𝑖represents the 
+hashed value of the user identiﬁer combined with a secret key 𝑠. The 
+parameters 𝐴𝑖, 𝐷𝑖, 𝑟𝑠𝐹𝑆𝐼𝐷𝑗, 𝐵𝑖are hash values, whereas 𝑋𝑗and 𝑟𝑓are 
+random numbers. According to Wu et al. (2021a), 𝐴𝑖, 𝐹𝑖, and 𝐻𝑃𝑖are 
+also hash values. In the Wazid et al. (2019a)’ scheme, 𝑇𝐼𝐷𝑣and 𝑇𝐼𝐷𝑓
+represent the temporary identiﬁers of the vehicular IoT device and the 
+fog server, respectively. 𝑅𝐼𝐷𝑣and 𝑅𝐼𝐷𝑓are the hashed-based ran-
+dom identiﬁers of these devices, while 𝑘𝑚1𝑗and 𝑘𝑚2𝑗are hashed-based 
+secret keys.
+Table 6 shows that our approach is the most storage-eﬃcient among 
+the compared schemes, making it well-suited for devices with con-
+strained resources, such as IoT devices and Fog servers. Its low storage 
+requirement makes it particularly appropriate for environments where 
+minimizing resource usage is crucial.
+7. Conclusion and future work
+This study introduced LAAKA, a Lightweight Anonymous Authen-
+tication and Key Agreement scheme designed for the IoT-fog environ-
+ment. LAAKA ensures an optimal balance between lightweight opera-
+tion and robust security, utilizing hash functions and bitwise XOR for 
+mutual authentication between IoT devices and fog servers. Moreover, 
+it eﬀectively establishes secure session keys without relying on a trusted 
+registration authority, situated within the fog layer to minimize latency. 
+We have accurately designed our scheme to provide secure commu-
+nication within the context of the DY threat model and improve the 
+conﬁdentiality of the session key under the CK threat model. Another 
+key feature of LAAKA is its emphasis on anonymity, ensuring user pri-
+vacy by concealing device identities. These strengths have been proved 
+through extensive formal (i.e., BAN, and ROM) and informal security 
+analyses, demonstrating the protocol’s eﬀectiveness in preventing a 
+wide array of potential security threats. Another software-based analy-
+sis has been done using the Scyther tool to conﬁrm the robustness of our 
+scheme against a wide range of attacks and vulnerabilities. Moreover, 
+comparative evaluations with existing authentication schemes have il-
+lustrated our protocol’s distinct advantages in terms of security feature 
+set, computational overhead, and storage requisites. However, the re-
+search ﬁeld is ever-evolving, and our eﬀorts to reﬁne and optimize IoT 
+security remain ongoing.
+In future work, we plan to enhance the robustness of our system 
+by decentralizing the registration process. This strategy aims to reduce 
+vulnerabilities linked to a single point of failure, thereby improving the 
+overall network reliability. Moreover, addressing the mobility of IoT de-
+vices is a key focus; we plan to reﬁne our scheme to eﬀectively manage 
+device movement. This enhancement will ensure consistent authentica-
+tion integrity while preserving operational eﬃciency. Another future 
+plan is extending the scheme to implement IoT users, incorporating 
+advanced techniques like multi-factor and biometric veriﬁcation meth-
+ods. This expansion will also include inter-fog device-to-device (D2D) 
+authentication, ensuring secure communication among all involved en-
+tities. Additionally, this scheme can be implemented and evaluated in a 
+real testbed environment with actual resource-constrained IoT devices, 
+local fog devices, and cloud server instances.
+CRediT authorship contribution statement
+Hala Ali: Conceptualization, Formal analysis, Investigation, Method-
+ology, Software, Validation, Writing – original draft, Writing – review 
+& editing. Irfan Ahmed: Supervision, Conceptualization, Formal analy-
+sis, Investigation, Methodology, Software, Validation, Writing – original 
+draft, Writing – review & editing.
+
+================================================================================
+PAGE 17
+================================================================================
+Computers & Security 140 (2024) 103770
+17
+H. Ali and I. Ahmed
+Table 6
+Storage Requirements comparison.
+Reference
+IoT device/User
+Fog Server
+Registration Authority
+Total Required 
+storage (bits)
+Weng et al. (2021)
+𝐼𝐷𝑓, 𝑇𝐼𝐷𝑑, 𝐵𝑑, ℎ(𝑀𝐾∥𝐾𝑐𝑑) ∶576
+𝑇𝐼𝐷𝑓, 𝐵𝑓, ℎ(𝑀𝐾∥𝐾𝑐𝑓) ∶448
+𝐼𝐷𝑑, 𝐼𝐷𝑓, 𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐵𝑑, 
+𝐵𝑓, 𝑀𝐾, 𝐾𝑐𝑑, 𝐾𝑐𝑓∶1312
+2336
+Jia et al. (2019)
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑅𝑖∶848
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑅𝑗∶848
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐼𝐷𝑓𝑢, 𝐼𝐷𝑓, 𝑥𝑖, 𝑦𝑗∶1200
+2896
+Ma et al. (2019)
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐷𝐼𝐷𝑖∶1200
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐷𝐼𝐷𝑗∶1200
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐼𝐷𝑓𝑢, 𝐷𝐼𝐷𝑖∶1328
+3728
+Hamada et al. (2022)
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐾𝑓𝑢, 𝐼𝐷𝑓𝑢∶976
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐾𝑓𝑢−𝑓, 𝐼𝐷𝑓𝑢, 𝐼𝐷𝑓𝑎, 
+𝐼𝐷𝑓, 𝐶𝑒𝑟𝑡, 𝑃𝑢𝑏𝑓, 𝑃𝑟𝑖𝑣𝑓, 𝑃𝑢𝑏𝑅𝐴∶1872
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐾𝑓𝑢−𝑓, 𝐼𝐷𝑓𝑢, 𝐼𝐷𝑓𝑎, 
+𝐼𝐷𝑓, 𝑃𝑢𝑏𝑅𝐴, 𝑃𝑟𝑖𝑣𝑅𝐴, 𝑃𝑢𝑏𝑓∶1712
+4560
+Wu et al. (2021b)
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑅𝑖, 𝑉𝑖∶1008
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑔𝑗∶848
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐼𝐷𝑓𝑢, 𝐼𝐷𝑓,𝑥𝑖, 𝑦𝑗∶1200
+3056
+Rahman and Wen (2019)
+𝐾𝑓𝑢−𝑅𝐴, 𝐾𝑓𝑢−𝑓, 𝐼𝐷𝑓𝑢
+𝐼𝐷𝑓𝑎, 𝐼𝐷𝑓, 𝑆𝐾∶864
+𝐾𝑓𝑢−𝑓, 𝐼𝐷𝑓𝑢, 𝐼𝐷𝑓𝑎, 𝐼𝐷𝑓, 
+𝑃𝑢𝑏𝑓, 𝑃𝑟𝑖𝑣𝑓, 𝑃𝑢𝑏𝑅𝐴, 𝑆𝐾∶3776
+𝐾𝑓𝑢−𝑅𝐴, 𝐾𝑓𝑢−𝑓, 𝐼𝐷𝑓𝑢, 𝐼𝐷𝑓𝑎, 
+𝐼𝐷𝑓, 𝑃𝑢𝑏𝑅𝐴, 𝑃𝑟𝑖𝑣𝑅𝐴, 𝑃𝑢𝑏𝑓∶3776
+8416
+Wu et al. (2021a)
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐵𝐼𝑂, 𝐴𝑖∶1360
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑇𝐼𝐷𝑓, 𝐹𝑖∶976
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐻𝑃𝑖, 𝑇𝐼𝐷𝑑, 𝐼𝐷𝑓, 𝑟𝑓∶
+1232
+3568
+Chen et al. (2021)
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐵𝐼𝑂, 𝐴𝑖, 𝐷𝑖∶1520
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑟𝑠𝐹𝑆𝐼𝐷𝑗, 𝑋𝑗∶976
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑆𝐼𝐷𝑖, 𝐼𝐷𝑓, 𝐵𝑖, 𝑟𝑓∶1264
+3760
+Eftekhari et al. (2021)
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑅𝑃𝑤𝑓𝑢, 𝑅𝑛𝑑𝑑, 𝑃𝑢𝑏𝑅𝐴∶
+1136
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑅𝐾𝑒𝑦𝑓, 
+𝑅𝑛𝑑𝑓, 𝑃𝑢𝑏𝑅𝐴∶1136
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝐼𝐷𝑓𝑢, 𝐼𝐷𝑑, 𝐼𝐷𝑓, 
+𝑅𝐼𝐷𝑓𝑢, 𝑅𝐼𝐷𝑓∶1392
+3664
+Wazid et al. (2019a)
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑇𝐼𝐷𝑣, 𝑅𝐼𝐷𝑣, ℎ(𝐾𝑚1𝑗∥
+𝑅𝐼𝐷𝑣) ∶1136
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑇𝐼𝐷𝑣, 𝑅𝐼𝐷𝑣, 𝑇𝐼𝐷𝑓,
+𝑅𝐼𝐷𝑓, 𝐾𝑚1𝑗, 𝑘𝑚2𝑗, 𝑃𝑢𝑏𝑅𝐴∶1744
+𝐸𝐶𝐶(𝑎, 𝑏, 𝑝, 𝑞), 𝑇𝐼𝐷𝑣, 𝑅𝐼𝐷𝑣, 𝑇𝐼𝐷𝑓,
+𝑅𝐼𝐷𝑓, 
+𝐾𝑚1𝑗, 𝑘𝑚2𝑗, ℎ(𝐾𝑚1𝑗∥𝑅𝐼𝐷𝑣) ∶1744
+4624
+LAAKA
+𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑓, 𝐵𝑘∶576
+𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑑, 𝐵𝑘∶576
+𝑇𝐼𝐷𝑑, 𝑇𝐼𝐷𝑓, 𝐴𝑑, 𝐴𝑓, 𝐵𝑘, 𝐾∶896
+2048
+Declaration of competing interest
+The authors declare that they have no known competing ﬁnancial 
+interests or personal relationships that could have appeared to inﬂuence 
+the work reported in this paper.
+Data availability
+No data was used for the research described in the article.
+References
+Abdussami, Mohammad, Amin, Ruhul, Vollala, Satyanarayana, 2022. Lassi: a lightweight 
+authenticated key agreement protocol for fog-enabled iot deployment. Int. J. Inf. 
+Secur. 21 (6), 1373–1387.
+AbuTaha, Mohammed, Farajallah, Mousa, Tahboub, Radwan, Odeh, Mohammad, 2011. 
+Survey paper: cryptography is the science of information security. Int. J. Comput. Sci. 
+Secur. (IJCSS).
+Ali, Hala S., Sridevi, R., 2022. Credential-based authentication mechanism for iot devices 
+in fog-cloud computing. In: ICT Analysis and Applications. Springer, pp. 307–318.
+Ali, Hala S., Sridevi, R., 2023. Mobility and security aware real-time task scheduling in 
+fog-cloud computing for IoT devices: a fuzzy-logic approach. Comput. J., bxad019. 
+Oxford University Press.
+Ali, Hala S., Ranjan Rout, Rashmi, Parimi, Priyanka, Das, Sajal K., 2021a. Real-time task 
+scheduling in fog-cloud computing framework for iot applications: a fuzzy logic based 
+approach. In: 2021 International Conference on COMmunication Systems & NET-
+workS (COMSNETS). IEEE, pp. 556–564.
+Ali, Zeeshan, Ashraf Chaudhry, Shehzad, Mahmood, Khalid, Garg, Sahil, Lv, Zhihan, 
+Zikria, Yousaf Bin, 2021b. A clogging resistant secure authentication scheme for fog 
+computing services. Comput. Netw. 185, 107731.
+Almurisi, Nasr, Tadisetty, Srinivasulu, 2022. Cloud-based virtualization environment for 
+iot-based wsn: solutions, approaches and challenges. J. Ambient Intell. Humaniz. 
+Comput. 13, 1–23.
+Amor, Arij Ben, Abid, Mohamed, Meddeb, Aref, 2017. A privacy-preserving authenti-
+cation scheme in an edge-fog environment. In: 2017 IEEE/ACS 14th International 
+Conference on Computer Systems and Applications (AICCSA). IEEE, pp. 1225–1231.
+Anand, Nemalikanti, Saifulla, M.A., 2023. En-lakp: lightweight authentication and key 
+agreement protocol for emerging networks. IEEE Access 11, 28645–28657.
+Basin, David, Cremers, Cas, 2014. Know your enemy: compromising adversaries in proto-
+col analysis. ACM Trans. Inf. Syst. Secur. 17 (2), 1–31.
+Bellare, Mihir, Rogaway, Phillip, 1993. Entity authentication and key distribution. In: 
+Annual International Cryptology Conference. Springer, pp. 232–249.
+Bellare, Mihir, Rogaway, Phillip, 2005. Introduction to modern cryptography.
+Bellare, Mihir, Pointcheval, David, Rogaway, Phillip, 2000. Authenticated key exchange 
+secure against dictionary attacks. In: International Conference on the Theory and 
+Applications of Cryptographic Techniques. Springer, pp. 139–155.
+Burrows, Michael, Abadi, Martin, Needham, Roger Michael, 1989. A logic of authentica-
+tion. Proc. R. Soc. Lond. Ser. A, Math. Phys. Sci. 426 (1871), 233–271.
+Canetti, Ran, Krawczyk, Hugo, 2001. Analysis of key-exchange protocols and their use for 
+building secure channels. In: International Conference on the Theory and Applications 
+of Cryptographic Techniques. Springer, pp. 453–474.
+Chen, Chien-Ming, Huang, Yanyu, Wang, King-Hang, Kumari, Saru, Wu, Mu-En, 2021. 
+A secure authenticated and key exchange scheme for fog computing. Enterp. Inf. 
+Syst. 15 (9), 1200–1215.
+Chen, Chien-Ming, Chen, Zhaoting, Kumari, Saru, Lap-ioht, Meng-Chang Lin, 2022. 
+A lightweight authentication protocol for the Internet of health things. Sensors 22 
+(14), 5401.
+Cremers, Cas JF, 2008. The scyther tool: veriﬁcation, falsiﬁcation, and analysis of security 
+protocols: tool paper. In: International Conference on Computer Aided Veriﬁcation. 
+Springer, pp. 414–418.
+Das, Ashok Kumar, Wazid, Mohammad, Reddy Yannam, Animi, Rodrigues, Joel JPC, Park, 
+Youngho, 2019. Provably secure ecc-based device access control and key agreement 
+protocol for iot environment. IEEE Access 7, 55382–55397.
+Das, Ashok Kumar, Bera, Basudeb, Wazid, Mohammad, Jamal, Sajjad Shaukat, Park, 
+Youngho, 2021. On the security of a secure and lightweight authentication scheme 
+for next generation iot infrastructure. IEEE Access 9, 71856–71867. https://doi .org /
+10 .1109 /ACCESS .2021 .3079312.
+Dhillon, Parwinder Kaur, Kalra, Sheetal, 2017. Secure multi-factor remote user authen-
+tication scheme for Internet of things environments. Int. J. Commun. Syst. 30 (16), 
+e3323.
+Dolev, Danny, Yao, Andrew, 1983. On the security of public key protocols. IEEE Trans. 
+Inf. Theory 29 (2), 198–208.
+Eftekhari, Seyed Abdolreza, Nikooghadam, Morteza, Raﬁghi, Masoud, 2021. Security-
+enhanced three-party pairwise secret key agreement protocol for fog-based vehicular 
+ad-hoc communications. Veh. Commun. 28, 100306.
+Gope, Prosanta, 2019. Laap: lightweight anonymous authentication protocol for d2d-
+aided fog computing paradigm. Comput. Secur. 86, 223–237.
+Günther, Christoph G., 1990. An identity-based key-exchange protocol. In: Advances in 
+Cryptology—EUROCRYPT’89: Workshop on the Theory and Application of Crypto-
+graphic Techniques Houthalen, Belgium, April 10–13, 1989 Proceedings 8. Springer, 
+pp. 29–37.
+Guo, Yimin, Guo, Yajun, 2021. Fogha: an eﬃcient handover authentication for mobile 
+devices in fog computing. Comput. Secur. 108, 102358.
+Guo, Yimin, Zhang, Zhenfeng, Guo, Yajun, 2020. Fog-centric authenticated key agreement 
+scheme without trusted parties. IEEE Syst. J. 15 (4), 5057–5066.
+Hamada, Mariam, Salem, Sameh A., Salem, Fatty M., 2022. Lamas: lightweight anony-
+mous mutual authentication scheme for securing fog computing environments. Ain 
+Shams Eng. J. 13 (6), 101752.
+Hosseinzadeh, Mehdi, Ahmed, Omed Hassan, Ahmed, Sarkar Hasan, Trinh, Cuong, 
+Bagheri, Nasour, Kumari, Saru, Lansky, Jan, Huynh, Bao, 2020. An enhanced au-
+thentication protocol for rﬁd systems. IEEE Access 8, 126977–126987.
+Ibrahim, Maged Hamada, 2016. Octopus: an edge-fog mutual authentication scheme. Int. 
+J. Netw. Secur. 18 (6), 1089–1101.
+
+================================================================================
+PAGE 18
+================================================================================
+Computers & Security 140 (2024) 103770
+18
+H. Ali and I. Ahmed
+Jan, Saeed Ullah, Abbasi, Irshad Ahmed, Alqarni, Mohammed A., 2022. Lmas-shs: a 
+lightweight mutual authentication scheme for smart home surveillance. IEEE Ac-
+cess 10, 52791–52803.
+Jia, Xiaoying, He, Debiao, Kumar, Neeraj, Choo, Kim-Kwang Raymond, 2019. Authenti-
+cated key agreement scheme for fog-driven iot healthcare system. Wirel. Netw. 25, 
+4737–4750.
+Jiang, Jiafu, Tang, Linyu, Gu, Ke, Jia, WeiJia, 2020. Secure computing resource allocation 
+framework for open fog computing. Comput. J. (ISSN 0010-4620) 63 (4), 567–592.
+Kalaria, Rudri, Kayes, A.S.M., Rahayu, Wenny, Pardede, Eric, 2021. A secure mutual au-
+thentication approach to fog computing environment. Comput. Secur. 111, 102483.
+Kaur, Jasleen, Agrawal, Alka, Khan, Raees Ahmad, 2020. Security issues in fog environ-
+ment: a systematic literature review. Int. J. Wirel. Inf. Netw. 27 (3), 467–483.
+Klevstad, Eirik, 2016. Security and key establishment in ieee 802.15.4. Master’s thesis. 
+NTNU.
+Koblitz, Neal, Menezes, Alfred J., 2015. The random oracle model: a twenty-year retro-
+spective. Des. Codes Cryptogr. 77, 587–610.
+Kumar, Manoj, Hussain, S.Z., 2023. An eﬃcient and secure mutual authentication proto-
+col in wireless body area network. EAI Endorsed Trans. Perv. Health Tech. 9.
+Kunal, Sourav, Saha, Arijit, Amin, Ruhul, 2019. An overview of cloud-fog computing: 
+architectures, applications with security challenges. IEEE Secur. Priv. 2 (4), e72.
+Lansky, Jan, Sadrishojaei, Mahyar, Masoud Rahmani, Amir, Malik, Mazhar Hussain, 
+Kazemian, Faeze, Hosseinzadeh, Mehdi, 2022. Development of a lightweight cen-
+tralized authentication mechanism for the Internet of things driven by fog. Mathe-
+matics 10 (22), 4166.
+Li, Sensen, Zhang, Tikui, Yu, Bin, He, Kuan, 2020. A provably secure and practical puf-
+based end-to-end mutual authentication and key exchange protocol for iot. IEEE Sens. 
+J. 21 (4), 5487–5501.
+Ma, Mimi, He, Debiao, Wang, Huaqun, Kumar, Neeraj, Choo, Kim-Kwang Raymond, 2019. 
+An eﬃcient and provably secure authenticated key agreement protocol for fog-based 
+vehicular ad-hoc networks. IEEE Int. Things J. 6 (5), 8065–8075.
+Masud, Mehedi, Singh Gaba, Gurjot, Choudhary, Karanjeet, Shamim Hossain, M., Al-
+hamid, Mohammed F., Muhammad, Ghulam, 2021. Lightweight and anonymity-
+preserving user authentication scheme for iot-based healthcare. IEEE Int. Things J. 9 
+(4), 2649–2656.
+Mukherjee, Mithun, Matam, Rakesh, Shu, Lei, Maglaras, Leandros, Ferrag, Mo-
+hamed Amine, Choudhury, Nikumani, Kumar, Vikas, 2017. Security and privacy in 
+fog computing: challenges. IEEE Access 5, 19293–19304.
+Nandy, Tarak, Idna Bin Idris, Mohd Yamani, Noor, Raﬁdah Md, Kiah, Laiha Mat, Lun, Lau 
+Sian, Juma’at, Nor Badrul Annuar, Ahmedy, Ismail, Ghani, Norjihan Abdul, Bhat-
+tacharyya, Sananda, 2019. Review on security of internet of things authentication 
+mechanism. IEEE Access 7, 151054–151089.
+Ometov, Aleksandr, Liombe Molua, Oliver, Komarov, Mikhail, Nurmi, Jari, 2022. A sur-
+vey of security in cloud, edge, and fog computing. Sensors 22 (3), 927.
+Panda, Suryakanta, Mondal, Samrat, Kumar, Neeraj, 2022. Slap: a secure and lightweight 
+authentication protocol for machine-to-machine communication in industry 4.0. 
+Comput. Electr. Eng. 98, 107669.
+Patonico, Simone, Braeken, An, Steenhaut, Kris, 2019. Identity-based and anonymous 
+key agreement protocol for fog computing resistant in the Canetti–Krawczyk security 
+model. Wirel. Netw., 1–13.
+Rahman, Gohar, Wen, Chuah Chai, 2019. Mutual authentication security scheme in fog 
+computing. Int. J. Adv. Comput. Sci. Appl. 10 (11).
+Rana, Minahil, Shaﬁq, Akasha, Altaf, Izwa, Alazab, Mamoun, Mahmood, Khalid, 
+Chaudhry, Shehzad Ashraf, Zikria, Yousaf Bin, 2021a. A secure and lightweight au-
+thentication scheme for next generation iot infrastructure. Comput. Commun. 165, 
+85–96.
+Rana, Saurabh, Mishra, Dheerendra, Arora, Riya, 2021b. Privacy-preserving key agree-
+ment protocol for fog computing supported Internet of things environment. Wirel. 
+Pers. Commun. 119 (1), 727–747.
+Rehman, Ubaid Ur, Park, Seong-Bae, Lee, Sungyoung, 2021. Secure health fog: a novel 
+framework for personalized recommendations based on adaptive model tuning. IEEE 
+Access 9, 108373–108391.
+Roman, Rodrigo, Lopez, Javier, Mambo, Masahiro, 2018. Mobile edge computing, fog et 
+al.: a survey and analysis of security threats and challenges. Future Gener. Comput. 
+Syst. 78, 680–698.
+Seno, Seyed Amin Hosseini, Nikooghadam, Mahdi, Budiarto, Rahmat, 2021. An eﬃcient 
+lightweight authentication and key agreement protocol for patient privacy. Comput. 
+Mater. Continua 69 (3).
+Singh, Sunakshi, Chaurasiya, Vijay Kumar, 2021. Mutual authentication scheme of iot 
+devices in fog computing environment. Clust. Comput. 24 (3), 1643–1657.
+Sowjanya, K., Dasgupta, Mou, Ray, Sangram, 2020. An elliptic curve cryptography based 
+enhanced anonymous authentication protocol for wearable health monitoring sys-
+tems. Int. J. Inf. Secur. 19 (1), 129–146.
+Suganthi, S.D., Anitha, R.V.S.S., Sureshkumar, Venkatasamy, Harish, S., Agalya, S., 2020. 
+End to end light weight mutual authentication scheme in iot-based healthcare envi-
+ronment. J. Reliab. Intell. Environ. 6, 3–13.
+Tu, Shanshan, Waqas, Muhammad, Ur Rehman, Sadaqat, Aamir, Muhammad, Ur Rehman, 
+Obaid, Jianbiao, Zhang, Chang, Chin-Chen, 2018. Security in fog computing: a novel 
+technique to tackle an impersonation attack. IEEE Access 6, 74993–75001.
+Vinoth, R., Deborah, Lazarus Jegatha, Vijayakumar, Pandi, Kumar, Neeraj, 2020. Secure 
+multifactor authenticated key agreement scheme for industrial iot. IEEE Int. Things 
+J. 8 (5), 3801–3811.
+Wang, Lin, An, Haonan, Chang, Zhuo, 2020. Security enhancement on a lightweight 
+authentication scheme with anonymity fog computing architecture. IEEE Access 8, 
+97267–97278.
+Wazid, Mohammad, Bagga, Palak, Kumar Das, Ashok, Shetty, Sachin, Rodrigues, Joel 
+JPC, Akm-iov, Youngho Park, 2019a. Authenticated key management protocol in 
+fog computing-based Internet of vehicles deployment. IEEE Int. Things J. 6 (5), 
+8804–8817.
+Wazid, Mohammad, Kumar Das, Ashok, Kumar, Neeraj, Vasilakos, Athanasios V., 2019b. 
+Design of secure key management and user authentication scheme for fog computing 
+services. Future Gener. Comput. Syst. 91, 475–492.
+Wazid, Mohammad, Kumar Das, Ashok, Bhat, Vivekananda, Lam-ciot, Athanasios V. Vasi-
+lakos, 2020. Lightweight authentication mechanism in cloud-based iot environment. 
+J. Netw. Comput. Appl. 150, 102496.
+Weng, Chi-Yao, Li, Chun-Ta, Chen, Chin-Ling, Lee, Cheng-Chi, Deng, Yong-Yuan, 2021. 
+A lightweight anonymous authentication and secure communication scheme for fog 
+computing services. IEEE Access 9, 145522–145537.
+Wu, Tsu-Yang, Lee Lei Yang, Zhiyuan, Luo, Jia-Ning, Tso, Raylin, 2021a. Provably secure 
+authentication key exchange scheme using fog nodes in vehicular ad hoc networks. 
+J. Supercomput. 77, 6992–7020.
+Wu, Tsu-Yang, Wang, Tao, Lee, Yu-Qi, Zheng, Weimin, Kumari, Saru, Kumar, Sachin, 
+2021b. Improved authenticated key agreement scheme for fog-driven iot healthcare 
+system. Secur. Commun. Netw. 2021, 1–16.
+Zhang, Jing, Zhong, Hong, Cui, Jie, Xu, Yan, Smaka, Lu Liu, 2020. Secure many-to-many 
+authentication and key agreement scheme for vehicular networks. IEEE Trans. Inf. 
+Forensics Secur. 16, 1810–1824.
+Hala Ali: is a PhD student at Virginia Commonwealth Uni-
+versity (VCU), Richmond, Virginia, USA. Her research interests 
+include Cybersecurity, Cyber-Physical System Security, IoT, and 
+Fog Computing. She received her B.Tech degree in Informatics 
+Engineering from Al-Baath University, Homs, Syria in 2016, and 
+an M.Tech degree in Computer Science and Information Security 
+from the National Institute of Technology Warangal, Telangana, 
+India, in 2020.
+Irfan Ahmed: is an Associate Professor of Computer Sci-
+ence at Virginia Commonwealth University (VCU), Richmond, 
+Virginia, USA. He is the Director of the Security and Forensics 
+Engineering (SAFE) Research Lab. He is also a faculty fellow of 
+VCU Cybersecurity Center. Before VCU, Ahmed was a Canizaro-
+Livingston Endowed Assistant Professor in Cybersecurity at the 
+University of New Orleans (UNO), New Orleans, LA. His research 
+interests are broadly in the area of cybersecurity, currently fo-
+cusing on digital forensics, malware, cyber-physical systems, and 
+cybersecurity education. Ahmed is a recipient of the ORAU Ralph 
+E. Powe Junior Faculty Enhancement Award, an Outstanding Research Award from the 
+American Academy of Forensic Sciences (AAFS), and the UNO’s Early Career Research 
+Prize. His research group has received three Best Paper Awards at DFRWS’20, ISC’13, and 
+ICRC’11, and an Outstanding Poster Award at CODASPY’16.

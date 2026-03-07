@@ -1,0 +1,299 @@
+Random seed: 123456
+236000 2 [INFO: Main      ] Starting Contiki-NG-23e51c4
+236000 2 [INFO: Main      ] - Routing: RPL Lite
+236000 2 [INFO: Main      ] - Net: sicslowpan
+236000 2 [INFO: Main      ] - MAC: CSMA
+236000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+236000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+236000 2 [INFO: Main      ] Node ID: 2
+236000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+236000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+236000 2 DESYNC_LOG|AS 2|Started
+348000 4 [INFO: Main      ] Starting Contiki-NG-23e51c4
+348000 4 [INFO: Main      ] - Routing: RPL Lite
+348000 4 [INFO: Main      ] - Net: sicslowpan
+348000 4 [INFO: Main      ] - MAC: CSMA
+348000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+348000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+348000 4 [INFO: Main      ] Node ID: 4
+348000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+348000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+382000 1 [INFO: Main      ] Starting Contiki-NG-23e51c4
+382000 1 [INFO: Main      ] - Routing: RPL Lite
+382000 1 [INFO: Main      ] - Net: sicslowpan
+382000 1 [INFO: Main      ] - MAC: CSMA
+382000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+382000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+382000 1 [INFO: Main      ] Node ID: 1
+382000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+382000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+382000 1 DESYNC_LOG|GW 1|Started (RPL root + CoAP server)
+715000 5 [INFO: Main      ] Starting Contiki-NG-23e51c4
+715000 5 [INFO: Main      ] - Routing: RPL Lite
+715000 5 [INFO: Main      ] - Net: sicslowpan
+715000 5 [INFO: Main      ] - MAC: CSMA
+715000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+715000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+715000 5 [INFO: Main      ] Node ID: 5
+715000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+715000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+899000 3 [INFO: Main      ] Starting Contiki-NG-23e51c4
+899000 3 [INFO: Main      ] - Routing: RPL Lite
+899000 3 [INFO: Main      ] - Net: sicslowpan
+899000 3 [INFO: Main      ] - MAC: CSMA
+899000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+899000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+899000 3 [INFO: Main      ] Node ID: 3
+899000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+899000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+8899000 3 DESYNC_LOG|Node 3|=== ENROLLMENT START ===
+9348000 4 DESYNC_LOG|Node 4|=== ENROLLMENT START ===
+10715000 5 DESYNC_LOG|Node 5|=== ENROLLMENT START ===
+21841592 2 DESYNC_LOG|AS 2|Reg-0 for device 3|c_d=107
+21876328 3 DESYNC_LOG|Node 3|Reg-0 OK|c_d=107
+21909648 2 DESYNC_LOG|AS 2|Reg-1 complete for device 3|PID_curr=be8c28|pid_old_valid=0
+21974112 3 DESYNC_LOG|Node 3|Reg-1 OK|Enrolled
+21974112 3 DESYNC_LOG|Node 3|=== ENROLLMENT COMPLETE ===|Initial PID=be8c28
+21974112 3 
+21974112 3 DESYNC_LOG|Node 3|========================================
+21974112 3 DESYNC_LOG|Node 3|Round 1|NORMAL AUTH (establishing sync)
+21974112 3 DESYNC_LOG|Node 3|========================================
+21974112 3 DESYNC_LOG|Node 3|Round 1|Sending auth|PID=be8c28|ts_1=1
+22064184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=be8c28|ts_1=1
+22064184 2 DESYNC_LOG|AS 2|PID MATCH on PID_curr for device 3|NORMAL PATH
+22064184 2 DESYNC_LOG|AS 2|Using m_curr=4099f4... for device 3
+22064184 2 DESYNC_LOG|AS 2|Device 3 AUTHENTICATED|membership OK|use_old=0
+22064184 2 DESYNC_LOG|AS 2|ROTATING state for device 3
+22064184 2 DESYNC_LOG|AS 2|  Before: PID_curr=be8c28, PID_old=000000, pid_old_valid=0
+22064184 2 DESYNC_LOG|AS 2|  After:  PID_curr=b9801d (NEW), PID_old=be8c28 (BACKUP), pid_old_valid=1
+22064184 2 DESYNC_LOG|AS 2|Energest|cpu_s=21.828184|energy_j=1.348813
+22125880 3 DESYNC_LOG|Node 3|Round 1|Auth OK|New PID=b9801d|SYNCED
+22142632 1 DESYNC_LOG|GW|Token stored for device 3|PID=b9801d
+22152560 1 DESYNC_LOG|GW|Data OK|device 3|val=9|PID=b9801d
+22255536 3 DESYNC_LOG|Node 3|Round 1|Data confirmed by GW
+22255536 3 DESYNC_LOG|Node 3|Round 1|RESULT: SUCCESS ﾀﾔ both sides synced
+24228152 2 DESYNC_LOG|AS 2|Reg-0 for device 5|c_d=24
+24255328 5 DESYNC_LOG|Node 5|Reg-0 OK|c_d=24
+24298648 2 DESYNC_LOG|AS 2|Reg-1 complete for device 5|PID_curr=b00a96|pid_old_valid=0
+24322112 5 DESYNC_LOG|Node 5|Reg-1 OK|Enrolled
+24322112 5 DESYNC_LOG|Node 5|=== ENROLLMENT COMPLETE ===|Initial PID=b00a96
+24322112 5 
+24322112 5 DESYNC_LOG|Node 5|========================================
+24322112 5 DESYNC_LOG|Node 5|Round 1|NORMAL AUTH (establishing sync)
+24322112 5 DESYNC_LOG|Node 5|========================================
+24322112 5 DESYNC_LOG|Node 5|Round 1|Sending auth|PID=b00a96|ts_1=1
+24433184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=b00a96|ts_1=1
+24433184 2 DESYNC_LOG|AS 2|PID MATCH on PID_curr for device 5|NORMAL PATH
+24433184 2 DESYNC_LOG|AS 2|Using m_curr=5fc334... for device 5
+24433184 2 DESYNC_LOG|AS 2|Device 5 AUTHENTICATED|membership OK|use_old=0
+24433184 2 DESYNC_LOG|AS 2|ROTATING state for device 5
+24433184 2 DESYNC_LOG|AS 2|  Before: PID_curr=b00a96, PID_old=000000, pid_old_valid=0
+24433184 2 DESYNC_LOG|AS 2|  After:  PID_curr=e7d305 (NEW), PID_old=b00a96 (BACKUP), pid_old_valid=1
+24433184 2 DESYNC_LOG|AS 2|Energest|cpu_s=24.197184|energy_j=1.495075
+24450880 5 DESYNC_LOG|Node 5|Round 1|Auth OK|New PID=e7d305|SYNCED
+24458240 1 DESYNC_LOG|GW|Data rejected ﾀﾔ PID e7d305 not found
+24485472 5 DESYNC_LOG|Node 5|Round 1|Data confirmed by GW
+24485472 5 DESYNC_LOG|Node 5|Round 1|RESULT: SUCCESS ﾀﾔ both sides synced
+24504632 1 DESYNC_LOG|GW|Token stored for device 5|PID=e7d305
+24899000 3 
+24899000 3 DESYNC_LOG|Node 3|========================================
+24899000 3 DESYNC_LOG|Node 3|Round 2|DESYNC TRIGGER ﾀﾔ will drop AS reply
+24899000 3 DESYNC_LOG|Node 3|========================================
+24899000 3 DESYNC_LOG|Node 3|Round 2|Sending auth|PID=b9801d|ts_1=2
+25011184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=b9801d|ts_1=2
+25011184 2 DESYNC_LOG|AS 2|PID MATCH on PID_curr for device 3|NORMAL PATH
+25011184 2 DESYNC_LOG|AS 2|Using m_curr=5de7c0... for device 3
+25011184 2 DESYNC_LOG|AS 2|Device 3 AUTHENTICATED|membership OK|use_old=0
+25011184 2 DESYNC_LOG|AS 2|ROTATING state for device 3
+25011184 2 DESYNC_LOG|AS 2|  Before: PID_curr=b9801d, PID_old=be8c28, pid_old_valid=1
+25011184 2 DESYNC_LOG|AS 2|  After:  PID_curr=d001f4 (NEW), PID_old=b9801d (BACKUP), pid_old_valid=1
+25011184 2 DESYNC_LOG|AS 2|Energest|cpu_s=24.775184|energy_j=1.530722
+25066880 3 DESYNC_LOG|Node 3|Round 2|SIMULATED DROP ﾀﾔ ignoring valid AS reply
+25066880 3 DESYNC_LOG|Node 3|Round 2|Device keeps OLD PID=b9801d and OLD m_d
+25066880 3 DESYNC_LOG|Node 3|Round 2|AS has ALREADY ROTATED to new PID/m ﾆﾒ STATE IS DESYNCHRONIZED
+25066880 3 DESYNC_LOG|Node 3|Round 2|RESULT: DESYNCHRONIZED
+25066880 3 DESYNC_LOG|Node 3|Round 2|Device state: PID=b9801d (OLD), ts_1=2
+25088632 1 DESYNC_LOG|GW|Token stored for device 3|PID=d001f4
+30697592 2 DESYNC_LOG|AS 2|Reg-0 for device 4|c_d=2
+30715000 5 
+30715000 5 DESYNC_LOG|Node 5|========================================
+30715000 5 DESYNC_LOG|Node 5|Round 2|DESYNC TRIGGER ﾀﾔ will drop AS reply
+30715000 5 DESYNC_LOG|Node 5|========================================
+30715000 5 DESYNC_LOG|Node 5|Round 2|Sending auth|PID=e7d305|ts_1=2
+30804184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=e7d305|ts_1=2
+30804184 2 DESYNC_LOG|AS 2|PID MATCH on PID_curr for device 5|NORMAL PATH
+30804184 2 DESYNC_LOG|AS 2|Using m_curr=3ba622... for device 5
+30804184 2 DESYNC_LOG|AS 2|Device 5 AUTHENTICATED|membership OK|use_old=0
+30804184 2 DESYNC_LOG|AS 2|ROTATING state for device 5
+30804184 2 DESYNC_LOG|AS 2|  Before: PID_curr=e7d305, PID_old=b00a96, pid_old_valid=1
+30804184 2 DESYNC_LOG|AS 2|  After:  PID_curr=76cbe7 (NEW), PID_old=e7d305 (BACKUP), pid_old_valid=1
+30804184 2 DESYNC_LOG|AS 2|Energest|cpu_s=30.568184|energy_j=1.888629
+30832328 4 DESYNC_LOG|Node 4|Reg-0 OK|c_d=2
+30895632 1 DESYNC_LOG|GW|Token stored for device 5|PID=76cbe7
+30903280 2 DESYNC_LOG|AS 2|Reg-1 complete for device 4|PID_curr=79cdc7|pid_old_valid=0
+30938960 5 DESYNC_LOG|Node 5|Round 2|SIMULATED DROP ﾀﾔ ignoring valid AS reply
+30938960 5 DESYNC_LOG|Node 5|Round 2|Device keeps OLD PID=e7d305 and OLD m_d
+30938960 5 DESYNC_LOG|Node 5|Round 2|AS has ALREADY ROTATED to new PID/m ﾆﾒ STATE IS DESYNCHRONIZED
+30938960 5 DESYNC_LOG|Node 5|Round 2|RESULT: DESYNCHRONIZED
+30938960 5 DESYNC_LOG|Node 5|Round 2|Device state: PID=e7d305 (OLD), ts_1=2
+30945072 4 DESYNC_LOG|Node 4|Reg-1 OK|Enrolled
+30945072 4 DESYNC_LOG|Node 4|=== ENROLLMENT COMPLETE ===|Initial PID=79cdc7
+30945072 4 
+30945072 4 DESYNC_LOG|Node 4|========================================
+30945072 4 DESYNC_LOG|Node 4|Round 1|NORMAL AUTH (establishing sync)
+30945072 4 DESYNC_LOG|Node 4|========================================
+30945072 4 DESYNC_LOG|Node 4|Round 1|Sending auth|PID=79cdc7|ts_1=1
+31025184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=79cdc7|ts_1=1
+31025184 2 DESYNC_LOG|AS 2|PID MATCH on PID_curr for device 4|NORMAL PATH
+31025184 2 DESYNC_LOG|AS 2|Using m_curr=e2b4d6... for device 4
+31025184 2 DESYNC_LOG|AS 2|Device 4 AUTHENTICATED|membership OK|use_old=0
+31025184 2 DESYNC_LOG|AS 2|ROTATING state for device 4
+31025184 2 DESYNC_LOG|AS 2|  Before: PID_curr=79cdc7, PID_old=000000, pid_old_valid=0
+31025184 2 DESYNC_LOG|AS 2|  After:  PID_curr=06d58b (NEW), PID_old=79cdc7 (BACKUP), pid_old_valid=1
+31025184 2 DESYNC_LOG|AS 2|Energest|cpu_s=30.789184|energy_j=1.902192
+31093880 4 DESYNC_LOG|Node 4|Round 1|Auth OK|New PID=06d58b|SYNCED
+31114632 1 DESYNC_LOG|GW|Token stored for device 4|PID=06d58b
+31127360 1 DESYNC_LOG|GW|Data OK|device 4|val=9|PID=06d58b
+31150536 4 DESYNC_LOG|Node 4|Round 1|Data confirmed by GW
+31150536 4 DESYNC_LOG|Node 4|Round 1|RESULT: SUCCESS ﾀﾔ both sides synced
+31150536 4 
+31150536 4 DESYNC_LOG|Node 4|========================================
+31150536 4 DESYNC_LOG|Node 4|Round 2|DESYNC TRIGGER ﾀﾔ will drop AS reply
+31150536 4 DESYNC_LOG|Node 4|========================================
+31150536 4 DESYNC_LOG|Node 4|Round 2|Sending auth|PID=06d58b|ts_1=2
+31274184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=06d58b|ts_1=2
+31274184 2 DESYNC_LOG|AS 2|PID MATCH on PID_curr for device 4|NORMAL PATH
+31274184 2 DESYNC_LOG|AS 2|Using m_curr=33ae8b... for device 4
+31274184 2 DESYNC_LOG|AS 2|Device 4 AUTHENTICATED|membership OK|use_old=0
+31274184 2 DESYNC_LOG|AS 2|ROTATING state for device 4
+31274184 2 DESYNC_LOG|AS 2|  Before: PID_curr=06d58b, PID_old=79cdc7, pid_old_valid=1
+31274184 2 DESYNC_LOG|AS 2|  After:  PID_curr=8e5757 (NEW), PID_old=06d58b (BACKUP), pid_old_valid=1
+31274184 2 DESYNC_LOG|AS 2|Energest|cpu_s=31.038184|energy_j=1.917507
+31341880 4 DESYNC_LOG|Node 4|Round 2|SIMULATED DROP ﾀﾔ ignoring valid AS reply
+31341880 4 DESYNC_LOG|Node 4|Round 2|Device keeps OLD PID=06d58b and OLD m_d
+31341880 4 DESYNC_LOG|Node 4|Round 2|AS has ALREADY ROTATED to new PID/m ﾆﾒ STATE IS DESYNCHRONIZED
+31341880 4 DESYNC_LOG|Node 4|Round 2|RESULT: DESYNCHRONIZED
+31341880 4 DESYNC_LOG|Node 4|Round 2|Device state: PID=06d58b (OLD), ts_1=2
+31384632 1 DESYNC_LOG|GW|Token stored for device 4|PID=8e5757
+32899000 3 
+32899000 3 DESYNC_LOG|Node 3|========================================
+32899000 3 DESYNC_LOG|Node 3|Round 3|DESYNC RECOVERY ﾀﾔ retrying with old PID
+32899000 3 DESYNC_LOG|Node 3|Round 3|Device using PID=b9801d (same as before drop)
+32899000 3 DESYNC_LOG|Node 3|========================================
+32899000 3 DESYNC_LOG|Node 3|Round 3|Sending auth|PID=b9801d|ts_1=2
+32977184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=b9801d|ts_1=2
+32977184 2 DESYNC_LOG|AS 2|PID MATCH on PID_old for device 3|DESYNC RECOVERY PATH
+32977184 2 DESYNC_LOG|AS 2|RECOVERY|Device stuck on OLD state ﾀﾔ AS using m_old to verify
+32977184 2 DESYNC_LOG|AS 2|RECOVERY|Using m_old=5de7c0... for device 3
+32977184 2 DESYNC_LOG|AS 2|Device 3 AUTHENTICATED|membership OK|use_old=1
+32977184 2 DESYNC_LOG|AS 2|ROTATING state for device 3
+32977184 2 DESYNC_LOG|AS 2|  Before: PID_curr=d001f4, PID_old=b9801d, pid_old_valid=1
+32977184 2 DESYNC_LOG|AS 2|  After:  PID_curr=c7a6e9 (NEW), PID_old=d001f4 (BACKUP), pid_old_valid=1
+32977184 2 DESYNC_LOG|AS 2|Energest|cpu_s=32.741184|energy_j=2.022657
+33044880 3 DESYNC_LOG|Node 3|Round 3|Auth OK|New PID=c7a6e9|SYNCED
+33071360 1 DESYNC_LOG|GW|Data rejected ﾀﾔ PID c7a6e9 not found
+33108472 3 DESYNC_LOG|Node 3|Round 3|Data confirmed by GW
+33108472 3 DESYNC_LOG|Node 3|Round 3|RESULT: RECOVERY SUCCESSFUL ﾀﾔ re-synced via dual-state
+33150632 1 DESYNC_LOG|GW|Token stored for device 3|PID=c7a6e9
+36348000 4 
+36348000 4 DESYNC_LOG|Node 4|========================================
+36348000 4 DESYNC_LOG|Node 4|Round 3|DESYNC RECOVERY ﾀﾔ retrying with old PID
+36348000 4 DESYNC_LOG|Node 4|Round 3|Device using PID=06d58b (same as before drop)
+36348000 4 DESYNC_LOG|Node 4|========================================
+36348000 4 DESYNC_LOG|Node 4|Round 3|Sending auth|PID=06d58b|ts_1=2
+36447184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=06d58b|ts_1=2
+36447184 2 DESYNC_LOG|AS 2|PID MATCH on PID_old for device 4|DESYNC RECOVERY PATH
+36447184 2 DESYNC_LOG|AS 2|RECOVERY|Device stuck on OLD state ﾀﾔ AS using m_old to verify
+36447184 2 DESYNC_LOG|AS 2|RECOVERY|Using m_old=33ae8b... for device 4
+36447184 2 DESYNC_LOG|AS 2|Device 4 AUTHENTICATED|membership OK|use_old=1
+36447184 2 DESYNC_LOG|AS 2|ROTATING state for device 4
+36447184 2 DESYNC_LOG|AS 2|  Before: PID_curr=8e5757, PID_old=06d58b, pid_old_valid=1
+36447184 2 DESYNC_LOG|AS 2|  After:  PID_curr=920f4e (NEW), PID_old=8e5757 (BACKUP), pid_old_valid=1
+36447184 2 DESYNC_LOG|AS 2|Energest|cpu_s=36.211184|energy_j=2.237026
+36483880 4 DESYNC_LOG|Node 4|Round 3|Auth OK|New PID=920f4e|SYNCED
+36520360 1 DESYNC_LOG|GW|Data rejected ﾀﾔ PID 920f4e not found
+36545472 4 DESYNC_LOG|Node 4|Round 3|Data confirmed by GW
+36545472 4 DESYNC_LOG|Node 4|Round 3|RESULT: RECOVERY SUCCESSFUL ﾀﾔ re-synced via dual-state
+36593632 1 DESYNC_LOG|GW|Token stored for device 4|PID=920f4e
+40715000 5 
+40715000 5 DESYNC_LOG|Node 5|========================================
+40715000 5 DESYNC_LOG|Node 5|Round 3|DESYNC RECOVERY ﾀﾔ retrying with old PID
+40715000 5 DESYNC_LOG|Node 5|Round 3|Device using PID=e7d305 (same as before drop)
+40715000 5 DESYNC_LOG|Node 5|========================================
+40715000 5 DESYNC_LOG|Node 5|Round 3|Sending auth|PID=e7d305|ts_1=2
+40784184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=e7d305|ts_1=2
+40784184 2 DESYNC_LOG|AS 2|PID MATCH on PID_old for device 5|DESYNC RECOVERY PATH
+40784184 2 DESYNC_LOG|AS 2|RECOVERY|Device stuck on OLD state ﾀﾔ AS using m_old to verify
+40784184 2 DESYNC_LOG|AS 2|RECOVERY|Using m_old=3ba622... for device 5
+40784184 2 DESYNC_LOG|AS 2|Device 5 AUTHENTICATED|membership OK|use_old=1
+40784184 2 DESYNC_LOG|AS 2|ROTATING state for device 5
+40784184 2 DESYNC_LOG|AS 2|  Before: PID_curr=76cbe7, PID_old=e7d305, pid_old_valid=1
+40784184 2 DESYNC_LOG|AS 2|  After:  PID_curr=65f3c5 (NEW), PID_old=76cbe7 (BACKUP), pid_old_valid=1
+40784184 2 DESYNC_LOG|AS 2|Energest|cpu_s=40.548184|energy_j=2.504953
+40803728 5 DESYNC_LOG|Node 5|Round 3|Auth OK|New PID=65f3c5|SYNCED
+40824360 1 DESYNC_LOG|GW|Data rejected ﾀﾔ PID 65f3c5 not found
+40854472 5 DESYNC_LOG|Node 5|Round 3|Data confirmed by GW
+40854472 5 DESYNC_LOG|Node 5|Round 3|RESULT: RECOVERY SUCCESSFUL ﾀﾔ re-synced via dual-state
+40871632 1 DESYNC_LOG|GW|Token stored for device 5|PID=65f3c5
+40899000 3 
+40899000 3 DESYNC_LOG|Node 3|========================================
+40899000 3 DESYNC_LOG|Node 3|Round 4|POST-RECOVERY NORMAL AUTH
+40899000 3 DESYNC_LOG|Node 3|========================================
+40899000 3 DESYNC_LOG|Node 3|Round 4|Sending auth|PID=c7a6e9|ts_1=3
+41077184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=c7a6e9|ts_1=3
+41077184 2 DESYNC_LOG|AS 2|PID MATCH on PID_curr for device 3|NORMAL PATH
+41077184 2 DESYNC_LOG|AS 2|Using m_curr=caeb44... for device 3
+41077184 2 DESYNC_LOG|AS 2|Device 3 AUTHENTICATED|membership OK|use_old=0
+41077184 2 DESYNC_LOG|AS 2|ROTATING state for device 3
+41077184 2 DESYNC_LOG|AS 2|  Before: PID_curr=c7a6e9, PID_old=d001f4, pid_old_valid=1
+41077184 2 DESYNC_LOG|AS 2|  After:  PID_curr=bee06b (NEW), PID_old=c7a6e9 (BACKUP), pid_old_valid=1
+41077184 2 DESYNC_LOG|AS 2|Energest|cpu_s=40.841184|energy_j=2.522987
+41113912 3 DESYNC_LOG|Node 3|Round 4|Auth OK|New PID=bee06b|SYNCED
+41121272 1 DESYNC_LOG|GW|Data rejected ﾀﾔ PID bee06b not found
+41128472 3 DESYNC_LOG|Node 3|Round 4|Data confirmed by GW
+41128472 3 DESYNC_LOG|Node 3|Round 4|RESULT: SUCCESS ﾀﾔ system fully recovered
+41128472 3 
+41128472 3 DESYNC_LOG|Node 3|=== DESYNC DEMONSTRATION COMPLETE ===
+41142632 1 DESYNC_LOG|GW|Token stored for device 3|PID=bee06b
+45348000 4 
+45348000 4 DESYNC_LOG|Node 4|========================================
+45348000 4 DESYNC_LOG|Node 4|Round 4|POST-RECOVERY NORMAL AUTH
+45348000 4 DESYNC_LOG|Node 4|========================================
+45348000 4 DESYNC_LOG|Node 4|Round 4|Sending auth|PID=920f4e|ts_1=3
+45423184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=920f4e|ts_1=3
+45423184 2 DESYNC_LOG|AS 2|PID MATCH on PID_curr for device 4|NORMAL PATH
+45423184 2 DESYNC_LOG|AS 2|Using m_curr=5ccea1... for device 4
+45423184 2 DESYNC_LOG|AS 2|Device 4 AUTHENTICATED|membership OK|use_old=0
+45423184 2 DESYNC_LOG|AS 2|ROTATING state for device 4
+45423184 2 DESYNC_LOG|AS 2|  Before: PID_curr=920f4e, PID_old=8e5757, pid_old_valid=1
+45423184 2 DESYNC_LOG|AS 2|  After:  PID_curr=6e16bf (NEW), PID_old=920f4e (BACKUP), pid_old_valid=1
+45423184 2 DESYNC_LOG|AS 2|Energest|cpu_s=45.187184|energy_j=2.791497
+45468880 4 DESYNC_LOG|Node 4|Round 4|Auth OK|New PID=6e16bf|SYNCED
+45497360 1 DESYNC_LOG|GW|Data rejected ﾀﾔ PID 6e16bf not found
+45513472 4 DESYNC_LOG|Node 4|Round 4|Data confirmed by GW
+45513472 4 DESYNC_LOG|Node 4|Round 4|RESULT: SUCCESS ﾀﾔ system fully recovered
+45513472 4 
+45513472 4 DESYNC_LOG|Node 4|=== DESYNC DEMONSTRATION COMPLETE ===
+45527632 1 DESYNC_LOG|GW|Token stored for device 4|PID=6e16bf
+50715000 5 
+50715000 5 DESYNC_LOG|Node 5|========================================
+50715000 5 DESYNC_LOG|Node 5|Round 4|POST-RECOVERY NORMAL AUTH
+50715000 5 DESYNC_LOG|Node 5|========================================
+50715000 5 DESYNC_LOG|Node 5|Round 4|Sending auth|PID=65f3c5|ts_1=3
+50822184 2 DESYNC_LOG|AS 2|Auth request received|recv_PID=65f3c5|ts_1=3
+50822184 2 DESYNC_LOG|AS 2|PID MATCH on PID_curr for device 5|NORMAL PATH
+50822184 2 DESYNC_LOG|AS 2|Using m_curr=d106a0... for device 5
+50822184 2 DESYNC_LOG|AS 2|Device 5 AUTHENTICATED|membership OK|use_old=0
+50822184 2 DESYNC_LOG|AS 2|ROTATING state for device 5
+50822184 2 DESYNC_LOG|AS 2|  Before: PID_curr=65f3c5, PID_old=76cbe7, pid_old_valid=1
+50822184 2 DESYNC_LOG|AS 2|  After:  PID_curr=db92ce (NEW), PID_old=65f3c5 (BACKUP), pid_old_valid=1
+50822184 2 DESYNC_LOG|AS 2|Energest|cpu_s=50.586184|energy_j=3.125073
+50879880 5 DESYNC_LOG|Node 5|Round 4|Auth OK|New PID=db92ce|SYNCED
+50904360 1 DESYNC_LOG|GW|Data rejected ﾀﾔ PID db92ce not found
+50926632 1 DESYNC_LOG|GW|Token stored for device 5|PID=db92ce
+50947472 5 DESYNC_LOG|Node 5|Round 4|Data confirmed by GW
+50947472 5 DESYNC_LOG|Node 5|Round 4|RESULT: SUCCESS ﾀﾔ system fully recovered
+50947472 5 
+50947472 5 DESYNC_LOG|Node 5|=== DESYNC DEMONSTRATION COMPLETE ===
+TEST OK
+Test ended at simulation time: 900000000
