@@ -17,10 +17,10 @@
     <motetype>
       org.contikios.cooja.contikimote.ContikiMoteType
       <description>GW Node (RPL root + RA)</description>
-      <source>[CONTIKI_DIR]/examples/laaka/gw-node.c</source>
+      <source>[CONTIKI_DIR]/examples/myproject/gw-node.c</source>
       <commands>$(MAKE) TARGET=cooja clean
 $(MAKE) -j$(CPUS) gw-node.cooja TARGET=cooja</commands>
-      <firmware>[CONTIKI_DIR]/examples/laaka/build/cooja/gw-node.cooja</firmware>
+      <firmware>[CONTIKI_DIR]/examples/myproject/build/cooja/gw-node.cooja</firmware>
       <moteinterface>org.contikios.cooja.interfaces.Position</moteinterface>
       <moteinterface>org.contikios.cooja.interfaces.Battery</moteinterface>
       <moteinterface>org.contikios.cooja.contikimote.interfaces.ContikiVib</moteinterface>
@@ -51,10 +51,10 @@ $(MAKE) -j$(CPUS) gw-node.cooja TARGET=cooja</commands>
     <motetype>
       org.contikios.cooja.contikimote.ContikiMoteType
       <description>Fog AS Node</description>
-      <source>[CONTIKI_DIR]/examples/laaka/as-node.c</source>
+      <source>[CONTIKI_DIR]/examples/myproject/as-node.c</source>
       <commands>$(MAKE) TARGET=cooja clean
 $(MAKE) -j$(CPUS) as-node.cooja TARGET=cooja</commands>
-      <firmware>[CONTIKI_DIR]/examples/laaka/build/cooja/as-node.cooja</firmware>
+      <firmware>[CONTIKI_DIR]/examples/myproject/build/cooja/as-node.cooja</firmware>
       <moteinterface>org.contikios.cooja.interfaces.Position</moteinterface>
       <moteinterface>org.contikios.cooja.interfaces.Battery</moteinterface>
       <moteinterface>org.contikios.cooja.contikimote.interfaces.ContikiVib</moteinterface>
@@ -865,10 +865,10 @@ $(MAKE) -j$(CPUS) as-node.cooja TARGET=cooja</commands>
     <motetype>
       org.contikios.cooja.contikimote.ContikiMoteType
       <description>Device Node (IoT Device)</description>
-      <source>[CONTIKI_DIR]/examples/laaka/device-node.c</source>
+      <source>[CONTIKI_DIR]/examples/myproject/device-node.c</source>
       <commands>$(MAKE) TARGET=cooja clean
 $(MAKE) -j$(CPUS) device-node.cooja TARGET=cooja</commands>
-      <firmware>[CONTIKI_DIR]/examples/laaka/build/cooja/device-node.cooja</firmware>
+      <firmware>[CONTIKI_DIR]/examples/myproject/build/cooja/device-node.cooja</firmware>
       <moteinterface>org.contikios.cooja.interfaces.Position</moteinterface>
       <moteinterface>org.contikios.cooja.interfaces.Battery</moteinterface>
       <moteinterface>org.contikios.cooja.contikimote.interfaces.ContikiVib</moteinterface>

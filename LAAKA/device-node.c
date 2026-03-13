@@ -96,6 +96,15 @@ static uint8_t count = 0;
 double cpu_reg_snap, energy_reg_snap;
 double cpu_auth_snap, energy_auth_snap;
 
+/* Enrollment energy measurement */
+double cpu_enroll_before, energy_enroll_before;
+double cpu_enroll_after, energy_enroll_after;static uint8_t enroll_pending = 0;  /* deferred ENROLL_ENERGY print flag */
+static uint8_t keyex_pending = 0;  /* deferred KEYEX_ENERGY print flag */
+static uint8_t auth_pending = 0;   /* deferred AUTH_ENERGY print flag */
+/* Key-exchange energy measurement */
+double cpu_keyex_before, energy_keyex_before;
+double cpu_keyex_after, energy_keyex_after;
+
 static void print_energest_stats(double *seconds_cpu, double *total_energy)
 {
     energest_flush();
@@ -346,11 +355,37 @@ PROCESS_THREAD(device_node, ev, data)
 
         if (etimer_expired(&et)) {
 
+            /* Deferred energy metric prints */
+            if (enroll_pending) {
+                printf("ENROLL_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
+                       IDd,
+                       cpu_enroll_after - cpu_enroll_before,
+                       energy_enroll_after - energy_enroll_before);
+                enroll_pending = 0;
+            }
+            if (keyex_pending) {
+                printf("KEYEX_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
+                       IDd,
+                       cpu_keyex_after - cpu_keyex_before,
+                       energy_keyex_after - energy_keyex_before);
+                keyex_pending = 0;
+            }
+            if (auth_pending) {
+                printf("AUTH_ENERGY|%u|cpu_ticks=0|energy_ticks=0|cpu_s=%f|energy_j=%f\n",
+                       IDd,
+                       cpu_auth_snap - cpu_reg_snap,
+                       energy_auth_snap - energy_reg_snap);
+                auth_pending = 0;
+            }
+
             /* ============================================================
              * REGISTRATION — reg == 0
              * Send Ad to RA, receive (TIDd, TIDf, Af, Bk)
              * ============================================================ */
             if (reg == 0) {
+                /* === ENROLL BEFORE snapshot === */
+                print_energest_stats(&cpu_enroll_before, &energy_enroll_before);
+
                 uint8_t req_payload[REG_REQ_LEN];
                 memset(req_payload, 0, REG_REQ_LEN);
                 req_payload[0] = IDd;
@@ -362,6 +397,10 @@ PROCESS_THREAD(device_node, ev, data)
                 coap_set_payload(request, req_payload, REG_REQ_LEN);
                 printf("Node %u: Sending registration to RA\n", IDd);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_reg_handler);
+
+                /* === ENROLL AFTER snapshot === */
+                print_energest_stats(&cpu_enroll_after, &energy_enroll_after);
+                enroll_pending = 1;
 
                 reg = 1;
 
@@ -428,6 +467,9 @@ PROCESS_THREAD(device_node, ev, data)
                 coap_set_header_uri_path(request, "test/auth");
                 coap_set_payload(request, auth_req, AUTH_REQ_LEN);
                 printf("Node %u: Sending AuthReq to fog server\n", IDd);
+                /* === KEYEX BEFORE snapshot (auth+ack = key exchange) === */
+                print_energest_stats(&cpu_keyex_before, &energy_keyex_before);
+
                 COAP_BLOCKING_REQUEST(&ep_gw, request, client_auth_handler);
 
                 if (auth_ok) {
@@ -450,6 +492,10 @@ PROCESS_THREAD(device_node, ev, data)
                     printf("Node %u: Sending Ack\n", IDd);
                     COAP_BLOCKING_REQUEST(&ep_gw, request, client_ack_handler);
 
+                    /* === KEYEX AFTER snapshot === */
+                    print_energest_stats(&cpu_keyex_after, &energy_keyex_after);
+                    keyex_pending = 1;
+
                     /* Data transmission: TIDd_new(20) + enc_data(16) = 36 B */
                     uint8_t data_pkt[DATA_MSG_LEN];
                     memcpy(data_pkt, TIDd_new, HASH_LEN);
@@ -471,15 +517,11 @@ PROCESS_THREAD(device_node, ev, data)
                     COAP_BLOCKING_REQUEST(&ep_gw, request, client_data_handler);
 
                     count++;
+
+                    /* === AFTER snapshot === */
+                    print_energest_stats(&cpu_auth_snap, &energy_auth_snap);
+                    auth_pending = 1;
                 }
-
-                /* === AFTER snapshot === */
-                print_energest_stats(&cpu_auth_snap, &energy_auth_snap);
-
-                printf("AUTH_ENERGY|%u|cpu_ticks=0|energy_ticks=0|cpu_s=%f|energy_j=%f\n",
-                       IDd,
-                       cpu_auth_snap - cpu_reg_snap,
-                       energy_auth_snap - energy_reg_snap);
 
             /* ============================================================
              * DATA LOOP — count >= 1

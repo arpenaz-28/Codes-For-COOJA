@@ -1,0 +1,432 @@
+﻿File "/mnt/c/ANUP/MTP/Proposing/Codes For COOJA/proverif2.05/Scheme_Registration_Phase.pv", line 299, character 9:
+Warning: identifier g rebound.
+Process 0 (that is, the initial process):
+{1}new id_AS: bitstring;
+{2}new id_GW: bitstring;
+{3}new id_D: bitstring;
+{4}new K_GW_AS: SymmetricKey;
+{5}new g_1: pkey;
+(
+    {6}let id_AS_1: bitstring = id_AS in
+    {7}let id_GW_1: bitstring = id_GW in
+    {8}let g_2: pkey = g_1 in
+    {9}new c_AS_D: bitstring;
+    {10}new y_D: bitstring;
+    {11}new id_D_1: bitstring;
+    {12}new m_new: bitstring;
+    {13}new ts_1: bitstring;
+    {14}out(c_priv, id_D_1);
+    {15}event NodeEnrollmentStarts(id_D_1,id_AS_1);
+    {16}in(c_priv, cc_D: bitstring);
+    {17}let c_D: bitstring = getfirst(cc_D) in
+    {18}let m_D: bitstring = getsecond(cc_D) in
+    {19}let R_D: bitstring = PUF_D(c_D) in
+    {20}let cy_D: bitstring = concat(concat(y_D,R_D),c_AS_D) in
+    {21}out(c_priv, cy_D);
+    {22}in(c_priv, idack: bitstring);
+    {23}event NodeEnrolled(id_D_1,id_AS_1);
+    {24}let R_D_1: bitstring = PUF_D(c_D) in
+    {25}let Y_D_H: bitstring = hash(concat(concat(R_D_1,m_D),ts_1)) in
+    {26}let A_R_D_H: bitstring = hash(concat(concat(R_D_1,m_D),ts_1)) in
+    {27}let A_R_Y_D_H: bitstring = xor(Y_D_H,A_R_D_H) in
+    {28}let A_Y_D_H: bitstring = hash(concat(concat(concat(concat(concat(Y_D_H,id_D_1),id_AS_1),R_D),ts_1),m_D)) in
+    {29}let A_M_Y_D_H: bitstring = xor(m_new,A_Y_D_H) in
+    {30}out(c_pub, concat(concat(concat(id_D_1,A_R_Y_D_H),A_M_Y_D_H),ts_1));
+    {31}event NodeAuthenticationStarts(id_D_1,id_AS_1);
+    {32}event AuthenticationStartsFull(id_D_1,id_AS_1,R_D_1,m_D);
+    {33}in(c_pub, m_H: bitstring);
+    {34}let m_new_1: bitstring = xorRev(m_H,hash(concat(concat(concat(concat(Y_D_H,m_D),R_D_1),id_AS_1),id_D_1))) in
+    {35}let K_GW_D: bitstring = hash(concat(R_D_1,m_new_1)) in
+    {36}event NodeAuthenticated(id_D_1,id_AS_1);
+    {37}event AuthenticationEndsFull(id_D_1,id_AS_1,R_D_1,m_D);
+    {38}new a: skey;
+    {39}let A: pkey = exp(g_2,a) in
+    {40}let A': bitstring = pk2bs(A) in
+    {41}let K_GW_D': SymmetricKey = bs_to_key(K_GW_D) in
+    {42}out(c_pub, symmetricEncrypt(A',K_GW_D'));
+    {43}event KeyUpdateStarts(id_D_1,id_GW_1);
+    {44}in(c_pub, B': bitstring);
+    {45}let B'': bitstring = symmetricDecrypt(B',K_GW_D') in
+    {46}let B: pkey = bs2pk(B'') in
+    {47}let Ka: pkey = exp(B,a) in
+    {48}let K_GW_D_update: key = KDF(Ka) in
+    {49}let K_GW_D_update': bitstring = k_to_bs(K_GW_D_update) in
+    {50}event KeyUpdateEnds(id_D_1,id_GW_1);
+    {51}out(c_pub, SharedEncrypt(SecretK_GW'_N_N,K_GW_D));
+    {52}out(c_pub, SharedEncrypt(SecretK_GW'_N_Update,K_GW_D_update'))
+) | (
+    {53}let K_GW_AS_1: SymmetricKey = K_GW_AS in
+    {54}new id_AS_2: bitstring;
+    {55}new c_D_1: bitstring;
+    {56}new m_D_1: bitstring;
+    {57}new T_Acc: bitstring;
+    {58}new ack1: bitstring;
+    {59}in(c_priv, id_D_2: bitstring);
+    {60}let cc_D_1: bitstring = concat(c_D_1,m_D_1) in
+    {61}out(c_priv, cc_D_1);
+    {62}in(c_priv, cy_D_1: bitstring);
+    {63}event AuthenticatorStarts(id_AS_2,id_D_2);
+    {64}let yr_AS_D: bitstring = getfirst(cy_D_1) in
+    {65}let c_AS_D_1: bitstring = getsecond(cy_D_1) in
+    {66}let y_D_1: bitstring = getfirst(yr_AS_D) in
+    {67}let R_D_2: bitstring = getsecond(yr_AS_D) in
+    {68}let R_AS_D: bitstring = PUF_AS(c_AS_D_1) in
+    {69}let Y_D_H_1: bitstring = hash(y_D_1) in
+    {70}let T_Acc_new: bitstring = acc(T_Acc,Y_D_H_1) in
+    {71}let Phi_AS_D: bitstring = xor(R_AS_D,R_D_2) in
+    {72}new ack: bitstring;
+    {73}out(c_priv, concat(id_AS_2,ack));
+    {74}in(c_pub, idey_D: bitstring);
+    {75}let id_D_3: bitstring = getfirst(getfirst(getfirst(idey_D))) in
+    {76}let A_R_Y_D_H_1: bitstring = getfirst(getfirst(getsecond(idey_D))) in
+    {77}let A_M_Y_D_H_1: bitstring = getfirst(getsecond(idey_D)) in
+    {78}let ts: bitstring = getsecond(idey_D) in
+    {79}let R_AS_D_1: bitstring = PUF_AS(c_AS_D_1) in
+    {80}let R_D_3: bitstring = xorRev(Phi_AS_D,R_AS_D_1) in
+    {81}let A_R_D_H_1: bitstring = hash(concat(concat(R_D_3,m_D_1),ts)) in
+    {82}let Y_D_H_2: bitstring = xorRev(A_R_Y_D_H_1,A_R_D_H_1) in
+    {83}if (T_Acc_new = accRev(T_Acc_new,Y_D_H_2)) then
+    {84}let A_Y_D_H_1: bitstring = hash(concat(concat(concat(concat(concat(Y_D_H_2,id_D_3),id_AS_2),R_D_3),ts),m_D_1)) in
+    {85}let m_new_2: bitstring = xorRev(A_M_Y_D_H_1,A_Y_D_H_1) in
+    {86}let K_GW_D_1: bitstring = hash(concat(R_D_3,m_new_2)) in
+    {87}out(c_pub, symmetricEncrypt(concat(concat(id_AS_2,id_D_3),K_GW_D_1),K_GW_AS_1));
+    {88}out(c_pub, xor(m_new_2,hash(concat(concat(concat(concat(Y_D_H_2,m_D_1),R_D_3),id_AS_2),id_D_3))));
+    {89}event AuthenticatorEnds(id_AS_2,id_D_2);
+    {90}out(c_pub, SharedEncrypt(SecretK_GW'_N_Ath,K_GW_D_1))
+) | (
+    {91}let K_GW_AS_2: SymmetricKey = K_GW_AS in
+    {92}let g_3: pkey = g_1 in
+    {93}let id_D_4: bitstring = id_D in
+    {94}new b: skey;
+    {95}new id_GW_2: bitstring;
+    {96}in(c_pub, auth_token_D: bitstring);
+    {97}let K_ex: bitstring = symmetricDecrypt(auth_token_D,K_GW_AS_2) in
+    {98}let K_GW_D_2: bitstring = getsecond(K_ex) in
+    {99}let K_GW_D'_1: SymmetricKey = bs_to_key(K_GW_D_2) in
+    {100}let B_1: pkey = exp(g_3,b) in
+    {101}let B'_1: bitstring = pk2bs(B_1) in
+    {102}out(c_pub, symmetricEncrypt(B'_1,K_GW_D'_1));
+    {103}event KeyUpdateStarts(id_GW_2,id_D_4);
+    {104}in(c_pub, A_1: bitstring);
+    {105}let A'_1: pkey = bs2pk(symmetricDecrypt(A_1,K_GW_D'_1)) in
+    {106}let Kb: pkey = exp(A'_1,b) in
+    {107}let K_GW_D_update_1: key = KDF(Kb) in
+    {108}let K_GW_D_update'_1: bitstring = k_to_bs(K_GW_D_update_1) in
+    {109}event KeyUpdateEnds(id_GW_2,id_D_4);
+    {110}out(c_pub, SharedEncrypt(SecretK_GW'_N_Update,K_GW_D_update'_1))
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new id_AS: bitstring;
+{2}new id_GW: bitstring;
+{3}new id_D: bitstring;
+{4}new K_GW_AS: SymmetricKey;
+{5}new g_1: pkey;
+(
+    {9}new c_AS_D: bitstring;
+    {10}new y_D: bitstring;
+    {11}new id_D_1: bitstring;
+    {12}new m_new: bitstring;
+    {13}new ts_1: bitstring;
+    {14}out(c_priv, id_D_1);
+    {6}let id_AS_1: bitstring = id_AS in
+    {15}event NodeEnrollmentStarts(id_D_1,id_AS_1);
+    {16}in(c_priv, cc_D: bitstring);
+    {17}let c_D: bitstring = getfirst(cc_D) in
+    {18}let m_D: bitstring = getsecond(cc_D) in
+    {19}let R_D: bitstring = PUF_D(c_D) in
+    {20}let cy_D: bitstring = concat(concat(y_D,R_D),c_AS_D) in
+    {21}out(c_priv, cy_D);
+    {22}in(c_priv, idack: bitstring);
+    {23}event NodeEnrolled(id_D_1,id_AS_1);
+    {24}let R_D_1: bitstring = PUF_D(c_D) in
+    {25}let Y_D_H: bitstring = hash(concat(concat(R_D_1,m_D),ts_1)) in
+    {28}let A_Y_D_H: bitstring = hash(concat(concat(concat(concat(concat(Y_D_H,id_D_1),id_AS_1),R_D),ts_1),m_D)) in
+    {29}let A_M_Y_D_H: bitstring = xor(m_new,A_Y_D_H) in
+    {26}let A_R_D_H: bitstring = hash(concat(concat(R_D_1,m_D),ts_1)) in
+    {27}let A_R_Y_D_H: bitstring = xor(Y_D_H,A_R_D_H) in
+    {30}out(c_pub, concat(concat(concat(id_D_1,A_R_Y_D_H),A_M_Y_D_H),ts_1));
+    {31}event NodeAuthenticationStarts(id_D_1,id_AS_1);
+    {32}event AuthenticationStartsFull(id_D_1,id_AS_1,R_D_1,m_D);
+    {33}in(c_pub, m_H: bitstring);
+    {34}let m_new_1: bitstring = xorRev(m_H,hash(concat(concat(concat(concat(Y_D_H,m_D),R_D_1),id_AS_1),id_D_1))) in
+    {36}event NodeAuthenticated(id_D_1,id_AS_1);
+    {37}event AuthenticationEndsFull(id_D_1,id_AS_1,R_D_1,m_D);
+    {38}new a: skey;
+    {35}let K_GW_D: bitstring = hash(concat(R_D_1,m_new_1)) in
+    {41}let K_GW_D': SymmetricKey = bs_to_key(K_GW_D) in
+    {8}let g_2: pkey = g_1 in
+    {39}let A: pkey = exp(g_2,a) in
+    {40}let A': bitstring = pk2bs(A) in
+    {42}out(c_pub, symmetricEncrypt(A',K_GW_D'));
+    {7}let id_GW_1: bitstring = id_GW in
+    {43}event KeyUpdateStarts(id_D_1,id_GW_1);
+    {44}in(c_pub, B': bitstring);
+    {45}let B'': bitstring = symmetricDecrypt(B',K_GW_D') in
+    {50}event KeyUpdateEnds(id_D_1,id_GW_1);
+    {51}out(c_pub, SharedEncrypt(SecretK_GW'_N_N,K_GW_D));
+    {46}let B: pkey = bs2pk(B'') in
+    {47}let Ka: pkey = exp(B,a) in
+    {48}let K_GW_D_update: key = KDF(Ka) in
+    {49}let K_GW_D_update': bitstring = k_to_bs(K_GW_D_update) in
+    {52}out(c_pub, SharedEncrypt(SecretK_GW'_N_Update,K_GW_D_update'))
+) | (
+    {54}new id_AS_2: bitstring;
+    {55}new c_D_1: bitstring;
+    {56}new m_D_1: bitstring;
+    {57}new T_Acc: bitstring;
+    {58}new ack1: bitstring;
+    {59}in(c_priv, id_D_2: bitstring);
+    {60}let cc_D_1: bitstring = concat(c_D_1,m_D_1) in
+    {61}out(c_priv, cc_D_1);
+    {62}in(c_priv, cy_D_1: bitstring);
+    {63}event AuthenticatorStarts(id_AS_2,id_D_2);
+    {64}let yr_AS_D: bitstring = getfirst(cy_D_1) in
+    {65}let c_AS_D_1: bitstring = getsecond(cy_D_1) in
+    {66}let y_D_1: bitstring = getfirst(yr_AS_D) in
+    {67}let R_D_2: bitstring = getsecond(yr_AS_D) in
+    {72}new ack: bitstring;
+    {73}out(c_priv, concat(id_AS_2,ack));
+    {74}in(c_pub, idey_D: bitstring);
+    {75}let id_D_3: bitstring = getfirst(getfirst(getfirst(idey_D))) in
+    {76}let A_R_Y_D_H_1: bitstring = getfirst(getfirst(getsecond(idey_D))) in
+    {77}let A_M_Y_D_H_1: bitstring = getfirst(getsecond(idey_D)) in
+    {78}let ts: bitstring = getsecond(idey_D) in
+    {79}let R_AS_D_1: bitstring = PUF_AS(c_AS_D_1) in
+    {68}let R_AS_D: bitstring = PUF_AS(c_AS_D_1) in
+    {71}let Phi_AS_D: bitstring = xor(R_AS_D,R_D_2) in
+    {80}let R_D_3: bitstring = xorRev(Phi_AS_D,R_AS_D_1) in
+    {81}let A_R_D_H_1: bitstring = hash(concat(concat(R_D_3,m_D_1),ts)) in
+    {82}let Y_D_H_2: bitstring = xorRev(A_R_Y_D_H_1,A_R_D_H_1) in
+    {69}let Y_D_H_1: bitstring = hash(y_D_1) in
+    {70}let T_Acc_new: bitstring = acc(T_Acc,Y_D_H_1) in
+    {83}if (T_Acc_new = accRev(T_Acc_new,Y_D_H_2)) then
+    {84}let A_Y_D_H_1: bitstring = hash(concat(concat(concat(concat(concat(Y_D_H_2,id_D_3),id_AS_2),R_D_3),ts),m_D_1)) in
+    {85}let m_new_2: bitstring = xorRev(A_M_Y_D_H_1,A_Y_D_H_1) in
+    {86}let K_GW_D_1: bitstring = hash(concat(R_D_3,m_new_2)) in
+    {53}let K_GW_AS_1: SymmetricKey = K_GW_AS in
+    {87}out(c_pub, symmetricEncrypt(concat(concat(id_AS_2,id_D_3),K_GW_D_1),K_GW_AS_1));
+    {88}out(c_pub, xor(m_new_2,hash(concat(concat(concat(concat(Y_D_H_2,m_D_1),R_D_3),id_AS_2),id_D_3))));
+    {89}event AuthenticatorEnds(id_AS_2,id_D_2);
+    {90}out(c_pub, SharedEncrypt(SecretK_GW'_N_Ath,K_GW_D_1))
+) | (
+    {94}new b: skey;
+    {95}new id_GW_2: bitstring;
+    {96}in(c_pub, auth_token_D: bitstring);
+    {91}let K_GW_AS_2: SymmetricKey = K_GW_AS in
+    {97}let K_ex: bitstring = symmetricDecrypt(auth_token_D,K_GW_AS_2) in
+    {98}let K_GW_D_2: bitstring = getsecond(K_ex) in
+    {92}let g_3: pkey = g_1 in
+    {100}let B_1: pkey = exp(g_3,b) in
+    {101}let B'_1: bitstring = pk2bs(B_1) in
+    {99}let K_GW_D'_1: SymmetricKey = bs_to_key(K_GW_D_2) in
+    {102}out(c_pub, symmetricEncrypt(B'_1,K_GW_D'_1));
+    {93}let id_D_4: bitstring = id_D in
+    {103}event KeyUpdateStarts(id_GW_2,id_D_4);
+    {104}in(c_pub, A_1: bitstring);
+    {105}let A'_1: pkey = bs2pk(symmetricDecrypt(A_1,K_GW_D'_1)) in
+    {109}event KeyUpdateEnds(id_GW_2,id_D_4);
+    {106}let Kb: pkey = exp(A'_1,b) in
+    {107}let K_GW_D_update_1: key = KDF(Kb) in
+    {108}let K_GW_D_update'_1: bitstring = k_to_bs(K_GW_D_update_1) in
+    {110}out(c_pub, SharedEncrypt(SecretK_GW'_N_Update,K_GW_D_update'_1))
+)
+
+-- Query inj-event(NodeEnrolled(id_N,id_Ath)) ==> inj-event(NodeEnrollmentStarts(id_N,id_Ath)) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+select mess(c_priv[],id_D_5)/-5000
+Starting query inj-event(NodeEnrolled(id_N,id_Ath)) ==> inj-event(NodeEnrollmentStarts(id_N,id_Ath))
+goal reachable: b-event(@p_act(@occ22[],id_D_1[])) && mess(c_priv[],concat(m,m_D_2)) && b-event(@p_act(@occ16[],concat(m,m_D_2))) && b-inj-event(NodeEnrollmentStarts(id_D_1[],id_AS[]),@occ15[]) -> inj-event(NodeEnrolled(id_D_1[],id_AS[]),@occ23_1)
+The 1st, 3rd, 4th hypotheses occur strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+@occ23_1 = @occ23[idack = id_D_1[],cc_D = concat(m,m_D_2)]
+goal reachable: b-event(@p_act(@occ22[],concat(c_D_1[],m_D_1[]))) && mess(c_priv[],concat(m,m_D_2)) && b-event(@p_act(@occ16[],concat(m,m_D_2))) && b-inj-event(NodeEnrollmentStarts(id_D_1[],id_AS[]),@occ15[]) -> inj-event(NodeEnrolled(id_D_1[],id_AS[]),@occ23_1)
+The 1st, 3rd, 4th hypotheses occur strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+@occ23_1 = @occ23[idack = concat(c_D_1[],m_D_1[]),cc_D = concat(m,m_D_2)]
+goal reachable: mess(c_priv[],id_D_5) && b-event(@p_act(@occ22[],concat(id_AS_2[],ack_1))) && mess(c_priv[],concat(m,m_D_2)) && b-event(@p_act(@occ16[],concat(m,m_D_2))) && b-inj-event(NodeEnrollmentStarts(id_D_1[],id_AS[]),@occ15[]) -> inj-event(NodeEnrolled(id_D_1[],id_AS[]),@occ23_1)
+The 1st, 3rd hypotheses occur before the conclusion.
+The 2nd, 4th, 5th hypotheses occur strictly before the conclusion.
+Abbreviations:
+ack_1 = ack[cy_D_1 = concat(concat(y_D[],PUF_D(m)),c_AS_D[]),id_D_2 = id_D_5]
+@occ23_1 = @occ23[idack = concat(id_AS_2[],ack_1),cc_D = concat(m,m_D_2)]
+goal reachable: b-event(@p_act(@occ22[],concat(concat(y_D[],PUF_D(m)),c_AS_D[]))) && mess(c_priv[],concat(m,m_D_2)) && b-event(@p_act(@occ16[],concat(m,m_D_2))) && b-inj-event(NodeEnrollmentStarts(id_D_1[],id_AS[]),@occ15[]) -> inj-event(NodeEnrolled(id_D_1[],id_AS[]),@occ23_1)
+The 1st, 3rd, 4th hypotheses occur strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+@occ23_1 = @occ23[idack = concat(concat(y_D[],PUF_D(m)),c_AS_D[]),cc_D = concat(m,m_D_2)]
+RESULT inj-event(NodeEnrolled(id_N,id_Ath)) ==> inj-event(NodeEnrollmentStarts(id_N,id_Ath)) is true.
+-- Query inj-event(NodeAuthenticated(id_N,id_Ath)) ==> inj-event(NodeAuthenticationStarts(id_N,id_Ath)) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+select mess(c_priv[],id_D_5)/-5000
+Starting query inj-event(NodeAuthenticated(id_N,id_Ath)) ==> inj-event(NodeAuthenticationStarts(id_N,id_Ath))
+RESULT inj-event(NodeAuthenticated(id_N,id_Ath)) ==> inj-event(NodeAuthenticationStarts(id_N,id_Ath)) is true.
+-- Query inj-event(AuthenticatorEnds(id_Ath,id_N)) ==> inj-event(AuthenticatorStarts(id_Ath,id_N)) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+select mess(c_priv[],id_D_5)/-5000
+Starting query inj-event(AuthenticatorEnds(id_Ath,id_N)) ==> inj-event(AuthenticatorStarts(id_Ath,id_N))
+RESULT inj-event(AuthenticatorEnds(id_Ath,id_N)) ==> inj-event(AuthenticatorStarts(id_Ath,id_N)) is true.
+-- Query inj-event(AuthenticationEndsFull(id_N,id_Ath,R_N_1,m_N)) ==> inj-event(AuthenticationStartsFull(id_N,id_Ath,R_N_1,m_N)) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+select mess(c_priv[],id_D_5)/-5000
+Starting query inj-event(AuthenticationEndsFull(id_N,id_Ath,R_N_1,m_N)) ==> inj-event(AuthenticationStartsFull(id_N,id_Ath,R_N_1,m_N))
+RESULT inj-event(AuthenticationEndsFull(id_N,id_Ath,R_N_1,m_N)) ==> inj-event(AuthenticationStartsFull(id_N,id_Ath,R_N_1,m_N)) is true.
+-- Query inj-event(KeyUpdateEnds(id_N,id_GW')) ==> inj-event(KeyUpdateStarts(id_N,id_GW')) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+select mess(c_priv[],id_D_5)/-5000
+Starting query inj-event(KeyUpdateEnds(id_N,id_GW')) ==> inj-event(KeyUpdateStarts(id_N,id_GW'))
+RESULT inj-event(KeyUpdateEnds(id_N,id_GW')) ==> inj-event(KeyUpdateStarts(id_N,id_GW')) is true.
+-- Query not attacker(SecretK_GW'_N_N[]) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+select mess(c_priv[],id_D_5)/-5000
+Starting query not attacker(SecretK_GW'_N_N[])
+RESULT not attacker(SecretK_GW'_N_N[]) is true.
+-- Query not attacker(SecretK_GW'_N_Ath[]) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+select mess(c_priv[],id_D_5)/-5000
+Starting query not attacker(SecretK_GW'_N_Ath[])
+RESULT not attacker(SecretK_GW'_N_Ath[]) is true.
+-- Query not attacker(SecretK_GW'_N_Update[]) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+select mess(c_priv[],id_D_5)/-5000
+Starting query not attacker(SecretK_GW'_N_Update[])
+RESULT not attacker(SecretK_GW'_N_Update[]) is true.
+-- Weak secret SecretK_GW'_N_N in process 1.
+Translating the process into Horn clauses...
+Termination warning: v Γëá v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v Γëá v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+Termination warning: v Γëá v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v Γëá v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v Γëá v_1 && attacker(v) && attacker_guess(v,v_1) -> bad
+Selecting 1
+Termination warning: v Γëá v_1 && attacker(v) && attacker_guess(v_1,v) -> bad
+Selecting 1
+select mess(c_priv[],id_D_5)/-5000
+200 rules inserted. Base: 198 rules (60 with conclusion selected). Queue: 17 rules.
+400 rules inserted. Base: 395 rules (72 with conclusion selected). Queue: 33 rules.
+RESULT Weak secret SecretK_GW'_N_N is true.
+-- Weak secret SecretK_GW'_N_Ath in process 1.
+Translating the process into Horn clauses...
+Termination warning: v Γëá v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v Γëá v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+Termination warning: v Γëá v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v Γëá v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v Γëá v_1 && attacker(v) && attacker_guess(v,v_1) -> bad
+Selecting 1
+Termination warning: v Γëá v_1 && attacker(v) && attacker_guess(v_1,v) -> bad
+Selecting 1
+select mess(c_priv[],id_D_5)/-5000
+200 rules inserted. Base: 198 rules (60 with conclusion selected). Queue: 17 rules.
+400 rules inserted. Base: 395 rules (72 with conclusion selected). Queue: 33 rules.
+RESULT Weak secret SecretK_GW'_N_Ath is true.
+-- Weak secret SecretK_GW'_N_Update in process 1.
+Translating the process into Horn clauses...
+Termination warning: v Γëá v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v Γëá v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+select mess(c_priv[],concat(m,m_D_2))/-5000
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect id_D_5:bitstring; mess(c_priv[],id_D_5).
+Completing...
+Termination warning: v Γëá v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v Γëá v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v Γëá v_1 && attacker(v) && attacker_guess(v,v_1) -> bad
+Selecting 1
+Termination warning: v Γëá v_1 && attacker(v) && attacker_guess(v_1,v) -> bad
+Selecting 1
+select mess(c_priv[],id_D_5)/-5000
+200 rules inserted. Base: 198 rules (60 with conclusion selected). Queue: 17 rules.
+400 rules inserted. Base: 395 rules (72 with conclusion selected). Queue: 33 rules.
+RESULT Weak secret SecretK_GW'_N_Update is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query inj-event(NodeEnrolled(id_N,id_Ath)) ==> inj-event(NodeEnrollmentStarts(id_N,id_Ath)) is true.
+
+Query inj-event(NodeAuthenticated(id_N,id_Ath)) ==> inj-event(NodeAuthenticationStarts(id_N,id_Ath)) is true.
+
+Query inj-event(AuthenticatorEnds(id_Ath,id_N)) ==> inj-event(AuthenticatorStarts(id_Ath,id_N)) is true.
+
+Query inj-event(AuthenticationEndsFull(id_N,id_Ath,R_N_1,m_N)) ==> inj-event(AuthenticationStartsFull(id_N,id_Ath,R_N_1,m_N)) is true.
+
+Query inj-event(KeyUpdateEnds(id_N,id_GW')) ==> inj-event(KeyUpdateStarts(id_N,id_GW')) is true.
+
+Query not attacker(SecretK_GW'_N_N[]) is true.
+
+Query not attacker(SecretK_GW'_N_Ath[]) is true.
+
+Query not attacker(SecretK_GW'_N_Update[]) is true.
+
+Weak secret SecretK_GW'_N_N is true.
+
+Weak secret SecretK_GW'_N_Ath is true.
+
+Weak secret SecretK_GW'_N_Update is true.
+
+--------------------------------------------------------------
+

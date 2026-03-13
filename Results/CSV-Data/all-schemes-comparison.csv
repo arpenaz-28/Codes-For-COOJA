@@ -1,0 +1,10 @@
+Scheme         , Phase         , Avg_CPU_s, StdDev_CPU_s, Avg_Energy_J, StdDev_Energy_J, CPU_Only_Energy_J, Num_Seeds, Method
+Base Scheme    , Enrollment    ,  0.429037,     0.008830,     0.026465,        0.000545,        0.00231680,         5, 5-seed average
+Base Scheme    , Authentication,  0.226559,     0.005877,     0.013976,        0.000363,        0.00122342,         5, 5-seed average
+Base Scheme    , Key Exchange  ,  0.158792,     0.005589,     0.009789,        0.000346,        0.00085748,         5, 5-seed average
+LAAKA          , Enrollment    ,  0.214873,     0.003942,     0.013249,        0.000244,        0.00116032,         5, 5-seed average
+LAAKA          , Authentication,  0.734873,     0.018364,     0.045312,        0.001135,        0.00396831,         5, 5-seed average
+LAAKA          , Key Exchange  ,  0.554436,     0.015093,     0.034188,        0.000933,        0.00299396,         5, 5-seed average
+Proposed Scheme, Enrollment    ,  0.424157,     0.085498,     0.026160,        0.005283,        0.00229045,         5, 5-seed average
+Proposed Scheme, Authentication,  0.430947,     0.012482,     0.026559,        0.000770,        0.00232711,         5, 5-seed average
+Proposed Scheme, Key Exchange  ,  0.294291,     0.011377,     0.018144,        0.000703,        0.00158917,         5, 5-seed average

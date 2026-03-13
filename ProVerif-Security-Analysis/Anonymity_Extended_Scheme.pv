@@ -1,0 +1,401 @@
+(**************************************************** Declaration segment ************************************************)
+(* ProVerif Formal Security Analysis                                                                                   *)
+(* Protocol: Anonymity-Extended-Base-Scheme                                                                            *)
+(*           PUF-based IoT Authentication with Dual-State Storage, AND-Accumulator, Pseudonym Rotation                *)
+(* Parties:  Device (D), Authentication Server (AS), Gateway (GW)                                                     *)
+(* Phases:   1) Enrollment (Reg-0, Reg-1) — secure private channel                                                   *)
+(*           2) Authentication — public channel                                                                       *)
+(*           3) Key Exchange & Pseudonym Rotation — public channel                                                    *)
+(*           4) Data Transmission — public channel                                                                    *)
+(* Threat Model: Dolev-Yao attacker with full control over public channel                                             *)
+(*   - Can intercept, modify, replay, inject messages on c_pub                                                        *)
+(*   - CANNOT clone PUF, access private channel c_priv, extract device secrets                                        *)
+(**************************************************** Channel ************************************************************)
+free c_pub : channel.
+free c_priv: channel [private].
+(**************************************************** Settings ***********************************************************)
+set predicatesImplementable = nocheck.
+set maxDepth                = 20.
+set maxHyp                  = none.
+set ignoreTypes = true.
+set attacker    = active.
+set keyCompromise = none.
+set simplifyDerivation = true.
+set abbreviateDerivation = true.
+set explainDerivation = true.
+set reconstructTrace = true.
+set unifyDerivation = true.
+set reconstructDerivation = true.
+set displayDerivation = true.
+set traceBacktracking = true.
+set traceDisplay = short.
+set verboseClauses = none.
+set abbreviateClauses = true.
+set removeUselessClausesBeforeDisplay = true.
+set verboseEq = true.
+set verboseRules = false.
+set verboseRedundant = false.
+
+
+(* Secrets to test for confidentiality *)
+free SecretK_GW_D_Device, SecretK_GW_D_AS, SecretK_GW_D_GW: bitstring [private].
+free SecretM_New, SecretR_D, SecretID_D: bitstring [private].
+
+type SymmetricKey.
+
+(**************************************************** Functions *******************************************************)
+
+(* Concatenation and projection *)
+fun concat(bitstring, bitstring): bitstring.
+reduc forall m: bitstring, n: bitstring; getfirst(concat(m, n)) = m.
+reduc forall m: bitstring, n: bitstring; getsecond(concat(m, n)) = n.
+
+(* PUF: physically unclonable functions — attacker cannot evaluate *)
+fun PUF_D(bitstring): bitstring [private].
+fun PUF_AS(bitstring): bitstring [private].
+
+(* AND-Accumulator for membership verification *)
+fun acc(bitstring, bitstring): bitstring.
+reduc forall tag: bitstring, x: bitstring; accRev(acc(tag, x), x) = tag.
+
+(* XOR operation with cancellation *)
+fun xor(bitstring, bitstring): bitstring.
+reduc forall m: bitstring, n: bitstring; xorRev(xor(m, n), m) = n.
+
+(* Symmetric encryption for AES operations *)
+fun generateKey(bitstring): SymmetricKey.
+fun keyToBitstring(SymmetricKey): bitstring [data].
+
+fun symmetricEncrypt(bitstring, SymmetricKey): bitstring.
+fun symmetricDecrypt(bitstring, SymmetricKey): bitstring
+reduc forall key1: SymmetricKey, message1: bitstring;
+      symmetricDecrypt(symmetricEncrypt(message1, key1), key1) = message1.
+
+(* Shared key encryption — used for wrapping secrets in confidentiality tests *)
+fun SharedEncrypt(bitstring, bitstring): bitstring.
+fun SharedDecrypt(bitstring, bitstring): bitstring
+reduc forall key2: bitstring, message2: bitstring;
+      SharedDecrypt(SharedEncrypt(message2, key2), key2) = message2.
+
+(* Hash function (SHA-256) *)
+fun hash(bitstring): bitstring.
+
+(* Pseudonym: PID = H(ID_D || m_D) — modelled as a separate constructor for clarity *)
+fun mkPID(bitstring, bitstring): bitstring.
+
+
+
+(********************************************************** Events ***********************************************************)
+
+(* Enrollment events *)
+event DeviceEnrollmentStarts(bitstring, bitstring).
+event DeviceEnrolled(bitstring, bitstring).
+event ASEnrollmentStarts(bitstring, bitstring).
+event ASEnrollmentCompletes(bitstring, bitstring).
+
+(* Authentication events *)
+event DeviceAuthStarts(bitstring, bitstring).
+event DeviceAuthenticated(bitstring, bitstring).
+event ASAuthStarts(bitstring, bitstring).
+event ASAuthCompletes(bitstring, bitstring).
+
+(* Full authentication with crypto material binding *)
+event AuthStartsFull(bitstring, bitstring, bitstring, bitstring).
+event AuthEndsFull(bitstring, bitstring, bitstring, bitstring).
+
+(* Token forwarding events *)
+event ASTokenSent(bitstring, bitstring).
+event GWTokenReceived(bitstring, bitstring).
+
+(* Data transmission events *)
+event DeviceDataSent(bitstring, bitstring).
+event GWDataAccepted(bitstring, bitstring).
+
+
+(*********************************************************** Queries ************************************************************)
+
+(* ---- Q1: Enrollment — device enrolled only if it started enrollment (injective) ---- *)
+query id_D: bitstring, id_AS: bitstring;
+      inj-event(DeviceEnrolled(id_D, id_AS)) ==> inj-event(DeviceEnrollmentStarts(id_D, id_AS)).
+
+(* ---- Q2: Enrollment — AS completes only if it started (injective) ---- *)
+query id_AS: bitstring, id_D: bitstring;
+      inj-event(ASEnrollmentCompletes(id_AS, id_D)) ==> inj-event(ASEnrollmentStarts(id_AS, id_D)).
+
+(* ---- Q3: Device authentication — device completes auth only if it started (injective) ---- *)
+query id_D: bitstring, id_AS: bitstring;
+      inj-event(DeviceAuthenticated(id_D, id_AS)) ==> inj-event(DeviceAuthStarts(id_D, id_AS)).
+
+(* ---- Q4: AS authentication — AS completes only if it started (injective) ---- *)
+query id_AS: bitstring, id_D: bitstring;
+      inj-event(ASAuthCompletes(id_AS, id_D)) ==> inj-event(ASAuthStarts(id_AS, id_D)).
+
+(* ---- Q5: Full authentication with cryptographic binding (injective, replay resistance) ---- *)
+query id_D: bitstring, id_AS: bitstring, R_D: bitstring, m_D: bitstring;
+      inj-event(AuthEndsFull(id_D, id_AS, R_D, m_D)) ==> inj-event(AuthStartsFull(id_D, id_AS, R_D, m_D)).
+
+(* ---- Q6: GW token reception corresponds to AS token sending ---- *)
+query pid: bitstring, id_AS: bitstring;
+      inj-event(GWTokenReceived(pid, id_AS)) ==> inj-event(ASTokenSent(pid, id_AS)).
+
+(* ---- Q7: End-to-end — GW data acceptance implies device actually sent data ---- *)
+query pid: bitstring, id_D: bitstring;
+      event(GWDataAccepted(pid, id_D)) ==> event(DeviceDataSent(pid, id_D)).
+
+(* ---- Q8-Q10: Session key K_GW_D secrecy from all three parties ---- *)
+query attacker(SecretK_GW_D_Device).
+query attacker(SecretK_GW_D_AS).
+query attacker(SecretK_GW_D_GW).
+
+(* ---- Q11: Rotated session seed m_new is secret ---- *)
+query attacker(SecretM_New).
+
+(* ---- Q12: PUF response R_D is secret ---- *)
+query attacker(SecretR_D).
+
+(* ---- Q13: Device real identity is secret (anonymity/unlinkability) ---- *)
+query attacker(SecretID_D).
+
+(* ---- Q14-Q16: Weak secrecy of session keys (offline guessing resistance) ---- *)
+weaksecret SecretK_GW_D_Device.
+weaksecret SecretK_GW_D_AS.
+weaksecret SecretK_GW_D_GW.
+
+
+
+(************************************************************ Process D (Device) *************************************************************)
+let D(id_AS: bitstring, id_GW: bitstring, K_AS_D: SymmetricKey) =
+    new id_D: bitstring;
+    new y_D: bitstring;
+    new c_AS_D: bitstring;
+    new ts_1: bitstring;
+
+    (* ==== PHASE 1: ENROLLMENT (Reg-0) ==== *)
+    (* Device sends encrypted ID_D to AS over secure channel *)
+    event DeviceEnrollmentStarts(id_D, id_AS);
+    out(c_priv, symmetricEncrypt(id_D, K_AS_D));
+
+    (* Receive challenge c_D and session seed m_D from AS *)
+    in(c_priv, enc_reg0_reply: bitstring);
+    let reg0_reply = symmetricDecrypt(enc_reg0_reply, K_AS_D) in
+    let c_D = getfirst(reg0_reply) in
+    let m_D = getsecond(reg0_reply) in
+
+    (* ==== PHASE 1: ENROLLMENT (Reg-1) ==== *)
+    (* Device computes PUF response R_D = PUF(c_D) *)
+    let R_D = PUF_D(c_D) in
+    (* Device computes Y_dH = H(y_D) — membership value *)
+    let Y_D_H = hash(y_D) in
+
+    (* Send [ID_D | Y_dH | R_D | c_AS_D] encrypted to AS *)
+    let reg1_msg = concat(concat(concat(id_D, Y_D_H), R_D), c_AS_D) in
+    out(c_priv, symmetricEncrypt(reg1_msg, K_AS_D));
+
+    (* Receive enrollment ACK from AS *)
+    in(c_priv, enc_ack: bitstring);
+    let ack_msg = symmetricDecrypt(enc_ack, K_AS_D) in
+    event DeviceEnrolled(id_D, id_AS);
+
+    (* ==== PHASE 2: AUTHENTICATION ==== *)
+    (* Compute current PID = mkPID(ID_D, m_D) *)
+    let auth_PID = mkPID(id_D, m_D) in
+
+    (* Compute obfuscation mask = H(R_D || m_D || PID || ts_1) *)
+    let mask = hash(concat(concat(concat(R_D, m_D), auth_PID), ts_1)) in
+
+    (* Compute Y_ASD = Y_dH XOR mask *)
+    let Y_ASD = xor(Y_D_H, mask) in
+
+    (* Send auth message on public channel: [PID | Y_ASD | ts_1] *)
+    event DeviceAuthStarts(id_D, id_AS);
+    event AuthStartsFull(id_D, id_AS, R_D, m_D);
+    out(c_pub, concat(concat(auth_PID, Y_ASD), ts_1));
+
+    (* ==== PHASE 3: KEY EXCHANGE ==== *)
+    (* Receive masked m_new from AS: m_H *)
+    in(c_pub, m_H: bitstring);
+
+    (* Recover m_new: mh_mask = H(Y_dH || m_D || R_D || id_AS || id_D) *)
+    let mh_mask = hash(concat(concat(concat(concat(Y_D_H, m_D), R_D), id_AS), id_D)) in
+    let m_new = xorRev(m_H, mh_mask) in
+
+    (* Derive session key: K_GW_D = H(R_D || m_new) *)
+    let K_GW_D = hash(concat(R_D, m_new)) in
+
+    event DeviceAuthenticated(id_D, id_AS);
+    event AuthEndsFull(id_D, id_AS, R_D, m_D);
+
+    (* Compute new PID for data phase *)
+    let new_PID = mkPID(id_D, m_new) in
+
+    (* ==== PHASE 4: DATA TRANSMISSION ==== *)
+    (* Encrypt sensor data with K_GW_D and send [new_PID | enc_data] *)
+    new sensor_data: bitstring;
+    let K_GW_D_key = generateKey(K_GW_D) in
+    let enc_data = symmetricEncrypt(sensor_data, K_GW_D_key) in
+    event DeviceDataSent(new_PID, id_D);
+    out(c_pub, concat(new_PID, enc_data));
+
+    (* Receive GW confirmation — encrypted with session key *)
+    in(c_pub, gw_conf: bitstring);
+    let conf_dec = symmetricDecrypt(gw_conf, K_GW_D_key) in
+    if conf_dec = new_PID then
+
+    (* Secrecy witnesses: encrypt secrets with derived key knowledge *)
+    out(c_pub, SharedEncrypt(SecretK_GW_D_Device, K_GW_D));
+    out(c_pub, SharedEncrypt(SecretR_D, R_D));
+    out(c_pub, SharedEncrypt(SecretID_D, id_D)).
+
+
+
+(************************************************************** Process AS (Authentication Server) **********************************************************)
+let AS(K_GW_AS: SymmetricKey, K_AS_D: SymmetricKey) =
+    new id_AS: bitstring;
+    new T_Acc: bitstring;
+
+    (* ==== PHASE 1: ENROLLMENT (Reg-0) ==== *)
+    (* Receive encrypted device ID from secure channel *)
+    in(c_priv, enc_id_D: bitstring);
+    let id_D = symmetricDecrypt(enc_id_D, K_AS_D) in
+    event ASEnrollmentStarts(id_AS, id_D);
+
+    (* Generate fresh challenge c_D and session seed m_D *)
+    new c_D: bitstring;
+    new m_D: bitstring;
+
+    (* Send [c_D | m_D] encrypted back to device *)
+    out(c_priv, symmetricEncrypt(concat(c_D, m_D), K_AS_D));
+
+    (* ==== PHASE 1: ENROLLMENT (Reg-1) ==== *)
+    (* Receive [ID_D | Y_dH | R_D | c_AS_D] encrypted from device *)
+    in(c_priv, enc_reg1: bitstring);
+    let reg1_dec = symmetricDecrypt(enc_reg1, K_AS_D) in
+    let id_D_check = getfirst(getfirst(getfirst(reg1_dec))) in
+    let Y_D_H = getsecond(getfirst(getfirst(reg1_dec))) in
+    let R_D = getfirst(getsecond(reg1_dec)) in
+    let c_AS_D = getsecond(getsecond(reg1_dec)) in
+
+    (* Verify device identity matches Reg-0 *)
+    if id_D_check = id_D then
+
+    (* Update AND-accumulator: T_acc = acc(T_acc, Y_dH) *)
+    let T_Acc_new = acc(T_Acc, Y_D_H) in
+
+    (* Compute PUF binding: Phi = R_AS XOR R_D *)
+    let R_AS_D = PUF_AS(c_AS_D) in
+    let Phi_AS_D = xor(R_AS_D, R_D) in
+
+    (* Compute initial pseudonym: PID = mkPID(ID_D, m_D) *)
+    let PID_curr = mkPID(id_D, m_D) in
+
+    (* Send enrollment ACK *)
+    new ack1: bitstring;
+    out(c_priv, symmetricEncrypt(concat(id_AS, ack1), K_AS_D));
+    event ASEnrollmentCompletes(id_AS, id_D);
+
+    (* ==== PHASE 2: AUTHENTICATION ==== *)
+    (* Receive auth message on public channel: [PID | Y_ASD | ts_1] *)
+    in(c_pub, auth_msg: bitstring);
+    event ASAuthStarts(id_AS, id_D);
+
+    let recv_PID = getfirst(getfirst(auth_msg)) in
+    let recv_Y_ASD = getsecond(getfirst(auth_msg)) in
+    let recv_ts_1 = getsecond(auth_msg) in
+
+    (* Verify PID matches current pseudonym *)
+    if recv_PID = PID_curr then
+
+    (* Recover R_D from PUF binding: R_D = Phi XOR R_AS *)
+    let R_AS_D_1 = PUF_AS(c_AS_D) in
+    let R_D_recovered = xorRev(Phi_AS_D, R_AS_D_1) in
+
+    (* Reconstruct mask = H(R_D || m_D || PID || ts_1) *)
+    let mask_recv = hash(concat(concat(concat(R_D_recovered, m_D), recv_PID), recv_ts_1)) in
+
+    (* Recover Y_dH by unmasking Y_ASD *)
+    let Y_D_H_recovered = xorRev(recv_Y_ASD, mask_recv) in
+
+    (* Membership verification: check Y_dH against accumulator *)
+    if T_Acc_new = accRev(T_Acc_new, Y_D_H_recovered) then
+
+    (* ==== PHASE 3: KEY EXCHANGE ==== *)
+    (* Generate fresh m_new = H(nonce) *)
+    new n1: bitstring;
+    let m_new = hash(n1) in
+
+    (* Compute session key: K_GW_D = H(R_D || m_new) *)
+    let K_GW_D = hash(concat(R_D_recovered, m_new)) in
+
+    (* Compute masked m_new for reply: m_H = m_new XOR H(Y_dH || m_D || R_D || id_AS || id_D) *)
+    let mh_mask = hash(concat(concat(concat(concat(Y_D_H_recovered, m_D), R_D_recovered), id_AS), id_D)) in
+    let m_H = xor(m_new, mh_mask) in
+
+    (* Send m_H to device on public channel *)
+    event ASAuthCompletes(id_AS, id_D);
+    out(c_pub, m_H);
+
+    (* Compute new PID after rotation *)
+    let new_PID = mkPID(id_D, m_new) in
+
+    (* Encrypt auth token for GW: [id_AS | id_D | K_GW_D] encrypted with K_GW_AS *)
+    let auth_token = symmetricEncrypt(concat(concat(id_AS, id_D), K_GW_D), K_GW_AS) in
+    event ASTokenSent(new_PID, id_AS);
+    out(c_pub, concat(concat(new_PID, id_AS), auth_token));
+
+    (* Secrecy witnesses *)
+    out(c_pub, SharedEncrypt(SecretK_GW_D_AS, K_GW_D));
+    out(c_pub, SharedEncrypt(SecretM_New, m_new)).
+
+
+
+(************************************************************** Process GW (Gateway) **********************************************************)
+let GW(K_GW_AS: SymmetricKey) =
+    new id_GW: bitstring;
+
+    (* ==== RECEIVE AUTH TOKEN FROM AS ==== *)
+    in(c_pub, token_msg: bitstring);
+
+    let new_PID = getfirst(getfirst(token_msg)) in
+    let id_AS_plain = getsecond(getfirst(token_msg)) in
+    let enc_token = getsecond(token_msg) in
+
+    (* Decrypt token with K_GW_AS *)
+    let tok_dec = symmetricDecrypt(enc_token, K_GW_AS) in
+    let id_AS_tok = getfirst(getfirst(tok_dec)) in
+    let id_D_tok = getsecond(getfirst(tok_dec)) in
+    let K_GW_D = getsecond(tok_dec) in
+
+    (* Verify AS identity: decrypted id_AS must match plaintext id_AS *)
+    if id_AS_tok = id_AS_plain then
+
+    event GWTokenReceived(new_PID, id_AS_plain);
+    let K_GW_D_key = generateKey(K_GW_D) in
+
+    (* ==== RECEIVE DATA FROM DEVICE ==== *)
+    in(c_pub, data_msg: bitstring);
+
+    let recv_PID = getfirst(data_msg) in
+    let enc_data = getsecond(data_msg) in
+
+    (* Verify PID matches the one from token *)
+    if recv_PID = new_PID then
+
+    (* Decrypt data with session key K_GW_D *)
+    let plain_data = symmetricDecrypt(enc_data, K_GW_D_key) in
+    event GWDataAccepted(new_PID, id_D_tok);
+
+    (* Send confirmation back to device *)
+    out(c_pub, symmetricEncrypt(new_PID, K_GW_D_key));
+
+    (* Secrecy witness *)
+    out(c_pub, SharedEncrypt(SecretK_GW_D_GW, K_GW_D)).
+
+
+
+(*************************************************************** Main Process ***************************************************************)
+process
+    new id_AS: bitstring;
+    new id_GW: bitstring;
+    new K_GW_AS: SymmetricKey;
+    new K_AS_D: SymmetricKey;
+    ( D(id_AS, id_GW, K_AS_D) | AS(K_GW_AS, K_AS_D) | GW(K_GW_AS) )

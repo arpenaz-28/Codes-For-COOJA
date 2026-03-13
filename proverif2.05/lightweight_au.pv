@@ -1,0 +1,184 @@
+free c : channel.
+
+
+set predicatesImplementable = nocheck.
+set maxDepth                = 20.
+set maxHyp                  = none.
+set ignoreTypes = true.
+set attacker    = active.
+set keyCompromise = none.
+set simplifyDerivation = true.
+set abbreviateDerivation = true.
+set explainDerivation = true.
+set reconstructTrace = true.
+set unifyDerivation = true.
+set reconstructDerivation = true.
+set displayDerivation = true.
+set traceBacktracking = true.
+set traceDisplay = short.
+set verboseClauses = none.
+set abbreviateClauses = true.
+set removeUselessClausesBeforeDisplay = true.
+set verboseEq = true.
+set verboseRules = false.
+set verboseRedundant = false.
+
+
+(* Publicly available user and server identity *)
+const uid: bitstring [data].
+
+free SecretAlpha, SecretDAlpha, SecretDDAlpha: bitstring [private].
+
+(* Concatenate two parameters *)
+fun concat(bitstring, bitstring): bitstring.
+reduc forall m: bitstring, n: bitstring; getfirst(concat(m, n)) = m.
+reduc forall m: bitstring, n: bitstring; getsecond(concat(m, n)) = n.
+
+(* Creating a PUF response from a challenge *)
+fun PUF(bitstring): bitstring [private].
+fun get_alpha(bitstring): bitstring [private].
+
+(* Symmetric key crypto primitives ---------------------------------------------
+   Symmetric key encryption and decryption primitives.
+------------------------------------------------------------------------------*)
+
+type SymmetricKey.
+free skey: SymmetricKey [private].
+
+fun generateKey(bitstring):SymmetricKey.
+
+(* Type Conversion -----------------------------------------------------------*)
+fun keyToBitstring(SymmetricKey):bitstring [data].
+
+(* symmetricEncrypt(msg, key): Authenticated encryption of 'msg' using symmetric key 'key' *)
+fun symmetricEncrypt(bitstring, SymmetricKey):bitstring.
+
+(* symmetricDecrypt(ciphertext, key): Decrypt 'ciphertext' using symmetric key 'key' *)
+fun symmetricDecrypt(bitstring, SymmetricKey):bitstring
+reduc
+   forall key:SymmetricKey, message:bitstring;
+      symmetricDecrypt(symmetricEncrypt(message, key), key) = message.
+
+
+(* Shared key crypto primitives ---------------------------------------------
+   Shared key encryption and decryption primitives.
+------------------------------------------------------------------------------*)
+
+(* SharedEncrypt(msg, key): Authenticated encryption of 'msg' using symmetric key 'key' *)
+fun SharedEncrypt(bitstring, bitstring):bitstring.
+
+(* SharedDecrypt(ciphertext, key): Decrypt 'ciphertext' using symmetric key 'key' *)
+fun SharedDecrypt(bitstring, bitstring):bitstring
+reduc
+   forall key:bitstring, message:bitstring;
+      SharedDecrypt(SharedEncrypt(message, key), key) = message.
+
+(* hash(item): a truly one-way hash function on item *)
+fun hash(bitstring):bitstring.
+
+query attacker (skey).
+query attacker (SecretAlpha).
+query attacker (SecretDAlpha).
+query attacker (SecretDDAlpha).
+
+query x: bitstring;
+event (SmartMeterEnrolled(x)) ==> event(SmartMeterEnrollmentStart(x)).
+
+query x: bitstring;
+event (ServerEnd(x)) ==> event(ServerStart(x)).
+
+query x: bitstring;
+event (SmartMeterAuthenticated(x)) ==> event(SmartMeterAuthStart(x)).
+
+query x: bitstring;
+event (ServerAuthenticated(x)) ==> event(ServerAuthStart(x)).
+
+event SmartMeterEnrollmentStart(bitstring).
+event ServerStart(bitstring).
+event SmartMeterEnrolled(bitstring).
+event ServerEnd(bitstring).
+
+event SmartMeterAuthStart(bitstring).
+event ServerAuthStart(bitstring).
+event SmartMeterAuthenticated(bitstring).
+event ServerAuthenticated(bitstring).
+
+let SmartMeter(key:SymmetricKey, sid: bitstring) = 
+    out(c, uid);
+    event SmartMeterEnrollmentStart(uid);
+    in(c, cs: bitstring);
+    let d_cs = symmetricDecrypt(cs, key) in
+    let d_uid = getsecond(d_cs) in
+    let seed = getfirst(getfirst(d_cs)) in
+    let ch = getsecond(getfirst(d_cs)) in
+    if d_uid = uid then
+        event SmartMeterEnrolled(uid);
+    let r = PUF(ch) in
+    let alpha = hash(concat(concat(r, seed), sid)) in
+    let eac = symmetricEncrypt(concat(alpha, ch), key) in
+    out(c, eac);
+    in(c, ack: bitstring);
+    out(c, uid);
+    event SmartMeterAuthStart(uid);
+    in(c, challenge: bitstring);
+    in(c, nonce: bitstring);
+    in(c, sd: bitstring);
+    in(c, sid_2: bitstring);
+    let d_r = PUF(challenge) in
+    let dd_alpha = hash(concat(concat(d_r, seed), sid)) in
+    let d_beta = hash(concat(dd_alpha, nonce)) in
+    out(c, d_beta);
+    in(c, nonce_2: bitstring);
+    let d_gamma = hash(concat(dd_alpha, nonce_2)) in
+    in(c, gamma: bitstring);
+    if d_gamma = gamma then
+        if sid = sid_2 then
+            event ServerAuthenticated(sid);
+    out(c, SharedEncrypt(SecretAlpha, alpha));
+    out(c, SharedEncrypt(SecretDDAlpha, dd_alpha)).
+
+
+
+let server(key:SymmetricKey, sid: bitstring) = 
+    in(c, userid: bitstring);
+    event ServerStart(sid);
+    new ch: bitstring;
+    new seed: bitstring;
+    let cs = symmetricEncrypt(concat(concat(ch, seed), uid), key) in
+    out(c, cs);
+    in(c, eac: bitstring);
+    let d_eac = symmetricDecrypt(eac, key) in
+    let d_alpha = getfirst(d_eac) in
+    let d_ch = getsecond(d_eac) in
+    if d_ch = ch then
+        event ServerEnd(sid);
+    new ack: bitstring;
+    out(c, ack);
+    in(c, u_areq: bitstring);
+    if userid = u_areq then
+        event ServerAuthStart(sid);
+    new nonce: bitstring;
+    new nonce_2: bitstring;
+    out(c, ch);
+    out(c, nonce);
+    out(c, seed);
+    out(c, sid);
+    let d_alpha = get_alpha(u_areq) in
+    let beta = hash(concat(d_alpha, nonce)) in
+    in(c, d_beta: bitstring);
+    out(c, nonce_2);
+    if beta = d_beta then
+        event SmartMeterAuthenticated(u_areq);
+    let gamma = hash(concat(d_alpha, nonce_2)) in
+    out(c, gamma);
+    out(c, SharedEncrypt(SecretDAlpha, d_alpha)).
+    
+process
+    new sid: bitstring;
+    ((!SmartMeter(skey, sid)) | (!server(skey, sid)))
+    
+
+
+    
+
+

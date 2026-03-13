@@ -1,0 +1,374 @@
+Random seed: 123456
+236000 2 [INFO: Main      ] Starting Contiki-NG-23e51c4
+236000 2 [INFO: Main      ] - Routing: RPL Lite
+236000 2 [INFO: Main      ] - Net: sicslowpan
+236000 2 [INFO: Main      ] - MAC: CSMA
+236000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+236000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+236000 2 [INFO: Main      ] Node ID: 2
+236000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+236000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+236000 2 AS node 2 started
+382000 1 [INFO: Main      ] Starting Contiki-NG-23e51c4
+382000 1 [INFO: Main      ] - Routing: RPL Lite
+382000 1 [INFO: Main      ] - Net: sicslowpan
+382000 1 [INFO: Main      ] - MAC: CSMA
+382000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+382000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+382000 1 [INFO: Main      ] Node ID: 1
+382000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+382000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+382000 1 GW node 1 started (RPL root)
+899000 3 [INFO: Main      ] Starting Contiki-NG-23e51c4
+899000 3 [INFO: Main      ] - Routing: RPL Lite
+899000 3 [INFO: Main      ] - Net: sicslowpan
+899000 3 [INFO: Main      ] - MAC: CSMA
+899000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+899000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+899000 3 [INFO: Main      ] Node ID: 3
+899000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+899000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+4957200 2 [WARN: CSMA      ] not for us
+5998200 3 [WARN: CSMA      ] not for us
+7311200 2 [WARN: CSMA      ] not for us
+8899000 3 Node 3: Sending reg step-0
+9071200 2 [WARN: CSMA      ] not for us
+9922200 3 [WARN: CSMA      ] not for us
+10823200 3 [WARN: CSMA      ] not for us
+11935200 2 [WARN: CSMA      ] not for us
+14133656 2 [WARN: CSMA      ] not for us
+14147312 2 [WARN: CSMA      ] not for us
+14292200 3 [WARN: CSMA      ] not for us
+20134656 3 [WARN: CSMA      ] not for us
+20168312 3 [WARN: CSMA      ] not for us
+21833464 2 [WARN: CSMA      ] not for us
+21860496 3 [WARN: CSMA      ] not for us
+21861592 2 AS 2: Reg step-0 for device 3 done
+21884176 3 [WARN: CSMA      ] not for us
+21892208 2 [WARN: CSMA      ] not for us
+21893304 3 Node 3: Received reg payload
+21893304 3 Node 3: Sending reg step-1
+21906496 2 [WARN: CSMA      ] not for us
+21913528 3 [WARN: CSMA      ] not for us
+21914624 2 AS 2: Reg step-1 for device 3 done
+21956984 3 [WARN: CSMA      ] not for us
+21984016 2 [WARN: CSMA      ] not for us
+21985112 3 Node 3: Registered
+21985112 3 ENROLL_ENERGY|3|cpu_s=13.086112|energy_j=0.808586
+21985112 3 Node 3: Sending auth request
+22014072 2 [WARN: CSMA      ] not for us
+22033104 3 [WARN: CSMA      ] not for us
+22034200 2 AS 2: Auth OK for device 3
+22063752 3 [WARN: CSMA      ] not for us
+22085456 3 [WARN: CSMA      ] not for us
+22086552 1 GW: Auth token received for device 3
+22093784 2 [WARN: CSMA      ] not for us
+22094880 3 Node 3: Auth reply received
+22094880 3 
+22101664 3  The CPU time and energy at the end of authentication 1 for client 3 are 0.109768 and 0.006758[WARN: CSMA      ] not for us
+22102760 2 AS 2: Token delivered to GW
+24899000 3 Node 3: Sending key update to GW
+24936432 2 [WARN: CSMA      ] not for us
+24937528 1 GW: Key update done for device 3
+24963920 2 [WARN: CSMA      ] not for us
+24965016 3 Node 3: Key update done, k_gw_d[0]=6
+24965016 3 KEYEX_ENERGY|3|cpu_s=0.066016|energy_j=0.004057
+24965016 3 Node 3: Sending data to GW
+24979272 2 [WARN: CSMA      ] not for us
+24980368 1 GW: Data from device 3 = 9
+25008440 2 [WARN: CSMA      ] not for us
+25009536 3 Node 3: Data confirmed
+32927272 2 [WARN: CSMA      ] not for us
+32928368 1 GW: Data from device 3 = 9
+32940440 2 [WARN: CSMA      ] not for us
+32941536 3 Node 3: Data confirmed
+40942272 2 [WARN: CSMA      ] not for us
+40943368 1 GW: Data from device 3 = 9
+40947808 2 [WARN: CSMA      ] not for us
+40948904 3 Node 3: Data confirmed
+48936272 2 [WARN: CSMA      ] not for us
+48937368 1 GW: Data from device 3 = 9
+48953440 2 [WARN: CSMA      ] not for us
+48954536 3 Node 3: Data confirmed
+56919272 2 [WARN: CSMA      ] not for us
+56920368 1 GW: Data from device 3 = 9
+56926440 2 [WARN: CSMA      ] not for us
+56927536 3 Node 3: Data confirmed
+64933272 2 [WARN: CSMA      ] not for us
+64934368 1 GW: Data from device 3 = 9
+64939440 2 [WARN: CSMA      ] not for us
+64940536 3 Node 3: Data confirmed
+72934272 2 [WARN: CSMA      ] not for us
+72935368 1 GW: Data from device 3 = 9
+72961440 2 [WARN: CSMA      ] not for us
+72962536 3 Node 3: Data confirmed
+80914272 2 [WARN: CSMA      ] not for us
+80915368 1 GW: Data from device 3 = 9
+80941440 2 [WARN: CSMA      ] not for us
+80942536 3 Node 3: Data confirmed
+84230200 1 [WARN: CSMA      ] not for us
+87286200 1 [WARN: CSMA      ] not for us
+88940272 2 [WARN: CSMA      ] not for us
+88941368 1 GW: Data from device 3 = 9
+88976440 2 [WARN: CSMA      ] not for us
+88977536 3 Node 3: Data confirmed
+96904272 2 [WARN: CSMA      ] not for us
+96905368 1 GW: Data from device 3 = 9
+96940440 2 [WARN: CSMA      ] not for us
+96941536 3 Node 3: Data confirmed
+104915272 2 [WARN: CSMA      ] not for us
+104916368 1 GW: Data from device 3 = 9
+104944440 2 [WARN: CSMA      ] not for us
+104945536 3 Node 3: Data confirmed
+112913272 2 [WARN: CSMA      ] not for us
+112914368 1 GW: Data from device 3 = 9
+112919440 2 [WARN: CSMA      ] not for us
+112920536 3 Node 3: Data confirmed
+120940272 2 [WARN: CSMA      ] not for us
+120941368 1 GW: Data from device 3 = 9
+120980440 2 [WARN: CSMA      ] not for us
+120981536 3 Node 3: Data confirmed
+128937272 2 [WARN: CSMA      ] not for us
+128938368 1 GW: Data from device 3 = 9
+128964440 2 [WARN: CSMA      ] not for us
+128965536 3 Node 3: Data confirmed
+136944272 2 [WARN: CSMA      ] not for us
+136945368 1 GW: Data from device 3 = 9
+136949808 2 [WARN: CSMA      ] not for us
+136950904 3 Node 3: Data confirmed
+144913272 2 [WARN: CSMA      ] not for us
+144914368 1 GW: Data from device 3 = 9
+144935440 2 [WARN: CSMA      ] not for us
+144936536 3 Node 3: Data confirmed
+150390200 1 [WARN: CSMA      ] not for us
+152906272 2 [WARN: CSMA      ] not for us
+152907368 1 GW: Data from device 3 = 9
+152945440 2 [WARN: CSMA      ] not for us
+152946536 3 Node 3: Data confirmed
+160920272 2 [WARN: CSMA      ] not for us
+160921368 1 GW: Data from device 3 = 9
+160935440 2 [WARN: CSMA      ] not for us
+160936536 3 Node 3: Data confirmed
+161814200 1 [WARN: CSMA      ] not for us
+168909272 2 [WARN: CSMA      ] not for us
+168910368 1 GW: Data from device 3 = 9
+168949440 2 [WARN: CSMA      ] not for us
+168950536 3 Node 3: Data confirmed
+176934272 2 [WARN: CSMA      ] not for us
+176935368 1 GW: Data from device 3 = 9
+176945440 2 [WARN: CSMA      ] not for us
+176946536 3 Node 3: Data confirmed
+184910272 2 [WARN: CSMA      ] not for us
+184911368 1 GW: Data from device 3 = 9
+184950440 2 [WARN: CSMA      ] not for us
+184951536 3 Node 3: Data confirmed
+192919272 2 [WARN: CSMA      ] not for us
+192920368 1 GW: Data from device 3 = 9
+192931440 2 [WARN: CSMA      ] not for us
+192932536 3 Node 3: Data confirmed
+200932272 2 [WARN: CSMA      ] not for us
+200933368 1 GW: Data from device 3 = 9
+200937808 2 [WARN: CSMA      ] not for us
+200938904 3 Node 3: Data confirmed
+208935272 2 [WARN: CSMA      ] not for us
+208936368 1 GW: Data from device 3 = 9
+208958440 2 [WARN: CSMA      ] not for us
+208959536 3 Node 3: Data confirmed
+216934272 2 [WARN: CSMA      ] not for us
+216935368 1 GW: Data from device 3 = 9
+216974440 2 [WARN: CSMA      ] not for us
+216975536 3 Node 3: Data confirmed
+224943272 2 [WARN: CSMA      ] not for us
+224944368 1 GW: Data from device 3 = 9
+224969440 2 [WARN: CSMA      ] not for us
+224970536 3 Node 3: Data confirmed
+232912200 1 [WARN: CSMA      ] not for us
+232926272 2 [WARN: CSMA      ] not for us
+232927368 1 GW: Data from device 3 = 9
+232948440 2 [WARN: CSMA      ] not for us
+232949536 3 Node 3: Data confirmed
+240909272 2 [WARN: CSMA      ] not for us
+240910368 1 GW: Data from device 3 = 9
+240915440 2 [WARN: CSMA      ] not for us
+240916536 3 Node 3: Data confirmed
+248938272 2 [WARN: CSMA      ] not for us
+248939368 1 GW: Data from device 3 = 9
+248946440 2 [WARN: CSMA      ] not for us
+248947536 3 Node 3: Data confirmed
+253393200 1 [WARN: CSMA      ] not for us
+256935272 2 [WARN: CSMA      ] not for us
+256936368 1 GW: Data from device 3 = 9
+256974440 2 [WARN: CSMA      ] not for us
+256975536 3 Node 3: Data confirmed
+264909272 2 [WARN: CSMA      ] not for us
+264910368 1 GW: Data from device 3 = 9
+264935440 2 [WARN: CSMA      ] not for us
+264936536 3 Node 3: Data confirmed
+272907272 2 [WARN: CSMA      ] not for us
+272908368 1 GW: Data from device 3 = 9
+272923440 2 [WARN: CSMA      ] not for us
+272924536 3 Node 3: Data confirmed
+280906272 2 [WARN: CSMA      ] not for us
+280907368 1 GW: Data from device 3 = 9
+280918440 2 [WARN: CSMA      ] not for us
+280919536 3 Node 3: Data confirmed
+288908272 2 [WARN: CSMA      ] not for us
+288909368 1 GW: Data from device 3 = 9
+288934440 2 [WARN: CSMA      ] not for us
+288935536 3 Node 3: Data confirmed
+296942272 2 [WARN: CSMA      ] not for us
+296943368 1 GW: Data from device 3 = 9
+296967440 2 [WARN: CSMA      ] not for us
+296968536 3 Node 3: Data confirmed
+304908272 2 [WARN: CSMA      ] not for us
+304909368 1 GW: Data from device 3 = 9
+304916440 2 [WARN: CSMA      ] not for us
+304917536 3 Node 3: Data confirmed
+312914272 2 [WARN: CSMA      ] not for us
+312915368 1 GW: Data from device 3 = 9
+312926440 2 [WARN: CSMA      ] not for us
+312927536 3 Node 3: Data confirmed
+313654200 1 [WARN: CSMA      ] not for us
+320912272 2 [WARN: CSMA      ] not for us
+320913368 1 GW: Data from device 3 = 9
+320917808 2 [WARN: CSMA      ] not for us
+320918904 3 Node 3: Data confirmed
+328937272 2 [WARN: CSMA      ] not for us
+328938368 1 GW: Data from device 3 = 9
+328967440 2 [WARN: CSMA      ] not for us
+328968536 3 Node 3: Data confirmed
+336920272 2 [WARN: CSMA      ] not for us
+336921368 1 GW: Data from device 3 = 9
+336962440 2 [WARN: CSMA      ] not for us
+336963536 3 Node 3: Data confirmed
+337825200 1 [WARN: CSMA      ] not for us
+344922272 2 [WARN: CSMA      ] not for us
+344923368 1 GW: Data from device 3 = 9
+344951440 2 [WARN: CSMA      ] not for us
+344952536 3 Node 3: Data confirmed
+352937272 2 [WARN: CSMA      ] not for us
+352938368 1 GW: Data from device 3 = 9
+352979440 2 [WARN: CSMA      ] not for us
+352980536 3 Node 3: Data confirmed
+360941272 2 [WARN: CSMA      ] not for us
+360942368 1 GW: Data from device 3 = 9
+360956440 2 [WARN: CSMA      ] not for us
+360957536 3 Node 3: Data confirmed
+368923272 2 [WARN: CSMA      ] not for us
+368924368 1 GW: Data from device 3 = 9
+368930440 2 [WARN: CSMA      ] not for us
+368931536 3 Node 3: Data confirmed
+376921272 2 [WARN: CSMA      ] not for us
+376922368 1 GW: Data from device 3 = 9
+376957440 2 [WARN: CSMA      ] not for us
+376958536 3 Node 3: Data confirmed
+384944272 2 [WARN: CSMA      ] not for us
+384945368 1 GW: Data from device 3 = 9
+384980440 2 [WARN: CSMA      ] not for us
+384981536 3 Node 3: Data confirmed
+392914272 2 [WARN: CSMA      ] not for us
+392915368 1 GW: Data from device 3 = 9
+392921440 2 [WARN: CSMA      ] not for us
+392922536 3 Node 3: Data confirmed
+400939272 2 [WARN: CSMA      ] not for us
+400940368 1 GW: Data from device 3 = 9
+400963440 2 [WARN: CSMA      ] not for us
+400964536 3 Node 3: Data confirmed
+408938272 2 [WARN: CSMA      ] not for us
+408939368 1 GW: Data from device 3 = 9
+408954440 2 [WARN: CSMA      ] not for us
+408955536 3 Node 3: Data confirmed
+416936272 2 [WARN: CSMA      ] not for us
+416937368 1 GW: Data from device 3 = 9
+416951440 2 [WARN: CSMA      ] not for us
+416952536 3 Node 3: Data confirmed
+424928272 2 [WARN: CSMA      ] not for us
+424929368 1 GW: Data from device 3 = 9
+424956440 2 [WARN: CSMA      ] not for us
+424957536 3 Node 3: Data confirmed
+432932272 2 [WARN: CSMA      ] not for us
+432933368 1 GW: Data from device 3 = 9
+432975440 2 [WARN: CSMA      ] not for us
+432976536 3 Node 3: Data confirmed
+440942272 2 [WARN: CSMA      ] not for us
+440943368 1 GW: Data from device 3 = 9
+440967440 2 [WARN: CSMA      ] not for us
+440968536 3 Node 3: Data confirmed
+448933272 2 [WARN: CSMA      ] not for us
+448934368 1 GW: Data from device 3 = 9
+448948440 2 [WARN: CSMA      ] not for us
+448949536 3 Node 3: Data confirmed
+456904272 2 [WARN: CSMA      ] not for us
+456905368 1 GW: Data from device 3 = 9
+456923440 2 [WARN: CSMA      ] not for us
+456924536 3 Node 3: Data confirmed
+464935272 2 [WARN: CSMA      ] not for us
+464936368 1 GW: Data from device 3 = 9
+464973440 2 [WARN: CSMA      ] not for us
+464974536 3 Node 3: Data confirmed
+472917272 2 [WARN: CSMA      ] not for us
+472918368 1 GW: Data from device 3 = 9
+472952440 2 [WARN: CSMA      ] not for us
+472953536 3 Node 3: Data confirmed
+480916272 2 [WARN: CSMA      ] not for us
+480917368 1 GW: Data from device 3 = 9
+480945440 2 [WARN: CSMA      ] not for us
+480946536 3 Node 3: Data confirmed
+488906272 2 [WARN: CSMA      ] not for us
+488907368 1 GW: Data from device 3 = 9
+488912440 2 [WARN: CSMA      ] not for us
+488913536 3 Node 3: Data confirmed
+496911272 2 [WARN: CSMA      ] not for us
+496912368 1 GW: Data from device 3 = 9
+496917440 2 [WARN: CSMA      ] not for us
+496918536 3 Node 3: Data confirmed
+504926272 2 [WARN: CSMA      ] not for us
+504927368 1 GW: Data from device 3 = 9
+504931808 2 [WARN: CSMA      ] not for us
+504932904 3 Node 3: Data confirmed
+512913272 2 [WARN: CSMA      ] not for us
+512914368 1 GW: Data from device 3 = 9
+512932440 2 [WARN: CSMA      ] not for us
+512933536 3 Node 3: Data confirmed
+520909272 2 [WARN: CSMA      ] not for us
+520910368 1 GW: Data from device 3 = 9
+520949440 2 [WARN: CSMA      ] not for us
+520950536 3 Node 3: Data confirmed
+528905272 2 [WARN: CSMA      ] not for us
+528906368 1 GW: Data from device 3 = 9
+528930440 2 [WARN: CSMA      ] not for us
+528931536 3 Node 3: Data confirmed
+536944272 2 [WARN: CSMA      ] not for us
+536945368 1 GW: Data from device 3 = 9
+536960440 2 [WARN: CSMA      ] not for us
+536961536 3 Node 3: Data confirmed
+544927272 2 [WARN: CSMA      ] not for us
+544928368 1 GW: Data from device 3 = 9
+544971440 2 [WARN: CSMA      ] not for us
+544972536 3 Node 3: Data confirmed
+552934272 2 [WARN: CSMA      ] not for us
+552935368 1 GW: Data from device 3 = 9
+552943440 2 [WARN: CSMA      ] not for us
+552944536 3 Node 3: Data confirmed
+560929272 2 [WARN: CSMA      ] not for us
+560930368 1 GW: Data from device 3 = 9
+560947440 2 [WARN: CSMA      ] not for us
+560948536 3 Node 3: Data confirmed
+568916272 2 [WARN: CSMA      ] not for us
+568917368 1 GW: Data from device 3 = 9
+568947440 2 [WARN: CSMA      ] not for us
+568948536 3 Node 3: Data confirmed
+576939272 2 [WARN: CSMA      ] not for us
+576940368 1 GW: Data from device 3 = 9
+576973440 2 [WARN: CSMA      ] not for us
+576974536 3 Node 3: Data confirmed
+584932272 2 [WARN: CSMA      ] not for us
+584933368 1 GW: Data from device 3 = 9
+584956440 2 [WARN: CSMA      ] not for us
+584957536 3 Node 3: Data confirmed
+592939272 2 [WARN: CSMA      ] not for us
+592940368 1 GW: Data from device 3 = 9
+592973440 2 [WARN: CSMA      ] not for us
+592974536 3 Node 3: Data confirmed
+TEST OK
+Test ended at simulation time: 600000000

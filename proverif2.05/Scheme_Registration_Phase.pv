@@ -1,0 +1,308 @@
+(**************************************************** Declaration segment ************************************************)
+
+(**************************************************** Channel ************************************************************)
+free c_pub : channel.
+free c_priv: channel [private].
+(**************************************************** Constants **********************************************************)
+set predicatesImplementable = nocheck.
+set maxDepth                = 20.
+set maxHyp                  = none.
+set ignoreTypes = true.
+set attacker    = active.
+set keyCompromise = none.
+set simplifyDerivation = true.
+set abbreviateDerivation = true.
+set explainDerivation = true.
+set reconstructTrace = true.
+set unifyDerivation = true.
+set reconstructDerivation = true.
+set displayDerivation = true.
+set traceBacktracking = true.
+set traceDisplay = short.
+set verboseClauses = none.
+set abbreviateClauses = true.
+set removeUselessClausesBeforeDisplay = true.
+set verboseEq = true.
+set verboseRules = false.
+set verboseRedundant = false.
+
+
+free SecretK_GW'_N_Ath, SecretK_GW'_N_N, K_D,SecretK_GW'_N_Update: bitstring [private].
+free mA : bitstring.
+free mB : bitstring.
+type SymmetricKey.
+(*type skey.
+type pkey.
+
+fun pk(skey):pkey.*)
+type skey.
+type pkey.
+type key.
+
+(**************************************************** Functions *******************************************************)
+free g: pkey.
+fun exp(pkey, skey): pkey.
+fun KDF(pkey): key.
+fun concat(bitstring, bitstring): bitstring.
+fun key_to_bs(SymmetricKey): bitstring.
+fun bs_to_key(bitstring): SymmetricKey.
+fun k_to_bs(key): bitstring.
+
+
+reduc forall m: bitstring, n: bitstring; getfirst(concat(m, n)) = m.
+reduc forall m: bitstring, n: bitstring; getsecond(concat(m, n)) = n.
+
+fun PUF_D(bitstring): bitstring [private].
+fun PUF_AS(bitstring): bitstring [private].
+
+fun get_alpha(bitstring): bitstring [private].
+
+fun acc(bitstring, bitstring): bitstring.
+
+reduc forall tag: bitstring, x: bitstring; accRev(acc(tag,x),x)=tag.
+
+fun xor(bitstring, bitstring): bitstring.
+
+reduc forall m: bitstring, n: bitstring; xorRev(xor(m,n),m)=n.
+
+fun generateKey(bitstring): SymmetricKey.
+fun keyToBitstring(SymmetricKey): bitstring [data].
+
+fun symmetricEncrypt(bitstring, SymmetricKey): bitstring.
+fun symmetricDecrypt(bitstring, SymmetricKey): bitstring
+reduc forall key1: SymmetricKey, message1: bitstring;
+      symmetricDecrypt(symmetricEncrypt(message1, key1), key1) = message1.
+
+fun SharedEncrypt(bitstring, bitstring): bitstring.
+fun SharedDecrypt(bitstring, bitstring): bitstring
+reduc forall key2: bitstring, message2: bitstring;
+      SharedDecrypt(SharedEncrypt(message2, key2), key2) = message2.
+
+fun hash(bitstring): bitstring.
+
+fun bitwise_and(bitstring, bitstring): bitstring.
+
+(*fun aenc(bitstring, pkey): bitstring.
+reduc forall m: bitstring, k: skey; adec(aenc(m,pk(k)),k) = m.*)
+
+fun pk2bs(pkey): bitstring.
+fun bs2pk(bitstring): pkey.
+
+
+(********************************************************** events ***********************************************************)
+event NodeEnrollmentStarts(bitstring,bitstring).
+event NodeEnrolled(bitstring,bitstring).
+
+event NodeAuthenticationStarts(bitstring,bitstring).
+event NodeAuthenticated(bitstring,bitstring).
+
+event AuthenticatorStarts(bitstring,bitstring).
+event AuthenticatorEnds(bitstring,bitstring).
+
+event AuthenticationStartsFull(bitstring,bitstring,bitstring,bitstring).
+event AuthenticationEndsFull(bitstring,bitstring,bitstring,bitstring).
+
+event KeyUpdateStarts(bitstring,bitstring).
+event KeyUpdateEnds(bitstring,bitstring).
+
+
+
+query id_N: bitstring, id_Ath: bitstring;
+      inj-event(NodeEnrolled(id_N, id_Ath)) ==> inj-event(NodeEnrollmentStarts(id_N, id_Ath)).
+
+query id_N: bitstring, id_Ath: bitstring;
+      inj-event(NodeAuthenticated(id_N, id_Ath)) ==> inj-event(NodeAuthenticationStarts(id_N, id_Ath)).
+      
+query id_Ath: bitstring, id_N: bitstring;
+      inj-event(AuthenticatorEnds(id_Ath, id_N)) ==> inj-event(AuthenticatorStarts(id_Ath, id_N)).
+      
+query id_N: bitstring, id_Ath: bitstring, R_N_1: bitstring, m_N: bitstring;
+      inj-event(AuthenticationEndsFull(id_N, id_Ath, R_N_1, m_N)) ==> inj-event(AuthenticationStartsFull(id_N, id_Ath, R_N_1, m_N)).
+      
+
+      
+query id_N: bitstring, id_GW': bitstring;
+      inj-event(KeyUpdateEnds(id_N, id_GW')) ==> inj-event(KeyUpdateStarts(id_N, id_GW')).
+
+
+query attacker(SecretK_GW'_N_N).
+query attacker(SecretK_GW'_N_Ath).
+query attacker(SecretK_GW'_N_Update).
+
+weaksecret SecretK_GW'_N_N.
+weaksecret SecretK_GW'_N_Ath.
+weaksecret SecretK_GW'_N_Update.
+
+(*********************************************************** queries ************************************************************)
+
+
+
+
+
+(************************************************************ Process D **********************************************************************)
+let D(id_AS: bitstring,id_GW:bitstring, g:pkey) = 
+    new c_AS_D: bitstring;
+    new y_D: bitstring;
+    new id_D : bitstring;
+    new m_new: bitstring;
+    new ts_1: bitstring;
+
+  
+    
+    out(c_priv, id_D);
+    event NodeEnrollmentStarts(id_D,id_AS);
+
+    in(c_priv, cc_D: bitstring);
+    let c_D = getfirst(cc_D) in
+    let m_D = getsecond(cc_D) in
+    let R_D = PUF_D(c_D) in
+    (*let P_D = bitwise_and(R_D, m_D) in*)
+    let cy_D = concat(concat(y_D,R_D),c_AS_D) in
+    out(c_priv, cy_D);
+    
+    in(c_priv, idack: bitstring);
+    event NodeEnrolled(id_D,id_AS);
+    
+    let R_D_1=PUF_D(c_D) in
+   (* let P_D_1=bitwise_and(R_D_1,m_D) in*)
+    let Y_D_H=hash(concat(concat(R_D_1,m_D),ts_1)) in
+    let A_R_D_H= hash(concat(concat(R_D_1,m_D),ts_1)) in
+    let A_R_Y_D_H = xor(Y_D_H, A_R_D_H) in
+    let A_Y_D_H = hash(concat(concat(concat(concat(concat(Y_D_H, id_D),id_AS),R_D),ts_1),m_D)) in
+    let A_M_Y_D_H= xor(m_new,A_Y_D_H) in
+    
+    out(c_pub, concat(concat(concat(id_D,A_R_Y_D_H),A_M_Y_D_H),ts_1));
+    event NodeAuthenticationStarts(id_D,id_AS);
+    event AuthenticationStartsFull(id_D,id_AS,R_D_1,m_D);
+   
+    in(c_pub,m_H:bitstring);
+    let m_new_1 = xorRev(m_H,hash(concat(concat(concat(concat(Y_D_H,m_D),R_D_1),id_AS),id_D))) in
+    let K_GW_D=hash(concat(R_D_1,m_new_1)) in
+    
+   
+    event NodeAuthenticated(id_D,id_AS);
+    event AuthenticationEndsFull(id_D,id_AS,R_D_1,m_D);
+    
+    new a: skey;
+    let A = exp(g, a) in
+    let A' = pk2bs(A) in
+    let K_GW_D'=bs_to_key(K_GW_D) in
+    out(c_pub, symmetricEncrypt(A',K_GW_D'));
+    event KeyUpdateStarts(id_D,id_GW);
+    in(c_pub, B': bitstring);
+    let B''=symmetricDecrypt(B',K_GW_D') in
+    let B = bs2pk(B'') in
+    let Ka = exp(B, a) in
+    let K_GW_D_update = KDF(Ka) in
+    let K_GW_D_update'=k_to_bs(K_GW_D_update) in
+    event KeyUpdateEnds(id_D,id_GW);
+    
+    
+    
+    out(c_pub, SharedEncrypt(SecretK_GW'_N_N,K_GW_D));
+    out(c_pub, SharedEncrypt(SecretK_GW'_N_Update,K_GW_D_update')).
+  
+    
+      
+  
+
+(************************************************************** Process AS **********************************************************)
+let AS(K_GW_AS:SymmetricKey) =
+    new id_AS:bitstring;
+    new c_D: bitstring;
+    new m_D: bitstring;
+    new T_Acc:bitstring;
+    new ack1: bitstring;
+    in(c_priv, id_D:bitstring);
+    
+
+    let cc_D=concat(c_D, m_D) in
+    out(c_priv, cc_D);
+    
+    in(c_priv,cy_D: bitstring);
+    event AuthenticatorStarts(id_AS,id_D);
+    let yr_AS_D=getfirst(cy_D) in
+    let c_AS_D=getsecond(cy_D) in
+    let y_D=getfirst(yr_AS_D) in
+    let R_D=getsecond(yr_AS_D) in
+    
+    let R_AS_D=PUF_AS(c_AS_D) in
+    (*let P_AS_D=bitwise_and(R_AS_D,m_AS_D) in*)
+    let Y_D_H=hash(y_D) in
+    let T_Acc_new=acc(T_Acc, Y_D_H) in
+    let Phi_AS_D=xor(R_AS_D, R_D) in
+    new ack:bitstring ;
+    out(c_priv, concat(id_AS,ack));
+    
+    
+    in(c_pub, idey_D:bitstring);
+    
+    let id_D_1= getfirst(getfirst(getfirst(idey_D))) in 
+    let A_R_Y_D_H = getfirst(getfirst(getsecond(idey_D))) in
+    let A_M_Y_D_H= getfirst(getsecond(idey_D)) in
+    let ts_1=getsecond(idey_D) in
+   
+    let R_AS_D_1=PUF_AS(c_AS_D) in
+    let R_D_1 = xorRev(Phi_AS_D,R_AS_D_1) in
+    (*let P_AS_D=bitwise_and(R_AS_D,m_AS_D) in*)
+    let A_R_D_H= hash(concat(concat(R_D_1,m_D),ts_1)) in
+    let Y_D_H_1 = xorRev(A_R_Y_D_H,A_R_D_H) in
+    if T_Acc_new=accRev(T_Acc_new,Y_D_H_1) then
+ 	let A_Y_D_H = hash(concat(concat(concat(concat(concat(Y_D_H_1, id_D_1),id_AS),R_D_1),ts_1),m_D)) in
+ 	let m_new = xorRev(A_M_Y_D_H , A_Y_D_H) in
+        let K_GW_D = hash(concat(R_D_1 , m_new)) in
+        out(c_pub, symmetricEncrypt(concat(concat(id_AS,id_D_1),K_GW_D), K_GW_AS));
+        out(c_pub, xor(m_new,hash(concat(concat(concat(concat(Y_D_H_1,m_D),R_D_1),id_AS),id_D_1))));
+        event AuthenticatorEnds(id_AS, id_D);
+      
+        out(c_pub, SharedEncrypt(SecretK_GW'_N_Ath,K_GW_D)).
+        
+        
+        
+        
+let GW(K_GW_AS:SymmetricKey,g:pkey,id_D:bitstring) =
+        new b:skey;
+        new id_GW: bitstring;
+	in(c_pub,auth_token_D:bitstring);
+	let K_ex=symmetricDecrypt(auth_token_D,K_GW_AS) in
+	let K_GW_D=getsecond(K_ex) in
+	let K_GW_D'=bs_to_key(K_GW_D) in
+	let B = exp(g, b) in
+	let B'= pk2bs(B)  in
+
+        out(c_pub, symmetricEncrypt(B',K_GW_D'));
+        event KeyUpdateStarts(id_GW,id_D);
+        in(c_pub, A: bitstring);
+        let A'=bs2pk(symmetricDecrypt(A,K_GW_D')) in
+        
+        let Kb = exp(A', b) in
+        let K_GW_D_update = KDF(Kb) in
+        let K_GW_D_update' = k_to_bs(K_GW_D_update) in
+        event KeyUpdateEnds(id_GW,id_D);
+        out(c_pub, SharedEncrypt(SecretK_GW'_N_Update,K_GW_D_update')).
+	
+       
+     
+    
+    
+    
+
+
+    
+
+(*************************************************************** Bounded Sessions ***************************************************************)
+process
+    new id_AS: bitstring;
+    new id_GW: bitstring;
+    new id_D: bitstring;
+    new K_GW_AS: SymmetricKey;
+    new g:pkey;
+    ( D(id_AS,id_GW,g) | AS(K_GW_AS) | GW(K_GW_AS,g,id_D))
+
+
+
+
+ 
+    
+
+

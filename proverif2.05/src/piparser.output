@@ -1,0 +1,4158 @@
+   0  $accept : %entry% $end
+
+   1  lib : privateopt FUN IDENT SLASH INT DOT lib
+   2      | DATA IDENT SLASH INT DOT lib
+   3      | EQUATION eqlist DOT lib
+   4      | privateopt REDUCTION term EQUAL term SEMI reduc lib
+   5      | privateopt REDUCTION reducmayfailseq DOT lib
+   6      | PREDICATE IDENT SLASH INT neidentseq DOT lib
+   7      | PREDICATE IDENT SLASH INT DOT lib
+   8      | LET IDENT EQUAL process DOT lib
+   9      | NOUNIF gfactformat optint foptbindingseq DOT lib
+  10      | PARAM IDENT EQUAL IDENT DOT lib
+  11      | PARAM IDENT EQUAL STRING DOT lib
+  12      | PARAM IDENT EQUAL INT DOT lib
+  13      | QUERY queryseq DOT lib
+  14      | NONINTERF niseq DOT lib
+  15      | WEAKSECRET IDENT DOT lib
+  16      | NOT gterm optphase optbindingseq DOT lib
+  17      | NOT event optbindingseq DOT lib
+  18      | ELIMTRUE fact DOT lib
+  19      | ELIMTRUE fact WHERE varmayfail CANTEXT FAIL DOT lib
+  20      | privateopt FREE neidentseq DOT lib
+  21      | CLAUSES clauses lib
+  22      |
+
+  23  all : lib PROCESS process EOF
+
+  24  privateopt : PRIVATE
+  25             |
+
+  26  reduc : term EQUAL term SEMI reduc
+  27        | term EQUAL term DOT
+
+  28  varmayfail : IDENT COMMA varmayfail
+  29             | IDENT
+
+  30  reducmayfail : term EQUAL term WHERE varmayfail CANTEXT FAIL
+  31               | term EQUAL term
+
+  32  reducmayfailseq : reducmayfail OTHERWISE reducmayfailseq
+  33                  | reducmayfail
+
+  34  eqlist : term EQUAL term
+  35         | term EQUAL term SEMI eqlist
+
+  36  term : FAIL
+  37       | IDENT LPAREN termseq RPAREN
+  38       | CHOICE LBRACKET term COMMA term RBRACKET
+  39       | IDENT
+  40       | LPAREN termseq RPAREN
+
+  41  netermseq : term COMMA netermseq
+  42            | term
+
+  43  termseq : netermseq
+  44          |
+
+  45  neidentseq : IDENT COMMA neidentseq
+  46             | IDENT
+
+  47  ni : IDENT AMONG LPAREN netermseq RPAREN
+  48     | IDENT
+
+  49  niseq : ni COMMA niseq
+  50        | ni
+
+  51  gterm : IDENT LPAREN gtermseq RPAREN
+  52        | IDENT
+  53        | LPAREN gtermseq RPAREN
+  54        | IDENT LBRACKET bindingseq RBRACKET
+
+  55  negtermseq : gterm COMMA negtermseq
+  56             | gterm
+
+  57  gtermseq : negtermseq
+  58           |
+
+  59  nesbindingseq : REPL INT EQUAL gterm SEMI nesbindingseq
+  60                | REPL INT EQUAL gterm
+  61                | IDENT EQUAL gterm SEMI nesbindingseq
+  62                | IDENT EQUAL gterm
+
+  63  bindingseq : nesbindingseq
+  64             |
+
+  65  nebindingseq : IDENT EQUAL gterm SEMI nebindingseq
+  66               | IDENT EQUAL gterm
+
+  67  optbindingseq : SEMI nebindingseq
+  68                |
+
+  69  gfact : IDENT COLON gtermseq
+  70        | gterm DIFF gterm
+  71        | gterm EQUAL gterm
+
+  72  event : gfact optphase
+
+  73  queryseq : query SEMI queryseq
+  74           | query
+
+  75  query : event
+  76        | realquery
+  77        | PUTBEGIN IDENT COLON neidentseq
+  78        | LET IDENT EQUAL gterm
+
+  79  realquery : event BEFORE hyp
+
+  80  hyp : hyp BAR hyp
+  81      | hyp WEDGE hyp
+  82      | LPAREN hyp RPAREN
+  83      | event
+  84      | LPAREN realquery RPAREN
+
+  85  gformat : IDENT LPAREN gformatseq RPAREN
+  86          | IDENT
+  87          | LPAREN gformatseq RPAREN
+  88          | IDENT LBRACKET fbindingseq RBRACKET
+  89          | STAR IDENT
+
+  90  negformatseq : gformat COMMA negformatseq
+  91               | gformat
+
+  92  gformatseq : negformatseq
+  93             |
+
+  94  fnesbindingseq : REPL INT EQUAL gformat SEMI fnesbindingseq
+  95                 | REPL INT EQUAL gformat
+  96                 | IDENT EQUAL gformat SEMI fnesbindingseq
+  97                 | IDENT EQUAL gformat
+
+  98  fbindingseq : fnesbindingseq
+  99              |
+
+ 100  fnebindingseq : IDENT EQUAL gformat SEMI fnebindingseq
+ 101                | IDENT EQUAL gformat
+
+ 102  foptbindingseq : SEMI fnebindingseq
+ 103                 |
+
+ 104  gfactformat : IDENT COLON gformatseq optphase
+
+ 105  optphase : PHASE INT
+ 106           |
+
+ 107  optint : SLASH INT
+ 108         |
+
+ 109  fact : IDENT COLON termseq
+ 110       | term DIFF term
+ 111       | term EQUAL term
+
+ 112  factand : fact WEDGE factand
+ 113          | fact
+
+ 114  clause : factand RED fact
+ 115         | fact
+ 116         | factand EQUIV fact
+ 117         | factand EQUIVEQ fact
+
+ 118  clausemayfail : clause WHERE varmayfail CANTEXT FAIL
+ 119                | clause
+
+ 120  clauses : clausemayfail SEMI clauses
+ 121          | clausemayfail DOT
+
+ 122  process : LPAREN process RPAREN
+ 123          | IDENT
+ 124          | REPL process
+ 125          | INT
+ 126          | NEW IDENT optprocess
+ 127          | IF fact THEN process ELSE process
+ 128          | IF fact THEN process
+ 129          | IN LPAREN term COMMA pattern RPAREN optprocess
+ 130          | OUT LPAREN term COMMA term RPAREN optprocess
+ 131          | LET pattern EQUAL term IN process
+ 132          | LET pattern EQUAL term IN process ELSE process
+ 133          | LET neidentseq SUCHTHAT fact IN process
+ 134          | LET neidentseq SUCHTHAT fact IN process ELSE process
+ 135          | process BAR process
+ 136          | EVENT IDENT LPAREN termseq RPAREN optprocess
+ 137          | PHASE INT optprocess
+ 138          | BARRIER INT optprocess
+ 139          | BARRIER INT LBRACKET IDENT RBRACKET optprocess
+
+ 140  optprocess : SEMI process
+ 141             |
+
+ 142  pattern : IDENT
+ 143          | LPAREN patternseq RPAREN
+ 144          | IDENT LPAREN patternseq RPAREN
+ 145          | EQUAL term
+
+ 146  patternseq : pattern COMMA patternseq
+ 147             | pattern
+
+ 148  %entry% : '\001' all
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	.  error
+
+	%entry%  goto 2
+
+
+state 1
+	%entry% : '\001' . all  (148)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	all  goto 16
+	lib  goto 17
+	privateopt  goto 18
+
+
+state 2
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 3
+	lib : EQUATION . eqlist DOT lib  (3)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	eqlist  goto 23
+	term  goto 24
+
+
+state 4
+	lib : PREDICATE . IDENT SLASH INT neidentseq DOT lib  (6)
+	lib : PREDICATE . IDENT SLASH INT DOT lib  (7)
+
+	IDENT  shift 25
+	.  error
+
+
+state 5
+	lib : LET . IDENT EQUAL process DOT lib  (8)
+
+	IDENT  shift 26
+	.  error
+
+
+state 6
+	lib : QUERY . queryseq DOT lib  (13)
+
+	LPAREN  shift 27
+	IDENT  shift 28
+	LET  shift 29
+	PUTBEGIN  shift 30
+	.  error
+
+	queryseq  goto 31
+	gterm  goto 32
+	event  goto 33
+	gfact  goto 34
+	query  goto 35
+	realquery  goto 36
+
+
+state 7
+	lib : NONINTERF . niseq DOT lib  (14)
+
+	IDENT  shift 37
+	.  error
+
+	niseq  goto 38
+	ni  goto 39
+
+
+state 8
+	lib : NOT . gterm optphase optbindingseq DOT lib  (16)
+	lib : NOT . event optbindingseq DOT lib  (17)
+
+	LPAREN  shift 27
+	IDENT  shift 28
+	.  error
+
+	gterm  goto 40
+	event  goto 41
+	gfact  goto 34
+
+
+state 9
+	lib : ELIMTRUE . fact DOT lib  (18)
+	lib : ELIMTRUE . fact WHERE varmayfail CANTEXT FAIL DOT lib  (19)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 42
+	FAIL  shift 22
+	.  error
+
+	term  goto 43
+	fact  goto 44
+
+
+state 10
+	lib : CLAUSES . clauses lib  (21)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 42
+	FAIL  shift 22
+	.  error
+
+	term  goto 43
+	fact  goto 45
+	clauses  goto 46
+	factand  goto 47
+	clause  goto 48
+	clausemayfail  goto 49
+
+
+state 11
+	lib : NOUNIF . gfactformat optint foptbindingseq DOT lib  (9)
+
+	IDENT  shift 50
+	.  error
+
+	gfactformat  goto 51
+
+
+state 12
+	lib : WEAKSECRET . IDENT DOT lib  (15)
+
+	IDENT  shift 52
+	.  error
+
+
+state 13
+	lib : DATA . IDENT SLASH INT DOT lib  (2)
+
+	IDENT  shift 53
+	.  error
+
+
+state 14
+	lib : PARAM . IDENT EQUAL IDENT DOT lib  (10)
+	lib : PARAM . IDENT EQUAL STRING DOT lib  (11)
+	lib : PARAM . IDENT EQUAL INT DOT lib  (12)
+
+	IDENT  shift 54
+	.  error
+
+
+state 15
+	privateopt : PRIVATE .  (24)
+
+	.  reduce 24
+
+
+state 16
+	%entry% : '\001' all .  (148)
+
+	.  reduce 148
+
+
+state 17
+	all : lib . PROCESS process EOF  (23)
+
+	PROCESS  shift 55
+	.  error
+
+
+state 18
+	lib : privateopt . FUN IDENT SLASH INT DOT lib  (1)
+	lib : privateopt . REDUCTION term EQUAL term SEMI reduc lib  (4)
+	lib : privateopt . REDUCTION reducmayfailseq DOT lib  (5)
+	lib : privateopt . FREE neidentseq DOT lib  (20)
+
+	FUN  shift 56
+	REDUCTION  shift 57
+	FREE  shift 58
+	.  error
+
+
+state 19
+	term : CHOICE . LBRACKET term COMMA term RBRACKET  (38)
+
+	LBRACKET  shift 59
+	.  error
+
+
+state 20
+	term : LPAREN . termseq RPAREN  (40)
+	termseq : .  (44)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	RPAREN  reduce 44
+
+	term  goto 60
+	termseq  goto 61
+	netermseq  goto 62
+
+
+state 21
+	term : IDENT . LPAREN termseq RPAREN  (37)
+	term : IDENT .  (39)
+
+	LPAREN  shift 63
+	COMMA  reduce 39
+	RPAREN  reduce 39
+	RBRACKET  reduce 39
+	SEMI  reduce 39
+	IN  reduce 39
+	THEN  reduce 39
+	EQUAL  reduce 39
+	DOT  reduce 39
+	RED  reduce 39
+	EQUIV  reduce 39
+	EQUIVEQ  reduce 39
+	WEDGE  reduce 39
+	WHERE  reduce 39
+	OTHERWISE  reduce 39
+
+
+state 22
+	term : FAIL .  (36)
+
+	.  reduce 36
+
+
+state 23
+	lib : EQUATION eqlist . DOT lib  (3)
+
+	DOT  shift 64
+	.  error
+
+
+state 24
+	eqlist : term . EQUAL term  (34)
+	eqlist : term . EQUAL term SEMI eqlist  (35)
+
+	EQUAL  shift 65
+	.  error
+
+
+state 25
+	lib : PREDICATE IDENT . SLASH INT neidentseq DOT lib  (6)
+	lib : PREDICATE IDENT . SLASH INT DOT lib  (7)
+
+	SLASH  shift 66
+	.  error
+
+
+state 26
+	lib : LET IDENT . EQUAL process DOT lib  (8)
+
+	EQUAL  shift 67
+	.  error
+
+
+state 27
+	gterm : LPAREN . gtermseq RPAREN  (53)
+	gtermseq : .  (58)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	RPAREN  reduce 58
+
+	gterm  goto 69
+	gtermseq  goto 70
+	negtermseq  goto 71
+
+
+state 28
+	gterm : IDENT . LPAREN gtermseq RPAREN  (51)
+	gterm : IDENT .  (52)
+	gterm : IDENT . LBRACKET bindingseq RBRACKET  (54)
+	gfact : IDENT . COLON gtermseq  (69)
+
+	LPAREN  shift 72
+	LBRACKET  shift 73
+	COLON  shift 74
+	COMMA  reduce 52
+	RPAREN  reduce 52
+	SEMI  reduce 52
+	EQUAL  reduce 52
+	DOT  reduce 52
+	DIFF  reduce 52
+	PHASE  reduce 52
+
+
+state 29
+	query : LET . IDENT EQUAL gterm  (78)
+
+	IDENT  shift 75
+	.  error
+
+
+state 30
+	query : PUTBEGIN . IDENT COLON neidentseq  (77)
+
+	IDENT  shift 76
+	.  error
+
+
+state 31
+	lib : QUERY queryseq . DOT lib  (13)
+
+	DOT  shift 77
+	.  error
+
+
+state 32
+	gfact : gterm . DIFF gterm  (70)
+	gfact : gterm . EQUAL gterm  (71)
+
+	EQUAL  shift 78
+	DIFF  shift 79
+	.  error
+
+
+state 33
+	query : event .  (75)
+	realquery : event . BEFORE hyp  (79)
+
+	BEFORE  shift 80
+	SEMI  reduce 75
+	DOT  reduce 75
+
+
+state 34
+	event : gfact . optphase  (72)
+	optphase : .  (106)
+
+	PHASE  shift 81
+	RPAREN  reduce 106
+	BAR  reduce 106
+	SEMI  reduce 106
+	DOT  reduce 106
+	BEFORE  reduce 106
+	WEDGE  reduce 106
+
+	optphase  goto 82
+
+
+state 35
+	queryseq : query . SEMI queryseq  (73)
+	queryseq : query .  (74)
+
+	SEMI  shift 83
+	DOT  reduce 74
+
+
+state 36
+	query : realquery .  (76)
+
+	.  reduce 76
+
+
+state 37
+	ni : IDENT . AMONG LPAREN netermseq RPAREN  (47)
+	ni : IDENT .  (48)
+
+	AMONG  shift 84
+	COMMA  reduce 48
+	DOT  reduce 48
+
+
+state 38
+	lib : NONINTERF niseq . DOT lib  (14)
+
+	DOT  shift 85
+	.  error
+
+
+state 39
+	niseq : ni . COMMA niseq  (49)
+	niseq : ni .  (50)
+
+	COMMA  shift 86
+	DOT  reduce 50
+
+
+state 40
+	lib : NOT gterm . optphase optbindingseq DOT lib  (16)
+	gfact : gterm . DIFF gterm  (70)
+	gfact : gterm . EQUAL gterm  (71)
+	optphase : .  (106)
+
+	EQUAL  shift 78
+	DIFF  shift 79
+	PHASE  shift 81
+	SEMI  reduce 106
+	DOT  reduce 106
+
+	optphase  goto 87
+
+
+state 41
+	lib : NOT event . optbindingseq DOT lib  (17)
+	optbindingseq : .  (68)
+
+	SEMI  shift 88
+	DOT  reduce 68
+
+	optbindingseq  goto 89
+
+
+state 42
+	term : IDENT . LPAREN termseq RPAREN  (37)
+	term : IDENT .  (39)
+	fact : IDENT . COLON termseq  (109)
+
+	LPAREN  shift 63
+	COLON  shift 90
+	EQUAL  reduce 39
+	DIFF  reduce 39
+
+
+state 43
+	fact : term . DIFF term  (110)
+	fact : term . EQUAL term  (111)
+
+	EQUAL  shift 91
+	DIFF  shift 92
+	.  error
+
+
+state 44
+	lib : ELIMTRUE fact . DOT lib  (18)
+	lib : ELIMTRUE fact . WHERE varmayfail CANTEXT FAIL DOT lib  (19)
+
+	DOT  shift 93
+	WHERE  shift 94
+	.  error
+
+
+state 45
+	factand : fact . WEDGE factand  (112)
+	factand : fact .  (113)
+	clause : fact .  (115)
+
+	WEDGE  shift 95
+	SEMI  reduce 115
+	DOT  reduce 115
+	RED  reduce 113
+	EQUIV  reduce 113
+	EQUIVEQ  reduce 113
+	WHERE  reduce 115
+
+
+state 46
+	lib : CLAUSES clauses . lib  (21)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 96
+	privateopt  goto 18
+
+
+state 47
+	clause : factand . RED fact  (114)
+	clause : factand . EQUIV fact  (116)
+	clause : factand . EQUIVEQ fact  (117)
+
+	RED  shift 97
+	EQUIV  shift 98
+	EQUIVEQ  shift 99
+	.  error
+
+
+state 48
+	clausemayfail : clause . WHERE varmayfail CANTEXT FAIL  (118)
+	clausemayfail : clause .  (119)
+
+	WHERE  shift 100
+	SEMI  reduce 119
+	DOT  reduce 119
+
+
+state 49
+	clauses : clausemayfail . SEMI clauses  (120)
+	clauses : clausemayfail . DOT  (121)
+
+	SEMI  shift 101
+	DOT  shift 102
+	.  error
+
+
+state 50
+	gfactformat : IDENT . COLON gformatseq optphase  (104)
+
+	COLON  shift 103
+	.  error
+
+
+state 51
+	lib : NOUNIF gfactformat . optint foptbindingseq DOT lib  (9)
+	optint : .  (108)
+
+	SLASH  shift 104
+	SEMI  reduce 108
+	DOT  reduce 108
+
+	optint  goto 105
+
+
+state 52
+	lib : WEAKSECRET IDENT . DOT lib  (15)
+
+	DOT  shift 106
+	.  error
+
+
+state 53
+	lib : DATA IDENT . SLASH INT DOT lib  (2)
+
+	SLASH  shift 107
+	.  error
+
+
+state 54
+	lib : PARAM IDENT . EQUAL IDENT DOT lib  (10)
+	lib : PARAM IDENT . EQUAL STRING DOT lib  (11)
+	lib : PARAM IDENT . EQUAL INT DOT lib  (12)
+
+	EQUAL  shift 108
+	.  error
+
+
+state 55
+	all : lib PROCESS . process EOF  (23)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 121
+
+
+state 56
+	lib : privateopt FUN . IDENT SLASH INT DOT lib  (1)
+
+	IDENT  shift 122
+	.  error
+
+
+state 57
+	lib : privateopt REDUCTION . term EQUAL term SEMI reduc lib  (4)
+	lib : privateopt REDUCTION . reducmayfailseq DOT lib  (5)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 123
+	reducmayfailseq  goto 124
+	reducmayfail  goto 125
+
+
+state 58
+	lib : privateopt FREE . neidentseq DOT lib  (20)
+
+	IDENT  shift 126
+	.  error
+
+	neidentseq  goto 127
+
+
+state 59
+	term : CHOICE LBRACKET . term COMMA term RBRACKET  (38)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 128
+
+
+state 60
+	netermseq : term . COMMA netermseq  (41)
+	netermseq : term .  (42)
+
+	COMMA  shift 129
+	RPAREN  reduce 42
+	SEMI  reduce 42
+	IN  reduce 42
+	THEN  reduce 42
+	DOT  reduce 42
+	RED  reduce 42
+	EQUIV  reduce 42
+	EQUIVEQ  reduce 42
+	WEDGE  reduce 42
+	WHERE  reduce 42
+
+
+state 61
+	term : LPAREN termseq . RPAREN  (40)
+
+	RPAREN  shift 130
+	.  error
+
+
+state 62
+	termseq : netermseq .  (43)
+
+	.  reduce 43
+
+
+state 63
+	term : IDENT LPAREN . termseq RPAREN  (37)
+	termseq : .  (44)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	RPAREN  reduce 44
+
+	term  goto 60
+	termseq  goto 131
+	netermseq  goto 62
+
+
+state 64
+	lib : EQUATION eqlist DOT . lib  (3)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 132
+	privateopt  goto 18
+
+
+state 65
+	eqlist : term EQUAL . term  (34)
+	eqlist : term EQUAL . term SEMI eqlist  (35)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 133
+
+
+state 66
+	lib : PREDICATE IDENT SLASH . INT neidentseq DOT lib  (6)
+	lib : PREDICATE IDENT SLASH . INT DOT lib  (7)
+
+	INT  shift 134
+	.  error
+
+
+state 67
+	lib : LET IDENT EQUAL . process DOT lib  (8)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 135
+
+
+state 68
+	gterm : IDENT . LPAREN gtermseq RPAREN  (51)
+	gterm : IDENT .  (52)
+	gterm : IDENT . LBRACKET bindingseq RBRACKET  (54)
+
+	LPAREN  shift 72
+	LBRACKET  shift 73
+	COMMA  reduce 52
+	RPAREN  reduce 52
+	RBRACKET  reduce 52
+	BAR  reduce 52
+	SEMI  reduce 52
+	DOT  reduce 52
+	BEFORE  reduce 52
+	WEDGE  reduce 52
+	PHASE  reduce 52
+
+
+state 69
+	negtermseq : gterm . COMMA negtermseq  (55)
+	negtermseq : gterm .  (56)
+
+	COMMA  shift 136
+	RPAREN  reduce 56
+	BAR  reduce 56
+	SEMI  reduce 56
+	DOT  reduce 56
+	BEFORE  reduce 56
+	WEDGE  reduce 56
+	PHASE  reduce 56
+
+
+state 70
+	gterm : LPAREN gtermseq . RPAREN  (53)
+
+	RPAREN  shift 137
+	.  error
+
+
+state 71
+	gtermseq : negtermseq .  (57)
+
+	.  reduce 57
+
+
+state 72
+	gterm : IDENT LPAREN . gtermseq RPAREN  (51)
+	gtermseq : .  (58)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	RPAREN  reduce 58
+
+	gterm  goto 69
+	gtermseq  goto 138
+	negtermseq  goto 71
+
+
+state 73
+	gterm : IDENT LBRACKET . bindingseq RBRACKET  (54)
+	bindingseq : .  (64)
+
+	IDENT  shift 139
+	REPL  shift 140
+	RBRACKET  reduce 64
+
+	bindingseq  goto 141
+	nesbindingseq  goto 142
+
+
+state 74
+	gfact : IDENT COLON . gtermseq  (69)
+	gtermseq : .  (58)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	RPAREN  reduce 58
+	BAR  reduce 58
+	SEMI  reduce 58
+	DOT  reduce 58
+	BEFORE  reduce 58
+	WEDGE  reduce 58
+	PHASE  reduce 58
+
+	gterm  goto 69
+	gtermseq  goto 143
+	negtermseq  goto 71
+
+
+state 75
+	query : LET IDENT . EQUAL gterm  (78)
+
+	EQUAL  shift 144
+	.  error
+
+
+state 76
+	query : PUTBEGIN IDENT . COLON neidentseq  (77)
+
+	COLON  shift 145
+	.  error
+
+
+state 77
+	lib : QUERY queryseq DOT . lib  (13)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 146
+	privateopt  goto 18
+
+
+state 78
+	gfact : gterm EQUAL . gterm  (71)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	.  error
+
+	gterm  goto 147
+
+
+state 79
+	gfact : gterm DIFF . gterm  (70)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	.  error
+
+	gterm  goto 148
+
+
+state 80
+	realquery : event BEFORE . hyp  (79)
+
+	LPAREN  shift 149
+	IDENT  shift 28
+	.  error
+
+	gterm  goto 32
+	event  goto 150
+	gfact  goto 34
+	hyp  goto 151
+
+
+state 81
+	optphase : PHASE . INT  (105)
+
+	INT  shift 152
+	.  error
+
+
+state 82
+	event : gfact optphase .  (72)
+
+	.  reduce 72
+
+
+state 83
+	queryseq : query SEMI . queryseq  (73)
+
+	LPAREN  shift 27
+	IDENT  shift 28
+	LET  shift 29
+	PUTBEGIN  shift 30
+	.  error
+
+	queryseq  goto 153
+	gterm  goto 32
+	event  goto 33
+	gfact  goto 34
+	query  goto 35
+	realquery  goto 36
+
+
+state 84
+	ni : IDENT AMONG . LPAREN netermseq RPAREN  (47)
+
+	LPAREN  shift 154
+	.  error
+
+
+state 85
+	lib : NONINTERF niseq DOT . lib  (14)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 155
+	privateopt  goto 18
+
+
+state 86
+	niseq : ni COMMA . niseq  (49)
+
+	IDENT  shift 37
+	.  error
+
+	niseq  goto 156
+	ni  goto 39
+
+
+state 87
+	lib : NOT gterm optphase . optbindingseq DOT lib  (16)
+	optbindingseq : .  (68)
+
+	SEMI  shift 88
+	DOT  reduce 68
+
+	optbindingseq  goto 157
+
+
+state 88
+	optbindingseq : SEMI . nebindingseq  (67)
+
+	IDENT  shift 158
+	.  error
+
+	nebindingseq  goto 159
+
+
+state 89
+	lib : NOT event optbindingseq . DOT lib  (17)
+
+	DOT  shift 160
+	.  error
+
+
+state 90
+	fact : IDENT COLON . termseq  (109)
+	termseq : .  (44)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	SEMI  reduce 44
+	IN  reduce 44
+	THEN  reduce 44
+	DOT  reduce 44
+	RED  reduce 44
+	EQUIV  reduce 44
+	EQUIVEQ  reduce 44
+	WEDGE  reduce 44
+	WHERE  reduce 44
+
+	term  goto 60
+	termseq  goto 161
+	netermseq  goto 62
+
+
+state 91
+	fact : term EQUAL . term  (111)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 162
+
+
+state 92
+	fact : term DIFF . term  (110)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 163
+
+
+state 93
+	lib : ELIMTRUE fact DOT . lib  (18)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 164
+	privateopt  goto 18
+
+
+state 94
+	lib : ELIMTRUE fact WHERE . varmayfail CANTEXT FAIL DOT lib  (19)
+
+	IDENT  shift 165
+	.  error
+
+	varmayfail  goto 166
+
+
+state 95
+	factand : fact WEDGE . factand  (112)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 42
+	FAIL  shift 22
+	.  error
+
+	term  goto 43
+	fact  goto 167
+	factand  goto 168
+
+
+state 96
+	lib : CLAUSES clauses lib .  (21)
+
+	.  reduce 21
+
+
+state 97
+	clause : factand RED . fact  (114)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 42
+	FAIL  shift 22
+	.  error
+
+	term  goto 43
+	fact  goto 169
+
+
+state 98
+	clause : factand EQUIV . fact  (116)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 42
+	FAIL  shift 22
+	.  error
+
+	term  goto 43
+	fact  goto 170
+
+
+state 99
+	clause : factand EQUIVEQ . fact  (117)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 42
+	FAIL  shift 22
+	.  error
+
+	term  goto 43
+	fact  goto 171
+
+
+state 100
+	clausemayfail : clause WHERE . varmayfail CANTEXT FAIL  (118)
+
+	IDENT  shift 165
+	.  error
+
+	varmayfail  goto 172
+
+
+state 101
+	clauses : clausemayfail SEMI . clauses  (120)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 42
+	FAIL  shift 22
+	.  error
+
+	term  goto 43
+	fact  goto 45
+	clauses  goto 173
+	factand  goto 47
+	clause  goto 48
+	clausemayfail  goto 49
+
+
+state 102
+	clauses : clausemayfail DOT .  (121)
+
+	.  reduce 121
+
+
+state 103
+	gfactformat : IDENT COLON . gformatseq optphase  (104)
+	gformatseq : .  (93)
+
+	STAR  shift 174
+	LPAREN  shift 175
+	IDENT  shift 176
+	SEMI  reduce 93
+	SLASH  reduce 93
+	DOT  reduce 93
+	PHASE  reduce 93
+
+	gformat  goto 177
+	gformatseq  goto 178
+	negformatseq  goto 179
+
+
+state 104
+	optint : SLASH . INT  (107)
+
+	INT  shift 180
+	.  error
+
+
+state 105
+	lib : NOUNIF gfactformat optint . foptbindingseq DOT lib  (9)
+	foptbindingseq : .  (103)
+
+	SEMI  shift 181
+	DOT  reduce 103
+
+	foptbindingseq  goto 182
+
+
+state 106
+	lib : WEAKSECRET IDENT DOT . lib  (15)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 183
+	privateopt  goto 18
+
+
+state 107
+	lib : DATA IDENT SLASH . INT DOT lib  (2)
+
+	INT  shift 184
+	.  error
+
+
+state 108
+	lib : PARAM IDENT EQUAL . IDENT DOT lib  (10)
+	lib : PARAM IDENT EQUAL . STRING DOT lib  (11)
+	lib : PARAM IDENT EQUAL . INT DOT lib  (12)
+
+	IDENT  shift 185
+	STRING  shift 186
+	INT  shift 187
+	.  error
+
+
+state 109
+	process : LPAREN . process RPAREN  (122)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 188
+
+
+state 110
+	process : NEW . IDENT optprocess  (126)
+
+	IDENT  shift 189
+	.  error
+
+
+state 111
+	process : OUT . LPAREN term COMMA term RPAREN optprocess  (130)
+
+	LPAREN  shift 190
+	.  error
+
+
+state 112
+	process : IN . LPAREN term COMMA pattern RPAREN optprocess  (129)
+
+	LPAREN  shift 191
+	.  error
+
+
+state 113
+	process : IDENT .  (123)
+
+	.  reduce 123
+
+
+state 114
+	process : INT .  (125)
+
+	.  reduce 125
+
+
+state 115
+	process : REPL . process  (124)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 192
+
+
+state 116
+	process : IF . fact THEN process ELSE process  (127)
+	process : IF . fact THEN process  (128)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 42
+	FAIL  shift 22
+	.  error
+
+	term  goto 43
+	fact  goto 193
+
+
+state 117
+	process : LET . pattern EQUAL term IN process  (131)
+	process : LET . pattern EQUAL term IN process ELSE process  (132)
+	process : LET . neidentseq SUCHTHAT fact IN process  (133)
+	process : LET . neidentseq SUCHTHAT fact IN process ELSE process  (134)
+
+	LPAREN  shift 194
+	IDENT  shift 195
+	EQUAL  shift 196
+	.  error
+
+	neidentseq  goto 197
+	pattern  goto 198
+
+
+state 118
+	process : EVENT . IDENT LPAREN termseq RPAREN optprocess  (136)
+
+	IDENT  shift 199
+	.  error
+
+
+state 119
+	process : PHASE . INT optprocess  (137)
+
+	INT  shift 200
+	.  error
+
+
+state 120
+	process : BARRIER . INT optprocess  (138)
+	process : BARRIER . INT LBRACKET IDENT RBRACKET optprocess  (139)
+
+	INT  shift 201
+	.  error
+
+
+state 121
+	all : lib PROCESS process . EOF  (23)
+	process : process . BAR process  (135)
+
+	BAR  shift 202
+	EOF  shift 203
+	.  error
+
+
+state 122
+	lib : privateopt FUN IDENT . SLASH INT DOT lib  (1)
+
+	SLASH  shift 204
+	.  error
+
+
+state 123
+	lib : privateopt REDUCTION term . EQUAL term SEMI reduc lib  (4)
+	reducmayfail : term . EQUAL term WHERE varmayfail CANTEXT FAIL  (30)
+	reducmayfail : term . EQUAL term  (31)
+
+	EQUAL  shift 205
+	.  error
+
+
+state 124
+	lib : privateopt REDUCTION reducmayfailseq . DOT lib  (5)
+
+	DOT  shift 206
+	.  error
+
+
+state 125
+	reducmayfailseq : reducmayfail . OTHERWISE reducmayfailseq  (32)
+	reducmayfailseq : reducmayfail .  (33)
+
+	OTHERWISE  shift 207
+	DOT  reduce 33
+
+
+state 126
+	neidentseq : IDENT . COMMA neidentseq  (45)
+	neidentseq : IDENT .  (46)
+
+	COMMA  shift 208
+	SEMI  reduce 46
+	DOT  reduce 46
+	SUCHTHAT  reduce 46
+
+
+state 127
+	lib : privateopt FREE neidentseq . DOT lib  (20)
+
+	DOT  shift 209
+	.  error
+
+
+state 128
+	term : CHOICE LBRACKET term . COMMA term RBRACKET  (38)
+
+	COMMA  shift 210
+	.  error
+
+
+state 129
+	netermseq : term COMMA . netermseq  (41)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 60
+	netermseq  goto 211
+
+
+state 130
+	term : LPAREN termseq RPAREN .  (40)
+
+	.  reduce 40
+
+
+state 131
+	term : IDENT LPAREN termseq . RPAREN  (37)
+
+	RPAREN  shift 212
+	.  error
+
+
+state 132
+	lib : EQUATION eqlist DOT lib .  (3)
+
+	.  reduce 3
+
+
+state 133
+	eqlist : term EQUAL term .  (34)
+	eqlist : term EQUAL term . SEMI eqlist  (35)
+
+	SEMI  shift 213
+	DOT  reduce 34
+
+
+state 134
+	lib : PREDICATE IDENT SLASH INT . neidentseq DOT lib  (6)
+	lib : PREDICATE IDENT SLASH INT . DOT lib  (7)
+
+	IDENT  shift 126
+	DOT  shift 214
+	.  error
+
+	neidentseq  goto 215
+
+
+state 135
+	lib : LET IDENT EQUAL process . DOT lib  (8)
+	process : process . BAR process  (135)
+
+	BAR  shift 202
+	DOT  shift 216
+	.  error
+
+
+state 136
+	negtermseq : gterm COMMA . negtermseq  (55)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	.  error
+
+	gterm  goto 69
+	negtermseq  goto 217
+
+
+state 137
+	gterm : LPAREN gtermseq RPAREN .  (53)
+
+	.  reduce 53
+
+
+state 138
+	gterm : IDENT LPAREN gtermseq . RPAREN  (51)
+
+	RPAREN  shift 218
+	.  error
+
+
+state 139
+	nesbindingseq : IDENT . EQUAL gterm SEMI nesbindingseq  (61)
+	nesbindingseq : IDENT . EQUAL gterm  (62)
+
+	EQUAL  shift 219
+	.  error
+
+
+state 140
+	nesbindingseq : REPL . INT EQUAL gterm SEMI nesbindingseq  (59)
+	nesbindingseq : REPL . INT EQUAL gterm  (60)
+
+	INT  shift 220
+	.  error
+
+
+state 141
+	gterm : IDENT LBRACKET bindingseq . RBRACKET  (54)
+
+	RBRACKET  shift 221
+	.  error
+
+
+state 142
+	bindingseq : nesbindingseq .  (63)
+
+	.  reduce 63
+
+
+state 143
+	gfact : IDENT COLON gtermseq .  (69)
+
+	.  reduce 69
+
+
+state 144
+	query : LET IDENT EQUAL . gterm  (78)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	.  error
+
+	gterm  goto 222
+
+
+state 145
+	query : PUTBEGIN IDENT COLON . neidentseq  (77)
+
+	IDENT  shift 126
+	.  error
+
+	neidentseq  goto 223
+
+
+state 146
+	lib : QUERY queryseq DOT lib .  (13)
+
+	.  reduce 13
+
+
+state 147
+	gfact : gterm EQUAL gterm .  (71)
+
+	.  reduce 71
+
+
+state 148
+	gfact : gterm DIFF gterm .  (70)
+
+	.  reduce 70
+
+
+state 149
+	gterm : LPAREN . gtermseq RPAREN  (53)
+	hyp : LPAREN . hyp RPAREN  (82)
+	hyp : LPAREN . realquery RPAREN  (84)
+	gtermseq : .  (58)
+
+	LPAREN  shift 149
+	IDENT  shift 28
+	RPAREN  reduce 58
+
+	gterm  goto 224
+	event  goto 225
+	gtermseq  goto 70
+	negtermseq  goto 71
+	gfact  goto 34
+	realquery  goto 226
+	hyp  goto 227
+
+
+state 150
+	hyp : event .  (83)
+
+	.  reduce 83
+
+
+state 151
+	realquery : event BEFORE hyp .  (79)
+	hyp : hyp . BAR hyp  (80)
+	hyp : hyp . WEDGE hyp  (81)
+
+	BAR  shift 228
+	WEDGE  shift 229
+	RPAREN  reduce 79
+	SEMI  reduce 79
+	DOT  reduce 79
+
+
+state 152
+	optphase : PHASE INT .  (105)
+
+	.  reduce 105
+
+
+state 153
+	queryseq : query SEMI queryseq .  (73)
+
+	.  reduce 73
+
+
+state 154
+	ni : IDENT AMONG LPAREN . netermseq RPAREN  (47)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 60
+	netermseq  goto 230
+
+
+state 155
+	lib : NONINTERF niseq DOT lib .  (14)
+
+	.  reduce 14
+
+
+state 156
+	niseq : ni COMMA niseq .  (49)
+
+	.  reduce 49
+
+
+state 157
+	lib : NOT gterm optphase optbindingseq . DOT lib  (16)
+
+	DOT  shift 231
+	.  error
+
+
+state 158
+	nebindingseq : IDENT . EQUAL gterm SEMI nebindingseq  (65)
+	nebindingseq : IDENT . EQUAL gterm  (66)
+
+	EQUAL  shift 232
+	.  error
+
+
+state 159
+	optbindingseq : SEMI nebindingseq .  (67)
+
+	.  reduce 67
+
+
+state 160
+	lib : NOT event optbindingseq DOT . lib  (17)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 233
+	privateopt  goto 18
+
+
+state 161
+	fact : IDENT COLON termseq .  (109)
+
+	.  reduce 109
+
+
+state 162
+	fact : term EQUAL term .  (111)
+
+	.  reduce 111
+
+
+state 163
+	fact : term DIFF term .  (110)
+
+	.  reduce 110
+
+
+state 164
+	lib : ELIMTRUE fact DOT lib .  (18)
+
+	.  reduce 18
+
+
+state 165
+	varmayfail : IDENT . COMMA varmayfail  (28)
+	varmayfail : IDENT .  (29)
+
+	COMMA  shift 234
+	CANTEXT  reduce 29
+
+
+state 166
+	lib : ELIMTRUE fact WHERE varmayfail . CANTEXT FAIL DOT lib  (19)
+
+	CANTEXT  shift 235
+	.  error
+
+
+state 167
+	factand : fact . WEDGE factand  (112)
+	factand : fact .  (113)
+
+	WEDGE  shift 95
+	RED  reduce 113
+	EQUIV  reduce 113
+	EQUIVEQ  reduce 113
+
+
+state 168
+	factand : fact WEDGE factand .  (112)
+
+	.  reduce 112
+
+
+state 169
+	clause : factand RED fact .  (114)
+
+	.  reduce 114
+
+
+state 170
+	clause : factand EQUIV fact .  (116)
+
+	.  reduce 116
+
+
+state 171
+	clause : factand EQUIVEQ fact .  (117)
+
+	.  reduce 117
+
+
+state 172
+	clausemayfail : clause WHERE varmayfail . CANTEXT FAIL  (118)
+
+	CANTEXT  shift 236
+	.  error
+
+
+state 173
+	clauses : clausemayfail SEMI clauses .  (120)
+
+	.  reduce 120
+
+
+state 174
+	gformat : STAR . IDENT  (89)
+
+	IDENT  shift 237
+	.  error
+
+
+state 175
+	gformat : LPAREN . gformatseq RPAREN  (87)
+	gformatseq : .  (93)
+
+	STAR  shift 174
+	LPAREN  shift 175
+	IDENT  shift 176
+	RPAREN  reduce 93
+
+	gformat  goto 177
+	gformatseq  goto 238
+	negformatseq  goto 179
+
+
+state 176
+	gformat : IDENT . LPAREN gformatseq RPAREN  (85)
+	gformat : IDENT .  (86)
+	gformat : IDENT . LBRACKET fbindingseq RBRACKET  (88)
+
+	LPAREN  shift 239
+	LBRACKET  shift 240
+	COMMA  reduce 86
+	RPAREN  reduce 86
+	RBRACKET  reduce 86
+	SEMI  reduce 86
+	SLASH  reduce 86
+	DOT  reduce 86
+	PHASE  reduce 86
+
+
+state 177
+	negformatseq : gformat . COMMA negformatseq  (90)
+	negformatseq : gformat .  (91)
+
+	COMMA  shift 241
+	RPAREN  reduce 91
+	SEMI  reduce 91
+	SLASH  reduce 91
+	DOT  reduce 91
+	PHASE  reduce 91
+
+
+state 178
+	gfactformat : IDENT COLON gformatseq . optphase  (104)
+	optphase : .  (106)
+
+	PHASE  shift 81
+	SEMI  reduce 106
+	SLASH  reduce 106
+	DOT  reduce 106
+
+	optphase  goto 242
+
+
+state 179
+	gformatseq : negformatseq .  (92)
+
+	.  reduce 92
+
+
+state 180
+	optint : SLASH INT .  (107)
+
+	.  reduce 107
+
+
+state 181
+	foptbindingseq : SEMI . fnebindingseq  (102)
+
+	IDENT  shift 243
+	.  error
+
+	fnebindingseq  goto 244
+
+
+state 182
+	lib : NOUNIF gfactformat optint foptbindingseq . DOT lib  (9)
+
+	DOT  shift 245
+	.  error
+
+
+state 183
+	lib : WEAKSECRET IDENT DOT lib .  (15)
+
+	.  reduce 15
+
+
+state 184
+	lib : DATA IDENT SLASH INT . DOT lib  (2)
+
+	DOT  shift 246
+	.  error
+
+
+state 185
+	lib : PARAM IDENT EQUAL IDENT . DOT lib  (10)
+
+	DOT  shift 247
+	.  error
+
+
+state 186
+	lib : PARAM IDENT EQUAL STRING . DOT lib  (11)
+
+	DOT  shift 248
+	.  error
+
+
+state 187
+	lib : PARAM IDENT EQUAL INT . DOT lib  (12)
+
+	DOT  shift 249
+	.  error
+
+
+state 188
+	process : LPAREN process . RPAREN  (122)
+	process : process . BAR process  (135)
+
+	RPAREN  shift 250
+	BAR  shift 202
+	.  error
+
+
+state 189
+	process : NEW IDENT . optprocess  (126)
+	optprocess : .  (141)
+
+	SEMI  shift 251
+	RPAREN  reduce 141
+	BAR  reduce 141
+	ELSE  reduce 141
+	DOT  reduce 141
+	EOF  reduce 141
+
+	optprocess  goto 252
+
+
+state 190
+	process : OUT LPAREN . term COMMA term RPAREN optprocess  (130)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 253
+
+
+state 191
+	process : IN LPAREN . term COMMA pattern RPAREN optprocess  (129)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 254
+
+
+state 192
+	process : REPL process .  (124)
+	process : process . BAR process  (135)
+
+	.  reduce 124
+
+
+state 193
+	process : IF fact . THEN process ELSE process  (127)
+	process : IF fact . THEN process  (128)
+
+	THEN  shift 255
+	.  error
+
+
+state 194
+	pattern : LPAREN . patternseq RPAREN  (143)
+
+	LPAREN  shift 194
+	IDENT  shift 256
+	EQUAL  shift 196
+	.  error
+
+	pattern  goto 257
+	patternseq  goto 258
+
+
+state 195
+	neidentseq : IDENT . COMMA neidentseq  (45)
+	neidentseq : IDENT .  (46)
+	pattern : IDENT .  (142)
+	pattern : IDENT . LPAREN patternseq RPAREN  (144)
+
+	COMMA  shift 208
+	LPAREN  shift 259
+	EQUAL  reduce 142
+	SUCHTHAT  reduce 46
+
+
+state 196
+	pattern : EQUAL . term  (145)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 260
+
+
+state 197
+	process : LET neidentseq . SUCHTHAT fact IN process  (133)
+	process : LET neidentseq . SUCHTHAT fact IN process ELSE process  (134)
+
+	SUCHTHAT  shift 261
+	.  error
+
+
+state 198
+	process : LET pattern . EQUAL term IN process  (131)
+	process : LET pattern . EQUAL term IN process ELSE process  (132)
+
+	EQUAL  shift 262
+	.  error
+
+
+state 199
+	process : EVENT IDENT . LPAREN termseq RPAREN optprocess  (136)
+
+	LPAREN  shift 263
+	.  error
+
+
+state 200
+	process : PHASE INT . optprocess  (137)
+	optprocess : .  (141)
+
+	SEMI  shift 251
+	RPAREN  reduce 141
+	BAR  reduce 141
+	ELSE  reduce 141
+	DOT  reduce 141
+	EOF  reduce 141
+
+	optprocess  goto 264
+
+
+state 201
+	process : BARRIER INT . optprocess  (138)
+	process : BARRIER INT . LBRACKET IDENT RBRACKET optprocess  (139)
+	optprocess : .  (141)
+
+	LBRACKET  shift 265
+	SEMI  shift 251
+	RPAREN  reduce 141
+	BAR  reduce 141
+	ELSE  reduce 141
+	DOT  reduce 141
+	EOF  reduce 141
+
+	optprocess  goto 266
+
+
+state 202
+	process : process BAR . process  (135)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 267
+
+
+state 203
+	all : lib PROCESS process EOF .  (23)
+
+	.  reduce 23
+
+
+state 204
+	lib : privateopt FUN IDENT SLASH . INT DOT lib  (1)
+
+	INT  shift 268
+	.  error
+
+
+state 205
+	lib : privateopt REDUCTION term EQUAL . term SEMI reduc lib  (4)
+	reducmayfail : term EQUAL . term WHERE varmayfail CANTEXT FAIL  (30)
+	reducmayfail : term EQUAL . term  (31)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 269
+
+
+state 206
+	lib : privateopt REDUCTION reducmayfailseq DOT . lib  (5)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 270
+	privateopt  goto 18
+
+
+state 207
+	reducmayfailseq : reducmayfail OTHERWISE . reducmayfailseq  (32)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 271
+	reducmayfailseq  goto 272
+	reducmayfail  goto 125
+
+
+state 208
+	neidentseq : IDENT COMMA . neidentseq  (45)
+
+	IDENT  shift 126
+	.  error
+
+	neidentseq  goto 273
+
+
+state 209
+	lib : privateopt FREE neidentseq DOT . lib  (20)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 274
+	privateopt  goto 18
+
+
+state 210
+	term : CHOICE LBRACKET term COMMA . term RBRACKET  (38)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 275
+
+
+state 211
+	netermseq : term COMMA netermseq .  (41)
+
+	.  reduce 41
+
+
+state 212
+	term : IDENT LPAREN termseq RPAREN .  (37)
+
+	.  reduce 37
+
+
+state 213
+	eqlist : term EQUAL term SEMI . eqlist  (35)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	eqlist  goto 276
+	term  goto 24
+
+
+state 214
+	lib : PREDICATE IDENT SLASH INT DOT . lib  (7)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 277
+	privateopt  goto 18
+
+
+state 215
+	lib : PREDICATE IDENT SLASH INT neidentseq . DOT lib  (6)
+
+	DOT  shift 278
+	.  error
+
+
+state 216
+	lib : LET IDENT EQUAL process DOT . lib  (8)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 279
+	privateopt  goto 18
+
+
+state 217
+	negtermseq : gterm COMMA negtermseq .  (55)
+
+	.  reduce 55
+
+
+state 218
+	gterm : IDENT LPAREN gtermseq RPAREN .  (51)
+
+	.  reduce 51
+
+
+state 219
+	nesbindingseq : IDENT EQUAL . gterm SEMI nesbindingseq  (61)
+	nesbindingseq : IDENT EQUAL . gterm  (62)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	.  error
+
+	gterm  goto 280
+
+
+state 220
+	nesbindingseq : REPL INT . EQUAL gterm SEMI nesbindingseq  (59)
+	nesbindingseq : REPL INT . EQUAL gterm  (60)
+
+	EQUAL  shift 281
+	.  error
+
+
+state 221
+	gterm : IDENT LBRACKET bindingseq RBRACKET .  (54)
+
+	.  reduce 54
+
+
+state 222
+	query : LET IDENT EQUAL gterm .  (78)
+
+	.  reduce 78
+
+
+state 223
+	query : PUTBEGIN IDENT COLON neidentseq .  (77)
+
+	.  reduce 77
+
+
+state 224
+	negtermseq : gterm . COMMA negtermseq  (55)
+	negtermseq : gterm .  (56)
+	gfact : gterm . DIFF gterm  (70)
+	gfact : gterm . EQUAL gterm  (71)
+
+	COMMA  shift 136
+	EQUAL  shift 78
+	DIFF  shift 79
+	RPAREN  reduce 56
+
+
+state 225
+	realquery : event . BEFORE hyp  (79)
+	hyp : event .  (83)
+
+	BEFORE  shift 80
+	RPAREN  reduce 83
+	BAR  reduce 83
+	WEDGE  reduce 83
+
+
+state 226
+	hyp : LPAREN realquery . RPAREN  (84)
+
+	RPAREN  shift 282
+	.  error
+
+
+state 227
+	hyp : hyp . BAR hyp  (80)
+	hyp : hyp . WEDGE hyp  (81)
+	hyp : LPAREN hyp . RPAREN  (82)
+
+	RPAREN  shift 283
+	BAR  shift 228
+	WEDGE  shift 229
+	.  error
+
+
+state 228
+	hyp : hyp BAR . hyp  (80)
+
+	LPAREN  shift 149
+	IDENT  shift 28
+	.  error
+
+	gterm  goto 32
+	event  goto 150
+	gfact  goto 34
+	hyp  goto 284
+
+
+state 229
+	hyp : hyp WEDGE . hyp  (81)
+
+	LPAREN  shift 149
+	IDENT  shift 28
+	.  error
+
+	gterm  goto 32
+	event  goto 150
+	gfact  goto 34
+	hyp  goto 285
+
+
+state 230
+	ni : IDENT AMONG LPAREN netermseq . RPAREN  (47)
+
+	RPAREN  shift 286
+	.  error
+
+
+state 231
+	lib : NOT gterm optphase optbindingseq DOT . lib  (16)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 287
+	privateopt  goto 18
+
+
+state 232
+	nebindingseq : IDENT EQUAL . gterm SEMI nebindingseq  (65)
+	nebindingseq : IDENT EQUAL . gterm  (66)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	.  error
+
+	gterm  goto 288
+
+
+state 233
+	lib : NOT event optbindingseq DOT lib .  (17)
+
+	.  reduce 17
+
+
+state 234
+	varmayfail : IDENT COMMA . varmayfail  (28)
+
+	IDENT  shift 165
+	.  error
+
+	varmayfail  goto 289
+
+
+state 235
+	lib : ELIMTRUE fact WHERE varmayfail CANTEXT . FAIL DOT lib  (19)
+
+	FAIL  shift 290
+	.  error
+
+
+state 236
+	clausemayfail : clause WHERE varmayfail CANTEXT . FAIL  (118)
+
+	FAIL  shift 291
+	.  error
+
+
+state 237
+	gformat : STAR IDENT .  (89)
+
+	.  reduce 89
+
+
+state 238
+	gformat : LPAREN gformatseq . RPAREN  (87)
+
+	RPAREN  shift 292
+	.  error
+
+
+state 239
+	gformat : IDENT LPAREN . gformatseq RPAREN  (85)
+	gformatseq : .  (93)
+
+	STAR  shift 174
+	LPAREN  shift 175
+	IDENT  shift 176
+	RPAREN  reduce 93
+
+	gformat  goto 177
+	gformatseq  goto 293
+	negformatseq  goto 179
+
+
+state 240
+	gformat : IDENT LBRACKET . fbindingseq RBRACKET  (88)
+	fbindingseq : .  (99)
+
+	IDENT  shift 294
+	REPL  shift 295
+	RBRACKET  reduce 99
+
+	fbindingseq  goto 296
+	fnesbindingseq  goto 297
+
+
+state 241
+	negformatseq : gformat COMMA . negformatseq  (90)
+
+	STAR  shift 174
+	LPAREN  shift 175
+	IDENT  shift 176
+	.  error
+
+	gformat  goto 177
+	negformatseq  goto 298
+
+
+state 242
+	gfactformat : IDENT COLON gformatseq optphase .  (104)
+
+	.  reduce 104
+
+
+state 243
+	fnebindingseq : IDENT . EQUAL gformat SEMI fnebindingseq  (100)
+	fnebindingseq : IDENT . EQUAL gformat  (101)
+
+	EQUAL  shift 299
+	.  error
+
+
+state 244
+	foptbindingseq : SEMI fnebindingseq .  (102)
+
+	.  reduce 102
+
+
+state 245
+	lib : NOUNIF gfactformat optint foptbindingseq DOT . lib  (9)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 300
+	privateopt  goto 18
+
+
+state 246
+	lib : DATA IDENT SLASH INT DOT . lib  (2)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 301
+	privateopt  goto 18
+
+
+state 247
+	lib : PARAM IDENT EQUAL IDENT DOT . lib  (10)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 302
+	privateopt  goto 18
+
+
+state 248
+	lib : PARAM IDENT EQUAL STRING DOT . lib  (11)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 303
+	privateopt  goto 18
+
+
+state 249
+	lib : PARAM IDENT EQUAL INT DOT . lib  (12)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 304
+	privateopt  goto 18
+
+
+state 250
+	process : LPAREN process RPAREN .  (122)
+
+	.  reduce 122
+
+
+state 251
+	optprocess : SEMI . process  (140)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 305
+
+
+state 252
+	process : NEW IDENT optprocess .  (126)
+
+	.  reduce 126
+
+
+state 253
+	process : OUT LPAREN term . COMMA term RPAREN optprocess  (130)
+
+	COMMA  shift 306
+	.  error
+
+
+state 254
+	process : IN LPAREN term . COMMA pattern RPAREN optprocess  (129)
+
+	COMMA  shift 307
+	.  error
+
+
+state 255
+	process : IF fact THEN . process ELSE process  (127)
+	process : IF fact THEN . process  (128)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 308
+
+
+state 256
+	pattern : IDENT .  (142)
+	pattern : IDENT . LPAREN patternseq RPAREN  (144)
+
+	LPAREN  shift 259
+	COMMA  reduce 142
+	RPAREN  reduce 142
+
+
+state 257
+	patternseq : pattern . COMMA patternseq  (146)
+	patternseq : pattern .  (147)
+
+	COMMA  shift 309
+	RPAREN  reduce 147
+
+
+state 258
+	pattern : LPAREN patternseq . RPAREN  (143)
+
+	RPAREN  shift 310
+	.  error
+
+
+state 259
+	pattern : IDENT LPAREN . patternseq RPAREN  (144)
+
+	LPAREN  shift 194
+	IDENT  shift 256
+	EQUAL  shift 196
+	.  error
+
+	pattern  goto 257
+	patternseq  goto 311
+
+
+state 260
+	pattern : EQUAL term .  (145)
+
+	.  reduce 145
+
+
+state 261
+	process : LET neidentseq SUCHTHAT . fact IN process  (133)
+	process : LET neidentseq SUCHTHAT . fact IN process ELSE process  (134)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 42
+	FAIL  shift 22
+	.  error
+
+	term  goto 43
+	fact  goto 312
+
+
+state 262
+	process : LET pattern EQUAL . term IN process  (131)
+	process : LET pattern EQUAL . term IN process ELSE process  (132)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 313
+
+
+state 263
+	process : EVENT IDENT LPAREN . termseq RPAREN optprocess  (136)
+	termseq : .  (44)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	RPAREN  reduce 44
+
+	term  goto 60
+	termseq  goto 314
+	netermseq  goto 62
+
+
+state 264
+	process : PHASE INT optprocess .  (137)
+
+	.  reduce 137
+
+
+state 265
+	process : BARRIER INT LBRACKET . IDENT RBRACKET optprocess  (139)
+
+	IDENT  shift 315
+	.  error
+
+
+state 266
+	process : BARRIER INT optprocess .  (138)
+
+	.  reduce 138
+
+
+state 267
+	process : process . BAR process  (135)
+	process : process BAR process .  (135)
+
+	BAR  shift 202
+	RPAREN  reduce 135
+	ELSE  reduce 135
+	DOT  reduce 135
+	EOF  reduce 135
+
+
+state 268
+	lib : privateopt FUN IDENT SLASH INT . DOT lib  (1)
+
+	DOT  shift 316
+	.  error
+
+
+state 269
+	lib : privateopt REDUCTION term EQUAL term . SEMI reduc lib  (4)
+	reducmayfail : term EQUAL term . WHERE varmayfail CANTEXT FAIL  (30)
+	reducmayfail : term EQUAL term .  (31)
+
+	SEMI  shift 317
+	WHERE  shift 318
+	DOT  reduce 31
+	OTHERWISE  reduce 31
+
+
+state 270
+	lib : privateopt REDUCTION reducmayfailseq DOT lib .  (5)
+
+	.  reduce 5
+
+
+state 271
+	reducmayfail : term . EQUAL term WHERE varmayfail CANTEXT FAIL  (30)
+	reducmayfail : term . EQUAL term  (31)
+
+	EQUAL  shift 319
+	.  error
+
+
+state 272
+	reducmayfailseq : reducmayfail OTHERWISE reducmayfailseq .  (32)
+
+	.  reduce 32
+
+
+state 273
+	neidentseq : IDENT COMMA neidentseq .  (45)
+
+	.  reduce 45
+
+
+state 274
+	lib : privateopt FREE neidentseq DOT lib .  (20)
+
+	.  reduce 20
+
+
+state 275
+	term : CHOICE LBRACKET term COMMA term . RBRACKET  (38)
+
+	RBRACKET  shift 320
+	.  error
+
+
+state 276
+	eqlist : term EQUAL term SEMI eqlist .  (35)
+
+	.  reduce 35
+
+
+state 277
+	lib : PREDICATE IDENT SLASH INT DOT lib .  (7)
+
+	.  reduce 7
+
+
+state 278
+	lib : PREDICATE IDENT SLASH INT neidentseq DOT . lib  (6)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 321
+	privateopt  goto 18
+
+
+state 279
+	lib : LET IDENT EQUAL process DOT lib .  (8)
+
+	.  reduce 8
+
+
+state 280
+	nesbindingseq : IDENT EQUAL gterm . SEMI nesbindingseq  (61)
+	nesbindingseq : IDENT EQUAL gterm .  (62)
+
+	SEMI  shift 322
+	RBRACKET  reduce 62
+
+
+state 281
+	nesbindingseq : REPL INT EQUAL . gterm SEMI nesbindingseq  (59)
+	nesbindingseq : REPL INT EQUAL . gterm  (60)
+
+	LPAREN  shift 27
+	IDENT  shift 68
+	.  error
+
+	gterm  goto 323
+
+
+state 282
+	hyp : LPAREN realquery RPAREN .  (84)
+
+	.  reduce 84
+
+
+state 283
+	hyp : LPAREN hyp RPAREN .  (82)
+
+	.  reduce 82
+
+
+state 284
+	hyp : hyp . BAR hyp  (80)
+	hyp : hyp BAR hyp .  (80)
+	hyp : hyp . WEDGE hyp  (81)
+
+	BAR  shift 228
+	WEDGE  shift 229
+	RPAREN  reduce 80
+	SEMI  reduce 80
+	DOT  reduce 80
+
+
+state 285
+	hyp : hyp . BAR hyp  (80)
+	hyp : hyp . WEDGE hyp  (81)
+	hyp : hyp WEDGE hyp .  (81)
+
+	WEDGE  shift 229
+	RPAREN  reduce 81
+	BAR  reduce 81
+	SEMI  reduce 81
+	DOT  reduce 81
+
+
+state 286
+	ni : IDENT AMONG LPAREN netermseq RPAREN .  (47)
+
+	.  reduce 47
+
+
+state 287
+	lib : NOT gterm optphase optbindingseq DOT lib .  (16)
+
+	.  reduce 16
+
+
+state 288
+	nebindingseq : IDENT EQUAL gterm . SEMI nebindingseq  (65)
+	nebindingseq : IDENT EQUAL gterm .  (66)
+
+	SEMI  shift 324
+	DOT  reduce 66
+
+
+state 289
+	varmayfail : IDENT COMMA varmayfail .  (28)
+
+	.  reduce 28
+
+
+state 290
+	lib : ELIMTRUE fact WHERE varmayfail CANTEXT FAIL . DOT lib  (19)
+
+	DOT  shift 325
+	.  error
+
+
+state 291
+	clausemayfail : clause WHERE varmayfail CANTEXT FAIL .  (118)
+
+	.  reduce 118
+
+
+state 292
+	gformat : LPAREN gformatseq RPAREN .  (87)
+
+	.  reduce 87
+
+
+state 293
+	gformat : IDENT LPAREN gformatseq . RPAREN  (85)
+
+	RPAREN  shift 326
+	.  error
+
+
+state 294
+	fnesbindingseq : IDENT . EQUAL gformat SEMI fnesbindingseq  (96)
+	fnesbindingseq : IDENT . EQUAL gformat  (97)
+
+	EQUAL  shift 327
+	.  error
+
+
+state 295
+	fnesbindingseq : REPL . INT EQUAL gformat SEMI fnesbindingseq  (94)
+	fnesbindingseq : REPL . INT EQUAL gformat  (95)
+
+	INT  shift 328
+	.  error
+
+
+state 296
+	gformat : IDENT LBRACKET fbindingseq . RBRACKET  (88)
+
+	RBRACKET  shift 329
+	.  error
+
+
+state 297
+	fbindingseq : fnesbindingseq .  (98)
+
+	.  reduce 98
+
+
+state 298
+	negformatseq : gformat COMMA negformatseq .  (90)
+
+	.  reduce 90
+
+
+state 299
+	fnebindingseq : IDENT EQUAL . gformat SEMI fnebindingseq  (100)
+	fnebindingseq : IDENT EQUAL . gformat  (101)
+
+	STAR  shift 174
+	LPAREN  shift 175
+	IDENT  shift 176
+	.  error
+
+	gformat  goto 330
+
+
+state 300
+	lib : NOUNIF gfactformat optint foptbindingseq DOT lib .  (9)
+
+	.  reduce 9
+
+
+state 301
+	lib : DATA IDENT SLASH INT DOT lib .  (2)
+
+	.  reduce 2
+
+
+state 302
+	lib : PARAM IDENT EQUAL IDENT DOT lib .  (10)
+
+	.  reduce 10
+
+
+state 303
+	lib : PARAM IDENT EQUAL STRING DOT lib .  (11)
+
+	.  reduce 11
+
+
+state 304
+	lib : PARAM IDENT EQUAL INT DOT lib .  (12)
+
+	.  reduce 12
+
+
+305: shift/reduce conflict (shift 202, reduce 140) on BAR
+state 305
+	process : process . BAR process  (135)
+	optprocess : SEMI process .  (140)
+
+	BAR  shift 202
+	RPAREN  reduce 140
+	ELSE  reduce 140
+	DOT  reduce 140
+	EOF  reduce 140
+
+
+state 306
+	process : OUT LPAREN term COMMA . term RPAREN optprocess  (130)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 331
+
+
+state 307
+	process : IN LPAREN term COMMA . pattern RPAREN optprocess  (129)
+
+	LPAREN  shift 194
+	IDENT  shift 256
+	EQUAL  shift 196
+	.  error
+
+	pattern  goto 332
+
+
+308: shift/reduce conflict (shift 202, reduce 128) on BAR
+308: shift/reduce conflict (shift 333, reduce 128) on ELSE
+state 308
+	process : IF fact THEN process . ELSE process  (127)
+	process : IF fact THEN process .  (128)
+	process : process . BAR process  (135)
+
+	BAR  shift 202
+	ELSE  shift 333
+	RPAREN  reduce 128
+	DOT  reduce 128
+	EOF  reduce 128
+
+
+state 309
+	patternseq : pattern COMMA . patternseq  (146)
+
+	LPAREN  shift 194
+	IDENT  shift 256
+	EQUAL  shift 196
+	.  error
+
+	pattern  goto 257
+	patternseq  goto 334
+
+
+state 310
+	pattern : LPAREN patternseq RPAREN .  (143)
+
+	.  reduce 143
+
+
+state 311
+	pattern : IDENT LPAREN patternseq . RPAREN  (144)
+
+	RPAREN  shift 335
+	.  error
+
+
+state 312
+	process : LET neidentseq SUCHTHAT fact . IN process  (133)
+	process : LET neidentseq SUCHTHAT fact . IN process ELSE process  (134)
+
+	IN  shift 336
+	.  error
+
+
+state 313
+	process : LET pattern EQUAL term . IN process  (131)
+	process : LET pattern EQUAL term . IN process ELSE process  (132)
+
+	IN  shift 337
+	.  error
+
+
+state 314
+	process : EVENT IDENT LPAREN termseq . RPAREN optprocess  (136)
+
+	RPAREN  shift 338
+	.  error
+
+
+state 315
+	process : BARRIER INT LBRACKET IDENT . RBRACKET optprocess  (139)
+
+	RBRACKET  shift 339
+	.  error
+
+
+state 316
+	lib : privateopt FUN IDENT SLASH INT DOT . lib  (1)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 340
+	privateopt  goto 18
+
+
+state 317
+	lib : privateopt REDUCTION term EQUAL term SEMI . reduc lib  (4)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 341
+	reduc  goto 342
+
+
+state 318
+	reducmayfail : term EQUAL term WHERE . varmayfail CANTEXT FAIL  (30)
+
+	IDENT  shift 165
+	.  error
+
+	varmayfail  goto 343
+
+
+state 319
+	reducmayfail : term EQUAL . term WHERE varmayfail CANTEXT FAIL  (30)
+	reducmayfail : term EQUAL . term  (31)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 344
+
+
+state 320
+	term : CHOICE LBRACKET term COMMA term RBRACKET .  (38)
+
+	.  reduce 38
+
+
+state 321
+	lib : PREDICATE IDENT SLASH INT neidentseq DOT lib .  (6)
+
+	.  reduce 6
+
+
+state 322
+	nesbindingseq : IDENT EQUAL gterm SEMI . nesbindingseq  (61)
+
+	IDENT  shift 139
+	REPL  shift 140
+	.  error
+
+	nesbindingseq  goto 345
+
+
+state 323
+	nesbindingseq : REPL INT EQUAL gterm . SEMI nesbindingseq  (59)
+	nesbindingseq : REPL INT EQUAL gterm .  (60)
+
+	SEMI  shift 346
+	RBRACKET  reduce 60
+
+
+state 324
+	nebindingseq : IDENT EQUAL gterm SEMI . nebindingseq  (65)
+
+	IDENT  shift 158
+	.  error
+
+	nebindingseq  goto 347
+
+
+state 325
+	lib : ELIMTRUE fact WHERE varmayfail CANTEXT FAIL DOT . lib  (19)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 348
+	privateopt  goto 18
+
+
+state 326
+	gformat : IDENT LPAREN gformatseq RPAREN .  (85)
+
+	.  reduce 85
+
+
+state 327
+	fnesbindingseq : IDENT EQUAL . gformat SEMI fnesbindingseq  (96)
+	fnesbindingseq : IDENT EQUAL . gformat  (97)
+
+	STAR  shift 174
+	LPAREN  shift 175
+	IDENT  shift 176
+	.  error
+
+	gformat  goto 349
+
+
+state 328
+	fnesbindingseq : REPL INT . EQUAL gformat SEMI fnesbindingseq  (94)
+	fnesbindingseq : REPL INT . EQUAL gformat  (95)
+
+	EQUAL  shift 350
+	.  error
+
+
+state 329
+	gformat : IDENT LBRACKET fbindingseq RBRACKET .  (88)
+
+	.  reduce 88
+
+
+state 330
+	fnebindingseq : IDENT EQUAL gformat . SEMI fnebindingseq  (100)
+	fnebindingseq : IDENT EQUAL gformat .  (101)
+
+	SEMI  shift 351
+	DOT  reduce 101
+
+
+state 331
+	process : OUT LPAREN term COMMA term . RPAREN optprocess  (130)
+
+	RPAREN  shift 352
+	.  error
+
+
+state 332
+	process : IN LPAREN term COMMA pattern . RPAREN optprocess  (129)
+
+	RPAREN  shift 353
+	.  error
+
+
+state 333
+	process : IF fact THEN process ELSE . process  (127)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 354
+
+
+state 334
+	patternseq : pattern COMMA patternseq .  (146)
+
+	.  reduce 146
+
+
+state 335
+	pattern : IDENT LPAREN patternseq RPAREN .  (144)
+
+	.  reduce 144
+
+
+state 336
+	process : LET neidentseq SUCHTHAT fact IN . process  (133)
+	process : LET neidentseq SUCHTHAT fact IN . process ELSE process  (134)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 355
+
+
+state 337
+	process : LET pattern EQUAL term IN . process  (131)
+	process : LET pattern EQUAL term IN . process ELSE process  (132)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 356
+
+
+state 338
+	process : EVENT IDENT LPAREN termseq RPAREN . optprocess  (136)
+	optprocess : .  (141)
+
+	SEMI  shift 251
+	RPAREN  reduce 141
+	BAR  reduce 141
+	ELSE  reduce 141
+	DOT  reduce 141
+	EOF  reduce 141
+
+	optprocess  goto 357
+
+
+state 339
+	process : BARRIER INT LBRACKET IDENT RBRACKET . optprocess  (139)
+	optprocess : .  (141)
+
+	SEMI  shift 251
+	RPAREN  reduce 141
+	BAR  reduce 141
+	ELSE  reduce 141
+	DOT  reduce 141
+	EOF  reduce 141
+
+	optprocess  goto 358
+
+
+state 340
+	lib : privateopt FUN IDENT SLASH INT DOT lib .  (1)
+
+	.  reduce 1
+
+
+state 341
+	reduc : term . EQUAL term SEMI reduc  (26)
+	reduc : term . EQUAL term DOT  (27)
+
+	EQUAL  shift 359
+	.  error
+
+
+state 342
+	lib : privateopt REDUCTION term EQUAL term SEMI reduc . lib  (4)
+	lib : .  (22)
+	privateopt : .  (25)
+
+	EQUATION  shift 3
+	PREDICATE  shift 4
+	LET  shift 5
+	QUERY  shift 6
+	NONINTERF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	CLAUSES  shift 10
+	NOUNIF  shift 11
+	WEAKSECRET  shift 12
+	DATA  shift 13
+	PARAM  shift 14
+	PRIVATE  shift 15
+	FUN  reduce 25
+	REDUCTION  reduce 25
+	PROCESS  reduce 22
+	FREE  reduce 25
+
+	lib  goto 360
+	privateopt  goto 18
+
+
+state 343
+	reducmayfail : term EQUAL term WHERE varmayfail . CANTEXT FAIL  (30)
+
+	CANTEXT  shift 361
+	.  error
+
+
+state 344
+	reducmayfail : term EQUAL term . WHERE varmayfail CANTEXT FAIL  (30)
+	reducmayfail : term EQUAL term .  (31)
+
+	WHERE  shift 318
+	DOT  reduce 31
+	OTHERWISE  reduce 31
+
+
+state 345
+	nesbindingseq : IDENT EQUAL gterm SEMI nesbindingseq .  (61)
+
+	.  reduce 61
+
+
+state 346
+	nesbindingseq : REPL INT EQUAL gterm SEMI . nesbindingseq  (59)
+
+	IDENT  shift 139
+	REPL  shift 140
+	.  error
+
+	nesbindingseq  goto 362
+
+
+state 347
+	nebindingseq : IDENT EQUAL gterm SEMI nebindingseq .  (65)
+
+	.  reduce 65
+
+
+state 348
+	lib : ELIMTRUE fact WHERE varmayfail CANTEXT FAIL DOT lib .  (19)
+
+	.  reduce 19
+
+
+state 349
+	fnesbindingseq : IDENT EQUAL gformat . SEMI fnesbindingseq  (96)
+	fnesbindingseq : IDENT EQUAL gformat .  (97)
+
+	SEMI  shift 363
+	RBRACKET  reduce 97
+
+
+state 350
+	fnesbindingseq : REPL INT EQUAL . gformat SEMI fnesbindingseq  (94)
+	fnesbindingseq : REPL INT EQUAL . gformat  (95)
+
+	STAR  shift 174
+	LPAREN  shift 175
+	IDENT  shift 176
+	.  error
+
+	gformat  goto 364
+
+
+state 351
+	fnebindingseq : IDENT EQUAL gformat SEMI . fnebindingseq  (100)
+
+	IDENT  shift 243
+	.  error
+
+	fnebindingseq  goto 365
+
+
+state 352
+	process : OUT LPAREN term COMMA term RPAREN . optprocess  (130)
+	optprocess : .  (141)
+
+	SEMI  shift 251
+	RPAREN  reduce 141
+	BAR  reduce 141
+	ELSE  reduce 141
+	DOT  reduce 141
+	EOF  reduce 141
+
+	optprocess  goto 366
+
+
+state 353
+	process : IN LPAREN term COMMA pattern RPAREN . optprocess  (129)
+	optprocess : .  (141)
+
+	SEMI  shift 251
+	RPAREN  reduce 141
+	BAR  reduce 141
+	ELSE  reduce 141
+	DOT  reduce 141
+	EOF  reduce 141
+
+	optprocess  goto 367
+
+
+354: shift/reduce conflict (shift 202, reduce 127) on BAR
+state 354
+	process : IF fact THEN process ELSE process .  (127)
+	process : process . BAR process  (135)
+
+	BAR  shift 202
+	RPAREN  reduce 127
+	ELSE  reduce 127
+	DOT  reduce 127
+	EOF  reduce 127
+
+
+355: shift/reduce conflict (shift 202, reduce 133) on BAR
+355: shift/reduce conflict (shift 368, reduce 133) on ELSE
+state 355
+	process : LET neidentseq SUCHTHAT fact IN process .  (133)
+	process : LET neidentseq SUCHTHAT fact IN process . ELSE process  (134)
+	process : process . BAR process  (135)
+
+	BAR  shift 202
+	ELSE  shift 368
+	RPAREN  reduce 133
+	DOT  reduce 133
+	EOF  reduce 133
+
+
+356: shift/reduce conflict (shift 202, reduce 131) on BAR
+356: shift/reduce conflict (shift 369, reduce 131) on ELSE
+state 356
+	process : LET pattern EQUAL term IN process .  (131)
+	process : LET pattern EQUAL term IN process . ELSE process  (132)
+	process : process . BAR process  (135)
+
+	BAR  shift 202
+	ELSE  shift 369
+	RPAREN  reduce 131
+	DOT  reduce 131
+	EOF  reduce 131
+
+
+state 357
+	process : EVENT IDENT LPAREN termseq RPAREN optprocess .  (136)
+
+	.  reduce 136
+
+
+state 358
+	process : BARRIER INT LBRACKET IDENT RBRACKET optprocess .  (139)
+
+	.  reduce 139
+
+
+state 359
+	reduc : term EQUAL . term SEMI reduc  (26)
+	reduc : term EQUAL . term DOT  (27)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 370
+
+
+state 360
+	lib : privateopt REDUCTION term EQUAL term SEMI reduc lib .  (4)
+
+	.  reduce 4
+
+
+state 361
+	reducmayfail : term EQUAL term WHERE varmayfail CANTEXT . FAIL  (30)
+
+	FAIL  shift 371
+	.  error
+
+
+state 362
+	nesbindingseq : REPL INT EQUAL gterm SEMI nesbindingseq .  (59)
+
+	.  reduce 59
+
+
+state 363
+	fnesbindingseq : IDENT EQUAL gformat SEMI . fnesbindingseq  (96)
+
+	IDENT  shift 294
+	REPL  shift 295
+	.  error
+
+	fnesbindingseq  goto 372
+
+
+state 364
+	fnesbindingseq : REPL INT EQUAL gformat . SEMI fnesbindingseq  (94)
+	fnesbindingseq : REPL INT EQUAL gformat .  (95)
+
+	SEMI  shift 373
+	RBRACKET  reduce 95
+
+
+state 365
+	fnebindingseq : IDENT EQUAL gformat SEMI fnebindingseq .  (100)
+
+	.  reduce 100
+
+
+state 366
+	process : OUT LPAREN term COMMA term RPAREN optprocess .  (130)
+
+	.  reduce 130
+
+
+state 367
+	process : IN LPAREN term COMMA pattern RPAREN optprocess .  (129)
+
+	.  reduce 129
+
+
+state 368
+	process : LET neidentseq SUCHTHAT fact IN process ELSE . process  (134)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 374
+
+
+state 369
+	process : LET pattern EQUAL term IN process ELSE . process  (132)
+
+	LPAREN  shift 109
+	NEW  shift 110
+	OUT  shift 111
+	IN  shift 112
+	IDENT  shift 113
+	INT  shift 114
+	REPL  shift 115
+	IF  shift 116
+	LET  shift 117
+	EVENT  shift 118
+	PHASE  shift 119
+	BARRIER  shift 120
+	.  error
+
+	process  goto 375
+
+
+state 370
+	reduc : term EQUAL term . SEMI reduc  (26)
+	reduc : term EQUAL term . DOT  (27)
+
+	SEMI  shift 376
+	DOT  shift 377
+	.  error
+
+
+state 371
+	reducmayfail : term EQUAL term WHERE varmayfail CANTEXT FAIL .  (30)
+
+	.  reduce 30
+
+
+state 372
+	fnesbindingseq : IDENT EQUAL gformat SEMI fnesbindingseq .  (96)
+
+	.  reduce 96
+
+
+state 373
+	fnesbindingseq : REPL INT EQUAL gformat SEMI . fnesbindingseq  (94)
+
+	IDENT  shift 294
+	REPL  shift 295
+	.  error
+
+	fnesbindingseq  goto 378
+
+
+374: shift/reduce conflict (shift 202, reduce 134) on BAR
+state 374
+	process : LET neidentseq SUCHTHAT fact IN process ELSE process .  (134)
+	process : process . BAR process  (135)
+
+	BAR  shift 202
+	RPAREN  reduce 134
+	ELSE  reduce 134
+	DOT  reduce 134
+	EOF  reduce 134
+
+
+375: shift/reduce conflict (shift 202, reduce 132) on BAR
+state 375
+	process : LET pattern EQUAL term IN process ELSE process .  (132)
+	process : process . BAR process  (135)
+
+	BAR  shift 202
+	RPAREN  reduce 132
+	ELSE  reduce 132
+	DOT  reduce 132
+	EOF  reduce 132
+
+
+state 376
+	reduc : term EQUAL term SEMI . reduc  (26)
+
+	CHOICE  shift 19
+	LPAREN  shift 20
+	IDENT  shift 21
+	FAIL  shift 22
+	.  error
+
+	term  goto 341
+	reduc  goto 379
+
+
+state 377
+	reduc : term EQUAL term DOT .  (27)
+
+	.  reduce 27
+
+
+state 378
+	fnesbindingseq : REPL INT EQUAL gformat SEMI fnesbindingseq .  (94)
+
+	.  reduce 94
+
+
+state 379
+	reduc : term EQUAL term SEMI reduc .  (26)
+
+	.  reduce 26
+
+
+State 305 contains 1 shift/reduce conflict.
+State 308 contains 2 shift/reduce conflicts.
+State 354 contains 1 shift/reduce conflict.
+State 355 contains 2 shift/reduce conflicts.
+State 356 contains 2 shift/reduce conflicts.
+State 374 contains 1 shift/reduce conflict.
+State 375 contains 1 shift/reduce conflict.
+
+
+60 terminals, 48 nonterminals
+149 grammar rules, 380 states

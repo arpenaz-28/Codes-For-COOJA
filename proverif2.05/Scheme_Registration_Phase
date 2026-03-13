@@ -1,0 +1,174 @@
+free c : channel.
+
+
+set predicatesImplementable = nocheck.
+set maxDepth                = 20.
+set maxHyp                  = none.
+set ignoreTypes = true.
+set attacker    = active.
+set keyCompromise = none.
+set simplifyDerivation = true.
+set abbreviateDerivation = true.
+set explainDerivation = true.
+set reconstructTrace = true.
+set unifyDerivation = true.
+set reconstructDerivation = true.
+set displayDerivation = true.
+set traceBacktracking = true.
+set traceDisplay = short.
+set verboseClauses = none.
+set abbreviateClauses = true.
+set removeUselessClausesBeforeDisplay = true.
+set verboseEq = true.
+set verboseRules = false.
+set verboseRedundant = false.
+
+(* Publicly available user and server identity *)
+const id_AS: bitstring [data].
+const id_D: bitstring [data].
+
+
+
+(* Concatenate two parameters *)
+fun concat(bitstring, bitstring): bitstring.
+reduc forall m: bitstring, n: bitstring; getfirst(concat(m, n)) = m.
+reduc forall m: bitstring, n: bitstring; getsecond(concat(m, n)) = n.
+
+
+
+(* Creating a PUF response from a challenge *)
+fun PUF(bitstring): bitstring [private].
+fun get_alpha(bitstring): bitstring [private].
+
+
+(* XoR Operation *)
+fun xor(bitstring,bitstring): bitstring.
+reduc forall m:bitstring, n:bitstring; xor(xor(m,n),n)=m;
+
+(* Symmetric key crypto primitives ---------------------------------------------
+   Symmetric key encryption and decryption primitives.
+------------------------------------------------------------------------------*)
+
+type SymmetricKey.
+free k_AS_D: SymmetricKey [private].
+
+fun generateKey(bitstring):SymmetricKey.
+
+(* Type Conversion -----------------------------------------------------------*)
+fun keyToBitstring(SymmetricKey):bitstring [data].
+
+(* symmetricEncrypt(msg, key): Authenticated encryption of 'msg' using symmetric key 'key' *)
+fun symmetricEncrypt(bitstring, SymmetricKey):bitstring.
+
+(* symmetricDecrypt(ciphertext, key): Decrypt 'ciphertext' using symmetric key 'key' *)
+fun symmetricDecrypt(bitstring, SymmetricKey):bitstring
+reduc
+   forall key:SymmetricKey, message:bitstring;
+      symmetricDecrypt(symmetricEncrypt(message, key), key) = message.
+
+
+(* Shared key crypto primitives ---------------------------------------------
+   Shared key encryption and decryption primitives.
+------------------------------------------------------------------------------*)
+
+(* SharedEncrypt(msg, key): Authenticated encryption of 'msg' using symmetric key 'key' *)
+fun SharedEncrypt(bitstring, bitstring):bitstring.
+
+(* SharedDecrypt(ciphertext, key): Decrypt 'ciphertext' using symmetric key 'key' *)
+fun SharedDecrypt(bitstring, bitstring):bitstring
+reduc
+   forall key:bitstring, message:bitstring;
+      SharedDecrypt(SharedEncrypt(message, key), key) = message.
+      
+      
+      
+      
+      
+(* hash(item): a truly one-way hash function on item *)
+fun hash(bitstring):bitstring.
+
+
+
+
+/* Define the cryptographic primitives for assymetric encryption */
+type pk. // Public key type
+free pubKey:pk.
+type sk.  // Secret key type 
+free priKey:sk [private].
+ 
+/* Assymetric Encryption function */
+fun pencrypt (pubKey: pk, bitstring) : bitstring 
+  requires (exists priKey: sk; (pubKey,priKey) is "keypair") 
+  ensures (exists priKey : sk; (pk,s) is "keypair"  
+            and  (exists m' : bitstring;  
+                  (pencrypt(pk,m') = m) 
+                  and (pdecrypt(s,m) = m'))) 
+                  
+/* Assymetric Decryption function */ 
+fun pdecrypt (priKey: sk, c: bitstring) : bitstring 
+  requires (exists pubKey : pk; (pubKey,priKey) is "keypair") 
+  ensures (exists m : bitstring; (pdecrypt(priKey,pencrypt(pubKey,m)) = m)) 
+  
+  
+/* Security property -  attacker cannot decrypt a message without the private key */
+query  (exists m: bitstring, p : pk, s : sk) {
+  attacker(pencrypt(p, m))  
+  not attacker(pdecrypt(s, pencrypt(p, m)))
+}
+
+event DeviceEnrollmentStart(bitstring).
+event AuthenticationServerStart(bitstring).
+
+event DeviceEnrolled(bitstring).
+event AuthenticationServerEnd(bitstring).
+
+let D(pubKey:pk, x_D:bitstring, nonce_1:bitstring, r_AS_D:bitstring, c_AS:bitstring, nonce_3:bitstring, m:bitstring, sid:bitstring) = 
+    let ax_D = pencrypt(pubKey, concat(concat(concat(c_AS,x_D),concat(r_AS_D,nonce_1)) , xor(r_AS_D,id_D)) in
+    out(c, ax_D : bitstring);
+    event DeviceEnrollmentStart(bitstring);
+    in(c, sc_D: bitstring);
+    let k_AS_D = hash(xor(xor(x_D, r_AS_D),nonce_1)) in
+    let d_sc_D = symmetricDecrypt(sc_D, k_AS_D) in
+  
+    let c_D = getfirst(d_sc_D) in
+    let nonce_2 = getsecond(d_sc_D) in
+    let R_D = PUF(c_D) in
+    let xr_D = xor(k_AS_D, concat(concat(R_D,m),concat(nonce_3,xor(R_D,id_D)))) in 
+    out(c, xr_D);
+    in(c, ack: bitstring);
+    event DeviceEnrolled(did).
+ 
+ 	
+ let AS(priKey:sk, c_D : bitstring, nonce_2 : bitstring, sid: bitstring)=
+ 	in(c, ax_D : bitstring);
+ 	event AuthenticationServerStart(sid) in
+ 	let d_ax_D = pdecrypt(priKey,ax_D) in
+ 	let c_AS = getfirst(getfirst(getfirst(d_ax_D))) in
+ 	let x_D = getfirst(getfirst(getsecond(d_ax_D))) in
+ 	let r_AS_D = getfirst(getsecond(getfirst(d_ax_D))) in
+ 	let nonce_1 = getfirst(getsecond(getsecond(d_ax_D))) in
+ 	let r_id_D = getsecond(d_ax_D) in
+ 	let did = xor(r_id_D, r_AS_D) in
+ 	let k_AS_D = hash(xor(xor(x_D, r_AS_D), nonce_1) in
+ 	let R_AS = PUF(c_AS) in
+ 	let sc_D = symmetricEncrypt(k_AS_D, concat(c_D, nonce_2)) in
+ 	out(c, sc_D : bitstring);
+ 	in(c, xr_D : bitstring);
+ 	let d_xr_D = xor(xr_D, k_AS_D) in
+ 	let R_D = getfirst(getfirst(d_xr_D)) in
+ 	let m = getfirst(getsecond(d_xr_D)) in
+ 	let nonce_3 = getsecond(getfirst(d_xr_D)) in
+ 	let r_id_D = getsecond(getsecond(d_xr_D)) in
+ 	let id_D = xor(r_id_D, R_D) in
+ 	if did = id_D then
+ 		event DeviceEnrollmentStart(uid);
+ 		
+ 	out(c, ack: bitstring);
+ 	event AuthenticationServerEnd(sid).
+ 	
+ 	
+ 	
+ 	
+ 
+
+

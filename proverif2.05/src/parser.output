@@ -1,0 +1,2836 @@
+   0  $accept : %entry% $end
+
+   1  term : IDENT LPAREN termseq RPAREN
+   2       | LPAREN termseq RPAREN
+   3       | IDENT LBRACKET termseq RBRACKET
+   4       | IDENT
+
+   5  netermseq : term COMMA netermseq
+   6            | term
+
+   7  termseq : netermseq
+   8          |
+
+   9  neidentseq : IDENT COMMA neidentseq
+  10             | IDENT
+
+  11  format : IDENT LPAREN formatseq RPAREN
+  12         | LPAREN formatseq RPAREN
+  13         | IDENT LBRACKET formatseq RBRACKET
+  14         | IDENT
+  15         | STAR IDENT
+
+  16  neformatseq : format COMMA neformatseq
+  17              | format
+
+  18  formatseq : neformatseq
+  19            |
+
+  20  optint : SLASH INT
+  21         |
+
+  22  identseq : neidentseq
+  23           |
+
+  24  fact : IDENT COLON termseq
+  25       | term DIFF term
+
+  26  rule : termand RED fact
+  27       | fact
+  28       | termand EQUIV fact
+  29       | termand EQUIVEQ fact
+
+  30  termand : fact WEDGE termand
+  31          | fact
+
+  32  reduc : rule SEMI reduc
+  33        | rule DOT
+
+  34  factformat : IDENT COLON formatseq
+
+  35  eqlist : term EQUAL term
+  36         | term EQUAL term SEMI eqlist
+
+  37  all : FUN IDENT SLASH INT DOT all
+  38      | DATA IDENT SLASH INT DOT all
+  39      | EQUATION eqlist DOT all
+  40      | QUERY fact DOT all
+  41      | NOUNIF factformat optint DOT all
+  42      | NOT fact DOT all
+  43      | ELIMTRUE fact DOT all
+  44      | PREDICATE IDENT SLASH INT identseq DOT all
+  45      | PARAM IDENT EQUAL IDENT DOT all
+  46      | PARAM IDENT EQUAL INT DOT all
+  47      | REDUCTION reduc EOF
+
+  48  nounif_value : SLASH INT
+  49               | SLASH MINUS INT
+  50               |
+
+  51  select_value : SLASH INT
+  52               | SLASH MINUS INT
+  53               |
+
+  54  tfact : IDENT LPAREN termseq RPAREN
+  55        | IDENT
+  56        | term DIFF term
+
+  57  trule : ttermand RED tfact
+  58        | tfact
+  59        | ttermand EQUIV tfact
+  60        | ttermand EQUIVEQ tfact
+
+  61  ttermand : tfact WEDGE ttermand
+  62           | tfact
+
+  63  tfactformat : IDENT LPAREN formatseq RPAREN
+
+  64  nevartype : IDENT COLON IDENT COMMA nevartype
+  65            | IDENT COLON IDENT
+
+  66  forallvartype : FORALL nevartype SEMI
+  67                |
+
+  68  treduc : forallvartype trule SEMI treduc
+  69         | forallvartype trule DOT
+
+  70  options : LBRACKET neidentseq RBRACKET
+  71          |
+
+  72  teqlist : forallvartype term EQUAL term
+  73          | forallvartype term EQUAL term SEMI teqlist
+
+  74  tall : TYPE IDENT DOT tall
+  75       | NAME IDENT COLON IDENT DOT tall
+  76       | FUN IDENT LPAREN identseq RPAREN COLON IDENT options DOT tall
+  77       | CONST IDENT COLON IDENT options DOT tall
+  78       | EQUATION options teqlist DOT tall
+  79       | QUERY nevartype SEMI tfact DOT tall
+  80       | QUERY tfact DOT tall
+  81       | NOUNIF nevartype SEMI tfactformat nounif_value DOT tall
+  82       | NOUNIF tfactformat nounif_value DOT tall
+  83       | SELECT nevartype SEMI tfactformat select_value DOT tall
+  84       | SELECT tfactformat select_value DOT tall
+  85       | NOT nevartype SEMI tfact DOT tall
+  86       | NOT tfact DOT tall
+  87       | ELIMTRUE nevartype SEMI tfact DOT tall
+  88       | ELIMTRUE tfact DOT tall
+  89       | PREDICATE IDENT LPAREN identseq RPAREN options DOT tall
+  90       | PREDICATE IDENT options DOT tall
+  91       | SET IDENT EQUAL IDENT DOT tall
+  92       | SET IDENT EQUAL INT DOT tall
+  93       | CLAUSES treduc EOF
+
+  94  %entry% : '\001' all
+  95          | '\002' tall
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	'\002'  shift 2
+	.  error
+
+	%entry%  goto 3
+
+
+state 1
+	%entry% : '\001' . all  (94)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 14
+
+
+state 2
+	%entry% : '\002' . tall  (95)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 28
+
+
+state 3
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 4
+	all : FUN . IDENT SLASH INT DOT all  (37)
+
+	IDENT  shift 29
+	.  error
+
+
+state 5
+	all : EQUATION . eqlist DOT all  (39)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	.  error
+
+	term  goto 32
+	eqlist  goto 33
+
+
+state 6
+	all : QUERY . fact DOT all  (40)
+
+	LPAREN  shift 30
+	IDENT  shift 34
+	.  error
+
+	term  goto 35
+	fact  goto 36
+
+
+state 7
+	all : NOUNIF . factformat optint DOT all  (41)
+
+	IDENT  shift 37
+	.  error
+
+	factformat  goto 38
+
+
+state 8
+	all : NOT . fact DOT all  (42)
+
+	LPAREN  shift 30
+	IDENT  shift 34
+	.  error
+
+	term  goto 35
+	fact  goto 39
+
+
+state 9
+	all : ELIMTRUE . fact DOT all  (43)
+
+	LPAREN  shift 30
+	IDENT  shift 34
+	.  error
+
+	term  goto 35
+	fact  goto 40
+
+
+state 10
+	all : PREDICATE . IDENT SLASH INT identseq DOT all  (44)
+
+	IDENT  shift 41
+	.  error
+
+
+state 11
+	all : REDUCTION . reduc EOF  (47)
+
+	LPAREN  shift 30
+	IDENT  shift 34
+	.  error
+
+	term  goto 35
+	fact  goto 42
+	rule  goto 43
+	termand  goto 44
+	reduc  goto 45
+
+
+state 12
+	all : DATA . IDENT SLASH INT DOT all  (38)
+
+	IDENT  shift 46
+	.  error
+
+
+state 13
+	all : PARAM . IDENT EQUAL IDENT DOT all  (45)
+	all : PARAM . IDENT EQUAL INT DOT all  (46)
+
+	IDENT  shift 47
+	.  error
+
+
+state 14
+	%entry% : '\001' all .  (94)
+
+	.  reduce 94
+
+
+state 15
+	tall : FUN . IDENT LPAREN identseq RPAREN COLON IDENT options DOT tall  (76)
+
+	IDENT  shift 48
+	.  error
+
+
+state 16
+	tall : EQUATION . options teqlist DOT tall  (78)
+	options : .  (71)
+
+	LBRACKET  shift 49
+	LPAREN  reduce 71
+	IDENT  reduce 71
+	FORALL  reduce 71
+
+	options  goto 50
+
+
+state 17
+	tall : QUERY . nevartype SEMI tfact DOT tall  (79)
+	tall : QUERY . tfact DOT tall  (80)
+
+	LPAREN  shift 30
+	IDENT  shift 51
+	.  error
+
+	term  goto 52
+	tfact  goto 53
+	nevartype  goto 54
+
+
+state 18
+	tall : NOUNIF . nevartype SEMI tfactformat nounif_value DOT tall  (81)
+	tall : NOUNIF . tfactformat nounif_value DOT tall  (82)
+
+	IDENT  shift 55
+	.  error
+
+	tfactformat  goto 56
+	nevartype  goto 57
+
+
+state 19
+	tall : NOT . nevartype SEMI tfact DOT tall  (85)
+	tall : NOT . tfact DOT tall  (86)
+
+	LPAREN  shift 30
+	IDENT  shift 51
+	.  error
+
+	term  goto 52
+	tfact  goto 58
+	nevartype  goto 59
+
+
+state 20
+	tall : ELIMTRUE . nevartype SEMI tfact DOT tall  (87)
+	tall : ELIMTRUE . tfact DOT tall  (88)
+
+	LPAREN  shift 30
+	IDENT  shift 51
+	.  error
+
+	term  goto 52
+	tfact  goto 60
+	nevartype  goto 61
+
+
+state 21
+	tall : PREDICATE . IDENT LPAREN identseq RPAREN options DOT tall  (89)
+	tall : PREDICATE . IDENT options DOT tall  (90)
+
+	IDENT  shift 62
+	.  error
+
+
+state 22
+	tall : CLAUSES . treduc EOF  (93)
+	forallvartype : .  (67)
+
+	FORALL  shift 63
+	LPAREN  reduce 67
+	IDENT  reduce 67
+
+	forallvartype  goto 64
+	treduc  goto 65
+
+
+state 23
+	tall : CONST . IDENT COLON IDENT options DOT tall  (77)
+
+	IDENT  shift 66
+	.  error
+
+
+state 24
+	tall : SET . IDENT EQUAL IDENT DOT tall  (91)
+	tall : SET . IDENT EQUAL INT DOT tall  (92)
+
+	IDENT  shift 67
+	.  error
+
+
+state 25
+	tall : NAME . IDENT COLON IDENT DOT tall  (75)
+
+	IDENT  shift 68
+	.  error
+
+
+state 26
+	tall : TYPE . IDENT DOT tall  (74)
+
+	IDENT  shift 69
+	.  error
+
+
+state 27
+	tall : SELECT . nevartype SEMI tfactformat select_value DOT tall  (83)
+	tall : SELECT . tfactformat select_value DOT tall  (84)
+
+	IDENT  shift 55
+	.  error
+
+	tfactformat  goto 70
+	nevartype  goto 71
+
+
+state 28
+	%entry% : '\002' tall .  (95)
+
+	.  reduce 95
+
+
+state 29
+	all : FUN IDENT . SLASH INT DOT all  (37)
+
+	SLASH  shift 72
+	.  error
+
+
+state 30
+	term : LPAREN . termseq RPAREN  (2)
+	termseq : .  (8)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	RPAREN  reduce 8
+
+	term  goto 73
+	termseq  goto 74
+	netermseq  goto 75
+
+
+state 31
+	term : IDENT . LPAREN termseq RPAREN  (1)
+	term : IDENT . LBRACKET termseq RBRACKET  (3)
+	term : IDENT .  (4)
+
+	LPAREN  shift 76
+	LBRACKET  shift 77
+	COMMA  reduce 4
+	RPAREN  reduce 4
+	RBRACKET  reduce 4
+	SEMI  reduce 4
+	RED  reduce 4
+	EQUIV  reduce 4
+	EQUIVEQ  reduce 4
+	EQUAL  reduce 4
+	DOT  reduce 4
+	WEDGE  reduce 4
+
+
+state 32
+	eqlist : term . EQUAL term  (35)
+	eqlist : term . EQUAL term SEMI eqlist  (36)
+
+	EQUAL  shift 78
+	.  error
+
+
+state 33
+	all : EQUATION eqlist . DOT all  (39)
+
+	DOT  shift 79
+	.  error
+
+
+state 34
+	term : IDENT . LPAREN termseq RPAREN  (1)
+	term : IDENT . LBRACKET termseq RBRACKET  (3)
+	term : IDENT .  (4)
+	fact : IDENT . COLON termseq  (24)
+
+	LPAREN  shift 76
+	LBRACKET  shift 77
+	COLON  shift 80
+	DIFF  reduce 4
+
+
+state 35
+	fact : term . DIFF term  (25)
+
+	DIFF  shift 81
+	.  error
+
+
+state 36
+	all : QUERY fact . DOT all  (40)
+
+	DOT  shift 82
+	.  error
+
+
+state 37
+	factformat : IDENT . COLON formatseq  (34)
+
+	COLON  shift 83
+	.  error
+
+
+state 38
+	all : NOUNIF factformat . optint DOT all  (41)
+	optint : .  (21)
+
+	SLASH  shift 84
+	DOT  reduce 21
+
+	optint  goto 85
+
+
+state 39
+	all : NOT fact . DOT all  (42)
+
+	DOT  shift 86
+	.  error
+
+
+state 40
+	all : ELIMTRUE fact . DOT all  (43)
+
+	DOT  shift 87
+	.  error
+
+
+state 41
+	all : PREDICATE IDENT . SLASH INT identseq DOT all  (44)
+
+	SLASH  shift 88
+	.  error
+
+
+state 42
+	rule : fact .  (27)
+	termand : fact . WEDGE termand  (30)
+	termand : fact .  (31)
+
+	WEDGE  shift 89
+	SEMI  reduce 27
+	RED  reduce 31
+	EQUIV  reduce 31
+	EQUIVEQ  reduce 31
+	DOT  reduce 27
+
+
+state 43
+	reduc : rule . SEMI reduc  (32)
+	reduc : rule . DOT  (33)
+
+	SEMI  shift 90
+	DOT  shift 91
+	.  error
+
+
+state 44
+	rule : termand . RED fact  (26)
+	rule : termand . EQUIV fact  (28)
+	rule : termand . EQUIVEQ fact  (29)
+
+	RED  shift 92
+	EQUIV  shift 93
+	EQUIVEQ  shift 94
+	.  error
+
+
+state 45
+	all : REDUCTION reduc . EOF  (47)
+
+	EOF  shift 95
+	.  error
+
+
+state 46
+	all : DATA IDENT . SLASH INT DOT all  (38)
+
+	SLASH  shift 96
+	.  error
+
+
+state 47
+	all : PARAM IDENT . EQUAL IDENT DOT all  (45)
+	all : PARAM IDENT . EQUAL INT DOT all  (46)
+
+	EQUAL  shift 97
+	.  error
+
+
+state 48
+	tall : FUN IDENT . LPAREN identseq RPAREN COLON IDENT options DOT tall  (76)
+
+	LPAREN  shift 98
+	.  error
+
+
+state 49
+	options : LBRACKET . neidentseq RBRACKET  (70)
+
+	IDENT  shift 99
+	.  error
+
+	neidentseq  goto 100
+
+
+state 50
+	tall : EQUATION options . teqlist DOT tall  (78)
+	forallvartype : .  (67)
+
+	FORALL  shift 63
+	LPAREN  reduce 67
+	IDENT  reduce 67
+
+	forallvartype  goto 101
+	teqlist  goto 102
+
+
+state 51
+	term : IDENT . LPAREN termseq RPAREN  (1)
+	term : IDENT . LBRACKET termseq RBRACKET  (3)
+	term : IDENT .  (4)
+	tfact : IDENT . LPAREN termseq RPAREN  (54)
+	tfact : IDENT .  (55)
+	nevartype : IDENT . COLON IDENT COMMA nevartype  (64)
+	nevartype : IDENT . COLON IDENT  (65)
+
+	LPAREN  shift 103
+	LBRACKET  shift 77
+	COLON  shift 104
+	DOT  reduce 55
+	DIFF  reduce 4
+
+
+state 52
+	tfact : term . DIFF term  (56)
+
+	DIFF  shift 105
+	.  error
+
+
+state 53
+	tall : QUERY tfact . DOT tall  (80)
+
+	DOT  shift 106
+	.  error
+
+
+state 54
+	tall : QUERY nevartype . SEMI tfact DOT tall  (79)
+
+	SEMI  shift 107
+	.  error
+
+
+state 55
+	tfactformat : IDENT . LPAREN formatseq RPAREN  (63)
+	nevartype : IDENT . COLON IDENT COMMA nevartype  (64)
+	nevartype : IDENT . COLON IDENT  (65)
+
+	LPAREN  shift 108
+	COLON  shift 104
+	.  error
+
+
+state 56
+	tall : NOUNIF tfactformat . nounif_value DOT tall  (82)
+	nounif_value : .  (50)
+
+	SLASH  shift 109
+	DOT  reduce 50
+
+	nounif_value  goto 110
+
+
+state 57
+	tall : NOUNIF nevartype . SEMI tfactformat nounif_value DOT tall  (81)
+
+	SEMI  shift 111
+	.  error
+
+
+state 58
+	tall : NOT tfact . DOT tall  (86)
+
+	DOT  shift 112
+	.  error
+
+
+state 59
+	tall : NOT nevartype . SEMI tfact DOT tall  (85)
+
+	SEMI  shift 113
+	.  error
+
+
+state 60
+	tall : ELIMTRUE tfact . DOT tall  (88)
+
+	DOT  shift 114
+	.  error
+
+
+state 61
+	tall : ELIMTRUE nevartype . SEMI tfact DOT tall  (87)
+
+	SEMI  shift 115
+	.  error
+
+
+state 62
+	tall : PREDICATE IDENT . LPAREN identseq RPAREN options DOT tall  (89)
+	tall : PREDICATE IDENT . options DOT tall  (90)
+	options : .  (71)
+
+	LPAREN  shift 116
+	LBRACKET  shift 49
+	DOT  reduce 71
+
+	options  goto 117
+
+
+state 63
+	forallvartype : FORALL . nevartype SEMI  (66)
+
+	IDENT  shift 118
+	.  error
+
+	nevartype  goto 119
+
+
+state 64
+	treduc : forallvartype . trule SEMI treduc  (68)
+	treduc : forallvartype . trule DOT  (69)
+
+	LPAREN  shift 30
+	IDENT  shift 120
+	.  error
+
+	term  goto 52
+	tfact  goto 121
+	trule  goto 122
+	ttermand  goto 123
+
+
+state 65
+	tall : CLAUSES treduc . EOF  (93)
+
+	EOF  shift 124
+	.  error
+
+
+state 66
+	tall : CONST IDENT . COLON IDENT options DOT tall  (77)
+
+	COLON  shift 125
+	.  error
+
+
+state 67
+	tall : SET IDENT . EQUAL IDENT DOT tall  (91)
+	tall : SET IDENT . EQUAL INT DOT tall  (92)
+
+	EQUAL  shift 126
+	.  error
+
+
+state 68
+	tall : NAME IDENT . COLON IDENT DOT tall  (75)
+
+	COLON  shift 127
+	.  error
+
+
+state 69
+	tall : TYPE IDENT . DOT tall  (74)
+
+	DOT  shift 128
+	.  error
+
+
+state 70
+	tall : SELECT tfactformat . select_value DOT tall  (84)
+	select_value : .  (53)
+
+	SLASH  shift 129
+	DOT  reduce 53
+
+	select_value  goto 130
+
+
+state 71
+	tall : SELECT nevartype . SEMI tfactformat select_value DOT tall  (83)
+
+	SEMI  shift 131
+	.  error
+
+
+state 72
+	all : FUN IDENT SLASH . INT DOT all  (37)
+
+	INT  shift 132
+	.  error
+
+
+state 73
+	netermseq : term . COMMA netermseq  (5)
+	netermseq : term .  (6)
+
+	COMMA  shift 133
+	RPAREN  reduce 6
+	RBRACKET  reduce 6
+	SEMI  reduce 6
+	RED  reduce 6
+	EQUIV  reduce 6
+	EQUIVEQ  reduce 6
+	DOT  reduce 6
+	WEDGE  reduce 6
+
+
+state 74
+	term : LPAREN termseq . RPAREN  (2)
+
+	RPAREN  shift 134
+	.  error
+
+
+state 75
+	termseq : netermseq .  (7)
+
+	.  reduce 7
+
+
+state 76
+	term : IDENT LPAREN . termseq RPAREN  (1)
+	termseq : .  (8)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	RPAREN  reduce 8
+
+	term  goto 73
+	termseq  goto 135
+	netermseq  goto 75
+
+
+state 77
+	term : IDENT LBRACKET . termseq RBRACKET  (3)
+	termseq : .  (8)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	RBRACKET  reduce 8
+
+	term  goto 73
+	termseq  goto 136
+	netermseq  goto 75
+
+
+state 78
+	eqlist : term EQUAL . term  (35)
+	eqlist : term EQUAL . term SEMI eqlist  (36)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	.  error
+
+	term  goto 137
+
+
+state 79
+	all : EQUATION eqlist DOT . all  (39)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 138
+
+
+state 80
+	fact : IDENT COLON . termseq  (24)
+	termseq : .  (8)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	SEMI  reduce 8
+	RED  reduce 8
+	EQUIV  reduce 8
+	EQUIVEQ  reduce 8
+	DOT  reduce 8
+	WEDGE  reduce 8
+
+	term  goto 73
+	termseq  goto 139
+	netermseq  goto 75
+
+
+state 81
+	fact : term DIFF . term  (25)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	.  error
+
+	term  goto 140
+
+
+state 82
+	all : QUERY fact DOT . all  (40)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 141
+
+
+state 83
+	factformat : IDENT COLON . formatseq  (34)
+	formatseq : .  (19)
+
+	LPAREN  shift 142
+	IDENT  shift 143
+	STAR  shift 144
+	SLASH  reduce 19
+	DOT  reduce 19
+
+	format  goto 145
+	formatseq  goto 146
+	neformatseq  goto 147
+
+
+state 84
+	optint : SLASH . INT  (20)
+
+	INT  shift 148
+	.  error
+
+
+state 85
+	all : NOUNIF factformat optint . DOT all  (41)
+
+	DOT  shift 149
+	.  error
+
+
+state 86
+	all : NOT fact DOT . all  (42)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 150
+
+
+state 87
+	all : ELIMTRUE fact DOT . all  (43)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 151
+
+
+state 88
+	all : PREDICATE IDENT SLASH . INT identseq DOT all  (44)
+
+	INT  shift 152
+	.  error
+
+
+state 89
+	termand : fact WEDGE . termand  (30)
+
+	LPAREN  shift 30
+	IDENT  shift 34
+	.  error
+
+	term  goto 35
+	fact  goto 153
+	termand  goto 154
+
+
+state 90
+	reduc : rule SEMI . reduc  (32)
+
+	LPAREN  shift 30
+	IDENT  shift 34
+	.  error
+
+	term  goto 35
+	fact  goto 42
+	rule  goto 43
+	termand  goto 44
+	reduc  goto 155
+
+
+state 91
+	reduc : rule DOT .  (33)
+
+	.  reduce 33
+
+
+state 92
+	rule : termand RED . fact  (26)
+
+	LPAREN  shift 30
+	IDENT  shift 34
+	.  error
+
+	term  goto 35
+	fact  goto 156
+
+
+state 93
+	rule : termand EQUIV . fact  (28)
+
+	LPAREN  shift 30
+	IDENT  shift 34
+	.  error
+
+	term  goto 35
+	fact  goto 157
+
+
+state 94
+	rule : termand EQUIVEQ . fact  (29)
+
+	LPAREN  shift 30
+	IDENT  shift 34
+	.  error
+
+	term  goto 35
+	fact  goto 158
+
+
+state 95
+	all : REDUCTION reduc EOF .  (47)
+
+	.  reduce 47
+
+
+state 96
+	all : DATA IDENT SLASH . INT DOT all  (38)
+
+	INT  shift 159
+	.  error
+
+
+state 97
+	all : PARAM IDENT EQUAL . IDENT DOT all  (45)
+	all : PARAM IDENT EQUAL . INT DOT all  (46)
+
+	IDENT  shift 160
+	INT  shift 161
+	.  error
+
+
+state 98
+	tall : FUN IDENT LPAREN . identseq RPAREN COLON IDENT options DOT tall  (76)
+	identseq : .  (23)
+
+	IDENT  shift 99
+	RPAREN  reduce 23
+
+	neidentseq  goto 162
+	identseq  goto 163
+
+
+state 99
+	neidentseq : IDENT . COMMA neidentseq  (9)
+	neidentseq : IDENT .  (10)
+
+	COMMA  shift 164
+	RPAREN  reduce 10
+	RBRACKET  reduce 10
+	DOT  reduce 10
+
+
+state 100
+	options : LBRACKET neidentseq . RBRACKET  (70)
+
+	RBRACKET  shift 165
+	.  error
+
+
+state 101
+	teqlist : forallvartype . term EQUAL term  (72)
+	teqlist : forallvartype . term EQUAL term SEMI teqlist  (73)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	.  error
+
+	term  goto 166
+
+
+state 102
+	tall : EQUATION options teqlist . DOT tall  (78)
+
+	DOT  shift 167
+	.  error
+
+
+state 103
+	term : IDENT LPAREN . termseq RPAREN  (1)
+	tfact : IDENT LPAREN . termseq RPAREN  (54)
+	termseq : .  (8)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	RPAREN  reduce 8
+
+	term  goto 73
+	termseq  goto 168
+	netermseq  goto 75
+
+
+state 104
+	nevartype : IDENT COLON . IDENT COMMA nevartype  (64)
+	nevartype : IDENT COLON . IDENT  (65)
+
+	IDENT  shift 169
+	.  error
+
+
+state 105
+	tfact : term DIFF . term  (56)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	.  error
+
+	term  goto 170
+
+
+state 106
+	tall : QUERY tfact DOT . tall  (80)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 171
+
+
+state 107
+	tall : QUERY nevartype SEMI . tfact DOT tall  (79)
+
+	LPAREN  shift 30
+	IDENT  shift 120
+	.  error
+
+	term  goto 52
+	tfact  goto 172
+
+
+state 108
+	tfactformat : IDENT LPAREN . formatseq RPAREN  (63)
+	formatseq : .  (19)
+
+	LPAREN  shift 142
+	IDENT  shift 143
+	STAR  shift 144
+	RPAREN  reduce 19
+
+	format  goto 145
+	formatseq  goto 173
+	neformatseq  goto 147
+
+
+state 109
+	nounif_value : SLASH . INT  (48)
+	nounif_value : SLASH . MINUS INT  (49)
+
+	INT  shift 174
+	MINUS  shift 175
+	.  error
+
+
+state 110
+	tall : NOUNIF tfactformat nounif_value . DOT tall  (82)
+
+	DOT  shift 176
+	.  error
+
+
+state 111
+	tall : NOUNIF nevartype SEMI . tfactformat nounif_value DOT tall  (81)
+
+	IDENT  shift 177
+	.  error
+
+	tfactformat  goto 178
+
+
+state 112
+	tall : NOT tfact DOT . tall  (86)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 179
+
+
+state 113
+	tall : NOT nevartype SEMI . tfact DOT tall  (85)
+
+	LPAREN  shift 30
+	IDENT  shift 120
+	.  error
+
+	term  goto 52
+	tfact  goto 180
+
+
+state 114
+	tall : ELIMTRUE tfact DOT . tall  (88)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 181
+
+
+state 115
+	tall : ELIMTRUE nevartype SEMI . tfact DOT tall  (87)
+
+	LPAREN  shift 30
+	IDENT  shift 120
+	.  error
+
+	term  goto 52
+	tfact  goto 182
+
+
+state 116
+	tall : PREDICATE IDENT LPAREN . identseq RPAREN options DOT tall  (89)
+	identseq : .  (23)
+
+	IDENT  shift 99
+	RPAREN  reduce 23
+
+	neidentseq  goto 162
+	identseq  goto 183
+
+
+state 117
+	tall : PREDICATE IDENT options . DOT tall  (90)
+
+	DOT  shift 184
+	.  error
+
+
+state 118
+	nevartype : IDENT . COLON IDENT COMMA nevartype  (64)
+	nevartype : IDENT . COLON IDENT  (65)
+
+	COLON  shift 104
+	.  error
+
+
+state 119
+	forallvartype : FORALL nevartype . SEMI  (66)
+
+	SEMI  shift 185
+	.  error
+
+
+state 120
+	term : IDENT . LPAREN termseq RPAREN  (1)
+	term : IDENT . LBRACKET termseq RBRACKET  (3)
+	term : IDENT .  (4)
+	tfact : IDENT . LPAREN termseq RPAREN  (54)
+	tfact : IDENT .  (55)
+
+	LPAREN  shift 103
+	LBRACKET  shift 77
+	SEMI  reduce 55
+	RED  reduce 55
+	EQUIV  reduce 55
+	EQUIVEQ  reduce 55
+	DOT  reduce 55
+	WEDGE  reduce 55
+	DIFF  reduce 4
+
+
+state 121
+	trule : tfact .  (58)
+	ttermand : tfact . WEDGE ttermand  (61)
+	ttermand : tfact .  (62)
+
+	WEDGE  shift 186
+	SEMI  reduce 58
+	RED  reduce 62
+	EQUIV  reduce 62
+	EQUIVEQ  reduce 62
+	DOT  reduce 58
+
+
+state 122
+	treduc : forallvartype trule . SEMI treduc  (68)
+	treduc : forallvartype trule . DOT  (69)
+
+	SEMI  shift 187
+	DOT  shift 188
+	.  error
+
+
+state 123
+	trule : ttermand . RED tfact  (57)
+	trule : ttermand . EQUIV tfact  (59)
+	trule : ttermand . EQUIVEQ tfact  (60)
+
+	RED  shift 189
+	EQUIV  shift 190
+	EQUIVEQ  shift 191
+	.  error
+
+
+state 124
+	tall : CLAUSES treduc EOF .  (93)
+
+	.  reduce 93
+
+
+state 125
+	tall : CONST IDENT COLON . IDENT options DOT tall  (77)
+
+	IDENT  shift 192
+	.  error
+
+
+state 126
+	tall : SET IDENT EQUAL . IDENT DOT tall  (91)
+	tall : SET IDENT EQUAL . INT DOT tall  (92)
+
+	IDENT  shift 193
+	INT  shift 194
+	.  error
+
+
+state 127
+	tall : NAME IDENT COLON . IDENT DOT tall  (75)
+
+	IDENT  shift 195
+	.  error
+
+
+state 128
+	tall : TYPE IDENT DOT . tall  (74)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 196
+
+
+state 129
+	select_value : SLASH . INT  (51)
+	select_value : SLASH . MINUS INT  (52)
+
+	INT  shift 197
+	MINUS  shift 198
+	.  error
+
+
+state 130
+	tall : SELECT tfactformat select_value . DOT tall  (84)
+
+	DOT  shift 199
+	.  error
+
+
+state 131
+	tall : SELECT nevartype SEMI . tfactformat select_value DOT tall  (83)
+
+	IDENT  shift 177
+	.  error
+
+	tfactformat  goto 200
+
+
+state 132
+	all : FUN IDENT SLASH INT . DOT all  (37)
+
+	DOT  shift 201
+	.  error
+
+
+state 133
+	netermseq : term COMMA . netermseq  (5)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	.  error
+
+	term  goto 73
+	netermseq  goto 202
+
+
+state 134
+	term : LPAREN termseq RPAREN .  (2)
+
+	.  reduce 2
+
+
+state 135
+	term : IDENT LPAREN termseq . RPAREN  (1)
+
+	RPAREN  shift 203
+	.  error
+
+
+state 136
+	term : IDENT LBRACKET termseq . RBRACKET  (3)
+
+	RBRACKET  shift 204
+	.  error
+
+
+state 137
+	eqlist : term EQUAL term .  (35)
+	eqlist : term EQUAL term . SEMI eqlist  (36)
+
+	SEMI  shift 205
+	DOT  reduce 35
+
+
+state 138
+	all : EQUATION eqlist DOT all .  (39)
+
+	.  reduce 39
+
+
+state 139
+	fact : IDENT COLON termseq .  (24)
+
+	.  reduce 24
+
+
+state 140
+	fact : term DIFF term .  (25)
+
+	.  reduce 25
+
+
+state 141
+	all : QUERY fact DOT all .  (40)
+
+	.  reduce 40
+
+
+state 142
+	format : LPAREN . formatseq RPAREN  (12)
+	formatseq : .  (19)
+
+	LPAREN  shift 142
+	IDENT  shift 143
+	STAR  shift 144
+	RPAREN  reduce 19
+
+	format  goto 145
+	formatseq  goto 206
+	neformatseq  goto 147
+
+
+state 143
+	format : IDENT . LPAREN formatseq RPAREN  (11)
+	format : IDENT . LBRACKET formatseq RBRACKET  (13)
+	format : IDENT .  (14)
+
+	LPAREN  shift 207
+	LBRACKET  shift 208
+	COMMA  reduce 14
+	RPAREN  reduce 14
+	RBRACKET  reduce 14
+	SLASH  reduce 14
+	DOT  reduce 14
+
+
+state 144
+	format : STAR . IDENT  (15)
+
+	IDENT  shift 209
+	.  error
+
+
+state 145
+	neformatseq : format . COMMA neformatseq  (16)
+	neformatseq : format .  (17)
+
+	COMMA  shift 210
+	RPAREN  reduce 17
+	RBRACKET  reduce 17
+	SLASH  reduce 17
+	DOT  reduce 17
+
+
+state 146
+	factformat : IDENT COLON formatseq .  (34)
+
+	.  reduce 34
+
+
+state 147
+	formatseq : neformatseq .  (18)
+
+	.  reduce 18
+
+
+state 148
+	optint : SLASH INT .  (20)
+
+	.  reduce 20
+
+
+state 149
+	all : NOUNIF factformat optint DOT . all  (41)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 211
+
+
+state 150
+	all : NOT fact DOT all .  (42)
+
+	.  reduce 42
+
+
+state 151
+	all : ELIMTRUE fact DOT all .  (43)
+
+	.  reduce 43
+
+
+state 152
+	all : PREDICATE IDENT SLASH INT . identseq DOT all  (44)
+	identseq : .  (23)
+
+	IDENT  shift 99
+	DOT  reduce 23
+
+	neidentseq  goto 162
+	identseq  goto 212
+
+
+state 153
+	termand : fact . WEDGE termand  (30)
+	termand : fact .  (31)
+
+	WEDGE  shift 89
+	RED  reduce 31
+	EQUIV  reduce 31
+	EQUIVEQ  reduce 31
+
+
+state 154
+	termand : fact WEDGE termand .  (30)
+
+	.  reduce 30
+
+
+state 155
+	reduc : rule SEMI reduc .  (32)
+
+	.  reduce 32
+
+
+state 156
+	rule : termand RED fact .  (26)
+
+	.  reduce 26
+
+
+state 157
+	rule : termand EQUIV fact .  (28)
+
+	.  reduce 28
+
+
+state 158
+	rule : termand EQUIVEQ fact .  (29)
+
+	.  reduce 29
+
+
+state 159
+	all : DATA IDENT SLASH INT . DOT all  (38)
+
+	DOT  shift 213
+	.  error
+
+
+state 160
+	all : PARAM IDENT EQUAL IDENT . DOT all  (45)
+
+	DOT  shift 214
+	.  error
+
+
+state 161
+	all : PARAM IDENT EQUAL INT . DOT all  (46)
+
+	DOT  shift 215
+	.  error
+
+
+state 162
+	identseq : neidentseq .  (22)
+
+	.  reduce 22
+
+
+state 163
+	tall : FUN IDENT LPAREN identseq . RPAREN COLON IDENT options DOT tall  (76)
+
+	RPAREN  shift 216
+	.  error
+
+
+state 164
+	neidentseq : IDENT COMMA . neidentseq  (9)
+
+	IDENT  shift 99
+	.  error
+
+	neidentseq  goto 217
+
+
+state 165
+	options : LBRACKET neidentseq RBRACKET .  (70)
+
+	.  reduce 70
+
+
+state 166
+	teqlist : forallvartype term . EQUAL term  (72)
+	teqlist : forallvartype term . EQUAL term SEMI teqlist  (73)
+
+	EQUAL  shift 218
+	.  error
+
+
+state 167
+	tall : EQUATION options teqlist DOT . tall  (78)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 219
+
+
+state 168
+	term : IDENT LPAREN termseq . RPAREN  (1)
+	tfact : IDENT LPAREN termseq . RPAREN  (54)
+
+	RPAREN  shift 220
+	.  error
+
+
+state 169
+	nevartype : IDENT COLON IDENT . COMMA nevartype  (64)
+	nevartype : IDENT COLON IDENT .  (65)
+
+	COMMA  shift 221
+	SEMI  reduce 65
+
+
+state 170
+	tfact : term DIFF term .  (56)
+
+	.  reduce 56
+
+
+state 171
+	tall : QUERY tfact DOT tall .  (80)
+
+	.  reduce 80
+
+
+state 172
+	tall : QUERY nevartype SEMI tfact . DOT tall  (79)
+
+	DOT  shift 222
+	.  error
+
+
+state 173
+	tfactformat : IDENT LPAREN formatseq . RPAREN  (63)
+
+	RPAREN  shift 223
+	.  error
+
+
+state 174
+	nounif_value : SLASH INT .  (48)
+
+	.  reduce 48
+
+
+state 175
+	nounif_value : SLASH MINUS . INT  (49)
+
+	INT  shift 224
+	.  error
+
+
+state 176
+	tall : NOUNIF tfactformat nounif_value DOT . tall  (82)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 225
+
+
+state 177
+	tfactformat : IDENT . LPAREN formatseq RPAREN  (63)
+
+	LPAREN  shift 108
+	.  error
+
+
+state 178
+	tall : NOUNIF nevartype SEMI tfactformat . nounif_value DOT tall  (81)
+	nounif_value : .  (50)
+
+	SLASH  shift 109
+	DOT  reduce 50
+
+	nounif_value  goto 226
+
+
+state 179
+	tall : NOT tfact DOT tall .  (86)
+
+	.  reduce 86
+
+
+state 180
+	tall : NOT nevartype SEMI tfact . DOT tall  (85)
+
+	DOT  shift 227
+	.  error
+
+
+state 181
+	tall : ELIMTRUE tfact DOT tall .  (88)
+
+	.  reduce 88
+
+
+state 182
+	tall : ELIMTRUE nevartype SEMI tfact . DOT tall  (87)
+
+	DOT  shift 228
+	.  error
+
+
+state 183
+	tall : PREDICATE IDENT LPAREN identseq . RPAREN options DOT tall  (89)
+
+	RPAREN  shift 229
+	.  error
+
+
+state 184
+	tall : PREDICATE IDENT options DOT . tall  (90)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 230
+
+
+state 185
+	forallvartype : FORALL nevartype SEMI .  (66)
+
+	.  reduce 66
+
+
+state 186
+	ttermand : tfact WEDGE . ttermand  (61)
+
+	LPAREN  shift 30
+	IDENT  shift 120
+	.  error
+
+	term  goto 52
+	tfact  goto 231
+	ttermand  goto 232
+
+
+state 187
+	treduc : forallvartype trule SEMI . treduc  (68)
+	forallvartype : .  (67)
+
+	FORALL  shift 63
+	LPAREN  reduce 67
+	IDENT  reduce 67
+
+	forallvartype  goto 64
+	treduc  goto 233
+
+
+state 188
+	treduc : forallvartype trule DOT .  (69)
+
+	.  reduce 69
+
+
+state 189
+	trule : ttermand RED . tfact  (57)
+
+	LPAREN  shift 30
+	IDENT  shift 120
+	.  error
+
+	term  goto 52
+	tfact  goto 234
+
+
+state 190
+	trule : ttermand EQUIV . tfact  (59)
+
+	LPAREN  shift 30
+	IDENT  shift 120
+	.  error
+
+	term  goto 52
+	tfact  goto 235
+
+
+state 191
+	trule : ttermand EQUIVEQ . tfact  (60)
+
+	LPAREN  shift 30
+	IDENT  shift 120
+	.  error
+
+	term  goto 52
+	tfact  goto 236
+
+
+state 192
+	tall : CONST IDENT COLON IDENT . options DOT tall  (77)
+	options : .  (71)
+
+	LBRACKET  shift 49
+	DOT  reduce 71
+
+	options  goto 237
+
+
+state 193
+	tall : SET IDENT EQUAL IDENT . DOT tall  (91)
+
+	DOT  shift 238
+	.  error
+
+
+state 194
+	tall : SET IDENT EQUAL INT . DOT tall  (92)
+
+	DOT  shift 239
+	.  error
+
+
+state 195
+	tall : NAME IDENT COLON IDENT . DOT tall  (75)
+
+	DOT  shift 240
+	.  error
+
+
+state 196
+	tall : TYPE IDENT DOT tall .  (74)
+
+	.  reduce 74
+
+
+state 197
+	select_value : SLASH INT .  (51)
+
+	.  reduce 51
+
+
+state 198
+	select_value : SLASH MINUS . INT  (52)
+
+	INT  shift 241
+	.  error
+
+
+state 199
+	tall : SELECT tfactformat select_value DOT . tall  (84)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 242
+
+
+state 200
+	tall : SELECT nevartype SEMI tfactformat . select_value DOT tall  (83)
+	select_value : .  (53)
+
+	SLASH  shift 129
+	DOT  reduce 53
+
+	select_value  goto 243
+
+
+state 201
+	all : FUN IDENT SLASH INT DOT . all  (37)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 244
+
+
+state 202
+	netermseq : term COMMA netermseq .  (5)
+
+	.  reduce 5
+
+
+state 203
+	term : IDENT LPAREN termseq RPAREN .  (1)
+
+	.  reduce 1
+
+
+state 204
+	term : IDENT LBRACKET termseq RBRACKET .  (3)
+
+	.  reduce 3
+
+
+state 205
+	eqlist : term EQUAL term SEMI . eqlist  (36)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	.  error
+
+	term  goto 32
+	eqlist  goto 245
+
+
+state 206
+	format : LPAREN formatseq . RPAREN  (12)
+
+	RPAREN  shift 246
+	.  error
+
+
+state 207
+	format : IDENT LPAREN . formatseq RPAREN  (11)
+	formatseq : .  (19)
+
+	LPAREN  shift 142
+	IDENT  shift 143
+	STAR  shift 144
+	RPAREN  reduce 19
+
+	format  goto 145
+	formatseq  goto 247
+	neformatseq  goto 147
+
+
+state 208
+	format : IDENT LBRACKET . formatseq RBRACKET  (13)
+	formatseq : .  (19)
+
+	LPAREN  shift 142
+	IDENT  shift 143
+	STAR  shift 144
+	RBRACKET  reduce 19
+
+	format  goto 145
+	formatseq  goto 248
+	neformatseq  goto 147
+
+
+state 209
+	format : STAR IDENT .  (15)
+
+	.  reduce 15
+
+
+state 210
+	neformatseq : format COMMA . neformatseq  (16)
+
+	LPAREN  shift 142
+	IDENT  shift 143
+	STAR  shift 144
+	.  error
+
+	format  goto 145
+	neformatseq  goto 249
+
+
+state 211
+	all : NOUNIF factformat optint DOT all .  (41)
+
+	.  reduce 41
+
+
+state 212
+	all : PREDICATE IDENT SLASH INT identseq . DOT all  (44)
+
+	DOT  shift 250
+	.  error
+
+
+state 213
+	all : DATA IDENT SLASH INT DOT . all  (38)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 251
+
+
+state 214
+	all : PARAM IDENT EQUAL IDENT DOT . all  (45)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 252
+
+
+state 215
+	all : PARAM IDENT EQUAL INT DOT . all  (46)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 253
+
+
+state 216
+	tall : FUN IDENT LPAREN identseq RPAREN . COLON IDENT options DOT tall  (76)
+
+	COLON  shift 254
+	.  error
+
+
+state 217
+	neidentseq : IDENT COMMA neidentseq .  (9)
+
+	.  reduce 9
+
+
+state 218
+	teqlist : forallvartype term EQUAL . term  (72)
+	teqlist : forallvartype term EQUAL . term SEMI teqlist  (73)
+
+	LPAREN  shift 30
+	IDENT  shift 31
+	.  error
+
+	term  goto 255
+
+
+state 219
+	tall : EQUATION options teqlist DOT tall .  (78)
+
+	.  reduce 78
+
+
+state 220
+	term : IDENT LPAREN termseq RPAREN .  (1)
+	tfact : IDENT LPAREN termseq RPAREN .  (54)
+
+	SEMI  reduce 54
+	RED  reduce 54
+	EQUIV  reduce 54
+	EQUIVEQ  reduce 54
+	DOT  reduce 54
+	WEDGE  reduce 54
+	DIFF  reduce 1
+
+
+state 221
+	nevartype : IDENT COLON IDENT COMMA . nevartype  (64)
+
+	IDENT  shift 118
+	.  error
+
+	nevartype  goto 256
+
+
+state 222
+	tall : QUERY nevartype SEMI tfact DOT . tall  (79)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 257
+
+
+state 223
+	tfactformat : IDENT LPAREN formatseq RPAREN .  (63)
+
+	.  reduce 63
+
+
+state 224
+	nounif_value : SLASH MINUS INT .  (49)
+
+	.  reduce 49
+
+
+state 225
+	tall : NOUNIF tfactformat nounif_value DOT tall .  (82)
+
+	.  reduce 82
+
+
+state 226
+	tall : NOUNIF nevartype SEMI tfactformat nounif_value . DOT tall  (81)
+
+	DOT  shift 258
+	.  error
+
+
+state 227
+	tall : NOT nevartype SEMI tfact DOT . tall  (85)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 259
+
+
+state 228
+	tall : ELIMTRUE nevartype SEMI tfact DOT . tall  (87)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 260
+
+
+state 229
+	tall : PREDICATE IDENT LPAREN identseq RPAREN . options DOT tall  (89)
+	options : .  (71)
+
+	LBRACKET  shift 49
+	DOT  reduce 71
+
+	options  goto 261
+
+
+state 230
+	tall : PREDICATE IDENT options DOT tall .  (90)
+
+	.  reduce 90
+
+
+state 231
+	ttermand : tfact . WEDGE ttermand  (61)
+	ttermand : tfact .  (62)
+
+	WEDGE  shift 186
+	RED  reduce 62
+	EQUIV  reduce 62
+	EQUIVEQ  reduce 62
+
+
+state 232
+	ttermand : tfact WEDGE ttermand .  (61)
+
+	.  reduce 61
+
+
+state 233
+	treduc : forallvartype trule SEMI treduc .  (68)
+
+	.  reduce 68
+
+
+state 234
+	trule : ttermand RED tfact .  (57)
+
+	.  reduce 57
+
+
+state 235
+	trule : ttermand EQUIV tfact .  (59)
+
+	.  reduce 59
+
+
+state 236
+	trule : ttermand EQUIVEQ tfact .  (60)
+
+	.  reduce 60
+
+
+state 237
+	tall : CONST IDENT COLON IDENT options . DOT tall  (77)
+
+	DOT  shift 262
+	.  error
+
+
+state 238
+	tall : SET IDENT EQUAL IDENT DOT . tall  (91)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 263
+
+
+state 239
+	tall : SET IDENT EQUAL INT DOT . tall  (92)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 264
+
+
+state 240
+	tall : NAME IDENT COLON IDENT DOT . tall  (75)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 265
+
+
+state 241
+	select_value : SLASH MINUS INT .  (52)
+
+	.  reduce 52
+
+
+state 242
+	tall : SELECT tfactformat select_value DOT tall .  (84)
+
+	.  reduce 84
+
+
+state 243
+	tall : SELECT nevartype SEMI tfactformat select_value . DOT tall  (83)
+
+	DOT  shift 266
+	.  error
+
+
+state 244
+	all : FUN IDENT SLASH INT DOT all .  (37)
+
+	.  reduce 37
+
+
+state 245
+	eqlist : term EQUAL term SEMI eqlist .  (36)
+
+	.  reduce 36
+
+
+state 246
+	format : LPAREN formatseq RPAREN .  (12)
+
+	.  reduce 12
+
+
+state 247
+	format : IDENT LPAREN formatseq . RPAREN  (11)
+
+	RPAREN  shift 267
+	.  error
+
+
+state 248
+	format : IDENT LBRACKET formatseq . RBRACKET  (13)
+
+	RBRACKET  shift 268
+	.  error
+
+
+state 249
+	neformatseq : format COMMA neformatseq .  (16)
+
+	.  reduce 16
+
+
+state 250
+	all : PREDICATE IDENT SLASH INT identseq DOT . all  (44)
+
+	FUN  shift 4
+	EQUATION  shift 5
+	QUERY  shift 6
+	NOUNIF  shift 7
+	NOT  shift 8
+	ELIMTRUE  shift 9
+	PREDICATE  shift 10
+	REDUCTION  shift 11
+	DATA  shift 12
+	PARAM  shift 13
+	.  error
+
+	all  goto 269
+
+
+state 251
+	all : DATA IDENT SLASH INT DOT all .  (38)
+
+	.  reduce 38
+
+
+state 252
+	all : PARAM IDENT EQUAL IDENT DOT all .  (45)
+
+	.  reduce 45
+
+
+state 253
+	all : PARAM IDENT EQUAL INT DOT all .  (46)
+
+	.  reduce 46
+
+
+state 254
+	tall : FUN IDENT LPAREN identseq RPAREN COLON . IDENT options DOT tall  (76)
+
+	IDENT  shift 270
+	.  error
+
+
+state 255
+	teqlist : forallvartype term EQUAL term .  (72)
+	teqlist : forallvartype term EQUAL term . SEMI teqlist  (73)
+
+	SEMI  shift 271
+	DOT  reduce 72
+
+
+state 256
+	nevartype : IDENT COLON IDENT COMMA nevartype .  (64)
+
+	.  reduce 64
+
+
+state 257
+	tall : QUERY nevartype SEMI tfact DOT tall .  (79)
+
+	.  reduce 79
+
+
+state 258
+	tall : NOUNIF nevartype SEMI tfactformat nounif_value DOT . tall  (81)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 272
+
+
+state 259
+	tall : NOT nevartype SEMI tfact DOT tall .  (85)
+
+	.  reduce 85
+
+
+state 260
+	tall : ELIMTRUE nevartype SEMI tfact DOT tall .  (87)
+
+	.  reduce 87
+
+
+state 261
+	tall : PREDICATE IDENT LPAREN identseq RPAREN options . DOT tall  (89)
+
+	DOT  shift 273
+	.  error
+
+
+state 262
+	tall : CONST IDENT COLON IDENT options DOT . tall  (77)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 274
+
+
+state 263
+	tall : SET IDENT EQUAL IDENT DOT tall .  (91)
+
+	.  reduce 91
+
+
+state 264
+	tall : SET IDENT EQUAL INT DOT tall .  (92)
+
+	.  reduce 92
+
+
+state 265
+	tall : NAME IDENT COLON IDENT DOT tall .  (75)
+
+	.  reduce 75
+
+
+state 266
+	tall : SELECT nevartype SEMI tfactformat select_value DOT . tall  (83)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 275
+
+
+state 267
+	format : IDENT LPAREN formatseq RPAREN .  (11)
+
+	.  reduce 11
+
+
+state 268
+	format : IDENT LBRACKET formatseq RBRACKET .  (13)
+
+	.  reduce 13
+
+
+state 269
+	all : PREDICATE IDENT SLASH INT identseq DOT all .  (44)
+
+	.  reduce 44
+
+
+state 270
+	tall : FUN IDENT LPAREN identseq RPAREN COLON IDENT . options DOT tall  (76)
+	options : .  (71)
+
+	LBRACKET  shift 49
+	DOT  reduce 71
+
+	options  goto 276
+
+
+state 271
+	teqlist : forallvartype term EQUAL term SEMI . teqlist  (73)
+	forallvartype : .  (67)
+
+	FORALL  shift 63
+	LPAREN  reduce 67
+	IDENT  reduce 67
+
+	forallvartype  goto 101
+	teqlist  goto 277
+
+
+state 272
+	tall : NOUNIF nevartype SEMI tfactformat nounif_value DOT tall .  (81)
+
+	.  reduce 81
+
+
+state 273
+	tall : PREDICATE IDENT LPAREN identseq RPAREN options DOT . tall  (89)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 278
+
+
+state 274
+	tall : CONST IDENT COLON IDENT options DOT tall .  (77)
+
+	.  reduce 77
+
+
+state 275
+	tall : SELECT nevartype SEMI tfactformat select_value DOT tall .  (83)
+
+	.  reduce 83
+
+
+state 276
+	tall : FUN IDENT LPAREN identseq RPAREN COLON IDENT options . DOT tall  (76)
+
+	DOT  shift 279
+	.  error
+
+
+state 277
+	teqlist : forallvartype term EQUAL term SEMI teqlist .  (73)
+
+	.  reduce 73
+
+
+state 278
+	tall : PREDICATE IDENT LPAREN identseq RPAREN options DOT tall .  (89)
+
+	.  reduce 89
+
+
+state 279
+	tall : FUN IDENT LPAREN identseq RPAREN COLON IDENT options DOT . tall  (76)
+
+	FUN  shift 15
+	EQUATION  shift 16
+	QUERY  shift 17
+	NOUNIF  shift 18
+	NOT  shift 19
+	ELIMTRUE  shift 20
+	PREDICATE  shift 21
+	CLAUSES  shift 22
+	CONST  shift 23
+	SET  shift 24
+	NAME  shift 25
+	TYPE  shift 26
+	SELECT  shift 27
+	.  error
+
+	tall  goto 280
+
+
+state 280
+	tall : FUN IDENT LPAREN identseq RPAREN COLON IDENT options DOT tall .  (76)
+
+	.  reduce 76
+
+
+41 terminals, 30 nonterminals
+96 grammar rules, 281 states

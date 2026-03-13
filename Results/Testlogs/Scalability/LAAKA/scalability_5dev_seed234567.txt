@@ -1,0 +1,1102 @@
+Random seed: 234567
+202000 1 [INFO: Main      ] Starting Contiki-NG-23e51c4
+202000 1 [INFO: Main      ] - Routing: RPL Lite
+202000 1 [INFO: Main      ] - Net: sicslowpan
+202000 1 [INFO: Main      ] - MAC: CSMA
+202000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+202000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+202000 1 [INFO: Main      ] Node ID: 1
+202000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+202000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+202000 1 RA 1: Started (RPL root + Registration Authority). Af=e5c48d
+337000 7 [INFO: Main      ] Starting Contiki-NG-23e51c4
+337000 7 [INFO: Main      ] - Routing: RPL Lite
+337000 7 [INFO: Main      ] - Net: sicslowpan
+337000 7 [INFO: Main      ] - MAC: CSMA
+337000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+337000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
+337000 7 [INFO: Main      ] Node ID: 7
+337000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+337000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+493000 2 [INFO: Main      ] Starting Contiki-NG-23e51c4
+493000 2 [INFO: Main      ] - Routing: RPL Lite
+493000 2 [INFO: Main      ] - Net: sicslowpan
+493000 2 [INFO: Main      ] - MAC: CSMA
+493000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+493000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+493000 2 [INFO: Main      ] Node ID: 2
+493000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+493000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+493000 2 Fog 2: Started (Fog Authentication Server). Af=e5c48d
+533000 4 [INFO: Main      ] Starting Contiki-NG-23e51c4
+533000 4 [INFO: Main      ] - Routing: RPL Lite
+533000 4 [INFO: Main      ] - Net: sicslowpan
+533000 4 [INFO: Main      ] - MAC: CSMA
+533000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+533000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+533000 4 [INFO: Main      ] Node ID: 4
+533000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+533000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+593000 6 [INFO: Main      ] Starting Contiki-NG-23e51c4
+593000 6 [INFO: Main      ] - Routing: RPL Lite
+593000 6 [INFO: Main      ] - Net: sicslowpan
+593000 6 [INFO: Main      ] - MAC: CSMA
+593000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+593000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
+593000 6 [INFO: Main      ] Node ID: 6
+593000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+593000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+816000 3 [INFO: Main      ] Starting Contiki-NG-23e51c4
+816000 3 [INFO: Main      ] - Routing: RPL Lite
+816000 3 [INFO: Main      ] - Net: sicslowpan
+816000 3 [INFO: Main      ] - MAC: CSMA
+816000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+816000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+816000 3 [INFO: Main      ] Node ID: 3
+816000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+816000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+965000 5 [INFO: Main      ] Starting Contiki-NG-23e51c4
+965000 5 [INFO: Main      ] - Routing: RPL Lite
+965000 5 [INFO: Main      ] - Net: sicslowpan
+965000 5 [INFO: Main      ] - MAC: CSMA
+965000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+965000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+965000 5 [INFO: Main      ] Node ID: 5
+965000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+965000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+8816000 3 Node 3: Sending registration to RA
+9533000 4 Node 4: Sending registration to RA
+10965000 5 Node 5: Sending registration to RA
+11593000 6 Node 6: Sending registration to RA
+12337000 7 Node 7: Sending registration to RA
+16211816 1 RA 1: Registered device 7 -> Fog 2. TIDd=467d8d
+16236000 2 Fog 2: Stored credentials for device 7. TIDd=467d8d
+16249064 7 Node 7: Registered. TIDd=d5d00d TIDf=b2072a
+19262816 1 RA 1: Registered device 4 -> Fog 2. TIDd=ed35f6
+19299064 4 Node 4: Registered. TIDd=ed35f6 TIDf=a1b2c3
+19299064 4 ENROLL_ENERGY|4|cpu_s=9.766064|energy_j=0.603429
+19299064 4 Node 4: Sending AuthReq to fog server
+19307064 2 Fog 2: Stored credentials for device 4. TIDd=ed35f6
+19480696 2 Fog 2: AuthRep sent to device 4. SK=6f5d8d
+19614408 4 Node 4: Auth OK. SK=6f5d8d
+19614408 4 Node 4: Sending Ack
+19676360 2 Fog 2: Mutual auth complete for device 4. SK established.
+19735856 4 Node 4: Ack confirmed ï¾€ï¾” mutual auth complete
+19735856 4 Node 4: Sending encrypted data
+19790264 2 Fog 2: Data [4] from device 4
+19860824 4 Node 4: Data confirmed
+20694816 1 RA 1: Registered device 5 -> Fog 2. TIDd=7757fb
+20703880 5 Node 5: Registered. TIDd=7757fb TIDf=a1b2c3
+20713000 2 Fog 2: Stored credentials for device 5. TIDd=7757fb
+20965000 5 ENROLL_ENERGY|5|cpu_s=9.738880|energy_j=0.601771
+20965000 5 Node 5: Sending AuthReq to fog server
+21059696 2 Fog 2: AuthRep sent to device 5. SK=e951c4
+21155408 5 Node 5: Auth OK. SK=e951c4
+21155408 5 Node 5: Sending Ack
+21214360 2 Fog 2: Mutual auth complete for device 5. SK established.
+21267856 5 Node 5: Ack confirmed ï¾€ï¾” mutual auth complete
+21267856 5 Node 5: Sending encrypted data
+21304264 2 Fog 2: Data [5] from device 5
+21377824 5 Node 5: Data confirmed
+24337000 7 ENROLL_ENERGY|7|cpu_s=3.912064|energy_j=0.241717
+24337000 7 Node 7: Sending AuthReq to fog server
+24475696 2 Fog 2: Auth failed - TIDd not found
+24530760 7 Node 7: Auth reply dropped
+24730816 1 RA 1: Registered device 6 -> Fog 2. TIDd=d56f9f
+24752064 6 Node 6: Registered. TIDd=d56f9f TIDf=a1b2c3
+24752064 6 ENROLL_ENERGY|6|cpu_s=13.159064|energy_j=0.813118
+24752064 6 Node 6: Sending AuthReq to fog server
+24766000 2 Fog 2: Stored credentials for device 6. TIDd=d56f9f
+24912696 2 Fog 2: AuthRep sent to device 6. SK=6e324a
+25039408 6 Node 6: Auth OK. SK=6e324a
+25039408 6 Node 6: Sending Ack
+25069360 2 Fog 2: Mutual auth complete for device 6. SK established.
+25087856 6 Node 6: Ack confirmed ï¾€ï¾” mutual auth complete
+25087856 6 Node 6: Sending encrypted data
+25105264 2 Fog 2: Data [6] from device 6
+25175824 6 Node 6: Data confirmed
+27533000 4 KEYEX_ENERGY|4|cpu_s=0.436792|energy_j=0.026914
+27533000 4 AUTH_ENERGY|4|cpu_ticks=0|energy_ticks=0|cpu_s=0.561760|energy_j=0.034611
+27591264 2 Fog 2: Data [4] from device 4
+27645824 4 Node 4: Data confirmed
+30712816 1 RA 1: Registered device 3 -> Fog 2. TIDd=3c4d09
+30736000 2 Fog 2: Stored credentials for device 3. TIDd=3c4d09
+30743064 3 Node 3: Registered. TIDd=3c4d09 TIDf=a1b2c3
+30743064 3 ENROLL_ENERGY|3|cpu_s=21.927064|energy_j=1.354958
+30743064 3 Node 3: Sending AuthReq to fog server
+30935696 2 Fog 2: AuthRep sent to device 3. SK=e55b1d
+30965000 5 KEYEX_ENERGY|5|cpu_s=0.302856|energy_j=0.018641
+30965000 5 AUTH_ENERGY|5|cpu_ticks=0|energy_ticks=0|cpu_s=0.412824|energy_j=0.025411
+31033408 3 Node 3: Auth OK. SK=e55b1d
+31033408 3 Node 3: Sending Ack
+31040672 2 Fog 2: Data [5] from device 5
+31060824 5 Node 5: Data confirmed
+31107360 2 Fog 2: Mutual auth complete for device 3. SK established.
+31149856 3 Node 3: Ack confirmed ï¾€ï¾” mutual auth complete
+31149856 3 Node 3: Sending encrypted data
+31216264 2 Fog 2: Data [3] from device 3
+31255824 3 Node 3: Data confirmed
+31255824 3 KEYEX_ENERGY|3|cpu_s=0.406792|energy_j=0.025060
+31255824 3 AUTH_ENERGY|3|cpu_ticks=0|energy_ticks=0|cpu_s=0.512760|energy_j=0.031582
+31301264 2 Fog 2: Data [3] from device 3
+31325824 3 Node 3: Data confirmed
+32869264 2 Fog 2: Data [3] from device 3
+32908824 3 Node 3: Data confirmed
+33593000 6 KEYEX_ENERGY|6|cpu_s=0.335792|energy_j=0.020668
+33593000 6 AUTH_ENERGY|6|cpu_ticks=0|energy_ticks=0|cpu_s=0.423760|energy_j=0.026078
+33681264 2 Fog 2: Data [6] from device 6
+33736824 6 Node 6: Data confirmed
+36337000 7 Node 7: Sending AuthReq to fog server
+36428696 2 Fog 2: Auth failed - TIDd not found
+36475760 7 Node 7: Auth reply dropped
+36573264 2 Fog 2: Data [4] from device 4
+36617824 4 Node 4: Data confirmed
+40884264 2 Fog 2: Data [3] from device 3
+40920824 3 Node 3: Data confirmed
+41047264 2 Fog 2: Data [5] from device 5
+41102824 5 Node 5: Data confirmed
+44662264 2 Fog 2: Data [6] from device 6
+44726824 6 Node 6: Data confirmed
+45612264 2 Fog 2: Data [4] from device 4
+45695824 4 Node 4: Data confirmed
+48337000 7 Node 7: Sending AuthReq to fog server
+48444696 2 Fog 2: Auth failed - TIDd not found
+48498760 7 Node 7: Auth reply dropped
+48848264 2 Fog 2: Data [3] from device 3
+48896824 3 Node 3: Data confirmed
+51006264 2 Fog 2: Data [5] from device 5
+51073824 5 Node 5: Data confirmed
+54602264 2 Fog 2: Data [4] from device 4
+54665824 4 Node 4: Data confirmed
+55642496 2 Fog 2: Data [6] from device 6
+55678824 6 Node 6: Data confirmed
+56897264 2 Fog 2: Data [3] from device 3
+56950824 3 Node 3: Data confirmed
+60337000 7 Node 7: Sending AuthReq to fog server
+60486696 2 Fog 2: Auth failed - TIDd not found
+60535488 7 Node 7: Auth reply dropped
+60990496 2 Fog 2: Data [5] from device 5
+61044824 5 Node 5: Data confirmed
+63577264 2 Fog 2: Data [4] from device 4
+63612824 4 Node 4: Data confirmed
+64884264 2 Fog 2: Data [3] from device 3
+64927824 3 Node 3: Data confirmed
+66640264 2 Fog 2: Data [6] from device 6
+66675824 6 Node 6: Data confirmed
+71026264 2 Fog 2: Data [5] from device 5
+71071616 5 Node 5: Data confirmed
+72337000 7 Node 7: Sending AuthReq to fog server
+72429696 2 Fog 2: Auth failed - TIDd not found
+72448760 7 Node 7: Auth reply dropped
+72592264 2 Fog 2: Data [4] from device 4
+72646824 4 Node 4: Data confirmed
+72861264 2 Fog 2: Data [3] from device 3
+72881824 3 Node 3: Data confirmed
+77675264 2 Fog 2: Data [6] from device 6
+77738824 6 Node 6: Data confirmed
+80876264 2 Fog 2: Data [3] from device 3
+80960824 3 Node 3: Data confirmed
+81051264 2 Fog 2: Data [5] from device 5
+81120824 5 Node 5: Data confirmed
+81575264 2 Fog 2: Data [4] from device 4
+81599616 4 Node 4: Data confirmed
+84337000 7 Node 7: Sending AuthReq to fog server
+84470696 2 Fog 2: Auth failed - TIDd not found
+84512760 7 Node 7: Auth reply dropped
+88686264 2 Fog 2: Data [6] from device 6
+88726824 6 Node 6: Data confirmed
+88836496 2 Fog 2: Data [3] from device 3
+88902824 3 Node 3: Data confirmed
+90593264 2 Fog 2: Data [4] from device 4
+90633824 4 Node 4: Data confirmed
+91004264 2 Fog 2: Data [5] from device 5
+91040824 5 Node 5: Data confirmed
+96337000 7 Node 7: Sending AuthReq to fog server
+96427696 2 Fog 2: Auth failed - TIDd not found
+96450760 7 Node 7: Auth reply dropped
+96866264 2 Fog 2: Data [3] from device 3
+96900824 3 Node 3: Data confirmed
+99587264 2 Fog 2: Data [4] from device 4
+99642264 2 Fog 2: Data [6] from device 6
+99660824 4 Node 4: Data confirmed
+99724824 6 Node 6: Data confirmed
+101026264 2 Fog 2: Data [5] from device 5
+101090824 5 Node 5: Data confirmed
+104867264 2 Fog 2: Data [3] from device 3
+104945824 3 Node 3: Data confirmed
+108337000 7 Node 7: Sending AuthReq to fog server
+108452696 2 Fog 2: Auth failed - TIDd not found
+108500760 7 Node 7: Auth reply dropped
+108608264 2 Fog 2: Data [4] from device 4
+108673824 4 Node 4: Data confirmed
+110655264 2 Fog 2: Data [6] from device 6
+110699824 6 Node 6: Data confirmed
+111017264 2 Fog 2: Data [5] from device 5
+111044824 5 Node 5: Data confirmed
+112861264 2 Fog 2: Data [3] from device 3
+112913824 3 Node 3: Data confirmed
+117578264 2 Fog 2: Data [4] from device 4
+117627824 4 Node 4: Data confirmed
+120337000 7 Node 7: Sending AuthReq to fog server
+120420696 2 Fog 2: Auth failed - TIDd not found
+120467760 7 Node 7: Auth reply dropped
+120846264 2 Fog 2: Data [3] from device 3
+120909824 3 Node 3: Data confirmed
+121029264 2 Fog 2: Data [5] from device 5
+121101824 5 Node 5: Data confirmed
+121627264 2 Fog 2: Data [6] from device 6
+121678824 6 Node 6: Data confirmed
+126600264 2 Fog 2: Data [4] from device 4
+126659824 4 Node 4: Data confirmed
+128860264 2 Fog 2: Data [3] from device 3
+128924824 3 Node 3: Data confirmed
+131018264 2 Fog 2: Data [5] from device 5
+131067824 5 Node 5: Data confirmed
+132337000 7 Node 7: Sending AuthReq to fog server
+132478696 2 Fog 2: Auth failed - TIDd not found
+132498760 7 Node 7: Auth reply dropped
+132645264 2 Fog 2: Data [6] from device 6
+132690616 6 Node 6: Data confirmed
+135585264 2 Fog 2: Data [4] from device 4
+135666824 4 Node 4: Data confirmed
+136853264 2 Fog 2: Data [3] from device 3
+136913824 3 Node 3: Data confirmed
+141023264 2 Fog 2: Data [5] from device 5
+141111824 5 Node 5: Data confirmed
+143665264 2 Fog 2: Data [6] from device 6
+143733824 6 Node 6: Data confirmed
+144337000 7 Node 7: Sending AuthReq to fog server
+144446696 2 Fog 2: Auth failed - TIDd not found
+144517760 7 Node 7: Auth reply dropped
+144610264 2 Fog 2: Data [4] from device 4
+144660824 4 Node 4: Data confirmed
+144879264 2 Fog 2: Data [3] from device 3
+144922824 3 Node 3: Data confirmed
+151012264 2 Fog 2: Data [5] from device 5
+151068824 5 Node 5: Data confirmed
+152902264 2 Fog 2: Data [3] from device 3
+152932824 3 Node 3: Data confirmed
+153595264 2 Fog 2: Data [4] from device 4
+153657824 4 Node 4: Data confirmed
+154678264 2 Fog 2: Data [6] from device 6
+154714824 6 Node 6: Data confirmed
+156337000 7 Node 7: Sending AuthReq to fog server
+156429696 2 Fog 2: Auth failed - TIDd not found
+156474760 7 Node 7: Auth reply dropped
+160882264 2 Fog 2: Data [3] from device 3
+160914824 3 Node 3: Data confirmed
+161028264 2 Fog 2: Data [5] from device 5
+161066824 5 Node 5: Data confirmed
+162601264 2 Fog 2: Data [4] from device 4
+162621824 4 Node 4: Data confirmed
+165633264 2 Fog 2: Data [6] from device 6
+165710824 6 Node 6: Data confirmed
+168337000 7 Node 7: Sending AuthReq to fog server
+168490696 2 Fog 2: Auth failed - TIDd not found
+168523488 7 Node 7: Auth reply dropped
+168859264 2 Fog 2: Data [3] from device 3
+168914824 3 Node 3: Data confirmed
+171038264 2 Fog 2: Data [5] from device 5
+171122824 5 Node 5: Data confirmed
+171572264 2 Fog 2: Data [4] from device 4
+171634824 4 Node 4: Data confirmed
+176635264 2 Fog 2: Data [6] from device 6
+176662824 6 Node 6: Data confirmed
+176878264 2 Fog 2: Data [3] from device 3
+176942824 3 Node 3: Data confirmed
+180337000 7 Node 7: Sending AuthReq to fog server
+180396696 2 Fog 2: Auth failed - TIDd not found
+180411760 7 Node 7: Auth reply dropped
+180576264 2 Fog 2: Data [4] from device 4
+180624824 4 Node 4: Data confirmed
+180990496 2 Fog 2: Data [5] from device 5
+181047824 5 Node 5: Data confirmed
+184874264 2 Fog 2: Data [3] from device 3
+184943824 3 Node 3: Data confirmed
+187660264 2 Fog 2: Data [6] from device 6
+187725824 6 Node 6: Data confirmed
+189591264 2 Fog 2: Data [4] from device 4
+189647824 4 Node 4: Data confirmed
+191033264 2 Fog 2: Data [5] from device 5
+191073824 5 Node 5: Data confirmed
+192337000 7 Node 7: Sending AuthReq to fog server
+192443696 2 Fog 2: Auth failed - TIDd not found
+192499760 7 Node 7: Auth reply dropped
+192859264 2 Fog 2: Data [3] from device 3
+192900824 3 Node 3: Data confirmed
+198618496 2 Fog 2: Data [4] from device 4
+198659824 4 Node 4: Data confirmed
+198667088 2 Fog 2: Data [6] from device 6
+198709824 6 Node 6: Data confirmed
+200872264 2 Fog 2: Data [3] from device 3
+200913824 3 Node 3: Data confirmed
+201015264 2 Fog 2: Data [5] from device 5
+201034824 5 Node 5: Data confirmed
+204337000 7 Node 7: Sending AuthReq to fog server
+204422696 2 Fog 2: Auth failed - TIDd not found
+204462760 7 Node 7: Auth reply dropped
+207593264 2 Fog 2: Data [4] from device 4
+207653824 4 Node 4: Data confirmed
+208864264 2 Fog 2: Data [3] from device 3
+208920824 3 Node 3: Data confirmed
+209643264 2 Fog 2: Data [6] from device 6
+209687824 6 Node 6: Data confirmed
+211033264 2 Fog 2: Data [5] from device 5
+211090824 5 Node 5: Data confirmed
+216337000 7 Node 7: Sending AuthReq to fog server
+216435696 2 Fog 2: Auth failed - TIDd not found
+216507760 7 Node 7: Auth reply dropped
+216592264 2 Fog 2: Data [4] from device 4
+216639824 4 Node 4: Data confirmed
+216833264 2 Fog 2: Data [3] from device 3
+216905824 3 Node 3: Data confirmed
+220646264 2 Fog 2: Data [6] from device 6
+220718824 6 Node 6: Data confirmed
+221023264 2 Fog 2: Data [5] from device 5
+221078824 5 Node 5: Data confirmed
+224856264 2 Fog 2: Data [3] from device 3
+224913824 3 Node 3: Data confirmed
+225604264 2 Fog 2: Data [4] from device 4
+225627824 4 Node 4: Data confirmed
+228337000 7 Node 7: Sending AuthReq to fog server
+228427696 2 Fog 2: Auth failed - TIDd not found
+228473760 7 Node 7: Auth reply dropped
+231010264 2 Fog 2: Data [5] from device 5
+231038824 5 Node 5: Data confirmed
+231640264 2 Fog 2: Data [6] from device 6
+231690824 6 Node 6: Data confirmed
+232838496 2 Fog 2: Data [3] from device 3
+232867824 3 Node 3: Data confirmed
+234597264 2 Fog 2: Data [4] from device 4
+234618824 4 Node 4: Data confirmed
+240337000 7 Node 7: Sending AuthReq to fog server
+240428696 2 Fog 2: Auth failed - TIDd not found
+240489760 7 Node 7: Auth reply dropped
+240885264 2 Fog 2: Data [3] from device 3
+240922824 3 Node 3: Data confirmed
+241014264 2 Fog 2: Data [5] from device 5
+241092824 5 Node 5: Data confirmed
+242658264 2 Fog 2: Data [6] from device 6
+242679824 6 Node 6: Data confirmed
+243591264 2 Fog 2: Data [4] from device 4
+243659824 4 Node 4: Data confirmed
+248846264 2 Fog 2: Data [3] from device 3
+248872824 3 Node 3: Data confirmed
+251009264 2 Fog 2: Data [5] from device 5
+251055824 5 Node 5: Data confirmed
+252337000 7 Node 7: Sending AuthReq to fog server
+252439696 2 Fog 2: Auth failed - TIDd not found
+252497760 7 Node 7: Auth reply dropped
+252581264 2 Fog 2: Data [4] from device 4
+252662824 4 Node 4: Data confirmed
+253633264 2 Fog 2: Data [6] from device 6
+253685824 6 Node 6: Data confirmed
+256874264 2 Fog 2: Data [3] from device 3
+256932824 3 Node 3: Data confirmed
+261039264 2 Fog 2: Data [5] from device 5
+261073824 5 Node 5: Data confirmed
+261568264 2 Fog 2: Data [4] from device 4
+261594824 4 Node 4: Data confirmed
+264337000 7 Node 7: Sending AuthReq to fog server
+264456696 2 Fog 2: Auth failed - TIDd not found
+264500760 7 Node 7: Auth reply dropped
+264648264 2 Fog 2: Data [6] from device 6
+264714824 6 Node 6: Data confirmed
+264874264 2 Fog 2: Data [3] from device 3
+264940824 3 Node 3: Data confirmed
+270590264 2 Fog 2: Data [4] from device 4
+270631824 4 Node 4: Data confirmed
+271028264 2 Fog 2: Data [5] from device 5
+271084824 5 Node 5: Data confirmed
+272842496 2 Fog 2: Data [3] from device 3
+272862824 3 Node 3: Data confirmed
+275674264 2 Fog 2: Data [6] from device 6
+275744824 6 Node 6: Data confirmed
+276337000 7 Node 7: Sending AuthReq to fog server
+276415696 2 Fog 2: Auth failed - TIDd not found
+276465760 7 Node 7: Auth reply dropped
+279572264 2 Fog 2: Data [4] from device 4
+279621824 4 Node 4: Data confirmed
+280875264 2 Fog 2: Data [3] from device 3
+280910824 3 Node 3: Data confirmed
+281046264 2 Fog 2: Data [5] from device 5
+281100824 5 Node 5: Data confirmed
+286648264 2 Fog 2: Data [6] from device 6
+286697616 6 Node 6: Data confirmed
+288337000 7 Node 7: Sending AuthReq to fog server
+288468696 2 Fog 2: Auth failed - TIDd not found
+288495488 7 Node 7: Auth reply dropped
+288598264 2 Fog 2: Data [4] from device 4
+288624824 4 Node 4: Data confirmed
+288873264 2 Fog 2: Data [3] from device 3
+288927824 3 Node 3: Data confirmed
+291016264 2 Fog 2: Data [5] from device 5
+291069824 5 Node 5: Data confirmed
+296871264 2 Fog 2: Data [3] from device 3
+296915616 3 Node 3: Data confirmed
+297563264 2 Fog 2: Data [4] from device 4
+297607824 4 Node 4: Data confirmed
+297676264 2 Fog 2: Data [6] from device 6
+297750824 6 Node 6: Data confirmed
+300337000 7 Node 7: Sending AuthReq to fog server
+300415696 2 Fog 2: Auth failed - TIDd not found
+300467760 7 Node 7: Auth reply dropped
+301011264 2 Fog 2: Data [5] from device 5
+301066824 5 Node 5: Data confirmed
+304889264 2 Fog 2: Data [3] from device 3
+304942824 3 Node 3: Data confirmed
+306576264 2 Fog 2: Data [4] from device 4
+306614824 4 Node 4: Data confirmed
+308673264 2 Fog 2: Data [6] from device 6
+308732824 6 Node 6: Data confirmed
+311023264 2 Fog 2: Data [5] from device 5
+311082824 5 Node 5: Data confirmed
+312337000 7 Node 7: Sending AuthReq to fog server
+312400456 2 Fog 2: Auth failed - TIDd not found
+312462760 7 Node 7: Auth reply dropped
+312890264 2 Fog 2: Data [3] from device 3
+312933824 3 Node 3: Data confirmed
+315585264 2 Fog 2: Data [4] from device 4
+315634824 4 Node 4: Data confirmed
+319656264 2 Fog 2: Data [6] from device 6
+319703824 6 Node 6: Data confirmed
+320871264 2 Fog 2: Data [3] from device 3
+320921824 3 Node 3: Data confirmed
+321032264 2 Fog 2: Data [5] from device 5
+321084824 5 Node 5: Data confirmed
+324337000 7 Node 7: Sending AuthReq to fog server
+324398696 2 Fog 2: Auth failed - TIDd not found
+324471760 7 Node 7: Auth reply dropped
+324574264 2 Fog 2: Data [4] from device 4
+324589824 4 Node 4: Data confirmed
+328869264 2 Fog 2: Data [3] from device 3
+328897824 3 Node 3: Data confirmed
+330674264 2 Fog 2: Data [6] from device 6
+330720824 6 Node 6: Data confirmed
+330997264 2 Fog 2: Data [5] from device 5
+331047824 5 Node 5: Data confirmed
+333577264 2 Fog 2: Data [4] from device 4
+333632824 4 Node 4: Data confirmed
+336337000 7 Node 7: Sending AuthReq to fog server
+336431696 2 Fog 2: Auth failed - TIDd not found
+336480760 7 Node 7: Auth reply dropped
+336870264 2 Fog 2: Data [3] from device 3
+336917824 3 Node 3: Data confirmed
+341028264 2 Fog 2: Data [5] from device 5
+341074824 5 Node 5: Data confirmed
+341648264 2 Fog 2: Data [6] from device 6
+341677824 6 Node 6: Data confirmed
+342604264 2 Fog 2: Data [4] from device 4
+342654824 4 Node 4: Data confirmed
+344869264 2 Fog 2: Data [3] from device 3
+344916824 3 Node 3: Data confirmed
+348337000 7 Node 7: Sending AuthReq to fog server
+348460696 2 Fog 2: Auth failed - TIDd not found
+348510760 7 Node 7: Auth reply dropped
+350991264 2 Fog 2: Data [5] from device 5
+351064824 5 Node 5: Data confirmed
+351610264 2 Fog 2: Data [4] from device 4
+351656824 4 Node 4: Data confirmed
+352638264 2 Fog 2: Data [6] from device 6
+352725824 6 Node 6: Data confirmed
+352871264 2 Fog 2: Data [3] from device 3
+352932824 3 Node 3: Data confirmed
+360337000 7 Node 7: Sending AuthReq to fog server
+360473696 2 Fog 2: Auth failed - TIDd not found
+360515760 7 Node 7: Auth reply dropped
+360592264 2 Fog 2: Data [4] from device 4
+360629824 4 Node 4: Data confirmed
+360873264 2 Fog 2: Data [3] from device 3
+360923824 3 Node 3: Data confirmed
+361020264 2 Fog 2: Data [5] from device 5
+361045824 5 Node 5: Data confirmed
+363663264 2 Fog 2: Data [6] from device 6
+363729824 6 Node 6: Data confirmed
+368887264 2 Fog 2: Data [3] from device 3
+368960824 3 Node 3: Data confirmed
+369571264 2 Fog 2: Data [4] from device 4
+369639824 4 Node 4: Data confirmed
+371011264 2 Fog 2: Data [5] from device 5
+371068824 5 Node 5: Data confirmed
+372337000 7 Node 7: Sending AuthReq to fog server
+372471696 2 Fog 2: Auth failed - TIDd not found
+372514760 7 Node 7: Auth reply dropped
+374640264 2 Fog 2: Data [6] from device 6
+374675824 6 Node 6: Data confirmed
+376903264 2 Fog 2: Data [3] from device 3
+376954824 3 Node 3: Data confirmed
+378586264 2 Fog 2: Data [4] from device 4
+378634824 4 Node 4: Data confirmed
+381020264 2 Fog 2: Data [5] from device 5
+381087824 5 Node 5: Data confirmed
+384337000 7 Node 7: Sending AuthReq to fog server
+384453696 2 Fog 2: Auth failed - TIDd not found
+384496760 7 Node 7: Auth reply dropped
+384875264 2 Fog 2: Data [3] from device 3
+384904824 3 Node 3: Data confirmed
+385624264 2 Fog 2: Data [6] from device 6
+385686824 6 Node 6: Data confirmed
+387571264 2 Fog 2: Data [4] from device 4
+387621824 4 Node 4: Data confirmed
+391025264 2 Fog 2: Data [5] from device 5
+391085824 5 Node 5: Data confirmed
+392875264 2 Fog 2: Data [3] from device 3
+392925824 3 Node 3: Data confirmed
+396337000 7 Node 7: Sending AuthReq to fog server
+396466696 2 Fog 2: Auth failed - TIDd not found
+396517760 7 Node 7: Auth reply dropped
+396570264 2 Fog 2: Data [4] from device 4
+396613824 4 Node 4: Data confirmed
+396653264 2 Fog 2: Data [6] from device 6
+396697824 6 Node 6: Data confirmed
+400867264 2 Fog 2: Data [3] from device 3
+400929824 3 Node 3: Data confirmed
+401012496 2 Fog 2: Data [5] from device 5
+401038824 5 Node 5: Data confirmed
+405584264 2 Fog 2: Data [4] from device 4
+405646824 4 Node 4: Data confirmed
+407636264 2 Fog 2: Data [6] from device 6
+407714824 6 Node 6: Data confirmed
+408337000 7 Node 7: Sending AuthReq to fog server
+408435696 2 Fog 2: Auth failed - TIDd not found
+408484760 7 Node 7: Auth reply dropped
+408847264 2 Fog 2: Data [3] from device 3
+408921824 3 Node 3: Data confirmed
+411022264 2 Fog 2: Data [5] from device 5
+411053824 5 Node 5: Data confirmed
+414625264 2 Fog 2: Data [4] from device 4
+414681824 4 Node 4: Data confirmed
+416882264 2 Fog 2: Data [3] from device 3
+416940824 3 Node 3: Data confirmed
+418664264 2 Fog 2: Data [6] from device 6
+418733824 6 Node 6: Data confirmed
+420337000 7 Node 7: Sending AuthReq to fog server
+420415696 2 Fog 2: Auth failed - TIDd not found
+420454760 7 Node 7: Auth reply dropped
+421028264 2 Fog 2: Data [5] from device 5
+421099824 5 Node 5: Data confirmed
+423571264 2 Fog 2: Data [4] from device 4
+423624824 4 Node 4: Data confirmed
+424837264 2 Fog 2: Data [3] from device 3
+424892824 3 Node 3: Data confirmed
+429659264 2 Fog 2: Data [6] from device 6
+429672824 6 Node 6: Data confirmed
+431027264 2 Fog 2: Data [5] from device 5
+431095824 5 Node 5: Data confirmed
+432337000 7 Node 7: Sending AuthReq to fog server
+432450696 2 Fog 2: Auth failed - TIDd not found
+432499760 7 Node 7: Auth reply dropped
+432584264 2 Fog 2: Data [4] from device 4
+432649824 4 Node 4: Data confirmed
+432879264 2 Fog 2: Data [3] from device 3
+432939824 3 Node 3: Data confirmed
+440635264 2 Fog 2: Data [6] from device 6
+440696824 6 Node 6: Data confirmed
+440902264 2 Fog 2: Data [3] from device 3
+440947824 3 Node 3: Data confirmed
+441015264 2 Fog 2: Data [5] from device 5
+441073824 5 Node 5: Data confirmed
+441611264 2 Fog 2: Data [4] from device 4
+441665824 4 Node 4: Data confirmed
+444337000 7 Node 7: Sending AuthReq to fog server
+444472696 2 Fog 2: Auth failed - TIDd not found
+444518760 7 Node 7: Auth reply dropped
+448867264 2 Fog 2: Data [3] from device 3
+448915824 3 Node 3: Data confirmed
+450581264 2 Fog 2: Data [4] from device 4
+450631824 4 Node 4: Data confirmed
+451027264 2 Fog 2: Data [5] from device 5
+451077824 5 Node 5: Data confirmed
+451647264 2 Fog 2: Data [6] from device 6
+451677616 6 Node 6: Data confirmed
+456337000 7 Node 7: Sending AuthReq to fog server
+456411696 2 Fog 2: Auth failed - TIDd not found
+456486760 7 Node 7: Auth reply dropped
+456860264 2 Fog 2: Data [3] from device 3
+456923824 3 Node 3: Data confirmed
+459597264 2 Fog 2: Data [4] from device 4
+459656824 4 Node 4: Data confirmed
+461010264 2 Fog 2: Data [5] from device 5
+461046824 5 Node 5: Data confirmed
+462647264 2 Fog 2: Data [6] from device 6
+462701824 6 Node 6: Data confirmed
+464859264 2 Fog 2: Data [3] from device 3
+464909824 3 Node 3: Data confirmed
+468337000 7 Node 7: Sending AuthReq to fog server
+468404760 2 Fog 2: Auth failed - TIDd not found
+468463760 7 Node 7: Auth reply dropped
+468608264 2 Fog 2: Data [4] from device 4
+468649824 4 Node 4: Data confirmed
+471035264 2 Fog 2: Data [5] from device 5
+471106824 5 Node 5: Data confirmed
+472902264 2 Fog 2: Data [3] from device 3
+472934824 3 Node 3: Data confirmed
+473636264 2 Fog 2: Data [6] from device 6
+473694824 6 Node 6: Data confirmed
+477586264 2 Fog 2: Data [4] from device 4
+477626824 4 Node 4: Data confirmed
+480337000 7 Node 7: Sending AuthReq to fog server
+480451696 2 Fog 2: Auth failed - TIDd not found
+480477760 7 Node 7: Auth reply dropped
+480861264 2 Fog 2: Data [3] from device 3
+480893616 3 Node 3: Data confirmed
+480983264 2 Fog 2: Data [5] from device 5
+481025824 5 Node 5: Data confirmed
+484632264 2 Fog 2: Data [6] from device 6
+484666824 6 Node 6: Data confirmed
+486585264 2 Fog 2: Data [4] from device 4
+486623824 4 Node 4: Data confirmed
+488880264 2 Fog 2: Data [3] from device 3
+488919824 3 Node 3: Data confirmed
+491026264 2 Fog 2: Data [5] from device 5
+491067824 5 Node 5: Data confirmed
+492337000 7 Node 7: Sending AuthReq to fog server
+492426696 2 Fog 2: Auth failed - TIDd not found
+492453760 7 Node 7: Auth reply dropped
+495578264 2 Fog 2: Data [4] from device 4
+495632824 4 Node 4: Data confirmed
+495640264 2 Fog 2: Data [6] from device 6
+495683824 6 Node 6: Data confirmed
+496882264 2 Fog 2: Data [3] from device 3
+496917824 3 Node 3: Data confirmed
+501009264 2 Fog 2: Data [5] from device 5
+501065824 5 Node 5: Data confirmed
+504337000 7 Node 7: Sending AuthReq to fog server
+504390696 2 Fog 2: Auth failed - TIDd not found
+504421760 7 Node 7: Auth reply dropped
+504589264 2 Fog 2: Data [4] from device 4
+504640824 4 Node 4: Data confirmed
+504893264 2 Fog 2: Data [3] from device 3
+504977824 3 Node 3: Data confirmed
+506645264 2 Fog 2: Data [6] from device 6
+506729824 6 Node 6: Data confirmed
+511021264 2 Fog 2: Data [5] from device 5
+511095824 5 Node 5: Data confirmed
+512859264 2 Fog 2: Data [3] from device 3
+512933824 3 Node 3: Data confirmed
+513583264 2 Fog 2: Data [4] from device 4
+513636824 4 Node 4: Data confirmed
+516337000 7 Node 7: Sending AuthReq to fog server
+516422696 2 Fog 2: Auth failed - TIDd not found
+516458760 7 Node 7: Auth reply dropped
+517613264 2 Fog 2: Data [6] from device 6
+517681824 6 Node 6: Data confirmed
+520845264 2 Fog 2: Data [3] from device 3
+520895824 3 Node 3: Data confirmed
+521014264 2 Fog 2: Data [5] from device 5
+521044824 5 Node 5: Data confirmed
+522563264 2 Fog 2: Data [4] from device 4
+522617824 4 Node 4: Data confirmed
+528337000 7 Node 7: Sending AuthReq to fog server
+528470696 2 Fog 2: Auth failed - TIDd not found
+528523760 7 Node 7: Auth reply dropped
+528641264 2 Fog 2: Data [6] from device 6
+528693824 6 Node 6: Data confirmed
+528882264 2 Fog 2: Data [3] from device 3
+528920824 3 Node 3: Data confirmed
+531028264 2 Fog 2: Data [5] from device 5
+531065824 5 Node 5: Data confirmed
+531617264 2 Fog 2: Data [4] from device 4
+531671824 4 Node 4: Data confirmed
+536867264 2 Fog 2: Data [3] from device 3
+536898824 3 Node 3: Data confirmed
+539661264 2 Fog 2: Data [6] from device 6
+539721824 6 Node 6: Data confirmed
+540337000 7 Node 7: Sending AuthReq to fog server
+540499696 2 Fog 2: Auth failed - TIDd not found
+540578264 2 Fog 2: Data [4] from device 4
+540602552 7 Node 7: Auth reply dropped
+540614824 4 Node 4: Data confirmed
+541032264 2 Fog 2: Data [5] from device 5
+541084824 5 Node 5: Data confirmed
+544897264 2 Fog 2: Data [3] from device 3
+544963824 3 Node 3: Data confirmed
+549610264 2 Fog 2: Data [4] from device 4
+549637824 4 Node 4: Data confirmed
+550619496 2 Fog 2: Data [6] from device 6
+550674824 6 Node 6: Data confirmed
+551028264 2 Fog 2: Data [5] from device 5
+551071824 5 Node 5: Data confirmed
+552337000 7 Node 7: Sending AuthReq to fog server
+552424696 2 Fog 2: Auth failed - TIDd not found
+552496760 7 Node 7: Auth reply dropped
+552861264 2 Fog 2: Data [3] from device 3
+552902824 3 Node 3: Data confirmed
+558562264 2 Fog 2: Data [4] from device 4
+558614824 4 Node 4: Data confirmed
+560852264 2 Fog 2: Data [3] from device 3
+560912824 3 Node 3: Data confirmed
+561028264 2 Fog 2: Data [5] from device 5
+561068824 5 Node 5: Data confirmed
+561659264 2 Fog 2: Data [6] from device 6
+561691824 6 Node 6: Data confirmed
+564337000 7 Node 7: Sending AuthReq to fog server
+564432696 2 Fog 2: Auth failed - TIDd not found
+564481760 7 Node 7: Auth reply dropped
+567614264 2 Fog 2: Data [4] from device 4
+567685824 4 Node 4: Data confirmed
+568861496 2 Fog 2: Data [3] from device 3
+568902824 3 Node 3: Data confirmed
+571011264 2 Fog 2: Data [5] from device 5
+571057824 5 Node 5: Data confirmed
+572639264 2 Fog 2: Data [6] from device 6
+572697824 6 Node 6: Data confirmed
+576337000 7 Node 7: Sending AuthReq to fog server
+576454696 2 Fog 2: Auth failed - TIDd not found
+576526760 7 Node 7: Auth reply dropped
+576593264 2 Fog 2: Data [4] from device 4
+576629824 4 Node 4: Data confirmed
+576861264 2 Fog 2: Data [3] from device 3
+576896824 3 Node 3: Data confirmed
+581006264 2 Fog 2: Data [5] from device 5
+581036616 5 Node 5: Data confirmed
+583619264 2 Fog 2: Data [6] from device 6
+583709824 6 Node 6: Data confirmed
+584906264 2 Fog 2: Data [3] from device 3
+584929824 3 Node 3: Data confirmed
+585593264 2 Fog 2: Data [4] from device 4
+585661824 4 Node 4: Data confirmed
+588337000 7 Node 7: Sending AuthReq to fog server
+588486696 2 Fog 2: Auth failed - TIDd not found
+588534760 7 Node 7: Auth reply dropped
+591016264 2 Fog 2: Data [5] from device 5
+591081824 5 Node 5: Data confirmed
+592875264 2 Fog 2: Data [3] from device 3
+592952824 3 Node 3: Data confirmed
+594593264 2 Fog 2: Data [4] from device 4
+594633264 2 Fog 2: Data [6] from device 6
+594638824 4 Node 4: Data confirmed
+594681824 6 Node 6: Data confirmed
+600337000 7 Node 7: Sending AuthReq to fog server
+600424696 2 Fog 2: Auth failed - TIDd not found
+600457760 7 Node 7: Auth reply dropped
+600871264 2 Fog 2: Data [3] from device 3
+600937824 3 Node 3: Data confirmed
+601039264 2 Fog 2: Data [5] from device 5
+601079824 5 Node 5: Data confirmed
+603608264 2 Fog 2: Data [4] from device 4
+603678824 4 Node 4: Data confirmed
+605655264 2 Fog 2: Data [6] from device 6
+605717824 6 Node 6: Data confirmed
+608853264 2 Fog 2: Data [3] from device 3
+608933824 3 Node 3: Data confirmed
+611019264 2 Fog 2: Data [5] from device 5
+611074824 5 Node 5: Data confirmed
+612337000 7 Node 7: Sending AuthReq to fog server
+612476696 2 Fog 2: Auth failed - TIDd not found
+612507760 7 Node 7: Auth reply dropped
+612601264 2 Fog 2: Data [4] from device 4
+612650824 4 Node 4: Data confirmed
+616633264 2 Fog 2: Data [6] from device 6
+616700824 6 Node 6: Data confirmed
+616884264 2 Fog 2: Data [3] from device 3
+616914824 3 Node 3: Data confirmed
+621020264 2 Fog 2: Data [5] from device 5
+621091824 5 Node 5: Data confirmed
+621584264 2 Fog 2: Data [4] from device 4
+621630824 4 Node 4: Data confirmed
+624337000 7 Node 7: Sending AuthReq to fog server
+624427760 2 Fog 2: Auth failed - TIDd not found
+624484760 7 Node 7: Auth reply dropped
+624850496 2 Fog 2: Data [3] from device 3
+624893824 3 Node 3: Data confirmed
+627649264 2 Fog 2: Data [6] from device 6
+627694824 6 Node 6: Data confirmed
+630569264 2 Fog 2: Data [4] from device 4
+630607824 4 Node 4: Data confirmed
+631015264 2 Fog 2: Data [5] from device 5
+631095824 5 Node 5: Data confirmed
+632847264 2 Fog 2: Data [3] from device 3
+632873824 3 Node 3: Data confirmed
+636337000 7 Node 7: Sending AuthReq to fog server
+636449696 2 Fog 2: Auth failed - TIDd not found
+636508760 7 Node 7: Auth reply dropped
+638671264 2 Fog 2: Data [6] from device 6
+638714616 6 Node 6: Data confirmed
+639592264 2 Fog 2: Data [4] from device 4
+639627824 4 Node 4: Data confirmed
+640848264 2 Fog 2: Data [3] from device 3
+640922824 3 Node 3: Data confirmed
+641041264 2 Fog 2: Data [5] from device 5
+641104824 5 Node 5: Data confirmed
+648337000 7 Node 7: Sending AuthReq to fog server
+648435696 2 Fog 2: Auth failed - TIDd not found
+648482760 7 Node 7: Auth reply dropped
+648588264 2 Fog 2: Data [4] from device 4
+648616824 4 Node 4: Data confirmed
+648868264 2 Fog 2: Data [3] from device 3
+648886616 3 Node 3: Data confirmed
+649650264 2 Fog 2: Data [6] from device 6
+649671824 6 Node 6: Data confirmed
+651020264 2 Fog 2: Data [5] from device 5
+651069824 5 Node 5: Data confirmed
+656849264 2 Fog 2: Data [3] from device 3
+656889824 3 Node 3: Data confirmed
+657594264 2 Fog 2: Data [4] from device 4
+657615824 4 Node 4: Data confirmed
+660337000 7 Node 7: Sending AuthReq to fog server
+660431696 2 Fog 2: Auth failed - TIDd not found
+660500760 7 Node 7: Auth reply dropped
+660655264 2 Fog 2: Data [6] from device 6
+660676824 6 Node 6: Data confirmed
+661042264 2 Fog 2: Data [5] from device 5
+661096824 5 Node 5: Data confirmed
+664851496 2 Fog 2: Data [3] from device 3
+664874824 3 Node 3: Data confirmed
+666588264 2 Fog 2: Data [4] from device 4
+666638824 4 Node 4: Data confirmed
+671029264 2 Fog 2: Data [5] from device 5
+671090824 5 Node 5: Data confirmed
+671658264 2 Fog 2: Data [6] from device 6
+671721824 6 Node 6: Data confirmed
+672337000 7 Node 7: Sending AuthReq to fog server
+672384696 2 Fog 2: Auth failed - TIDd not found
+672443760 7 Node 7: Auth reply dropped
+672869264 2 Fog 2: Data [3] from device 3
+672939824 3 Node 3: Data confirmed
+675586264 2 Fog 2: Data [4] from device 4
+675634824 4 Node 4: Data confirmed
+680872264 2 Fog 2: Data [3] from device 3
+680948824 3 Node 3: Data confirmed
+681026264 2 Fog 2: Data [5] from device 5
+681084824 5 Node 5: Data confirmed
+682635264 2 Fog 2: Data [6] from device 6
+682701824 6 Node 6: Data confirmed
+684337000 7 Node 7: Sending AuthReq to fog server
+684444696 2 Fog 2: Auth failed - TIDd not found
+684480760 7 Node 7: Auth reply dropped
+684568264 2 Fog 2: Data [4] from device 4
+684617824 4 Node 4: Data confirmed
+688878264 2 Fog 2: Data [3] from device 3
+688924616 3 Node 3: Data confirmed
+691051264 2 Fog 2: Data [5] from device 5
+691100824 5 Node 5: Data confirmed
+693603264 2 Fog 2: Data [4] from device 4
+693640824 4 Node 4: Data confirmed
+693648088 2 Fog 2: Data [6] from device 6
+693707824 6 Node 6: Data confirmed
+696337000 7 Node 7: Sending AuthReq to fog server
+696436696 2 Fog 2: Auth failed - TIDd not found
+696476760 7 Node 7: Auth reply dropped
+696832264 2 Fog 2: Data [3] from device 3
+696883824 3 Node 3: Data confirmed
+701014264 2 Fog 2: Data [5] from device 5
+701047824 5 Node 5: Data confirmed
+702590264 2 Fog 2: Data [4] from device 4
+702651824 4 Node 4: Data confirmed
+704653264 2 Fog 2: Data [6] from device 6
+704703824 6 Node 6: Data confirmed
+704870264 2 Fog 2: Data [3] from device 3
+704898824 3 Node 3: Data confirmed
+708337000 7 Node 7: Sending AuthReq to fog server
+708448696 2 Fog 2: Auth failed - TIDd not found
+708477760 7 Node 7: Auth reply dropped
+711002264 2 Fog 2: Data [5] from device 5
+711036824 5 Node 5: Data confirmed
+711578264 2 Fog 2: Data [4] from device 4
+711614824 4 Node 4: Data confirmed
+712898264 2 Fog 2: Data [3] from device 3
+712924824 3 Node 3: Data confirmed
+715607496 2 Fog 2: Data [6] from device 6
+715672824 6 Node 6: Data confirmed
+720337000 7 Node 7: Sending AuthReq to fog server
+720449696 2 Fog 2: Auth failed - TIDd not found
+720528760 7 Node 7: Auth reply dropped
+720584264 2 Fog 2: Data [4] from device 4
+720621824 4 Node 4: Data confirmed
+720880264 2 Fog 2: Data [3] from device 3
+720937824 3 Node 3: Data confirmed
+721023264 2 Fog 2: Data [5] from device 5
+721087824 5 Node 5: Data confirmed
+726644264 2 Fog 2: Data [6] from device 6
+726695824 6 Node 6: Data confirmed
+728857264 2 Fog 2: Data [3] from device 3
+728925824 3 Node 3: Data confirmed
+729603264 2 Fog 2: Data [4] from device 4
+729662824 4 Node 4: Data confirmed
+731021264 2 Fog 2: Data [5] from device 5
+731072824 5 Node 5: Data confirmed
+732337000 7 Node 7: Sending AuthReq to fog server
+732447696 2 Fog 2: Auth failed - TIDd not found
+732500760 7 Node 7: Auth reply dropped
+736904264 2 Fog 2: Data [3] from device 3
+736973824 3 Node 3: Data confirmed
+737656264 2 Fog 2: Data [6] from device 6
+737678824 6 Node 6: Data confirmed
+738577264 2 Fog 2: Data [4] from device 4
+738630824 4 Node 4: Data confirmed
+741018496 2 Fog 2: Data [5] from device 5
+741087824 5 Node 5: Data confirmed
+744337000 7 Node 7: Sending AuthReq to fog server
+744440696 2 Fog 2: Auth failed - TIDd not found
+744490760 7 Node 7: Auth reply dropped
+744850264 2 Fog 2: Data [3] from device 3
+744921824 3 Node 3: Data confirmed
+747568264 2 Fog 2: Data [4] from device 4
+747618824 4 Node 4: Data confirmed
+748659264 2 Fog 2: Data [6] from device 6
+748670880 6 Node 6: Data confirmed
+751048264 2 Fog 2: Data [5] from device 5
+751118824 5 Node 5: Data confirmed
+752886264 2 Fog 2: Data [3] from device 3
+752920824 3 Node 3: Data confirmed
+756337000 7 Node 7: Sending AuthReq to fog server
+756448696 2 Fog 2: Auth failed - TIDd not found
+756505760 7 Node 7: Auth reply dropped
+756591264 2 Fog 2: Data [4] from device 4
+756631824 4 Node 4: Data confirmed
+759645264 2 Fog 2: Data [6] from device 6
+759730824 6 Node 6: Data confirmed
+760872264 2 Fog 2: Data [3] from device 3
+760919824 3 Node 3: Data confirmed
+760998264 2 Fog 2: Data [5] from device 5
+761046824 5 Node 5: Data confirmed
+765588264 2 Fog 2: Data [4] from device 4
+765624824 4 Node 4: Data confirmed
+768337000 7 Node 7: Sending AuthReq to fog server
+768416696 2 Fog 2: Auth failed - TIDd not found
+768449760 7 Node 7: Auth reply dropped
+768857264 2 Fog 2: Data [3] from device 3
+768893824 3 Node 3: Data confirmed
+770621264 2 Fog 2: Data [6] from device 6
+770642824 6 Node 6: Data confirmed
+771022264 2 Fog 2: Data [5] from device 5
+771075824 5 Node 5: Data confirmed
+774592264 2 Fog 2: Data [4] from device 4
+774640824 4 Node 4: Data confirmed
+776870264 2 Fog 2: Data [3] from device 3
+776892824 3 Node 3: Data confirmed
+780337000 7 Node 7: Sending AuthReq to fog server
+780432696 2 Fog 2: Auth failed - TIDd not found
+780455760 7 Node 7: Auth reply dropped
+781036264 2 Fog 2: Data [5] from device 5
+781093824 5 Node 5: Data confirmed
+781619496 2 Fog 2: Data [6] from device 6
+781660824 6 Node 6: Data confirmed
+783588264 2 Fog 2: Data [4] from device 4
+783635616 4 Node 4: Data confirmed
+784841264 2 Fog 2: Data [3] from device 3
+784884824 3 Node 3: Data confirmed
+791004496 2 Fog 2: Data [5] from device 5
+791045824 5 Node 5: Data confirmed
+792337000 7 Node 7: Sending AuthReq to fog server
+792467696 2 Fog 2: Auth failed - TIDd not found
+792513488 7 Node 7: Auth reply dropped
+792584264 2 Fog 2: Data [4] from device 4
+792631824 4 Node 4: Data confirmed
+792682264 2 Fog 2: Data [6] from device 6
+792754824 6 Node 6: Data confirmed
+792887264 2 Fog 2: Data [3] from device 3
+792939824 3 Node 3: Data confirmed
+800863264 2 Fog 2: Data [3] from device 3
+800893824 3 Node 3: Data confirmed
+801029264 2 Fog 2: Data [5] from device 5
+801051616 5 Node 5: Data confirmed
+801568264 2 Fog 2: Data [4] from device 4
+801627824 4 Node 4: Data confirmed
+803618496 2 Fog 2: Data [6] from device 6
+803650824 6 Node 6: Data confirmed
+804337000 7 Node 7: Sending AuthReq to fog server
+804452696 2 Fog 2: Auth failed - TIDd not found
+804502760 7 Node 7: Auth reply dropped
+808904264 2 Fog 2: Data [3] from device 3
+808973824 3 Node 3: Data confirmed
+810586264 2 Fog 2: Data [4] from device 4
+810601824 4 Node 4: Data confirmed
+811041264 2 Fog 2: Data [5] from device 5
+811073824 5 Node 5: Data confirmed
+814676264 2 Fog 2: Data [6] from device 6
+814716824 6 Node 6: Data confirmed
+816337000 7 Node 7: Sending AuthReq to fog server
+816452696 2 Fog 2: Auth failed - TIDd not found
+816486760 7 Node 7: Auth reply dropped
+816869264 2 Fog 2: Data [3] from device 3
+816902824 3 Node 3: Data confirmed
+819551264 2 Fog 2: Data [4] from device 4
+819598824 4 Node 4: Data confirmed
+821011264 2 Fog 2: Data [5] from device 5
+821094824 5 Node 5: Data confirmed
+824866264 2 Fog 2: Data [3] from device 3
+824947824 3 Node 3: Data confirmed
+825663264 2 Fog 2: Data [6] from device 6
+825738824 6 Node 6: Data confirmed
+828337000 7 Node 7: Sending AuthReq to fog server
+828469696 2 Fog 2: Auth failed - TIDd not found
+828552760 7 Node 7: Auth reply dropped
+828563264 2 Fog 2: Data [4] from device 4
+828606824 4 Node 4: Data confirmed
+831054264 2 Fog 2: Data [5] from device 5
+831110824 5 Node 5: Data confirmed
+832896264 2 Fog 2: Data [3] from device 3
+832926824 3 Node 3: Data confirmed
+836668264 2 Fog 2: Data [6] from device 6
+836747824 6 Node 6: Data confirmed
+837600264 2 Fog 2: Data [4] from device 4
+837649824 4 Node 4: Data confirmed
+840337000 7 Node 7: Sending AuthReq to fog server
+840406696 2 Fog 2: Auth failed - TIDd not found
+840439760 7 Node 7: Auth reply dropped
+840852264 2 Fog 2: Data [3] from device 3
+840911824 3 Node 3: Data confirmed
+841015264 2 Fog 2: Data [5] from device 5
+841053824 5 Node 5: Data confirmed
+846579496 2 Fog 2: Data [4] from device 4
+846627824 4 Node 4: Data confirmed
+847624264 2 Fog 2: Data [6] from device 6
+847677824 6 Node 6: Data confirmed
+848850264 2 Fog 2: Data [3] from device 3
+848901824 3 Node 3: Data confirmed
+851017264 2 Fog 2: Data [5] from device 5
+851070824 5 Node 5: Data confirmed
+852337000 7 Node 7: Sending AuthReq to fog server
+852458696 2 Fog 2: Auth failed - TIDd not found
+852543760 7 Node 7: Auth reply dropped
+855587264 2 Fog 2: Data [4] from device 4
+855638824 4 Node 4: Data confirmed
+856873264 2 Fog 2: Data [3] from device 3
+856913824 3 Node 3: Data confirmed
+858644264 2 Fog 2: Data [6] from device 6
+858695824 6 Node 6: Data confirmed
+861002264 2 Fog 2: Data [5] from device 5
+861065824 5 Node 5: Data confirmed
+864337000 7 Node 7: Sending AuthReq to fog server
+864432696 2 Fog 2: Auth failed - TIDd not found
+864490760 7 Node 7: Auth reply dropped
+864605264 2 Fog 2: Data [4] from device 4
+864672824 4 Node 4: Data confirmed
+864876264 2 Fog 2: Data [3] from device 3
+864950824 3 Node 3: Data confirmed
+869641264 2 Fog 2: Data [6] from device 6
+869698824 6 Node 6: Data confirmed
+871018264 2 Fog 2: Data [5] from device 5
+871046824 5 Node 5: Data confirmed
+872838264 2 Fog 2: Data [3] from device 3
+872904824 3 Node 3: Data confirmed
+873588264 2 Fog 2: Data [4] from device 4
+873630824 4 Node 4: Data confirmed
+876337000 7 Node 7: Sending AuthReq to fog server
+876475696 2 Fog 2: Auth failed - TIDd not found
+876540760 7 Node 7: Auth reply dropped
+880630264 2 Fog 2: Data [6] from device 6
+880658824 6 Node 6: Data confirmed
+880874264 2 Fog 2: Data [3] from device 3
+880961824 3 Node 3: Data confirmed
+881019496 2 Fog 2: Data [5] from device 5
+881077824 5 Node 5: Data confirmed
+882597264 2 Fog 2: Data [4] from device 4
+882652824 4 Node 4: Data confirmed
+888337000 7 Node 7: Sending AuthReq to fog server
+888434696 2 Fog 2: Auth failed - TIDd not found
+888452760 7 Node 7: Auth reply dropped
+888885264 2 Fog 2: Data [3] from device 3
+888938824 3 Node 3: Data confirmed
+891019264 2 Fog 2: Data [5] from device 5
+891049824 5 Node 5: Data confirmed
+891558264 2 Fog 2: Data [4] from device 4
+891590824 4 Node 4: Data confirmed
+891639496 2 Fog 2: Data [6] from device 6
+891671824 6 Node 6: Data confirmed
+896856264 2 Fog 2: Data [3] from device 3
+896924824 3 Node 3: Data confirmed
+TEST OK
+Test ended at simulation time: 900000000

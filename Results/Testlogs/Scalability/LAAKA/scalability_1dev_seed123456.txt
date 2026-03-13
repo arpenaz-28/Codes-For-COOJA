@@ -1,0 +1,256 @@
+Random seed: 123456
+236000 2 [INFO: Main      ] Starting Contiki-NG-23e51c4
+236000 2 [INFO: Main      ] - Routing: RPL Lite
+236000 2 [INFO: Main      ] - Net: sicslowpan
+236000 2 [INFO: Main      ] - MAC: CSMA
+236000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+236000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+236000 2 [INFO: Main      ] Node ID: 2
+236000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+236000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+236000 2 Fog 2: Started (Fog Authentication Server). Af=e5c48d
+382000 1 [INFO: Main      ] Starting Contiki-NG-23e51c4
+382000 1 [INFO: Main      ] - Routing: RPL Lite
+382000 1 [INFO: Main      ] - Net: sicslowpan
+382000 1 [INFO: Main      ] - MAC: CSMA
+382000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+382000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+382000 1 [INFO: Main      ] Node ID: 1
+382000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+382000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+382000 1 RA 1: Started (RPL root + Registration Authority). Af=e5c48d
+899000 3 [INFO: Main      ] Starting Contiki-NG-23e51c4
+899000 3 [INFO: Main      ] - Routing: RPL Lite
+899000 3 [INFO: Main      ] - Net: sicslowpan
+899000 3 [INFO: Main      ] - MAC: CSMA
+899000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+899000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+899000 3 [INFO: Main      ] Node ID: 3
+899000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+899000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+8899000 3 Node 3: Sending registration to RA
+18819816 1 RA 1: Registered device 3 -> Fog 2. TIDd=957029
+18849064 3 Node 3: Registered. TIDd=d5d00d TIDf=b2072a
+18849064 3 ENROLL_ENERGY|3|cpu_s=9.950064|energy_j=0.614822
+18849064 3 Node 3: Sending AuthReq to fog server
+22578696 2 Fog 2: Auth failed - TIDd not found
+22618760 3 Node 3: Auth reply dropped
+23193000 2 Fog 2: Stored credentials for device 3. TIDd=957029
+24899000 3 Node 3: Sending AuthReq to fog server
+24979696 2 Fog 2: Auth failed - TIDd not found
+25043760 3 Node 3: Auth reply dropped
+32899000 3 Node 3: Sending AuthReq to fog server
+32981696 2 Fog 2: Auth failed - TIDd not found
+33027760 3 Node 3: Auth reply dropped
+40899000 3 Node 3: Sending AuthReq to fog server
+41022696 2 Fog 2: Auth failed - TIDd not found
+41073760 3 Node 3: Auth reply dropped
+48899000 3 Node 3: Sending AuthReq to fog server
+48996696 2 Fog 2: Auth failed - TIDd not found
+49064760 3 Node 3: Auth reply dropped
+56899000 3 Node 3: Sending AuthReq to fog server
+56945696 2 Fog 2: Auth failed - TIDd not found
+57012760 3 Node 3: Auth reply dropped
+64899000 3 Node 3: Sending AuthReq to fog server
+64974696 2 Fog 2: Auth failed - TIDd not found
+65034760 3 Node 3: Auth reply dropped
+72899000 3 Node 3: Sending AuthReq to fog server
+73018696 2 Fog 2: Auth failed - TIDd not found
+73041760 3 Node 3: Auth reply dropped
+80899000 3 Node 3: Sending AuthReq to fog server
+80980696 2 Fog 2: Auth failed - TIDd not found
+81035760 3 Node 3: Auth reply dropped
+88899000 3 Node 3: Sending AuthReq to fog server
+88983696 2 Fog 2: Auth failed - TIDd not found
+89018760 3 Node 3: Auth reply dropped
+96899000 3 Node 3: Sending AuthReq to fog server
+96997696 2 Fog 2: Auth failed - TIDd not found
+97048760 3 Node 3: Auth reply dropped
+104899000 3 Node 3: Sending AuthReq to fog server
+105014696 2 Fog 2: Auth failed - TIDd not found
+105073760 3 Node 3: Auth reply dropped
+112899000 3 Node 3: Sending AuthReq to fog server
+112978696 2 Fog 2: Auth failed - TIDd not found
+113057760 3 Node 3: Auth reply dropped
+120899000 3 Node 3: Sending AuthReq to fog server
+120991696 2 Fog 2: Auth failed - TIDd not found
+121024760 3 Node 3: Auth reply dropped
+128899000 3 Node 3: Sending AuthReq to fog server
+128994696 2 Fog 2: Auth failed - TIDd not found
+129082760 3 Node 3: Auth reply dropped
+136899000 3 Node 3: Sending AuthReq to fog server
+137025696 2 Fog 2: Auth failed - TIDd not found
+137053760 3 Node 3: Auth reply dropped
+144899000 3 Node 3: Sending AuthReq to fog server
+145057696 2 Fog 2: Auth failed - TIDd not found
+145091760 3 Node 3: Auth reply dropped
+152899000 3 Node 3: Sending AuthReq to fog server
+152978696 2 Fog 2: Auth failed - TIDd not found
+153018760 3 Node 3: Auth reply dropped
+160899000 3 Node 3: Sending AuthReq to fog server
+161002696 2 Fog 2: Auth failed - TIDd not found
+161053760 3 Node 3: Auth reply dropped
+168899000 3 Node 3: Sending AuthReq to fog server
+169007696 2 Fog 2: Auth failed - TIDd not found
+169067760 3 Node 3: Auth reply dropped
+176899000 3 Node 3: Sending AuthReq to fog server
+177027696 2 Fog 2: Auth failed - TIDd not found
+177067760 3 Node 3: Auth reply dropped
+184899000 3 Node 3: Sending AuthReq to fog server
+185009696 2 Fog 2: Auth failed - TIDd not found
+185056760 3 Node 3: Auth reply dropped
+192899000 3 Node 3: Sending AuthReq to fog server
+193009696 2 Fog 2: Auth failed - TIDd not found
+193045760 3 Node 3: Auth reply dropped
+200899000 3 Node 3: Sending AuthReq to fog server
+201002696 2 Fog 2: Auth failed - TIDd not found
+201021760 3 Node 3: Auth reply dropped
+208899000 3 Node 3: Sending AuthReq to fog server
+208986760 2 Fog 2: Auth failed - TIDd not found
+209024760 3 Node 3: Auth reply dropped
+216899000 3 Node 3: Sending AuthReq to fog server
+216971696 2 Fog 2: Auth failed - TIDd not found
+217036760 3 Node 3: Auth reply dropped
+224899000 3 Node 3: Sending AuthReq to fog server
+224981696 2 Fog 2: Auth failed - TIDd not found
+224995760 3 Node 3: Auth reply dropped
+232899000 3 Node 3: Sending AuthReq to fog server
+233001696 2 Fog 2: Auth failed - TIDd not found
+233065760 3 Node 3: Auth reply dropped
+240899000 3 Node 3: Sending AuthReq to fog server
+240993696 2 Fog 2: Auth failed - TIDd not found
+241076760 3 Node 3: Auth reply dropped
+248899000 3 Node 3: Sending AuthReq to fog server
+249007696 2 Fog 2: Auth failed - TIDd not found
+249084760 3 Node 3: Auth reply dropped
+256899000 3 Node 3: Sending AuthReq to fog server
+257030696 2 Fog 2: Auth failed - TIDd not found
+257083760 3 Node 3: Auth reply dropped
+264899000 3 Node 3: Sending AuthReq to fog server
+265017696 2 Fog 2: Auth failed - TIDd not found
+265059488 3 Node 3: Auth reply dropped
+272899000 3 Node 3: Sending AuthReq to fog server
+273022696 2 Fog 2: Auth failed - TIDd not found
+273047760 3 Node 3: Auth reply dropped
+280899000 3 Node 3: Sending AuthReq to fog server
+281000696 2 Fog 2: Auth failed - TIDd not found
+281013760 3 Node 3: Auth reply dropped
+288899000 3 Node 3: Sending AuthReq to fog server
+288983696 2 Fog 2: Auth failed - TIDd not found
+289005488 3 Node 3: Auth reply dropped
+296899000 3 Node 3: Sending AuthReq to fog server
+297029696 2 Fog 2: Auth failed - TIDd not found
+297091760 3 Node 3: Auth reply dropped
+304899000 3 Node 3: Sending AuthReq to fog server
+304979696 2 Fog 2: Auth failed - TIDd not found
+305044760 3 Node 3: Auth reply dropped
+312899000 3 Node 3: Sending AuthReq to fog server
+313009696 2 Fog 2: Auth failed - TIDd not found
+313054760 3 Node 3: Auth reply dropped
+320899000 3 Node 3: Sending AuthReq to fog server
+320975696 2 Fog 2: Auth failed - TIDd not found
+321042760 3 Node 3: Auth reply dropped
+328899000 3 Node 3: Sending AuthReq to fog server
+328957696 2 Fog 2: Auth failed - TIDd not found
+328972760 3 Node 3: Auth reply dropped
+336899000 3 Node 3: Sending AuthReq to fog server
+337009696 2 Fog 2: Auth failed - TIDd not found
+337058760 3 Node 3: Auth reply dropped
+344899000 3 Node 3: Sending AuthReq to fog server
+344983696 2 Fog 2: Auth failed - TIDd not found
+345017760 3 Node 3: Auth reply dropped
+352899000 3 Node 3: Sending AuthReq to fog server
+353047696 2 Fog 2: Auth failed - TIDd not found
+353095760 3 Node 3: Auth reply dropped
+360899000 3 Node 3: Sending AuthReq to fog server
+360988696 2 Fog 2: Auth failed - TIDd not found
+361055760 3 Node 3: Auth reply dropped
+368899000 3 Node 3: Sending AuthReq to fog server
+368983696 2 Fog 2: Auth failed - TIDd not found
+369006760 3 Node 3: Auth reply dropped
+376899000 3 Node 3: Sending AuthReq to fog server
+376969696 2 Fog 2: Auth failed - TIDd not found
+377020760 3 Node 3: Auth reply dropped
+384899000 3 Node 3: Sending AuthReq to fog server
+384987696 2 Fog 2: Auth failed - TIDd not found
+385005760 3 Node 3: Auth reply dropped
+392899000 3 Node 3: Sending AuthReq to fog server
+392968696 2 Fog 2: Auth failed - TIDd not found
+393023760 3 Node 3: Auth reply dropped
+400899000 3 Node 3: Sending AuthReq to fog server
+400967696 2 Fog 2: Auth failed - TIDd not found
+401033760 3 Node 3: Auth reply dropped
+408899000 3 Node 3: Sending AuthReq to fog server
+409019696 2 Fog 2: Auth failed - TIDd not found
+409066760 3 Node 3: Auth reply dropped
+416899000 3 Node 3: Sending AuthReq to fog server
+417018696 2 Fog 2: Auth failed - TIDd not found
+417061760 3 Node 3: Auth reply dropped
+424899000 3 Node 3: Sending AuthReq to fog server
+425005696 2 Fog 2: Auth failed - TIDd not found
+425035760 3 Node 3: Auth reply dropped
+432899000 3 Node 3: Sending AuthReq to fog server
+432993696 2 Fog 2: Auth failed - TIDd not found
+433066760 3 Node 3: Auth reply dropped
+440899000 3 Node 3: Sending AuthReq to fog server
+440992760 2 Fog 2: Auth failed - TIDd not found
+441007760 3 Node 3: Auth reply dropped
+448899000 3 Node 3: Sending AuthReq to fog server
+448997696 2 Fog 2: Auth failed - TIDd not found
+449026760 3 Node 3: Auth reply dropped
+456899000 3 Node 3: Sending AuthReq to fog server
+457010696 2 Fog 2: Auth failed - TIDd not found
+457051760 3 Node 3: Auth reply dropped
+464899000 3 Node 3: Sending AuthReq to fog server
+465020696 2 Fog 2: Auth failed - TIDd not found
+465052760 3 Node 3: Auth reply dropped
+472899000 3 Node 3: Sending AuthReq to fog server
+472980696 2 Fog 2: Auth failed - TIDd not found
+472997488 3 Node 3: Auth reply dropped
+480899000 3 Node 3: Sending AuthReq to fog server
+481011696 2 Fog 2: Auth failed - TIDd not found
+481068760 3 Node 3: Auth reply dropped
+488899000 3 Node 3: Sending AuthReq to fog server
+489000696 2 Fog 2: Auth failed - TIDd not found
+489048760 3 Node 3: Auth reply dropped
+496899000 3 Node 3: Sending AuthReq to fog server
+497031696 2 Fog 2: Auth failed - TIDd not found
+497062760 3 Node 3: Auth reply dropped
+504899000 3 Node 3: Sending AuthReq to fog server
+504972760 2 Fog 2: Auth failed - TIDd not found
+505019760 3 Node 3: Auth reply dropped
+512899000 3 Node 3: Sending AuthReq to fog server
+513014696 2 Fog 2: Auth failed - TIDd not found
+513090760 3 Node 3: Auth reply dropped
+520899000 3 Node 3: Sending AuthReq to fog server
+521007696 2 Fog 2: Auth failed - TIDd not found
+521066760 3 Node 3: Auth reply dropped
+528899000 3 Node 3: Sending AuthReq to fog server
+529020696 2 Fog 2: Auth failed - TIDd not found
+529079760 3 Node 3: Auth reply dropped
+536899000 3 Node 3: Sending AuthReq to fog server
+537013696 2 Fog 2: Auth failed - TIDd not found
+537085760 3 Node 3: Auth reply dropped
+544899000 3 Node 3: Sending AuthReq to fog server
+544973696 2 Fog 2: Auth failed - TIDd not found
+545035760 3 Node 3: Auth reply dropped
+552899000 3 Node 3: Sending AuthReq to fog server
+552987696 2 Fog 2: Auth failed - TIDd not found
+553041760 3 Node 3: Auth reply dropped
+560899000 3 Node 3: Sending AuthReq to fog server
+560998696 2 Fog 2: Auth failed - TIDd not found
+561056760 3 Node 3: Auth reply dropped
+568899000 3 Node 3: Sending AuthReq to fog server
+568985696 2 Fog 2: Auth failed - TIDd not found
+569046760 3 Node 3: Auth reply dropped
+576899000 3 Node 3: Sending AuthReq to fog server
+576993696 2 Fog 2: Auth failed - TIDd not found
+577057760 3 Node 3: Auth reply dropped
+584899000 3 Node 3: Sending AuthReq to fog server
+585015696 2 Fog 2: Auth failed - TIDd not found
+585042760 3 Node 3: Auth reply dropped
+592899000 3 Node 3: Sending AuthReq to fog server
+593009696 2 Fog 2: Auth failed - TIDd not found
+593026488 3 Node 3: Auth reply dropped
+TEST OK
+Test ended at simulation time: 600000000

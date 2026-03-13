@@ -1,0 +1,4 @@
+Comparison,Scheme,Avg_CPU_s,StdDev_CPU_s,Avg_Energy_J,StdDev_Energy_J
+"Protocol-Only (Auth+KeyEx for Base, KeyEx for others)",Base,0.385351,0.008110,0.023765,0.000501
+"Protocol-Only (Auth+KeyEx for Base, KeyEx for others)",Proposed,0.294291,0.011377,0.018144,0.000703
+"Protocol-Only (Auth+KeyEx for Base, KeyEx for others)",LAAKA,0.554436,0.015093,0.034188,0.000933

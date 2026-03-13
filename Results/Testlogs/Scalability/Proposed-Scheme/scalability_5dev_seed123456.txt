@@ -1,0 +1,1497 @@
+Random seed: 123456
+236000 2 [INFO: Main      ] Starting Contiki-NG-23e51c4
+236000 2 [INFO: Main      ] - Routing: RPL Lite
+236000 2 [INFO: Main      ] - Net: sicslowpan
+236000 2 [INFO: Main      ] - MAC: CSMA
+236000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+236000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+236000 2 [INFO: Main      ] Node ID: 2
+236000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+236000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+236000 2 AS 2: Started.
+250000 6 [INFO: Main      ] Starting Contiki-NG-23e51c4
+250000 6 [INFO: Main      ] - Routing: RPL Lite
+250000 6 [INFO: Main      ] - Net: sicslowpan
+250000 6 [INFO: Main      ] - MAC: CSMA
+250000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+250000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
+250000 6 [INFO: Main      ] Node ID: 6
+250000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+250000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+348000 4 [INFO: Main      ] Starting Contiki-NG-23e51c4
+348000 4 [INFO: Main      ] - Routing: RPL Lite
+348000 4 [INFO: Main      ] - Net: sicslowpan
+348000 4 [INFO: Main      ] - MAC: CSMA
+348000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+348000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+348000 4 [INFO: Main      ] Node ID: 4
+348000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+348000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+382000 1 [INFO: Main      ] Starting Contiki-NG-23e51c4
+382000 1 [INFO: Main      ] - Routing: RPL Lite
+382000 1 [INFO: Main      ] - Net: sicslowpan
+382000 1 [INFO: Main      ] - MAC: CSMA
+382000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+382000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+382000 1 [INFO: Main      ] Node ID: 1
+382000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+382000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+382000 1 GW 1: Started (RPL root + CoAP server).
+382000 1 GW 1: Storage: 7480 bytes (110 sessions x 68 bytes each)
+402000 7 [INFO: Main      ] Starting Contiki-NG-23e51c4
+402000 7 [INFO: Main      ] - Routing: RPL Lite
+402000 7 [INFO: Main      ] - Net: sicslowpan
+402000 7 [INFO: Main      ] - MAC: CSMA
+402000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+402000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
+402000 7 [INFO: Main      ] Node ID: 7
+402000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+402000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+715000 5 [INFO: Main      ] Starting Contiki-NG-23e51c4
+715000 5 [INFO: Main      ] - Routing: RPL Lite
+715000 5 [INFO: Main      ] - Net: sicslowpan
+715000 5 [INFO: Main      ] - MAC: CSMA
+715000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+715000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+715000 5 [INFO: Main      ] Node ID: 5
+715000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+715000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+899000 3 [INFO: Main      ] Starting Contiki-NG-23e51c4
+899000 3 [INFO: Main      ] - Routing: RPL Lite
+899000 3 [INFO: Main      ] - Net: sicslowpan
+899000 3 [INFO: Main      ] - MAC: CSMA
+899000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+899000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+899000 3 [INFO: Main      ] Node ID: 3
+899000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+899000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+8899000 3 Node 3: Sending Reg-0
+9348000 4 Node 4: Sending Reg-0
+10715000 5 Node 5: Sending Reg-0
+11250000 6 Node 6: Sending Reg-0
+12402000 7 Node 7: Sending Reg-0
+21861592 2 AS 2: Reg-0 for device 3 (c_d=107)
+21887328 3 Node 3: Reg-0 OK. c_d=107
+21887328 3 Node 3: Sending Reg-1
+21933648 2 AS 2: Reg-1 complete for device 3
+21995112 3 Node 3: Registered
+21995112 3 
+21995112 3 ENROLL_ENERGY|3|cpu_s=13.096112|energy_j=0.809200Node 3: Sending auth. PID=52afdf ts_1=1
+22115184 2 AS 2: Device 3 authenticated (membership check passed)
+22115184 2 
+22133728 3 Node 3: Auth OK. New PID=8e7a96
+22133728 3 
+22133728 3 KEYEX_ENERGY|3|cpu_s=0.138616|energy_j=0.008524Node 3: Sending data
+22172360 1 GW: Rejected data ï¾€ï¾” PID 8e7a96... not found
+22200472 3 Node 3: Data confirmed
+22200472 3 
+22320632 1 GW: Auth token for device 3 (via AS 2). PID: 8e7a96... stored.
+22320632 1 GW: Token processing time: 0 ms
+22949152 2  The CPU time and energy at the end of authentication for server 2 are 21.879184 and 1.351965AS 2: Reg-0 for device 7 (c_d=90)
+22983328 7 Node 7: Reg-0 OK. c_d=90
+22983328 7 Node 7: Sending Reg-1
+23033648 2 AS 2: Reg-1 complete for device 7
+23053112 7 Node 7: Registered
+23053112 7 
+24267592 2 AS 2: Reg-0 for device 5 (c_d=38)
+24318328 5 Node 5: Reg-0 OK. c_d=38
+24318328 5 Node 5: Sending Reg-1
+24386648 2 AS 2: Reg-1 complete for device 5
+24402000 7 ENROLL_ENERGY|7|cpu_s=10.651112|energy_j=0.658142Node 7: Sending auth. PID=e63825 ts_1=1
+24452328 5 Node 5: Registered
+24452328 5 
+24452328 5 ENROLL_ENERGY|5|cpu_s=13.737328|energy_j=0.848787Node 5: Sending auth. PID=a354e6 ts_1=1
+24520184 2 AS 2: Device 7 authenticated (membership check passed)
+24520184 2 
+24549880 7 Node 7: Auth OK. New PID=ede0f5
+24549880 7 
+24549880 7 KEYEX_ENERGY|7|cpu_s=0.147880|energy_j=0.009096Node 7: Sending data
+24573360 1 GW: Rejected data ï¾€ï¾” PID ede0f5... not found
+24583472 7 Node 7: Data confirmed
+24583472 7 
+24590632 1 GW: Auth token for device 7 (via AS 2). PID: ede0f5... stored.
+24590632 1 GW: Token processing time: 0 ms
+24630184 2  The CPU time and energy at the end of authentication for server 2 are 24.284184 and 1.500396AS 2: Device 5 authenticated (membership check passed)
+24630184 2 
+24686880 5 Node 5: Auth OK. New PID=7e0e76
+24686880 5 
+24686880 5 KEYEX_ENERGY|5|cpu_s=0.234552|energy_j=0.014453Node 5: Sending data
+24718632 1 GW: Auth token for device 5 (via AS 2). PID: 7e0e76... stored.
+24718632 1 GW: Token processing time: 0 ms
+24816360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+24816360 1 GW: Data processing time: 0 ms
+24838536 5 Node 5: Data confirmed
+24838536 5 
+24939360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+24939360 1 GW: Data processing time: 0 ms
+24978536 3  The CPU time and energy at the end of authentication 1 for client 3 are 0.205360 and 0.012622Node 3: Data confirmed
+30698592 2  The CPU time and energy at the end of authentication for server 2 are 24.394184 and 1.507125AS 2: Reg-0 for device 4 (c_d=139)
+30722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+30722360 1 GW: Data processing time: 0 ms
+30732536 5  The CPU time and energy at the end of authentication 1 for client 5 are 0.386208 and 0.023798Node 5: Data confirmed
+30790328 4 Node 4: Reg-0 OK. c_d=139
+30790328 4 Node 4: Sending Reg-1
+30831648 2 AS 2: Reg-1 complete for device 4
+30906112 4 Node 4: Registered
+30906112 4 
+30906112 4 ENROLL_ENERGY|4|cpu_s=21.558112|energy_j=1.332108Node 4: Sending auth. PID=129000 ts_1=1
+30963184 2 AS 2: Device 4 authenticated (membership check passed)
+30963184 2 
+31049880 4 Node 4: Auth OK. New PID=be39e0
+31049880 4 
+31049880 4 KEYEX_ENERGY|4|cpu_s=0.143768|energy_j=0.008842Node 4: Sending data
+31065632 1 GW: Auth token for device 4 (via AS 2). PID: be39e0... stored.
+31065632 1 GW: Token processing time: 0 ms
+31083360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+31083360 1 GW: Data processing time: 0 ms
+31105536 4 Node 4: Data confirmed
+31105536 4 
+31146360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+31146360 1 GW: Data processing time: 0 ms
+31175536 4  The CPU time and energy at the end of authentication 1 for client 4 are 0.199424 and 0.012255Node 4: Data confirmed
+32916360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+32916360 1 GW: Data processing time: 0 ms
+32922536 3 Node 3: Data confirmed
+35457592 2  The CPU time and energy at the end of authentication for server 2 are 30.727184 and 1.898357AS 2: Reg-0 for device 6 (c_d=10)
+35518328 6 Node 6: Reg-0 OK. c_d=10
+35518328 6 Node 6: Sending Reg-1
+35585648 2 AS 2: Reg-1 complete for device 6
+35628112 6 Node 6: Registered
+35628112 6 
+35628112 6 ENROLL_ENERGY|6|cpu_s=24.378112|energy_j=1.506406Node 6: Sending auth. PID=e00f35 ts_1=1
+35708184 2 AS 2: Device 6 authenticated (membership check passed)
+35708184 2 
+35767880 6 Node 6: Auth OK. New PID=34e67b
+35767880 6 
+35767880 6 KEYEX_ENERGY|6|cpu_s=0.139768|energy_j=0.008595Node 6: Sending data
+35793632 1 GW: Auth token for device 6 (via AS 2). PID: 34e67b... stored.
+35793632 1 GW: Token processing time: 0 ms
+35810360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+35810360 1 GW: Data processing time: 0 ms
+35823536 6 Node 6: Data confirmed
+35823536 6 
+35855360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+35855360 1 GW: Data processing time: 0 ms
+35863536 6  The CPU time and energy at the end of authentication 1 for client 6 are 0.195424 and 0.012008Node 6: Data confirmed
+36395360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+36395360 1 GW: Data processing time: 0 ms
+36407536 4 Node 4: Data confirmed
+36427360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+36427360 1 GW: Data processing time: 0 ms
+36432896 7  The CPU time and energy at the end of authentication 1 for client 7 are 0.181472 and 0.011146Node 7: Data confirmed
+40754360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+40754360 1 GW: Data processing time: 0 ms
+40784536 5 Node 5: Data confirmed
+40926360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+40926360 1 GW: Data processing time: 0 ms
+40968536 3 Node 3: Data confirmed
+44290360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+44290360 1 GW: Data processing time: 0 ms
+44319536 6 Node 6: Data confirmed
+45393360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+45393360 1 GW: Data processing time: 0 ms
+45435536 4 Node 4: Data confirmed
+48446360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+48446360 1 GW: Data processing time: 0 ms
+48486536 7 Node 7: Data confirmed
+48911360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+48911360 1 GW: Data processing time: 0 ms
+48926536 3 Node 3: Data confirmed
+50746360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+50746360 1 GW: Data processing time: 0 ms
+50753536 5 Node 5: Data confirmed
+54357360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+54357360 1 GW: Data processing time: 0 ms
+54393536 4 Node 4: Data confirmed
+55291360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+55291360 1 GW: Data processing time: 0 ms
+55298536 6 Node 6: Data confirmed
+56919360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+56919360 1 GW: Data processing time: 0 ms
+56943536 3 Node 3: Data confirmed
+60410360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+60410360 1 GW: Data processing time: 0 ms
+60425536 7 Node 7: Data confirmed
+60728360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+60728360 1 GW: Data processing time: 0 ms
+60759536 5 Node 5: Data confirmed
+63391360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+63391360 1 GW: Data processing time: 0 ms
+63418536 4 Node 4: Data confirmed
+64935360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+64935360 1 GW: Data processing time: 0 ms
+64978536 3 Node 3: Data confirmed
+66261360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+66261360 1 GW: Data processing time: 0 ms
+66286536 6 Node 6: Data confirmed
+70762360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+70762360 1 GW: Data processing time: 0 ms
+70777536 5 Node 5: Data confirmed
+72377360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+72377360 1 GW: Data processing time: 0 ms
+72396536 4 Node 4: Data confirmed
+72423360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+72423360 1 GW: Data processing time: 0 ms
+72461536 7 Node 7: Data confirmed
+72936360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+72936360 1 GW: Data processing time: 0 ms
+72971536 3 Node 3: Data confirmed
+77294360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+77294360 1 GW: Data processing time: 0 ms
+77315536 6 Node 6: Data confirmed
+80730360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+80730360 1 GW: Data processing time: 0 ms
+80759536 5 Node 5: Data confirmed
+80923360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+80923360 1 GW: Data processing time: 0 ms
+80929536 3 Node 3: Data confirmed
+81380360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+81380360 1 GW: Data processing time: 0 ms
+81386536 4 Node 4: Data confirmed
+84441360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+84441360 1 GW: Data processing time: 0 ms
+84446896 7 Node 7: Data confirmed
+88258360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+88258360 1 GW: Data processing time: 0 ms
+88277536 6 Node 6: Data confirmed
+88937360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+88937360 1 GW: Data processing time: 0 ms
+88947536 3 Node 3: Data confirmed
+90392360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+90392360 1 GW: Data processing time: 0 ms
+90432536 4 Node 4: Data confirmed
+90724360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+90724360 1 GW: Data processing time: 0 ms
+90749536 5 Node 5: Data confirmed
+96409360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+96409360 1 GW: Data processing time: 0 ms
+96425536 7 Node 7: Data confirmed
+96906360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+96906360 1 GW: Data processing time: 0 ms
+96942536 3 Node 3: Data confirmed
+99270360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+99270360 1 GW: Data processing time: 0 ms
+99314536 6 Node 6: Data confirmed
+99370360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+99370360 1 GW: Data processing time: 0 ms
+99379536 4 Node 4: Data confirmed
+100733360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+100733360 1 GW: Data processing time: 0 ms
+100751536 5 Node 5: Data confirmed
+104924360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+104924360 1 GW: Data processing time: 0 ms
+104955536 3 Node 3: Data confirmed
+108378360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+108378360 1 GW: Data processing time: 0 ms
+108412536 4 Node 4: Data confirmed
+108423360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+108423360 1 GW: Data processing time: 0 ms
+108447536 7 Node 7: Data confirmed
+110281360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+110281360 1 GW: Data processing time: 0 ms
+110315536 6 Node 6: Data confirmed
+110724360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+110724360 1 GW: Data processing time: 0 ms
+110753536 5 Node 5: Data confirmed
+112915360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+112915360 1 GW: Data processing time: 0 ms
+112936536 3 Node 3: Data confirmed
+117382360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+117382360 1 GW: Data processing time: 0 ms
+117415536 4 Node 4: Data confirmed
+120435360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+120435360 1 GW: Data processing time: 0 ms
+120446536 7 Node 7: Data confirmed
+120734360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+120734360 1 GW: Data processing time: 0 ms
+120759536 5 Node 5: Data confirmed
+120939360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+120939360 1 GW: Data processing time: 0 ms
+120944896 3 Node 3: Data confirmed
+121281360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+121281360 1 GW: Data processing time: 0 ms
+121309536 6 Node 6: Data confirmed
+126374360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+126374360 1 GW: Data processing time: 0 ms
+126384536 4 Node 4: Data confirmed
+128914360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+128914360 1 GW: Data processing time: 0 ms
+128925536 3 Node 3: Data confirmed
+130743360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+130743360 1 GW: Data processing time: 0 ms
+130782536 5 Node 5: Data confirmed
+132291360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+132291360 1 GW: Data processing time: 0 ms
+132299536 6 Node 6: Data confirmed
+132430360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+132430360 1 GW: Data processing time: 0 ms
+132474536 7 Node 7: Data confirmed
+135380360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+135380360 1 GW: Data processing time: 0 ms
+135400536 4 Node 4: Data confirmed
+136922360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+136922360 1 GW: Data processing time: 0 ms
+136967536 3 Node 3: Data confirmed
+140751360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+140751360 1 GW: Data processing time: 0 ms
+140762536 5 Node 5: Data confirmed
+143283360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+143283360 1 GW: Data processing time: 0 ms
+143289536 6 Node 6: Data confirmed
+144389360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+144389360 1 GW: Data processing time: 0 ms
+144405536 4 Node 4: Data confirmed
+144487360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+144487360 1 GW: Data processing time: 0 ms
+144494536 7 Node 7: Data confirmed
+144922360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+144922360 1 GW: Data processing time: 0 ms
+144964536 3 Node 3: Data confirmed
+150745360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+150745360 1 GW: Data processing time: 0 ms
+150773536 5 Node 5: Data confirmed
+152937360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+152937360 1 GW: Data processing time: 0 ms
+152972536 3 Node 3: Data confirmed
+153364360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+153364360 1 GW: Data processing time: 0 ms
+153404536 4 Node 4: Data confirmed
+154278360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+154278360 1 GW: Data processing time: 0 ms
+154310536 6 Node 6: Data confirmed
+156434360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+156434360 1 GW: Data processing time: 0 ms
+156475536 7 Node 7: Data confirmed
+160749360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+160749360 1 GW: Data processing time: 0 ms
+160790536 5 Node 5: Data confirmed
+160939360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+160939360 1 GW: Data processing time: 0 ms
+160958536 3 Node 3: Data confirmed
+162372360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+162372360 1 GW: Data processing time: 0 ms
+162397536 4 Node 4: Data confirmed
+165269360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+165269360 1 GW: Data processing time: 0 ms
+165306536 6 Node 6: Data confirmed
+168409360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+168409360 1 GW: Data processing time: 0 ms
+168414896 7 Node 7: Data confirmed
+168930360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+168930360 1 GW: Data processing time: 0 ms
+168969536 3 Node 3: Data confirmed
+170726360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+170726360 1 GW: Data processing time: 0 ms
+170743536 5 Node 5: Data confirmed
+171379360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+171379360 1 GW: Data processing time: 0 ms
+171393536 4 Node 4: Data confirmed
+176285360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+176285360 1 GW: Data processing time: 0 ms
+176316536 6 Node 6: Data confirmed
+176936360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+176936360 1 GW: Data processing time: 0 ms
+176950536 3 Node 3: Data confirmed
+180385360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+180385360 1 GW: Data processing time: 0 ms
+180391536 4 Node 4: Data confirmed
+180430360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+180430360 1 GW: Data processing time: 0 ms
+180456536 7 Node 7: Data confirmed
+180735360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+180735360 1 GW: Data processing time: 0 ms
+180740896 5 Node 5: Data confirmed
+184935360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+184935360 1 GW: Data processing time: 0 ms
+184978536 3 Node 3: Data confirmed
+187276360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+187276360 1 GW: Data processing time: 0 ms
+187306536 6 Node 6: Data confirmed
+189395360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+189395360 1 GW: Data processing time: 0 ms
+189440536 4 Node 4: Data confirmed
+190729360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+190729360 1 GW: Data processing time: 0 ms
+190771536 5 Node 5: Data confirmed
+192446360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+192446360 1 GW: Data processing time: 0 ms
+192470536 7 Node 7: Data confirmed
+192915360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+192915360 1 GW: Data processing time: 0 ms
+192941536 3 Node 3: Data confirmed
+198274360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+198274360 1 GW: Data processing time: 0 ms
+198312536 6 Node 6: Data confirmed
+198381360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+198381360 1 GW: Data processing time: 0 ms
+198408536 4 Node 4: Data confirmed
+200737360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+200737360 1 GW: Data processing time: 0 ms
+200780536 5 Node 5: Data confirmed
+200911360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+200911360 1 GW: Data processing time: 0 ms
+200948536 3 Node 3: Data confirmed
+204444360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+204444360 1 GW: Data processing time: 0 ms
+204466536 7 Node 7: Data confirmed
+207388360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+207388360 1 GW: Data processing time: 0 ms
+207408536 4 Node 4: Data confirmed
+208907360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+208907360 1 GW: Data processing time: 0 ms
+208947536 3 Node 3: Data confirmed
+209287360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+209287360 1 GW: Data processing time: 0 ms
+209305536 6 Node 6: Data confirmed
+210759360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+210759360 1 GW: Data processing time: 0 ms
+210769536 5 Node 5: Data confirmed
+216360360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+216360360 1 GW: Data processing time: 0 ms
+216368536 4 Node 4: Data confirmed
+216447360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+216447360 1 GW: Data processing time: 0 ms
+216480536 7 Node 7: Data confirmed
+216945360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+216945360 1 GW: Data processing time: 0 ms
+216976536 3 Node 3: Data confirmed
+220266360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+220266360 1 GW: Data processing time: 0 ms
+220294536 6 Node 6: Data confirmed
+220737360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+220737360 1 GW: Data processing time: 0 ms
+220770536 5 Node 5: Data confirmed
+224928360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+224928360 1 GW: Data processing time: 0 ms
+224957536 3 Node 3: Data confirmed
+225360360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+225360360 1 GW: Data processing time: 0 ms
+225373536 4 Node 4: Data confirmed
+228412360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+228412360 1 GW: Data processing time: 0 ms
+228456536 7 Node 7: Data confirmed
+230727360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+230727360 1 GW: Data processing time: 0 ms
+230762536 5 Node 5: Data confirmed
+231285360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+231285360 1 GW: Data processing time: 0 ms
+231303536 6 Node 6: Data confirmed
+232939360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+232939360 1 GW: Data processing time: 0 ms
+232946536 3 Node 3: Data confirmed
+234378360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+234378360 1 GW: Data processing time: 0 ms
+234421536 4 Node 4: Data confirmed
+240413360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+240413360 1 GW: Data processing time: 0 ms
+240448536 7 Node 7: Data confirmed
+240722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+240722360 1 GW: Data processing time: 0 ms
+240729536 5 Node 5: Data confirmed
+240940360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+240940360 1 GW: Data processing time: 0 ms
+240966536 3 Node 3: Data confirmed
+242260360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+242260360 1 GW: Data processing time: 0 ms
+242273536 6 Node 6: Data confirmed
+243384360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+243384360 1 GW: Data processing time: 0 ms
+243389896 4 Node 4: Data confirmed
+248946360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+248946360 1 GW: Data processing time: 0 ms
+248986536 3 Node 3: Data confirmed
+250740360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+250740360 1 GW: Data processing time: 0 ms
+250764536 5 Node 5: Data confirmed
+252391360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+252391360 1 GW: Data processing time: 0 ms
+252401536 4 Node 4: Data confirmed
+252448360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+252448360 1 GW: Data processing time: 0 ms
+252459536 7 Node 7: Data confirmed
+253289360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+253289360 1 GW: Data processing time: 0 ms
+253303536 6 Node 6: Data confirmed
+256936360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+256936360 1 GW: Data processing time: 0 ms
+256956536 3 Node 3: Data confirmed
+260722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+260722360 1 GW: Data processing time: 0 ms
+260745536 5 Node 5: Data confirmed
+261360360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+261360360 1 GW: Data processing time: 0 ms
+261377536 4 Node 4: Data confirmed
+264288360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+264288360 1 GW: Data processing time: 0 ms
+264318536 6 Node 6: Data confirmed
+264436360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+264436360 1 GW: Data processing time: 0 ms
+264472536 7 Node 7: Data confirmed
+264928360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+264928360 1 GW: Data processing time: 0 ms
+264960536 3 Node 3: Data confirmed
+270388360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+270388360 1 GW: Data processing time: 0 ms
+270429536 4 Node 4: Data confirmed
+270754360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+270754360 1 GW: Data processing time: 0 ms
+270783536 5 Node 5: Data confirmed
+272911360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+272911360 1 GW: Data processing time: 0 ms
+272944536 3 Node 3: Data confirmed
+275258360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+275258360 1 GW: Data processing time: 0 ms
+275264536 6 Node 6: Data confirmed
+276439360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+276439360 1 GW: Data processing time: 0 ms
+276477536 7 Node 7: Data confirmed
+279387360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+279387360 1 GW: Data processing time: 0 ms
+279392896 4 Node 4: Data confirmed
+280753360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+280753360 1 GW: Data processing time: 0 ms
+280793536 5 Node 5: Data confirmed
+280906360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+280906360 1 GW: Data processing time: 0 ms
+280930536 3 Node 3: Data confirmed
+286261360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+286261360 1 GW: Data processing time: 0 ms
+286278536 6 Node 6: Data confirmed
+288371360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+288371360 1 GW: Data processing time: 0 ms
+288396536 4 Node 4: Data confirmed
+288445360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+288445360 1 GW: Data processing time: 0 ms
+288474536 7 Node 7: Data confirmed
+288936360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+288936360 1 GW: Data processing time: 0 ms
+288971536 3 Node 3: Data confirmed
+290725360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+290725360 1 GW: Data processing time: 0 ms
+290730896 5 Node 5: Data confirmed
+296914360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+296914360 1 GW: Data processing time: 0 ms
+296923536 3 Node 3: Data confirmed
+297264360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+297264360 1 GW: Data processing time: 0 ms
+297295536 6 Node 6: Data confirmed
+297380360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+297380360 1 GW: Data processing time: 0 ms
+297398536 4 Node 4: Data confirmed
+300429360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+300429360 1 GW: Data processing time: 0 ms
+300444536 7 Node 7: Data confirmed
+300725360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+300725360 1 GW: Data processing time: 0 ms
+300761536 5 Node 5: Data confirmed
+304914360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+304914360 1 GW: Data processing time: 0 ms
+304944536 3 Node 3: Data confirmed
+306375360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+306375360 1 GW: Data processing time: 0 ms
+306418536 4 Node 4: Data confirmed
+308270360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+308270360 1 GW: Data processing time: 0 ms
+308315536 6 Node 6: Data confirmed
+310751360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+310751360 1 GW: Data processing time: 0 ms
+310762536 5 Node 5: Data confirmed
+312432360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+312432360 1 GW: Data processing time: 0 ms
+312442536 7 Node 7: Data confirmed
+312939360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+312939360 1 GW: Data processing time: 0 ms
+312944896 3 Node 3: Data confirmed
+315380360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+315380360 1 GW: Data processing time: 0 ms
+315385896 4 Node 4: Data confirmed
+319295360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+319295360 1 GW: Data processing time: 0 ms
+319305536 6 Node 6: Data confirmed
+320747360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+320747360 1 GW: Data processing time: 0 ms
+320788536 5 Node 5: Data confirmed
+320922360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+320922360 1 GW: Data processing time: 0 ms
+320967536 3 Node 3: Data confirmed
+324379360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+324379360 1 GW: Data processing time: 0 ms
+324418536 4 Node 4: Data confirmed
+324433360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+324433360 1 GW: Data processing time: 0 ms
+324450536 7 Node 7: Data confirmed
+328915360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+328915360 1 GW: Data processing time: 0 ms
+328953536 3 Node 3: Data confirmed
+330291360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+330291360 1 GW: Data processing time: 0 ms
+330328536 6 Node 6: Data confirmed
+330747360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+330747360 1 GW: Data processing time: 0 ms
+330759536 5 Node 5: Data confirmed
+333393360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+333393360 1 GW: Data processing time: 0 ms
+333436536 4 Node 4: Data confirmed
+336415360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+336415360 1 GW: Data processing time: 0 ms
+336452536 7 Node 7: Data confirmed
+336907360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+336907360 1 GW: Data processing time: 0 ms
+336920536 3 Node 3: Data confirmed
+340745360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+340745360 1 GW: Data processing time: 0 ms
+340753536 5 Node 5: Data confirmed
+341263360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+341263360 1 GW: Data processing time: 0 ms
+341268896 6 Node 6: Data confirmed
+342378360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+342378360 1 GW: Data processing time: 0 ms
+342418536 4 Node 4: Data confirmed
+344913360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+344913360 1 GW: Data processing time: 0 ms
+344930536 3 Node 3: Data confirmed
+348445360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+348445360 1 GW: Data processing time: 0 ms
+348483536 7 Node 7: Data confirmed
+350749360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+350749360 1 GW: Data processing time: 0 ms
+350783536 5 Node 5: Data confirmed
+351387360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+351387360 1 GW: Data processing time: 0 ms
+351395536 4 Node 4: Data confirmed
+352257360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+352257360 1 GW: Data processing time: 0 ms
+352287536 6 Node 6: Data confirmed
+352944360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+352944360 1 GW: Data processing time: 0 ms
+352963536 3 Node 3: Data confirmed
+360370360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+360370360 1 GW: Data processing time: 0 ms
+360384536 4 Node 4: Data confirmed
+360432360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+360432360 1 GW: Data processing time: 0 ms
+360446536 7 Node 7: Data confirmed
+360722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+360722360 1 GW: Data processing time: 0 ms
+360753536 5 Node 5: Data confirmed
+360916360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+360916360 1 GW: Data processing time: 0 ms
+360933536 3 Node 3: Data confirmed
+363258360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+363258360 1 GW: Data processing time: 0 ms
+363288536 6 Node 6: Data confirmed
+368945360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+368945360 1 GW: Data processing time: 0 ms
+368977536 3 Node 3: Data confirmed
+369386360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+369386360 1 GW: Data processing time: 0 ms
+369398536 4 Node 4: Data confirmed
+370742360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+370742360 1 GW: Data processing time: 0 ms
+370764536 5 Node 5: Data confirmed
+372435360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+372435360 1 GW: Data processing time: 0 ms
+372456536 7 Node 7: Data confirmed
+374274360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+374274360 1 GW: Data processing time: 0 ms
+374310536 6 Node 6: Data confirmed
+376941360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+376941360 1 GW: Data processing time: 0 ms
+376959536 3 Node 3: Data confirmed
+378367360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+378367360 1 GW: Data processing time: 0 ms
+378397536 4 Node 4: Data confirmed
+380730360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+380730360 1 GW: Data processing time: 0 ms
+380740536 5 Node 5: Data confirmed
+384447360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+384447360 1 GW: Data processing time: 0 ms
+384470536 7 Node 7: Data confirmed
+384941360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+384941360 1 GW: Data processing time: 0 ms
+384958536 3 Node 3: Data confirmed
+385275360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+385275360 1 GW: Data processing time: 0 ms
+385295536 6 Node 6: Data confirmed
+387366360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+387366360 1 GW: Data processing time: 0 ms
+387381536 4 Node 4: Data confirmed
+390738360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+390738360 1 GW: Data processing time: 0 ms
+390754536 5 Node 5: Data confirmed
+392944360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+392944360 1 GW: Data processing time: 0 ms
+392964536 3 Node 3: Data confirmed
+396278360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+396278360 1 GW: Data processing time: 0 ms
+396323536 6 Node 6: Data confirmed
+396369360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+396369360 1 GW: Data processing time: 0 ms
+396400536 4 Node 4: Data confirmed
+396411360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+396411360 1 GW: Data processing time: 0 ms
+396441536 7 Node 7: Data confirmed
+400760360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+400760360 1 GW: Data processing time: 0 ms
+400803536 5 Node 5: Data confirmed
+400940360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+400940360 1 GW: Data processing time: 0 ms
+400948536 3 Node 3: Data confirmed
+405365360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+405365360 1 GW: Data processing time: 0 ms
+405380536 4 Node 4: Data confirmed
+407278360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+407278360 1 GW: Data processing time: 0 ms
+407297536 6 Node 6: Data confirmed
+408425360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+408425360 1 GW: Data processing time: 0 ms
+408430896 7 Node 7: Data confirmed
+408938360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+408938360 1 GW: Data processing time: 0 ms
+408957536 3 Node 3: Data confirmed
+410742360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+410742360 1 GW: Data processing time: 0 ms
+410748536 5 Node 5: Data confirmed
+414391360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+414391360 1 GW: Data processing time: 0 ms
+414397536 4 Node 4: Data confirmed
+416930360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+416930360 1 GW: Data processing time: 0 ms
+416967536 3 Node 3: Data confirmed
+418257360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+418257360 1 GW: Data processing time: 0 ms
+418297536 6 Node 6: Data confirmed
+420437360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+420437360 1 GW: Data processing time: 0 ms
+420466536 7 Node 7: Data confirmed
+420742360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+420742360 1 GW: Data processing time: 0 ms
+420750536 5 Node 5: Data confirmed
+423388360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+423388360 1 GW: Data processing time: 0 ms
+423428536 4 Node 4: Data confirmed
+424934360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+424934360 1 GW: Data processing time: 0 ms
+424951536 3 Node 3: Data confirmed
+429266360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+429266360 1 GW: Data processing time: 0 ms
+429303536 6 Node 6: Data confirmed
+430762360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+430762360 1 GW: Data processing time: 0 ms
+430775536 5 Node 5: Data confirmed
+432369360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+432369360 1 GW: Data processing time: 0 ms
+432389536 4 Node 4: Data confirmed
+432448360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+432448360 1 GW: Data processing time: 0 ms
+432458536 7 Node 7: Data confirmed
+432934360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+432934360 1 GW: Data processing time: 0 ms
+432954536 3 Node 3: Data confirmed
+440264360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+440264360 1 GW: Data processing time: 0 ms
+440269896 6 Node 6: Data confirmed
+440748360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+440748360 1 GW: Data processing time: 0 ms
+440767536 5 Node 5: Data confirmed
+440937360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+440937360 1 GW: Data processing time: 0 ms
+440980536 3 Node 3: Data confirmed
+441355360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+441355360 1 GW: Data processing time: 0 ms
+441395536 4 Node 4: Data confirmed
+444434360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+444434360 1 GW: Data processing time: 0 ms
+444442536 7 Node 7: Data confirmed
+448919360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+448919360 1 GW: Data processing time: 0 ms
+448924896 3 Node 3: Data confirmed
+450369360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+450369360 1 GW: Data processing time: 0 ms
+450388536 4 Node 4: Data confirmed
+450722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+450722360 1 GW: Data processing time: 0 ms
+450754536 5 Node 5: Data confirmed
+451267360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+451267360 1 GW: Data processing time: 0 ms
+451276536 6 Node 6: Data confirmed
+456424360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+456424360 1 GW: Data processing time: 0 ms
+456453536 7 Node 7: Data confirmed
+456922360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+456922360 1 GW: Data processing time: 0 ms
+456938536 3 Node 3: Data confirmed
+459381360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+459381360 1 GW: Data processing time: 0 ms
+459415536 4 Node 4: Data confirmed
+460756360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+460756360 1 GW: Data processing time: 0 ms
+460778536 5 Node 5: Data confirmed
+462289360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+462289360 1 GW: Data processing time: 0 ms
+462322536 6 Node 6: Data confirmed
+464937360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+464937360 1 GW: Data processing time: 0 ms
+464962536 3 Node 3: Data confirmed
+468368360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+468368360 1 GW: Data processing time: 0 ms
+468384536 4 Node 4: Data confirmed
+468422360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+468422360 1 GW: Data processing time: 0 ms
+468462536 7 Node 7: Data confirmed
+470759360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+470759360 1 GW: Data processing time: 0 ms
+470774536 5 Node 5: Data confirmed
+472932360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+472932360 1 GW: Data processing time: 0 ms
+472947536 3 Node 3: Data confirmed
+473270360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+473270360 1 GW: Data processing time: 0 ms
+473315536 6 Node 6: Data confirmed
+477357360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+477357360 1 GW: Data processing time: 0 ms
+477371536 4 Node 4: Data confirmed
+480417360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+480417360 1 GW: Data processing time: 0 ms
+480426536 7 Node 7: Data confirmed
+480754360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+480754360 1 GW: Data processing time: 0 ms
+480776536 5 Node 5: Data confirmed
+480906360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+480906360 1 GW: Data processing time: 0 ms
+480938536 3 Node 3: Data confirmed
+484273360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+484273360 1 GW: Data processing time: 0 ms
+484292536 6 Node 6: Data confirmed
+486381360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+486381360 1 GW: Data processing time: 0 ms
+486407536 4 Node 4: Data confirmed
+488922360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+488922360 1 GW: Data processing time: 0 ms
+488949536 3 Node 3: Data confirmed
+490760360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+490760360 1 GW: Data processing time: 0 ms
+490765896 5 Node 5: Data confirmed
+492409360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+492409360 1 GW: Data processing time: 0 ms
+492446536 7 Node 7: Data confirmed
+495280360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+495280360 1 GW: Data processing time: 0 ms
+495318536 6 Node 6: Data confirmed
+495358360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+495358360 1 GW: Data processing time: 0 ms
+495382536 4 Node 4: Data confirmed
+496934360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+496934360 1 GW: Data processing time: 0 ms
+496956536 3 Node 3: Data confirmed
+500727360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+500727360 1 GW: Data processing time: 0 ms
+500763536 5 Node 5: Data confirmed
+504392360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+504392360 1 GW: Data processing time: 0 ms
+504409360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+504409360 1 GW: Data processing time: 0 ms
+504423536 4 Node 4: Data confirmed
+504430536 7 Node 7: Data confirmed
+504915360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+504915360 1 GW: Data processing time: 0 ms
+504924536 3 Node 3: Data confirmed
+506262360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+506262360 1 GW: Data processing time: 0 ms
+506270536 6 Node 6: Data confirmed
+510738360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+510738360 1 GW: Data processing time: 0 ms
+510749536 5 Node 5: Data confirmed
+512918360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+512918360 1 GW: Data processing time: 0 ms
+512939536 3 Node 3: Data confirmed
+513377360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+513377360 1 GW: Data processing time: 0 ms
+513504536 4 Node 4: Data confirmed
+516438360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+516438360 1 GW: Data processing time: 0 ms
+516446536 7 Node 7: Data confirmed
+517296360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+517296360 1 GW: Data processing time: 0 ms
+517314536 6 Node 6: Data confirmed
+520723360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+520723360 1 GW: Data processing time: 0 ms
+520760536 5 Node 5: Data confirmed
+520938360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+520938360 1 GW: Data processing time: 0 ms
+520963536 3 Node 3: Data confirmed
+522387360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+522387360 1 GW: Data processing time: 0 ms
+522404536 4 Node 4: Data confirmed
+528273360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+528273360 1 GW: Data processing time: 0 ms
+528283536 6 Node 6: Data confirmed
+528436360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+528436360 1 GW: Data processing time: 0 ms
+528446536 7 Node 7: Data confirmed
+528946360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+528946360 1 GW: Data processing time: 0 ms
+528952536 3 Node 3: Data confirmed
+530759360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+530759360 1 GW: Data processing time: 0 ms
+530792536 5 Node 5: Data confirmed
+531357360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+531357360 1 GW: Data processing time: 0 ms
+531385536 4 Node 4: Data confirmed
+536921360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+536921360 1 GW: Data processing time: 0 ms
+536959536 3 Node 3: Data confirmed
+539265360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+539265360 1 GW: Data processing time: 0 ms
+539304536 6 Node 6: Data confirmed
+540376360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+540376360 1 GW: Data processing time: 0 ms
+540386536 4 Node 4: Data confirmed
+540412360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+540412360 1 GW: Data processing time: 0 ms
+540456536 7 Node 7: Data confirmed
+540747360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+540747360 1 GW: Data processing time: 0 ms
+540766536 5 Node 5: Data confirmed
+544939360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+544939360 1 GW: Data processing time: 0 ms
+544947536 3 Node 3: Data confirmed
+549362360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+549362360 1 GW: Data processing time: 0 ms
+549405536 4 Node 4: Data confirmed
+550293360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+550293360 1 GW: Data processing time: 0 ms
+550306536 6 Node 6: Data confirmed
+550758360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+550758360 1 GW: Data processing time: 0 ms
+550769536 5 Node 5: Data confirmed
+552441360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+552441360 1 GW: Data processing time: 0 ms
+552486536 7 Node 7: Data confirmed
+552946360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+552946360 1 GW: Data processing time: 0 ms
+552985536 3 Node 3: Data confirmed
+558368360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+558368360 1 GW: Data processing time: 0 ms
+558385536 4 Node 4: Data confirmed
+560739360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+560739360 1 GW: Data processing time: 0 ms
+560773536 5 Node 5: Data confirmed
+560941360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+560941360 1 GW: Data processing time: 0 ms
+560971536 3 Node 3: Data confirmed
+561270360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+561270360 1 GW: Data processing time: 0 ms
+561307536 6 Node 6: Data confirmed
+564449360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+564449360 1 GW: Data processing time: 0 ms
+564486536 7 Node 7: Data confirmed
+567379360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+567379360 1 GW: Data processing time: 0 ms
+567385536 4 Node 4: Data confirmed
+568934360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+568934360 1 GW: Data processing time: 0 ms
+568942536 3 Node 3: Data confirmed
+570746360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+570746360 1 GW: Data processing time: 0 ms
+570785536 5 Node 5: Data confirmed
+572287360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+572287360 1 GW: Data processing time: 0 ms
+572298536 6 Node 6: Data confirmed
+576378360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+576378360 1 GW: Data processing time: 0 ms
+576385536 4 Node 4: Data confirmed
+576449360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+576449360 1 GW: Data processing time: 0 ms
+576460536 7 Node 7: Data confirmed
+576941360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+576941360 1 GW: Data processing time: 0 ms
+576948536 3 Node 3: Data confirmed
+580729360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+580729360 1 GW: Data processing time: 0 ms
+580771536 5 Node 5: Data confirmed
+583260360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+583260360 1 GW: Data processing time: 0 ms
+583298536 6 Node 6: Data confirmed
+584942360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+584942360 1 GW: Data processing time: 0 ms
+584962536 3 Node 3: Data confirmed
+585364360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+585364360 1 GW: Data processing time: 0 ms
+585370536 4 Node 4: Data confirmed
+588425360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+588425360 1 GW: Data processing time: 0 ms
+588452536 7 Node 7: Data confirmed
+590722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+590722360 1 GW: Data processing time: 0 ms
+590730536 5 Node 5: Data confirmed
+592906360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+592906360 1 GW: Data processing time: 0 ms
+592920536 3 Node 3: Data confirmed
+594268360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+594268360 1 GW: Data processing time: 0 ms
+594285536 6 Node 6: Data confirmed
+594381360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+594381360 1 GW: Data processing time: 0 ms
+594396536 4 Node 4: Data confirmed
+600437360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+600437360 1 GW: Data processing time: 0 ms
+600469536 7 Node 7: Data confirmed
+600748360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+600748360 1 GW: Data processing time: 0 ms
+600781536 5 Node 5: Data confirmed
+600910360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+600910360 1 GW: Data processing time: 0 ms
+600936536 3 Node 3: Data confirmed
+603386360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+603386360 1 GW: Data processing time: 0 ms
+603398536 4 Node 4: Data confirmed
+605280360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+605280360 1 GW: Data processing time: 0 ms
+605294536 6 Node 6: Data confirmed
+608925360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+608925360 1 GW: Data processing time: 0 ms
+608958536 3 Node 3: Data confirmed
+610738360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+610738360 1 GW: Data processing time: 0 ms
+610745536 5 Node 5: Data confirmed
+612355360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+612355360 1 GW: Data processing time: 0 ms
+612394536 4 Node 4: Data confirmed
+612419360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+612419360 1 GW: Data processing time: 0 ms
+612440536 7 Node 7: Data confirmed
+616271360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+616271360 1 GW: Data processing time: 0 ms
+616311536 6 Node 6: Data confirmed
+616911360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+616911360 1 GW: Data processing time: 0 ms
+616948536 3 Node 3: Data confirmed
+620738360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+620738360 1 GW: Data processing time: 0 ms
+620783536 5 Node 5: Data confirmed
+621394360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+621394360 1 GW: Data processing time: 0 ms
+621406536 4 Node 4: Data confirmed
+624443360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+624443360 1 GW: Data processing time: 0 ms
+624486536 7 Node 7: Data confirmed
+624920360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+624920360 1 GW: Data processing time: 0 ms
+624930536 3 Node 3: Data confirmed
+627267360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+627267360 1 GW: Data processing time: 0 ms
+627287536 6 Node 6: Data confirmed
+630381360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+630381360 1 GW: Data processing time: 0 ms
+630395536 4 Node 4: Data confirmed
+630758360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+630758360 1 GW: Data processing time: 0 ms
+630766536 5 Node 5: Data confirmed
+632907360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+632907360 1 GW: Data processing time: 0 ms
+632927536 3 Node 3: Data confirmed
+636447360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+636447360 1 GW: Data processing time: 0 ms
+636463536 7 Node 7: Data confirmed
+638276360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+638276360 1 GW: Data processing time: 0 ms
+638314536 6 Node 6: Data confirmed
+639391360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+639391360 1 GW: Data processing time: 0 ms
+639428536 4 Node 4: Data confirmed
+640736360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+640736360 1 GW: Data processing time: 0 ms
+640755536 5 Node 5: Data confirmed
+640914360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+640914360 1 GW: Data processing time: 0 ms
+640940536 3 Node 3: Data confirmed
+648372360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+648372360 1 GW: Data processing time: 0 ms
+648377896 4 Node 4: Data confirmed
+648419360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+648419360 1 GW: Data processing time: 0 ms
+648435536 7 Node 7: Data confirmed
+648914360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+648914360 1 GW: Data processing time: 0 ms
+648934536 3 Node 3: Data confirmed
+649270360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+649270360 1 GW: Data processing time: 0 ms
+649275896 6 Node 6: Data confirmed
+650740360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+650740360 1 GW: Data processing time: 0 ms
+650768536 5 Node 5: Data confirmed
+656911360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+656911360 1 GW: Data processing time: 0 ms
+656948536 3 Node 3: Data confirmed
+657378360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+657378360 1 GW: Data processing time: 0 ms
+657394536 4 Node 4: Data confirmed
+660297360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+660297360 1 GW: Data processing time: 0 ms
+660322536 6 Node 6: Data confirmed
+660435360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+660435360 1 GW: Data processing time: 0 ms
+660463536 7 Node 7: Data confirmed
+660722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+660722360 1 GW: Data processing time: 0 ms
+660767536 5 Node 5: Data confirmed
+664908360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+664908360 1 GW: Data processing time: 0 ms
+664932536 3 Node 3: Data confirmed
+666388360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+666388360 1 GW: Data processing time: 0 ms
+666426536 4 Node 4: Data confirmed
+670746360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+670746360 1 GW: Data processing time: 0 ms
+670754536 5 Node 5: Data confirmed
+671285360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+671285360 1 GW: Data processing time: 0 ms
+671307536 6 Node 6: Data confirmed
+672445360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+672445360 1 GW: Data processing time: 0 ms
+672461536 7 Node 7: Data confirmed
+672944360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+672944360 1 GW: Data processing time: 0 ms
+672983536 3 Node 3: Data confirmed
+675372360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+675372360 1 GW: Data processing time: 0 ms
+675393536 4 Node 4: Data confirmed
+680757360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+680757360 1 GW: Data processing time: 0 ms
+680774536 5 Node 5: Data confirmed
+680930360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+680930360 1 GW: Data processing time: 0 ms
+680950536 3 Node 3: Data confirmed
+682278360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+682278360 1 GW: Data processing time: 0 ms
+682305536 6 Node 6: Data confirmed
+684369360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+684369360 1 GW: Data processing time: 0 ms
+684387536 4 Node 4: Data confirmed
+684427360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+684427360 1 GW: Data processing time: 0 ms
+684472536 7 Node 7: Data confirmed
+688924360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+688924360 1 GW: Data processing time: 0 ms
+688969536 3 Node 3: Data confirmed
+690728360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+690728360 1 GW: Data processing time: 0 ms
+690739536 5 Node 5: Data confirmed
+693276360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+693276360 1 GW: Data processing time: 0 ms
+693287536 6 Node 6: Data confirmed
+693384360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+693384360 1 GW: Data processing time: 0 ms
+693423536 4 Node 4: Data confirmed
+696421360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+696421360 1 GW: Data processing time: 0 ms
+696438536 7 Node 7: Data confirmed
+696928360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+696928360 1 GW: Data processing time: 0 ms
+696950536 3 Node 3: Data confirmed
+700722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+700722360 1 GW: Data processing time: 0 ms
+700753536 5 Node 5: Data confirmed
+702383360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+702383360 1 GW: Data processing time: 0 ms
+702401536 4 Node 4: Data confirmed
+704279360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+704279360 1 GW: Data processing time: 0 ms
+704324536 6 Node 6: Data confirmed
+704906360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+704906360 1 GW: Data processing time: 0 ms
+704947536 3 Node 3: Data confirmed
+708425360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+708425360 1 GW: Data processing time: 0 ms
+708463536 7 Node 7: Data confirmed
+710726360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+710726360 1 GW: Data processing time: 0 ms
+710741536 5 Node 5: Data confirmed
+711355360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+711355360 1 GW: Data processing time: 0 ms
+711399536 4 Node 4: Data confirmed
+712914360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+712914360 1 GW: Data processing time: 0 ms
+712926536 3 Node 3: Data confirmed
+715280360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+715280360 1 GW: Data processing time: 0 ms
+715322536 6 Node 6: Data confirmed
+720395360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+720395360 1 GW: Data processing time: 0 ms
+720431536 4 Node 4: Data confirmed
+720448360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+720448360 1 GW: Data processing time: 0 ms
+720485536 7 Node 7: Data confirmed
+720736360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+720736360 1 GW: Data processing time: 0 ms
+720748536 5 Node 5: Data confirmed
+720928360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+720928360 1 GW: Data processing time: 0 ms
+720933896 3 Node 3: Data confirmed
+726293360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+726293360 1 GW: Data processing time: 0 ms
+726336536 6 Node 6: Data confirmed
+728909360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+728909360 1 GW: Data processing time: 0 ms
+728914896 3 Node 3: Data confirmed
+729373360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+729373360 1 GW: Data processing time: 0 ms
+729405536 4 Node 4: Data confirmed
+730722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+730722360 1 GW: Data processing time: 0 ms
+730727896 5 Node 5: Data confirmed
+732445360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+732445360 1 GW: Data processing time: 0 ms
+732478536 7 Node 7: Data confirmed
+736916360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+736916360 1 GW: Data processing time: 0 ms
+736945536 3 Node 3: Data confirmed
+737289360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+737289360 1 GW: Data processing time: 0 ms
+737327536 6 Node 6: Data confirmed
+738359360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+738359360 1 GW: Data processing time: 0 ms
+738376536 4 Node 4: Data confirmed
+740733360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+740733360 1 GW: Data processing time: 0 ms
+740738896 5 Node 5: Data confirmed
+744443360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+744443360 1 GW: Data processing time: 0 ms
+744459536 7 Node 7: Data confirmed
+744931360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+744931360 1 GW: Data processing time: 0 ms
+744948536 3 Node 3: Data confirmed
+747379360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+747379360 1 GW: Data processing time: 0 ms
+747394536 4 Node 4: Data confirmed
+748257360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+748257360 1 GW: Data processing time: 0 ms
+748298536 6 Node 6: Data confirmed
+750734360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+750734360 1 GW: Data processing time: 0 ms
+750776536 5 Node 5: Data confirmed
+752940360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+752940360 1 GW: Data processing time: 0 ms
+752973536 3 Node 3: Data confirmed
+756379360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+756379360 1 GW: Data processing time: 0 ms
+756416536 4 Node 4: Data confirmed
+756423360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+756423360 1 GW: Data processing time: 0 ms
+756429536 7 Node 7: Data confirmed
+759259360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+759259360 1 GW: Data processing time: 0 ms
+759289536 6 Node 6: Data confirmed
+760743360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+760743360 1 GW: Data processing time: 0 ms
+760756536 5 Node 5: Data confirmed
+760926360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+760926360 1 GW: Data processing time: 0 ms
+760934536 3 Node 3: Data confirmed
+765393360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+765393360 1 GW: Data processing time: 0 ms
+765427536 4 Node 4: Data confirmed
+768413360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+768413360 1 GW: Data processing time: 0 ms
+768425536 7 Node 7: Data confirmed
+768908360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+768908360 1 GW: Data processing time: 0 ms
+768922536 3 Node 3: Data confirmed
+770258360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+770258360 1 GW: Data processing time: 0 ms
+770284536 6 Node 6: Data confirmed
+770737360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+770737360 1 GW: Data processing time: 0 ms
+770776536 5 Node 5: Data confirmed
+774386360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+774386360 1 GW: Data processing time: 0 ms
+774428536 4 Node 4: Data confirmed
+776913360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+776913360 1 GW: Data processing time: 0 ms
+776928536 3 Node 3: Data confirmed
+780437360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+780437360 1 GW: Data processing time: 0 ms
+780444536 7 Node 7: Data confirmed
+780742360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+780742360 1 GW: Data processing time: 0 ms
+780763536 5 Node 5: Data confirmed
+781280360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+781280360 1 GW: Data processing time: 0 ms
+781290536 6 Node 6: Data confirmed
+783378360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+783378360 1 GW: Data processing time: 0 ms
+783397536 4 Node 4: Data confirmed
+784909360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+784909360 1 GW: Data processing time: 0 ms
+784924536 3 Node 3: Data confirmed
+790738360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+790738360 1 GW: Data processing time: 0 ms
+790756536 5 Node 5: Data confirmed
+792292360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+792292360 1 GW: Data processing time: 0 ms
+792318536 6 Node 6: Data confirmed
+792377360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+792377360 1 GW: Data processing time: 0 ms
+792409536 4 Node 4: Data confirmed
+792448360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+792448360 1 GW: Data processing time: 0 ms
+792488536 7 Node 7: Data confirmed
+792906360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+792906360 1 GW: Data processing time: 0 ms
+792945536 3 Node 3: Data confirmed
+800737360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+800737360 1 GW: Data processing time: 0 ms
+800745536 5 Node 5: Data confirmed
+800919360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+800919360 1 GW: Data processing time: 0 ms
+800930536 3 Node 3: Data confirmed
+801385360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+801385360 1 GW: Data processing time: 0 ms
+801416536 4 Node 4: Data confirmed
+803295360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+803295360 1 GW: Data processing time: 0 ms
+803332536 6 Node 6: Data confirmed
+804431360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+804431360 1 GW: Data processing time: 0 ms
+804471536 7 Node 7: Data confirmed
+808943360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+808943360 1 GW: Data processing time: 0 ms
+808955536 3 Node 3: Data confirmed
+810391360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+810391360 1 GW: Data processing time: 0 ms
+810430536 4 Node 4: Data confirmed
+810745360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+810745360 1 GW: Data processing time: 0 ms
+810779536 5 Node 5: Data confirmed
+814292360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+814292360 1 GW: Data processing time: 0 ms
+814335536 6 Node 6: Data confirmed
+816413360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+816413360 1 GW: Data processing time: 0 ms
+816450536 7 Node 7: Data confirmed
+816937360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+816937360 1 GW: Data processing time: 0 ms
+816977536 3 Node 3: Data confirmed
+819363360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+819363360 1 GW: Data processing time: 0 ms
+819395536 4 Node 4: Data confirmed
+820751360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+820751360 1 GW: Data processing time: 0 ms
+820786536 5 Node 5: Data confirmed
+824941360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+824941360 1 GW: Data processing time: 0 ms
+824980536 3 Node 3: Data confirmed
+825274360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+825274360 1 GW: Data processing time: 0 ms
+825281536 6 Node 6: Data confirmed
+828375360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+828375360 1 GW: Data processing time: 0 ms
+828414536 4 Node 4: Data confirmed
+828440360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+828440360 1 GW: Data processing time: 0 ms
+828456536 7 Node 7: Data confirmed
+830726360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+830726360 1 GW: Data processing time: 0 ms
+830738536 5 Node 5: Data confirmed
+832906360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+832906360 1 GW: Data processing time: 0 ms
+832942536 3 Node 3: Data confirmed
+836262360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+836262360 1 GW: Data processing time: 0 ms
+836277536 6 Node 6: Data confirmed
+837374360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+837374360 1 GW: Data processing time: 0 ms
+837381536 4 Node 4: Data confirmed
+840438360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+840438360 1 GW: Data processing time: 0 ms
+840448536 7 Node 7: Data confirmed
+840726360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+840726360 1 GW: Data processing time: 0 ms
+840732536 5 Node 5: Data confirmed
+840906360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+840906360 1 GW: Data processing time: 0 ms
+840950536 3 Node 3: Data confirmed
+846357360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+846357360 1 GW: Data processing time: 0 ms
+846396536 4 Node 4: Data confirmed
+847288360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+847288360 1 GW: Data processing time: 0 ms
+847309536 6 Node 6: Data confirmed
+848930360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+848930360 1 GW: Data processing time: 0 ms
+848943536 3 Node 3: Data confirmed
+850727360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+850727360 1 GW: Data processing time: 0 ms
+850737536 5 Node 5: Data confirmed
+852442360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+852442360 1 GW: Data processing time: 0 ms
+852455536 7 Node 7: Data confirmed
+855392360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+855392360 1 GW: Data processing time: 0 ms
+855417536 4 Node 4: Data confirmed
+856924360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+856924360 1 GW: Data processing time: 0 ms
+856938536 3 Node 3: Data confirmed
+858283360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+858283360 1 GW: Data processing time: 0 ms
+858323536 6 Node 6: Data confirmed
+860749360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+860749360 1 GW: Data processing time: 0 ms
+860791536 5 Node 5: Data confirmed
+864382360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+864382360 1 GW: Data processing time: 0 ms
+864395536 4 Node 4: Data confirmed
+864425360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+864425360 1 GW: Data processing time: 0 ms
+864440536 7 Node 7: Data confirmed
+864922360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+864922360 1 GW: Data processing time: 0 ms
+864950536 3 Node 3: Data confirmed
+869277360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+869277360 1 GW: Data processing time: 0 ms
+869289536 6 Node 6: Data confirmed
+870731360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+870731360 1 GW: Data processing time: 0 ms
+870774536 5 Node 5: Data confirmed
+872934360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+872934360 1 GW: Data processing time: 0 ms
+872977536 3 Node 3: Data confirmed
+873369360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+873369360 1 GW: Data processing time: 0 ms
+873379536 4 Node 4: Data confirmed
+876429360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+876429360 1 GW: Data processing time: 0 ms
+876437536 7 Node 7: Data confirmed
+880259360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+880259360 1 GW: Data processing time: 0 ms
+880270536 6 Node 6: Data confirmed
+880722360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+880722360 1 GW: Data processing time: 0 ms
+880761536 5 Node 5: Data confirmed
+880913360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+880913360 1 GW: Data processing time: 0 ms
+880922536 3 Node 3: Data confirmed
+882376360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+882376360 1 GW: Data processing time: 0 ms
+882415536 4 Node 4: Data confirmed
+888410360 1 GW: Decrypted data [9] from PID ede0f5... (device 7)
+888410360 1 GW: Data processing time: 0 ms
+888428536 7 Node 7: Data confirmed
+888906360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+888906360 1 GW: Data processing time: 0 ms
+888924536 3 Node 3: Data confirmed
+890757360 1 GW: Decrypted data [9] from PID 7e0e76... (device 5)
+890757360 1 GW: Data processing time: 0 ms
+890789536 5 Node 5: Data confirmed
+891289360 1 GW: Decrypted data [9] from PID 34e67b... (device 6)
+891289360 1 GW: Data processing time: 0 ms
+891323536 6 Node 6: Data confirmed
+891359360 1 GW: Decrypted data [9] from PID be39e0... (device 4)
+891359360 1 GW: Data processing time: 0 ms
+891367536 4 Node 4: Data confirmed
+896936360 1 GW: Decrypted data [9] from PID 8e7a96... (device 3)
+896936360 1 GW: Data processing time: 0 ms
+896948536 3 Node 3: Data confirmed
+TEST OK
+Test ended at simulation time: 900000000

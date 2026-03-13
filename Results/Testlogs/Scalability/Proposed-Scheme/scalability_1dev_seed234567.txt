@@ -1,0 +1,268 @@
+Random seed: 234567
+202000 1 [INFO: Main      ] Starting Contiki-NG-23e51c4
+202000 1 [INFO: Main      ] - Routing: RPL Lite
+202000 1 [INFO: Main      ] - Net: sicslowpan
+202000 1 [INFO: Main      ] - MAC: CSMA
+202000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+202000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+202000 1 [INFO: Main      ] Node ID: 1
+202000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+202000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+202000 1 GW 1: Started (RPL root + CoAP server).
+202000 1 GW 1: Storage: 7480 bytes (110 sessions x 68 bytes each)
+493000 2 [INFO: Main      ] Starting Contiki-NG-23e51c4
+493000 2 [INFO: Main      ] - Routing: RPL Lite
+493000 2 [INFO: Main      ] - Net: sicslowpan
+493000 2 [INFO: Main      ] - MAC: CSMA
+493000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+493000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+493000 2 [INFO: Main      ] Node ID: 2
+493000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+493000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+493000 2 AS 2: Started.
+816000 3 [INFO: Main      ] Starting Contiki-NG-23e51c4
+816000 3 [INFO: Main      ] - Routing: RPL Lite
+816000 3 [INFO: Main      ] - Net: sicslowpan
+816000 3 [INFO: Main      ] - MAC: CSMA
+816000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+816000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+816000 3 [INFO: Main      ] Node ID: 3
+816000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+816000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+8816000 3 Node 3: Sending Reg-0
+19418592 2 AS 2: Reg-0 for device 3 (c_d=157)
+19484328 3 Node 3: Reg-0 OK. c_d=157
+19484328 3 Node 3: Sending Reg-1
+19539648 2 AS 2: Reg-1 complete for device 3
+19606112 3 Node 3: Registered
+19606112 3 
+19606112 3 ENROLL_ENERGY|3|cpu_s=10.790112|energy_j=0.666732Node 3: Sending auth. PID=25f6c9 ts_1=1
+19747184 2 AS 2: Device 3 authenticated (membership check passed)
+19747184 2 
+19783880 3 Node 3: Auth OK. New PID=f21af2
+19783880 3 
+19783880 3 KEYEX_ENERGY|3|cpu_s=0.177768|energy_j=0.010944Node 3: Sending data
+19804632 1 GW: Auth token for device 3 (via AS 2). PID: f21af2... stored.
+19804632 1 GW: Token processing time: 0 ms
+19819360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+19819360 1 GW: Data processing time: 0 ms
+19840536 3 Node 3: Data confirmed
+19840536 3 
+24861360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+24861360 1 GW: Data processing time: 0 ms
+24868536 3  The CPU time and energy at the end of authentication 1 for client 3 are 0.234424 and 0.014418Node 3: Data confirmed
+32848360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+32848360 1 GW: Data processing time: 0 ms
+32877536 3 Node 3: Data confirmed
+40853360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+40853360 1 GW: Data processing time: 0 ms
+40886536 3 Node 3: Data confirmed
+48828360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+48828360 1 GW: Data processing time: 0 ms
+48862536 3 Node 3: Data confirmed
+56831360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+56831360 1 GW: Data processing time: 0 ms
+56854536 3 Node 3: Data confirmed
+64834360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+64834360 1 GW: Data processing time: 0 ms
+64850536 3 Node 3: Data confirmed
+72846360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+72846360 1 GW: Data processing time: 0 ms
+72881536 3 Node 3: Data confirmed
+80840360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+80840360 1 GW: Data processing time: 0 ms
+80861536 3 Node 3: Data confirmed
+88843360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+88843360 1 GW: Data processing time: 0 ms
+88852536 3 Node 3: Data confirmed
+96833360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+96833360 1 GW: Data processing time: 0 ms
+96861536 3 Node 3: Data confirmed
+104847360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+104847360 1 GW: Data processing time: 0 ms
+104865536 3 Node 3: Data confirmed
+112862360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+112862360 1 GW: Data processing time: 0 ms
+112873536 3 Node 3: Data confirmed
+120841360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+120841360 1 GW: Data processing time: 0 ms
+120876536 3 Node 3: Data confirmed
+128854360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+128854360 1 GW: Data processing time: 0 ms
+128883536 3 Node 3: Data confirmed
+136852360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+136852360 1 GW: Data processing time: 0 ms
+136897536 3 Node 3: Data confirmed
+144832360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+144832360 1 GW: Data processing time: 0 ms
+144838536 3 Node 3: Data confirmed
+152845360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+152845360 1 GW: Data processing time: 0 ms
+152887536 3 Node 3: Data confirmed
+160855360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+160855360 1 GW: Data processing time: 0 ms
+160869536 3 Node 3: Data confirmed
+168862360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+168862360 1 GW: Data processing time: 0 ms
+168878536 3 Node 3: Data confirmed
+176858360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+176858360 1 GW: Data processing time: 0 ms
+176877536 3 Node 3: Data confirmed
+184843360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+184843360 1 GW: Data processing time: 0 ms
+184850536 3 Node 3: Data confirmed
+192854360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+192854360 1 GW: Data processing time: 0 ms
+192896536 3 Node 3: Data confirmed
+200832360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+200832360 1 GW: Data processing time: 0 ms
+200877536 3 Node 3: Data confirmed
+208851360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+208851360 1 GW: Data processing time: 0 ms
+208885536 3 Node 3: Data confirmed
+216829360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+216829360 1 GW: Data processing time: 0 ms
+216835536 3 Node 3: Data confirmed
+224842360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+224842360 1 GW: Data processing time: 0 ms
+224876536 3 Node 3: Data confirmed
+232859360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+232859360 1 GW: Data processing time: 0 ms
+232893536 3 Node 3: Data confirmed
+240860360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+240860360 1 GW: Data processing time: 0 ms
+240878536 3 Node 3: Data confirmed
+248827360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+248827360 1 GW: Data processing time: 0 ms
+248861536 3 Node 3: Data confirmed
+256852360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+256852360 1 GW: Data processing time: 0 ms
+256870536 3 Node 3: Data confirmed
+264828360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+264828360 1 GW: Data processing time: 0 ms
+264873536 3 Node 3: Data confirmed
+272845360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+272845360 1 GW: Data processing time: 0 ms
+272888536 3 Node 3: Data confirmed
+280860360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+280860360 1 GW: Data processing time: 0 ms
+280877536 3 Node 3: Data confirmed
+288854360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+288854360 1 GW: Data processing time: 0 ms
+288889536 3 Node 3: Data confirmed
+296826360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+296826360 1 GW: Data processing time: 0 ms
+296851536 3 Node 3: Data confirmed
+304837360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+304837360 1 GW: Data processing time: 0 ms
+304864536 3 Node 3: Data confirmed
+312856360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+312856360 1 GW: Data processing time: 0 ms
+312880536 3 Node 3: Data confirmed
+320842360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+320842360 1 GW: Data processing time: 0 ms
+320870536 3 Node 3: Data confirmed
+328832360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+328832360 1 GW: Data processing time: 0 ms
+328859536 3 Node 3: Data confirmed
+336827360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+336827360 1 GW: Data processing time: 0 ms
+336865536 3 Node 3: Data confirmed
+344823360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+344823360 1 GW: Data processing time: 0 ms
+344833536 3 Node 3: Data confirmed
+352862360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+352862360 1 GW: Data processing time: 0 ms
+352889536 3 Node 3: Data confirmed
+360831360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+360831360 1 GW: Data processing time: 0 ms
+360875536 3 Node 3: Data confirmed
+368863360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+368863360 1 GW: Data processing time: 0 ms
+368904536 3 Node 3: Data confirmed
+376838360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+376838360 1 GW: Data processing time: 0 ms
+376879536 3 Node 3: Data confirmed
+384851360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+384851360 1 GW: Data processing time: 0 ms
+384859536 3 Node 3: Data confirmed
+392839360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+392839360 1 GW: Data processing time: 0 ms
+392878536 3 Node 3: Data confirmed
+400835360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+400835360 1 GW: Data processing time: 0 ms
+400844536 3 Node 3: Data confirmed
+408833360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+408833360 1 GW: Data processing time: 0 ms
+408852536 3 Node 3: Data confirmed
+416859360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+416859360 1 GW: Data processing time: 0 ms
+416897536 3 Node 3: Data confirmed
+424839360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+424839360 1 GW: Data processing time: 0 ms
+424854536 3 Node 3: Data confirmed
+432848360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+432848360 1 GW: Data processing time: 0 ms
+432881536 3 Node 3: Data confirmed
+440860360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+440860360 1 GW: Data processing time: 0 ms
+440865896 3 Node 3: Data confirmed
+448859360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+448859360 1 GW: Data processing time: 0 ms
+448874536 3 Node 3: Data confirmed
+456858360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+456858360 1 GW: Data processing time: 0 ms
+456875536 3 Node 3: Data confirmed
+464847360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+464847360 1 GW: Data processing time: 0 ms
+464875536 3 Node 3: Data confirmed
+472862360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+472862360 1 GW: Data processing time: 0 ms
+472867896 3 Node 3: Data confirmed
+480836360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+480836360 1 GW: Data processing time: 0 ms
+480867536 3 Node 3: Data confirmed
+488852360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+488852360 1 GW: Data processing time: 0 ms
+488881536 3 Node 3: Data confirmed
+496824360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+496824360 1 GW: Data processing time: 0 ms
+496853536 3 Node 3: Data confirmed
+504853360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+504853360 1 GW: Data processing time: 0 ms
+504879536 3 Node 3: Data confirmed
+512845360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+512845360 1 GW: Data processing time: 0 ms
+512882536 3 Node 3: Data confirmed
+520842360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+520842360 1 GW: Data processing time: 0 ms
+520882536 3 Node 3: Data confirmed
+528854360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+528854360 1 GW: Data processing time: 0 ms
+528891536 3 Node 3: Data confirmed
+536837360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+536837360 1 GW: Data processing time: 0 ms
+536868536 3 Node 3: Data confirmed
+544823360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+544823360 1 GW: Data processing time: 0 ms
+544845536 3 Node 3: Data confirmed
+552856360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+552856360 1 GW: Data processing time: 0 ms
+552876536 3 Node 3: Data confirmed
+560827360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+560827360 1 GW: Data processing time: 0 ms
+560868536 3 Node 3: Data confirmed
+568846360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+568846360 1 GW: Data processing time: 0 ms
+568856536 3 Node 3: Data confirmed
+576854360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+576854360 1 GW: Data processing time: 0 ms
+576898536 3 Node 3: Data confirmed
+584861360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+584861360 1 GW: Data processing time: 0 ms
+584875536 3 Node 3: Data confirmed
+592852360 1 GW: Decrypted data [9] from PID f21af2... (device 3)
+592852360 1 GW: Data processing time: 0 ms
+592859536 3 Node 3: Data confirmed
+TEST OK
+Test ended at simulation time: 600000000

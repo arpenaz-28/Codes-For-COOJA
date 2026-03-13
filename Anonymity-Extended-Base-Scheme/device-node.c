@@ -84,6 +84,14 @@ static uint8_t count = 0;   /* auth+data round counter        */
 double cpu_reg,    energy_reg;
 double cpu_auth,   energy_auth;
 
+/* Enrollment measurement */
+double cpu_enroll_before,  energy_enroll_before;
+double cpu_enroll_after,   energy_enroll_after;
+
+/* Key exchange measurement (auth CoAP only, excluding data) */
+double cpu_keyex_before,   energy_keyex_before;
+double cpu_keyex_after,    energy_keyex_after;
+
 
 static void print_energest_stats(double *seconds_cpu, double *total_energy)
 {
@@ -115,14 +123,22 @@ static coap_message_t  request[1];
 /* --------------------------------------------------------------------------
  * Helpers
  * -------------------------------------------------------------------------- */
-static uint8_t puf_response(uint8_t challenge)
+static uint8_t simulate_puf_response(uint8_t c)
 {
-    uint32_t s = ((uint32_t)node_id   * 2246822519UL)
-               ^ ((uint32_t)challenge * 2654435761UL);
-    s = ((s >> 16) ^ s) * 0x45d9f3bUL;
-    s = ((s >> 16) ^ s) * 0x45d9f3bUL;
-    s ^= (s >> 16);
-    return (uint8_t)(s & 0xFF);
+    uint8_t path1 = random_rand() ^ c;
+    uint8_t path2 = random_rand() ^ c;
+    return (path1 > path2) ? 1 : 0;
+}
+
+static void generate_helper(uint8_t response, uint8_t *helper, uint8_t *secret)
+{
+    *secret = 1;
+    *helper = *secret & response;
+}
+
+static uint8_t regenerate_response(uint8_t challenge, uint8_t helper)
+{
+    return (helper == 0) ? (helper & challenge) : (helper || challenge);
 }
 
 static void H(const uint8_t *in, uint16_t len, uint8_t *out)
@@ -224,7 +240,7 @@ static void client_auth_handler(coap_message_t *resp)
     }
 
     /* Key exchange — device side */
-    uint8_t R_d = h_d;
+    uint8_t R_d = regenerate_response(c_d, h_d);
     uint8_t Y_dH[32];
     memcpy(Y_dH, auth_Y_dH, 32);
 
@@ -296,6 +312,9 @@ PROCESS_THREAD(device_node, ev, data)
              * which does both reg COAPs in the reg==0 block).
              * ============================================================ */
             if (reg == 0) {
+                /* === ENROLLMENT BEFORE snapshot === */
+                print_energest_stats(&cpu_enroll_before, &energy_enroll_before);
+
                 /* --- Reg-0 --- */
                 uint8_t p0[16];
                 memset(p0, 0, 16);
@@ -309,8 +328,9 @@ PROCESS_THREAD(device_node, ev, data)
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_reg_handler);
 
                 /* --- Reg-1 (inline, same tick) --- */
-                uint8_t R_d = puf_response(c_d);
-                h_d = R_d;
+                uint8_t R_d = simulate_puf_response(c_d);
+                uint8_t secret;
+                generate_helper(R_d, &h_d, &secret);
 
                 uint8_t Y_dH[32];
                 H(&y_d, 1, Y_dH);
@@ -331,6 +351,13 @@ PROCESS_THREAD(device_node, ev, data)
 
                 reg = 1;
 
+                /* === ENROLLMENT AFTER snapshot + print === */
+                print_energest_stats(&cpu_enroll_after, &energy_enroll_after);
+                printf("\nENROLL_ENERGY|%u|cpu_s=%f|energy_j=%f",
+                       id_d,
+                       (cpu_enroll_after - cpu_enroll_before),
+                       (energy_enroll_after - energy_enroll_before));
+
             /* ============================================================
              * AUTH + DATA — same timer tick, measurement window matches
              * base scheme's auth==1 block (key-update + data).
@@ -347,8 +374,12 @@ PROCESS_THREAD(device_node, ev, data)
                 /* === BEFORE snapshot — same position as base scheme === */
                 print_energest_stats(&cpu_reg, &energy_reg);
 
+                /* === KEY EXCHANGE BEFORE snapshot === */
+                print_energest_stats(&cpu_keyex_before, &energy_keyex_before);
+
                 /* --- Auth COAP (our scheme: includes key exchange) --- */
-                uint8_t R_d = h_d;
+                /* Regenerate PUF response */
+                uint8_t R_d = regenerate_response(c_d, h_d);
 
                 uint8_t pid_buf[33];
                 pid_buf[0] = id_d;
@@ -379,6 +410,13 @@ PROCESS_THREAD(device_node, ev, data)
                        id_d, auth_PID[0], auth_PID[1], auth_PID[2], ts_1);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
                 /* After this returns: k_gw_d and PID are set by handler */
+
+                /* === KEY EXCHANGE AFTER snapshot + print === */
+                print_energest_stats(&cpu_keyex_after, &energy_keyex_after);
+                printf("\nKEYEX_ENERGY|%u|cpu_s=%f|energy_j=%f",
+                       id_d,
+                       (cpu_keyex_after - cpu_keyex_before),
+                       (energy_keyex_after - energy_keyex_before));
 
                 /* --- Data COAP (same tick, same as base scheme) --- */
                 uint8_t sensor[16];

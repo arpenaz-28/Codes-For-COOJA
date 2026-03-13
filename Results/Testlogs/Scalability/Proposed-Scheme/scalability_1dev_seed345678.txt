@@ -1,0 +1,194 @@
+Random seed: 345678
+162000 3 [INFO: Main      ] Starting Contiki-NG-23e51c4
+162000 3 [INFO: Main      ] - Routing: RPL Lite
+162000 3 [INFO: Main      ] - Net: sicslowpan
+162000 3 [INFO: Main      ] - MAC: CSMA
+162000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+162000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+162000 3 [INFO: Main      ] Node ID: 3
+162000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+162000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+574000 2 [INFO: Main      ] Starting Contiki-NG-23e51c4
+574000 2 [INFO: Main      ] - Routing: RPL Lite
+574000 2 [INFO: Main      ] - Net: sicslowpan
+574000 2 [INFO: Main      ] - MAC: CSMA
+574000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+574000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+574000 2 [INFO: Main      ] Node ID: 2
+574000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+574000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+574000 2 AS 2: Started.
+989000 1 [INFO: Main      ] Starting Contiki-NG-23e51c4
+989000 1 [INFO: Main      ] - Routing: RPL Lite
+989000 1 [INFO: Main      ] - Net: sicslowpan
+989000 1 [INFO: Main      ] - MAC: CSMA
+989000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+989000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+989000 1 [INFO: Main      ] Node ID: 1
+989000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+989000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+989000 1 GW 1: Started (RPL root + CoAP server).
+989000 1 GW 1: Storage: 7480 bytes (110 sessions x 68 bytes each)
+8162000 3 Node 3: Sending Reg-0
+19450592 2 AS 2: Reg-0 for device 3 (c_d=7)
+19476328 3 Node 3: Reg-0 OK. c_d=7
+19476328 3 Node 3: Sending Reg-1
+19510648 2 AS 2: Reg-1 complete for device 3
+19531112 3 Node 3: Registered
+19531112 3 
+19531112 3 ENROLL_ENERGY|3|cpu_s=11.369112|energy_j=0.702467Node 3: Sending auth. PID=74116d ts_1=1
+19672184 2 AS 2: Device 3 authenticated (membership check passed)
+19672184 2 
+19731880 3 Node 3: Auth OK. New PID=8a8693
+19731880 3 
+19731880 3 KEYEX_ENERGY|3|cpu_s=0.200768|energy_j=0.012365Node 3: Sending data
+19753360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+19760632 1 GW: Token rejected ï¾€ï¾” stale ts_auth for device 3
+19799472 3 Node 3: Data confirmed
+19799472 3 
+24178360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+24183832 3  The CPU time and energy at the end of authentication 1 for client 3 are 0.268360 and 0.016515Node 3: Data confirmed
+32195360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+32233472 3 Node 3: Data confirmed
+40191360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+40233472 3 Node 3: Data confirmed
+48177360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+48215472 3 Node 3: Data confirmed
+56205360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+56222472 3 Node 3: Data confirmed
+64209360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+64242472 3 Node 3: Data confirmed
+72177360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+72188472 3 Node 3: Data confirmed
+80195360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+80209472 3 Node 3: Data confirmed
+88190360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+88232472 3 Node 3: Data confirmed
+96200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+96208472 3 Node 3: Data confirmed
+104206360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+104240472 3 Node 3: Data confirmed
+112187360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+112199472 3 Node 3: Data confirmed
+120172360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+120206472 3 Node 3: Data confirmed
+128170360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+128181472 3 Node 3: Data confirmed
+136180360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+136185832 3 Node 3: Data confirmed
+144173360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+144184472 3 Node 3: Data confirmed
+152180360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+152201472 3 Node 3: Data confirmed
+160202360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+160224472 3 Node 3: Data confirmed
+168184360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+168207472 3 Node 3: Data confirmed
+176205360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+176246472 3 Node 3: Data confirmed
+184171360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+184213472 3 Node 3: Data confirmed
+192202360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+192243472 3 Node 3: Data confirmed
+200193360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+200237472 3 Node 3: Data confirmed
+208202360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+208214472 3 Node 3: Data confirmed
+216173360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+216181472 3 Node 3: Data confirmed
+224199360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+224208472 3 Node 3: Data confirmed
+232200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+232234472 3 Node 3: Data confirmed
+240201360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+240227472 3 Node 3: Data confirmed
+248188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+248208472 3 Node 3: Data confirmed
+256185360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+256202472 3 Node 3: Data confirmed
+264177360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+264221472 3 Node 3: Data confirmed
+272182360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+272205472 3 Node 3: Data confirmed
+280204360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+280226472 3 Node 3: Data confirmed
+288172360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+288204472 3 Node 3: Data confirmed
+296176360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+296190472 3 Node 3: Data confirmed
+304194360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+304236472 3 Node 3: Data confirmed
+312200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+312230472 3 Node 3: Data confirmed
+320183360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+320211472 3 Node 3: Data confirmed
+328197360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+328230472 3 Node 3: Data confirmed
+336195360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+336223472 3 Node 3: Data confirmed
+344177360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+344214472 3 Node 3: Data confirmed
+352172360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+352186472 3 Node 3: Data confirmed
+360176360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+360197472 3 Node 3: Data confirmed
+368200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+368212472 3 Node 3: Data confirmed
+376175360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+376187472 3 Node 3: Data confirmed
+384200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+384236472 3 Node 3: Data confirmed
+392201360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+392216472 3 Node 3: Data confirmed
+400170360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+400215472 3 Node 3: Data confirmed
+408188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+408202472 3 Node 3: Data confirmed
+416178360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+416208472 3 Node 3: Data confirmed
+424176360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+424215472 3 Node 3: Data confirmed
+432177360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+432188472 3 Node 3: Data confirmed
+440208360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+440227472 3 Node 3: Data confirmed
+448184360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+448205472 3 Node 3: Data confirmed
+456198360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+456241472 3 Node 3: Data confirmed
+464169360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+464211472 3 Node 3: Data confirmed
+472193360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+472219472 3 Node 3: Data confirmed
+480193360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+480205472 3 Node 3: Data confirmed
+488181360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+488210472 3 Node 3: Data confirmed
+496188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+496199472 3 Node 3: Data confirmed
+504195360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+504222472 3 Node 3: Data confirmed
+512206360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+512234472 3 Node 3: Data confirmed
+520202360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+520219472 3 Node 3: Data confirmed
+528179360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+528196472 3 Node 3: Data confirmed
+536182360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+536226472 3 Node 3: Data confirmed
+544207360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+544235472 3 Node 3: Data confirmed
+552188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+552213472 3 Node 3: Data confirmed
+560200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+560213472 3 Node 3: Data confirmed
+568197360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+568239472 3 Node 3: Data confirmed
+576201360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+576241472 3 Node 3: Data confirmed
+584196360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+584213472 3 Node 3: Data confirmed
+592169360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+592176472 3 Node 3: Data confirmed
+TEST OK
+Test ended at simulation time: 600000000

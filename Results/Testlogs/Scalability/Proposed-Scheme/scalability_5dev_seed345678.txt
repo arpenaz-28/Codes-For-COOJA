@@ -1,0 +1,1206 @@
+Random seed: 345678
+162000 3 [INFO: Main      ] Starting Contiki-NG-23e51c4
+162000 3 [INFO: Main      ] - Routing: RPL Lite
+162000 3 [INFO: Main      ] - Net: sicslowpan
+162000 3 [INFO: Main      ] - MAC: CSMA
+162000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+162000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+162000 3 [INFO: Main      ] Node ID: 3
+162000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+162000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+183000 7 [INFO: Main      ] Starting Contiki-NG-23e51c4
+183000 7 [INFO: Main      ] - Routing: RPL Lite
+183000 7 [INFO: Main      ] - Net: sicslowpan
+183000 7 [INFO: Main      ] - MAC: CSMA
+183000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+183000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
+183000 7 [INFO: Main      ] Node ID: 7
+183000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+183000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+502000 5 [INFO: Main      ] Starting Contiki-NG-23e51c4
+502000 5 [INFO: Main      ] - Routing: RPL Lite
+502000 5 [INFO: Main      ] - Net: sicslowpan
+502000 5 [INFO: Main      ] - MAC: CSMA
+502000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+502000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+502000 5 [INFO: Main      ] Node ID: 5
+502000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+502000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+550000 6 [INFO: Main      ] Starting Contiki-NG-23e51c4
+550000 6 [INFO: Main      ] - Routing: RPL Lite
+550000 6 [INFO: Main      ] - Net: sicslowpan
+550000 6 [INFO: Main      ] - MAC: CSMA
+550000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+550000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
+550000 6 [INFO: Main      ] Node ID: 6
+550000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+550000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+574000 2 [INFO: Main      ] Starting Contiki-NG-23e51c4
+574000 2 [INFO: Main      ] - Routing: RPL Lite
+574000 2 [INFO: Main      ] - Net: sicslowpan
+574000 2 [INFO: Main      ] - MAC: CSMA
+574000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+574000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+574000 2 [INFO: Main      ] Node ID: 2
+574000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+574000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+574000 2 AS 2: Started.
+943000 4 [INFO: Main      ] Starting Contiki-NG-23e51c4
+943000 4 [INFO: Main      ] - Routing: RPL Lite
+943000 4 [INFO: Main      ] - Net: sicslowpan
+943000 4 [INFO: Main      ] - MAC: CSMA
+943000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+943000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+943000 4 [INFO: Main      ] Node ID: 4
+943000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+943000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+989000 1 [INFO: Main      ] Starting Contiki-NG-23e51c4
+989000 1 [INFO: Main      ] - Routing: RPL Lite
+989000 1 [INFO: Main      ] - Net: sicslowpan
+989000 1 [INFO: Main      ] - MAC: CSMA
+989000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+989000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+989000 1 [INFO: Main      ] Node ID: 1
+989000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+989000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+989000 1 GW 1: Started (RPL root + CoAP server).
+989000 1 GW 1: Storage: 7480 bytes (110 sessions x 68 bytes each)
+8162000 3 Node 3: Sending Reg-0
+9943000 4 Node 4: Sending Reg-0
+10502000 5 Node 5: Sending Reg-0
+11550000 6 Node 6: Sending Reg-0
+12183000 7 Node 7: Sending Reg-0
+19424592 2 AS 2: Reg-0 for device 3 (c_d=7)
+19452328 3 Node 3: Reg-0 OK. c_d=7
+19452328 3 Node 3: Sending Reg-1
+19527648 2 AS 2: Reg-1 complete for device 3
+19570112 3 Node 3: Registered
+19570112 3 
+19570112 3 ENROLL_ENERGY|3|cpu_s=11.408112|energy_j=0.704898Node 3: Sending auth. PID=c4006e ts_1=1
+19672184 2 AS 2: Device 3 authenticated (membership check passed)
+19672184 2 
+19704728 3 Node 3: Auth OK. New PID=8a8693
+19704728 3 
+19704728 3 KEYEX_ENERGY|3|cpu_s=0.134616|energy_j=0.008277Node 3: Sending data
+19753360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+19760632 1 GW: Token rejected ï¾€ï¾” stale ts_auth for device 3
+19770472 3 Node 3: Data confirmed
+19770472 3 
+20613592 2  The CPU time and energy at the end of authentication for server 2 are 19.098184 and 1.180099AS 2: Reg-0 for device 4 (c_d=219)
+20686328 4 Node 4: Reg-0 OK. c_d=219
+20686328 4 Node 4: Sending Reg-1
+20726648 2 AS 2: Reg-1 complete for device 4
+20751112 4 Node 4: Registered
+20751112 4 
+20751112 4 ENROLL_ENERGY|4|cpu_s=10.808112|energy_j=0.667801Node 4: Sending auth. PID=28714c ts_1=1
+20757704 2 AS 2: Reg-0 for device 6 (c_d=173)
+20819512 6 Node 6: Reg-0 OK. c_d=173
+20819512 6 Node 6: Sending Reg-1
+20858184 2 AS 2: Device 4 authenticated (membership check passed)
+20858184 2 
+20874648 2  The CPU time and energy at the end of authentication for server 2 are 20.284184 and 1.253225AS 2: Reg-1 complete for device 6
+20934880 4 Node 4: Auth OK. New PID=4e9edb
+20934880 4 
+20934880 4 KEYEX_ENERGY|4|cpu_s=0.183768|energy_j=0.011314Node 4: Sending data
+20950632 1 GW: Token rejected ï¾€ï¾” stale ts_auth for device 4
+21027112 6 Node 6: Registered
+21027112 6 
+21040360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+21052472 4 Node 4: Data confirmed
+21052472 4 
+21239592 2 AS 2: Reg-0 for device 5 (c_d=218)
+21316328 5 Node 5: Reg-0 OK. c_d=218
+21316328 5 Node 5: Sending Reg-1
+21374648 2 AS 2: Reg-1 complete for device 5
+21428112 5 Node 5: Registered
+21428112 5 
+21428112 5 ENROLL_ENERGY|5|cpu_s=10.926112|energy_j=0.675097Node 5: Sending auth. PID=f86a85 ts_1=1
+21488248 2 AS 2: Device 5 authenticated (membership check passed)
+21488248 2 
+21528880 5 Node 5: Auth OK. New PID=726f9d
+21528880 5 
+21528880 5 KEYEX_ENERGY|5|cpu_s=0.100768|energy_j=0.006185Node 5: Sending data
+21549360 1 GW: Rejected data ï¾€ï¾” PID 726f9d... not found
+21570472 5 Node 5: Data confirmed
+21570472 5 
+21626632 1 GW: Auth token for device 5 (via AS 2). PID: 726f9d... stored.
+21626632 1 GW: Token processing time: 0 ms
+22550000 6 ENROLL_ENERGY|6|cpu_s=9.477112|energy_j=0.585588Node 6: Sending auth. PID=8cdca1 ts_1=1
+22661184 2  The CPU time and energy at the end of authentication for server 2 are 20.914248 and 1.292020AS 2: Device 6 authenticated (membership check passed)
+22661184 2 
+22761632 1 GW: Token rejected ï¾€ï¾” stale ts_auth for device 6
+22778880 6 Node 6: Auth OK. New PID=975d05
+22778880 6 
+22778880 6 KEYEX_ENERGY|6|cpu_s=0.228880|energy_j=0.014102Node 6: Sending data
+22794360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+22815592 2  The CPU time and energy at the end of authentication for server 2 are 22.087184 and 1.364434AS 2: Reg-0 for device 7 (c_d=192)
+22833328 7 Node 7: Reg-0 OK. c_d=192
+22833328 7 Node 7: Sending Reg-1
+22838472 6 Node 6: Data confirmed
+22838472 6 
+22883648 2 AS 2: Reg-1 complete for device 7
+22931112 7 Node 7: Registered
+22931112 7 
+24178360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+24183000 7 ENROLL_ENERGY|7|cpu_s=10.748112|energy_j=0.664102Node 7: Sending auth. PID=68ae7b ts_1=1
+24271472 3  The CPU time and energy at the end of authentication 1 for client 3 are 0.200360 and 0.012313Node 3: Data confirmed
+24324184 2 AS 2: Device 7 authenticated (membership check passed)
+24324184 2 
+24351880 7 Node 7: Auth OK. New PID=feba2c
+24351880 7 
+24351880 7 KEYEX_ENERGY|7|cpu_s=0.168880|energy_j=0.010394Node 7: Sending data
+24362632 1 GW: Auth token for device 7 (via AS 2). PID: feba2c... stored.
+24362632 1 GW: Token processing time: 0 ms
+24398360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+24398360 1 GW: Data processing time: 0 ms
+24442536 7 Node 7: Data confirmed
+24442536 7 
+27984360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+28006472 4  The CPU time and energy at the end of authentication 1 for client 4 are 0.301360 and 0.018555Node 4: Data confirmed
+30520360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+30520360 1 GW: Data processing time: 0 ms
+30534536 5  The CPU time and energy at the end of authentication 1 for client 5 are 0.142360 and 0.008729Node 5: Data confirmed
+32177360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+32197472 3 Node 3: Data confirmed
+33561360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+33603472 6  The CPU time and energy at the end of authentication 1 for client 6 are 0.288472 and 0.017758Node 6: Data confirmed
+36219360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+36219360 1 GW: Data processing time: 0 ms
+36249536 7  The CPU time and energy at the end of authentication 1 for client 7 are 0.259536 and 0.015970Node 7: Data confirmed
+36951360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+36979472 4 Node 4: Data confirmed
+40198360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+40231472 3 Node 3: Data confirmed
+40525360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+40525360 1 GW: Data processing time: 0 ms
+40553536 5 Node 5: Data confirmed
+44571360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+44608472 6 Node 6: Data confirmed
+45970360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+45984472 4 Node 4: Data confirmed
+48169360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+48190472 3 Node 3: Data confirmed
+48209360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+48209360 1 GW: Data processing time: 0 ms
+48214896 7 Node 7: Data confirmed
+50509360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+50509360 1 GW: Data processing time: 0 ms
+50521536 5 Node 5: Data confirmed
+54967360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+55003472 4 Node 4: Data confirmed
+55571360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+55586472 6 Node 6: Data confirmed
+56197360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+56242472 3 Node 3: Data confirmed
+60218360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+60218360 1 GW: Data processing time: 0 ms
+60232536 7 Node 7: Data confirmed
+60533360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+60533360 1 GW: Data processing time: 0 ms
+60573536 5 Node 5: Data confirmed
+63965360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+64004472 4 Node 4: Data confirmed
+64209360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+64220472 3 Node 3: Data confirmed
+66559360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+66578472 6 Node 6: Data confirmed
+70535360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+70535360 1 GW: Data processing time: 0 ms
+70556536 5 Node 5: Data confirmed
+72177360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+72192360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+72192360 1 GW: Data processing time: 0 ms
+72220472 3 Node 3: Data confirmed
+72234536 7 Node 7: Data confirmed
+72988360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+73014472 4 Node 4: Data confirmed
+77568360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+77580472 6 Node 6: Data confirmed
+80194360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+80231472 3 Node 3: Data confirmed
+80525360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+80525360 1 GW: Data processing time: 0 ms
+80554536 5 Node 5: Data confirmed
+81959360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+81970472 4 Node 4: Data confirmed
+84229360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+84229360 1 GW: Data processing time: 0 ms
+84256536 7 Node 7: Data confirmed
+88208360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+88236472 3 Node 3: Data confirmed
+88579360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+88596472 6 Node 6: Data confirmed
+90518360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+90518360 1 GW: Data processing time: 0 ms
+90530536 5 Node 5: Data confirmed
+90976360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+90993472 4 Node 4: Data confirmed
+96187360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+96231472 3 Node 3: Data confirmed
+96275360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+96275360 1 GW: Data processing time: 0 ms
+96304536 7 Node 7: Data confirmed
+99595360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+99623472 6 Node 6: Data confirmed
+99990360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+100015472 4 Node 4: Data confirmed
+100527360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+100527360 1 GW: Data processing time: 0 ms
+100540536 5 Node 5: Data confirmed
+104188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+104230472 3 Node 3: Data confirmed
+108222360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+108222360 1 GW: Data processing time: 0 ms
+108262536 7 Node 7: Data confirmed
+108951360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+108968472 4 Node 4: Data confirmed
+110528360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+110528360 1 GW: Data processing time: 0 ms
+110535536 5 Node 5: Data confirmed
+110589360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+110629472 6 Node 6: Data confirmed
+112186360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+112212472 3 Node 3: Data confirmed
+117986360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+118018472 4 Node 4: Data confirmed
+120192360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+120216472 3 Node 3: Data confirmed
+120224360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+120224360 1 GW: Data processing time: 0 ms
+120259536 7 Node 7: Data confirmed
+120522360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+120522360 1 GW: Data processing time: 0 ms
+120543536 5 Node 5: Data confirmed
+121558360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+121582472 6 Node 6: Data confirmed
+126950360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+126961472 4 Node 4: Data confirmed
+128171360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+128188472 3 Node 3: Data confirmed
+130513360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+130513360 1 GW: Data processing time: 0 ms
+130537536 5 Node 5: Data confirmed
+132197360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+132197360 1 GW: Data processing time: 0 ms
+132218536 7 Node 7: Data confirmed
+132581360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+132588472 6 Node 6: Data confirmed
+135981360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+136018472 4 Node 4: Data confirmed
+136200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+136209472 3 Node 3: Data confirmed
+140546360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+140546360 1 GW: Data processing time: 0 ms
+140573536 5 Node 5: Data confirmed
+143585360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+143597472 6 Node 6: Data confirmed
+144173360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+144187472 3 Node 3: Data confirmed
+144229360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+144229360 1 GW: Data processing time: 0 ms
+144259536 7 Node 7: Data confirmed
+144979360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+145024472 4 Node 4: Data confirmed
+150541360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+150541360 1 GW: Data processing time: 0 ms
+150550536 5 Node 5: Data confirmed
+152195360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+152236472 3 Node 3: Data confirmed
+153952360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+153966472 4 Node 4: Data confirmed
+154596360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+154625472 6 Node 6: Data confirmed
+156191360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+156191360 1 GW: Data processing time: 0 ms
+156220536 7 Node 7: Data confirmed
+160202360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+160240472 3 Node 3: Data confirmed
+160545360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+160545360 1 GW: Data processing time: 0 ms
+160564536 5 Node 5: Data confirmed
+162950360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+162987472 4 Node 4: Data confirmed
+165582360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+165607472 6 Node 6: Data confirmed
+168201360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+168245472 3 Node 3: Data confirmed
+168252360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+168252360 1 GW: Data processing time: 0 ms
+168292536 7 Node 7: Data confirmed
+170516360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+170516360 1 GW: Data processing time: 0 ms
+170551536 5 Node 5: Data confirmed
+171970360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+172014472 4 Node 4: Data confirmed
+176194360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+176234472 3 Node 3: Data confirmed
+176588360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+176627472 6 Node 6: Data confirmed
+180222360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+180222360 1 GW: Data processing time: 0 ms
+180262536 7 Node 7: Data confirmed
+180524360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+180524360 1 GW: Data processing time: 0 ms
+180568536 5 Node 5: Data confirmed
+180979360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+180984832 4 Node 4: Data confirmed
+184169360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+184179472 3 Node 3: Data confirmed
+187586360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+187623472 6 Node 6: Data confirmed
+189984360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+189997472 4 Node 4: Data confirmed
+190520360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+190520360 1 GW: Data processing time: 0 ms
+190552536 5 Node 5: Data confirmed
+192177360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+192193360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+192193360 1 GW: Data processing time: 0 ms
+192208472 3 Node 3: Data confirmed
+192223536 7 Node 7: Data confirmed
+198591360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+198615472 6 Node 6: Data confirmed
+198976360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+199017472 4 Node 4: Data confirmed
+200207360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+200239472 3 Node 3: Data confirmed
+200512360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+200512360 1 GW: Data processing time: 0 ms
+200517896 5 Node 5: Data confirmed
+204212360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+204212360 1 GW: Data processing time: 0 ms
+204243536 7 Node 7: Data confirmed
+207962360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+207971472 4 Node 4: Data confirmed
+208205360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+208242472 3 Node 3: Data confirmed
+209557360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+209582472 6 Node 6: Data confirmed
+210513360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+210513360 1 GW: Data processing time: 0 ms
+210518896 5 Node 5: Data confirmed
+216183360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+216188832 3 Node 3: Data confirmed
+216207360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+216207360 1 GW: Data processing time: 0 ms
+216213536 7 Node 7: Data confirmed
+216952360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+216969472 4 Node 4: Data confirmed
+220526360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+220526360 1 GW: Data processing time: 0 ms
+220539536 5 Node 5: Data confirmed
+220586360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+220608472 6 Node 6: Data confirmed
+224209360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+224239472 3 Node 3: Data confirmed
+225985360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+226014472 4 Node 4: Data confirmed
+228208360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+228208360 1 GW: Data processing time: 0 ms
+228252536 7 Node 7: Data confirmed
+230510360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+230510360 1 GW: Data processing time: 0 ms
+230548536 5 Node 5: Data confirmed
+231593360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+231604472 6 Node 6: Data confirmed
+232204360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+232230472 3 Node 3: Data confirmed
+234988360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+235008472 4 Node 4: Data confirmed
+240201360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+240210472 3 Node 3: Data confirmed
+240225360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+240225360 1 GW: Data processing time: 0 ms
+240262536 7 Node 7: Data confirmed
+240547360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+240547360 1 GW: Data processing time: 0 ms
+240561536 5 Node 5: Data confirmed
+242572360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+242615472 6 Node 6: Data confirmed
+243963360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+243977472 4 Node 4: Data confirmed
+248188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+248217472 3 Node 3: Data confirmed
+250521360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+250521360 1 GW: Data processing time: 0 ms
+250554536 5 Node 5: Data confirmed
+252217360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+252217360 1 GW: Data processing time: 0 ms
+252257536 7 Node 7: Data confirmed
+252952360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+252972472 4 Node 4: Data confirmed
+253567360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+253583472 6 Node 6: Data confirmed
+256185360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+256226472 3 Node 3: Data confirmed
+260530360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+260530360 1 GW: Data processing time: 0 ms
+260563536 5 Node 5: Data confirmed
+261983360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+262005472 4 Node 4: Data confirmed
+264190360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+264217360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+264217360 1 GW: Data processing time: 0 ms
+264222832 3 Node 3: Data confirmed
+264228368 7 Node 7: Data confirmed
+264596360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+264619472 6 Node 6: Data confirmed
+270509360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+270509360 1 GW: Data processing time: 0 ms
+270545536 5 Node 5: Data confirmed
+270952360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+270981472 4 Node 4: Data confirmed
+272172360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+272211472 3 Node 3: Data confirmed
+275581360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+275604472 6 Node 6: Data confirmed
+276195360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+276195360 1 GW: Data processing time: 0 ms
+276227536 7 Node 7: Data confirmed
+279955360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+279991472 4 Node 4: Data confirmed
+280170360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+280179472 3 Node 3: Data confirmed
+280523360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+280523360 1 GW: Data processing time: 0 ms
+280538536 5 Node 5: Data confirmed
+286579360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+286618472 6 Node 6: Data confirmed
+288170360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+288175832 3 Node 3: Data confirmed
+288218360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+288218360 1 GW: Data processing time: 0 ms
+288239536 7 Node 7: Data confirmed
+288953360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+288994472 4 Node 4: Data confirmed
+290546360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+290546360 1 GW: Data processing time: 0 ms
+290567536 5 Node 5: Data confirmed
+296203360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+296220472 3 Node 3: Data confirmed
+297576360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+297609472 6 Node 6: Data confirmed
+297988360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+297996472 4 Node 4: Data confirmed
+300216360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+300216360 1 GW: Data processing time: 0 ms
+300260536 7 Node 7: Data confirmed
+300543360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+300543360 1 GW: Data processing time: 0 ms
+300581536 5 Node 5: Data confirmed
+304176360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+304189472 3 Node 3: Data confirmed
+306962360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+306999472 4 Node 4: Data confirmed
+308570360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+308613472 6 Node 6: Data confirmed
+310545360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+310545360 1 GW: Data processing time: 0 ms
+310561536 5 Node 5: Data confirmed
+312194360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+312199832 3 Node 3: Data confirmed
+312265360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+312265360 1 GW: Data processing time: 0 ms
+312270896 7 Node 7: Data confirmed
+315954360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+315993472 4 Node 4: Data confirmed
+319576360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+319605472 6 Node 6: Data confirmed
+320200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+320225472 3 Node 3: Data confirmed
+320518360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+320518360 1 GW: Data processing time: 0 ms
+320525536 5 Node 5: Data confirmed
+324212360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+324212360 1 GW: Data processing time: 0 ms
+324225536 7 Node 7: Data confirmed
+324983360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+325005472 4 Node 4: Data confirmed
+328198360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+328208472 3 Node 3: Data confirmed
+330539360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+330539360 1 GW: Data processing time: 0 ms
+330571536 5 Node 5: Data confirmed
+330616360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+330655472 6 Node 6: Data confirmed
+333950360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+333986472 4 Node 4: Data confirmed
+336200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+336227360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+336227360 1 GW: Data processing time: 0 ms
+336238536 7 Node 7: Data confirmed
+336244008 3 Node 3: Data confirmed
+340514360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+340514360 1 GW: Data processing time: 0 ms
+340536536 5 Node 5: Data confirmed
+341577360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+341600472 6 Node 6: Data confirmed
+342955360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+342991472 4 Node 4: Data confirmed
+344202360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+344221472 3 Node 3: Data confirmed
+348209360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+348209360 1 GW: Data processing time: 0 ms
+348215536 7 Node 7: Data confirmed
+350536360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+350536360 1 GW: Data processing time: 0 ms
+350558536 5 Node 5: Data confirmed
+351976360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+352021472 4 Node 4: Data confirmed
+352203360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+352219472 3 Node 3: Data confirmed
+352588360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+352609472 6 Node 6: Data confirmed
+360172360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+360179472 3 Node 3: Data confirmed
+360190360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+360190360 1 GW: Data processing time: 0 ms
+360215536 7 Node 7: Data confirmed
+360534360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+360534360 1 GW: Data processing time: 0 ms
+360555536 5 Node 5: Data confirmed
+360975360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+361014472 4 Node 4: Data confirmed
+363557360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+363577472 6 Node 6: Data confirmed
+368199360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+368238472 3 Node 3: Data confirmed
+369981360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+369997472 4 Node 4: Data confirmed
+370511360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+370511360 1 GW: Data processing time: 0 ms
+370533536 5 Node 5: Data confirmed
+372217360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+372217360 1 GW: Data processing time: 0 ms
+372228536 7 Node 7: Data confirmed
+374577360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+374620472 6 Node 6: Data confirmed
+376186360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+376230472 3 Node 3: Data confirmed
+378964360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+378998472 4 Node 4: Data confirmed
+380539360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+380539360 1 GW: Data processing time: 0 ms
+380582536 5 Node 5: Data confirmed
+384195360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+384195360 1 GW: Data processing time: 0 ms
+384199720 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+384211472 3 Node 3: Data confirmed
+384247536 7 Node 7: Data confirmed
+385560360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+385577472 6 Node 6: Data confirmed
+387983360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+388015472 4 Node 4: Data confirmed
+390547360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+390547360 1 GW: Data processing time: 0 ms
+390581536 5 Node 5: Data confirmed
+392170360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+392202472 3 Node 3: Data confirmed
+396230360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+396230360 1 GW: Data processing time: 0 ms
+396242536 7 Node 7: Data confirmed
+396585360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+396626472 6 Node 6: Data confirmed
+396967360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+397003472 4 Node 4: Data confirmed
+400189360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+400200472 3 Node 3: Data confirmed
+400525360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+400525360 1 GW: Data processing time: 0 ms
+400561536 5 Node 5: Data confirmed
+405975360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+406019472 4 Node 4: Data confirmed
+407575360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+407612472 6 Node 6: Data confirmed
+408191360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+408207472 3 Node 3: Data confirmed
+408224360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+408224360 1 GW: Data processing time: 0 ms
+408253536 7 Node 7: Data confirmed
+410522360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+410522360 1 GW: Data processing time: 0 ms
+410544536 5 Node 5: Data confirmed
+414990360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+414995832 4 Node 4: Data confirmed
+416206360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+416239472 3 Node 3: Data confirmed
+418595360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+418619472 6 Node 6: Data confirmed
+420192360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+420192360 1 GW: Data processing time: 0 ms
+420220536 7 Node 7: Data confirmed
+420548360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+420548360 1 GW: Data processing time: 0 ms
+420573536 5 Node 5: Data confirmed
+423973360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+423986472 4 Node 4: Data confirmed
+424186360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+424198472 3 Node 3: Data confirmed
+429570360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+429589472 6 Node 6: Data confirmed
+430509360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+430509360 1 GW: Data processing time: 0 ms
+430536536 5 Node 5: Data confirmed
+432200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+432226472 3 Node 3: Data confirmed
+432268360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+432268360 1 GW: Data processing time: 0 ms
+432309536 7 Node 7: Data confirmed
+432958360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+432975472 4 Node 4: Data confirmed
+440184360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+440221472 3 Node 3: Data confirmed
+440526360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+440526360 1 GW: Data processing time: 0 ms
+440562360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+440571536 5 Node 5: Data confirmed
+440584472 6 Node 6: Data confirmed
+441984360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+442026472 4 Node 4: Data confirmed
+444206360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+444206360 1 GW: Data processing time: 0 ms
+444231536 7 Node 7: Data confirmed
+448190360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+448202472 3 Node 3: Data confirmed
+450536360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+450536360 1 GW: Data processing time: 0 ms
+450580536 5 Node 5: Data confirmed
+450989360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+451024472 4 Node 4: Data confirmed
+451591360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+451616472 6 Node 6: Data confirmed
+456193360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+456222472 3 Node 3: Data confirmed
+456274360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+456274360 1 GW: Data processing time: 0 ms
+456282536 7 Node 7: Data confirmed
+459951360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+459973472 4 Node 4: Data confirmed
+460525360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+460525360 1 GW: Data processing time: 0 ms
+460556536 5 Node 5: Data confirmed
+462580360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+462610472 6 Node 6: Data confirmed
+464193360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+464221472 3 Node 3: Data confirmed
+468227360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+468227360 1 GW: Data processing time: 0 ms
+468246536 7 Node 7: Data confirmed
+468956360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+468991472 4 Node 4: Data confirmed
+470542360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+470542360 1 GW: Data processing time: 0 ms
+470587536 5 Node 5: Data confirmed
+472181360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+472192472 3 Node 3: Data confirmed
+473592360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+473615472 6 Node 6: Data confirmed
+477981360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+478009472 4 Node 4: Data confirmed
+480188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+480220360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+480220360 1 GW: Data processing time: 0 ms
+480240536 7 Node 7: Data confirmed
+480246008 3 Node 3: Data confirmed
+480537360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+480537360 1 GW: Data processing time: 0 ms
+480581536 5 Node 5: Data confirmed
+484560360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+484604472 6 Node 6: Data confirmed
+486972360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+487015472 4 Node 4: Data confirmed
+488200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+488219472 3 Node 3: Data confirmed
+490528360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+490528360 1 GW: Data processing time: 0 ms
+490551536 5 Node 5: Data confirmed
+492212360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+492212360 1 GW: Data processing time: 0 ms
+492236536 7 Node 7: Data confirmed
+495589360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+495629472 6 Node 6: Data confirmed
+495981360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+496005472 4 Node 4: Data confirmed
+496195360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+496227472 3 Node 3: Data confirmed
+500533360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+500533360 1 GW: Data processing time: 0 ms
+500562536 5 Node 5: Data confirmed
+504206360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+504228360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+504228360 1 GW: Data processing time: 0 ms
+504248472 3 Node 3: Data confirmed
+504266536 7 Node 7: Data confirmed
+504986360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+505010472 4 Node 4: Data confirmed
+506583360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+506615472 6 Node 6: Data confirmed
+510549360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+510549360 1 GW: Data processing time: 0 ms
+510556536 5 Node 5: Data confirmed
+512202360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+512218472 3 Node 3: Data confirmed
+513983360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+514005472 4 Node 4: Data confirmed
+516222360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+516222360 1 GW: Data processing time: 0 ms
+516227896 7 Node 7: Data confirmed
+517583360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+517608472 6 Node 6: Data confirmed
+520179360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+520220472 3 Node 3: Data confirmed
+520513360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+520513360 1 GW: Data processing time: 0 ms
+520525536 5 Node 5: Data confirmed
+522965360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+522976472 4 Node 4: Data confirmed
+528176360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+528199360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+528199360 1 GW: Data processing time: 0 ms
+528218472 3 Node 3: Data confirmed
+528223536 7 Node 7: Data confirmed
+528559360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+528568472 6 Node 6: Data confirmed
+530540360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+530540360 1 GW: Data processing time: 0 ms
+530570536 5 Node 5: Data confirmed
+531986360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+532018472 4 Node 4: Data confirmed
+536176360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+536198472 3 Node 3: Data confirmed
+539570360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+539582472 6 Node 6: Data confirmed
+540221360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+540221360 1 GW: Data processing time: 0 ms
+540259536 7 Node 7: Data confirmed
+540533360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+540533360 1 GW: Data processing time: 0 ms
+540572536 5 Node 5: Data confirmed
+540955360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+540960832 4 Node 4: Data confirmed
+544188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+544225472 3 Node 3: Data confirmed
+549950360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+549987472 4 Node 4: Data confirmed
+550512360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+550512360 1 GW: Data processing time: 0 ms
+550517896 5 Node 5: Data confirmed
+550561360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+550598472 6 Node 6: Data confirmed
+552178360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+552207472 3 Node 3: Data confirmed
+552218360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+552218360 1 GW: Data processing time: 0 ms
+552241536 7 Node 7: Data confirmed
+558965360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+558980472 4 Node 4: Data confirmed
+560201360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+560244472 3 Node 3: Data confirmed
+560533360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+560533360 1 GW: Data processing time: 0 ms
+560573536 5 Node 5: Data confirmed
+561622360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+561651472 6 Node 6: Data confirmed
+564200360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+564200360 1 GW: Data processing time: 0 ms
+564233536 7 Node 7: Data confirmed
+567963360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+567996472 4 Node 4: Data confirmed
+568175360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+568199472 3 Node 3: Data confirmed
+570532360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+570532360 1 GW: Data processing time: 0 ms
+570572536 5 Node 5: Data confirmed
+572562360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+572589472 6 Node 6: Data confirmed
+576169360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+576190472 3 Node 3: Data confirmed
+576208360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+576208360 1 GW: Data processing time: 0 ms
+576222536 7 Node 7: Data confirmed
+576975360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+577017472 4 Node 4: Data confirmed
+580534360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+580534360 1 GW: Data processing time: 0 ms
+580563536 5 Node 5: Data confirmed
+583569360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+583598472 6 Node 6: Data confirmed
+584198360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+584241472 3 Node 3: Data confirmed
+585959360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+585964832 4 Node 4: Data confirmed
+588190360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+588190360 1 GW: Data processing time: 0 ms
+588216536 7 Node 7: Data confirmed
+590513360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+590513360 1 GW: Data processing time: 0 ms
+590530536 5 Node 5: Data confirmed
+592170360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+592179472 3 Node 3: Data confirmed
+594589360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+594598472 6 Node 6: Data confirmed
+594980360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+594998472 4 Node 4: Data confirmed
+600186360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+600191832 3 Node 3: Data confirmed
+600222360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+600222360 1 GW: Data processing time: 0 ms
+600254536 7 Node 7: Data confirmed
+600523360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+600523360 1 GW: Data processing time: 0 ms
+600557536 5 Node 5: Data confirmed
+603987360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+604027472 4 Node 4: Data confirmed
+605580360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+605619472 6 Node 6: Data confirmed
+608183360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+608218472 3 Node 3: Data confirmed
+610509360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+610509360 1 GW: Data processing time: 0 ms
+610540536 5 Node 5: Data confirmed
+612191360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+612191360 1 GW: Data processing time: 0 ms
+612217536 7 Node 7: Data confirmed
+612968360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+612992472 4 Node 4: Data confirmed
+616206360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+616215472 3 Node 3: Data confirmed
+616596360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+616601832 6 Node 6: Data confirmed
+620541360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+620541360 1 GW: Data processing time: 0 ms
+620561536 5 Node 5: Data confirmed
+621950360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+621982472 4 Node 4: Data confirmed
+624206360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+624234472 3 Node 3: Data confirmed
+624274360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+624274360 1 GW: Data processing time: 0 ms
+624282536 7 Node 7: Data confirmed
+627586360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+627604472 6 Node 6: Data confirmed
+630533360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+630533360 1 GW: Data processing time: 0 ms
+630542536 5 Node 5: Data confirmed
+630961360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+630992472 4 Node 4: Data confirmed
+632197360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+632220472 3 Node 3: Data confirmed
+636209360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+636209360 1 GW: Data processing time: 0 ms
+636215536 7 Node 7: Data confirmed
+638563360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+638580472 6 Node 6: Data confirmed
+639963360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+639994472 4 Node 4: Data confirmed
+640200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+640218472 3 Node 3: Data confirmed
+640548360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+640548360 1 GW: Data processing time: 0 ms
+640573536 5 Node 5: Data confirmed
+648175360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+648191360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+648191360 1 GW: Data processing time: 0 ms
+648214536 7 Node 7: Data confirmed
+648219472 3 Node 3: Data confirmed
+648956360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+648989472 4 Node 4: Data confirmed
+649581360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+649588472 6 Node 6: Data confirmed
+650524360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+650524360 1 GW: Data processing time: 0 ms
+650550536 5 Node 5: Data confirmed
+656197360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+656216472 3 Node 3: Data confirmed
+657953360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+657974472 4 Node 4: Data confirmed
+660210360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+660210360 1 GW: Data processing time: 0 ms
+660235536 7 Node 7: Data confirmed
+660543360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+660543360 1 GW: Data processing time: 0 ms
+660556536 5 Node 5: Data confirmed
+660573360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+660607472 6 Node 6: Data confirmed
+664169360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+664196472 3 Node 3: Data confirmed
+666962360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+666967832 4 Node 4: Data confirmed
+670519360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+670519360 1 GW: Data processing time: 0 ms
+670558536 5 Node 5: Data confirmed
+671562360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+671589472 6 Node 6: Data confirmed
+672185360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+672215360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+672215360 1 GW: Data processing time: 0 ms
+672220832 3 Node 3: Data confirmed
+672251536 7 Node 7: Data confirmed
+675965360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+675990472 4 Node 4: Data confirmed
+680174360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+680189472 3 Node 3: Data confirmed
+680547360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+680547360 1 GW: Data processing time: 0 ms
+680552896 5 Node 5: Data confirmed
+682586360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+682612472 6 Node 6: Data confirmed
+684195360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+684195360 1 GW: Data processing time: 0 ms
+684206536 7 Node 7: Data confirmed
+684984360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+684993472 4 Node 4: Data confirmed
+688174360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+688216472 3 Node 3: Data confirmed
+690541360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+690541360 1 GW: Data processing time: 0 ms
+690577536 5 Node 5: Data confirmed
+693590360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+693596472 6 Node 6: Data confirmed
+693953360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+693991472 4 Node 4: Data confirmed
+696193360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+696206360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+696206360 1 GW: Data processing time: 0 ms
+696213472 3 Node 3: Data confirmed
+696245536 7 Node 7: Data confirmed
+700534360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+700534360 1 GW: Data processing time: 0 ms
+700547536 5 Node 5: Data confirmed
+702950360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+702993472 4 Node 4: Data confirmed
+704185360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+704193472 3 Node 3: Data confirmed
+704575360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+704609472 6 Node 6: Data confirmed
+708226360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+708226360 1 GW: Data processing time: 0 ms
+708255536 7 Node 7: Data confirmed
+710512360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+710512360 1 GW: Data processing time: 0 ms
+710548536 5 Node 5: Data confirmed
+711971360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+712015472 4 Node 4: Data confirmed
+712209360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+712243472 3 Node 3: Data confirmed
+715557360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+715594472 6 Node 6: Data confirmed
+720171360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+720198360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+720198360 1 GW: Data processing time: 0 ms
+720204536 7 Node 7: Data confirmed
+720214472 3 Node 3: Data confirmed
+720544360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+720544360 1 GW: Data processing time: 0 ms
+720549896 5 Node 5: Data confirmed
+720973360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+721001472 4 Node 4: Data confirmed
+726575360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+726613472 6 Node 6: Data confirmed
+728189360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+728218472 3 Node 3: Data confirmed
+729978360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+730019472 4 Node 4: Data confirmed
+730540360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+730540360 1 GW: Data processing time: 0 ms
+730545896 5 Node 5: Data confirmed
+732229360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+732229360 1 GW: Data processing time: 0 ms
+732234896 7 Node 7: Data confirmed
+736207360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+736246472 3 Node 3: Data confirmed
+737564360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+737582472 6 Node 6: Data confirmed
+738956360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+738961832 4 Node 4: Data confirmed
+740540360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+740540360 1 GW: Data processing time: 0 ms
+740560536 5 Node 5: Data confirmed
+744187360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+744197360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+744197360 1 GW: Data processing time: 0 ms
+744215536 7 Node 7: Data confirmed
+744240472 3 Node 3: Data confirmed
+747955360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+747967472 4 Node 4: Data confirmed
+748579360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+748596472 6 Node 6: Data confirmed
+750509360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+750509360 1 GW: Data processing time: 0 ms
+750551536 5 Node 5: Data confirmed
+752203360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+752219472 3 Node 3: Data confirmed
+756191360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+756191360 1 GW: Data processing time: 0 ms
+756234536 7 Node 7: Data confirmed
+756959360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+756971472 4 Node 4: Data confirmed
+759574360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+759605472 6 Node 6: Data confirmed
+760169360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+760176472 3 Node 3: Data confirmed
+760513360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+760513360 1 GW: Data processing time: 0 ms
+760519536 5 Node 5: Data confirmed
+765984360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+766004472 4 Node 4: Data confirmed
+768206360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+768215360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+768215360 1 GW: Data processing time: 0 ms
+768242472 3 Node 3: Data confirmed
+768260536 7 Node 7: Data confirmed
+770517360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+770517360 1 GW: Data processing time: 0 ms
+770551536 5 Node 5: Data confirmed
+770576360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+770588472 6 Node 6: Data confirmed
+774975360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+774994472 4 Node 4: Data confirmed
+776202360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+776210472 3 Node 3: Data confirmed
+780203360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+780203360 1 GW: Data processing time: 0 ms
+780237536 7 Node 7: Data confirmed
+780537360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+780537360 1 GW: Data processing time: 0 ms
+780564536 5 Node 5: Data confirmed
+781578360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+781604472 6 Node 6: Data confirmed
+783959360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+783970472 4 Node 4: Data confirmed
+784205360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+784210832 3 Node 3: Data confirmed
+790514360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+790514360 1 GW: Data processing time: 0 ms
+790550536 5 Node 5: Data confirmed
+792178360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+792199472 3 Node 3: Data confirmed
+792257360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+792257360 1 GW: Data processing time: 0 ms
+792300536 7 Node 7: Data confirmed
+792567360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+792591472 6 Node 6: Data confirmed
+792958360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+792994472 4 Node 4: Data confirmed
+800185360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+800218472 3 Node 3: Data confirmed
+800546360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+800546360 1 GW: Data processing time: 0 ms
+800575536 5 Node 5: Data confirmed
+801970360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+801982472 4 Node 4: Data confirmed
+803597360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+803632472 6 Node 6: Data confirmed
+804190360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+804190360 1 GW: Data processing time: 0 ms
+804201536 7 Node 7: Data confirmed
+808188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+808215472 3 Node 3: Data confirmed
+810539360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+810539360 1 GW: Data processing time: 0 ms
+810573536 5 Node 5: Data confirmed
+810954360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+810983472 4 Node 4: Data confirmed
+814586360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+814627472 6 Node 6: Data confirmed
+816195360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+816214360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+816214360 1 GW: Data processing time: 0 ms
+816219832 3 Node 3: Data confirmed
+816232536 7 Node 7: Data confirmed
+819950360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+819970472 4 Node 4: Data confirmed
+820536360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+820536360 1 GW: Data processing time: 0 ms
+820558536 5 Node 5: Data confirmed
+824188360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+824223472 3 Node 3: Data confirmed
+825557360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+825598472 6 Node 6: Data confirmed
+828213360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+828213360 1 GW: Data processing time: 0 ms
+828247536 7 Node 7: Data confirmed
+828984360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+829007472 4 Node 4: Data confirmed
+830534360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+830534360 1 GW: Data processing time: 0 ms
+830569536 5 Node 5: Data confirmed
+832208360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+832231472 3 Node 3: Data confirmed
+836560360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+836599472 6 Node 6: Data confirmed
+837970360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+838011472 4 Node 4: Data confirmed
+840195360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+840210360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+840210360 1 GW: Data processing time: 0 ms
+840216536 7 Node 7: Data confirmed
+840223472 3 Node 3: Data confirmed
+840519360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+840519360 1 GW: Data processing time: 0 ms
+840536536 5 Node 5: Data confirmed
+846989360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+846996472 4 Node 4: Data confirmed
+847597360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+847616472 6 Node 6: Data confirmed
+848200360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+848213472 3 Node 3: Data confirmed
+850513360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+850513360 1 GW: Data processing time: 0 ms
+850522536 5 Node 5: Data confirmed
+852204360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+852204360 1 GW: Data processing time: 0 ms
+852248536 7 Node 7: Data confirmed
+855952360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+855970472 4 Node 4: Data confirmed
+856178360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+856185472 3 Node 3: Data confirmed
+858580360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+858586472 6 Node 6: Data confirmed
+860527360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+860527360 1 GW: Data processing time: 0 ms
+860547536 5 Node 5: Data confirmed
+864171360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+864190472 3 Node 3: Data confirmed
+864227360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+864227360 1 GW: Data processing time: 0 ms
+864250536 7 Node 7: Data confirmed
+864978360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+864998472 4 Node 4: Data confirmed
+869583360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+869596472 6 Node 6: Data confirmed
+870516360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+870516360 1 GW: Data processing time: 0 ms
+870545536 5 Node 5: Data confirmed
+872175360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+872204472 3 Node 3: Data confirmed
+873962360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+873978472 4 Node 4: Data confirmed
+876213360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+876213360 1 GW: Data processing time: 0 ms
+876223536 7 Node 7: Data confirmed
+880178360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+880205472 3 Node 3: Data confirmed
+880524360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+880524360 1 GW: Data processing time: 0 ms
+880562536 5 Node 5: Data confirmed
+880628360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+880672472 6 Node 6: Data confirmed
+882957360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+882979472 4 Node 4: Data confirmed
+888189360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+888196472 3 Node 3: Data confirmed
+888254360 1 GW: Decrypted data [9] from PID feba2c... (device 7)
+888254360 1 GW: Data processing time: 0 ms
+888263536 7 Node 7: Data confirmed
+890527360 1 GW: Decrypted data [9] from PID 726f9d... (device 5)
+890527360 1 GW: Data processing time: 0 ms
+890535536 5 Node 5: Data confirmed
+891590360 1 GW: Rejected data ï¾€ï¾” PID 975d05... not found
+891614472 6 Node 6: Data confirmed
+891951360 1 GW: Rejected data ï¾€ï¾” PID 4e9edb... not found
+891976472 4 Node 4: Data confirmed
+896198360 1 GW: Rejected data ï¾€ï¾” PID 8a8693... not found
+896231472 3 Node 3: Data confirmed
+TEST OK
+Test ended at simulation time: 900000000

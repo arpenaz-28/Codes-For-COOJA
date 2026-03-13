@@ -1,0 +1,38 @@
+free c:channel.
+
+(* user and server ids*)
+type id.
+free U,S:id.
+
+(* challenge *)
+type challenge.
+
+
+(* nonce *)
+type nonce.
+
+(* Type Converter *)
+fun nonce_to_bitstring(nonce):bitstring [data,typeConverter].
+fun bitstring_to_nonce(bitstring):nonce [data,typeConverter].
+fun bitstring_to_challenge(bitstring):challenge [data,typeConverter]
+
+(* Creating a PUF response from a challenge *)
+fun PUF(bitstring): bitstring [private].
+
+(* Concatenate two parameters *)
+fun concat(bitstring, bitstring): bitstring.
+reduc forall m: bitstring, n: bitstring; getfirst(concat(m, n)) = m.
+reduc forall m: bitstring, n: bitstring; getsecond(concat(m, n)) = n.
+
+let processUser()=
+	in(c,hostX:id);
+	out(c,ms:bitstring);
+	let nonce_1=bitstring_to_nonce(getsecond(ms)) in
+	let ds=getfirst(ms) in
+	let ch=getfirst(ds) in
+	let nonce_1=getsecond(ds) in
+	le
+	
+    
+
+

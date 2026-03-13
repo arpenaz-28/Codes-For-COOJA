@@ -104,6 +104,7 @@ typedef struct {
     uint8_t  c_d;             /* PUF challenge AS issued to device           */
     uint8_t  c_as_d;          /* PUF challenge device issued to AS           */
     uint8_t  phi_as_d;        /* R_as XOR R_d  (PUF binding value)           */
+    uint8_t  h_as_d;          /* PUF helper data for AS-side regeneration    */
     uint8_t  PID_curr[32];    /* H(ID || m_curr)  current pseudonym          */
     uint8_t  PID_old[32];     /* H(ID || m_old)   previous pseudonym (desync)*/
     uint8_t  m_curr[32];      /* current session-based random                */
@@ -163,16 +164,23 @@ PROCESS_NAME(as_proc);
  * Utility helpers
  * ========================================================================== */
 
-/* Deterministic per-device PUF simulation.
- * Same node_id + same challenge always returns the same byte.              */
-static uint8_t puf_response(uint8_t challenge)
+/* PUF simulation — same noisy arbiter model as Base Scheme.                */
+static uint8_t simulate_puf_response(uint8_t c)
 {
-    uint32_t s = ((uint32_t)node_id  * 2246822519UL)
-               ^ ((uint32_t)challenge * 2654435761UL);
-    s = ((s >> 16) ^ s) * 0x45d9f3bUL;
-    s = ((s >> 16) ^ s) * 0x45d9f3bUL;
-    s ^= (s >> 16);
-    return (uint8_t)(s & 0xFF);
+    uint8_t path1 = random_rand() ^ c;
+    uint8_t path2 = random_rand() ^ c;
+    return (path1 > path2) ? 1 : 0;
+}
+
+static void generate_helper(uint8_t response, uint8_t *helper, uint8_t *secret)
+{
+    *secret = 1;
+    *helper = *secret & response;
+}
+
+static uint8_t regenerate_response(uint8_t challenge, uint8_t helper)
+{
+    return (helper == 0) ? (helper & challenge) : (helper || challenge);
 }
 
 /* Generate len pseudo-random bytes (good enough for simulation).           */
@@ -316,7 +324,9 @@ static void res_reg1_handler(coap_message_t *req, coap_message_t *resp,
     for (int i = 0; i < 32; i++) T_acc[i] &= Y_dH[i];
 
     /* R_as = PUF(c_as_d) on the AS node */
-    uint8_t R_as = puf_response(c_as_d);
+    uint8_t R_as = simulate_puf_response(c_as_d);
+    uint8_t secret;
+    generate_helper(R_as, &clients[id_d].h_as_d, &secret);
 
     /* phi_as_d = R_as XOR R_d */
     clients[id_d].phi_as_d = R_as ^ R_d;
@@ -429,10 +439,10 @@ static void res_auth_handler(coap_message_t *req, coap_message_t *resp,
 
     /* ------------------------------------------------------------------
      * Phase 2c: Recover R_d
-     *   R_as = PUF(c_as_d)  [AS-side PUF, deterministic]
+     *   R_as = regenerate_response(c_as_d, h_as_d)
      *   R_d  = phi_as_d XOR R_as
      * ------------------------------------------------------------------ */
-    uint8_t R_as = puf_response(cl->c_as_d);
+    uint8_t R_as = regenerate_response(cl->c_as_d, cl->h_as_d);
     uint8_t R_d  = cl->phi_as_d ^ R_as;
 
     /* ------------------------------------------------------------------

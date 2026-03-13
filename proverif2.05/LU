@@ -1,0 +1,97 @@
+free c:channel.
+
+(* hash(item): a truly one-way hash function on item *)
+fun hash(bitstring):bitstring.
+
+(* Two honest host names U and S *)
+type host.
+free U,S:host.
+(* Type Converter *)
+fun host_to_bitstring(host):bitstring [data,typeConverter].
+
+
+(* Creating a PUF response from a challenge *)
+fun PUF(bitstring): bitstring [private].
+
+(* Concatenate two parameters *)
+fun concat(bitstring, bitstring): bitstring.
+reduc forall m: bitstring, n: bitstring; getfirst(concat(m, n)) = m.
+reduc forall m: bitstring, n: bitstring; getsecond(concat(m, n)) = n.
+
+
+(*Authentication queries*)
+event beginSparam(host).
+event endSparam(host).
+event beginUparam(host).
+event endSparam(host).
+
+let user(U: host) = 
+    
+    out(c, uid);
+    in(c, cs: bitstring);
+    let d_cs = symmetricDecrypt(cs, key) in
+    let d_uid = getsecond(d_cs) in
+    let seed = getfirst(getfirst(d_cs)) in
+    let ch = getsecond(getfirst(d_cs)) in
+    if n_uid = uid then
+        event UserStarted(uid);
+    let r = PUF(ch) in
+    let alpha = hash(concat(concat(r, seed), sid)) in
+    let eac = symmetricEncrypt(concat(alpha, c), key) in
+    out(c, eac);
+    in(c, ack: bitstring);
+    out(c, uid);
+    in(c, challenge: bitstring);
+    in(c, nonce: bitstring);
+    in(c, sd: bitstring);
+    in(c, nonce_2: bitstring);
+    let d_r = PUF(challenge) in
+    let dd_alpha = hash(concat(concat(d_r, seed), sid)) in
+    let d_beta = hash(concat(dd_alpha, nonce)) in
+    out(c, d_beta);
+    let d_gamma = hash(concat(dd_alpha, nonce_2)) in
+    in(c, gamma: bitstring);
+    if d_gamma = gamma then
+        event ServerAuthenticated(sid);
+    new ack: bitstring;
+    event EndUser();
+    out(c, ack).
+    
+    
+    
+let server(key:SymmetricKey) = 
+    event BeginUser();
+    in(c, userid: id);
+    new ch:bitstring, seed: bitstring;
+    let cs = symmetricEncrypt(concat(concat(ch, seed), uid), key) in
+    out(c, cs);
+    in(c, eac: bitstring);
+    let d_eac = symmetricDecrypt(eac, key) in
+    let d_alpha = getfirst(d_eac) in
+    let d_ch = getsecond(d_eac) in
+    if d_ch = ch then
+        event UserEnrolled(userid);
+    new ack: bitstring;
+    out(c, ack);
+    in(c, u_areq: bitstring);
+    if userid = u_areq then
+        event UserAuthStarted(u_areq);
+    new nonce, nonce_2: bitstring;
+    out(c, ch);
+    out(c, nonce);
+    out(c, seed);
+    out(c, nonce_2);
+    let beta = hash(concat(d_alpha, nonce)) in
+    in(c, d_beta: bitstring);
+    if beta = d_beta then
+        event UserAuthenticated(u_areq);
+    let gamma = hash(concat(d_alpha, nonce_2)) in
+    out(c, gamma);
+    event EndServer();
+    in(c, ack: bitstring).
+    
+process
+    ((!user(skey, sid)) | (!server(skey)))
+    
+
+

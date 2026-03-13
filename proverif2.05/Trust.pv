@@ -1,0 +1,154 @@
+free c:channel.
+
+(*Publicly available user and server identity*)
+const uid:bitstring [data].
+
+free SecretAlpha,SecretDAlpha,SecretDDAlpha:bitstring [private].
+
+(*Concatenate two parameters*)
+fun concat(bitstring,bitstring):bitstring.
+
+reduc forall m:bitstring, n:bitstring ; getfirst(concat(m,n))=m.
+reduc forall m:bitstring, n:bitstring ; getsecond(concat(m,n))=n.
+
+
+(*Creating a PUF-response from a challenge*)
+fun PUF(bitstring): bitstring [private].
+fun get_alpha(bitstring): bitstring [private].
+
+(*Symmetric key crpto primitives*)
+type SymmetricKey.
+free skey:SymmetricKey [private].
+
+fun generateKey(bitstring):SymmetricKey.
+
+(*Type Conversion*)
+fun KeyToBitstring(SymmetricKey):bitstring [data].
+
+fun SymmetricEncrypt(bitstring,SymmetricKey):bitstring.
+
+fun SymmetricDecrypt(bitstring,SymmetricKey):bitstring.
+reduc 
+	forall message:bitsring, key:SymmetricKey; 		    symmetricDecrypt(symmetricEncrypt(message,key),key)=message.
+	
+(*Shared key crypto primitives*)
+fun sharedEncrypt(bitstring,bitstring):bitstring.
+
+fun sharedDecrypt(bitstring,bitstring):bitstring.
+reduc forall m:bitstring,key:bitstring;
+		sharedDecrypt(sharedEncrypt(m,key),key)=m.
+		
+query attacker(skey).
+query attacker(secretAlpha).
+query attacker(secretDAlpha).
+query attacker(secretDDAlpha).
+
+event UserEnrollmentStart(bitstring).
+event ServerStart(bitstring).
+event UserEnrolled(bitstring).
+event ServerEnd(bitstring).
+
+event UserAuthStarts(bitstring).
+event ServerAuthStarts(bitstring).
+event UserAuthenticated(bitstring).
+event ServerAuthenticated(bitstring).
+
+
+query x:bitstring;
+	event(UserEnrolled(x)) ==> event(UserEnrollmentStart(x)).
+
+query x:bitstring;
+	event(ServerEnd(x)) ==> event(ServerStart(x)).
+
+
+query x:bitstring;
+	event(UserAuthenticated(x))==>event(UserAuthStarts(x)).
+
+query x:bitstring;
+	event(ServerAuthenticated(x))==>event(ServerAuthStarts(x)).
+
+
+
+	
+(*hash*)
+fun hash(bitstring):bitstring.
+
+let user(key:SymmetricKey,sid:bitstring)=
+	out(c,uid);
+	event UserEnrollmentStart(uid);
+	in(c,cs:bitstring);
+	let d_cs=SymmetricDecrypt(cs,key) in
+	let d_uid=getsecond(d_cs) in
+	let ch=getfirst(getfirst(d_cs)) in
+	let seed=getsecond(getfirst(d_cs)) in
+	if d_uid=uid then
+		event UserEnrolled(uid);
+		
+	let r=PUF(ch) in
+	let alpha=hash(concat(concat(r,seed),sid)) in
+	let eac=SymmetricEncrypt(concat(alpha,ch),key) in
+	out(c,eac);
+	in(c,ack:bitstring);
+	
+	out(c,uid);
+	event UserAuthStarts(uid);
+	in(c,challenge:bitstring);
+	in(c,nonce:bitstring);
+	in(c,sd:bitstring);
+	in(c,sid_2:bitstring);
+	let d_r=PUF(challenge) in
+	let dd_alpha=hash(concat(concat(d_r,sd),sid_2)) in
+	let d_beta=hash(concat(dd_alpha,nonce)) in
+	out(c,d_beta);
+	in(c,nonce_2:bitstring);
+	let d_gamma=hash(concat(dd_alpha,nonce_2)) in
+	in(c,gamma:bitstring);
+	if d_gamma=gamma then
+		if sid=sid_2 then
+		   event ServerAuthenticated(sid);
+        out(c,sharedEncrypt(secretAlpha,alpha));
+        out(c,sharedEncrypt(secretDDAlpha,dd_alpha));
+
+
+let server(key:SymmetricKey,sid:bitstring)=
+	
+	  in(c,userid:bitstring);
+	  event ServerStart(sid);
+	  new ch:bitstring;
+	  new seed:bitstring;
+	  let cs=SymmetricEncrypt(concat(concat(ch,seed),userid),key) in
+	  out(c,cs);
+	  in(c,eac:bitstring);
+	  let alpha_d=getfirst(SymmetricDecrypt(eac,key))in
+	  let ch_d=getsecond(SymmetricDecrypt(eac,key)) in
+	  if ch=ch_d then
+		event ServerEnd(sid);
+	new ack:bitstring;
+	out(c,ack);	
+	
+	in(c,u_req:bitstring);
+	if userid=u_req then
+		event ServerAuthStarts(sid)
+	new nonce:bitstring;
+	new nonce_2:bitstring;
+	out(c,ch);
+	out(c,nonce);
+	out(c,seed);
+	out(c,sid);
+	let beta=hash(concat(alpha_d,nonce)) in
+	in(c,beta_d:bitstring);
+	if beta=beta_d then
+		event UserAuthenticated(uid);
+	new ack_s:bitstring;
+	out(c,ack_s);
+	let gamma=hash(concat(alpha_d,nonce_2)) in
+	out(c,gamma);
+	out(c,nonce_2);
+	in(c,ack_u:bitstring);
+	out(c,sharedEncrypt(SecretDAlpha,d_alpha));
+	
+	
+process
+	new sid:bitstring;
+	((!user(skey,sid)) | (!server(skey,sid))); 
+	
