@@ -22,32 +22,32 @@ Core protocol features in the proposed scheme include:
 
 | Path | Purpose |
 |------|---------|
-| `Anonymity-Extended-Base-Scheme/` | Proposed scheme source, simulation files, and scheme-specific README |
-| `Base-Scheme/` | Base scheme source and related simulation assets |
-| `Base-Scheme-Aligned/` | Aligned base variant used for fairer comparison experiments |
-| `LAAKA/` | LAAKA scheme implementation and simulation setup |
-| `Desync-Anonymity-Extended-Base-Scheme/` | Desynchronization experiment setup |
-| `Results/CSV-Data/` | Final CSV outputs for per-scheme and cross-scheme comparison |
-| `Results/Charts/` | Final chart outputs, including aligned and scalability analyses |
-| `Results/Testlogs/` | COOJA logs organized by scheme and study type |
-| `Scripts/Simulation-Runners/` | Automation scripts for running experiments and generating charts |
-| `Scripts/Utilities/` | Parsing, extraction, and helper utilities |
-| `ProVerif-Security-Analysis/` | Protocol models, outputs, and security chart snapshots |
-| `proverif2.05/` | Local ProVerif distribution source and examples |
+| [`Anonymity-Extended-Base-Scheme/`](Anonymity-Extended-Base-Scheme/) | Proposed scheme source, simulation files, and scheme-specific README |
+| [`Base-Scheme/`](Base-Scheme/) | Base scheme source and related simulation assets |
+| [`Base-Scheme-Aligned/`](Base-Scheme-Aligned/) | Aligned base variant used for fairer comparison experiments |
+| [`LAAKA/`](LAAKA/) | LAAKA scheme implementation and simulation setup |
+| [`Desync-Anonymity-Extended-Base-Scheme/`](Desync-Anonymity-Extended-Base-Scheme/) | Desynchronization experiment setup |
+| [`Results/CSV-Data/`](Results/CSV-Data/) | Final CSV outputs for per-scheme and cross-scheme comparison |
+| [`Results/Charts/`](Results/Charts/) | Final chart outputs, including aligned and scalability analyses |
+| [`Results/Testlogs/`](Results/Testlogs/) | COOJA logs organized by scheme and study type |
+| [`Scripts/Simulation-Runners/`](Scripts/Simulation-Runners/) | Automation scripts for running experiments and generating charts |
+| [`Scripts/Utilities/`](Scripts/Utilities/) | Parsing, extraction, and helper utilities |
+| [`ProVerif-Security-Analysis/`](ProVerif-Security-Analysis/) | Protocol models, outputs, and security chart snapshots |
+| [`proverif2.05/`](proverif2.05/) | Local ProVerif distribution source and examples |
 
 ## Key Results Assets
 
-Representative final charts are located in `Results/Charts/`:
+Representative final charts are located in [`Results/Charts/`](Results/Charts/):
 
-- `Final-01-Energy-Comparison.png`
-- `Final-02-CPU-Time-Comparison.png`
-- `Final-03-Total-Protocol-Cost.png`
-- `Final-04-Computation-Only-Energy.png`
-- `Final-05-Comparison-Table.png`
+- [`Final-01-Energy-Comparison.png`](Results/Charts/Final-01-Energy-Comparison.png)
+- [`Final-02-CPU-Time-Comparison.png`](Results/Charts/Final-02-CPU-Time-Comparison.png)
+- [`Final-03-Total-Protocol-Cost.png`](Results/Charts/Final-03-Total-Protocol-Cost.png)
+- [`Final-04-Computation-Only-Energy.png`](Results/Charts/Final-04-Computation-Only-Energy.png)
+- [`Final-05-Comparison-Table.png`](Results/Charts/Final-05-Comparison-Table.png)
 
 Main comparison CSV is available at:
 
-- `Results/CSV-Data/all-schemes-comparison.csv`
+- [`Results/CSV-Data/all-schemes-comparison.csv`](Results/CSV-Data/all-schemes-comparison.csv)
 
 ## Build and Run (Docker + COOJA)
 
