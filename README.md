@@ -27,6 +27,7 @@ Core protocol features in the proposed scheme include:
 | `Base-Scheme-Aligned/` | Aligned base variant used for fairer comparison experiments |
 | `LAAKA/` | LAAKA scheme implementation and simulation setup |
 | `Desync-Anonymity-Extended-Base-Scheme/` | Desynchronization experiment setup |
+| `Hardware/` | Laptop + RPi deployment package with native GW/AS/Node runtime and pypuf-based authentication |
 | `Results/CSV-Data/` | Final CSV outputs for per-scheme and cross-scheme comparison |
 | `Results/Charts/` | Final chart outputs, including aligned and scalability analyses |
 | `Results/Testlogs/` | COOJA logs organized by scheme and study type |
@@ -74,6 +75,18 @@ docker run --rm -v "${PWD}:/work" proverif-tool /work/scheme.pv
 ```
 
 Additional prepared models and outputs are available in the same folder, including `Anonymity_Extended_Scheme.pv` and related output files.
+
+## Hardware Runtime (Laptop + 2x RPi)
+
+Hardware deployment assets are in `Hardware/` and include:
+
+- Native role runtimes: `Hardware/native/gw_hw.py`, `Hardware/native/as_hw.py`, `Hardware/native/node_hw.py`
+- Setup and orchestration scripts in `Hardware/scripts/`
+- IP-based role configuration in `Hardware/config/roles.env`
+
+The native flow keeps the scheme sequence: Enrollment -> Authentication with pypuf CRP verification -> AS to GW token forwarding -> encrypted Node to GW data.
+
+If only IP addresses are available, set `GW_HOST`, `AS_HOST`, and `NODE_HOST` in `Hardware/config/roles.env`; usernames default to `pi` in orchestration scripts when left blank.
 
 ## Notes
 

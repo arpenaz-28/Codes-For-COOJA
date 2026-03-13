@@ -1,0 +1,4 @@
+# Copy to /etc/hosts on all three machines (or use DNS)
+192.168.1.10 gw-laptop
+192.168.1.20 as-rpi
+192.168.1.30 node-rpi
