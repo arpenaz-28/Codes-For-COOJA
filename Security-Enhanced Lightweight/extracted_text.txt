@@ -1,0 +1,872 @@
+IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 6, 15 MARCH 2024 9599
+Security-Enhanced Lightweight and
+Anonymity-Preserving User Authentication
+Scheme for IoT-Based Healthcare
+Xin Zhou , Shengbao Wang, Kang Wen ,B i nH u ,X i a oT a n , and Qi Xie
+Abstract —Ensuring trust within the healthcare system and
+addressing privacy and security challenges in the Internet ofMedical Things (IoMT) is of paramount importance. Basedon our preliminary analysis results of Masud et al.’s authen-tication protocol, we propose an improved solution buildingupon their protocol. Our improved protocol incorporates var-ious security measures to enhance its security. To validate theeffectiveness of our improved protocol, we employ a comprehen-sive range of heuristic and formal security analysis methods.Comparative evaluations with other relevant protocols revealthat our proposed solution achieves satisfactory operationalperformance in resource-constrained IoMT scenarios.
+Index Terms —Authenticated key exchange, BAN logic, fuzzy
+extractor, Internet of Medical Things (IoMT), physical unclonablefunction (PUF), ProVerif.
+I. I NTRODUCTION
+THE Internet of Medical Things (IoMT) is the convergence
+of medical devices and applications that can be connected
+to healthcare information technology systems using network
+technologies [1]. The development of IoMT has been driven
+by the widespread use of wireless medical sensor networks
+(WMSNs) in the healthcare sector over the past few years. The
+development of IoMT has been driven by the widespread useof WMSNs in the healthcare ﬁeld over the past few years [2].
+In IoMT scenarios such as this, a variety of sophisticated
+sensor devices are placed on patients to collect and moni-tor their physiological parameters without compromising their
+comfort and transmit the data wirelessly to doctors’ hand-
+held devices, such as tablets, smartphones, and other devices.Based on these data, the doctor can assess the patient’s health
+status more comprehensively. Although all data are collected
+Manuscript received 4 August 2023; revised 10 September 2023; accepted
+5 October 2023. Date of publication 11 October 2023; date of current version7 March 2024. This work was supported by the National Natural ScienceFoundation of China under Grant U21A20466. (Corresponding author:
+Shengbao Wang.)
+Xin Zhou is with the School of Information Science and Technology and
+the Key Laboratory of Cryptography of Zhejiang Province, Hangzhou NormalUniversity, Hangzhou 311121, China, and also with the School of Mathematics
+and Statistics, Fujian Normal University, Fuzhou 350007, China.
+Shengbao Wang, Kang Wen, Bin Hu, and Xiao Tan are with the School of
+Information Science and Technology and the Key Laboratory of Cryptographyof Zhejiang Province, Hangzhou Normal University, Hangzhou 311121, China
+(e-mail: shengbaowang@hznu.edu.cn).
+Qi Xie is with the School of Mathematics and the Key Laboratory of
+Cryptography of Zhejiang Province, Hangzhou Normal University, Hangzhou
+311121, China.
+Digital Object Identiﬁer 10.1109/JIOT.2023.3323614from harmless wearable devices, these physiological data are
+very sensitive and can pose serious privacy concerns [3],
+[4],[5]. Additionally, most electronic devices communicate
+via wireless networks, which are vulnerable to a variety of
+attacks. Therefore, authentication mechanisms and data pro-
+tection means are essential to secure wireless medical sensornetworks.
+A. Related Work
+1) Two-Party Protocols: Existing security mechanisms
+focus on mutual authentication between two parties. Iqbal
+and Bayoumi [6]proposed an end-to-end authentication pro-
+tocol for authenticating resource-constrained IoMT devices.The protocol uses a Difﬁe–Hellman key establishment scheme
+and outsources the heavy computational tasks to a trusted
+computing center. Park et al. [7]introduced a lightweight,
+provably secure scheme for IoMT healthcare systems. They
+designed a secure authentication protocol between sensor enti-
+ties and servers using nonveriﬁcation table (NVT) technology.Amin et al. [8]proposed a three-factor (password, biomet-
+ric, and smart card) user authentication scheme for e-health
+systems and claimed that their scheme is resistant to mostcommon attacks.
+Fan et al. [9]applied radio frequency identiﬁcation (RFID)
+technology to healthcare systems and proposed a lightweightmutual authentication protocol with privacy-preserving prop-
+erties. Aghili et al. [10] proposed an enhanced authentication
+protocol called SecLAP to prevent the attacks in [9]by reduc-
+ing the trafﬁc between the tag and the reader. However, the
+single-tag authentication protocol suffers from high latencyand low efﬁciency and is not suitable for large healthcare
+scenarios where a large number of tags exist. Therefore,
+Kang et al. [11] proposed a low-overhead batch-tag authen-
+tication protocol. The protocol uses the encryption of tags
+using the solution of homogeneous linear equations as a key
+to reduce the tag overhead.
+2) TTP-Based Multiparty Protocols: However, IoT-enabled
+healthcare applications involving multiple parties, such as
+patients, electronic healthcare testing devices, doctors, andcloud servers, require multiparty authentication for secure
+communication. Some schemes use trusted third party
+(TTP) to identify and authenticate communicating parties toreduce the higher computational and communication costs of
+resource-constrained devices. Mahmood et al. [5]proposed
+2327-4662 c/circlecopyrt2023 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission.
+See https://www.ieee.org/publications/rights/index.html for more information.
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. 9600 IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 6, 15 MARCH 2024
+an authentication protocol based on elliptic curve ciphers.
+The protocol can generate symmetric security keys betweenthe patient, doctor, or nurse and a trusted server to ensure
+secure communication between the patient and the doctor after
+the authentication is over. Yanambaka et al. [12] proposed a
+device authentication protocol that authenticates devices in
+a network without storing the information in memory. At
+the same time, the protocol uses a physical unclonable func-tion (PUF) to provide a unique identity for each device and
+authenticate it when transmitting data to the server via a
+TTP. Tsai et al. [13] proposed a multikey exchange protocol
+based on trusted third parties. It uses 2-D operations, ellip-
+tic curve cryptography, and current time encryption keys to
+exchange respective session keys. The protocol can generate
+40 keys simultaneously to support 40 sessions at the same
+time. However, the authors have yet to provide a formal proofof the scheme and its use in resource-constrained IoT sensors
+is yet to be evaluated.
+3) SG-Based Multiparty Protocols: Other schemes dele-
+gate the authentication process to smart gateways of neigh-
+boring participants. Wu et al. [14] proposed a lightweight
+authentication protocol based on WSNs. The protocol mainlyuses hash functions and
+XOR operations and is distinguished
+by its high efﬁciency and low overhead. Similarly, the protocol
+proposed by Masud et al. [15] also has lightweight features.
+Kwon et al. [16] noted that the scheme is not anonymous
+and suffers from privileged insider attacks and suggested an
+improved scheme. However, it is noteworthy that they didnot utilize the Difﬁe–Hellman key exchange, thus lacking the
+forward security property explicitly stated in the scheme. An
+improved protocol with high efﬁciency was also proposed byKim et al. [17] in 2023. However, this improved protocol can-
+not avoid the problems of [15], and it lacks security. Recently,
+Shihab and AlTawy [18] proposed a lightweight authentica-
+tion protocol that is robust to desynchronization attacks based
+on the one-way hash chain technique. However, the scheme isnot resistant to physical attacks or cloning attacks.
+Masud et al.’s protocol [15] is characterized by the utiliza-
+tion of hash and
+XOR operations, rendering it a lightweight
+solution with lower computational and communication over-
+heads. However, our previous analysis [19] revealed two
+design ﬂaws within Masud et al.’s protocol. And we alsodemonstrated that it is susceptible to session key disclosure
+attacks, ofﬂine password guessing attacks, and traceability
+attacks. While we did provide remarks pertaining to eachof these identiﬁed security vulnerabilities, a comprehensive
+solution was not offered.
+To ﬁll this gap, in this article, we further present a com-
+plete improved protocol based on our previous work. More
+importantly, we conduct an in-depth analysis of the improved
+protocol, including its security and operational efﬁciency. The
+results of the analysis show that the new improved protocol
+not only eliminates the original defects of their protocol butalso retains the advantages of being lightweight and efﬁcient.
+B. Contribution
+The contributions of this article are as follows.1) In light of our prior analysis of the Msaud et al.’s
+protocol [15] and our subsequent proposal for its
+enhancement, this article introduces a lightweight
+authentication protocol. This protocol primarily relies on
+hash functions and
+XOR operations to facilitate authen-
+tication and key exchange between resource-constrained
+IoMT devices.
+2) To signiﬁcantly improve the security of our protocol
+while preserving excellent performance, we adopt a
+strategic blend of cryptographic tools and techniques.
+These include biometrics, fuzzy extractors, secret salts,and physically unclonable functions. By leveraging these
+advanced measures in tandem, our approach ensures a
+robust defense against potential threats while maintain-
+ing efﬁcient and seamless operation. This comprehen-
+sive security enhancement contributes to the protocol’sreliability and trustworthiness in real-world applications.
+C. Organization
+The remainder of this article is structured as follows.
+Section IIdescribes security mechanisms, such as hash func-
+tions, physically unclonable functions, and fuzzy extractors, as
+well as common security properties in authentication protocoldesign. We review the ﬂaws and insecurities of Masud et al.’s
+protocol in Section III. Section IVpresents our modiﬁed proto-
+col. Both heuristic and formal security analyses of the protocolare given in Section V. Section VIpresents a security and
+performance comparison among our protocol and other related
+protocols. Finally, we conclude this article in Section VII.
+II. P
+RELIMINARIES
+Our proposed protocol utilizes hash functions, PUFs, and
+fuzzy extractors. The deﬁnitions and properties are given in
+this section, respectively.
+A. Hash Function
+The one-way hash function H(·)generates a ﬁxed-length
+output (e.g., lbits) from an input of arbitrary length, deﬁned
+asH:{0,1}∗→{ 0,1}l. Its security properties are as
+follows [20],[21].
+1)Preimage Resistance: For a given hash value hand a
+one-way hash function H(·), it is difﬁcult to ﬁnd any
+preimage msuch that h=H(m).
+2)Second Preimage Resistance: For a given preimage a,i t
+is difﬁcult to ﬁnd another preimage bsuch that H(a)=
+H(b).
+3)Strong Collision Resistance: For the same one-way hash
+function H(·), it is difﬁcult to ﬁnd two different inputs
+such that H(a)=H(b).
+B. Physical Unclonable Function
+Physically unclonable functions [22] are physical entities
+embedded in a physical structure [e.g., an integrated chip (IC)]
+which, by means of R←PUF(C), can generate a correspond-
+ing output (response) for a given input (challenge). The PUF
+provides an efﬁcient way to authenticate devices and protect
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. ZHOU et al.: SECURITY-ENHANCED LIGHTWEIGHT AND ANONYMITY-PRESERVING USER AUTHENTICATION SCHEME 9601
+Fig. 1. System architecture.
+them from physical threats in insecure environments. In other
+words, the PUF (·)can act as a digital ﬁngerprint of the device,
+with the following security properties.
+1)Uniqueness: For any two different PUFs, PUF 1(·)and
+PUF 2(·), given the same input C, the outputs R1←
+PUF 1(C)andR2←PUF 2(C)are different.
+2)Reproducibility: The response is the same for any given
+PUF, given the same input, multiple times.
+3)Physical Unclonability: Due to the physical structure
+and technical reasons, a speciﬁc PUF embedded in adevice cannot be cloned.
+4)One-Wayness: PUFs are analogous to one-way functions
+in cryptography, that is, given a response Rand a partic-
+ular PUF (·), it is difﬁcult to recover the corresponding
+challenge C.
+C. Fuzzy Extractor
+A fuzzy extractor is a method for converting a noisy nonuni-
+form input into a uniform random string that can be reliably
+reproduced [23]. It is important to note that “fuzzy” in this
+context means that the ﬁxed values required for encryp-
+tion are extracted from values close to, but not equal to,
+the original key, without compromising the required secu-rity. The fuzzy extractor consists of a generating function
+Gen(·)and a recurrence function Rep(·), described in detail as
+follows.
+1)Generate Function Gen (·):Given the input biometrics
+bioof users, the function generates the secret data δ
+and the common auxiliary parameter τ, where (δ,τ) =
+Gen(bio).
+2)Reproduction Function Rep (·):Given the user input
+bio, the function reproduces the secret data δusing the
+auxiliary parameter τ, where δ=Rep(bio,τ).
+D. System Architecture
+Our proposed protocol focuses on describing the commu-
+nication between users (i.e., doctors), medical gateways, and
+medical sensors in a smart healthcare scenario. Fig. 1illus-
+trates the system architecture of the protocol, where the usertypically uses a resource-constrained handheld device (e.g.,
+smartphone and tablet), the sensor nodes are mainly low-
+power implantable devices, and the medical gateway typicallyhas powerful computational capabilities to perform complex
+computations.E. Threat Model
+In this article, the classical Dolev–Yao (DY) model [24] is
+used to evaluate the security of protocols. The model assumes
+that the cryptographic primitives used in the protocol are
+secure and that an attacker can intercept, tamper with, delete,
+store, and replay any message from the open channel. Anattacker can only decrypt or sign a message if he has the
+correct key. An attacker can only forge new messages from
+the keys and messages in his possession [25].
+F . Common Security Attributes
+In this section, we describe common security properties for
+authentication protocols in detail.
+1) Resistant to Ofﬂine Password Guessing Attacks: An
+ofﬂine password guessing attack occurs in an ofﬂine envi-ronment, where an attacker uses brute-force cracking tools,
+password dictionaries, and similar methods to ofﬂine deduce
+the legitimate user’s password. In contrast to online guessingattacks, ofﬂine attacks have the characteristic of being able to
+make an unlimited number of attempts. When calculating and
+storing the hash value of a password, the addition of a secretsalt value can increase the difﬁculty for an attacker to guess
+the password, as the attacker must now simultaneously guess
+both the password and the secret salt value.
+2) Resistant to Session Key Compromise Attacks: A session
+key compromise attack refers to a situation where an attacker
+is able to obtain the session key. The security of the sessionkey is a crucial prerequisite for secure communication between
+entities. When the attacker successfully determines the key,
+they can use it to decrypt encrypted data without the sender’s
+knowledge.
+3) Anonymity and Untraceability: Anonymity, in the con-
+text of information security and privacy, signiﬁes the condition
+wherein an attacker is precluded from ascertaining the authen-
+tic identity of a communication participant solely through theexamination of the transmitted message [26]. Untraceability,
+on the other hand, denotes the state in which an attacker
+encounters insurmountable challenges in determining both thespeciﬁc user responsible for sending a message and any poten-
+tial linkage between multiple messages, thus obfuscating any
+discernible connection among them [27].
+4) Resistant to Cloning and Physical Attacks: Physical
+and cloning attacks encompass scenarios where the attack-
+ers endeavors to expropriate the conﬁdential information ofan authorized node by physical means, including techniques,
+such as side-channel analysis, power consumption analysis,
+and related methods. Afterward, the attacker attempts to estab-lish a fraudulent communication node, replete with spurious
+credentials and identity attributes, with the aim of inﬁltrating
+the network under the guise of an authorized node. PUFs are
+commonly used in authentication protocols to resist cloning
+attacks [28].
+5) Resistant to Impersonation Attacks: Impersonation
+attacks refer to situations in which attackers have the ability
+to assume the identity of legitimate users. Attackers maycarry out this attack through various means, including eaves-
+dropping, message manipulation, replicating and replaying
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. 9602 IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 6, 15 MARCH 2024
+messages, or exploiting vulnerabilities introduced by physical
+and cloning attacks.
+In addition, we also make the following assumptions about
+the attacker’s ability.
+1) During the brief device authentication process, the tran-
+sient (erased or overwritten when in use) intermediate
+variables involved in the session state calculation are
+safe.
+2) The server can provide expensive tamper-proof storage
+to protect any secrets and is powerful enough to perform
+complex calculations.
+3) In contrast, end devices have limited storage capacity to
+protect the secrets stored in their nonvolatile memory.
+As a result, they are vulnerable to capture.
+III. D EFICIENCIES AND INSECURITY OF
+MASUD ET AL .’SSCHEME
+The issues with the Masud et al.’s protocol [15] have
+been analyzed in our previous work [19]. To save space,
+we omit a review of Masud et al.’s protocol and its attacks,and only brieﬂy present our analysis results and improve-
+ment suggestions. Afterward, we will provide our complete
+improved protocol based on these improvement suggestions.Any interested reader is referred to [15] and[19] for further
+details of the original protocol and our attacks against it.
+A. Two Implementation Issues
+The original protocol exhibited deﬁciencies in its imple-
+mentation by neglecting to transmit the temporary identity
+of sensor nodes S
+TIDat the commencement of the protocol,
+as well as failing to update the temporary identity of users
+Dnew
+TIDupon the completion of authentication. As a result, the
+protocol’s proper functioning was compromised. To address
+these limitations, the revised protocol is introduced, incorpo-
+rating the inclusion of the SIDﬁeld in the initial message and
+ensuring the timely update of DIDnewandSIDnewfollowing a
+successful authentication process.
+B. Session Key Disclosure and Traceability Attacks
+The susceptibility of the original scheme to session key
+disclosure attacks and traceability attacks stems from the
+attacker’s capability to acquire conﬁdential data from sensornodes through side-channel attacks. To address this fundamen-
+tal ﬂaw, we opt to integrate a PUF into the protocol in order
+to reinforce its security measures.
+C. Ofﬂine Password Guessing Attacks
+In order to enhance security and mitigate the risks associated
+with ofﬂine password guessing, we adopt a biometric authenti-
+cation approach, replacing traditional passwords. Additionally,
+we incorporate secret salts into the system, further increas-ing the complexity and difﬁculty of ofﬂine password guessing
+attacks.
+IV . O
+URENHANCED SCHEME
+Based on Masud et al.’s protocol, we propose a more
+secure and efﬁcient anonymous authentication exchange pro-
+tocol. The protocol enables proper agreement of session keysTABLE I
+NOTATION TABLE
+between users (i.e., doctors), medical gateways, and medical
+sensors in smart healthcare scenarios, which in turn ensuressecure communication. It has three phases named the user
+registration phase ,the sensor node registration phase , and
+the authentication and key exchange phase . The symbolic
+descriptions in the protocol are shown in Table I.
+A. User Registration Phase
+Users (doctors) must register their devices with the medical
+gateway in order to obtain real-time patient health data. The
+steps for user registration are as follows.
+Step 1: The user enters his identity information ID
+iand
+biometric BIO i, and the smart device generates
+(ki,hidi)=Gen(BIO i)through a fuzzy extractor
+and sends the registration request Req :{IDi,ki}
+to the medical gateway through a secure
+channel.
+Step 2: After receiving a registration request, the medical
+gateway traverses its registration list and deter-
+mines whether the user is a new user. The gate-
+way then generates a random number biand a
+pseudonym DID i=bi⊕IDifor the user. The gate-
+way stores it in its registry while sending DID ito
+the user.
+Step 3: Upon receipt of the message, the user device gen-
+erates a random number riof short length (e.g.,
+8 bits) and calculates CPW i=h(ki/bardblIDi/bardblri)and
+stores IDi,CPW i,hidi, and DID iin its memory.
+After completing the registration, the user bindsthe registered sensor nodes by other means and
+stores their related information. At this point, the
+user device contains /angbracketleftID
+i,CPW i,hidi,DID i,SID n/angbracketright,
+etc.
+B. Sensor Node Registration Phase
+Step 1: The sensor node identiﬁes its own unique iden-
+titySNn, and sends it to the gateway on a secure
+channel.
+Step 2: Once the registration request has been received,
+the gateway iterates through its registration list and
+determines whether or not it is a registered node. It
+then generates a random number bnand calculates
+SID n=bn⊕SNn, while generating a challenge Cn
+and sending the message {SID n,Cn}to the sensor
+node over a secure channel.
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. ZHOU et al.: SECURITY-ENHANCED LIGHTWEIGHT AND ANONYMITY-PRESERVING USER AUTHENTICATION SCHEME 9603
+Step 3: The sensor node generates the response Rn←
+PUF(Cn)via the PUF function. The gateway stores
+theSID nin its memory and sends the response Rn
+to the gateway.
+Step 4: The gateway records related information
+/angbracketleftSNn,SID n,(Cn,Rn),bn/angbracketrightin its registration list.
+C. Authentication and Key Exchange Phase
+As participants communicate primarily through unreliable
+channels, it is necessary for participants to authenticate eachother and negotiate session keys. This section describes
+in detail the process of participant authentication and key
+exchange, as shown in Fig. 2.
+U→GW: A fuzzy extractor recovers k
+i=Rep(hidi,BIO i)
+from the user’s identity IDiand biometric BIO i. The smart
+device continuously tries a random number riof shorter
+length, computes CPW/prime
+i=h(ki/bardblIDi/bardblri), and checks whether
+CPW/prime
+i=CPW iholds within a ﬁnite number of times (no
+more than 2|ri|). If it is not the case, the device stops the exe-
+cution of the protocol; otherwise, it proceeds to the next steps.
+The device generates the random number bnew
+iand calculates
+Ni=bnew
+i⊕h(ki). It then generates the veriﬁcation mes-
+sageα=h(bnew
+i/bardblki/bardblDID i/bardblSID n). The user device sends the
+message M1:{Ni,α,DID i,SID n}through the open channel.
+GW→SN: After receiving a message from the user
+Ui, the gateway retrieves its registry and locates the reg-
+istration information ki,IDiand/angbracketleftCn,Rn/angbracketright,SNnforDID i
+and SID n. It then computes bnew
+i/prime=Ni⊕h(ki),α/prime=
+h(bnew
+i/prime/bardblki/bardblDID i/bardblSID n)and veriﬁes whether α/prime=αholds
+or not. After veriﬁcation, the gateway generates a random
+number bnew
+n and the session key SK. Then, it computes
+SIDnew
+n=SNn⊕bnew
+n,SKn=(SK/bardblSIDnew
+n)⊕h(Rn)and gen-
+erates the veriﬁcation message β=h(SK/bardblRn/bardblSID n/bardblSIDnew
+n).
+The gateway sends the message M2:{SKn,β,Cn}through the
+open channel.
+SN→GW: After receiving the challenge Cn, the sen-
+sor node outputs the response Rn← PUF(Cn)and
+calculates (SK/prime/bardblSIDnew
+n/prime)= SKn⊕h(Rn)andβ/prime=
+h(SK/prime/bardblRn/bardblSID n/bardblSIDnew
+n/prime).I fβ/prime=βdoes not hold, the sen-
+sor node terminates the protocol and deletes the session key
+SK/primeand the new pseudonym SIDnew
+n/prime; conversely, the sensor
+node accepts the session key SK/prime, stores the new pseudonym
+SIDnew
+n/primeand continues with the protocol. The sensor node gen-
+erates the authentication message γ=h(SIDnew
+n/prime/bardblSK/prime)and
+sends the conﬁrmation message M3:{γ}.
+GW→U:The gateway calculates γ/prime=h(SIDnew
+n/bardblSK).
+Ifγ/prime=γdoes not hold, the gateway terminates the
+protocol; if it does, the gateway replaces and continues
+the protocol with the registration record for that sensor.
+Gateway computes DIDnew
+i=IDi⊕bnew
+iand SKi=
+(SIDnew
+n/bardblSK/bardblDIDnew
+i)⊕h(ki). Also generate the veriﬁcation
+message λ=h(SK/bardblDID i/bardblki/bardblDIDnew
+i/bardblSIDnew
+n)and send the
+message M4:{SKi,λ}. Then, the gateway adds DIDnew
+ito the
+registration record of that user.
+U:User calculates (SIDnew
+n/prime/bardblSK/prime/bardblDIDnew
+i/prime)=SKi⊕h(ki)
+andλ/prime=h(SK/prime/bardblDID i/bardblki/bardblDIDnew
+i/prime/bardblSIDnew
+n/prime).I fλ/prime=λdoes
+not hold, the user terminates the protocol and rejects SK/primeandDIDnew
+i/prime; conversely, the user accepts SK/primeand replaces DID i
+andSID nstored in memory with DIDnew
+i/primeandSIDnew
+n/prime.
+Note that during the functioning of the protocol, the partici-
+pants send temporary identities over an open channel, and the
+updating of the temporary identities ensures that the protocolsatisﬁes the security property of untraceability.
+V. S
+ECURITY ANALYSIS OF PROPOSED PROTOCOL
+In this section, we will analyze the security of the improved
+protocol in detail, using both heuristic methods and formal
+methods, speciﬁcally the BAN logic [29] and the ProVerif
+tool [30].
+Heuristic analysis examines protocol security in the most
+intuitive and direct way, particularly by scrutinizing all fun-damental security properties. In contrast, BAN logic focuses
+on the analysis of mutual authentication within the protocol.
+Finally, the ProVerif tool provides a rigorous veriﬁcation ofsecurity properties by leveraging π-calculus. This veriﬁcation
+process strengthens the validation of the analyses conducted
+by the ﬁrst two methods.
+A. Heuristic Analysis
+1) Resistant to Ofﬂine Password Guessing Attacks: In order
+o make it more difﬁcult for an attacker to guess the pass-word, the improved protocol is designed using biometrics, and
+a secret salt is added to the calculation of CPW
+i. The user’s
+smart device must generate an additional short (e.g., 8-bit) ran-dom number r
+ito compute CPW i=h(ki/bardblIDi/bardblri). Note that
+the secret salt value riis not stored in the device memory
+and cannot be obtained by an attacker through a side-channelattack. When a legitimate user logs in to the device, he or
+she must try r
+ia limited number of times, and because of the
+short length of the salt, it is very easy for a legitimate user whoknows the password to pass authentication. An attacker who
+does not know the password has to guess both the password
+and the secret salt value, making it signiﬁcantly more difﬁcultto guess. Therefore, the new protocol maximizes resistance
+against ofﬂine password guessing attacks.
+2) Resistant to Session Key Compromise Attacks: In
+Masud et al.’s scheme, an attacker can obtain temporary secret
+data through a side-channel attack and consequently computethe ﬁnal session key. Therefore, the new protocol is specif-
+ically designed to address the threat posed by side-channel
+attacks. On the user side, a fuzzy extractor is added, and thesecret data k
+iis no longer statically stored but dynamically
+generated by the user entering the correct password. On the
+sensor node side, the new protocol utilizes a PUF to resistside-channel attacks. As a result, the new protocol ensures the
+security of the session key.
+3) Anonymity and Untraceability: During the protocol reg-
+istration phase, the real identity information of users and
+sensor nodes is hidden through DID
+i=IDi⊕biand
+SID n=SNn⊕bn. Moreover, during the protocol execution,
+pseudonyms are sent over the open channel, and without know-
+ingbiandbn, an attacker eavesdropping on the communication
+cannot determine the communication participants correspond-
+ing to DID iand SID n. On the other hand, the pseudonyms
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. 9604 IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 6, 15 MARCH 2024
+Fig. 2. Authentication and key exchange phase in the proposed protocol.
+of the sensor nodes are updated after each protocol run, so
+an attacker cannot track the communication of participants
+through DID iand SID n. In conclusion, the new protocol
+provides both anonymity and untraceability.
+4) Resistant to Cloning and Physical Attacks: Suppose an
+attacker could attempt to tamper with the memory of the sensor
+node SNnor perform a side-channel attack to obtain the data
+stored in the memory [31]. However, such an attempt would
+change the function of the PUF and the adversary would obtain
+a PUF that could not produce any output, thus rendering the
+adversary’s attempt meaningless. It is because of the nonrepli-
+cable nature of the PUF that makes this protocol resistant tocloning and physical attacks.
+5) Resistant to Impersonation Attacks: Assuming that an
+attacker Aintercepts a message M
+1:{Ni,α,DID i,SID n}sent
+by a user Uito the gateway and then tries to impersonate Uito
+resend the tampered message, it must recalculate ki. However,kineeds to be reproduced from the fuzzy extractor using the
+IDi,BIO iof the user and other information. The aforemen-
+tioned analysis of anonymity and resistance to cloning attacks
+shows that the adversary has no access to these secret valuesand, therefore, the proposed protocol is resistant to imper-
+sonation attacks. In a similar manner, it can be inferred that
+the attacker also cannot successfully impersonate the sensornode.
+B. BAN Logic-Based Authentication Proof
+BAN logic is a logic rule proposed by Burrows et al.
+[29]. It is primarily used to analyze message interaction pro-
+tocols and to assist the veriﬁer in determining whether a
+message is trusted or eavesdropped. BAN logic plays an exten-sive and active role in the formal analysis of authentication
+protocols. In this section, we will use BAN logic to
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. ZHOU et al.: SECURITY-ENHANCED LIGHTWEIGHT AND ANONYMITY-PRESERVING USER AUTHENTICATION SCHEME 9605
+TABLE II
+BAN L OGIC NOTATIONS
+TABLE III
+BAN L OGIC RULES
+formally prove that the proposed protocols can achieve mutual
+authentication.
+BAN logic semantics deﬁnes three types of objects.
+Communication subjects, i.e., the actual participants of the
+protocol, e.g., terminals, servers, etc. Logical statements, i.e.,the expression of speciﬁc logic in speciﬁc symbols. And shared
+secrets, i.e., secret data agreed in advance between partici-
+pants. The basic BAN logic symbols and their corresponding
+meanings are shown in Table II. The basic rules of BAN logic
+reasoning are shown in Table III.
+1) The idealized form of the proposed protocol is as
+follows.
+Message 1: U
+i→GW :/angbracketleftNi,α/angbracketright
+Uiki↔GW,DID i,SID i.
+Message 2: GW→SNn:/angbracketleftSKn,β/angbracketrightSNnRn↔GW,Cn.
+Message 3: SNn→GW :/angbracketleftγ/angbracketrightSNnRn↔GW.
+Message 4: GW→Ui:/angbracketleftSKi,λ/angbracketright
+Uiki↔GW.
+2) It is important to prove the following goals.
+GOAL1: Ui|≡(Ui↔SKGW).
+GOAL2: GW|≡Ui|≡(Ui↔SKGW).
+GOAL3: Ui|≡GW|≡(Ui↔SKGW).
+GOAL4: SNn|≡(SNn↔SKGW).
+GOAL5: GW|≡SNn|≡(SNn↔SKGW).
+GOAL6: SNn|≡GW|≡(SNn↔SKGW).
+3) The initial state of our protocol is deﬁned as follows.
+A1: Ui|≡#(bnew
+i).
+A2: GW|≡#(bnew
+i,bnew
+n,SK).
+A3: SNn|≡#(bnew
+n).
+A4: Ui|≡(Ui↔kiGW).
+A5: GW|≡(Ui↔kiGW).
+A6: Ui|≡GW|⇒(Ui↔SKGW).
+A7: SNn|≡(SNn↔RnGW).
+A8: GW|≡(SNn↔RnGW).
+A9: SNn|≡GW|⇒(SNn↔SKGW).
+A10: GW|≡(Ui↔SKGW).
+A11: GW|≡(SNn↔SKGW).4) The proof process is as follows.
+Proof:
+S1: According to Message 1, we get GW /triangleleft
+(/angbracketleftNi,α/angbracketright
+Uiki↔GW,DID i,SID i).
+S2: According to A5 and R1, we can get GW|≡Ui|∼
+(Ni,α,DID i,SID n).
+S3: According to A3 and R4, we get GW|≡
+#(Ni,α,DID i,SID n).
+S4: According to S2, S3, and R3, we get GW|≡Ui|≡
+(Ni,α,DID i,SID n).
+S5: According to S4 and A5, we can deduce that
+GW|≡Ui|≡(Ui↔SKGW).(GOAL2 ).
+S6: According to Message 2, we can get SNn/triangleleft
+(/angbracketleftSKn,β/angbracketrightSNnRn↔GW,Cn).
+S7: According to A7 and R1, we can get SNn|≡GW|∼
+(SKn,β,Cn).
+S8: According to A3 and R4, we can get SNn|≡
+#(SKn,β,Cn).
+S9: According to S7, S8, and R3, we get SNn|≡GW|≡
+(SKn,β,Cn).
+S10: According to S9 and A8, we can deduce that
+SNn|≡GW|≡(SNn↔SKGW).(GOAL6 ).
+S11: According to S9, S10, A9, and R2, we can get SNn|≡
+(SNn↔SKGW).(GOAL4 ).
+S12: According to Message 3, we can get GW/triangleleft(/angbracketleftγ/angbracketrightSNnRn↔GW).
+S13: According to A8 and R1, we can get GW|≡SNn|∼(γ).
+S14: According to A2 and R4, we can get GW|≡#(γ).
+S15: According to S13, S14, and R3, we get GW|≡SNn|≡
+(γ).
+S16: According to S15 and R5, we get GW|≡SNn|≡
+(SNn↔SKGW).(GOAL5 ).
+S17: According to Message 4, we get Ui/triangleleft(/angbracketleftSKi,λ/angbracketright
+Uiki↔GW).
+S18: According to A4 and R1, we get Ui|≡GW|∼(SKi,λ).
+S19: According to A1 and R4, we get Ui|≡#(SKi,λ).
+S20: According to S18, S19, and R3, we get Ui|≡GW|≡
+(SKi,λ).
+S21: According to S20 and A4, we can deduce that
+Ui|≡GW|≡(Ui↔SKGW).(GOAL3 ).
+S22: According to S20, S21, A6, and R2, we get Ui|≡
+(Ui↔SKGW).(GOAL1 ).
+C. Formal Security Proof Using ProVerif
+ProVerif [32] is aπ-algorithm-based automated crypto-
+graphic protocol veriﬁcation tool developed by Bruno Blanchet
+using the Prolog language. During more than 20 years of
+development, ProVerif has been widely used for the formalveriﬁcation of cryptographic protocols [30],[33],[34],[35].
+Our ProVerif validation code is divided into three sections:
+1) a declaration section; 2) a query section; and 3) a protocol
+ﬂow section. The declaration section deﬁnes the variable name
+and type for each variable. We use two channel types, PrivateChannel schfor communication participants to pass sensitive
+messages during the registration phase, and Public Channel ch
+for communication participants to pass messages publicly. Theparameters and functions required for the validation process
+are also deﬁned. The code of the declaration section is shown
+in Fig. 3.
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. 9606 IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 6, 15 MARCH 2024
+Fig. 3. Declaration statements in ProVerif codes.
+A ss h o w ni nF i g . 4, we deﬁne a set of query statements to
+verify the key security and mutual authenticity of each par-
+ticipant, as well as the identity of the user and the security
+of the biometric password. Where noninterf IDui is the
+query used to verify the strong anonymity of the user, andweaksecret PWui is the query used to verify the resistance
+against the ofﬂine password guessing attack.
+We have coded the protocol ﬂow section according to the
+protocol execution steps, which are not listed here due to space
+constraints. The output in Fig. 5shows that our proposedFig. 4. Query statements in ProVerif codes.
+Fig. 5. Result of ProVerif.
+protocol satisﬁes mutual authentication and guarantees the
+security of keys, user identities, and biometric passwords.
+VI. C OMPARISON OF SECURITY AND PERFORMANCE
+This section compares the proposed scheme in terms of
+security, computational, and communication overheads with
+the tripartite authentication schemes of Masud et al. [15],
+Sharma and Kalra [36], Shihab and AlTawy [18],
+Kim et al. [17], and Kwon et al. [16] in IoMT scenario.
+Among them, all of the relevant schemes are lightweight,using only hash functions and
+XOR operations to design the
+protocol, where [16],[17], and [18] are improvements on
+Masud et al.’s scheme [15] and also use biometrics. In short,
+in the above protocol, the communication entities concerned,
+i.e., the gateway, the user, and the sensor, are all involved inthe authentication and key exchange process.
+A. Comparison of Security
+Table IVshows the results of comparing the security of the
+same type of protocol. Where ✓indicates that the protocol has
+this security attribute, while ✗indicates that the protocol does
+not have this security attribute. The SPs in the table represent
+the various security attributes compared.
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. ZHOU et al.: SECURITY-ENHANCED LIGHTWEIGHT AND ANONYMITY-PRESERVING USER AUTHENTICATION SCHEME 9607
+(a) (b)
+Fig. 6. Performance comparison. (a) Comparison of computation cost. (b) Comparison of communication cost.
+TABLE IV
+COMPARISON OF SECURITY WITHRELEV ANT PROTOCOLS
+From the comparison results, it can be seen that our protocol
+is resistant to physical or cloning attacks because it uses PUFs.It should be noted that, given the balance between efﬁciency
+and stronger security, we do not use DH key exchange and
+therefore do not have forward security.
+B. Comparison of Computation Cost
+The computational overhead includes all cryptographic
+operations to complete authentication and key exchange. Sincethe compared schemes all involve only hashing operations,
+we only calculate the overhead of the hashing operations.
+Note that we do not consider operations, such as
+XOR and
+concatenation, which have negligible computational over-
+head. In this section, we use a TSMC 7-nm Snapdragon
+870 CPU, Android 12, 8G RAM device to simulate aresource-constrained device, and an AMD Ryzen5 3500U
+2.10-GHz CPU, Ubuntu 12.04, 16G RAM device to simulate a
+nonresource-constrained device. We implement and calculate
+the computational cost of the hash operations in the above
+protocol. After 10 000 executions, we had an average execu-tion time of 0.0392 ms (for resource-constrained devices) and
+0.0144 ms (for nonresource-constrained devices), respectively,
+as shown in Table V. Table VIand Fig. 6(a) give the compara-
+tive results for the relevant protocols in terms of computational
+overhead.TABLE V
+HASH FUNCTION EXECUTION TIME
+TABLE VI
+COMPARISON OF COMPUTATION COST
+TABLE VII
+COMPARISON OF COMMUNICATION COST
+C. Comparison of Communication Cost
+The communication overhead is the amount of data
+exchanged or transmitted by the participants in completing the
+authentication process. The following assumptions are made
+uniformly in this section: the length of the random number,the identity, the challenge, and the response is 160 bits, the
+length of the timestamp is 32 bits, and the output of the
+hash function is 256 bits. In the proposed protocol, message
+M
+1{Ni,α,DID i,SID n}sends 160 +256+160+160=736
+bits, message M2{SKn,β,Cn}sends 320 +256+160=736
+bits, message M3{γ}sends 256 bits, and message M4{SKi,λ}
+sends 480 +256=736 bits. Table VIIand Fig. 6(b) give the
+required communication overhead and the cumulative over-head for the user, gateway, and sensor parties in the proposed
+protocol and the associated protocol, respectively.
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. 9608 IEEE INTERNET OF THINGS JOURNAL, VOL. 11, NO. 6, 15 MARCH 2024
+Generally speaking, the results of the comparison show
+that our proposed protocol is computationally and commu-nicationally efﬁcient while maintaining a strong guarantee of
+security.
+VII. C
+ONCLUSION
+This article presents an improved authenticated key
+exchange protocol designed speciﬁcally for an IoMT appli-
+cation scenario, ensuring privacy and secure communica-
+tion among doctors, patients, and medical gateways. Theproposed protocol employs PUFs to withstand physical threats
+while leveraging biometrics, fuzzy extractors, and secret
+salt values to signiﬁcantly heighten the level of difﬁcultyfor password guessing attacks. To establish the security of
+the protocol, a comprehensive array of formal and heuris-
+tic security analysis methods is employed, validating itsrobustness. Comparative evaluations against other relevant pro-
+tocols demonstrate that our proposed solution achieves an
+optimal balance between security and efﬁciency in resource-constrained IoMT scenarios.
+A
+CKNOWLEDGMENT
+The authors would like to thank the anonymous referees for
+their constructive comments.
+REFERENCES
+[1] G. Hatzivasilis, O. Soultatos, S. Ioannidis, C. Verikoukis, G. Demetriou,
+and C. Tsatsoulis, “Review of security and privacy for the Internet
+of Medical Things (IoMT),” in Proc. 15th Int. Conf. Distrib. Comput.
+Sensor Syst. (DCOSS) , 2019, pp. 457–464.
+[2] M. N. Bhuiyan, M. M. Rahman, M. M. Billah, and D. Saha, “Internet of
+things (IoT): A review of its enabling technologies in healthcare appli-
+cations, standards protocols, security, and market opportunities,” IEEE
+Internet Things J. , vol. 8, no. 13, pp. 10474–10498, Jul. 2021.
+[3] A. Al-Fuqaha, M. Guizani, M. Mohammadi, M. Aledhari, and
+M. Ayyash, “Internet of Things: A survey on enabling technologies, pro-tocols, and applications,” IEEE Commun. Surveys Tuts. , vol. 17, no. 4,
+pp. 2347–2376, 4th Quart., 2015.
+[4] A. Arfaoui, A. Kribeche, and S.-M. Senouci, “Context-aware anonymous
+authentication protocols in the Internet of Things dedicated to e-healthapplications,” Comput. Netw. , vol. 159, pp. 23–36, Aug. 2019.
+[5] Z. Mahmood, H. Ning, A. Ullah, and X. Yao, “Secure authentication and
+prescription safety protocol for telecare health services using ubiquitousIoT,” Appl. Sci. , vol. 7, no. 10, p. 1069, 2017.
+[6] M. A. Iqbal and M. Bayoumi, “Secure end-to-end key establishment
+protocol for resource-constrained Healthcare sensors in the context of
+IoT,” in Proc. 2016 Int. Conf. High Perform. Comput. Simul. (HPCS) ,
+2016, pp. 523–530.
+[7] K. Park et al., “LAKS-NVT: Provably secure and lightweight authenti-
+cation and key agreement scheme without veriﬁcation table in medical
+Internet of Things,” IEEE Access , vol. 8, pp. 119387–119404, Jun. 2020.
+[8] R. Amin, S. H. Islam, G. P. Biswas, M. K. Khan, and X. Li,
+“Cryptanalysis and enhancement of anonymity preserving remote user
+mutual authentication and session key agreement scheme for E-healthcare systems,” J. Med. Syst. , vol. 39, no. 11, pp. 1–21, 2015.
+[9] K. Fan, W. Jiang, H. Li, and Y . Yang, “Lightweight RFID protocol for
+medical privacy protection in IoT,” IEEE Trans. Ind. Informat. , vol. 14,
+no. 4, pp. 1656–1665, Apr. 2018.
+[10] S. F. Aghili, H. Mala, P. Kaliyar, and M. Conti, “SecLAP: Secure
+and lightweight RFID authentication protocol for medical IoT,” Future
+Gener. Comput. Syst. , vol. 101, pp. 621–634, Dec. 2019.
+[11] J. Kang, K. Fan, K. Zhang, X. Cheng, H. Li, and Y . Yang, “An
+ultra light weight and secure RFID batch authentication scheme forIoMT,” Comput. Commun. , vol. 167, pp. 48–54, Feb. 2021.[12] V . Yanambaka, S. Mohanty, E. Kougianos, D. Puthal, and
+L. Rachakonda, “PMsec: PUF-based energy-efﬁcient authentica-tion of devices in the Internet of Medical Things (IoMT),” in Proc.
+IEEE Int. Symp. Smart Electron. Syst. (iSES) (Formerly iNiS) , 2019,
+pp. 320–321.
+[13] K.-L. Tsai, Y .-L. Huang, F.-Y . Leu, and I. You, “TTP based high-efﬁcient
+multi-key exchange protocol,” IEEE Access , vol. 4, pp. 6261–6271,
+Sep. 2016.
+[14] F. Wu et al., “A lightweight and robust two-factor authentication
+scheme for personalized healthcare systems using wireless medical
+sensor networks,” Future Gener. Comput. Syst. , vol. 82, pp. 727–737,
+May 2018.
+[15] M. Masud, G. S. Gaba, K. Choudhary, M. S. Hossain, M. F. Alhamid,
+and G. Muhammad, “Lightweight and anonymity-preserving user
+authentication scheme for IoT-based Healthcare,” IEEE Internet Things
+J., vol. 9, no. 4, pp. 2649–2656, Feb. 2022.
+[16] D. Kwon, Y . Park, and Y . Park, “Provably secure three-factor-based
+mutual authentication scheme with PUF for wireless medical sensornetworks,” Sensors , vol. 21, no. 18, p. 6039, 2021.
+[17] K. Kim, J. Ryu, Y . Lee, and D. Won, “An improved lightweight user
+authentication scheme for the Internet of Medical Things,” Sensors ,
+vol. 23, no. 3, p. 1122, 2023.
+[18] S. Shihab and R. AlTawy, “Lightweight authentication scheme for
+Healthcare with robustness to Desynchronization attacks,” IEEE Internet
+Things J. , vol. 10, no. 20, pp. 18140–18153, Oct. 2023.
+[19] S. Wang, X. Zhou, K. Wen, B. Weng, and P. Zeng, “Security analysis of
+a user authentication scheme for IoT-based healthcare,” IEEE Internet
+Things J. , vol. 10, no. 7, pp. 6527–6530, Apr. 2023.
+[20] D. R. Brown, “Generic groups, collision resistance, and ECDSA,” Des.,
+Codes Crypt.
+, vol. 35, no. 1, pp. 119–152, 2005.
+[21] S. S. Sahoo, S. Mohanty, and B. Majhi, “Improved biometric-based
+mutual authentication and key agreement scheme using ECC,” Wireless
+Pers. Commun. , vol. 111, no. 2, pp. 991–1017, 2020.
+[22] G. S. Rawat, K. Singh, N. I. Arshad, K. Hadidi, and A. Ahmadian,
+“A lightweight authentication scheme with privacy preservation forvehicular networks,” Comput. Elect. Eng. , vol. 100, May 2022,
+Art. no. 108016.
+[23] Y . Dodis, L. Reyzin, and A. Smith, “Fuzzy Extractors: How to generate
+strong keys from biometrics and other noisy data,” in Proc. Int. Conf.
+Theory Appl. Crypt. Techn. , 2004, pp. 523–540.
+[24] D. Dolev and A. Yao, “On the security of public key protocols,” IEEE
+Trans. Inf. Theory , vol. 29, no. 2, pp. 198–208, Mar. 1983.
+[25] Q. Chen, K. Su, C. Liu, and Y . Xiao, “Automatic veriﬁcation of Web ser-
+vice protocols for epistemic speciﬁcations under Dolev-Yao model,” inProc. Int. Conf. Serv. Sci. , 2010, pp. 49–54.
+[26] I. A. Tsoukalas and P. D. Siozos, “Privacy and anonymity in the
+information society—Challenges for the European union,” Sci. World
+J., vol. 11, pp. 458–462, Mar. 2011.
+[27] Y . K. Lee, L. Batina, and I. Verbauwhede, “EC-RAC (ECDLP based
+randomized access control): Provably secure RFID authentication pro-tocol,” in Proc. IEEE Int. Conf. RFID , 2008, pp. 97–104.
+[28] D. Pointcheval, “Topics in cryptology—CT-RSA 2006” in Proc. Crypt.
+Track RSA Conf. , vol. 3860, San Jose, CA, USA, 2006, pp. 192–225.
+[29] M. Burrows, M. Abadi, and R. Needham, “A logic of authentica-
+tion,” ACM Trans. Comput. Syst. (TOCS) , vol. 8, no. 1, pp. 18–36,
+1990.
+[30] N. Kobeissi, K. Bhargavan, and B. Blanchet, “Automated veriﬁcation
+for secure messaging protocols and their implementations: A symbolic
+and computational approach,” in Proc. 2017 IEEE Eur. Symp. Security
+Privacy (EuroS&P) , 2017, pp. 435–450.
+[31] P. Kocher, J. Jaffe, and B. Jun, “Differential power analysis,” in
+Proc. 19th Annu. Int. Crypt. Conf. , Santa Barbara, CA, USA, 1999,
+pp. 388–397.
+[32] B. Blanchet, B. Smyth, V . Cheval, and M. Sylvestre, “ ProVerif 2.00:
+Automatic Cryptographic Protocol Veriﬁer, User Manual and Tutorial ,”
+INRIA, Paris, France, 2018.
+[33] K. Bhargavan, B. Blanchet, and N. Kobeissi, “Veriﬁed models and ref-
+erence implementations for the TLS 1.3 standard candidate,” in Proc.
+IEEE Symp. Security Privacy (SP) , 2017, pp. 483–502.
+[34] N. Kobeissi, G. Nicolas, and K. Bhargavan, “Noise explorer:
+Fully automated modeling and veriﬁcation for arbitrary noise proto-cols,” in Proc. IEEE Eur. Symp. Security Privacy (EuroS P) , 2019,
+pp. 356–370.
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. ZHOU et al.: SECURITY-ENHANCED LIGHTWEIGHT AND ANONYMITY-PRESERVING USER AUTHENTICATION SCHEME 9609
+[35] V . Cortier, D. Galindo, and M. Turuani, “A formal analysis of the
+Neuchâtel e-voting protocol,” in Proc. IEEE Eur. Symp. Security Privacy
+(EuroS P) , 2018, pp. 430–442.
+[36] G. Sharma and S. Kalra, “A lightweight user authentication scheme for
+cloud-IoT based healthcare services,” Iranian J. Sci. Technol. Trans.
+Elect. Eng. , vol. 43, no. 1 pp. 619–636, 2019.
+Xin Zhou received the M.S. degree from the
+School of Information Science and Technology,Hangzhou Normal University, Hangzhou, China. Heis currently pursuing the Ph.D. degree with the
+School of Mathematics and Statistics, Fujian Normal
+University, Fuzhou, China.
+His research interests include authenticated key
+exchange protocols, secure multiparty computation,
+blockchain, and public-key cryptography.
+Shengbao Wang received the Ph.D. degree
+in computer science from Shanghai Jiao Tong
+University, Shanghai, China, in 2008.
+He is currently an Associate Professor with the
+Key Laboratory of Cryptography Technology ofZhejiang Province and the School of Information
+Science and Technology, Hangzhou Normal
+University, Hangzhou, China. His research interestslie in public-key cryptography, especially focuson public-key encryption, and authenticated key
+agreement protocols.
+Kang Wen is currently pursuing the M.S.
+degree with the School of Information Science
+and Technology, Hangzhou Normal University,
+Hangzhou, China.
+His research interests include authenticated key
+exchange protocols, blockchain, and public-key
+cryptography.
+Bin Hu received the Ph.D. degree in computer
+science from Zhejiang University, Hangzhou, China,in 2009.
+He is currently an Associate Professor with the
+Key Laboratory of Cryptography Technology of
+Zhejiang Province and the School of InformationScience and Technology, Hangzhou NormalUniversity, Hangzhou. His research interests lie in
+cryptographic protocol design and cryptography
+engineering.
+Xiao Tan received the Ph.D. degree from the School
+of Computer Science, City University of Hong Kong,
+Hong Kong, China, in 2014.
+He is currently a Lecturer with the Key
+Laboratory of Cryptography Technology of Zhejiang
+Province and the School of Information Science
+and Technology, Hangzhou Normal University,Hangzhou, China. His research interests includeapplied cryptography, fair exchange protocols, cloud
+security, and blockchain security.
+Qi Xie received the Ph.D. degree in applied mathe-
+matics from Zhejiang University, Hangzhou, China,
+in 2005.
+He was a Visiting Scholar with the Department
+of Computer Science, University of Birmingham,Birmingham, U.K., from 2009 to 2010 and the
+Department of Computer Science, City University of
+Hong Kong, Hong Kong, in 2012. He is a Professorwith Hangzhou Normal University, Hangzhou, and
+the Key Laboratory of Cryptography of Zhejiang
+Province. His research interests include applied
+cryptography, including digital signatures, authentication, and key agreementprotocols.
+Authorized licensed use limited to: Hangzhou Normal University. Downloaded on May 07,2024 at 02:52:46 UTC from IEEE Xplore.  Restrictions apply. 

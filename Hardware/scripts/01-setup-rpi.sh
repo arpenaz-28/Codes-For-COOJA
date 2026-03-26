@@ -3,7 +3,7 @@ set -euo pipefail
 
 echo "[setup] Updating apt and installing toolchain..."
 sudo apt update
-sudo apt install -y build-essential cmake git pkg-config python3 python3-pip rsync openssh-client
+sudo apt install -y build-essential git pkg-config python3 python3-pip rsync openssh-client
 
 echo "[setup] Optional CoAP packages (if available on distro)..."
 sudo apt install -y libcoap3 libcoap3-dev || true

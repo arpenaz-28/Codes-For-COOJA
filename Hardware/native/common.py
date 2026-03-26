@@ -3,6 +3,7 @@ import hashlib
 import json
 import os
 import time
+from dataclasses import dataclass, field
 from typing import Dict
 
 import numpy as np
@@ -97,3 +98,92 @@ def puf_response_bit(puf: ArbiterPUF, challenge_hex: str, n_bits: int) -> int:
     ch = challenge_from_hex(challenge_hex, n_bits)
     resp = puf.eval(ch.reshape(1, -1))[0]
     return 1 if float(resp) >= 0 else -1
+
+
+@dataclass
+class PhaseMetric:
+    wall_s: float = 0.0
+    cpu_s: float = 0.0
+    tx_bytes: int = 0
+    rx_bytes: int = 0
+    _wall_start: float = 0.0
+    _cpu_start: float = 0.0
+    _active: bool = False
+
+
+@dataclass
+class MetricsCollector:
+    role: str
+    cpu_power_w: float
+    net_energy_per_byte_j: float
+    phases: Dict[str, PhaseMetric] = field(default_factory=dict)
+
+    def _get(self, name: str) -> PhaseMetric:
+        if name not in self.phases:
+            self.phases[name] = PhaseMetric()
+        return self.phases[name]
+
+    def start(self, name: str) -> None:
+        p = self._get(name)
+        p._wall_start = time.perf_counter()
+        p._cpu_start = time.process_time()
+        p._active = True
+
+    def stop(self, name: str) -> None:
+        p = self._get(name)
+        if not p._active:
+            return
+        p.wall_s += max(0.0, time.perf_counter() - p._wall_start)
+        p.cpu_s += max(0.0, time.process_time() - p._cpu_start)
+        p._active = False
+
+    def add_tx(self, name: str, nbytes: int) -> None:
+        self._get(name).tx_bytes += int(nbytes)
+
+    def add_rx(self, name: str, nbytes: int) -> None:
+        self._get(name).rx_bytes += int(nbytes)
+
+    def phase_energy_j(self, name: str) -> float:
+        p = self._get(name)
+        return p.cpu_s * self.cpu_power_w + (p.tx_bytes + p.rx_bytes) * self.net_energy_per_byte_j
+
+    def build_report(self, device_id: str) -> Dict:
+        totals = {"wall_s": 0.0, "cpu_s": 0.0, "tx_bytes": 0, "rx_bytes": 0, "energy_j": 0.0}
+        phase_report: Dict[str, Dict] = {}
+        for name, p in self.phases.items():
+            energy = self.phase_energy_j(name)
+            phase_report[name] = {
+                "wall_s": round(p.wall_s, 6),
+                "cpu_s": round(p.cpu_s, 6),
+                "tx_bytes": p.tx_bytes,
+                "rx_bytes": p.rx_bytes,
+                "energy_j": round(energy, 9),
+            }
+            totals["wall_s"] += p.wall_s
+            totals["cpu_s"] += p.cpu_s
+            totals["tx_bytes"] += p.tx_bytes
+            totals["rx_bytes"] += p.rx_bytes
+            totals["energy_j"] += energy
+
+        return {
+            "kind": "HW_METRIC",
+            "role": self.role,
+            "device_id": str(device_id),
+            "phases": phase_report,
+            "totals": {
+                "wall_s": round(totals["wall_s"], 6),
+                "cpu_s": round(totals["cpu_s"], 6),
+                "tx_bytes": int(totals["tx_bytes"]),
+                "rx_bytes": int(totals["rx_bytes"]),
+                "energy_j": round(totals["energy_j"], 9),
+            },
+            "model": {
+                "cpu_power_w": self.cpu_power_w,
+                "net_energy_per_byte_j": self.net_energy_per_byte_j,
+            },
+            "ts": now_ts(),
+        }
+
+
+def print_metric_report(report: Dict) -> None:
+    print("HW_METRIC|" + json.dumps(report, separators=(",", ":"), sort_keys=True))

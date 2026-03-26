@@ -82,6 +82,40 @@ Native authentication uses pypuf challenge-response pairs:
 
 Expected outcome: GW logs show token acceptance and decrypted DATA packets.
 
+## Metric Collection (COOJA-like for Hardware)
+
+The node runtime prints one structured metric line at the end of a run:
+
+- prefix: HW_METRIC|
+- content: JSON with enroll/auth/keyex/data phase metrics
+
+Captured metrics per phase:
+
+- wall time (s)
+- process CPU time (s)
+- Tx bytes
+- Rx bytes
+- estimated energy (J)
+
+Estimated energy model:
+
+- CPU energy: CPU_s * CPU_POWER_W
+- Network energy: (Tx_Bytes + Rx_Bytes) * NET_ENERGY_PER_BYTE_J
+
+Configure model constants in config/roles.env.
+
+### Save node log and export CSV
+
+On the node machine, run:
+
+- ./scripts/04-run-role.sh node | tee node-hw.log
+
+Then parse:
+
+- python3 scripts/06-parse-hw-metrics.py node-hw.log metrics-hardware.csv
+
+You can compare metrics-hardware.csv against your COOJA CSV structure for phase-level analysis.
+
 ## Security Scope of Native Runtime
 
 This runtime is for controlled LAN thesis experimentation. It mirrors protocol behavior but is not production-hardened.

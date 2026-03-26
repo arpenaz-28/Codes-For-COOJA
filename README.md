@@ -4,12 +4,14 @@ Master's Thesis Project: formal verification and performance evaluation of light
 
 ## Overview
 
+
 This repository contains implementation, simulation, and security analysis artifacts for multiple IoT authentication schemes in Contiki-NG/COOJA:
 
 - Base Scheme (reference implementation)
 - LAAKA
 - Proposed Anonymity-Extended Base Scheme
 - Desynchronization-resilience scenario for the proposed scheme
+- **Zhou-Scheme** (Security-Enhanced Lightweight and Anonymity-Preserving User Authentication Scheme for IoT-Based Healthcare, IEEE IoT J 2024)
 
 Core protocol features in the proposed scheme include:
 
@@ -27,6 +29,7 @@ Core protocol features in the proposed scheme include:
 | `Base-Scheme-Aligned/` | Aligned base variant used for fairer comparison experiments |
 | `LAAKA/` | LAAKA scheme implementation and simulation setup |
 | `Desync-Anonymity-Extended-Base-Scheme/` | Desynchronization experiment setup |
+| `Zhou-Scheme/` | Zhou et al. 2024 scheme: source, 100-node simulation, and protocol README |
 | `Hardware/` | Laptop + RPi deployment package with native GW/AS/Node runtime and pypuf-based authentication |
 | `Results/CSV-Data/` | Final CSV outputs for per-scheme and cross-scheme comparison |
 | `Results/Charts/` | Final chart outputs, including aligned and scalability analyses |
@@ -35,6 +38,18 @@ Core protocol features in the proposed scheme include:
 | `Scripts/Utilities/` | Parsing, extraction, and helper utilities |
 | `ProVerif-Security-Analysis/` | Protocol models, outputs, and security chart snapshots |
 | `proverif2.05/` | Local ProVerif distribution source and examples |
+## Zhou-Scheme (2024)
+
+**Zhou-Scheme** implements the protocol from:
+
+> "Security-Enhanced Lightweight and Anonymity-Preserving User Authentication Scheme for IoT-Based Healthcare" (Zhou et al., IEEE IoT Journal, 2024)
+
+Features:
+- Three-entity protocol: User, Gateway, Sensor Node
+- PUF-based device binding, fuzzy extractors, secret salt, and pseudonym rotation
+- 100-node simulation scenario (`Zhou-Scheme/test-sim-100.csc`)
+- Full source: `user-node.c`, `sn-node.c`, `gw-server.c`, `gw-node.c`
+- See `Zhou-Scheme/README.md` for protocol details and build/run instructions
 
 ## Key Results Assets
 

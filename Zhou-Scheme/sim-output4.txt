@@ -1,0 +1,22 @@
+﻿docker : failed to connect to the 
+docker API at npipe:////./pipe/docker
+DesktopLinuxEngine; check if the 
+path is correct and if the daemon is 
+running: open 
+//./pipe/dockerDesktopLinuxEngine: 
+The system cannot find the file 
+specified.
+At line:1 char:402
++ ... | tail -5"; docker exec 
+cooja-sim bash -c "cd 
+/home/user/contiki-ng/t ...
++                 ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~
+    + CategoryInfo          : NotSpe 
+   cified: (failed to conne...file   
+  specified.:String) [], RemoteExc   
+ eption
+    + FullyQualifiedErrorId : Native 
+   CommandError
+ 

@@ -1,3 +1,46 @@
+# Workspace Manifest (Last updated: 2026-03-16)
+
+This section summarizes the current folder structure and key files in this workspace. Copy-paste this block to any LLM or collaborator for instant project context.
+
+- **Anonymity-Extended-Base-Scheme/**
+	- Core implementation: `aes.c`, `as-node.c`, `device-node.c`, `gw-node.c`, `sha256.c`, `project-conf.h`, `Makefile`
+	- CoAP server/client: `coap-server.c`, `coap-client.c`
+	- Simulation configs: `test-sim-100.csc`, `test-sim.csc`
+	- Documentation: `README.md`, `Proposed_Scheme_Paper.docx`
+
+- **Base-Scheme/**
+	- Original PUF base scheme: `aes.c`, `as-node.c`, `device-node.c`, `gw-node.c`, `sha256.c`, `project-conf.h`, `Makefile.unified`
+	- Multiple coap-client* subfolders: `coap-client/`, `coap-client1/`, ... (client variants)
+	- Simulation: `test-sim-100.csc`
+
+- **Base-Scheme-Aligned/**
+	- Aligned version for comparison: `aes.c`, `as-node.c`, `device-node.c`, `gw-node.c`, `sha256.c`, `project-conf.h`, `Makefile.unified`, `test-sim-100.csc`
+
+- **Desync-Anonymity-Extended-Base-Scheme/**
+	- Desync-resilient variant: `aes.c`, `as-node.c`, `device-node.c`, `gw-node.c`, `sha256.c`, `project-conf.h`, `Makefile`, `desync-sim.csc`
+
+- **LAAKA/**
+	- LAAKA scheme: `aes.c`, `as-node.c`, `device-node.c`, `gw-node.c`, `sha256.c`, `project-conf.h`, `Makefile`, `test-sim-100.csc`, `test-sim-100-fixed.csc`, `LAAKA.pdf`, `LAAKA_text.txt`
+
+- **Hardware/**
+	- Hardware scripts/configs: `requirements.txt`, `README.md`, `config/`, `Extended-Scheme-Source/`, `native/`, `scripts/`
+
+- **ProVerif-Security-Analysis/**
+	- ProVerif models/outputs: `Anonymity_Extended_Scheme.pv`, `Base_Scheme_output.txt`, `scheme.pv`, `Dockerfile`, `generate_snapshots.py`, `proverif-full-output.txt`, `proverif-output.txt`, `README.md`, result images
+
+- **proverif2.05/**
+	- ProVerif tool: binaries, examples, docs, `README`, `src/`, `tests/`, `.pv` files
+
+- **Results/**
+	- Simulation results: `Charts/`, `CSV-Data/`, `Testlogs/`
+
+- **Scripts/**
+	- Utility scripts: `Simulation-Runners/`, `Utilities/`
+
+- **README.md, COOJA-Simulation-Prompt.md**
+	- Project documentation and simulation prompt
+
+---
 # COOJA IoT Authentication Scheme — Full Pipeline Prompt
 
 Use this prompt in a new chat to replicate the entire simulation + paper workflow for any authentication scheme.
