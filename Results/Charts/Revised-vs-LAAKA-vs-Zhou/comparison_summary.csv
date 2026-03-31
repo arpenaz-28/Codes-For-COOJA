@@ -1,13 +1,13 @@
-Scheme,Phase,Avg_Energy_mJ,Std_Energy_mJ,Avg_CPU_s,Std_CPU_s
-Revised-Anonymity,Enrollment,23.3349,4.1496,0.378433,0.067135
-Revised-Anonymity,Authentication,16.1689,2.6778,0.262333,0.043320
-Revised-Anonymity,Key Exchange,12.7043,3.1953,0.205991,0.051705
-Revised-Anonymity,Auth+KeyEx,28.8732,5.1092,0.468324,0.082665
-LAAKA,Enrollment,12.8841,4.0901,0.208968,0.066184
-LAAKA,Authentication,44.0081,7.6902,0.713755,0.124435
-LAAKA,Key Exchange,33.4423,5.9222,0.542364,0.095829
-LAAKA,Auth+KeyEx,77.4504,13.2018,1.256119,0.213619
-Zhou,Enrollment,22.7591,3.7264,0.000000,0.000000
-Zhou,Authentication,57.0556,11.0327,0.924336,0.178525
-Zhou,Key Exchange,0.0000,0.0000,0.000000,0.000000
-Zhou,Auth+KeyEx,57.0556,11.0327,0.924336,0.178525
+Scheme           , Phase         , Avg_Energy_mJ, Std_Energy_mJ, Avg_CPU_s, Std_CPU_s
+Revised-Anonymity, Enrollment    ,       23.3349,        4.1496,  0.378433,  0.067135
+Revised-Anonymity, Authentication,       16.1689,        2.6778,  0.262333,  0.043320
+Revised-Anonymity, Key Exchange  ,       12.7043,        3.1953,  0.205991,  0.051705
+Revised-Anonymity, Auth+KeyEx    ,       28.8732,        5.1092,  0.468324,  0.082665
+LAAKA            , Enrollment    ,       12.8841,        4.0901,  0.208968,  0.066184
+LAAKA            , Authentication,       44.0081,        7.6902,  0.713755,  0.124435
+LAAKA            , Key Exchange  ,       33.4423,        5.9222,  0.542364,  0.095829
+LAAKA            , Auth+KeyEx    ,       77.4504,       13.2018,  1.256119,  0.213619
+Zhou             , Enrollment    ,       22.7591,        3.7264,  0.000000,  0.000000
+Zhou             , Authentication,       57.0556,       11.0327,  0.924336,  0.178525
+Zhou             , Key Exchange  ,        0.0000,        0.0000,  0.000000,  0.000000
+Zhou             , Auth+KeyEx    ,       57.0556,       11.0327,  0.924336,  0.178525
