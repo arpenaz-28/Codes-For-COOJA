@@ -1,0 +1,376 @@
+﻿Process 0 (that is, the initial process):
+{1}new id_AS: bitstring;
+{2}new id_GW: bitstring;
+{3}new K_GW_AS: SymmetricKey;
+{4}new K_AS_D: SymmetricKey;
+(
+    {5}let id_AS_1: bitstring = id_AS in
+    {6}let id_GW_1: bitstring = id_GW in
+    {7}let K_AS_D_1: SymmetricKey = K_AS_D in
+    {8}new id_D: bitstring;
+    {9}new y_D: bitstring;
+    {10}new c_AS_D: bitstring;
+    {11}new ts_1: bitstring;
+    {12}event DeviceEnrollmentStarts(id_D,id_AS_1);
+    {13}out(c_priv, symmetricEncrypt(id_D,K_AS_D_1));
+    {14}in(c_priv, enc_reg0_reply: bitstring);
+    {15}let reg0_reply: bitstring = symmetricDecrypt(enc_reg0_reply,K_AS_D_1) in
+    {16}let c_D: bitstring = getfirst(reg0_reply) in
+    {17}let m_D: bitstring = getsecond(reg0_reply) in
+    {18}let R_D: bitstring = PUF_D(c_D) in
+    {19}let Y_D_H: bitstring = hash(y_D) in
+    {20}let reg1_msg: bitstring = concat(concat(concat(id_D,Y_D_H),R_D),c_AS_D) in
+    {21}out(c_priv, symmetricEncrypt(reg1_msg,K_AS_D_1));
+    {22}in(c_priv, enc_ack: bitstring);
+    {23}let ack_dec: bitstring = symmetricDecrypt(enc_ack,K_AS_D_1) in
+    {24}event DeviceEnrolled(id_D,id_AS_1);
+    {25}let auth_PID: bitstring = mkPID(id_D,m_D) in
+    {26}let mask: bitstring = hash(concat(concat(concat(R_D,m_D),auth_PID),ts_1)) in
+    {27}let Y_ASD: bitstring = xor(Y_D_H,mask) in
+    {28}event DeviceAuthStarts(id_D,id_AS_1);
+    {29}event AuthRound1Full(id_D,id_AS_1,R_D,m_D);
+    {30}out(c_pub, concat(concat(auth_PID,Y_ASD),ts_1));
+    {31}in(c_pub, ack_ts2: bitstring);
+    {32}let ack_byte: bitstring = getfirst(ack_ts2) in
+    {33}let ts_2: bitstring = getsecond(ack_ts2) in
+    {34}event DeviceAuthRound1Done(id_D,id_AS_1);
+    {35}event DeviceKeyExStarts(id_D,id_AS_1);
+    {36}out(c_pub, concat(auth_PID,ts_2));
+    {37}in(c_pub, m_H: bitstring);
+    {38}let mh_mask: bitstring = hash(concat(concat(concat(concat(concat(Y_D_H,m_D),R_D),id_AS_1),auth_PID),ts_2)) in
+    {39}let m_new: bitstring = xorRev(m_H,mh_mask) in
+    {40}let K_GW_D: bitstring = hash(concat(R_D,m_new)) in
+    {41}event DeviceKeyExDone(id_D,id_AS_1);
+    {42}event AuthRound2Full(id_D,id_AS_1,R_D,m_D);
+    {43}let new_PID: bitstring = mkPID(id_D,m_new) in
+    {44}new sensor_data: bitstring;
+    {45}let K_GW_D_key: SymmetricKey = generateKey(K_GW_D) in
+    {46}let enc_data: bitstring = symmetricEncrypt(sensor_data,K_GW_D_key) in
+    {47}event DeviceDataSent(new_PID,id_D);
+    {48}out(c_pub, concat(new_PID,enc_data));
+    {49}in(c_pub, gw_conf: bitstring);
+    {50}let conf_dec: bitstring = symmetricDecrypt(gw_conf,K_GW_D_key) in
+    {51}if (conf_dec = new_PID) then
+    {52}out(c_pub, SharedEncrypt(SecretK_GW_D_Device,K_GW_D));
+    {53}out(c_pub, SharedEncrypt(SecretR_D,R_D));
+    {54}out(c_pub, SharedEncrypt(SecretID_D,id_D))
+) | (
+    {55}let K_GW_AS_1: SymmetricKey = K_GW_AS in
+    {56}let K_AS_D_2: SymmetricKey = K_AS_D in
+    {57}new id_AS_2: bitstring;
+    {58}new T_Acc: bitstring;
+    {59}in(c_priv, enc_id_D: bitstring);
+    {60}let id_D_1: bitstring = symmetricDecrypt(enc_id_D,K_AS_D_2) in
+    {61}event ASEnrollmentStarts(id_AS_2,id_D_1);
+    {62}new c_D_1: bitstring;
+    {63}new m_D_1: bitstring;
+    {64}out(c_priv, symmetricEncrypt(concat(c_D_1,m_D_1),K_AS_D_2));
+    {65}in(c_priv, enc_reg1: bitstring);
+    {66}let reg1_dec: bitstring = symmetricDecrypt(enc_reg1,K_AS_D_2) in
+    {67}let id_D_chk: bitstring = getfirst(getfirst(getfirst(reg1_dec))) in
+    {68}let Y_D_H_1: bitstring = getsecond(getfirst(getfirst(reg1_dec))) in
+    {69}let R_D_1: bitstring = getfirst(getsecond(reg1_dec)) in
+    {70}let c_AS_D_1: bitstring = getsecond(getsecond(reg1_dec)) in
+    {71}if (id_D_chk = id_D_1) then
+    {72}let T_Acc_new: bitstring = acc(T_Acc,Y_D_H_1) in
+    {73}let R_AS_D: bitstring = PUF_AS(c_AS_D_1) in
+    {74}let Phi_AS_D: bitstring = xor(R_AS_D,R_D_1) in
+    {75}let PID_curr: bitstring = mkPID(id_D_1,m_D_1) in
+    {76}new ack1: bitstring;
+    {77}out(c_priv, symmetricEncrypt(concat(id_AS_2,ack1),K_AS_D_2));
+    {78}event ASEnrollmentCompletes(id_AS_2,id_D_1);
+    {79}in(c_pub, auth_msg: bitstring);
+    {80}event ASAuthStarts(id_AS_2,id_D_1);
+    {81}let recv_PID: bitstring = getfirst(getfirst(auth_msg)) in
+    {82}let recv_Y_ASD: bitstring = getsecond(getfirst(auth_msg)) in
+    {83}let recv_ts_1: bitstring = getsecond(auth_msg) in
+    {84}if (recv_PID = PID_curr) then
+    {85}let R_AS_D_1: bitstring = PUF_AS(c_AS_D_1) in
+    {86}let R_D_rec: bitstring = xorRev(Phi_AS_D,R_AS_D_1) in
+    {87}let mask_recv: bitstring = hash(concat(concat(concat(R_D_rec,m_D_1),recv_PID),recv_ts_1)) in
+    {88}let Y_D_H_rec: bitstring = xorRev(recv_Y_ASD,mask_recv) in
+    {89}if (T_Acc_new = accRev(T_Acc_new,Y_D_H_rec)) then
+    {90}new n1: bitstring;
+    {91}let m_new_1: bitstring = hash(n1) in
+    {92}new ts: bitstring;
+    {93}let mh_mask_1: bitstring = hash(concat(concat(concat(concat(concat(Y_D_H_rec,m_D_1),R_D_rec),id_AS_2),recv_PID),ts)) in
+    {94}let m_H_1: bitstring = xor(m_new_1,mh_mask_1) in
+    {95}let K_GW_D_1: bitstring = hash(concat(R_D_rec,m_new_1)) in
+    {96}let auth_token: bitstring = symmetricEncrypt(concat(concat(id_AS_2,id_D_1),K_GW_D_1),K_GW_AS_1) in
+    {97}let new_PID_1: bitstring = mkPID(id_D_1,m_new_1) in
+    {98}event ASAuthCompletes(id_AS_2,id_D_1);
+    {99}new ack2: bitstring;
+    {100}out(c_pub, concat(ack2,ts));
+    {101}in(c_pub, keyex_req: bitstring);
+    {102}event ASKeyExStarts(id_AS_2,id_D_1);
+    {103}let kx_PID: bitstring = getfirst(keyex_req) in
+    {104}let kx_ts_2: bitstring = getsecond(keyex_req) in
+    {105}if (kx_PID = recv_PID) then
+    {106}if (kx_ts_2 = ts) then
+    {107}event ASKeyExCompletes(id_AS_2,id_D_1);
+    {108}out(c_pub, m_H_1);
+    {109}event ASTokenSent(new_PID_1,id_AS_2);
+    {110}out(c_pub, concat(concat(new_PID_1,id_AS_2),auth_token));
+    {111}out(c_pub, SharedEncrypt(SecretK_GW_D_AS,K_GW_D_1));
+    {112}out(c_pub, SharedEncrypt(SecretM_New,m_new_1));
+    {113}out(c_pub, SharedEncrypt(SecretTs2,ts))
+) | (
+    {114}let K_GW_AS_2: SymmetricKey = K_GW_AS in
+    {115}new id_GW_2: bitstring;
+    {116}in(c_pub, token_msg: bitstring);
+    {117}let new_PID_2: bitstring = getfirst(getfirst(token_msg)) in
+    {118}let id_AS_plain: bitstring = getsecond(getfirst(token_msg)) in
+    {119}let enc_token: bitstring = getsecond(token_msg) in
+    {120}let tok_dec: bitstring = symmetricDecrypt(enc_token,K_GW_AS_2) in
+    {121}let id_AS_tok: bitstring = getfirst(getfirst(tok_dec)) in
+    {122}let id_D_tok: bitstring = getsecond(getfirst(tok_dec)) in
+    {123}let K_GW_D_2: bitstring = getsecond(tok_dec) in
+    {124}if (id_AS_tok = id_AS_plain) then
+    {125}event GWTokenReceived(new_PID_2,id_AS_plain);
+    {126}let K_GW_D_key_1: SymmetricKey = generateKey(K_GW_D_2) in
+    {127}in(c_pub, data_msg: bitstring);
+    {128}let recv_PID_1: bitstring = getfirst(data_msg) in
+    {129}let enc_data_1: bitstring = getsecond(data_msg) in
+    {130}if (recv_PID_1 = new_PID_2) then
+    {131}let plain_data: bitstring = symmetricDecrypt(enc_data_1,K_GW_D_key_1) in
+    {132}event GWDataAccepted(new_PID_2,id_D_tok);
+    {133}out(c_pub, symmetricEncrypt(new_PID_2,K_GW_D_key_1));
+    {134}out(c_pub, SharedEncrypt(SecretK_GW_D_GW,K_GW_D_2))
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new id_AS: bitstring;
+{2}new id_GW: bitstring;
+{3}new K_GW_AS: SymmetricKey;
+{4}new K_AS_D: SymmetricKey;
+(
+    {8}new id_D: bitstring;
+    {9}new y_D: bitstring;
+    {10}new c_AS_D: bitstring;
+    {11}new ts_1: bitstring;
+    {5}let id_AS_1: bitstring = id_AS in
+    {12}event DeviceEnrollmentStarts(id_D,id_AS_1);
+    {7}let K_AS_D_1: SymmetricKey = K_AS_D in
+    {13}out(c_priv, symmetricEncrypt(id_D,K_AS_D_1));
+    {14}in(c_priv, enc_reg0_reply: bitstring);
+    {15}let reg0_reply: bitstring = symmetricDecrypt(enc_reg0_reply,K_AS_D_1) in
+    {16}let c_D: bitstring = getfirst(reg0_reply) in
+    {17}let m_D: bitstring = getsecond(reg0_reply) in
+    {19}let Y_D_H: bitstring = hash(y_D) in
+    {18}let R_D: bitstring = PUF_D(c_D) in
+    {20}let reg1_msg: bitstring = concat(concat(concat(id_D,Y_D_H),R_D),c_AS_D) in
+    {21}out(c_priv, symmetricEncrypt(reg1_msg,K_AS_D_1));
+    {22}in(c_priv, enc_ack: bitstring);
+    {23}let ack_dec: bitstring = symmetricDecrypt(enc_ack,K_AS_D_1) in
+    {24}event DeviceEnrolled(id_D,id_AS_1);
+    {28}event DeviceAuthStarts(id_D,id_AS_1);
+    {29}event AuthRound1Full(id_D,id_AS_1,R_D,m_D);
+    {25}let auth_PID: bitstring = mkPID(id_D,m_D) in
+    {26}let mask: bitstring = hash(concat(concat(concat(R_D,m_D),auth_PID),ts_1)) in
+    {27}let Y_ASD: bitstring = xor(Y_D_H,mask) in
+    {30}out(c_pub, concat(concat(auth_PID,Y_ASD),ts_1));
+    {31}in(c_pub, ack_ts2: bitstring);
+    {32}let ack_byte: bitstring = getfirst(ack_ts2) in
+    {33}let ts_2: bitstring = getsecond(ack_ts2) in
+    {34}event DeviceAuthRound1Done(id_D,id_AS_1);
+    {35}event DeviceKeyExStarts(id_D,id_AS_1);
+    {36}out(c_pub, concat(auth_PID,ts_2));
+    {37}in(c_pub, m_H: bitstring);
+    {38}let mh_mask: bitstring = hash(concat(concat(concat(concat(concat(Y_D_H,m_D),R_D),id_AS_1),auth_PID),ts_2)) in
+    {39}let m_new: bitstring = xorRev(m_H,mh_mask) in
+    {41}event DeviceKeyExDone(id_D,id_AS_1);
+    {42}event AuthRound2Full(id_D,id_AS_1,R_D,m_D);
+    {44}new sensor_data: bitstring;
+    {43}let new_PID: bitstring = mkPID(id_D,m_new) in
+    {47}event DeviceDataSent(new_PID,id_D);
+    {40}let K_GW_D: bitstring = hash(concat(R_D,m_new)) in
+    {45}let K_GW_D_key: SymmetricKey = generateKey(K_GW_D) in
+    {46}let enc_data: bitstring = symmetricEncrypt(sensor_data,K_GW_D_key) in
+    {48}out(c_pub, concat(new_PID,enc_data));
+    {49}in(c_pub, gw_conf: bitstring);
+    {50}let conf_dec: bitstring = symmetricDecrypt(gw_conf,K_GW_D_key) in
+    {51}if (conf_dec = new_PID) then
+    {52}out(c_pub, SharedEncrypt(SecretK_GW_D_Device,K_GW_D));
+    {53}out(c_pub, SharedEncrypt(SecretR_D,R_D));
+    {54}out(c_pub, SharedEncrypt(SecretID_D,id_D))
+) | (
+    {57}new id_AS_2: bitstring;
+    {58}new T_Acc: bitstring;
+    {59}in(c_priv, enc_id_D: bitstring);
+    {56}let K_AS_D_2: SymmetricKey = K_AS_D in
+    {60}let id_D_1: bitstring = symmetricDecrypt(enc_id_D,K_AS_D_2) in
+    {61}event ASEnrollmentStarts(id_AS_2,id_D_1);
+    {62}new c_D_1: bitstring;
+    {63}new m_D_1: bitstring;
+    {64}out(c_priv, symmetricEncrypt(concat(c_D_1,m_D_1),K_AS_D_2));
+    {65}in(c_priv, enc_reg1: bitstring);
+    {66}let reg1_dec: bitstring = symmetricDecrypt(enc_reg1,K_AS_D_2) in
+    {67}let id_D_chk: bitstring = getfirst(getfirst(getfirst(reg1_dec))) in
+    {68}let Y_D_H_1: bitstring = getsecond(getfirst(getfirst(reg1_dec))) in
+    {69}let R_D_1: bitstring = getfirst(getsecond(reg1_dec)) in
+    {70}let c_AS_D_1: bitstring = getsecond(getsecond(reg1_dec)) in
+    {71}if (id_D_chk = id_D_1) then
+    {76}new ack1: bitstring;
+    {77}out(c_priv, symmetricEncrypt(concat(id_AS_2,ack1),K_AS_D_2));
+    {78}event ASEnrollmentCompletes(id_AS_2,id_D_1);
+    {79}in(c_pub, auth_msg: bitstring);
+    {80}event ASAuthStarts(id_AS_2,id_D_1);
+    {81}let recv_PID: bitstring = getfirst(getfirst(auth_msg)) in
+    {82}let recv_Y_ASD: bitstring = getsecond(getfirst(auth_msg)) in
+    {83}let recv_ts_1: bitstring = getsecond(auth_msg) in
+    {75}let PID_curr: bitstring = mkPID(id_D_1,m_D_1) in
+    {84}if (recv_PID = PID_curr) then
+    {85}let R_AS_D_1: bitstring = PUF_AS(c_AS_D_1) in
+    {73}let R_AS_D: bitstring = PUF_AS(c_AS_D_1) in
+    {74}let Phi_AS_D: bitstring = xor(R_AS_D,R_D_1) in
+    {86}let R_D_rec: bitstring = xorRev(Phi_AS_D,R_AS_D_1) in
+    {87}let mask_recv: bitstring = hash(concat(concat(concat(R_D_rec,m_D_1),recv_PID),recv_ts_1)) in
+    {88}let Y_D_H_rec: bitstring = xorRev(recv_Y_ASD,mask_recv) in
+    {72}let T_Acc_new: bitstring = acc(T_Acc,Y_D_H_1) in
+    {89}if (T_Acc_new = accRev(T_Acc_new,Y_D_H_rec)) then
+    {90}new n1: bitstring;
+    {92}new ts: bitstring;
+    {98}event ASAuthCompletes(id_AS_2,id_D_1);
+    {99}new ack2: bitstring;
+    {100}out(c_pub, concat(ack2,ts));
+    {101}in(c_pub, keyex_req: bitstring);
+    {102}event ASKeyExStarts(id_AS_2,id_D_1);
+    {103}let kx_PID: bitstring = getfirst(keyex_req) in
+    {104}let kx_ts_2: bitstring = getsecond(keyex_req) in
+    {105}if (kx_PID = recv_PID) then
+    {106}if (kx_ts_2 = ts) then
+    {107}event ASKeyExCompletes(id_AS_2,id_D_1);
+    {93}let mh_mask_1: bitstring = hash(concat(concat(concat(concat(concat(Y_D_H_rec,m_D_1),R_D_rec),id_AS_2),recv_PID),ts)) in
+    {91}let m_new_1: bitstring = hash(n1) in
+    {94}let m_H_1: bitstring = xor(m_new_1,mh_mask_1) in
+    {108}out(c_pub, m_H_1);
+    {97}let new_PID_1: bitstring = mkPID(id_D_1,m_new_1) in
+    {109}event ASTokenSent(new_PID_1,id_AS_2);
+    {95}let K_GW_D_1: bitstring = hash(concat(R_D_rec,m_new_1)) in
+    {55}let K_GW_AS_1: SymmetricKey = K_GW_AS in
+    {96}let auth_token: bitstring = symmetricEncrypt(concat(concat(id_AS_2,id_D_1),K_GW_D_1),K_GW_AS_1) in
+    {110}out(c_pub, concat(concat(new_PID_1,id_AS_2),auth_token));
+    {111}out(c_pub, SharedEncrypt(SecretK_GW_D_AS,K_GW_D_1));
+    {112}out(c_pub, SharedEncrypt(SecretM_New,m_new_1));
+    {113}out(c_pub, SharedEncrypt(SecretTs2,ts))
+) | (
+    {115}new id_GW_2: bitstring;
+    {116}in(c_pub, token_msg: bitstring);
+    {117}let new_PID_2: bitstring = getfirst(getfirst(token_msg)) in
+    {118}let id_AS_plain: bitstring = getsecond(getfirst(token_msg)) in
+    {119}let enc_token: bitstring = getsecond(token_msg) in
+    {114}let K_GW_AS_2: SymmetricKey = K_GW_AS in
+    {120}let tok_dec: bitstring = symmetricDecrypt(enc_token,K_GW_AS_2) in
+    {121}let id_AS_tok: bitstring = getfirst(getfirst(tok_dec)) in
+    {122}let id_D_tok: bitstring = getsecond(getfirst(tok_dec)) in
+    {123}let K_GW_D_2: bitstring = getsecond(tok_dec) in
+    {124}if (id_AS_tok = id_AS_plain) then
+    {125}event GWTokenReceived(new_PID_2,id_AS_plain);
+    {127}in(c_pub, data_msg: bitstring);
+    {128}let recv_PID_1: bitstring = getfirst(data_msg) in
+    {129}let enc_data_1: bitstring = getsecond(data_msg) in
+    {130}if (recv_PID_1 = new_PID_2) then
+    {126}let K_GW_D_key_1: SymmetricKey = generateKey(K_GW_D_2) in
+    {131}let plain_data: bitstring = symmetricDecrypt(enc_data_1,K_GW_D_key_1) in
+    {132}event GWDataAccepted(new_PID_2,id_D_tok);
+    {133}out(c_pub, symmetricEncrypt(new_PID_2,K_GW_D_key_1));
+    {134}out(c_pub, SharedEncrypt(SecretK_GW_D_GW,K_GW_D_2))
+)
+
+-- Query inj-event(DeviceEnrolled(id_D_2,id_AS_3)) ==> inj-event(DeviceEnrollmentStarts(id_D_2,id_AS_3)) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],symmetricEncrypt(concat(m,m_D_2),K_AS_D[]))/-5000
+select mess(c_priv[],symmetricEncrypt(id_D_2,K_AS_D[]))/-5000
+Completing...
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect ts_3:bitstring, m:bitstring; attacker(concat(m,*ts_3)).
+Starting query inj-event(DeviceEnrolled(id_D_2,id_AS_3)) ==> inj-event(DeviceEnrollmentStarts(id_D_2,id_AS_3))
+goal reachable: mess(c_priv[],symmetricEncrypt(ack_dec_1,K_AS_D[])) && b-event(@p_act(@occ22[],symmetricEncrypt(ack_dec_1,K_AS_D[]))) && mess(c_priv[],symmetricEncrypt(concat(m,m_D_2),K_AS_D[])) && b-event(@p_act(@occ14[],symmetricEncrypt(concat(m,m_D_2),K_AS_D[]))) && b-inj-event(DeviceEnrollmentStarts(id_D[],id_AS[]),@occ12[]) -> inj-event(DeviceEnrolled(id_D[],id_AS[]),@occ24_1)
+The 1st, 3rd hypotheses occur before the conclusion.
+The 2nd, 4th, 5th hypotheses occur strictly before the conclusion.
+Abbreviations:
+@occ24_1 = @occ24[enc_ack = symmetricEncrypt(ack_dec_1,K_AS_D[]),enc_reg0_reply = symmetricEncrypt(concat(m,m_D_2),K_AS_D[])]
+RESULT inj-event(DeviceEnrolled(id_D_2,id_AS_3)) ==> inj-event(DeviceEnrollmentStarts(id_D_2,id_AS_3)) is true.
+-- Query inj-event(ASEnrollmentCompletes(id_AS_3,id_D_2)) ==> inj-event(ASEnrollmentStarts(id_AS_3,id_D_2)) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],symmetricEncrypt(concat(m,m_D_2),K_AS_D[]))/-5000
+select mess(c_priv[],symmetricEncrypt(id_D_2,K_AS_D[]))/-5000
+Completing...
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect ts_3:bitstring, m:bitstring; attacker(concat(m,*ts_3)).
+200 rules inserted. Base: 172 rules (31 with conclusion selected). Queue: 1 rules.
+Starting query inj-event(ASEnrollmentCompletes(id_AS_3,id_D_2)) ==> inj-event(ASEnrollmentStarts(id_AS_3,id_D_2))
+RESULT inj-event(ASEnrollmentCompletes(id_AS_3,id_D_2)) ==> inj-event(ASEnrollmentStarts(id_AS_3,id_D_2)) is true.
+-- Query inj-event(DeviceAuthRound1Done(id_D_2,id_AS_3)) ==> inj-event(DeviceAuthStarts(id_D_2,id_AS_3)) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],symmetricEncrypt(concat(m,m_D_2),K_AS_D[]))/-5000
+select mess(c_priv[],symmetricEncrypt(id_D_2,K_AS_D[]))/-5000
+Completing...
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect ts_3:bitstring, m:bitstring; attacker(concat(m,*ts_3)).
+Starting query inj-event(DeviceAuthRound1Done(id_D_2,id_AS_3)) ==> inj-event(DeviceAuthStarts(id_D_2,id_AS_3))
+goal reachable: attacker(m) && attacker(ts_3) && b-event(@p_act(@occ31_1[],concat(m,ts_3))) && b-inj-event(DeviceAuthStarts(id_D[],id_AS[]),@occ28_1) && mess(c_priv[],symmetricEncrypt(ack_dec_1,K_AS_D[])) && mess(c_priv[],symmetricEncrypt(concat(m_1,m_D_2),K_AS_D[])) -> inj-event(DeviceAuthRound1Done(id_D[],id_AS[]),@occ34_1)
+The 1st, 2nd, 5th, 6th hypotheses occur before the conclusion.
+The 3rd, 4th hypotheses occur strictly before the conclusion.
+Abbreviations:
+@occ34_1 = @occ34[ack_ts2 = concat(m,ts_3),enc_ack = symmetricEncrypt(ack_dec_1,K_AS_D[]),enc_reg0_reply = symmetricEncrypt(concat(m_1,m_D_2),K_AS_D[])]
+@occ28_1 = @occ28[enc_ack = symmetricEncrypt(ack_dec_1,K_AS_D[]),enc_reg0_reply = symmetricEncrypt(concat(m_1,m_D_2),K_AS_D[])]
+goal reachable: b-inj-event(DeviceAuthStarts(id_D[],id_AS[]),@occ28_1) && mess(c_priv[],symmetricEncrypt(ack_dec_1,K_AS_D[])) && mess(c_priv[],symmetricEncrypt(concat(m,m_D_2),K_AS_D[])) && b-event(@p_act(@occ31_1[],concat(concat(mkPID(id_D[],m_D_2),xor(hash(y_D[]),hash(concat(concat(concat(PUF_D(m),m_D_2),mkPID(id_D[],m_D_2)),ts_1[])))),ts_1[]))) && b-inj-event(DeviceAuthStarts(id_D[],id_AS[]),@occ28_2) && mess(c_priv[],symmetricEncrypt(ack_dec_2,K_AS_D[])) && mess(c_priv[],symmetricEncrypt(concat(m_1,m_D_3),K_AS_D[])) -> inj-event(DeviceAuthRound1Done(id_D[],id_AS[]),@occ34_1)
+The 1st, 4th, 5th hypotheses occur strictly before the conclusion.
+The 2nd, 3rd, 6th, 7th hypotheses occur before the conclusion.
+Abbreviations:
+@occ34_1 = @occ34[ack_ts2 = concat(concat(mkPID(id_D[],m_D_2),xor(hash(y_D[]),hash(concat(concat(concat(PUF_D(m),m_D_2),mkPID(id_D[],m_D_2)),ts_1[])))),ts_1[]),enc_ack = symmetricEncrypt(ack_dec_2,K_AS_D[]),enc_reg0_reply = symmetricEncrypt(concat(m_1,m_D_3),K_AS_D[])]
+@occ28_1 = @occ28[enc_ack = symmetricEncrypt(ack_dec_1,K_AS_D[]),enc_reg0_reply = symmetricEncrypt(concat(m,m_D_2),K_AS_D[])]
+@occ28_2 = @occ28[enc_ack = symmetricEncrypt(ack_dec_2,K_AS_D[]),enc_reg0_reply = symmetricEncrypt(concat(m_1,m_D_3),K_AS_D[])]
+goal reachable: b-inj-event(DeviceAuthStarts(id_D[],id_AS[]),@occ28_1) && mess(c_priv[],symmetricEncrypt(ack_dec_1,K_AS_D[])) && mess(c_priv[],symmetricEncrypt(concat(m,m_D_2),K_AS_D[])) && b-event(@p_act(@occ31_1[],concat(mkPID(id_D[],m_D_2),xor(hash(y_D[]),hash(concat(concat(concat(PUF_D(m),m_D_2),mkPID(id_D[],m_D_2)),ts_1[])))))) && b-inj-event(DeviceAuthStarts(id_D[],id_AS[]),@occ28_2) && mess(c_priv[],symmetricEncrypt(ack_dec_2,K_AS_D[])) && mess(c_priv[],symmetricEncrypt(concat(m_1,m_D_3),K_AS_D[])) -> inj-event(DeviceAuthRound1Done(id_D[],id_AS[]),@occ34_1)
+The 1st, 4th, 5th hypotheses occur strictly before the conclusion.
+The 2nd, 3rd, 6th, 7th hypotheses occur before the conclusion.
+Abbreviations:
+@occ34_1 = @occ34[ack_ts2 = concat(mkPID(id_D[],m_D_2),xor(hash(y_D[]),hash(concat(concat(concat(PUF_D(m),m_D_2),mkPID(id_D[],m_D_2)),ts_1[])))),enc_ack = symmetricEncrypt(ack_dec_2,K_AS_D[]),enc_reg0_reply = symmetricEncrypt(concat(m_1,m_D_3),K_AS_D[])]
+@occ28_1 = @occ28[enc_ack = symmetricEncrypt(ack_dec_1,K_AS_D[]),enc_reg0_reply = symmetricEncrypt(concat(m,m_D_2),K_AS_D[])]
+@occ28_2 = @occ28[enc_ack = symmetricEncrypt(ack_dec_2,K_AS_D[]),enc_reg0_reply = symmetricEncrypt(concat(m_1,m_D_3),K_AS_D[])]
+RESULT inj-event(DeviceAuthRound1Done(id_D_2,id_AS_3)) ==> inj-event(DeviceAuthStarts(id_D_2,id_AS_3)) is true.
+-- Query inj-event(ASAuthCompletes(id_AS_3,id_D_2)) ==> inj-event(ASAuthStarts(id_AS_3,id_D_2)) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],symmetricEncrypt(concat(m,m_D_2),K_AS_D[]))/-5000
+select mess(c_priv[],symmetricEncrypt(id_D_2,K_AS_D[]))/-5000
+Completing...
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect ts_3:bitstring, m:bitstring; attacker(concat(m,*ts_3)).
+Starting query inj-event(ASAuthCompletes(id_AS_3,id_D_2)) ==> inj-event(ASAuthStarts(id_AS_3,id_D_2))
+RESULT inj-event(ASAuthCompletes(id_AS_3,id_D_2)) ==> inj-event(ASAuthStarts(id_AS_3,id_D_2)) is true.
+-- Query inj-event(DeviceKeyExDone(id_D_2,id_AS_3)) ==> inj-event(DeviceKeyExStarts(id_D_2,id_AS_3)) in process 1.
+Translating the process into Horn clauses...
+select mess(c_priv[],symmetricEncrypt(concat(m,m_D_2),K_AS_D[]))/-5000
+select mess(c_priv[],symmetricEncrypt(id_D_2,K_AS_D[]))/-5000
+Completing...
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect ts_3:bitstring, m:bitstring; attacker(concat(m,*ts_3)).
+200 rules inserted. Base: 180 rules (42 with conclusion selected). Queue: 139 rules.
+400 rules inserted. Base: 300 rules (47 with conclusion selected). Queue: 143 rules.
+600 rules inserted. Base: 457 rules (53 with conclusion selected). Queue: 167 rules.
+800 rules inserted. Base: 604 rules (57 with conclusion selected). Queue: 151 rules.
+1000 rules inserted. Base: 767 rules (62 with conclusion selected). Queue: 233 rules.
+1200 rules inserted. Base: 907 rules (65 with conclusion selected). Queue: 220 rules.
+1400 rules inserted. Base: 1050 rules (68 with conclusion selected). Queue: 214 rules.
+1600 rules inserted. Base: 1207 rules (71 with conclusion selected). Queue: 213 rules.
+1800 rules inserted. Base: 1361 rules (74 with conclusion selected). Queue: 225 rules.
+2000 rules inserted. Base: 1512 rules (77 with conclusion selected). Queue: 250 rules.
+2200 rules inserted. Base: 1676 rules (80 with conclusion selected). Queue: 286 rules.
+2400 rules inserted. Base: 1841 rules (83 with conclusion selected). Queue: 368 rules.
+2600 rules inserted. Base: 2005 rules (86 with conclusion selected). Queue: 381 rules.
+2800 rules inserted. Base: 2147 rules (89 with conclusion selected). Queue: 434 rules.
+3000 rules inserted. Base: 2286 rules (90 with conclusion selected). Queue: 323 rules.
+3200 rules inserted. Base: 2442 rules (92 with conclusion selected). Queue: 368 rules.
+docker : time="2026-04-02T10:48:52+05:30" level=error msg="error waiting for container: unexpected EOF"
+At line:1 char:1
++ docker run --rm --mount 'type=bind,source=C:\ANUP\MTP\Proposing\Codes ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (time="2026-04-0...unexpected EOF":String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
