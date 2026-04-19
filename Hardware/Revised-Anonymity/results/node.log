@@ -1,0 +1,20 @@
+[NODE 81] Sent Reg-0
+[NODE 81] Reg-0 OK: c_d=3
+[NODE 81] Sent Reg-1
+[NODE 81] Enrolled OK
+[NODE 81] Round 1: Sent AUTH  PID=9c66fb5085ce...  ts_1=1
+[NODE 81] Round 1 Auth OK  ts_2=1
+[NODE 81] Round 2: Sent KEYEX  ts_2=1
+[NODE 81] Round 2 KeyEx OK  New PID=4ac193f6ea15...
+[NODE 81] Sent DATA #1
+[NODE 81] Sent DATA #2
+[NODE 81] Sent DATA #3
+[NODE 81] Sent DATA #4
+[NODE 81] Sent DATA #5
+[NODE 81] Sent DATA #6
+[NODE 81] Sent DATA #7
+[NODE 81] Sent DATA #8
+[NODE 81] Sent DATA #9
+[NODE 81] Sent DATA #10
+[NODE 81] Completed data loop.
+HW_METRIC|{"device_id":"81","kind":"HW_METRIC","model":{"cpu_power_w":2.5,"net_energy_per_byte_j":2e-06},"phases":{"auth":{"cpu_s":0.000322,"energy_j":0.001203888,"rx_bytes":38,"tx_bytes":162,"wall_s":0.003846},"data":{"cpu_s":0.006866,"energy_j":0.019644592,"rx_bytes":0,"tx_bytes":1240,"wall_s":30.007759},"enroll":{"cpu_s":0.002674,"energy_j":0.00733942,"rx_bytes":143,"tx_bytes":184,"wall_s":0.133361},"keyex":{"cpu_s":0.000265,"energy_j":0.00104738,"rx_bytes":93,"tx_bytes":99,"wall_s":0.003227}},"role":"NODE","totals":{"cpu_s":0.010127,"energy_j":0.02923528,"rx_bytes":274,"tx_bytes":1685,"wall_s":30.148192},"ts":1776581895}

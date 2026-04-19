@@ -1,0 +1,19 @@
+sequenceDiagram
+    autonumber
+    participant D  as Device (D)
+    participant AS as Auth Server (AS)
+    participant GW as Gateway (GW)
+
+    Note over D,GW: Pre-stored at GW :  { ID_AS ,  K_GW-AS }<br/>Pre-stored at AS :  T_Acc ,  K_GW-AS ,  { ID_D ,  Φ_AS-D ,  c_AS-D ,  m_curr ,  m_old ,  PID_curr ,  PID_old }<br/>Pre-stored at D  :  { y_D ,  c_D ,  m_curr }
+
+    Note over AS: (After successful authentication in Phase 2)<br/>1.  Generate random nonce: n_1  and  timestamp: ts_2<br/>2.  m_new        =  H(n_1)<br/>3.  m_H          =  m_new  ⊕  H( Y_D^H' ∥ m_curr ∥ R_D' ∥ ID_AS ∥ PID_curr ∥ ts_2 )<br/>4.  ts_auth      =  current timestamp<br/>5.  K_GW-D       =  H( R_D' ∥ m_new )<br/>6.  PID_new      =  H( ID_D ∥ m_new )       [next pseudonym]<br/>7.  auth_token_D =  SE( K_GW-AS ,  ID_D ∥ ID_AS ∥ K_GW-D ∥ PID_new ∥ ts_auth )<br/>8.  Dual-state update:  m_old = m_curr ,  m_curr = m_new<br/>9.  Dual-state update:  PID_old = PID_curr ,  PID_curr = PID_new
+
+    par Simultaneous Delivery
+        AS->>GW: ( ID_AS ,  auth_token_D )
+    and
+        AS->>D: ( Ack ,  m_H ,  ts_2 )
+    end
+
+    Note over GW: 10.  ID_D ∥ ID_AS ∥ K_GW-D ∥ PID_new ∥ ts_auth  =  DE( K_GW-AS ,  auth_token_D )<br/>11.  Check freshness of ts_auth<br/>12.  Dual-state update:  PID_old = PID_curr (prev) ,  PID_curr = PID_new<br/>13.  Store session keyed by PID_curr and PID_old  (both map to K_GW-D)
+
+    Note over D: 10.  Check freshness of ts_2<br/>11.  m_curr  =  m_H  ⊕  H( Y_D^H ∥ m_curr ∥ R_D ∥ ID_AS ∥ PID_curr ∥ ts_2 )<br/>12.  PID_curr =  H( ID_D ∥ m_curr )       [updated pseudonym]<br/>13.  K_GW-D   =  H( R_D ∥ m_curr )  ·  Store  K_GW-D
