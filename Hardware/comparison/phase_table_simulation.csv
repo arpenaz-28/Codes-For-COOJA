@@ -1,0 +1,5 @@
+Phase,n_devices,RA_Avg_Energy_mJ,RA_Std_Energy_mJ,RA_Avg_CPU_ms,RA_Std_CPU_ms,LK_Avg_Energy_mJ,LK_Std_Energy_mJ,LK_Avg_CPU_ms,LK_Std_CPU_ms,Energy_Winner,Energy_Factor,CPU_Winner,CPU_Factor
+Enrollment,20/20,23.3349,4.1496,378.4332,67.1352,12.8841,4.0901,208.9684,66.1843,LAAKA,1.81x,LAAKA,1.81x
+Authentication,20/13,16.1689,2.6778,262.3328,43.3205,44.0081,7.6902,713.7551,124.4355,Rev-Anon,2.72x,Rev-Anon,2.72x
+Key Exchange,20/13,12.7043,3.1953,205.9908,51.7048,33.4423,5.9222,542.3643,95.8295,Rev-Anon,2.63x,Rev-Anon,2.63x
+Auth+KeyEx,20/13,28.8732,5.1092,468.3236,82.6651,77.4504,13.2018,1256.1194,213.6194,Rev-Anon,2.68x,Rev-Anon,2.68x

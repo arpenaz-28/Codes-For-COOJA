@@ -1,0 +1,12 @@
+sequenceDiagram
+    autonumber
+    participant D  as Device (D)
+    participant AS as Auth Server (AS)
+
+    Note over D,AS: Pre-stored at AS :  T_Acc ,  K_GW-AS ,  { ID_D ,  Φ_AS-D ,  c_AS-D ,  m_curr ,  m_old ,  PID_curr ,  PID_old }<br/>Pre-stored at D  :  { y_D ,  c_D ,  m_curr }
+
+    Note over D: 1.  R_D    =  PUF_D(c_D)<br/>2.  ts_1   =  current timestamp<br/>3.  Y_D^H  =  H(y_D)<br/>4.  PID    =  H( ID_D ∥ m_curr )          [pseudonym — hides real ID_D]<br/>5.  Y_AS-D^H  =  Y_D^H  ⊕  H( R_D ∥ m_curr ∥ PID ∥ ts_1 )
+
+    D->>AS: ( PID ,  Y_AS-D^H ,  ts_1 )
+
+    Note over AS: 6.   Lookup device by PID_curr OR PID_old   [dual-state desync check]<br/>7.   Check freshness of ts_1<br/>8.   R_AS-D    =  PUF_AS(c_AS-D)<br/>9.   R_D'      =  Φ_AS-D  ⊕  R_AS-D<br/>10.  Y_D^H'    =  Y_AS-D^H  ⊕  H( R_D' ∥ m_curr ∥ PID ∥ ts_1 )<br/>11.  T_Acc^new =  T_Acc  &  Y_D^H'<br/>12.  If  T_Acc^new == T_Acc  →  Authenticated ✓   Else  →  Reject ✗

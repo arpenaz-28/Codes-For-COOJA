@@ -1,0 +1,17 @@
+[NODE 81] Sent REG_REQ  Ad=7c05b92953bd...
+[NODE 81] Registered OK  TIDd=dffc5f94776b...
+[NODE 81] Sent AUTH_REQ  Td=138
+[NODE 81] Auth OK  SK=9451b40ada1b...  Ts=139
+[NODE 81] Sent ACK
+[NODE 81] Sent DATA #1
+[NODE 81] Sent DATA #2
+[NODE 81] Sent DATA #3
+[NODE 81] Sent DATA #4
+[NODE 81] Sent DATA #5
+[NODE 81] Sent DATA #6
+[NODE 81] Sent DATA #7
+[NODE 81] Sent DATA #8
+[NODE 81] Sent DATA #9
+[NODE 81] Sent DATA #10
+[NODE 81] Completed data loop.
+HW_METRIC|{"device_id":"81","kind":"HW_METRIC","model":{"cpu_power_w":2.5,"net_energy_per_byte_j":2e-06},"phases":{"ack":{"cpu_s":0.000115,"energy_j":0.000501315,"rx_bytes":0,"tx_bytes":107,"wall_s":0.000111},"auth":{"cpu_s":0.000466,"energy_j":0.001945185,"rx_bytes":196,"tx_bytes":194,"wall_s":0.057847},"data":{"cpu_s":0.006489,"energy_j":0.018222178,"rx_bytes":0,"tx_bytes":1000,"wall_s":30.007044},"register":{"cpu_s":0.002548,"energy_j":0.00692609,"rx_bytes":187,"tx_bytes":91,"wall_s":0.016076}},"role":"NODE","totals":{"cpu_s":0.009618,"energy_j":0.027594768,"rx_bytes":383,"tx_bytes":1392,"wall_s":30.081078},"ts":1776770985}

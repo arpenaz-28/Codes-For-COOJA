@@ -1,0 +1,13 @@
+Metric         , Phase                        , Revised-Anonymity, LAAKA          , Saving (%)
+Comm. bytes (B), Registration / Enrollment    ,          327     , 278            , 15.0%
+Comm. bytes (B), Authentication (Auth+KEx/Ack),          392     , 497            , -26.8%
+Comm. bytes (B), Per data packet              ,          124     , 100            , 19.4%
+Comm. bytes (B), Total                        ,         1959     , 1775           , 9.4%
+Net Energy (mJ), Registration / Enrollment    ,            0.6540, 0.5560         , 15.0%
+Net Energy (mJ), Authentication (Auth+KEx/Ack),            0.7840, 0.9940         , -26.8%
+Net Energy (mJ), Per data packet              ,            0.2480, 0.2000         , 19.4%
+Net Energy (mJ), Total                        ,            3.9180, 3.5500         , 9.4%
+CPU time (ms)  , Enrollment                   ,            2.6740, N/A (local sim), —
+CPU time (ms)  , Auth + KeyEx / Auth + Ack    ,            0.5870, N/A (local sim), —
+CPU time (ms)  , Data (10 pkts)               ,            6.8660, N/A (local sim), —
+CPU time (ms)  , Total                        ,           10.1270, N/A (local sim), —

@@ -1,0 +1,4 @@
+# Python dependencies for LAAKA hardware runtime
+# Install on each machine: python3 -m pip install -r requirements.txt
+
+pycryptodome>=3.18.0
