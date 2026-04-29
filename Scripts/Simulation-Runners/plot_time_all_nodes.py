@@ -118,9 +118,11 @@ for s in SCHEME_LABELS:
 x_pos = np.arange(len(SCHEME_LABELS))
 
 # ── Chart helpers ─────────────────────────────────────────────────────────────
-def apply_style(ax, title, ylabel):
+def apply_style(ax, title, ylabel, xlabel=None):
     ax.set_title(title, fontsize=13, fontweight="bold", pad=10)
     ax.set_ylabel(ylabel, fontsize=12)
+    if xlabel:
+        ax.set_xlabel(xlabel, fontsize=12)
     ax.yaxis.grid(True, linestyle="--", alpha=0.45, color="#aaaaaa")
     ax.set_axisbelow(True)
     ax.spines["top"].set_visible(False)
@@ -156,7 +158,8 @@ ax.set_xticks(x_pos)
 ax.set_xticklabels([SCHEME_SHORT[s] for s in SCHEME_LABELS], fontsize=12)
 ax.set_ylim(0, max(avg_s[s]["combined"] for s in SCHEME_LABELS) * 1.20)
 ax.legend(fontsize=10, framealpha=0.9, loc="upper right")
-apply_style(ax, "Combined CPU Time — All 3 Phases (Per-Device Average)", "CPU Time (s)")
+apply_style(ax, "Combined CPU Computation Time — All 3 Phases (Per-Device Average)\n"
+               "COOJA Simulation, 20 TelosB Motes", "Mean CPU Time per Device (s)")
 plt.tight_layout()
 save(fig, "13_time_combined_per_device_stacked.png")
 
@@ -183,7 +186,8 @@ ax.set_xticklabels([SCHEME_SHORT[s] for s in SCHEME_LABELS], fontsize=12)
 ax.set_ylim(0, max(total_s[s]["combined"] for s in SCHEME_LABELS) * 1.18)
 ax.legend(fontsize=10, framealpha=0.9, loc="upper right")
 apply_style(ax,
-    f"All-Nodes Combined CPU Time — All 3 Phases ({NUM_NODES} Nodes)",
+    f"All-Nodes Combined CPU Time — All 3 Phases ({NUM_NODES} Devices)\n"
+    "COOJA Simulation, TelosB Motes",
     f"Total CPU Time — All {NUM_NODES} Nodes (s)")
 plt.tight_layout()
 save(fig, "14_time_combined_all_nodes_stacked.png")
@@ -205,8 +209,10 @@ for s, vals in [(RA, ra_cpu_dev), (LK, lk_cpu_dev), (ZH, zh_cpu_dev)]:
 
 ax.set_xlabel("Device ID", fontsize=12)
 apply_style(ax,
-    "Per-Device Combined CPU Time (Enrollment + Auth + Key Exchange) — All Schemes",
-    "CPU Time (s)")
+    "Per-Device Combined CPU Time (Enrollment + Auth + Key Exchange)\n"
+    "COOJA Simulation, TelosB Motes",
+    "CPU Time (s)",
+    xlabel="Device ID")
 ax.legend(fontsize=10, framealpha=0.9)
 plt.tight_layout()
 save(fig, "15_time_per_device_combined_line.png")
@@ -239,8 +245,9 @@ ax.text(0.01, 0.98,
         "* Zhou enrollment CPU not separately recorded; Key Exchange included in Auth",
         transform=ax.transAxes, fontsize=8, va="top", color="#555555")
 apply_style(ax,
-    "CPU Time per Phase and Combined — All Schemes (Per-Device Avg)",
-    "CPU Time (s)")
+    "CPU Computation Time per Phase — All Schemes (Per-Device Average)\n"
+    "COOJA Simulation, 20 TelosB Motes",
+    "Mean CPU Time per Device (s)")
 plt.tight_layout()
 save(fig, "16_time_grouped_per_phase_and_combined.png")
 
@@ -268,7 +275,8 @@ for s, xoff, yoff in [(LK, 1, 0.55), (ZH, 2, 0.55)]:
 
 ax.set_ylim(0, max(totals) * 1.22)
 apply_style(ax,
-    f"All-Nodes Combined CPU Time ({NUM_NODES} Devices)",
+    f"Total CPU Computation Time — All Phases ({NUM_NODES} Devices)\n"
+    "COOJA Simulation, TelosB Motes",
     f"Total CPU Time — All {NUM_NODES} Nodes (s)")
 plt.tight_layout()
 save(fig, "17_time_all_nodes_combined_bar.png")

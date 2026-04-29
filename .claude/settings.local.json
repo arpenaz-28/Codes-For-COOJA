@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker version:*)",
+      "Bash(powershell -Command \"Start-Process ''C:\\\\Program Files\\\\Docker\\\\Docker\\\\Docker Desktop.exe''\")",
+      "Bash(docker ps:*)",
+      "Bash(docker start:*)",
+      "Bash(docker exec:*)",
+      "Bash(python3 -c \"print\\(''python ok''\\)\")",
+      "Bash(python -c \"print\\(''python ok''\\)\")"
+    ]
+  }
+}

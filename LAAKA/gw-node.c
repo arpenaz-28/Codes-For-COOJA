@@ -185,38 +185,46 @@ static void res_reg_handler(coap_message_t *req, coap_message_t *resp,
     uint8_t Ad[HASH_LEN];
     memcpy(Ad, plain + 1, HASH_LEN);
 
-    /* Generate TIDd = H(random_seed || IDd || K_MASTER) */
-    uint8_t tid_seed[HASH_LEN + 1 + HASH_LEN];
-    gen_random(tid_seed, HASH_LEN);
-    tid_seed[HASH_LEN] = id_d;
-    memcpy(tid_seed + HASH_LEN + 1, K_MASTER, HASH_LEN);
     uint8_t TIDd[HASH_LEN];
-    H(tid_seed, HASH_LEN + 1 + HASH_LEN, TIDd);
-
-    /* Compute Bk = H(Ad || Af || K) */
-    uint8_t bk_in[3 * HASH_LEN];
-    memcpy(bk_in, Ad, HASH_LEN);
-    memcpy(bk_in + HASH_LEN, Af, HASH_LEN);
-    memcpy(bk_in + 2 * HASH_LEN, K_MASTER, HASH_LEN);
     uint8_t Bk[HASH_LEN];
-    H(bk_in, 3 * HASH_LEN, Bk);
 
-    /* Store in RA database */
-    clients[id_d].IDd = id_d;
-    memcpy(clients[id_d].TIDd, TIDd, HASH_LEN);
-    memcpy(clients[id_d].Ad, Ad, HASH_LEN);
-    memcpy(clients[id_d].Bk, Bk, HASH_LEN);
-    clients[id_d].registered = 1;
+    if (clients[id_d].registered) {
+        /* Idempotent: reuse existing credentials so device and fog stay in sync */
+        memcpy(TIDd, clients[id_d].TIDd, HASH_LEN);
+        memcpy(Bk,   clients[id_d].Bk,   HASH_LEN);
+    } else {
+        /* Generate TIDd = H(random_seed || IDd || K_MASTER) */
+        uint8_t tid_seed[HASH_LEN + 1 + HASH_LEN];
+        gen_random(tid_seed, HASH_LEN);
+        tid_seed[HASH_LEN] = id_d;
+        memcpy(tid_seed + HASH_LEN + 1, K_MASTER, HASH_LEN);
+        H(tid_seed, HASH_LEN + 1 + HASH_LEN, TIDd);
 
-    /* Build reply: TIDd(20)+TIDf(20)+Af(20)+Bk(20) = 80 B, encrypt 5 blocks */
-    uint8_t reply[REG_REP_LEN];
-    memset(reply, 0, REG_REP_LEN);
-    memcpy(reply, TIDd, HASH_LEN);
-    memcpy(reply + HASH_LEN, TIDf_const, HASH_LEN);
-    memcpy(reply + 2 * HASH_LEN, Af, HASH_LEN);
-    memcpy(reply + 3 * HASH_LEN, Bk, HASH_LEN);
-    aes_enc(K_RA_D, reply, 5);
-    coap_set_payload(resp, reply, REG_REP_LEN);
+        /* Compute Bk = H(Ad || Af || K) */
+        uint8_t bk_in[3 * HASH_LEN];
+        memcpy(bk_in, Ad, HASH_LEN);
+        memcpy(bk_in + HASH_LEN, Af, HASH_LEN);
+        memcpy(bk_in + 2 * HASH_LEN, K_MASTER, HASH_LEN);
+        H(bk_in, 3 * HASH_LEN, Bk);
+
+        /* Store in RA database */
+        clients[id_d].IDd = id_d;
+        memcpy(clients[id_d].TIDd, TIDd, HASH_LEN);
+        memcpy(clients[id_d].Ad, Ad, HASH_LEN);
+        memcpy(clients[id_d].Bk, Bk, HASH_LEN);
+        clients[id_d].registered = 1;
+    }
+
+    /* Build reply: TIDd(20)+TIDf(20)+Af(20)+Bk(20) = 80 B, encrypt 5 blocks.
+     * Use framework-provided buf (not stack memory) so CoAP serialization
+     * still has valid data after this handler returns. */
+    memset(buf, 0, REG_REP_LEN);
+    memcpy(buf, TIDd, HASH_LEN);
+    memcpy(buf + HASH_LEN, TIDf_const, HASH_LEN);
+    memcpy(buf + 2 * HASH_LEN, Af, HASH_LEN);
+    memcpy(buf + 3 * HASH_LEN, Bk, HASH_LEN);
+    aes_enc(K_RA_D, buf, 5);
+    coap_set_payload(resp, buf, REG_REP_LEN);
 
     /* Enqueue device info for forwarding to correct fog server:
      * AES(K_RA_GW, [IDd(1)|TIDd(20)|Ad(20)|Bk(20)|pad(3)]) = 64 B */
@@ -243,8 +251,12 @@ RESOURCE(res_reg, "title=\"Reg\"", NULL, res_reg_handler, NULL, NULL);
 /* Forward queue drain callback */
 static void fwd_ack(coap_message_t *resp)
 {
-    if (!resp)
-        printf("RA %u: dev_info delivery to fog timed out\n", node_id);
+    if (!resp) {
+        /* Delivery timed out — keep entry in queue and trigger retry */
+        printf("RA %u: dev_info delivery to fog timed out - retrying\n", node_id);
+        process_post(&gw_proc, ev_fwd, NULL);
+        return;
+    }
     fwd_head = (fwd_head + 1) % MAX_CLIENTS;
 }
 

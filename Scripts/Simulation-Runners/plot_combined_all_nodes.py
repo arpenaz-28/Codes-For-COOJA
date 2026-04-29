@@ -7,10 +7,10 @@ Two sets of charts:
 Schemes: Revised-Anonymity  |  LAAKA  |  Zhou
 Phases:  Enrollment  |  Authentication (Rd 1)  |  Key Exchange (Rd 2)
 
-Note: LAAKA auth/keyex data has 13 devices; Zhou has no separate keyex.
+Note: Zhou has no separate keyex phase.
       "All-nodes" figures use avg-per-device x 20 for fair comparison.
 """
-import csv, os, statistics
+import csv, os, statistics, math
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -39,9 +39,11 @@ def load(path, id_col, cpu_col, en_col):
                 pass
     return rows   # dict: device_id -> {cpu, en}
 
-def avg_en(d): return statistics.mean(v["en"] for v in d.values()) if d else 0
+def avg_en(d):  return statistics.mean(v["en"]  for v in d.values()) if d else 0
 def avg_cpu(d): return statistics.mean(v["cpu"] for v in d.values()) if d else 0
 def total_en(d): return sum(v["en"] for v in d.values())
+
+plt.rcParams.update({"axes.spines.top": False, "axes.spines.right": False})
 
 RA = "Revised-Anonymity"
 LK = "LAAKA"
@@ -177,13 +179,17 @@ for i, s in enumerate(SCHEME_LABELS):
     ax.text(i, total + 0.5, f"{total:.1f} mJ", ha="center", va="bottom", fontsize=10, fontweight="bold")
 
 ax.set_xticks(x_pos)
-ax.set_xticklabels([scheme_short(s) for s in SCHEME_LABELS], fontsize=11)
-ax.set_ylabel("Energy (mJ)", fontsize=12)
-ax.set_title("Combined Cost — All 3 Phases (Per-Device Average)", fontsize=13, fontweight="bold")
-ax.legend(fontsize=10, loc="upper right")
+ax.set_xticklabels([scheme_short(s) for s in SCHEME_LABELS], fontsize=12)
+ax.set_ylabel("Mean Energy per Device (mJ)", fontsize=12)
+ax.set_title("Combined Energy Cost — All 3 Phases (Per-Device Average)\n"
+             "COOJA Simulation, 20 TelosB Motes", fontsize=13, fontweight="bold")
+ax.legend(fontsize=10, loc="upper right", framealpha=0.88, edgecolor="#aaaaaa")
 ax.yaxis.grid(True, linestyle="--", alpha=0.5)
 ax.set_axisbelow(True)
-ax.set_ylim(0, max(avg_mj[s]["combined"] for s in SCHEME_LABELS) * 1.18)
+ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
+ax.set_ylim(0, max(avg_mj[s]["combined"] for s in SCHEME_LABELS) * 1.20)
+ax.text(0.01, 0.01, "* Zhou Key Exchange cost is included in its Authentication phase",
+        transform=ax.transAxes, fontsize=8, va="bottom", color="#555555", style="italic")
 plt.tight_layout()
 p = os.path.join(OUT_DIR, "08_combined_cost_per_device_stacked.png")
 plt.savefig(p, dpi=150); plt.close()
@@ -208,13 +214,17 @@ for i, s in enumerate(SCHEME_LABELS):
     ax.text(i, total + 8, f"{total:.1f} mJ", ha="center", va="bottom", fontsize=10, fontweight="bold")
 
 ax.set_xticks(x_pos)
-ax.set_xticklabels([scheme_short(s) for s in SCHEME_LABELS], fontsize=11)
-ax.set_ylabel("Total Energy — All Nodes (mJ)", fontsize=12)
-ax.set_title(f"All-Nodes Combined Cost — All 3 Phases ({NUM_NODES} Nodes)", fontsize=13, fontweight="bold")
-ax.legend(fontsize=10, loc="upper right")
+ax.set_xticklabels([scheme_short(s) for s in SCHEME_LABELS], fontsize=12)
+ax.set_ylabel(f"Total Energy — All {NUM_NODES} Nodes (mJ)", fontsize=12)
+ax.set_title(f"All-Nodes Combined Energy Cost — All 3 Phases ({NUM_NODES} Devices)\n"
+             "COOJA Simulation, TelosB Motes", fontsize=13, fontweight="bold")
+ax.legend(fontsize=10, loc="upper right", framealpha=0.88, edgecolor="#aaaaaa")
 ax.yaxis.grid(True, linestyle="--", alpha=0.5)
 ax.set_axisbelow(True)
-ax.set_ylim(0, max(total_mj[s]["combined"] for s in SCHEME_LABELS) * 1.15)
+ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
+ax.set_ylim(0, max(total_mj[s]["combined"] for s in SCHEME_LABELS) * 1.18)
+ax.text(0.01, 0.01, "* All-nodes total = per-device average × 20 (fair comparison across schemes)",
+        transform=ax.transAxes, fontsize=8, va="bottom", color="#555555", style="italic")
 plt.tight_layout()
 p = os.path.join(OUT_DIR, "09_combined_cost_all_nodes_stacked.png")
 plt.savefig(p, dpi=150); plt.close()
@@ -238,13 +248,16 @@ ax.axhline(avg_mj[RA]["combined"], color=SCHEME_COLORS[RA], linestyle=":", alpha
 ax.axhline(avg_mj[LK]["combined"], color=SCHEME_COLORS[LK], linestyle=":", alpha=0.6, linewidth=1.2)
 ax.axhline(avg_mj[ZH]["combined"], color=SCHEME_COLORS[ZH], linestyle=":", alpha=0.6, linewidth=1.2)
 
-ax.set_xlabel("Device ID", fontsize=11)
-ax.set_ylabel("Total Energy (mJ)", fontsize=11)
-ax.set_title("Per-Device Combined Cost (Enrollment + Auth + KeyEx) — All Schemes",
-             fontsize=12, fontweight="bold")
-ax.legend(fontsize=10)
+ax.set_xlabel("Device ID", fontsize=12)
+ax.set_ylabel("Total Energy (mJ)", fontsize=12)
+ax.set_title("Per-Device Combined Energy Cost (Enrollment + Auth + Key Exchange)\n"
+             "COOJA Simulation, TelosB Motes", fontsize=12, fontweight="bold")
+ax.legend(fontsize=10, framealpha=0.88, edgecolor="#aaaaaa")
 ax.yaxis.grid(True, linestyle="--", alpha=0.5)
 ax.set_axisbelow(True)
+ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
+ax.text(0.01, 0.01, "Dotted horizontal lines = per-scheme mean",
+        transform=ax.transAxes, fontsize=8, va="bottom", color="#555555", style="italic")
 plt.tight_layout()
 p = os.path.join(OUT_DIR, "10_per_device_combined_cost_line.png")
 plt.savefig(p, dpi=150); plt.close()
@@ -273,16 +286,16 @@ for i, s in enumerate(SCHEME_LABELS):
                     f"{v:.1f}", ha="center", va="bottom", fontsize=7.5, rotation=90)
 
 ax.set_xticks(ph_pos)
-ax.set_xticklabels(phases_labels, fontsize=10)
-ax.set_ylabel("Energy (mJ) — Per-Device Average", fontsize=11)
-ax.set_title("Energy per Phase and Combined — All Schemes (Per-Device Avg)",
-             fontsize=12, fontweight="bold")
-ax.legend(fontsize=10)
+ax.set_xticklabels(phases_labels, fontsize=11)
+ax.set_ylabel("Mean Energy per Device (mJ)", fontsize=12)
+ax.set_title("Energy Consumption per Phase — All Schemes (Per-Device Average)\n"
+             "COOJA Simulation, 20 TelosB Motes", fontsize=12, fontweight="bold")
+ax.legend(fontsize=10, framealpha=0.88, edgecolor="#aaaaaa")
 ax.yaxis.grid(True, linestyle="--", alpha=0.5)
 ax.set_axisbelow(True)
-note = "* Zhou Key Exchange cost is included in its Authentication phase"
-ax.text(0.01, 0.98, note, transform=ax.transAxes, fontsize=8,
-        verticalalignment="top", color="gray")
+ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
+ax.text(0.01, 0.99, "* Zhou Key Exchange cost is included in its Authentication phase",
+        transform=ax.transAxes, fontsize=8, verticalalignment="top", color="#555555", style="italic")
 plt.tight_layout()
 p = os.path.join(OUT_DIR, "11_grouped_per_phase_and_combined.png")
 plt.savefig(p, dpi=150); plt.close()
@@ -308,11 +321,14 @@ for i, s in enumerate([LK, ZH]):
             ha="center", fontsize=8.5, color="white", fontweight="bold")
 
 ax.set_ylabel(f"Total Energy — All {NUM_NODES} Nodes (mJ)", fontsize=12)
-ax.set_title(f"All-Nodes Combined Cost (Enroll+Auth+KeyEx), {NUM_NODES} Devices",
-             fontsize=12, fontweight="bold")
+ax.set_title(f"Total Network Energy Cost (Enrollment + Auth + Key Exchange)\n"
+             f"{NUM_NODES} Devices — COOJA Simulation", fontsize=12, fontweight="bold")
 ax.yaxis.grid(True, linestyle="--", alpha=0.5)
 ax.set_axisbelow(True)
-ax.set_ylim(0, max(totals) * 1.18)
+ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
+ax.set_ylim(0, max(totals) * 1.22)
+ax.text(0.01, 0.01, "* Total = per-device average × 20 nodes",
+        transform=ax.transAxes, fontsize=8, va="bottom", color="#555555", style="italic")
 plt.tight_layout()
 p = os.path.join(OUT_DIR, "12_all_nodes_combined_bar.png")
 plt.savefig(p, dpi=150); plt.close()

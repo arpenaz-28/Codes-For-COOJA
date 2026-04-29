@@ -101,7 +101,8 @@ static int ts_fresh(uint8_t recv_ts)
 {
     uint8_t now  = (uint8_t)(clock_time() / CLOCK_SECOND);
     int     diff = ((int)now - (int)recv_ts + 256) % 256;
-    return (diff < FRESHNESS_WINDOW);
+    /* Accept timestamps in the past window OR slightly ahead (device booted before fog) */
+    return (diff < FRESHNESS_WINDOW) || (diff > 256 - FRESHNESS_WINDOW);
 }
 
 /* --------------------------------------------------------------------------

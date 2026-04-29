@@ -243,6 +243,18 @@ static void client_auth_handler(coap_message_t *resp)
         return;
     }
 
+    /* Step 6 (cont.): Verify Tf freshness — paper requires |Tc - Tf| <= DeltaT.
+     * Use bidirectional window to handle uint8_t clock wrap-around. */
+    {
+        uint8_t now_d = (uint8_t)(clock_time() / CLOCK_SECOND);
+        int tf_diff = ((int)now_d - (int)Tf + 256) % 256;
+        if (!((tf_diff < FRESHNESS_WINDOW) || (tf_diff > 256 - FRESHNESS_WINDOW))) {
+            printf("Node %u: Auth failed - Tf not fresh (diff=%d)\n", IDd, (int)tf_diff);
+            auth_ok = 0;
+            return;
+        }
+    }
+
     /* Step 7: Compute TIDd_new = TIDd XOR rd */
     for (int i = 0; i < HASH_LEN; i++)
         TIDd_new[i] = TIDd[i] ^ rd[i];
