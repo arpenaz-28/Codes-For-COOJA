@@ -420,8 +420,8 @@ session key exchange.  The following sections elaborate on these phases.
     $c_D$, $c_{AS\text{-}D}$ & PUF challenges for $D$ (issued by $AS$) and $AS$ (by $D$) \\
     $m_D$ & Session-based random issued by $AS$ during enrolment \\
     $m_\mathsf{curr}$, $m_\mathsf{old}$ & Current and previous session-based randoms at $D$ and $AS$ \\
-    $y_D$, $R_D$ & Group secret and PUF response of $D$ \\
-    $Y_D^H$ & Hashed group secret: $H(y_D)$ \\
+    $y_D$, $R_D$ & Unique secret and PUF response of $D$ \\
+    $Y_D^H$ & Hashed unique secret: $H(y_D)$ \\
     $T_\mathsf{Acc}$ & Accumulated group-membership value at $AS$ \\
     $\Phi_{AS\text{-}D}$ & PUF-response binding: $\mathsf{PUF}_{AS}(c_{AS\text{-}D}) \oplus R_D$ \\
     $\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{old}$ & Current and previous pseudonyms of $D$ \\
@@ -483,7 +483,7 @@ Figure~\ref{fig:enrolment} details the phase.
     % D note
     \node[notebox, text width=3.8cm, anchor=north east] at (\xD-0.15,-3.55){
       $R_D = \mathsf{PUF}_D(c_D)$\\
-      Generate group secret $y_D$ (random)\\
+      Generate unique secret $y_D$ (random)\\
       Generate challenge $c_{AS\text{-}D}$\\
       Store $\{y_D,\ c_D,\ m_\mathsf{curr}=m_D\}$
     };
@@ -510,11 +510,11 @@ Figure~\ref{fig:enrolment} details the phase.
 
 $D$ initiates enrolment by sending its identity $ID_D$ to $AS$.  $AS$
 issues a PUF challenge $c_D$ and a session random $m_D$.  Using $c_D$, $D$
-computes $R_D = \mathsf{PUF}_D(c_D)$ and generates a group secret $y_D$
+computes $R_D = \mathsf{PUF}_D(c_D)$ and generates a unique secret $y_D$
 (random) and a reverse challenge $c_{AS\text{-}D}$.  It returns
 $(y_D, R_D, c_{AS\text{-}D})$ to $AS$ over the secure channel.
 
-$AS$ hashes the group secret to obtain $Y_D^H = H(y_D)$ and folds it into
+$AS$ hashes the unique secret to obtain $Y_D^H = H(y_D)$ and folds it into
 the accumulator: $T_\mathsf{Acc} = T_\mathsf{Acc} \mathbin{\&} Y_D^H$.
 It computes $\Phi_{AS\text{-}D} = \mathsf{PUF}_{AS}(c_{AS\text{-}D}) \oplus
 R_D$ to store $R_D$ in XOR-protected form, and initializes the dual state:
@@ -1068,7 +1068,7 @@ tighter packets (65\,B AUTH\_REQ, 2\,B AUTH\_REP, 33\,B KEYEX\_REQ,
 32\,B KEYEX\_REP, 81\,B GW\_TOKEN).
 
 The enrolment overhead is slightly higher in the proposed scheme: enrolment
-adds a third message exchange for the group-secret transmission ($+49$\,B),
+adds a third message exchange for the unique-secret transmission ($+49$\,B),
 which is the direct cost of the anonymity setup.  Overall, the three-phase
 total is 7.8\% lower (719\,B vs.\ 775\,B) than the base scheme.
 

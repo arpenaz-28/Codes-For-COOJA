@@ -1,7 +1,7 @@
 CONTIKI_PROJECT = device-node as-node gw-node
 all: $(CONTIKI_PROJECT)
 
-CONTIKI = ../..
+CONTIKI = ../../../..
 PROJECT_SOURCEFILES += aes.c sha256.c
 MODULES += os/net/app-layer/coap
 
