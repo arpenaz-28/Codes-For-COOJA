@@ -274,8 +274,8 @@ PROCESS_THREAD(user_proc, ev, data)
     PROCESS_BEGIN();
 
     id_d = (uint8_t)node_id;
-    /* Users 81–90 → GW server 2,  Users 91–100 → GW server 3 */
-    id_gw_server = (node_id <= 90) ? (uint8_t)GW_SERVER_ID : (uint8_t)GW_SERVER_ID2;
+    /* Users <= GW_USER_SPLIT → GW server 2,  others → GW server 3 */
+    id_gw_server = (node_id <= GW_USER_SPLIT) ? (uint8_t)GW_SERVER_ID : (uint8_t)GW_SERVER_ID2;
 
     discover_endpoints();
 
@@ -333,7 +333,7 @@ PROCESS_THREAD(user_proc, ev, data)
                  * User i (81–100) → Sensor (i-77) (4–23)
                  * POST /test/get_sid with AES_enc(K_GW_U, [sn_id|pad]) */
                 static uint8_t bound_sn;
-                bound_sn = id_d - 77;  /* sensor node_id */
+                bound_sn = id_d - SN_USER_OFFSET;  /* sensor node_id */
                 {
                     static uint8_t gs[16];
                     memset(gs, 0, 16);

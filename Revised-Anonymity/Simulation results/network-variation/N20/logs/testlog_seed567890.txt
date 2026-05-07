@@ -1,0 +1,659 @@
+Random seed: 567890
+15000 11 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+15000 11 [INFO: Main      ] - Routing: RPL Lite
+15000 11 [INFO: Main      ] - Net: sicslowpan
+15000 11 [INFO: Main      ] - MAC: CSMA
+15000 11 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+15000 11 [INFO: Main      ] - 802.15.4 Default channel: 26
+15000 11 [INFO: Main      ] Node ID: 11
+15000 11 [INFO: Main      ] Link-layer address: 000b.000b.000b.000b
+15000 11 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20b:b:b:b
+15000 11 AS 11 (Revised Anonymity ﾀﾔ Two-Round): Started.
+17000 8 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+17000 8 [INFO: Main      ] - Routing: RPL Lite
+17000 8 [INFO: Main      ] - Net: sicslowpan
+17000 8 [INFO: Main      ] - MAC: CSMA
+17000 8 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+17000 8 [INFO: Main      ] - 802.15.4 Default channel: 26
+17000 8 [INFO: Main      ] Node ID: 8
+17000 8 [INFO: Main      ] Link-layer address: 0008.0008.0008.0008
+17000 8 [INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
+17000 8 AS 8 (Revised Anonymity ﾀﾔ Two-Round): Started.
+52000 5 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+52000 5 [INFO: Main      ] - Routing: RPL Lite
+52000 5 [INFO: Main      ] - Net: sicslowpan
+52000 5 [INFO: Main      ] - MAC: CSMA
+52000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+52000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+52000 5 [INFO: Main      ] Node ID: 5
+52000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+52000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+52000 5 AS 5 (Revised Anonymity ﾀﾔ Two-Round): Started.
+63000 20 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+63000 20 [INFO: Main      ] - Routing: RPL Lite
+63000 20 [INFO: Main      ] - Net: sicslowpan
+63000 20 [INFO: Main      ] - MAC: CSMA
+63000 20 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+63000 20 [INFO: Main      ] - 802.15.4 Default channel: 26
+63000 20 [INFO: Main      ] Node ID: 20
+63000 20 [INFO: Main      ] Link-layer address: 0014.0014.0014.0014
+63000 20 [INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
+186000 4 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+186000 4 [INFO: Main      ] - Routing: RPL Lite
+186000 4 [INFO: Main      ] - Net: sicslowpan
+186000 4 [INFO: Main      ] - MAC: CSMA
+186000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+186000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+186000 4 [INFO: Main      ] Node ID: 4
+186000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+186000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+186000 4 AS 4 (Revised Anonymity ﾀﾔ Two-Round): Started.
+218000 13 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+218000 13 [INFO: Main      ] - Routing: RPL Lite
+218000 13 [INFO: Main      ] - Net: sicslowpan
+218000 13 [INFO: Main      ] - MAC: CSMA
+218000 13 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+218000 13 [INFO: Main      ] - 802.15.4 Default channel: 26
+218000 13 [INFO: Main      ] Node ID: 13
+218000 13 [INFO: Main      ] Link-layer address: 000d.000d.000d.000d
+218000 13 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
+218000 13 AS 13 (Revised Anonymity ﾀﾔ Two-Round): Started.
+289000 1 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+289000 1 [INFO: Main      ] - Routing: RPL Lite
+289000 1 [INFO: Main      ] - Net: sicslowpan
+289000 1 [INFO: Main      ] - MAC: CSMA
+289000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+289000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+289000 1 [INFO: Main      ] Node ID: 1
+289000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+289000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+289000 1 GW 1: Started (RPL root + CoAP server).
+289000 1 GW 1: Storage: 7480 bytes (110 sessions x 68 bytes each)
+361000 14 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+361000 14 [INFO: Main      ] - Routing: RPL Lite
+361000 14 [INFO: Main      ] - Net: sicslowpan
+361000 14 [INFO: Main      ] - MAC: CSMA
+361000 14 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+361000 14 [INFO: Main      ] - 802.15.4 Default channel: 26
+361000 14 [INFO: Main      ] Node ID: 14
+361000 14 [INFO: Main      ] Link-layer address: 000e.000e.000e.000e
+361000 14 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
+361000 14 AS 14 (Revised Anonymity ﾀﾔ Two-Round): Started.
+380000 6 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+380000 6 [INFO: Main      ] - Routing: RPL Lite
+380000 6 [INFO: Main      ] - Net: sicslowpan
+380000 6 [INFO: Main      ] - MAC: CSMA
+380000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+380000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
+380000 6 [INFO: Main      ] Node ID: 6
+380000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+380000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+380000 6 AS 6 (Revised Anonymity ﾀﾔ Two-Round): Started.
+380000 19 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+380000 19 [INFO: Main      ] - Routing: RPL Lite
+380000 19 [INFO: Main      ] - Net: sicslowpan
+380000 19 [INFO: Main      ] - MAC: CSMA
+380000 19 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+380000 19 [INFO: Main      ] - 802.15.4 Default channel: 26
+380000 19 [INFO: Main      ] Node ID: 19
+380000 19 [INFO: Main      ] Link-layer address: 0013.0013.0013.0013
+380000 19 [INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
+395000 7 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+395000 7 [INFO: Main      ] - Routing: RPL Lite
+395000 7 [INFO: Main      ] - Net: sicslowpan
+395000 7 [INFO: Main      ] - MAC: CSMA
+395000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+395000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
+395000 7 [INFO: Main      ] Node ID: 7
+395000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+395000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+395000 7 AS 7 (Revised Anonymity ﾀﾔ Two-Round): Started.
+423000 18 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+423000 18 [INFO: Main      ] - Routing: RPL Lite
+423000 18 [INFO: Main      ] - Net: sicslowpan
+423000 18 [INFO: Main      ] - MAC: CSMA
+423000 18 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+423000 18 [INFO: Main      ] - 802.15.4 Default channel: 26
+423000 18 [INFO: Main      ] Node ID: 18
+423000 18 [INFO: Main      ] Link-layer address: 0012.0012.0012.0012
+423000 18 [INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
+423000 18 AS 18 (Revised Anonymity ﾀﾔ Two-Round): Started.
+501000 3 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+501000 3 [INFO: Main      ] - Routing: RPL Lite
+501000 3 [INFO: Main      ] - Net: sicslowpan
+501000 3 [INFO: Main      ] - MAC: CSMA
+501000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+501000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+501000 3 [INFO: Main      ] Node ID: 3
+501000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+501000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+501000 3 AS 3 (Revised Anonymity ﾀﾔ Two-Round): Started.
+514000 10 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+514000 10 [INFO: Main      ] - Routing: RPL Lite
+514000 10 [INFO: Main      ] - Net: sicslowpan
+514000 10 [INFO: Main      ] - MAC: CSMA
+514000 10 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+514000 10 [INFO: Main      ] - 802.15.4 Default channel: 26
+514000 10 [INFO: Main      ] Node ID: 10
+514000 10 [INFO: Main      ] Link-layer address: 000a.000a.000a.000a
+514000 10 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
+514000 10 AS 10 (Revised Anonymity ﾀﾔ Two-Round): Started.
+689000 12 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+689000 12 [INFO: Main      ] - Routing: RPL Lite
+689000 12 [INFO: Main      ] - Net: sicslowpan
+689000 12 [INFO: Main      ] - MAC: CSMA
+689000 12 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+689000 12 [INFO: Main      ] - 802.15.4 Default channel: 26
+689000 12 [INFO: Main      ] Node ID: 12
+689000 12 [INFO: Main      ] Link-layer address: 000c.000c.000c.000c
+689000 12 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
+689000 12 AS 12 (Revised Anonymity ﾀﾔ Two-Round): Started.
+703000 16 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+703000 16 [INFO: Main      ] - Routing: RPL Lite
+703000 16 [INFO: Main      ] - Net: sicslowpan
+703000 16 [INFO: Main      ] - MAC: CSMA
+703000 16 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+703000 16 [INFO: Main      ] - 802.15.4 Default channel: 26
+703000 16 [INFO: Main      ] Node ID: 16
+703000 16 [INFO: Main      ] Link-layer address: 0010.0010.0010.0010
+703000 16 [INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
+703000 16 AS 16 (Revised Anonymity ﾀﾔ Two-Round): Started.
+713000 15 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+713000 15 [INFO: Main      ] - Routing: RPL Lite
+713000 15 [INFO: Main      ] - Net: sicslowpan
+713000 15 [INFO: Main      ] - MAC: CSMA
+713000 15 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+713000 15 [INFO: Main      ] - 802.15.4 Default channel: 26
+713000 15 [INFO: Main      ] Node ID: 15
+713000 15 [INFO: Main      ] Link-layer address: 000f.000f.000f.000f
+713000 15 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
+713000 15 AS 15 (Revised Anonymity ﾀﾔ Two-Round): Started.
+775000 17 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+775000 17 [INFO: Main      ] - Routing: RPL Lite
+775000 17 [INFO: Main      ] - Net: sicslowpan
+775000 17 [INFO: Main      ] - MAC: CSMA
+775000 17 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+775000 17 [INFO: Main      ] - 802.15.4 Default channel: 26
+775000 17 [INFO: Main      ] Node ID: 17
+775000 17 [INFO: Main      ] Link-layer address: 0011.0011.0011.0011
+775000 17 [INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
+775000 17 AS 17 (Revised Anonymity ﾀﾔ Two-Round): Started.
+885000 2 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+885000 2 [INFO: Main      ] - Routing: RPL Lite
+885000 2 [INFO: Main      ] - Net: sicslowpan
+885000 2 [INFO: Main      ] - MAC: CSMA
+885000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+885000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+885000 2 [INFO: Main      ] Node ID: 2
+885000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+885000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+885000 2 AS 2 (Revised Anonymity ﾀﾔ Two-Round): Started.
+910000 9 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+910000 9 [INFO: Main      ] - Routing: RPL Lite
+910000 9 [INFO: Main      ] - Net: sicslowpan
+910000 9 [INFO: Main      ] - MAC: CSMA
+910000 9 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+910000 9 [INFO: Main      ] - 802.15.4 Default channel: 26
+910000 9 [INFO: Main      ] Node ID: 9
+910000 9 [INFO: Main      ] Link-layer address: 0009.0009.0009.0009
+910000 9 [INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
+910000 9 AS 9 (Revised Anonymity ﾀﾔ Two-Round): Started.
+24380000 19 Node 19: Sending Reg-0
+25063000 20 Node 20: Sending Reg-0
+25082592 3 AS 3: Reg-0 for device 20 (c_d=184)
+25139328 20 Node 20: Reg-0 OK. c_d=184
+25139328 20 Node 20: Sending Reg-1
+25173648 3 AS 3: Reg-1 complete for device 20
+25278112 20 Node 20: Enrolled
+25278112 20 
+28829848 2 AS 2: Reg-0 for device 19 (c_d=133)
+28885328 19 Node 19: Reg-0 OK. c_d=133
+28885328 19 Node 19: Sending Reg-1
+28999904 2 AS 2: Reg-1 complete for device 19
+29083112 19 Node 19: Enrolled
+29083112 19 
+48380000 19 ENROLL_ENERGY|19|cpu_s=4.703112|energy_j=0.290582Node 19: Round 1 ﾀﾔ Sending auth. PID=f40507 ts_1=1
+48503440 2 AS 2: Device 19 authenticated
+48503440 2 AS 2: Round 1 reply to device 19 (ts_2=1). Pending keyex.
+48503440 2 
+48547968 19 Node 19: Round 1 Auth OK. ts_2=1
+48547968 19 
+50063000 20 ENROLL_ENERGY|20|cpu_s=0.215112|energy_j=0.013243Node 20: Round 1 ﾀﾔ Sending auth. PID=10e6ab ts_1=1
+50180184 3 AS 3: Device 20 authenticated
+50180184 3 AS 3: Round 1 reply to device 20 (ts_2=1). Pending keyex.
+50180184 3 
+50198856 20 Node 20: Round 1 Auth OK. ts_2=1
+50198856 20 
+72380000 19 AUTH_ENERGY|19|cpu_s=0.167968|energy_j=0.010338Node 19: Round 2 ﾀﾔ Sending keyex. ts_2=1
+72425456 2  The CPU time and energy at end of authentication for server 2 are 47.618440 and 2.942587AS 2: Round 2 KeyEx reply to device 19. Forwarding token to GW.
+72563816 19 Node 19: Round 2 KeyEx OK. New PID=49ed84
+72563816 19 
+72563816 19 KEYEX_ENERGY|19|cpu_s=0.183816|energy_j=0.011334
+72570888 1 GW: Auth token for device 19 (via AS 2). PID: 49ed84... stored.
+72570888 1 GW: Token processing time: 0 ms
+75063000 20 AUTH_ENERGY|20|cpu_s=0.135856|energy_j=0.008353Node 20: Round 2 ﾀﾔ Sending keyex. ts_2=1
+75139200 3  The CPU time and energy at end of authentication for server 3 are 49.679184 and 3.069942AS 3: Round 2 KeyEx reply to device 20. Forwarding token to GW.
+75222816 20 Node 20: Round 2 KeyEx OK. New PID=46f765
+75222816 20 
+75222816 20 KEYEX_ENERGY|20|cpu_s=0.159816|energy_j=0.009851
+75241632 1 GW: Auth token for device 20 (via AS 3). PID: 46f765... stored.
+75241632 1 GW: Token processing time: 0 ms
+96418360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+96418360 1 GW: Data processing time: 0 ms
+96437536 19  The CPU time and energy at the end of authentication 1 for client 19 are 24.183816 and 1.494439Node 19: Data confirmed
+100106360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+100106360 1 GW: Data processing time: 0 ms
+100134536 20  The CPU time and energy at the end of authentication 1 for client 20 are 25.159816 and 1.554782Node 20: Data confirmed
+120404360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+120404360 1 GW: Data processing time: 0 ms
+120414536 19 Node 19: Data confirmed
+125107360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+125107360 1 GW: Data processing time: 0 ms
+125116536 20 Node 20: Data confirmed
+144398360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+144398360 1 GW: Data processing time: 0 ms
+144430536 19 Node 19: Data confirmed
+150099360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+150099360 1 GW: Data processing time: 0 ms
+150143536 20 Node 20: Data confirmed
+168396360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+168396360 1 GW: Data processing time: 0 ms
+168418536 19 Node 19: Data confirmed
+175091360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+175091360 1 GW: Data processing time: 0 ms
+175103536 20 Node 20: Data confirmed
+192408360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+192408360 1 GW: Data processing time: 0 ms
+192435536 19 Node 19: Data confirmed
+200106360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+200106360 1 GW: Data processing time: 0 ms
+200111896 20 Node 20: Data confirmed
+216390360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+216390360 1 GW: Data processing time: 0 ms
+216435536 19 Node 19: Data confirmed
+225103360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+225103360 1 GW: Data processing time: 0 ms
+225111536 20 Node 20: Data confirmed
+240407360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+240407360 1 GW: Data processing time: 0 ms
+240422536 19 Node 19: Data confirmed
+250072360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+250072360 1 GW: Data processing time: 0 ms
+250080536 20 Node 20: Data confirmed
+264413360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+264413360 1 GW: Data processing time: 0 ms
+264436536 19 Node 19: Data confirmed
+275095360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+275095360 1 GW: Data processing time: 0 ms
+275115536 20 Node 20: Data confirmed
+288395360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+288395360 1 GW: Data processing time: 0 ms
+288404536 19 Node 19: Data confirmed
+300084360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+300084360 1 GW: Data processing time: 0 ms
+300125536 20 Node 20: Data confirmed
+312416360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+312416360 1 GW: Data processing time: 0 ms
+312432536 19 Node 19: Data confirmed
+325070360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+325070360 1 GW: Data processing time: 0 ms
+325105536 20 Node 20: Data confirmed
+336405360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+336405360 1 GW: Data processing time: 0 ms
+336437536 19 Node 19: Data confirmed
+350097360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+350097360 1 GW: Data processing time: 0 ms
+350111536 20 Node 20: Data confirmed
+360388360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+360388360 1 GW: Data processing time: 0 ms
+360432536 19 Node 19: Data confirmed
+375110360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+375110360 1 GW: Data processing time: 0 ms
+375154536 20 Node 20: Data confirmed
+384408360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+384408360 1 GW: Data processing time: 0 ms
+384438536 19 Node 19: Data confirmed
+400086360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+400086360 1 GW: Data processing time: 0 ms
+400101536 20 Node 20: Data confirmed
+408404360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+408404360 1 GW: Data processing time: 0 ms
+408425536 19 Node 19: Data confirmed
+425094360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+425094360 1 GW: Data processing time: 0 ms
+425133536 20 Node 20: Data confirmed
+432421360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+432421360 1 GW: Data processing time: 0 ms
+432455536 19 Node 19: Data confirmed
+450074360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+450074360 1 GW: Data processing time: 0 ms
+450104536 20 Node 20: Data confirmed
+456408360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+456408360 1 GW: Data processing time: 0 ms
+456437536 19 Node 19: Data confirmed
+475103360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+475103360 1 GW: Data processing time: 0 ms
+475109536 20 Node 20: Data confirmed
+480418360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+480418360 1 GW: Data processing time: 0 ms
+480429536 19 Node 19: Data confirmed
+500104360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+500104360 1 GW: Data processing time: 0 ms
+500135536 20 Node 20: Data confirmed
+504421360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+504421360 1 GW: Data processing time: 0 ms
+504447536 19 Node 19: Data confirmed
+525094360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+525094360 1 GW: Data processing time: 0 ms
+525131536 20 Node 20: Data confirmed
+528408360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+528408360 1 GW: Data processing time: 0 ms
+528448536 19 Node 19: Data confirmed
+550070360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+550070360 1 GW: Data processing time: 0 ms
+550079536 20 Node 20: Data confirmed
+552398360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+552398360 1 GW: Data processing time: 0 ms
+552430536 19 Node 19: Data confirmed
+575070360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+575070360 1 GW: Data processing time: 0 ms
+575080536 20 Node 20: Data confirmed
+576410360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+576410360 1 GW: Data processing time: 0 ms
+576425536 19 Node 19: Data confirmed
+600088360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+600088360 1 GW: Data processing time: 0 ms
+600129536 20 Node 20: Data confirmed
+600387360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+600387360 1 GW: Data processing time: 0 ms
+600403536 19 Node 19: Data confirmed
+624393360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+624393360 1 GW: Data processing time: 0 ms
+624405536 19 Node 19: Data confirmed
+625077360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+625077360 1 GW: Data processing time: 0 ms
+625107536 20 Node 20: Data confirmed
+648425360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+648425360 1 GW: Data processing time: 0 ms
+648436536 19 Node 19: Data confirmed
+650079360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+650079360 1 GW: Data processing time: 0 ms
+650095536 20 Node 20: Data confirmed
+672396360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+672396360 1 GW: Data processing time: 0 ms
+672435536 19 Node 19: Data confirmed
+675070360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+675070360 1 GW: Data processing time: 0 ms
+675110536 20 Node 20: Data confirmed
+696413360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+696413360 1 GW: Data processing time: 0 ms
+696455536 19 Node 19: Data confirmed
+700090360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+700090360 1 GW: Data processing time: 0 ms
+700116536 20 Node 20: Data confirmed
+720415360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+720415360 1 GW: Data processing time: 0 ms
+720429536 19 Node 19: Data confirmed
+725105360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+725105360 1 GW: Data processing time: 0 ms
+725129536 20 Node 20: Data confirmed
+744409360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+744409360 1 GW: Data processing time: 0 ms
+744416536 19 Node 19: Data confirmed
+750081360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+750081360 1 GW: Data processing time: 0 ms
+750101536 20 Node 20: Data confirmed
+768422360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+768422360 1 GW: Data processing time: 0 ms
+768464536 19 Node 19: Data confirmed
+775093360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+775093360 1 GW: Data processing time: 0 ms
+775113536 20 Node 20: Data confirmed
+792422360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+792422360 1 GW: Data processing time: 0 ms
+792427896 19 Node 19: Data confirmed
+800096360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+800096360 1 GW: Data processing time: 0 ms
+800129536 20 Node 20: Data confirmed
+816401360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+816401360 1 GW: Data processing time: 0 ms
+816429536 19 Node 19: Data confirmed
+825072360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+825072360 1 GW: Data processing time: 0 ms
+825093536 20 Node 20: Data confirmed
+840422360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+840422360 1 GW: Data processing time: 0 ms
+840453536 19 Node 19: Data confirmed
+850076360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+850076360 1 GW: Data processing time: 0 ms
+850088536 20 Node 20: Data confirmed
+864403360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+864403360 1 GW: Data processing time: 0 ms
+864414536 19 Node 19: Data confirmed
+875079360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+875079360 1 GW: Data processing time: 0 ms
+875096536 20 Node 20: Data confirmed
+888388360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+888388360 1 GW: Data processing time: 0 ms
+888420536 19 Node 19: Data confirmed
+900086360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+900086360 1 GW: Data processing time: 0 ms
+900113536 20 Node 20: Data confirmed
+912402360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+912402360 1 GW: Data processing time: 0 ms
+912447536 19 Node 19: Data confirmed
+925093360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+925093360 1 GW: Data processing time: 0 ms
+925128536 20 Node 20: Data confirmed
+936408360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+936408360 1 GW: Data processing time: 0 ms
+936435536 19 Node 19: Data confirmed
+950083360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+950083360 1 GW: Data processing time: 0 ms
+950101536 20 Node 20: Data confirmed
+960414360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+960414360 1 GW: Data processing time: 0 ms
+960436536 19 Node 19: Data confirmed
+975084360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+975084360 1 GW: Data processing time: 0 ms
+975094536 20 Node 20: Data confirmed
+984413360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+984413360 1 GW: Data processing time: 0 ms
+984418896 19 Node 19: Data confirmed
+1000097360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1000097360 1 GW: Data processing time: 0 ms
+1000141536 20 Node 20: Data confirmed
+1008425360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1008425360 1 GW: Data processing time: 0 ms
+1008449536 19 Node 19: Data confirmed
+1025094360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1025094360 1 GW: Data processing time: 0 ms
+1025131536 20 Node 20: Data confirmed
+1032415360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1032415360 1 GW: Data processing time: 0 ms
+1032449536 19 Node 19: Data confirmed
+1050100360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1050100360 1 GW: Data processing time: 0 ms
+1050130536 20 Node 20: Data confirmed
+1056426360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1056426360 1 GW: Data processing time: 0 ms
+1056465536 19 Node 19: Data confirmed
+1075082360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1075082360 1 GW: Data processing time: 0 ms
+1075119536 20 Node 20: Data confirmed
+1080417360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1080417360 1 GW: Data processing time: 0 ms
+1080441536 19 Node 19: Data confirmed
+1100103360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1100103360 1 GW: Data processing time: 0 ms
+1100143536 20 Node 20: Data confirmed
+1104389360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1104389360 1 GW: Data processing time: 0 ms
+1104427536 19 Node 19: Data confirmed
+1125074360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1125074360 1 GW: Data processing time: 0 ms
+1125111536 20 Node 20: Data confirmed
+1128414360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1128414360 1 GW: Data processing time: 0 ms
+1128422536 19 Node 19: Data confirmed
+1150102360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1150102360 1 GW: Data processing time: 0 ms
+1150145536 20 Node 20: Data confirmed
+1152389360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1152389360 1 GW: Data processing time: 0 ms
+1152433536 19 Node 19: Data confirmed
+1175073360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1175073360 1 GW: Data processing time: 0 ms
+1175091536 20 Node 20: Data confirmed
+1176414360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1176414360 1 GW: Data processing time: 0 ms
+1176419896 19 Node 19: Data confirmed
+1200105360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1200105360 1 GW: Data processing time: 0 ms
+1200141536 20 Node 20: Data confirmed
+1200421360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1200421360 1 GW: Data processing time: 0 ms
+1200459536 19 Node 19: Data confirmed
+1224388360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1224388360 1 GW: Data processing time: 0 ms
+1224430536 19 Node 19: Data confirmed
+1225070360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1225070360 1 GW: Data processing time: 0 ms
+1225084536 20 Node 20: Data confirmed
+1248395360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1248395360 1 GW: Data processing time: 0 ms
+1248406536 19 Node 19: Data confirmed
+1250075360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1250075360 1 GW: Data processing time: 0 ms
+1250083536 20 Node 20: Data confirmed
+1272401360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1272401360 1 GW: Data processing time: 0 ms
+1272436536 19 Node 19: Data confirmed
+1275072360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1275072360 1 GW: Data processing time: 0 ms
+1275083536 20 Node 20: Data confirmed
+1296413360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1296413360 1 GW: Data processing time: 0 ms
+1296441536 19 Node 19: Data confirmed
+1300077360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1300077360 1 GW: Data processing time: 0 ms
+1300082896 20 Node 20: Data confirmed
+1320406360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1320406360 1 GW: Data processing time: 0 ms
+1320432536 19 Node 19: Data confirmed
+1325083360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1325083360 1 GW: Data processing time: 0 ms
+1325089536 20 Node 20: Data confirmed
+1344387360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1344387360 1 GW: Data processing time: 0 ms
+1344423536 19 Node 19: Data confirmed
+1350098360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1350098360 1 GW: Data processing time: 0 ms
+1350104536 20 Node 20: Data confirmed
+1368399360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1368399360 1 GW: Data processing time: 0 ms
+1368432536 19 Node 19: Data confirmed
+1375089360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1375089360 1 GW: Data processing time: 0 ms
+1375098536 20 Node 20: Data confirmed
+1392411360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1392411360 1 GW: Data processing time: 0 ms
+1392434536 19 Node 19: Data confirmed
+1400099360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1400099360 1 GW: Data processing time: 0 ms
+1400135536 20 Node 20: Data confirmed
+1416421360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1416421360 1 GW: Data processing time: 0 ms
+1416438536 19 Node 19: Data confirmed
+1425103360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1425103360 1 GW: Data processing time: 0 ms
+1425115536 20 Node 20: Data confirmed
+1440415360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1440415360 1 GW: Data processing time: 0 ms
+1440453536 19 Node 19: Data confirmed
+1450103360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1450103360 1 GW: Data processing time: 0 ms
+1450130536 20 Node 20: Data confirmed
+1464401360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1464401360 1 GW: Data processing time: 0 ms
+1464419536 19 Node 19: Data confirmed
+1475087360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1475087360 1 GW: Data processing time: 0 ms
+1475093536 20 Node 20: Data confirmed
+1488418360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1488418360 1 GW: Data processing time: 0 ms
+1488430536 19 Node 19: Data confirmed
+1500101360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1500101360 1 GW: Data processing time: 0 ms
+1500126536 20 Node 20: Data confirmed
+1512388360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1512388360 1 GW: Data processing time: 0 ms
+1512407536 19 Node 19: Data confirmed
+1525102360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1525102360 1 GW: Data processing time: 0 ms
+1525107896 20 Node 20: Data confirmed
+1536396360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1536396360 1 GW: Data processing time: 0 ms
+1536417536 19 Node 19: Data confirmed
+1550070360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1550070360 1 GW: Data processing time: 0 ms
+1550089536 20 Node 20: Data confirmed
+1560400360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1560400360 1 GW: Data processing time: 0 ms
+1560412536 19 Node 19: Data confirmed
+1575096360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1575096360 1 GW: Data processing time: 0 ms
+1575107536 20 Node 20: Data confirmed
+1584397360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1584397360 1 GW: Data processing time: 0 ms
+1584431536 19 Node 19: Data confirmed
+1600072360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1600072360 1 GW: Data processing time: 0 ms
+1600087536 20 Node 20: Data confirmed
+1608391360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1608391360 1 GW: Data processing time: 0 ms
+1608410536 19 Node 19: Data confirmed
+1625108360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1625108360 1 GW: Data processing time: 0 ms
+1625135536 20 Node 20: Data confirmed
+1632401360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1632401360 1 GW: Data processing time: 0 ms
+1632432536 19 Node 19: Data confirmed
+1650081360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1650081360 1 GW: Data processing time: 0 ms
+1650109536 20 Node 20: Data confirmed
+1656407360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1656407360 1 GW: Data processing time: 0 ms
+1656437536 19 Node 19: Data confirmed
+1675097360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1675097360 1 GW: Data processing time: 0 ms
+1675102896 20 Node 20: Data confirmed
+1680397360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1680397360 1 GW: Data processing time: 0 ms
+1680422536 19 Node 19: Data confirmed
+1700071360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1700071360 1 GW: Data processing time: 0 ms
+1700077536 20 Node 20: Data confirmed
+1704423360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1704423360 1 GW: Data processing time: 0 ms
+1704428896 19 Node 19: Data confirmed
+1725100360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1725100360 1 GW: Data processing time: 0 ms
+1725142536 20 Node 20: Data confirmed
+1728401360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1728401360 1 GW: Data processing time: 0 ms
+1728437536 19 Node 19: Data confirmed
+1750097360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1750097360 1 GW: Data processing time: 0 ms
+1750113536 20 Node 20: Data confirmed
+1752396360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1752396360 1 GW: Data processing time: 0 ms
+1752401896 19 Node 19: Data confirmed
+1775073360 1 GW: Decrypted data [9] from PID 46f765... (device 20)
+1775073360 1 GW: Data processing time: 0 ms
+1775088536 20 Node 20: Data confirmed
+1776409360 1 GW: Decrypted data [9] from PID 49ed84... (device 19)
+1776409360 1 GW: Data processing time: 0 ms
+1776419536 19 Node 19: Data confirmed
+TEST OK
+Test ended at simulation time: 1800000000

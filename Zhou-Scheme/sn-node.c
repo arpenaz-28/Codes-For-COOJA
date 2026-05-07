@@ -169,8 +169,8 @@ static coap_message_t  request[1];
 static void discover_gw_server(void)
 {
     uip_ipaddr_t a;
-    /* Sensor nodes 4–13 → GW server 2, nodes 14–23 → GW server 3 */
-    uint8_t gw_id = (sn_id <= 13) ? (uint8_t)GW_SERVER_ID : (uint8_t)GW_SERVER_ID2;
+    /* Sensor nodes <= GW_SN_SPLIT → GW server 2, others → GW server 3 */
+    uint8_t gw_id = (sn_id <= GW_SN_SPLIT) ? (uint8_t)GW_SERVER_ID : (uint8_t)GW_SERVER_ID2;
     uip_ip6addr_u8(&a, 0xfd,0,0,0,0,0,0,0,
                    0x02,gw_id,0,gw_id,0,gw_id,0,gw_id);
     uip_ipaddr_copy(&ep_gw_server.ipaddr, &a);

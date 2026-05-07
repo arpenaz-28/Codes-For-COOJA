@@ -1,0 +1,515 @@
+Random seed: 123456
+73000 8 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+73000 8 [INFO: Main      ] - Routing: RPL Lite
+73000 8 [INFO: Main      ] - Net: sicslowpan
+73000 8 [INFO: Main      ] - MAC: CSMA
+73000 8 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+73000 8 [INFO: Main      ] - 802.15.4 Default channel: 26
+73000 8 [INFO: Main      ] Node ID: 8
+73000 8 [INFO: Main      ] Link-layer address: 0008.0008.0008.0008
+73000 8 [INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
+73000 8 Fog 8: Started (Fog Authentication Server). Af=e5c48d
+190000 11 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+190000 11 [INFO: Main      ] - Routing: RPL Lite
+190000 11 [INFO: Main      ] - Net: sicslowpan
+190000 11 [INFO: Main      ] - MAC: CSMA
+190000 11 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+190000 11 [INFO: Main      ] - 802.15.4 Default channel: 26
+190000 11 [INFO: Main      ] Node ID: 11
+190000 11 [INFO: Main      ] Link-layer address: 000b.000b.000b.000b
+190000 11 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20b:b:b:b
+190000 11 Fog 11: Started (Fog Authentication Server). Af=e5c48d
+236000 2 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+236000 2 [INFO: Main      ] - Routing: RPL Lite
+236000 2 [INFO: Main      ] - Net: sicslowpan
+236000 2 [INFO: Main      ] - MAC: CSMA
+236000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+236000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+236000 2 [INFO: Main      ] Node ID: 2
+236000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+236000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+236000 2 Fog 2: Started (Fog Authentication Server). Af=e5c48d
+250000 6 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+250000 6 [INFO: Main      ] - Routing: RPL Lite
+250000 6 [INFO: Main      ] - Net: sicslowpan
+250000 6 [INFO: Main      ] - MAC: CSMA
+250000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+250000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
+250000 6 [INFO: Main      ] Node ID: 6
+250000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+250000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+250000 6 Fog 6: Started (Fog Authentication Server). Af=e5c48d
+326000 18 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+326000 18 [INFO: Main      ] - Routing: RPL Lite
+326000 18 [INFO: Main      ] - Net: sicslowpan
+326000 18 [INFO: Main      ] - MAC: CSMA
+326000 18 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+326000 18 [INFO: Main      ] - 802.15.4 Default channel: 26
+326000 18 [INFO: Main      ] Node ID: 18
+326000 18 [INFO: Main      ] Link-layer address: 0012.0012.0012.0012
+326000 18 [INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
+326000 18 Fog 18: Started (Fog Authentication Server). Af=e5c48d
+348000 4 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+348000 4 [INFO: Main      ] - Routing: RPL Lite
+348000 4 [INFO: Main      ] - Net: sicslowpan
+348000 4 [INFO: Main      ] - MAC: CSMA
+348000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+348000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+348000 4 [INFO: Main      ] Node ID: 4
+348000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+348000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+348000 4 Fog 4: Started (Fog Authentication Server). Af=e5c48d
+382000 1 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+382000 1 [INFO: Main      ] - Routing: RPL Lite
+382000 1 [INFO: Main      ] - Net: sicslowpan
+382000 1 [INFO: Main      ] - MAC: CSMA
+382000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+382000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+382000 1 [INFO: Main      ] Node ID: 1
+382000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+382000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+382000 1 RA 1: Started (RPL root + Registration Authority). Af=e5c48d
+402000 7 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+402000 7 [INFO: Main      ] - Routing: RPL Lite
+402000 7 [INFO: Main      ] - Net: sicslowpan
+402000 7 [INFO: Main      ] - MAC: CSMA
+402000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+402000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
+402000 7 [INFO: Main      ] Node ID: 7
+402000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+402000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+402000 7 Fog 7: Started (Fog Authentication Server). Af=e5c48d
+450000 14 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+450000 14 [INFO: Main      ] - Routing: RPL Lite
+450000 14 [INFO: Main      ] - Net: sicslowpan
+450000 14 [INFO: Main      ] - MAC: CSMA
+450000 14 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+450000 14 [INFO: Main      ] - 802.15.4 Default channel: 26
+450000 14 [INFO: Main      ] Node ID: 14
+450000 14 [INFO: Main      ] Link-layer address: 000e.000e.000e.000e
+450000 14 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
+450000 14 Fog 14: Started (Fog Authentication Server). Af=e5c48d
+462000 15 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+462000 15 [INFO: Main      ] - Routing: RPL Lite
+462000 15 [INFO: Main      ] - Net: sicslowpan
+462000 15 [INFO: Main      ] - MAC: CSMA
+462000 15 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+462000 15 [INFO: Main      ] - 802.15.4 Default channel: 26
+462000 15 [INFO: Main      ] Node ID: 15
+462000 15 [INFO: Main      ] Link-layer address: 000f.000f.000f.000f
+462000 15 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
+462000 15 Fog 15: Started (Fog Authentication Server). Af=e5c48d
+472000 20 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+472000 20 [INFO: Main      ] - Routing: RPL Lite
+472000 20 [INFO: Main      ] - Net: sicslowpan
+472000 20 [INFO: Main      ] - MAC: CSMA
+472000 20 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+472000 20 [INFO: Main      ] - 802.15.4 Default channel: 26
+472000 20 [INFO: Main      ] Node ID: 20
+472000 20 [INFO: Main      ] Link-layer address: 0014.0014.0014.0014
+472000 20 [INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
+473000 16 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+473000 16 [INFO: Main      ] - Routing: RPL Lite
+473000 16 [INFO: Main      ] - Net: sicslowpan
+473000 16 [INFO: Main      ] - MAC: CSMA
+473000 16 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+473000 16 [INFO: Main      ] - 802.15.4 Default channel: 26
+473000 16 [INFO: Main      ] Node ID: 16
+473000 16 [INFO: Main      ] Link-layer address: 0010.0010.0010.0010
+473000 16 [INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
+473000 16 Fog 16: Started (Fog Authentication Server). Af=e5c48d
+556000 10 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+556000 10 [INFO: Main      ] - Routing: RPL Lite
+556000 10 [INFO: Main      ] - Net: sicslowpan
+556000 10 [INFO: Main      ] - MAC: CSMA
+556000 10 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+556000 10 [INFO: Main      ] - 802.15.4 Default channel: 26
+556000 10 [INFO: Main      ] Node ID: 10
+556000 10 [INFO: Main      ] Link-layer address: 000a.000a.000a.000a
+556000 10 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
+556000 10 Fog 10: Started (Fog Authentication Server). Af=e5c48d
+594000 12 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+594000 12 [INFO: Main      ] - Routing: RPL Lite
+594000 12 [INFO: Main      ] - Net: sicslowpan
+594000 12 [INFO: Main      ] - MAC: CSMA
+594000 12 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+594000 12 [INFO: Main      ] - 802.15.4 Default channel: 26
+594000 12 [INFO: Main      ] Node ID: 12
+594000 12 [INFO: Main      ] Link-layer address: 000c.000c.000c.000c
+594000 12 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
+594000 12 Fog 12: Started (Fog Authentication Server). Af=e5c48d
+708000 9 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+708000 9 [INFO: Main      ] - Routing: RPL Lite
+708000 9 [INFO: Main      ] - Net: sicslowpan
+708000 9 [INFO: Main      ] - MAC: CSMA
+708000 9 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+708000 9 [INFO: Main      ] - 802.15.4 Default channel: 26
+708000 9 [INFO: Main      ] Node ID: 9
+708000 9 [INFO: Main      ] Link-layer address: 0009.0009.0009.0009
+708000 9 [INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
+708000 9 Fog 9: Started (Fog Authentication Server). Af=e5c48d
+715000 5 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+715000 5 [INFO: Main      ] - Routing: RPL Lite
+715000 5 [INFO: Main      ] - Net: sicslowpan
+715000 5 [INFO: Main      ] - MAC: CSMA
+715000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+715000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+715000 5 [INFO: Main      ] Node ID: 5
+715000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+715000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+715000 5 Fog 5: Started (Fog Authentication Server). Af=e5c48d
+719000 19 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+719000 19 [INFO: Main      ] - Routing: RPL Lite
+719000 19 [INFO: Main      ] - Net: sicslowpan
+719000 19 [INFO: Main      ] - MAC: CSMA
+719000 19 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+719000 19 [INFO: Main      ] - 802.15.4 Default channel: 26
+719000 19 [INFO: Main      ] Node ID: 19
+719000 19 [INFO: Main      ] Link-layer address: 0013.0013.0013.0013
+719000 19 [INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
+809000 17 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+809000 17 [INFO: Main      ] - Routing: RPL Lite
+809000 17 [INFO: Main      ] - Net: sicslowpan
+809000 17 [INFO: Main      ] - MAC: CSMA
+809000 17 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+809000 17 [INFO: Main      ] - 802.15.4 Default channel: 26
+809000 17 [INFO: Main      ] Node ID: 17
+809000 17 [INFO: Main      ] Link-layer address: 0011.0011.0011.0011
+809000 17 [INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
+809000 17 Fog 17: Started (Fog Authentication Server). Af=e5c48d
+884000 13 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+884000 13 [INFO: Main      ] - Routing: RPL Lite
+884000 13 [INFO: Main      ] - Net: sicslowpan
+884000 13 [INFO: Main      ] - MAC: CSMA
+884000 13 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+884000 13 [INFO: Main      ] - 802.15.4 Default channel: 26
+884000 13 [INFO: Main      ] Node ID: 13
+884000 13 [INFO: Main      ] Link-layer address: 000d.000d.000d.000d
+884000 13 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
+884000 13 Fog 13: Started (Fog Authentication Server). Af=e5c48d
+899000 3 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+899000 3 [INFO: Main      ] - Routing: RPL Lite
+899000 3 [INFO: Main      ] - Net: sicslowpan
+899000 3 [INFO: Main      ] - MAC: CSMA
+899000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+899000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+899000 3 [INFO: Main      ] Node ID: 3
+899000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+899000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+899000 3 Fog 3: Started (Fog Authentication Server). Af=e5c48d
+24719000 19 Node 19: Sending registration to RA
+24748816 1 RA 1: Registered device 19 -> Fog 2. TIDd=f4011d
+24761064 19 Node 19: Registered. TIDd=f4011d TIDf=a1b2c3
+25472000 20 Node 20: Sending registration to RA
+25502816 1 RA 1: Registered device 20 -> Fog 3. TIDd=751f2b
+25510880 20 Node 20: Registered. TIDd=751f2b TIDf=a1b2c3
+35985536 2 Fog 2: Stored credentials for device 19. TIDd=f4011d
+36042000 3 Fog 3: Stored credentials for device 20. TIDd=751f2b
+48719000 19 ENROLL_ENERGY|19|cpu_s=0.042064|energy_j=0.002575
+48719000 19 Node 19: Sending AuthReq to fog server
+48847952 2 Fog 2: AuthRep sent to device 19. SK=fd5486
+48992408 19 Node 19: Auth OK. SK=fd5486
+48992408 19 Node 19: Sending Ack
+49042616 2 Fog 2: Mutual auth complete for device 19. SK established.
+49140856 19 Node 19: Ack confirmed ﾀﾔ mutual auth complete
+49140856 19 Node 19: Sending encrypted data
+49225520 2 Fog 2: Data [19] from device 19
+49302824 19 Node 19: Data confirmed
+50472000 20 ENROLL_ENERGY|20|cpu_s=0.038880|energy_j=0.002378
+50472000 20 Node 20: Sending AuthReq to fog server
+50597696 3 Fog 3: AuthRep sent to device 20. SK=120c8d
+50707408 20 Node 20: Auth OK. SK=120c8d
+50707408 20 Node 20: Sending Ack
+50785360 3 Fog 3: Mutual auth complete for device 20. SK established.
+50844856 20 Node 20: Ack confirmed ﾀﾔ mutual auth complete
+50844856 20 Node 20: Sending encrypted data
+50883264 3 Fog 3: Data [20] from device 20
+50927824 20 Node 20: Data confirmed
+72719000 19 KEYEX_ENERGY|19|cpu_s=0.421856|energy_j=0.025995
+72719000 19 AUTH_ENERGY|19|cpu_ticks=0|energy_ticks=0|cpu_s=0.583824|energy_j=0.035978
+72816520 2 Fog 2: Data [19] from device 19
+72882824 19 Node 19: Data confirmed
+75472000 20 KEYEX_ENERGY|20|cpu_s=0.372856|energy_j=0.022967
+75472000 20 AUTH_ENERGY|20|cpu_ticks=0|energy_ticks=0|cpu_s=0.455824|energy_j=0.028068
+75542264 3 Fog 3: Data [20] from device 20
+75605824 20 Node 20: Data confirmed
+96822520 2 Fog 2: Data [19] from device 19
+96911824 19 Node 19: Data confirmed
+100529264 3 Fog 3: Data [20] from device 20
+100554824 20 Node 20: Data confirmed
+120814520 2 Fog 2: Data [19] from device 19
+120859824 19 Node 19: Data confirmed
+125548264 3 Fog 3: Data [20] from device 20
+125591824 20 Node 20: Data confirmed
+144827520 2 Fog 2: Data [19] from device 19
+144867824 19 Node 19: Data confirmed
+150520264 3 Fog 3: Data [20] from device 20
+150586824 20 Node 20: Data confirmed
+168770520 2 Fog 2: Data [19] from device 19
+168850824 19 Node 19: Data confirmed
+175510264 3 Fog 3: Data [20] from device 20
+175559824 20 Node 20: Data confirmed
+192784520 2 Fog 2: Data [19] from device 19
+192842824 19 Node 19: Data confirmed
+200503264 3 Fog 3: Data [20] from device 20
+200592824 20 Node 20: Data confirmed
+216784520 2 Fog 2: Data [19] from device 19
+216881824 19 Node 19: Data confirmed
+225502264 3 Fog 3: Data [20] from device 20
+225539824 20 Node 20: Data confirmed
+240821520 2 Fog 2: Data [19] from device 19
+240879824 19 Node 19: Data confirmed
+250519264 3 Fog 3: Data [20] from device 20
+250570824 20 Node 20: Data confirmed
+264801040 2 Fog 2: Data [19] from device 19
+264877824 19 Node 19: Data confirmed
+275500264 3 Fog 3: Data [20] from device 20
+275546824 20 Node 20: Data confirmed
+288811520 2 Fog 2: Data [19] from device 19
+288871904 19 Node 19: Data confirmed
+300508264 3 Fog 3: Data [20] from device 20
+300558824 20 Node 20: Data confirmed
+312809520 2 Fog 2: Data [19] from device 19
+312862824 19 Node 19: Data confirmed
+325515264 3 Fog 3: Data [20] from device 20
+325533824 20 Node 20: Data confirmed
+336808520 2 Fog 2: Data [19] from device 19
+336844904 19 Node 19: Data confirmed
+350562264 3 Fog 3: Data [20] from device 20
+350630824 20 Node 20: Data confirmed
+360836520 2 Fog 2: Data [19] from device 19
+360922824 19 Node 19: Data confirmed
+375546264 3 Fog 3: Data [20] from device 20
+375619824 20 Node 20: Data confirmed
+384786520 2 Fog 2: Data [19] from device 19
+384870824 19 Node 19: Data confirmed
+400521264 3 Fog 3: Data [20] from device 20
+400554824 20 Node 20: Data confirmed
+408810520 2 Fog 2: Data [19] from device 19
+408891824 19 Node 19: Data confirmed
+425520264 3 Fog 3: Data [20] from device 20
+425587824 20 Node 20: Data confirmed
+432831520 2 Fog 2: Data [19] from device 19
+432896824 19 Node 19: Data confirmed
+450544264 3 Fog 3: Data [20] from device 20
+450593824 20 Node 20: Data confirmed
+456792520 2 Fog 2: Data [19] from device 19
+456868824 19 Node 19: Data confirmed
+475553264 3 Fog 3: Data [20] from device 20
+475607824 20 Node 20: Data confirmed
+480806520 2 Fog 2: Data [19] from device 19
+480864824 19 Node 19: Data confirmed
+500546264 3 Fog 3: Data [20] from device 20
+500559824 20 Node 20: Data confirmed
+504789520 2 Fog 2: Data [19] from device 19
+504832824 19 Node 19: Data confirmed
+525606264 3 Fog 3: Data [20] from device 20
+525665824 20 Node 20: Data confirmed
+528815520 2 Fog 2: Data [19] from device 19
+528913824 19 Node 19: Data confirmed
+550501264 3 Fog 3: Data [20] from device 20
+550529824 20 Node 20: Data confirmed
+552818520 2 Fog 2: Data [19] from device 19
+552897824 19 Node 19: Data confirmed
+575517264 3 Fog 3: Data [20] from device 20
+575576824 20 Node 20: Data confirmed
+576805520 2 Fog 2: Data [19] from device 19
+576878824 19 Node 19: Data confirmed
+600510264 3 Fog 3: Data [20] from device 20
+600562824 20 Node 20: Data confirmed
+600789520 2 Fog 2: Data [19] from device 19
+600882824 19 Node 19: Data confirmed
+624795520 2 Fog 2: Data [19] from device 19
+624855824 19 Node 19: Data confirmed
+625530264 3 Fog 3: Data [20] from device 20
+625569824 20 Node 20: Data confirmed
+648805520 2 Fog 2: Data [19] from device 19
+648870904 19 Node 19: Data confirmed
+650509264 3 Fog 3: Data [20] from device 20
+650549824 20 Node 20: Data confirmed
+672800520 2 Fog 2: Data [19] from device 19
+672863824 19 Node 19: Data confirmed
+675525264 3 Fog 3: Data [20] from device 20
+675591824 20 Node 20: Data confirmed
+696809520 2 Fog 2: Data [19] from device 19
+696925824 19 Node 19: Data confirmed
+700516264 3 Fog 3: Data [20] from device 20
+700561824 20 Node 20: Data confirmed
+720768520 2 Fog 2: Data [19] from device 19
+720793824 19 Node 19: Data confirmed
+725532264 3 Fog 3: Data [20] from device 20
+725587824 20 Node 20: Data confirmed
+744787520 2 Fog 2: Data [19] from device 19
+744864824 19 Node 19: Data confirmed
+750528264 3 Fog 3: Data [20] from device 20
+750575824 20 Node 20: Data confirmed
+768763520 2 Fog 2: Data [19] from device 19
+768847824 19 Node 19: Data confirmed
+775523264 3 Fog 3: Data [20] from device 20
+775543824 20 Node 20: Data confirmed
+792763272 2 Fog 2: Data [19] from device 19
+792828824 19 Node 19: Data confirmed
+800544264 3 Fog 3: Data [20] from device 20
+800621824 20 Node 20: Data confirmed
+816758040 2 Fog 2: Data [19] from device 19
+816821824 19 Node 19: Data confirmed
+825536264 3 Fog 3: Data [20] from device 20
+825563824 20 Node 20: Data confirmed
+840764520 2 Fog 2: Data [19] from device 19
+840841824 19 Node 19: Data confirmed
+850517264 3 Fog 3: Data [20] from device 20
+850556824 20 Node 20: Data confirmed
+864810520 2 Fog 2: Data [19] from device 19
+864871824 19 Node 19: Data confirmed
+875506264 3 Fog 3: Data [20] from device 20
+875540824 20 Node 20: Data confirmed
+888814520 2 Fog 2: Data [19] from device 19
+888877824 19 Node 19: Data confirmed
+900503264 3 Fog 3: Data [20] from device 20
+900532824 20 Node 20: Data confirmed
+912804520 2 Fog 2: Data [19] from device 19
+912912824 19 Node 19: Data confirmed
+925499264 3 Fog 3: Data [20] from device 20
+925553824 20 Node 20: Data confirmed
+936783520 2 Fog 2: Data [19] from device 19
+936870824 19 Node 19: Data confirmed
+950529264 3 Fog 3: Data [20] from device 20
+950581824 20 Node 20: Data confirmed
+960843520 2 Fog 2: Data [19] from device 19
+960917824 19 Node 19: Data confirmed
+975563264 3 Fog 3: Data [20] from device 20
+975575616 20 Node 20: Data confirmed
+984825520 2 Fog 2: Data [19] from device 19
+984887824 19 Node 19: Data confirmed
+1000494264 3 Fog 3: Data [20] from device 20
+1000554824 20 Node 20: Data confirmed
+1008815520 2 Fog 2: Data [19] from device 19
+1008904904 19 Node 19: Data confirmed
+1025489264 3 Fog 3: Data [20] from device 20
+1025571824 20 Node 20: Data confirmed
+1032784520 2 Fog 2: Data [19] from device 19
+1032893824 19 Node 19: Data confirmed
+1050501264 3 Fog 3: Data [20] from device 20
+1050526824 20 Node 20: Data confirmed
+1056798520 2 Fog 2: Data [19] from device 19
+1056859904 19 Node 19: Data confirmed
+1075510264 3 Fog 3: Data [20] from device 20
+1075598824 20 Node 20: Data confirmed
+1080786520 2 Fog 2: Data [19] from device 19
+1080830904 19 Node 19: Data confirmed
+1100526264 3 Fog 3: Data [20] from device 20
+1100602824 20 Node 20: Data confirmed
+1104786520 2 Fog 2: Data [19] from device 19
+1104840824 19 Node 19: Data confirmed
+1125521264 3 Fog 3: Data [20] from device 20
+1125570824 20 Node 20: Data confirmed
+1128803520 2 Fog 2: Data [19] from device 19
+1128890824 19 Node 19: Data confirmed
+1150507264 3 Fog 3: Data [20] from device 20
+1150574824 20 Node 20: Data confirmed
+1152810520 2 Fog 2: Data [19] from device 19
+1152866824 19 Node 19: Data confirmed
+1175551264 3 Fog 3: Data [20] from device 20
+1175575824 20 Node 20: Data confirmed
+1176820520 2 Fog 2: Data [19] from device 19
+1176886824 19 Node 19: Data confirmed
+1200524264 3 Fog 3: Data [20] from device 20
+1200582824 20 Node 20: Data confirmed
+1200808520 2 Fog 2: Data [19] from device 19
+1200891824 19 Node 19: Data confirmed
+1224777520 2 Fog 2: Data [19] from device 19
+1224891824 19 Node 19: Data confirmed
+1225522264 3 Fog 3: Data [20] from device 20
+1225586824 20 Node 20: Data confirmed
+1248814520 2 Fog 2: Data [19] from device 19
+1248892824 19 Node 19: Data confirmed
+1250545264 3 Fog 3: Data [20] from device 20
+1250609824 20 Node 20: Data confirmed
+1272798520 2 Fog 2: Data [19] from device 19
+1272846824 19 Node 19: Data confirmed
+1275524264 3 Fog 3: Data [20] from device 20
+1275597824 20 Node 20: Data confirmed
+1296836520 2 Fog 2: Data [19] from device 19
+1296874824 19 Node 19: Data confirmed
+1300503264 3 Fog 3: Data [20] from device 20
+1300545824 20 Node 20: Data confirmed
+1320786520 2 Fog 2: Data [19] from device 19
+1320827824 19 Node 19: Data confirmed
+1325531264 3 Fog 3: Data [20] from device 20
+1325573824 20 Node 20: Data confirmed
+1344805520 2 Fog 2: Data [19] from device 19
+1344921824 19 Node 19: Data confirmed
+1350519264 3 Fog 3: Data [20] from device 20
+1350563824 20 Node 20: Data confirmed
+1368790520 2 Fog 2: Data [19] from device 19
+1368853824 19 Node 19: Data confirmed
+1375526264 3 Fog 3: Data [20] from device 20
+1375608824 20 Node 20: Data confirmed
+1392763520 2 Fog 2: Data [19] from device 19
+1392856824 19 Node 19: Data confirmed
+1400522264 3 Fog 3: Data [20] from device 20
+1400558824 20 Node 20: Data confirmed
+1416798520 2 Fog 2: Data [19] from device 19
+1416886824 19 Node 19: Data confirmed
+1425508264 3 Fog 3: Data [20] from device 20
+1425563824 20 Node 20: Data confirmed
+1440843520 2 Fog 2: Data [19] from device 19
+1440924824 19 Node 19: Data confirmed
+1450494264 3 Fog 3: Data [20] from device 20
+1450519824 20 Node 20: Data confirmed
+1464798040 2 Fog 2: Data [19] from device 19
+1464852824 19 Node 19: Data confirmed
+1475527264 3 Fog 3: Data [20] from device 20
+1475574824 20 Node 20: Data confirmed
+1488759520 2 Fog 2: Data [19] from device 19
+1488875824 19 Node 19: Data confirmed
+1500511264 3 Fog 3: Data [20] from device 20
+1500523824 20 Node 20: Data confirmed
+1512822520 2 Fog 2: Data [19] from device 19
+1512897824 19 Node 19: Data confirmed
+1525516264 3 Fog 3: Data [20] from device 20
+1525545824 20 Node 20: Data confirmed
+1536790040 2 Fog 2: Data [19] from device 19
+1536858824 19 Node 19: Data confirmed
+1550536264 3 Fog 3: Data [20] from device 20
+1550590824 20 Node 20: Data confirmed
+1560764520 2 Fog 2: Data [19] from device 19
+1560868824 19 Node 19: Data confirmed
+1575542264 3 Fog 3: Data [20] from device 20
+1575563824 20 Node 20: Data confirmed
+1584828520 2 Fog 2: Data [19] from device 19
+1584915824 19 Node 19: Data confirmed
+1600543264 3 Fog 3: Data [20] from device 20
+1600590824 20 Node 20: Data confirmed
+1608790520 2 Fog 2: Data [19] from device 19
+1608861824 19 Node 19: Data confirmed
+1625527264 3 Fog 3: Data [20] from device 20
+1625564824 20 Node 20: Data confirmed
+1632815520 2 Fog 2: Data [19] from device 19
+1632879824 19 Node 19: Data confirmed
+1650508264 3 Fog 3: Data [20] from device 20
+1650569824 20 Node 20: Data confirmed
+1656831520 2 Fog 2: Data [19] from device 19
+1656928824 19 Node 19: Data confirmed
+1675525264 3 Fog 3: Data [20] from device 20
+1675590824 20 Node 20: Data confirmed
+1680797520 2 Fog 2: Data [19] from device 19
+1680834824 19 Node 19: Data confirmed
+1700522264 3 Fog 3: Data [20] from device 20
+1700576824 20 Node 20: Data confirmed
+1704838520 2 Fog 2: Data [19] from device 19
+1704957824 19 Node 19: Data confirmed
+1725514264 3 Fog 3: Data [20] from device 20
+1725566824 20 Node 20: Data confirmed
+1728816520 2 Fog 2: Data [19] from device 19
+1728861824 19 Node 19: Data confirmed
+1750515264 3 Fog 3: Data [20] from device 20
+1750591824 20 Node 20: Data confirmed
+1752804520 2 Fog 2: Data [19] from device 19
+1752895824 19 Node 19: Data confirmed
+1775529264 3 Fog 3: Data [20] from device 20
+1775575824 20 Node 20: Data confirmed
+1776802520 2 Fog 2: Data [19] from device 19
+1776901824 19 Node 19: Data confirmed
+TEST OK
+Test ended at simulation time: 1800000000

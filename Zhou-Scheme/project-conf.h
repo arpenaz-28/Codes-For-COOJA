@@ -19,6 +19,11 @@
 #define LAST_SN_ID       23
 #define FIRST_USER_ID    81
 
+/* Parameterised binding constants — keeps existing 100-node topology intact */
+#define SN_USER_OFFSET    77   /* user_id - 77 = bound SN id (81→4 … 100→23) */
+#define GW_USER_SPLIT     90   /* users 81-90 → GW2, 91-100 → GW3 */
+#define GW_SN_SPLIT       13   /* SN 4-13 → GW2, 14-23 → GW3 */
+
 /* Enable energest for energy measurements */
 #define ENERGEST_CONF_ON 1
 
