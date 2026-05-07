@@ -362,72 +362,7 @@ def main():
 
     os.makedirs(OUT_DIR, exist_ok=True)
 
-    phases_energy = [
-        ("Enrollment",     "01_energy_vs_network_size_enrollment.png"),
-        ("Authentication", "02_energy_vs_network_size_auth.png"),
-        ("Key Exchange",   "03_energy_vs_network_size_keyex.png"),
-        ("Auth+KeyEx",     "04_energy_vs_network_size_auth_keyex.png"),
-    ]
-    phases_cpu = [
-        ("Enrollment",     "05_cpu_vs_network_size_enrollment.png"),
-        ("Authentication", "06_cpu_vs_network_size_auth.png"),
-        ("Key Exchange",   "07_cpu_vs_network_size_keyex.png"),
-        ("Auth+KeyEx",     "08_cpu_vs_network_size_auth_keyex.png"),
-    ]
-
-    print("Generating line charts — Energy vs Network Size")
-    for phase, fname in phases_energy:
-        series = build_series(phase, "avg_energy")
-        if not series:
-            print(f"  No data for {phase} — skipping.")
-            continue
-        line_chart(
-            series,
-            ylabel=f"Average Energy (mJ) — {PHASE_LABELS.get(phase, phase)}",
-            title=f"Energy Consumption vs Network Size\n{PHASE_LABELS.get(phase, phase)} Phase",
-            out_path=os.path.join(OUT_DIR, fname),
-            show=args.show,
-        )
-
-    print("\nGenerating line charts — CPU vs Network Size")
-    for phase, fname in phases_cpu:
-        series = build_series(phase, "avg_cpu")
-        if not series:
-            print(f"  No data for {phase} — skipping.")
-            continue
-        line_chart(
-            series,
-            ylabel=f"Average CPU Time (s) — {PHASE_LABELS.get(phase, phase)}",
-            title=f"CPU Time vs Network Size\n{PHASE_LABELS.get(phase, phase)} Phase",
-            out_path=os.path.join(OUT_DIR, fname),
-            show=args.show,
-        )
-
-    print("\nGenerating combined grouped bar charts")
-    grouped_bar_chart(
-        ["Enrollment", "Authentication", "Key Exchange"],
-        "avg_energy",
-        "Average Energy (mJ)",
-        "Energy per Phase vs Network Size — All Schemes",
-        os.path.join(OUT_DIR, "09_combined_energy_all_phases.png"),
-        show=args.show,
-    )
-    grouped_bar_chart(
-        ["Enrollment", "Authentication", "Key Exchange"],
-        "avg_cpu",
-        "Average CPU Time (s)",
-        "CPU Time per Phase vs Network Size — All Schemes",
-        os.path.join(OUT_DIR, "10_combined_cpu_all_phases.png"),
-        show=args.show,
-    )
-
-    print("\nGenerating combined all-schemes all-phases energy chart")
-    combined_energy_line_chart(
-        os.path.join(OUT_DIR, "11_energy_all_schemes_all_phases.png"),
-        show=args.show,
-    )
-
-    print("\nGenerating total-energy grouped bar chart")
+    print("Generating total-energy grouped bar chart")
     total_energy_grouped_bar(
         os.path.join(OUT_DIR, "12_total_energy_grouped_bar.png"),
         show=args.show,
