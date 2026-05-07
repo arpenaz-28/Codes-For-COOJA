@@ -6,26 +6,15 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{tikz}
-\usetikzlibrary{arrows,arrows.meta,positioning,shapes,calc,fit}
+\usepackage{placeins}
 \usepackage{balance}
 \usepackage{url}
 \usepackage{array}
 \usepackage{tabularx}
-
-% -------------------------------------------------------
-%  TikZ style for sequence diagrams
-% -------------------------------------------------------
-\tikzset{
-  partbox/.style={draw, fill=gray!12, minimum width=3.0cm, minimum height=0.52cm,
-                  font=\small\bfseries, text centered, rounded corners=2pt},
-  msgarrow/.style={->, >=Stealth, semithick},
-  lifeline/.style={dashed, gray!55, thin},
-  notebox/.style={draw=gray!60, fill=gray!4, font=\scriptsize,
-                  align=left, inner sep=3pt, rounded corners=1pt}
-}
 
 \begin{document}
 
@@ -49,10 +38,13 @@ communication overhead on intermediate nodes but fail to provide device
 anonymity—real identifiers are exposed on every authentication transaction,
 enabling adversarial tracking across sessions.  This paper presents a
 lightweight, anonymous, and decoupled distributed authentication scheme for
-multihop IoT networks.  Gateway-selected authentication servers (which may
-be parent or non-parent nodes) authenticate newly joined devices using a
-two-round protocol that separates group-membership verification from session
-key establishment.  Device anonymity is preserved through per-session
+multihop IoT networks.  The scheme decouples the node-joining (enrollment)
+process from the authentication process: enrollment is performed once over an
+end-to-end secure channel, while authentication and key exchange run
+independently over the open channel at every session.  Gateway-selected
+authentication servers (which may be parent or non-parent nodes) authenticate
+newly joined devices using a two-round protocol that separates
+group-membership verification from session key establishment.  Device anonymity is preserved through per-session
 pseudonym rotation: a rotating pseudonym replaces the real device identity
 in all open-channel communications, preventing long-term tracking.  A
 dual-state synchronization mechanism maintained at both the authentication
@@ -104,9 +96,13 @@ This paper proposes a \emph{lightweight, anonymous, and decoupled
 distributed authentication} scheme that addresses all three gaps
 simultaneously:
 \begin{itemize}
-  \item \textbf{Decoupling:} A gateway-selected authentication server (AS)
-    may be any capable node—parent or non-parent—preventing skewed load on
-    parent nodes.
+  \item \textbf{Decoupling:} The node-joining (enrollment) process and the
+    authentication process are explicitly separated.  Enrollment is executed
+    once over an end-to-end secure channel at network-join time; authentication
+    and key exchange run independently over the open channel at every session.
+    The gateway-selected authentication server may be any capable node—parent
+    or non-parent—so authentication load is not skewed toward whichever node
+    a device happened to join under.
   \item \textbf{Anonymity:} A rotating pseudonym $\mathsf{PID} =
     H(ID_D \| m_\mathsf{curr})$, refreshed after each successful key
     exchange, replaces $ID_D$ in all open-channel messages.  The gateway
@@ -155,8 +151,8 @@ Rosa~et~al.~\cite{rosa2023lightsae} (LightSAE) authorize parent nodes as
 authentication servers for their child nodes; however, a popular parent is
 overwhelmed by simultaneous join requests from many children.
 Zheng~et~al.~\cite{zheng2022puf} designed a peer-to-peer PUF-based
-authentication without a centralized authority, yet the scheme lacks a
-multihop decoupled design.
+authentication without a centralized authority, yet the scheme does not provide a multihop topology with a clean separation
+between enrollment and per-session authentication.
 Alruwaili~et~al.~\cite{alruwaili2025raaf} deployed multiple edge servers
 with PUF, but the absence of a genuine multihop topology means certain
 servers still receive disproportionate load.
@@ -204,7 +200,7 @@ computational and communication overhead.
   \end{tabular}\\[4pt]
   \raggedright
   \scriptsize
-  \textit{Dec.}: Decoupled design.\ \
+  \textit{Dec.}: Enrollment (join) and authentication phases are explicitly separated.\ \
   \textit{Acc.}: Hash-based accumulator.\ \
   \textit{ASU}: Auth.\ secret update.\\
   \textit{Anon.}: Device anonymity via pseudonym.\ \
@@ -367,36 +363,35 @@ pseudonym rotation (Section~\ref{sec:proposed}) and dual-state management.
 \subsection{System Model and Assumptions}
 \label{sec:sysmodel}
 
-The proposed decoupled distributed authentication scheme for multihop IoT
-networks is designed to help nodes establish secure multihop communications
-with the gateway.  To establish secure communication, nodes should be
-authenticated by a trusted authentication server.  A set of existing IoT
-nodes inside the network is entrusted with the responsibility of
+The proposed scheme is designed to help nodes establish secure multihop
+communications with the gateway.  To establish a secure communication, nodes
+should be authenticated by a trusted authentication server.  A set of
+existing IoT nodes inside the network is entrusted with the responsibility of
 authentication by the gateway in a distributed manner.  The gateway also
 shares a secret key with each of those responsible IoT
-nodes/authentication servers.  The authentication server can be a parent or
-a non-parent node.  In other words, the parent node and the authentication
-server do not necessarily have to be the same entity; they may be
-\emph{decoupled}.  This prevents newly joined child nodes, choosing an IoT
-node as their parent, from overwhelming that parent node with biased
-authentication load.
+nodes/authentication servers.  The scheme \emph{decouples} the node-joining (enrollment) process from the
+authentication process: enrollment is executed once over a secure channel at
+network-join time, while authentication and key exchange run independently
+over the open channel at each session.  The authentication server may be a
+parent or a non-parent node, preventing newly joined child nodes from
+overwhelming their parent with biased authentication load.
 
-IoT nodes are assumed to be embedded with a PUF and are capable of
-performing various cryptographic operations, such as
-encryption/decryption, XOR, hashing, bitwise AND, and concatenation.
+IoT nodes are assumed to be embedded with a PUF and are capable of performing
+various cryptographic operations, such as encryption/decryption, XOR,
+hashing, bitwise AND, and concatenation.
 
 Nodes $D$ and $AS$ are assumed to be the newly joined node and its
-authentication server, respectively.  Additionally, $GW$ represents the
-gateway symbolically.  $AS$ may be located at a singlehop or multihop
-distance from $D$.  Initially, it is assumed that $GW$ has already selected
-the authentication server set and has established a shared secret key with
-each member of the set.  Let $\mathcal{AS}' = \{AS_1, AS_2, \ldots, AS_n\}$
-be the set of authentication servers selected by $GW$, such that
-$AS \in \mathcal{AS}'$.  $GW$ has a shared secret key $K_{GW\text{-}AS}$
-with $AS$.  It is also assumed that $D$, whose distinct identifier is
-$ID_D$, possesses the address of its authentication server $AS$ along with
-its unique identity $ID_{AS}$.  Table~\ref{tab:notations} elaborates
-symbols and functions incorporated in the following scheme.
+authentication server, respectively.  $GW$ represents the gateway
+symbolically.  $AS$ may be located at a singlehop or multihop distance from
+$D$.  It is assumed that $GW$ has already selected the authentication server
+set and has established a shared secret key with each member of the set.
+Let $\mathcal{AS}' = \{AS_1, AS_2, \ldots, AS_n\}$ be the set of
+authentication servers selected by $GW$, such that $AS \in \mathcal{AS}'$.
+$GW$ has a shared secret key $K_{GW\text{-}AS}$ with $AS$.  It is also
+assumed that $D$, whose distinct identifier is $ID_D$, possesses the address
+of its authentication server $AS$ along with its unique identity $ID_{AS}$.
+Table~\ref{tab:notations} elaborates symbols and functions incorporated in
+the following scheme.
 
 There are mainly three phases — node enrolment, node authentication, and node
 session key exchange.  The following sections elaborate on these phases.
@@ -432,16 +427,19 @@ session key exchange.  The following sections elaborate on these phases.
   \end{tabular}
 \end{table}
 
-The scheme comprises three phases: (1)~Node Enrolment Phase, (2)~Node
-Authentication Phase, and (3)~Node Session Key Exchange Phase.
-
 \subsection{Node Enrolment Phase}
 
-Enrolment is executed once, over an end-to-end encrypted channel, after $D$
-learns the address and identity $ID_{AS}$ of its assigned $AS$.
-Figure~\ref{fig:enrolment} details the phase.
+The main purpose of this phase is to enrol the unique secret of $D$ (i.e.,
+$y_D$) with the accumulated value ($T_\mathsf{Acc}$) of $AS$.  During the
+authentication phase, $D$ uses $y_D$ again to prove its group membership.
+PUF responses and a session-based random are also exchanged to secure the
+communication of $y_D$ during authentication.  Additionally, the phase
+initialises the pseudonym and dual-state records that protect $D$'s identity
+on all subsequent open-channel exchanges.  This phase is assumed to be
+executed once, over an end-to-end encrypted channel, for every newly joined
+node.  Figure~\ref{fig:enrolment} details the message flow.
 
-\begin{figure*}[!t]
+\begin{figure}[!t]
   \centering
   \begin{tikzpicture}[
       partbox/.style={draw, fill=gray!12, minimum width=3.0cm,
@@ -506,7 +504,7 @@ Figure~\ref{fig:enrolment} details the phase.
   \end{tikzpicture}
   \caption{Phase 1 — Node Enrolment Phase (secure channel).}
   \label{fig:enrolment}
-\end{figure*}
+\end{figure}
 
 $D$ initiates enrolment by sending its identity $ID_D$ to $AS$.  $AS$
 issues a PUF challenge $c_D$ and a session random $m_D$.  Using $c_D$, $D$
@@ -525,195 +523,141 @@ From this point, $ID_D$ is never transmitted on the open channel.
 
 \subsection{Node Authentication Phase}
 
-In this phase, $D$ proves group membership to $AS$ using a pseudonym,
-without revealing $ID_D$.  Figure~\ref{fig:auth} illustrates the phase.
+The main purpose of this phase is to prove the membership of $D$'s unique
+secret $y_D$ to $AS$.  Since authentication is executed over the open
+channel, $y_D$ must be communicated in a secure form.  Both the PUF-based
+challenge-response, producing the secret $R_D$, and the session-based random
+$m_\mathsf{curr}$, incorporating unpredictability, are known only to $D$ and
+$AS$.  Additionally, the proposed scheme replaces the real identity $ID_D$
+with the current pseudonym $\mathsf{PID}$, so that a passive observer cannot
+link successive sessions to the same device.
+Figure~\ref{fig:auth} illustrates the phase.
 
-\begin{figure*}[!t]
+\begin{figure}[!t]
   \centering
-  \begin{tikzpicture}[
-      partbox/.style={draw, fill=gray!12, minimum width=3.0cm,
-                      minimum height=0.5cm, font=\small\bfseries,
-                      text centered, rounded corners=2pt},
-      msgarrow/.style={->, >=Stealth, semithick},
-      lifeline/.style={dashed, gray!55, thin},
-      notebox/.style={draw=gray!60, fill=white, font=\scriptsize,
-                      align=left, inner sep=2.5pt, rounded corners=1pt}
-    ]
-    \def\xD{3} \def\xAS{14}
-    \node[partbox] (D)  at (\xD,  0) {Device ($D$)};
-    \node[partbox] (AS) at (\xAS, 0) {Auth.\ Server ($AS$)};
-
-    \draw[lifeline] (\xD, -0.28) -- (\xD, -9.6);
-    \draw[lifeline] (\xAS,-0.28) -- (\xAS,-9.6);
-
-    % Pre-stored
-    \node[notebox, text width=11cm, anchor=north] at (8.5,-0.42){
-      \textit{Pre-stored at $AS$}: $T_\mathsf{Acc}$,\ $\{ID_D,\ \Phi_{AS\text{-}D},\ c_{AS\text{-}D},\ m_\mathsf{curr},\ m_\mathsf{old},\ \mathsf{PID}_\mathsf{curr},\ \mathsf{PID}_\mathsf{old}\}$\qquad
-      \textit{Pre-stored at $D$}: $\{y_D,\ c_D,\ m_\mathsf{curr}\}$
-    };
-
-    % D compute
-    \node[notebox, text width=4.0cm, anchor=north west] at (\xD+0.15,-1.3){
-      $R_D = \mathsf{PUF}_D(c_D)$\\
-      Generate current timestamp $ts_1$\\
-      $Y_D^H = H(y_D)$\\
-      $\mathsf{PID} = H(ID_D \| m_\mathsf{curr})$ \quad [pseudonym — hides $ID_D$]\\
-      $Y_{AS\text{-}D}^H = Y_D^H \oplus H(R_D \| m_\mathsf{curr} \| \mathsf{PID} \| ts_1)$
-    };
-
-    % Msg 1
-    \draw[msgarrow] (\xD,-4.2)--(\xAS,-4.2)
-      node[midway,above,font=\small]{$(\mathsf{PID},\ Y_{AS\text{-}D}^H,\ ts_1)$};
-
-    % AS compute
-    \node[notebox, text width=4.2cm, anchor=north west] at (\xAS+0.15,-4.35){
-      Lookup device by $\mathsf{PID}_\mathsf{curr}$ \textbf{or} $\mathsf{PID}_\mathsf{old}$\
-      [dual-state desync check]\\
-      Check freshness of $ts_1$\\
-      $R_{AS\text{-}D} = \mathsf{PUF}_{AS}(c_{AS\text{-}D})$\\
-      $R_D' = \Phi_{AS\text{-}D} \oplus R_{AS\text{-}D}$\\
-      $Y_D^{H'} = Y_{AS\text{-}D}^H \oplus H(R_D' \| m_\mathsf{curr} \| \mathsf{PID} \| ts_1)$\\
-      $T_\mathsf{Acc}^\mathsf{new} = T_\mathsf{Acc} \mathbin{\&} Y_D^{H'}$\\
-      \textbf{if}\ $T_\mathsf{Acc}^\mathsf{new} = T_\mathsf{Acc}$:\ \textbf{Authenticated}\ $\checkmark$\\
-      \textbf{else}: Reject\ $\times$
-    };
-
-    % Msg 2
-    \draw[msgarrow,<-] (\xD,-8.8)--(\xAS,-8.8)
-      node[midway,above,font=\small]{$(\mathsf{ACK},\ ts_2)$};
-  \end{tikzpicture}
+  \includegraphics[width=\columnwidth]{fig_auth}
   \caption{Phase 2 — Node Authentication Phase (open channel).}
   \label{fig:auth}
-\end{figure*}
+\end{figure}
 
-$D$ regenerates $R_D$ from stored challenge $c_D$, computes its current
-pseudonym $\mathsf{PID} = H(ID_D \| m_\mathsf{curr})$, and produces the
-masked group-membership tag:
+The phase is initiated by $D$.  $D$ regenerates $R_D = \mathsf{PUF}_D(c_D)$
+from the stored challenge $c_D$, obtained during enrolment.  Rather than
+including its real identity $ID_D$—which would enable cross-session
+tracking—$D$ computes its current pseudonym:
+\begin{equation}
+  \mathsf{PID} = H(ID_D \| m_\mathsf{curr}).
+\end{equation}
+$D$ then produces the hashed secret $Y_D^H = H(y_D)$ in XOR-masked form:
 \begin{equation}
   Y_{AS\text{-}D}^H = H(y_D) \oplus H(R_D \| m_\mathsf{curr} \| \mathsf{PID} \| ts_1).
 \end{equation}
-The message $(\mathsf{PID}, Y_{AS\text{-}D}^H, ts_1)$ is sent to $AS$.
-The real identity $ID_D$ does not appear; only the pseudonym $\mathsf{PID}$
-identifies the device on the open channel.
+The XOR mask is the hash of $R_D$ (regenerated from $c_D$), the
+session-based random $m_\mathsf{curr}$, the pseudonym $\mathsf{PID}$, and
+the current timestamp $ts_1$.  The timestamp provides replay protection to
+the XOR-masked $Y_D^H$.  The complete message $(\mathsf{PID},\,
+Y_{AS\text{-}D}^H,\, ts_1)$ is sent to $AS$.  An attacker cannot obtain
+$H(y_D)$ from $Y_{AS\text{-}D}^H$ without knowing $R_D$ (which can only be
+generated by $D$'s PUF) and $m_\mathsf{curr}$ (known only to $D$ and $AS$).
 
-$AS$ performs a dual-state lookup: it checks whether the received
-$\mathsf{PID}$ matches $\mathsf{PID}_\mathsf{curr}$ or
-$\mathsf{PID}_\mathsf{old}$, enabling recovery from a missed key-exchange
-acknowledgement.  After verifying timestamp freshness, $AS$ reconstructs
-$R_D'$ from stored $\Phi_{AS\text{-}D}$ and its own PUF response, unmasks
-$Y_D^{H'}$, and checks group membership:
+After receiving the message, $AS$ performs a \emph{dual-state lookup}: it
+checks whether the received $\mathsf{PID}$ matches $\mathsf{PID}_\mathsf{curr}$
+or $\mathsf{PID}_\mathsf{old}$ in its records.  A match on
+$\mathsf{PID}_\mathsf{old}$ indicates that $D$ missed the Phase~3 delivery
+in the previous session and still holds the prior $m_\mathsf{curr}$; $AS$
+then uses the stored $m_\mathsf{old}$ for this verification, recovering from
+the desynchronisation without requiring re-enrolment.  $AS$ verifies
+the freshness of $ts_1$.  $R_D'$ is calculated as $\Phi_{AS\text{-}D} \oplus
+\mathsf{PUF}_{AS}(c_{AS\text{-}D})$, where both $\Phi_{AS\text{-}D}$ and
+$c_{AS\text{-}D}$ are retrieved from $D$'s enrolment record.  $AS$
+regenerates the same XOR mask and unmasks $Y_D^{H'}$, then performs the
+bitwise AND:
 \begin{equation}
   T_\mathsf{Acc}^\mathsf{new} = T_\mathsf{Acc} \mathbin{\&} Y_D^{H'} \stackrel{?}{=} T_\mathsf{Acc}.
 \end{equation}
-Equality confirms that $y_D$ is enrolled in the accumulator.  $AS$ replies
-with $(\mathsf{ACK}, ts_2)$ and immediately proceeds to Phase~3.
+From the properties of the hash-based one-way accumulator, if an element is
+combined into an accumulated value using bitwise AND and the same operation is
+again performed between them, it gives back the same accumulated value.  If
+$T_\mathsf{Acc}^\mathsf{new} = T_\mathsf{Acc}$, it proves that the unique
+secret of $D$ is already a legitimate member of $AS$, completing
+authentication.  $AS$ replies with $(\mathsf{ACK},\, ts_2)$ and proceeds to
+Phase~3.
 
 \subsection{Node Session Key Exchange Phase}
 
-After successful authentication (Phase~2), $AS$ establishes a session key
-for direct $D$--$GW$ communication and updates all dual-state entries.
-Figure~\ref{fig:keyex} shows the phase; simultaneous delivery to $D$ and
-$GW$ decouples the two notification paths.
+This phase is executed by $AS$ to inform $GW$ about the successful
+authentication of the newly joined node $D$ and to mediate the session key
+between $GW$ and $D$.  In addition to the base session-key mechanism, the
+proposed scheme derives a fresh pseudonym $\mathsf{PID}_\mathsf{new}$ for
+$D$ at the end of each session and updates the dual-state records at both
+$AS$ and $GW$, ensuring that successive sessions are unlinkable.  The two
+deliveries to $D$ and to $GW$ are sent simultaneously.
+Figure~\ref{fig:keyex} shows the phase.
 
-\begin{figure*}[!t]
+\begin{figure}[!t]
   \centering
-  \begin{tikzpicture}[
-      partbox/.style={draw, fill=gray!12, minimum width=2.8cm,
-                      minimum height=0.5cm, font=\footnotesize\bfseries,
-                      text centered, rounded corners=2pt},
-      msgarrow/.style={->, >=Stealth, semithick},
-      lifeline/.style={dashed, gray!55, thin},
-      notebox/.style={draw=gray!60, fill=white, font=\scriptsize,
-                      align=left, inner sep=2.5pt, rounded corners=1pt}
-    ]
-    \def\xGW{0} \def\xAS{8} \def\xD{16}
-    \node[partbox] (GW) at (\xGW, 0) {Gateway ($GW$)};
-    \node[partbox] (AS) at (\xAS, 0) {Auth.\ Server ($AS$)};
-    \node[partbox] (D)  at (\xD,  0) {Device ($D$)};
-
-    \draw[lifeline] (\xGW,-0.28)--(\xGW,-8.5);
-    \draw[lifeline] (\xAS,-0.28)--(\xAS,-8.5);
-    \draw[lifeline] (\xD, -0.28)--(\xD, -8.5);
-
-    % Pre-stored
-    \node[notebox, text width=5.4cm, anchor=north] at (\xGW+0.1,-0.4){
-      \textit{At $GW$}: $\{ID_{AS}, K_{GW\text{-}AS}\}$
-    };
-    \node[notebox, text width=5.0cm, anchor=north] at (\xD-0.1,-0.4){
-      \textit{At $D$}: $\{y_D, c_D, m_\mathsf{curr}\}$
-    };
-
-    % AS computes (triggered by auth success)
-    \node[notebox, text width=5.8cm, anchor=north] at (\xAS,-0.55){
-      (After successful Phase 2)\\
-      1.\ Gen.\ nonce $n_1$;\ \ $ts_2 = $ current timestamp\\
-      2.\ $m_\mathsf{new} = H(n_1)$\\
-      3.\ $m_H = m_\mathsf{new} \oplus H(Y_D^{H'} \| m_\mathsf{curr} \| R_D' \| ID_{AS} \| \mathsf{PID}_\mathsf{curr} \| ts_2)$\\
-      4.\ $K_{GW\text{-}D} = H(R_D' \| m_\mathsf{new})$\\
-      5.\ $\mathsf{PID}_\mathsf{new} = H(ID_D \| m_\mathsf{new})$\\
-      6.\ $\mathsf{auth\_token}_D = \mathsf{SE}(K_{GW\text{-}AS}, ID_D \| ID_{AS} \| K_{GW\text{-}D} \| \mathsf{PID}_\mathsf{new} \| ts_\mathsf{auth})$\\
-      7.\ Update: $m_\mathsf{old}\!=\!m_\mathsf{curr}$,\ $m_\mathsf{curr}\!=\!m_\mathsf{new}$,\ $\mathsf{PID}_\mathsf{old}\!=\!\mathsf{PID}_\mathsf{curr}$,\ $\mathsf{PID}_\mathsf{curr}\!=\!\mathsf{PID}_\mathsf{new}$
-    };
-
-    % Simultaneous delivery
-    \draw[msgarrow,<-] (\xGW,-5.2)--(\xAS,-5.2)
-      node[midway,above,font=\scriptsize]{$(ID_{AS},\ \mathsf{auth\_token}_D)$};
-    \draw[msgarrow] (\xAS,-5.2)--(\xD,-5.2)
-      node[midway,above,font=\scriptsize]{$(m_H,\ ts_2)$};
-    \node[font=\scriptsize\itshape] at (\xAS,-5.55) {Simultaneous Delivery};
-
-    % GW note
-    \node[notebox, text width=3.4cm, anchor=north west] at (\xGW+0.1,-5.7){
-      $ID_D \| \ldots \| \mathsf{PID}_\mathsf{new} = \mathsf{SD}(K_{GW\text{-}AS}, \mathsf{auth\_token}_D)$\\
-      Check freshness of $ts_\mathsf{auth}$\\
-      $\mathsf{PID}_\mathsf{old}\!\leftarrow\!\mathsf{PID}_\mathsf{curr}$\\
-      $\mathsf{PID}_\mathsf{curr}\!\leftarrow\!\mathsf{PID}_\mathsf{new}$\\
-      Store session keyed by\\
-      \hspace{0.5em}$\mathsf{PID}_\mathsf{curr}$ \textbf{and} $\mathsf{PID}_\mathsf{old}$
-    };
-
-    % D note
-    \node[notebox, text width=3.4cm, anchor=north east] at (\xD-0.1,-5.7){
-      Check freshness of $ts_2$\\
-      $m_\mathsf{curr} = m_H \oplus$\\
-      \hspace{0.5em}$H(Y_D^H \| m_\mathsf{curr} \| R_D \| ID_{AS} \| \mathsf{PID} \| ts_2)$\\
-      $\mathsf{PID}_\mathsf{curr} = H(ID_D \| m_\mathsf{curr})$\\
-      $K_{GW\text{-}D} = H(R_D \| m_\mathsf{curr})$\\
-      Store $K_{GW\text{-}D}$
-    };
-  \end{tikzpicture}
+  \includegraphics[width=\columnwidth]{fig_keyex}
   \caption{Phase 3 — Node Session Key Exchange Phase (open channel, simultaneous delivery).}
   \label{fig:keyex}
-\end{figure*}
+\end{figure}
 
-$AS$ generates a fresh nonce $n_1$ and derives the new session random
-$m_\mathsf{new} = H(n_1)$.  The masked form of $m_\mathsf{new}$ sent to $D$
-is:
-\begin{equation}
-  m_H = m_\mathsf{new} \oplus H(Y_D^{H'} \| m_\mathsf{curr} \| R_D'
-        \| ID_{AS} \| \mathsf{PID}_\mathsf{curr} \| ts_2).
-\end{equation}
-The session key and new pseudonym are:
+$AS$ uses $\mathsf{auth\_token}_D$ to deliver the session key $K_{GW\text{-}D}$
+to $GW$.  $K_{GW\text{-}D}$ is computed as $H(R_D' \| m_\mathsf{new})$,
+where $R_D'$ is the PUF response of $D$ regenerated by $AS$ during the
+authentication phase and thus known only to $AS$ and $D$, and
+$m_\mathsf{new} = H(n_1)$ is derived from a fresh random $n_1$ generated by
+$AS$.  The computed $m_\mathsf{new}$ also serves as the updated session-based
+random for the next authentication session between $AS$ and $D$,
+incorporating an update to the authentication secret.  In addition, $AS$
+derives the next pseudonym:
 \begin{equation}
   K_{GW\text{-}D} = H(R_D' \| m_\mathsf{new}), \quad
   \mathsf{PID}_\mathsf{new} = H(ID_D \| m_\mathsf{new}).
 \end{equation}
-$AS$ encrypts these for $GW$ using the shared key
-$K_{GW\text{-}AS}$, forming $\mathsf{auth\_token}_D$.
-$AS$ then simultaneously sends $(m_H, ts_2)$ to $D$ and
-$(ID_{AS}, \mathsf{auth\_token}_D)$ to $GW$, and advances its own dual state.
+Because $\mathsf{PID}_\mathsf{new}$ is based on the fresh $m_\mathsf{new}$,
+it is computationally unlinkable to the $\mathsf{PID}$ used in the current
+session.  The session key, $ID_{AS}$, $ID_D$, the next pseudonym
+$\mathsf{PID}_\mathsf{new}$, and the authentication completion timestamp
+$ts_\mathsf{auth}$ are encrypted under $K_{GW\text{-}AS}$ to form
+$\mathsf{auth\_token}_D$.  The token carries $\mathsf{PID}_\mathsf{new}$ so
+that $GW$ can update its pseudonym mapping for $D$'s future communications.
 
-Upon receiving $m_H$, $D$ reconstructs $m_\mathsf{new}$ by recomputing the
-same hash mask and XOR-ing: the inputs are all locally known ($Y_D^H$, $R_D$,
-$m_\mathsf{curr}$, $ID_{AS}$, $\mathsf{PID}$, $ts_2$).  $D$ then derives
-$K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$ and updates its pseudonym
-$\mathsf{PID}_\mathsf{curr} = H(ID_D \| m_\mathsf{new})$.
+$AS$ also informs $D$ of $m_\mathsf{new}$ so that $D$ can independently
+derive $K_{GW\text{-}D}$ and its next pseudonym.  $AS$ masks $m_\mathsf{new}$
+to protect it from adversaries—if an adversary captures $m_\mathsf{new}$, the
+probability of predicting future session key material increases—as:
+\begin{equation}
+  m_H = m_\mathsf{new} \oplus H(Y_D^{H'} \| m_\mathsf{curr} \| R_D'
+        \| ID_{AS} \| \mathsf{PID}_\mathsf{curr} \| ts_2).
+\end{equation}
+Here, $Y_D^{H'}$ is the hashed group secret known to $AS$ from the
+authentication phase; $m_\mathsf{curr}$ and $R_D'$ are likewise known from
+authentication; and $ts_2$ prevents replay of $m_H$ in a future session.
+$AS$ simultaneously sends $(m_H,\, ts_2)$ to $D$ and $(ID_{AS},\,
+\mathsf{auth\_token}_D)$ to $GW$, then advances its own dual state:
+$m_\mathsf{old} \leftarrow m_\mathsf{curr}$, $m_\mathsf{curr} \leftarrow
+m_\mathsf{new}$, $\mathsf{PID}_\mathsf{old} \leftarrow
+\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{curr} \leftarrow
+\mathsf{PID}_\mathsf{new}$.
 
-$GW$ decrypts the token, verifies $ts_\mathsf{auth}$, and stores the session
-indexed by both $\mathsf{PID}_\mathsf{curr}$ and $\mathsf{PID}_\mathsf{old}$,
-providing the dual-state recovery window.
+Obtaining $m_H$, $D$ verifies the freshness of $ts_2$ and recovers
+$m_\mathsf{new}$ by regenerating the same hash mask and XOR-ing with $m_H$;
+all inputs ($Y_D^H$, $R_D$, $m_\mathsf{curr}$, $ID_{AS}$, $\mathsf{PID}$,
+$ts_2$) are already known to $D$.  $D$ establishes the session key
+$K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$, updates its pseudonym
+$\mathsf{PID}_\mathsf{curr} = H(ID_D \| m_\mathsf{new})$, advances
+$m_\mathsf{curr} \leftarrow m_\mathsf{new}$, and stores $K_{GW\text{-}D}$.
+
+$GW$ decrypts the token with $K_{GW\text{-}AS}$, verifies $ts_\mathsf{auth}$,
+and extracts $K_{GW\text{-}D}$ and $\mathsf{PID}_\mathsf{new}$.  $GW$ updates
+its pseudonym record: $\mathsf{PID}_\mathsf{old} \leftarrow
+\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{curr} \leftarrow
+\mathsf{PID}_\mathsf{new}$, and stores the session keyed by both.
+Retaining $\mathsf{PID}_\mathsf{old}$ ensures that if the Phase~3 delivery
+to $D$ was lost, $GW$ can still service $D$'s data frames under the prior
+session key pending re-authentication.
 
 % -------------------------------------------------------
+\FloatBarrier
 \section{Security Analysis}
 
 \subsection{Formal Security Analysis}
@@ -721,62 +665,65 @@ providing the dual-state recovery window.
 The proposed scheme is translated into ProVerif~\cite{blanchet2018proverif}
 queries under the Dolev--Yao adversary model~\cite{dolev1983security}, where
 the adversary controls the public channel and can intercept, replay, modify,
-and inject messages.  Figure~\ref{fig:proverif} shows the verification output.
+and inject messages.  Nineteen queries are verified; all are satisfied.
+Figure~\ref{fig:proverif} shows the verification summary.
+
+\subsubsection{Protocol Correspondence (Q1--Q9)}
 
 \begin{figure}[!t]
   \centering
-  \fbox{\parbox{0.95\columnwidth}{\scriptsize\ttfamily
-    Query inj-event(DeviceEnrolled(id\_D, id\_AS)) ==$>$ \\
-    \hspace{1em}inj-event(DeviceEnrolmentStarts(id\_D, id\_AS)) is \textbf{true}.\\[2pt]
-    Query inj-event(DeviceAuthenticated(id\_D, id\_AS)) ==$>$ \\
-    \hspace{1em}inj-event(DeviceAuthenticationStarts(id\_D, id\_AS)) is \textbf{true}.\\[2pt]
-    Query inj-event(AuthServerEnds(id\_AS, id\_D)) ==$>$ \\
-    \hspace{1em}inj-event(AuthServerStarts(id\_AS, id\_D)) is \textbf{true}.\\[2pt]
-    Query inj-event(AuthEndsFull(id\_D, id\_AS, R, m)) ==$>$ \\
-    \hspace{1em}inj-event(AuthStartsFull(id\_D, id\_AS, R, m)) is \textbf{true}.\\[2pt]
-    Query not attacker(SecretK\_GW\_D\_Device[]) is \textbf{true}.\\
-    Query not attacker(SecretK\_GW\_D\_AS[]) is \textbf{true}.\\[2pt]
-    Weak secret SecretK\_GW\_D\_Device is \textbf{true}.\\
-    Weak secret SecretK\_GW\_D\_AS is \textbf{true}.\\[2pt]
-    Query not attacker(real\_ID\_D[]) is \textbf{true}.\\
-    Observational equivalence (pseudonym unlinkability) is \textbf{true}.
-  }}
-  \caption{ProVerif verification output (all queries satisfied).}
+  \includegraphics[width=\columnwidth]{fig_proverif}
+  \caption{ProVerif verification output (all 19 queries satisfied).}
   \label{fig:proverif}
 \end{figure}
 
-\subsubsection{Authentication Correspondence and Replay/MITM Resistance}
-
-Four pairs of injective-correspondence assertions are verified, capturing
-both \emph{identity agreement} (entities agree on who they are talking to)
-and \emph{full agreement} (entities agree on session secrets $R_D$ and
-$m_D$):
+Nine injective and non-injective correspondence queries are verified.
+Queries~1--2 cover enrollment: \texttt{DeviceEnrolled}~$\Rightarrow$~\texttt{DeviceEnrollmentStarts} and
+\texttt{ASEnrollmentCompletes}~$\Rightarrow$~\texttt{ASEnrollmentStarts}, ensuring enrollment messages
+cannot be replayed to forge a false completion.
+Queries~3--6 cover the two authentication rounds from both principals'
+perspectives:
 \begin{align*}
-  &\mathsf{inj\text{-}event}(\mathsf{DeviceAuthenticated}(ID_D, ID_{AS}))\\
-  &\Rightarrow\mathsf{inj\text{-}event}(\mathsf{DeviceAuthStarts}(ID_D, ID_{AS}))
+  &\mathsf{inj\text{-}event}(\mathsf{DeviceAuthRound1Done}(ID_D,ID_{AS}))\\
+  &\quad\Rightarrow\mathsf{inj\text{-}event}(\mathsf{DeviceAuthStarts}(ID_D,ID_{AS}))
 \end{align*}
-and similarly for the AS perspective and the full-credential variant.
-Satisfaction guarantees that authentication completed only if a corresponding
-initiation took place with the same entity, preventing replay and man-in-the-middle
-(MITM) attacks.
+and identically for $\mathsf{ASAuthCompletes}$, $\mathsf{DeviceKeyExDone}$,
+and $\mathsf{ASKeyExCompletes}$, confirming that each round completes only if
+the same entity initiated it—preventing replay and MITM in both rounds.
+Query~7 verifies the \emph{cross-round credential binding}: the PUF response
+$R_D$ and session seed $m_D$ bound in Round~1 are the same values present in
+Round~2, ruling out cross-session credential mixing.  Queries~8--9 cover the
+post-authentication path: the gateway receives a forwarded token only if $AS$
+actually sent it (injective, no token forgery), and the gateway accepts device
+data only if the device transmitted it (non-injective data-plane authenticity).
 
-\subsubsection{Session Key Secrecy}
+\subsubsection{Secrecy and Forward Secrecy (Q10--Q16)}
 
-ProVerif's reachability analysis confirms:
+The session key $K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$ is confirmed
+unreachable by the adversary from all three principals' perspectives
+independently (Q10--Q12):
 \begin{equation*}
-  \mathsf{query}\ \mathsf{attacker}(\mathsf{SecretK\_GW\_D}[]) \;\Rightarrow\; \mathtt{false},
+  \mathsf{query}\ \mathsf{attacker}(\mathsf{SecretK\_GW\_D\_Device}[])\;\Rightarrow\;\mathtt{false},
 \end{equation*}
-ensuring that no adversary can obtain $K_{GW\text{-}D}$ from the public
-transcript.
+and equivalently for \texttt{SecretK\_GW\_D\_AS} and \texttt{SecretK\_GW\_D\_GW}.
+Q13 additionally confirms that the rotated session seed $m_\mathsf{new} =
+H(n_1)$ is secret: an adversary who compromises a session key cannot recover
+$m_\mathsf{new}$ to derive future keys, establishing forward secrecy.  Q14
+confirms that the PUF response $R_D$ is never attacker-reachable, preserving
+PUF unclonability.  Q15 confirms that the real device identity $ID_D$—wrapped
+in \texttt{SecretID\_D} and never sent in plaintext after enrollment—is
+secret, formally establishing device anonymity.  Q16 confirms that the
+AS-issued nonce $ts_2$ is secret until used in Round~2, protecting freshness
+of the key-exchange request.
 
-\subsubsection{Anonymity and Observational Equivalence}
+\subsubsection{Offline Guessing Resistance (Q17--Q19)}
 
-Two additional queries are verified:
-(i) the real identity $ID_D$ remains secret ($\mathsf{query}\ \mathsf{attacker}(\mathsf{real\_ID\_D}[])$
-returns \texttt{true}), and
-(ii) observational equivalence holds for successive protocol runs—an adversary
-cannot distinguish the pseudonym in run $i$ from the pseudonym in run $j > i$,
-confirming session unlinkability.
+Three weak-secrecy assertions verify that $K_{GW\text{-}D}$ cannot be guessed
+offline from the public transcript from the device, AS, and GW perspectives
+respectively.  \emph{Weak secrecy} in ProVerif means that no adversary can
+distinguish $K_{GW\text{-}D}$ from a random value even given unlimited
+dictionary power against the public transcript, ruling out offline brute-force
+and dictionary attacks against the session key.
 
 \subsection{Informal Analysis}
 
@@ -804,10 +751,81 @@ computationally unlinkable.
 
 \subsubsection{Desynchronization Recovery}
 If the Phase~3 simultaneous delivery to $D$ fails (packet loss), $D$ retains
-$m_\mathsf{old}$ and $\mathsf{PID}_\mathsf{old}$.  On the next authentication
-attempt, $AS$ recognizes $\mathsf{PID}_\mathsf{old}$ via the dual-state
-lookup and resumes from the consistent prior state.  $GW$ similarly retains
-the mapping $\mathsf{PID}_\mathsf{old} \to K_{GW\text{-}D}$ for session continuity.
+its $m_\mathsf{curr}$ unchanged while $AS$ has already advanced to
+$m_\mathsf{new}$.  On the next authentication attempt, $D$ computes its PID
+from the stale $m_\mathsf{curr}$, which equals $\mathsf{PID}_\mathsf{old}$
+at $AS$.  $AS$ recognizes it via the dual-state lookup and resumes from the
+consistent prior state without re-enrolment.  $GW$ similarly retains the
+mapping $\mathsf{PID}_\mathsf{old} \to K_{GW\text{-}D}$ for session
+continuity.  Figure~\ref{fig:desync} illustrates the two outcomes.
+
+\begin{figure}[!t]
+  \centering
+  \begin{tikzpicture}[
+    sbox/.style={draw, rounded corners=2pt, font=\scriptsize,
+                 align=left, inner sep=2.5pt, text width=2.25cm},
+    obox/.style={draw, rounded corners=2pt, font=\scriptsize,
+                 align=center, inner sep=2.5pt, text width=2.0cm},
+    arr/.style={->, >=Stealth, semithick},
+    lbl/.style={font=\scriptsize\itshape, text=gray!70!black}
+  ]
+  \def\xD{0} \def\xAS{4.8}
+
+  %-- Participant labels and lifelines
+  \node[font=\small\bfseries] at (\xD,0)  {$D$};
+  \node[font=\small\bfseries] at (\xAS,0) {$AS$};
+  \draw[gray!35,thin] (\xD,-0.25)  -- (\xD,-6.05);
+  \draw[gray!35,thin] (\xAS,-0.25) -- (\xAS,-6.05);
+
+  %-- ① In-sync after session i
+  \node[lbl] at (2.4,-0.52) {after session $i$: in sync};
+  \node[sbox, fill=green!10] at (\xD,-1.1)
+    {$m_\mathsf{curr}$\\ $\mathsf{PID}_\mathsf{curr}$};
+  \node[sbox, fill=green!10] at (\xAS,-1.1)
+    {$m_\mathsf{curr}$\\ $\mathsf{PID}_\mathsf{curr}$};
+
+  %-- ② AS generates new material (Phase 3 of session i+1)
+  \node[sbox, fill=blue!8] at (\xAS,-2.2)
+    {gen.\ $m_\mathsf{new}$,\\ $\mathsf{PID}_\mathsf{new}$;\\ advances state};
+
+  %-- ③ Phase-3 packet lost
+  \draw[arr, dashed, red!70!black]
+    (\xAS,-3.05) -- (\xD,-3.05)
+    node[midway, above, font=\scriptsize]{$(m_H,\,ts_2)$}
+    node[midway, below, font=\scriptsize\bfseries, red!70!black]
+      {$\boldsymbol\times$\;packet lost};
+
+  %-- ④ Diverged states
+  \node[sbox, fill=red!8] at (\xD,-4.0)
+    {unchanged:\\ $m_\mathsf{curr}$\\ $\mathsf{PID}_\mathsf{curr}$};
+  \node[sbox, fill=orange!12] at (\xAS,-4.25)
+    {$m_\mathsf{old}\!\leftarrow\!m_\mathsf{curr}$\\
+     $\mathsf{PID}_\mathsf{old}\!\leftarrow\!\mathsf{PID}_\mathsf{curr}$\\
+     $m_\mathsf{curr}\!\leftarrow\!m_\mathsf{new}$\\
+     $\mathsf{PID}_\mathsf{curr}\!\leftarrow\!\mathsf{PID}_\mathsf{new}$};
+
+  %-- ⑤ D's next auth: sends PID from stale m_curr
+  \node[lbl] at (2.4,-5.15) {session $i\!+\!1$ auth attempt:};
+  \draw[arr] (\xD,-5.38) -- (\xAS,-5.38)
+    node[midway, above, font=\scriptsize]
+      {$H(ID_D \| m_\mathsf{curr})$ = $\mathsf{PID}_\mathsf{old}$ at $AS$};
+
+  %-- ⑥ Outcomes
+  \node[font=\tiny\bfseries] at (\xD+0.5,-5.78) {without dual state};
+  \node[font=\tiny\bfseries] at (\xAS-0.5,-5.78) {with dual state};
+  \node[obox, fill=red!14] at (\xD+0.5,-6.45)
+    {\textcolor{red!80!black}{\textbf{no match}}\\re-enrolment\\required};
+  \node[obox, fill=green!12] at (\xAS-0.5,-6.45)
+    {\textcolor{green!50!black}{\textbf{$\mathsf{PID}_\mathsf{old}$ found}}\\transparent\\recovery};
+
+  \end{tikzpicture}
+  \caption{Desynchronisation scenario.  A Phase~3 packet loss leaves $D$
+  with a stale $m_\mathsf{curr}$ while $AS$ has advanced.  Without
+  dual-state storage $AS$ cannot recognise $D$'s PID.  The proposed
+  dual-state lookup finds $\mathsf{PID}_\mathsf{old}$ and recovers without
+  re-enrolment.}
+  \label{fig:desync}
+\end{figure}
 
 \subsubsection{Forward Secrecy}
 $K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$.  Compromise of a session key
