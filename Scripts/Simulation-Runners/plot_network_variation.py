@@ -193,6 +193,77 @@ def grouped_bar_chart(phases, metric, ylabel, title, out_path, show=False):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Combined all-schemes × all-phases line chart
+# ─────────────────────────────────────────────────────────────────────────────
+PHASE_STYLES = {
+    "Enrollment":     {"linestyle": "-",  "marker": "o"},
+    "Authentication": {"linestyle": "--", "marker": "s"},
+    "Key Exchange":   {"linestyle": ":",  "marker": "^"},
+}
+
+def combined_energy_line_chart(out_path, show=False):
+    """
+    Single figure: energy vs network size.
+    Colour = scheme, line style+marker = phase.
+    Zhou has no Key Exchange phase — only two lines are drawn for it.
+    """
+    phases = ["Enrollment", "Authentication", "Key Exchange"]
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    for scheme in RESULTS:
+        color = SCHEME_COLORS[scheme]
+        marker_scheme = SCHEME_MARKERS[scheme]
+        for phase in phases:
+            xs, ys, errs = [], [], []
+            for n in SIZES:
+                d = load_summary(scheme, n)
+                if d is None or phase not in d:
+                    continue
+                xs.append(n)
+                ys.append(d[phase]["avg_energy"])
+                errs.append(d[phase]["ci_energy"])
+            if not xs:
+                continue
+            style = PHASE_STYLES[phase]
+            label = f"{scheme} — {PHASE_LABELS[phase]}"
+            ax.errorbar(xs, ys, yerr=errs,
+                        label=label,
+                        color=color,
+                        linestyle=style["linestyle"],
+                        marker=marker_scheme,
+                        linewidth=2, markersize=7, capsize=4,
+                        alpha=0.9)
+
+    ax.set_xlabel("Total Network Nodes", fontsize=12)
+    ax.set_ylabel("Average Energy per Device (mJ)", fontsize=12)
+    ax.set_title("Energy Consumption vs Network Size\nAll Schemes · All Phases",
+                 fontsize=13, fontweight="bold")
+    ax.set_xticks(SIZES)
+    ax.yaxis.grid(True, linestyle="--", alpha=0.5)
+    ax.set_axisbelow(True)
+
+    # Two-column legend: schemes as colour, phases as line style
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles, labels, fontsize=9, ncol=2,
+              loc="upper left", framealpha=0.85)
+
+    # Annotation explaining Zhou's missing Key Exchange
+    ax.annotate("† Zhou scheme has no separate\n  Key Exchange phase",
+                xy=(0.99, 0.02), xycoords="axes fraction",
+                ha="right", va="bottom", fontsize=8,
+                color="#4CAF50",
+                bbox=dict(boxstyle="round,pad=0.3", fc="white", alpha=0.7))
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=150, bbox_inches="tight")
+    if show:
+        plt.show()
+    plt.close(fig)
+    print(f"  Saved: {os.path.basename(out_path)}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Summary CSV
 # ─────────────────────────────────────────────────────────────────────────────
 def write_master_summary():
@@ -289,6 +360,12 @@ def main():
         "Average CPU Time (s)",
         "CPU Time per Phase vs Network Size — All Schemes",
         os.path.join(OUT_DIR, "10_combined_cpu_all_phases.png"),
+        show=args.show,
+    )
+
+    print("\nGenerating combined all-schemes all-phases energy chart")
+    combined_energy_line_chart(
+        os.path.join(OUT_DIR, "11_energy_all_schemes_all_phases.png"),
         show=args.show,
     )
 
