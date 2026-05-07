@@ -32,31 +32,11 @@
 % -------------------------------------------------------
 \begin{abstract}
 The Internet of Things (IoT) demands lightweight and secure authentication
-for resource-constrained multihop networks, while also protecting the
-privacy of individual devices.  Existing distributed schemes reduce
-communication overhead on intermediate nodes but fail to provide device
-anonymity—real identifiers are exposed on every authentication transaction,
-enabling adversarial tracking across sessions.  This paper presents a
-lightweight, anonymous, and decoupled distributed authentication scheme for
-multihop IoT networks.  The scheme decouples the node-joining (enrollment)
-process from the authentication process: enrollment is performed once over an
-end-to-end secure channel, while authentication and key exchange run
-independently over the open channel at every session.  Gateway-selected
-authentication servers (which may be parent or non-parent nodes) authenticate
-newly joined devices using a two-round protocol that separates
-group-membership verification from session key establishment.  Device anonymity is preserved through per-session
-pseudonym rotation: a rotating pseudonym replaces the real device identity
-in all open-channel communications, preventing long-term tracking.  A
-dual-state synchronization mechanism maintained at both the authentication
-server and the gateway enables seamless recovery from single packet-loss
-events without re-enrolment.  Physically Unclonable Function (PUF)
-responses eliminate long-term secret storage, and a lightweight hash-based
-accumulator with XOR operations minimize computational overhead.  Security
-is validated formally (ProVerif) and informally.  A hardware-based
-performance evaluation on Raspberry Pi 3B+ nodes demonstrates a $26.8\%$
-reduction in authentication-and-key-exchange communication overhead compared
-to the base scheme~\cite{das2026comsnets}, confirming the efficiency of the proposed
-design on resource-constrained hardware.
+for resource-constrained multihop networks, while also protecting the privacy of individual devices.  Existing distributed schemes reduce communication overhead on intermediate nodes but fail to provide device
+anonymity—real identifiers are exposed on every authentication transaction, enabling adversarial tracking across sessions.  This paper presents a lightweight, anonymous, and decoupled distributed authentication scheme for multihop IoT networks.  Gateway-selected authentication servers (which may
+be parent or non-parent nodes) authenticate newly joined devices using a two-round protocol that separates group-membership verification from session key establishment.  Device anonymity is preserved through per-session pseudonym rotation: a rotating pseudonym replaces the real device identity in all open-channel communications, preventing long-term tracking.  A dual-state synchronization mechanism maintained at both the authentication
+server and the gateway enables seamless recovery from single packet-loss events without re-authenticate.  Physically Unclonable Function (PUF) responses eliminate long-term secret storage, and a lightweight hash-based accumulator with XOR operations minimize computational overhead. Security
+is validated formally (ProVerif) and informally.
 \end{abstract}
 
 
@@ -96,13 +76,9 @@ This paper proposes a \emph{lightweight, anonymous, and decoupled
 distributed authentication} scheme that addresses all three gaps
 simultaneously:
 \begin{itemize}
-  \item \textbf{Decoupling:} The node-joining (enrollment) process and the
-    authentication process are explicitly separated.  Enrollment is executed
-    once over an end-to-end secure channel at network-join time; authentication
-    and key exchange run independently over the open channel at every session.
-    The gateway-selected authentication server may be any capable node—parent
-    or non-parent—so authentication load is not skewed toward whichever node
-    a device happened to join under.
+  \item \textbf{Decoupling:} A gateway-selected authentication server (AS)
+    may be any capable node—parent or non-parent—preventing skewed load on
+    parent nodes.
   \item \textbf{Anonymity:} A rotating pseudonym $\mathsf{PID} =
     H(ID_D \| m_\mathsf{curr})$, refreshed after each successful key
     exchange, replaces $ID_D$ in all open-channel messages.  The gateway
@@ -117,28 +93,9 @@ The scheme also incorporates a PUF-based secret derivation mechanism
 (eliminating long-term key storage), a hash-based one-way accumulator for
 group-membership verification, and timestamp-plus-session-random replay
 protection.  Security is validated through ProVerif formal analysis and
-informal argument.  Performance is evaluated through both theoretical
-complexity analysis and a hardware deployment on three Raspberry Pi 3B+
-nodes, providing real-world evidence of efficiency.
+informal argument.
 
-\textbf{Contributions.}
-\begin{enumerate}
-  \item A lightweight, anonymous, decoupled distributed authentication scheme
-    for multihop IoT networks that achieves pseudonym-based device anonymity
-    and dual-state desynchronization recovery—properties absent from prior
-    lightweight schemes.
-  \item Formal security verification using ProVerif against the Dolev–Yao
-    adversary model, covering authentication, key secrecy, and
-    observational-equivalence-based anonymity.
-  \item A hardware-based performance evaluation on Raspberry Pi 3B+
-    nodes, showing a $26.8\%$ reduction in authentication-and-key-exchange
-    byte overhead versus the base scheme~\cite{das2026comsnets}.
-\end{enumerate}
 
-Section~II surveys related work.  Section~III presents prerequisites.
-Section~IV summarises the base scheme and its limitations.  Section~V
-presents the proposed scheme.  Section~VI gives the security analysis.
-Section~VII presents performance results.  Section~VIII concludes.
 
 % -------------------------------------------------------
 \section{Literature Survey}
@@ -151,8 +108,8 @@ Rosa~et~al.~\cite{rosa2023lightsae} (LightSAE) authorize parent nodes as
 authentication servers for their child nodes; however, a popular parent is
 overwhelmed by simultaneous join requests from many children.
 Zheng~et~al.~\cite{zheng2022puf} designed a peer-to-peer PUF-based
-authentication without a centralized authority, yet the scheme does not provide a multihop topology with a clean separation
-between enrollment and per-session authentication.
+authentication without a centralized authority, yet the scheme lacks a
+multihop decoupled design.
 Alruwaili~et~al.~\cite{alruwaili2025raaf} deployed multiple edge servers
 with PUF, but the absence of a genuine multihop topology means certain
 servers still receive disproportionate load.
@@ -200,7 +157,7 @@ computational and communication overhead.
   \end{tabular}\\[4pt]
   \raggedright
   \scriptsize
-  \textit{Dec.}: Enrollment (join) and authentication phases are explicitly separated.\ \
+  \textit{Dec.}: Decoupled design.\ \
   \textit{Acc.}: Hash-based accumulator.\ \
   \textit{ASU}: Auth.\ secret update.\\
   \textit{Anon.}: Device anonymity via pseudonym.\ \
@@ -248,38 +205,23 @@ their membership within the accumulated value without showing other values.
 In a one-way accumulator, the order of accumulating input elements does not
 alter the final combined value.  This is because of its quasi-commutative
 property, which is defined by a function $f: A \times B \Rightarrow A$,
-such that, for all $a \in A$, and $b, c \in B$:
-\begin{equation}
-  f(a,\, f(b, c)) = f(f(a, b),\, c).
-\end{equation}
+such that, for all $a \in A$, and $b, c \in B$: $f(a,\, f(b, c)) = f(f(a, b),\, c)$.
 The above equation implies that the accumulation order does not impact the
 final value, where $a$ is considered to be the seed.  A formal definition
 of the hash-based one-way accumulator is as follows.  Let
 $Y = \{y_1, y_2, \ldots, y_m\}$ be a set of elements, where each element
-$y_i$ is hashed ($\forall\, i \in [1, m]$):
-\begin{equation}
-  Y_i = H(y_i).
-\end{equation}
+$y_i$ is hashed ($\forall\, i \in [1, m]$) as $Y_i = H(y_i)$.
 These hashed values are accumulated into one compact value, where $s$ is the
-seed and $\mathbin{\&}$ is the bitwise AND operation:
-\begin{equation}
-  H(s, Y) = s \mathbin{\&} \textstyle\bigwedge_{i=1}^{m} Y_i.
-\end{equation}
+seed and $\mathbin{\&}$ is the bitwise AND operation: $H(s, Y) = s \mathbin{\&} \textstyle\bigwedge_{i=1}^{m} Y_i$.
 During membership verification, the hash of the individual element is
-recomputed and checked:
-\begin{equation}
-  H(s, Y) \mathbin{\&} H(y_i) = H(s, Y).
-\end{equation}
+recomputed and checked as $H(s, Y) \mathbin{\&} H(y_i) = H(s, Y)$.
 If the above equation holds, then $y_i$ is a member of the accumulated
 value $H(s, Y)$.
 
 \subsection{Pseudonym-Based Device Anonymity}
 
 A \emph{pseudonym} is a session-scoped, unlinkable identifier derived from
-the real identity.  In this work:
-\begin{equation}
-  \mathsf{PID} = H(ID_D \| m_\mathsf{curr}),
-\end{equation}
+the real identity.  In this work, $\mathsf{PID} = H(ID_D \| m_\mathsf{curr})$,
 where $m_\mathsf{curr}$ is a session-based random renewed after every
 successful key exchange.  Because $H$ is collision-resistant and
 $m_\mathsf{curr}$ is unpredictable to an observer, successive pseudonyms
@@ -369,12 +311,9 @@ should be authenticated by a trusted authentication server.  A set of
 existing IoT nodes inside the network is entrusted with the responsibility of
 authentication by the gateway in a distributed manner.  The gateway also
 shares a secret key with each of those responsible IoT
-nodes/authentication servers.  The scheme \emph{decouples} the node-joining (enrollment) process from the
-authentication process: enrollment is executed once over a secure channel at
-network-join time, while authentication and key exchange run independently
-over the open channel at each session.  The authentication server may be a
-parent or a non-parent node, preventing newly joined child nodes from
-overwhelming their parent with biased authentication load.
+nodes/authentication servers.  The authentication server can be a parent or
+a non-parent node—they may be \emph{decoupled}—which prevents newly joined
+child nodes from overwhelming their parent with biased authentication load.
 
 IoT nodes are assumed to be embedded with a PUF and are capable of performing
 various cryptographic operations, such as encryption/decryption, XOR,
@@ -415,8 +354,8 @@ session key exchange.  The following sections elaborate on these phases.
     $c_D$, $c_{AS\text{-}D}$ & PUF challenges for $D$ (issued by $AS$) and $AS$ (by $D$) \\
     $m_D$ & Session-based random issued by $AS$ during enrolment \\
     $m_\mathsf{curr}$, $m_\mathsf{old}$ & Current and previous session-based randoms at $D$ and $AS$ \\
-    $y_D$, $R_D$ & Unique secret and PUF response of $D$ \\
-    $Y_D^H$ & Hashed unique secret: $H(y_D)$ \\
+    $y_D$, $R_D$ & Group secret and PUF response of $D$ \\
+    $Y_D^H$ & Hashed group secret: $H(y_D)$ \\
     $T_\mathsf{Acc}$ & Accumulated group-membership value at $AS$ \\
     $\Phi_{AS\text{-}D}$ & PUF-response binding: $\mathsf{PUF}_{AS}(c_{AS\text{-}D}) \oplus R_D$ \\
     $\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{old}$ & Current and previous pseudonyms of $D$ \\
@@ -441,85 +380,55 @@ node.  Figure~\ref{fig:enrolment} details the message flow.
 
 \begin{figure}[!t]
   \centering
-  \begin{tikzpicture}[
-      partbox/.style={draw, fill=gray!12, minimum width=3.0cm,
-                      minimum height=0.5cm, font=\small\bfseries,
-                      text centered, rounded corners=2pt},
-      msgarrow/.style={->, >=Stealth, semithick},
-      lifeline/.style={dashed, gray!55, thin},
-      notebox/.style={draw=gray!60, fill=white, font=\scriptsize,
-                      align=left, inner sep=2.5pt, rounded corners=1pt}
-    ]
-    \def\xD{3} \def\xAS{14}
-    \node[partbox] (D)  at (\xD,  0) {Device ($D$)};
-    \node[partbox] (AS) at (\xAS, 0) {Auth.\ Server ($AS$)};
-
-    \draw[lifeline] (\xD, -0.28) -- (\xD, -10.5);
-    \draw[lifeline] (\xAS,-0.28) -- (\xAS,-10.5);
-
-    % Pre-stored note
-    \node[notebox, text width=9cm, anchor=north] at (8.5,-0.42) {
-      \textit{Pre-stored at $AS$}: $T_\mathsf{Acc}=\mathtt{0xFF\ldots FF}$,\ $K_{GW\text{-}AS}$\qquad
-      \textit{Pre-stored at $D$}: (none — first contact)
-    };
-
-    % Msg 1
-    \draw[msgarrow] (\xD,-1.6)--(\xAS,-1.6)
-      node[midway,above,font=\small]{Registration Request,\ $ID_D$};
-
-    % AS note
-    \node[notebox, text width=3.5cm, anchor=north west] at (\xAS+0.15,-1.75){
-      Check $ID_D \notin$ store\\
-      Generate challenge $c_D \in \mathbb{C}_D$\\
-      Generate session random $m_D$
-    };
-
-    % Msg 2
-    \draw[msgarrow,<-] (\xD,-3.4)--(\xAS,-3.4)
-      node[midway,above,font=\small]{$(c_D,\ m_D)$\ \ [Secure Channel]};
-
-    % D note
-    \node[notebox, text width=3.8cm, anchor=north east] at (\xD-0.15,-3.55){
-      $R_D = \mathsf{PUF}_D(c_D)$\\
-      Generate unique secret $y_D$ (random)\\
-      Generate challenge $c_{AS\text{-}D}$\\
-      Store $\{y_D,\ c_D,\ m_\mathsf{curr}=m_D\}$
-    };
-
-    % Msg 3
-    \draw[msgarrow] (\xD,-5.6)--(\xAS,-5.6)
-      node[midway,above,font=\small]{$(y_D,\ R_D,\ c_{AS\text{-}D})$\ \ [Secure Channel]};
-
-    % AS note
-    \node[notebox, text width=4.2cm, anchor=north west] at (\xAS+0.15,-5.75){
-      $Y_D^H = H(y_D)$\\
-      $T_\mathsf{Acc} = T_\mathsf{Acc} \mathbin{\&} Y_D^H$\\
-      $R_{AS\text{-}D} = \mathsf{PUF}_{AS}(c_{AS\text{-}D})$\\
-      $\Phi_{AS\text{-}D} = R_{AS\text{-}D} \oplus R_D$\\
-      Dual-state init:\ $m_\mathsf{old}=\perp$,\ $m_\mathsf{curr}=m_D$\\
-      $\mathsf{PID}_\mathsf{curr} = H(ID_D \| m_\mathsf{curr})$\quad $\mathsf{PID}_\mathsf{old}=\perp$\\
-      Store $\{T_\mathsf{Acc},\ ID_D,\ \Phi_{AS\text{-}D},\ c_{AS\text{-}D},$\\
-      \hspace{1.5em}$m_\mathsf{curr},\ m_\mathsf{old},\ \mathsf{PID}_\mathsf{curr},\ \mathsf{PID}_\mathsf{old}\}$
-    };
-  \end{tikzpicture}
+  \includegraphics[width=\columnwidth]{fig_enrollment}
   \caption{Phase 1 — Node Enrolment Phase (secure channel).}
   \label{fig:enrolment}
 \end{figure}
 
-$D$ initiates enrolment by sending its identity $ID_D$ to $AS$.  $AS$
-issues a PUF challenge $c_D$ and a session random $m_D$.  Using $c_D$, $D$
-computes $R_D = \mathsf{PUF}_D(c_D)$ and generates a unique secret $y_D$
-(random) and a reverse challenge $c_{AS\text{-}D}$.  It returns
-$(y_D, R_D, c_{AS\text{-}D})$ to $AS$ over the secure channel.
+$D$ initiates the phase by sending a registration request along with its
+unique identity $ID_D$ to $AS$—the only time $ID_D$ appears in any network
+message.  As a response, $AS$ generates a challenge $c_D \in \mathbb{C}_D$
+and a session-based random $m_D$, and forwards them securely to $D$.  Both
+credentials secure the communication during authentication: $c_D$ enables
+$D$ to regenerate its PUF response, while $m_D$ introduces unpredictability
+into open-channel messages, preventing adversarial prediction.  With $c_D$
+as input to its embedded PUF, $D$ obtains $R_D = \mathsf{PUF}_D(c_D)$.
+$D$ also generates its unique secret $y_D$ (a random value); the security
+of the entire scheme critically depends on maintaining the confidentiality
+of $y_D$.  $D$ picks a reverse challenge $c_{AS\text{-}D}$ and sends
+$(y_D, R_D, c_{AS\text{-}D})$ back to $AS$ over the secure channel,
+maintaining the confidentiality of $y_D$.  $D$ stores
+$\{y_D,\, c_D,\, m_\mathsf{curr}{=}m_D\}$.
 
-$AS$ hashes the unique secret to obtain $Y_D^H = H(y_D)$ and folds it into
-the accumulator: $T_\mathsf{Acc} = T_\mathsf{Acc} \mathbin{\&} Y_D^H$.
-It computes $\Phi_{AS\text{-}D} = \mathsf{PUF}_{AS}(c_{AS\text{-}D}) \oplus
-R_D$ to store $R_D$ in XOR-protected form, and initializes the dual state:
-$m_\mathsf{curr} = m_D$, $m_\mathsf{old} = \perp$,
-$\mathsf{PID}_\mathsf{curr} = H(ID_D \| m_\mathsf{curr})$,
-$\mathsf{PID}_\mathsf{old} = \perp$.
-From this point, $ID_D$ is never transmitted on the open channel.
+$AS$ inputs $y_D$ to the hash function $H(\cdot)$, generating the tag
+$Y_D^H = H(y_D)$, then performs a bitwise AND with the current accumulated
+value: $T_\mathsf{Acc} = T_\mathsf{Acc} \mathbin{\&} Y_D^H$.  The
+accumulated value contains the compact, hashed, unique secrets of all
+enrolled nodes, which are authenticated by $AS$.  In this way, $D$
+successfully enrols itself with $AS$.  $AS$ then generates
+$R_{AS\text{-}D} = \mathsf{PUF}_{AS}(c_{AS\text{-}D})$ and calculates
+$\Phi_{AS\text{-}D} = R_{AS\text{-}D} \oplus R_D$, keeping $R_D$ in
+XOR-protected form for further secure communications.
+
+To protect $D$'s identity in all subsequent open-channel messages, $AS$
+initialises a per-session pseudonym record.  Since $ID_D$ must not appear
+on the open channel after enrolment, $D$ will instead be identified by the
+\emph{pseudonym} $\mathsf{PID} = H(ID_D \| m_\mathsf{curr})$ in all future
+authentication messages.  Because $H$ is one-way and $m_\mathsf{curr}$ is
+private, this pseudonym cannot be linked to $ID_D$ or to pseudonyms from
+other sessions by a channel observer.  $AS$ pre-computes
+$\mathsf{PID}_\mathsf{curr} = H(ID_D \| m_\mathsf{curr})$ and sets
+$\mathsf{PID}_\mathsf{old} = \perp$, $m_\mathsf{old} = \perp$.  The
+\emph{dual state} ($m_\mathsf{curr}$, $m_\mathsf{old}$,
+$\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{old}$) is maintained
+because Phase~3 delivers the updated session random $m_\mathsf{new}$ over
+the open channel, where a single packet loss can cause $D$ to retain
+$m_\mathsf{curr}$ while $AS$ has already advanced.  By retaining both the
+current and the previous pseudonym, $AS$ can recover from such
+desynchronisation without requiring $D$ to re-authenticate.  $AS$ stores
+$\{T_\mathsf{Acc},\, ID_D,\, \Phi_{AS\text{-}D},\, c_{AS\text{-}D},\,
+m_\mathsf{curr},\, m_\mathsf{old},\, \mathsf{PID}_\mathsf{curr},\,
+\mathsf{PID}_\mathsf{old}\}$.
 
 \subsection{Node Authentication Phase}
 
@@ -543,14 +452,9 @@ Figure~\ref{fig:auth} illustrates the phase.
 The phase is initiated by $D$.  $D$ regenerates $R_D = \mathsf{PUF}_D(c_D)$
 from the stored challenge $c_D$, obtained during enrolment.  Rather than
 including its real identity $ID_D$—which would enable cross-session
-tracking—$D$ computes its current pseudonym:
-\begin{equation}
-  \mathsf{PID} = H(ID_D \| m_\mathsf{curr}).
-\end{equation}
+tracking—$D$ computes its current pseudonym $\mathsf{PID} = H(ID_D \| m_\mathsf{curr})$.
 $D$ then produces the hashed secret $Y_D^H = H(y_D)$ in XOR-masked form:
-\begin{equation}
-  Y_{AS\text{-}D}^H = H(y_D) \oplus H(R_D \| m_\mathsf{curr} \| \mathsf{PID} \| ts_1).
-\end{equation}
+$Y_{AS\text{-}D}^H = H(y_D) \oplus H(R_D \| m_\mathsf{curr} \| \mathsf{PID} \| ts_1)$.
 The XOR mask is the hash of $R_D$ (regenerated from $c_D$), the
 session-based random $m_\mathsf{curr}$, the pseudonym $\mathsf{PID}$, and
 the current timestamp $ts_1$.  The timestamp provides replay protection to
@@ -570,10 +474,7 @@ the freshness of $ts_1$.  $R_D'$ is calculated as $\Phi_{AS\text{-}D} \oplus
 \mathsf{PUF}_{AS}(c_{AS\text{-}D})$, where both $\Phi_{AS\text{-}D}$ and
 $c_{AS\text{-}D}$ are retrieved from $D$'s enrolment record.  $AS$
 regenerates the same XOR mask and unmasks $Y_D^{H'}$, then performs the
-bitwise AND:
-\begin{equation}
-  T_\mathsf{Acc}^\mathsf{new} = T_\mathsf{Acc} \mathbin{\&} Y_D^{H'} \stackrel{?}{=} T_\mathsf{Acc}.
-\end{equation}
+bitwise AND check: $T_\mathsf{Acc}^\mathsf{new} = T_\mathsf{Acc} \mathbin{\&} Y_D^{H'} \stackrel{?}{=} T_\mathsf{Acc}$.
 From the properties of the hash-based one-way accumulator, if an element is
 combined into an accumulated value using bitwise AND and the same operation is
 again performed between them, it gives back the same accumulated value.  If
@@ -608,11 +509,8 @@ $m_\mathsf{new} = H(n_1)$ is derived from a fresh random $n_1$ generated by
 $AS$.  The computed $m_\mathsf{new}$ also serves as the updated session-based
 random for the next authentication session between $AS$ and $D$,
 incorporating an update to the authentication secret.  In addition, $AS$
-derives the next pseudonym:
-\begin{equation}
-  K_{GW\text{-}D} = H(R_D' \| m_\mathsf{new}), \quad
-  \mathsf{PID}_\mathsf{new} = H(ID_D \| m_\mathsf{new}).
-\end{equation}
+derives the session key $K_{GW\text{-}D} = H(R_D' \| m_\mathsf{new})$ and
+the next pseudonym $\mathsf{PID}_\mathsf{new} = H(ID_D \| m_\mathsf{new})$.
 Because $\mathsf{PID}_\mathsf{new}$ is based on the fresh $m_\mathsf{new}$,
 it is computationally unlinkable to the $\mathsf{PID}$ used in the current
 session.  The session key, $ID_{AS}$, $ID_D$, the next pseudonym
@@ -624,11 +522,8 @@ that $GW$ can update its pseudonym mapping for $D$'s future communications.
 $AS$ also informs $D$ of $m_\mathsf{new}$ so that $D$ can independently
 derive $K_{GW\text{-}D}$ and its next pseudonym.  $AS$ masks $m_\mathsf{new}$
 to protect it from adversaries—if an adversary captures $m_\mathsf{new}$, the
-probability of predicting future session key material increases—as:
-\begin{equation}
-  m_H = m_\mathsf{new} \oplus H(Y_D^{H'} \| m_\mathsf{curr} \| R_D'
-        \| ID_{AS} \| \mathsf{PID}_\mathsf{curr} \| ts_2).
-\end{equation}
+probability of predicting future session key material increases—so it is
+masked as $m_H = m_\mathsf{new} \oplus H(Y_D^{H'} \| m_\mathsf{curr} \| R_D' \| ID_{AS} \| \mathsf{PID}_\mathsf{curr} \| ts_2)$.
 Here, $Y_D^{H'}$ is the hashed group secret known to $AS$ from the
 authentication phase; $m_\mathsf{curr}$ and $R_D'$ are likewise known from
 authentication; and $ts_2$ prevents replay of $m_H$ in a future session.
@@ -673,7 +568,7 @@ Figure~\ref{fig:proverif} shows the verification summary.
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{fig_proverif}
-  \caption{ProVerif verification output (all 19 queries satisfied).}
+  \caption{ProVerif verification output.}
   \label{fig:proverif}
 \end{figure}
 
@@ -682,11 +577,8 @@ Queries~1--2 cover enrollment: \texttt{DeviceEnrolled}~$\Rightarrow$~\texttt{Dev
 \texttt{ASEnrollmentCompletes}~$\Rightarrow$~\texttt{ASEnrollmentStarts}, ensuring enrollment messages
 cannot be replayed to forge a false completion.
 Queries~3--6 cover the two authentication rounds from both principals'
-perspectives:
-\begin{align*}
-  &\mathsf{inj\text{-}event}(\mathsf{DeviceAuthRound1Done}(ID_D,ID_{AS}))\\
-  &\quad\Rightarrow\mathsf{inj\text{-}event}(\mathsf{DeviceAuthStarts}(ID_D,ID_{AS}))
-\end{align*}
+perspectives: $\mathsf{inj\text{-}event}(\mathsf{DeviceAuthRound1Done}(ID_D,ID_{AS}))
+\Rightarrow \mathsf{inj\text{-}event}(\mathsf{DeviceAuthStarts}(ID_D,ID_{AS}))$,
 and identically for $\mathsf{ASAuthCompletes}$, $\mathsf{DeviceKeyExDone}$,
 and $\mathsf{ASKeyExCompletes}$, confirming that each round completes only if
 the same entity initiated it—preventing replay and MITM in both rounds.
@@ -701,10 +593,7 @@ data only if the device transmitted it (non-injective data-plane authenticity).
 
 The session key $K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$ is confirmed
 unreachable by the adversary from all three principals' perspectives
-independently (Q10--Q12):
-\begin{equation*}
-  \mathsf{query}\ \mathsf{attacker}(\mathsf{SecretK\_GW\_D\_Device}[])\;\Rightarrow\;\mathtt{false},
-\end{equation*}
+independently (Q10--Q12): $\mathsf{query}\ \mathsf{attacker}(\mathsf{SecretK\_GW\_D\_Device}[])\;\Rightarrow\;\mathtt{false}$,
 and equivalently for \texttt{SecretK\_GW\_D\_AS} and \texttt{SecretK\_GW\_D\_GW}.
 Q13 additionally confirms that the rotated session seed $m_\mathsf{new} =
 H(n_1)$ is secret: an adversary who compromises a session key cannot recover
@@ -1013,11 +902,7 @@ parameters.
 
 Table~\ref{tab:hwresults} reports CPU time, total bytes exchanged
 (Tx\,+\,Rx at the device), and energy consumption for each phase.
-Energy is computed as:
-\begin{equation}
-  E = t_\mathsf{CPU} \times P_\mathsf{CPU}
-      + (B_\mathsf{Tx}+B_\mathsf{Rx}) \times e_\mathsf{net}.
-\end{equation}
+Energy is computed as $E = t_\mathsf{CPU} \times P_\mathsf{CPU} + (B_\mathsf{Tx}+B_\mathsf{Rx}) \times e_\mathsf{net}$.
 
 \begin{table}[!t]
   \centering
@@ -1086,7 +971,7 @@ tighter packets (65\,B AUTH\_REQ, 2\,B AUTH\_REP, 33\,B KEYEX\_REQ,
 32\,B KEYEX\_REP, 81\,B GW\_TOKEN).
 
 The enrolment overhead is slightly higher in the proposed scheme: enrolment
-adds a third message exchange for the unique-secret transmission ($+49$\,B),
+adds a third message exchange for the group-secret transmission ($+49$\,B),
 which is the direct cost of the anonymity setup.  Overall, the three-phase
 total is 7.8\% lower (719\,B vs.\ 775\,B) than the base scheme.
 
