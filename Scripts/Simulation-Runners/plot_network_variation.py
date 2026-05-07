@@ -264,6 +264,100 @@ def combined_energy_line_chart(out_path, show=False):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Grouped + stacked bar: total energy per network, all schemes, all phases
+# ─────────────────────────────────────────────────────────────────────────────
+PHASE_COLORS = {
+    "Enrollment":     "#90CAF9",   # light blue
+    "Authentication": "#FFB74D",   # light orange
+    "Key Exchange":   "#A5D6A7",   # light green
+}
+
+def total_energy_grouped_bar(out_path, show=False):
+    """
+    X-axis: network size groups (N=20, 50, 80, 100).
+    3 bars per group — one per scheme, colour-coded by scheme.
+    Each bar is stacked: Enrollment (bottom) → Auth → Key Exchange (top).
+    Bar height = avg_energy × n_devices (total energy consumed by all devices).
+    """
+    phases   = ["Enrollment", "Authentication", "Key Exchange"]
+    schemes  = list(RESULTS.keys())
+    n_s      = len(schemes)
+    x        = np.arange(len(SIZES))
+    width    = 0.22
+
+    fig, ax = plt.subplots(figsize=(11, 6))
+
+    # track handles for legend
+    scheme_handles = []
+    phase_handles  = []
+
+    for si, scheme in enumerate(schemes):
+        offsets = x + (si - (n_s - 1) / 2) * width
+        bottoms = np.zeros(len(SIZES))
+
+        for pi, phase in enumerate(phases):
+            bar_vals = []
+            for n in SIZES:
+                d = load_summary(scheme, n)
+                if d and phase in d:
+                    val = d[phase]["avg_energy"] * d[phase]["n_devices"]
+                else:
+                    val = 0.0
+                bar_vals.append(val)
+            bar_vals = np.array(bar_vals)
+
+            # blend scheme colour with phase shade
+            base_hex = SCHEME_COLORS[scheme].lstrip("#")
+            r, g, b  = (int(base_hex[i:i+2], 16) / 255 for i in (0, 2, 4))
+            alpha    = 0.45 + 0.25 * pi      # darker for later phases
+
+            bars = ax.bar(offsets, bar_vals, width, bottom=bottoms,
+                          color=(r, g, b, alpha),
+                          edgecolor="black", linewidth=0.5)
+            bottoms += bar_vals
+
+            if si == 0:   # collect phase patch handle once
+                import matplotlib.patches as mpatches
+                phase_handles.append(
+                    mpatches.Patch(facecolor=(r, g, b, alpha),
+                                   edgecolor="black", label=phase))
+
+        # scheme handle: solid colour bar for legend
+        scheme_handles.append(
+            plt.Rectangle((0, 0), 1, 1,
+                           facecolor=SCHEME_COLORS[scheme],
+                           edgecolor="black", label=scheme))
+
+    ax.set_xticks(x)
+    ax.set_xticklabels([f"N = {n}" for n in SIZES], fontsize=11)
+    ax.set_xlabel("Total Network Nodes", fontsize=12)
+    ax.set_ylabel("Total Energy — All Devices (mJ)", fontsize=12)
+    ax.set_title("Total Energy Consumption vs Network Size\nAll Schemes · All Phases",
+                 fontsize=13, fontweight="bold")
+    ax.yaxis.grid(True, linestyle="--", alpha=0.5)
+    ax.set_axisbelow(True)
+
+    # Two-part legend: schemes on left, phases on right
+    leg1 = ax.legend(handles=scheme_handles, title="Scheme",
+                     loc="upper left", fontsize=9, title_fontsize=9)
+    ax.add_artist(leg1)
+    ax.legend(handles=phase_handles, title="Phase (stack order)",
+              loc="upper center", fontsize=9, title_fontsize=9)
+
+    ax.annotate("† Zhou has no Key Exchange phase",
+                xy=(0.99, 0.02), xycoords="axes fraction",
+                ha="right", va="bottom", fontsize=8, color="#4CAF50",
+                bbox=dict(boxstyle="round,pad=0.3", fc="white", alpha=0.7))
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=150, bbox_inches="tight")
+    if show:
+        plt.show()
+    plt.close(fig)
+    print(f"  Saved: {os.path.basename(out_path)}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Summary CSV
 # ─────────────────────────────────────────────────────────────────────────────
 def write_master_summary():
@@ -366,6 +460,12 @@ def main():
     print("\nGenerating combined all-schemes all-phases energy chart")
     combined_energy_line_chart(
         os.path.join(OUT_DIR, "11_energy_all_schemes_all_phases.png"),
+        show=args.show,
+    )
+
+    print("\nGenerating total-energy grouped bar chart")
+    total_energy_grouped_bar(
+        os.path.join(OUT_DIR, "12_total_energy_grouped_bar.png"),
         show=args.show,
     )
 
