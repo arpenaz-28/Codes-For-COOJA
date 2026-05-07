@@ -21,10 +21,11 @@
 \title{Lightweight, Anonymous, and Decoupled Distributed\\Authentication for Multihop IoT Networks}
 
 \author{
-  \IEEEauthorblockN{Anup Kulkarni}
-  \IEEEauthorblockA{Computer Science and Engineering\\
-  Indian Institute of Technology\\
-  anup@example.ac.in}
+  \IEEEauthorblockN{Anup Kulkarni, Sreeparna Das, Manas Khatua}
+  \IEEEauthorblockA{\textit{Computer Science and Engineering}\\
+  \textit{Indian Institute of Technology Guwahati}\\
+  \{anup.kulkarni, d.sreeparna, manaskhatua\}@iitg.ac.in}
+  
 }
 
 \maketitle
@@ -34,9 +35,10 @@
 The Internet of Things (IoT) demands lightweight and secure authentication
 for resource-constrained multihop networks, while also protecting the privacy of individual devices.  Existing distributed schemes reduce communication overhead on intermediate nodes but fail to provide device
 anonymity—real identifiers are exposed on every authentication transaction, enabling adversarial tracking across sessions.  This paper presents a lightweight, anonymous, and decoupled distributed authentication scheme for multihop IoT networks.  Gateway-selected authentication servers (which may
-be parent or non-parent nodes) authenticate newly joined devices using a two-round protocol that separates group-membership verification from session key establishment.  Device anonymity is preserved through per-session pseudonym rotation: a rotating pseudonym replaces the real device identity in all open-channel communications, preventing long-term tracking.  A dual-state synchronization mechanism maintained at both the authentication
-server and the gateway enables seamless recovery from single packet-loss events without re-authenticate.  Physically Unclonable Function (PUF) responses eliminate long-term secret storage, and a lightweight hash-based accumulator with XOR operations minimize computational overhead. Security
-is validated formally (ProVerif) and informally.
+be parent or non-parent nodes) authenticate newly joined devices using a two-round protocol that separates the process of authentication from session key establishment.  Device anonymity is preserved through per-session pseudonym rotation: a rotating pseudonym replaces the real device identity in all open-channel communications, preventing long-term tracking.  A dual-state synchronization mechanism maintained at the authentication
+server enables seamless recovery from packet-loss events without re-authenticate.  Physically Unclonable Function (PUF) responses eliminate long-term secret storage, and a lightweight hash-based accumulator with XOR operations minimize computational overhead. Securityis validated formally (ProVerif) and informally. In addition, performance analysis is conducted through theoretical and simulation-based frameworks, focusing on energy consumption, CPU time, and communication
+overhead. Analysis demonstrates that the proposed scheme is secure while maintaining a lightweight structure over existing
+methods.
 \end{abstract}
 
 
