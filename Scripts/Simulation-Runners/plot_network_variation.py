@@ -321,6 +321,54 @@ def total_energy_grouped_bar(out_path, show=False):
     print(f"  Saved: {os.path.basename(out_path)}")
 
 
+def total_cpu_grouped_bar(out_path, show=False):
+    """
+    Same layout as total_energy_grouped_bar but for CPU time (seconds).
+    Bar height = avg_cpu × n_devices summed across all phases.
+    """
+    phases  = ["Enrollment", "Authentication", "Key Exchange"]
+    schemes = list(RESULTS.keys())
+    n_s     = len(schemes)
+    x       = np.arange(len(SIZES))
+    width   = 0.22
+
+    fig, ax = plt.subplots(figsize=(11, 6))
+
+    for si, scheme in enumerate(schemes):
+        offsets   = x + (si - (n_s - 1) / 2) * width
+        bar_totals = []
+        for n in SIZES:
+            d   = load_summary(scheme, n)
+            tot = 0.0
+            if d:
+                for phase in phases:
+                    if phase in d:
+                        tot += d[phase]["avg_cpu"] * d[phase]["n_devices"]
+            bar_totals.append(tot)
+
+        ax.bar(offsets, bar_totals, width,
+               label=scheme,
+               color=SCHEME_COLORS[scheme],
+               edgecolor="black", linewidth=0.6)
+
+    ax.set_xticks(x)
+    ax.set_xticklabels([f"N = {n}" for n in SIZES], fontsize=11)
+    ax.set_xlabel("Total Network Nodes", fontsize=12)
+    ax.set_ylabel("Total CPU Time — All Devices (s)", fontsize=12)
+    ax.set_title("Total CPU Time vs Network Size — All Schemes",
+                 fontsize=13, fontweight="bold")
+    ax.yaxis.grid(True, linestyle="--", alpha=0.5)
+    ax.set_axisbelow(True)
+    ax.legend(fontsize=10)
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=150, bbox_inches="tight")
+    if show:
+        plt.show()
+    plt.close(fig)
+    print(f"  Saved: {os.path.basename(out_path)}")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Summary CSV
 # ─────────────────────────────────────────────────────────────────────────────
@@ -365,6 +413,12 @@ def main():
     print("Generating total-energy grouped bar chart")
     total_energy_grouped_bar(
         os.path.join(OUT_DIR, "12_total_energy_grouped_bar.png"),
+        show=args.show,
+    )
+
+    print("\nGenerating total-CPU grouped bar chart")
+    total_cpu_grouped_bar(
+        os.path.join(OUT_DIR, "13_total_cpu_grouped_bar.png"),
         show=args.show,
     )
 
