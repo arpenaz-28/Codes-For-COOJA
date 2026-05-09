@@ -398,7 +398,7 @@ node.  Figure~\ref{fig:enrolment} details the message flow.
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=\columnwidth]{fig_enrollment}
+  \includegraphics[width=0.9\columnwidth]{fig_enrollment}
   \caption{Phase 1 — Node Enrolment Phase (secure channel).}
   \label{fig:enrolment}
 \end{figure}
@@ -462,7 +462,7 @@ Figure~\ref{fig:auth} illustrates the phase.
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=\columnwidth]{fig_auth}
+  \includegraphics[width=0.9\columnwidth]{fig_auth}
   \caption{Phase 2 — Node Authentication Phase (open channel).}
   \label{fig:auth}
 \end{figure}
@@ -514,7 +514,7 @@ Figure~\ref{fig:keyex} shows the phase.
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=\columnwidth]{fig_keyex}
+  \includegraphics[width=0.9\columnwidth]{fig_keyex}
   \caption{Phase 3 — Node Session Key Exchange Phase (open channel, simultaneous delivery).}
   \label{fig:keyex}
 \end{figure}
@@ -664,75 +664,7 @@ from the stale $m_\mathsf{curr}$, which equals $\mathsf{PID}_\mathsf{old}$
 at $AS$.  $AS$ recognizes it via the dual-state lookup and resumes from the
 consistent prior state without re-enrolment.  $GW$ similarly retains the
 mapping $\mathsf{PID}_\mathsf{old} \to K_{GW\text{-}D}$ for session
-continuity.  Figure~\ref{fig:desync} illustrates the two outcomes.
-
-\begin{figure}[!t]
-  \centering
-  \begin{tikzpicture}[
-    sbox/.style={draw, rounded corners=2pt, font=\scriptsize,
-                 align=left, inner sep=2.5pt, text width=2.25cm},
-    obox/.style={draw, rounded corners=2pt, font=\scriptsize,
-                 align=center, inner sep=2.5pt, text width=2.0cm},
-    arr/.style={->, >=Stealth, semithick},
-    lbl/.style={font=\scriptsize\itshape, text=gray!70!black}
-  ]
-  \def\xD{0} \def\xAS{4.8}
-
-  %-- Participant labels and lifelines
-  \node[font=\small\bfseries] at (\xD,0)  {$D$};
-  \node[font=\small\bfseries] at (\xAS,0) {$AS$};
-  \draw[gray!35,thin] (\xD,-0.25)  -- (\xD,-6.05);
-  \draw[gray!35,thin] (\xAS,-0.25) -- (\xAS,-6.05);
-
-  %-- ① In-sync after session i
-  \node[lbl] at (2.4,-0.52) {after session $i$: in sync};
-  \node[sbox, fill=green!10] at (\xD,-1.1)
-    {$m_\mathsf{curr}$\\ $\mathsf{PID}_\mathsf{curr}$};
-  \node[sbox, fill=green!10] at (\xAS,-1.1)
-    {$m_\mathsf{curr}$\\ $\mathsf{PID}_\mathsf{curr}$};
-
-  %-- ② AS generates new material (Phase 3 of session i+1)
-  \node[sbox, fill=blue!8] at (\xAS,-2.2)
-    {gen.\ $m_\mathsf{new}$,\\ $\mathsf{PID}_\mathsf{new}$;\\ advances state};
-
-  %-- ③ Phase-3 packet lost
-  \draw[arr, dashed, red!70!black]
-    (\xAS,-3.05) -- (\xD,-3.05)
-    node[midway, above, font=\scriptsize]{$(m_H,\,ts_2)$}
-    node[midway, below, font=\scriptsize\bfseries, red!70!black]
-      {$\boldsymbol\times$\;packet lost};
-
-  %-- ④ Diverged states
-  \node[sbox, fill=red!8] at (\xD,-4.0)
-    {unchanged:\\ $m_\mathsf{curr}$\\ $\mathsf{PID}_\mathsf{curr}$};
-  \node[sbox, fill=orange!12] at (\xAS,-4.25)
-    {$m_\mathsf{old}\!\leftarrow\!m_\mathsf{curr}$\\
-     $\mathsf{PID}_\mathsf{old}\!\leftarrow\!\mathsf{PID}_\mathsf{curr}$\\
-     $m_\mathsf{curr}\!\leftarrow\!m_\mathsf{new}$\\
-     $\mathsf{PID}_\mathsf{curr}\!\leftarrow\!\mathsf{PID}_\mathsf{new}$};
-
-  %-- ⑤ D's next auth: sends PID from stale m_curr
-  \node[lbl] at (2.4,-5.15) {session $i\!+\!1$ auth attempt:};
-  \draw[arr] (\xD,-5.38) -- (\xAS,-5.38)
-    node[midway, above, font=\scriptsize]
-      {$H(ID_D \| m_\mathsf{curr})$ = $\mathsf{PID}_\mathsf{old}$ at $AS$};
-
-  %-- ⑥ Outcomes
-  \node[font=\tiny\bfseries] at (\xD+0.5,-5.78) {without dual state};
-  \node[font=\tiny\bfseries] at (\xAS-0.5,-5.78) {with dual state};
-  \node[obox, fill=red!14] at (\xD+0.5,-6.45)
-    {\textcolor{red!80!black}{\textbf{no match}}\\re-enrolment\\required};
-  \node[obox, fill=green!12] at (\xAS-0.5,-6.45)
-    {\textcolor{green!50!black}{\textbf{$\mathsf{PID}_\mathsf{old}$ found}}\\transparent\\recovery};
-
-  \end{tikzpicture}
-  \caption{Desynchronisation scenario.  A Phase~3 packet loss leaves $D$
-  with a stale $m_\mathsf{curr}$ while $AS$ has advanced.  Without
-  dual-state storage $AS$ cannot recognise $D$'s PID.  The proposed
-  dual-state lookup finds $\mathsf{PID}_\mathsf{old}$ and recovers without
-  re-enrolment.}
-  \label{fig:desync}
-\end{figure}
+continuity.
 
 \subsubsection{Forward Secrecy}
 $K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$.  Compromise of a session key
