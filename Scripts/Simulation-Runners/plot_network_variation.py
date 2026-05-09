@@ -44,14 +44,34 @@ RESULTS = {
 }
 
 SCHEME_COLORS = {
-    "Revised-Anonymity": "#2196F3",   # blue
-    "LAAKA":             "#FF9800",   # orange
-    "Zhou":              "#4CAF50",   # green
+    "Revised-Anonymity": "#2C6FAC",   # deep steel blue
+    "LAAKA":             "#B85C2C",   # muted terracotta
+    "Zhou":              "#3A7D44",   # muted forest green
 }
 SCHEME_MARKERS = {
     "Revised-Anonymity": "o",
     "LAAKA":             "s",
     "Zhou":              "^",
+}
+
+# Global aesthetic style applied to both charts
+_CHART_STYLE = {
+    "font.family":        "DejaVu Sans",
+    "font.size":          10,
+    "axes.titlesize":     12,
+    "axes.titleweight":   "normal",
+    "axes.labelsize":     10,
+    "axes.spines.top":    False,
+    "axes.spines.right":  False,
+    "axes.linewidth":     0.7,
+    "xtick.labelsize":    10,
+    "ytick.labelsize":    9,
+    "xtick.major.size":   0,
+    "legend.fontsize":    9,
+    "legend.framealpha":  0.9,
+    "legend.edgecolor":   "#cccccc",
+    "grid.color":         "#e5e5e5",
+    "grid.linewidth":     0.6,
 }
 
 PHASE_LABELS = {
@@ -272,101 +292,97 @@ PHASE_COLORS = {
     "Key Exchange":   "#A5D6A7",   # light green
 }
 
-def total_energy_grouped_bar(out_path, show=False):
+def _grouped_bar(metric, ylabel, title, out_path, show=False):
     """
-    X-axis: network size groups (N=20, 50, 80, 100).
-    3 bars per group — one per scheme, colour-coded by scheme.
-    Bar height = total energy across ALL phases × n_devices (no phase stacking).
+    Shared renderer for charts 12 and 13.
+    metric : "avg_energy" | "avg_cpu"
     """
     phases  = ["Enrollment", "Authentication", "Key Exchange"]
     schemes = list(RESULTS.keys())
     n_s     = len(schemes)
     x       = np.arange(len(SIZES))
-    width   = 0.22
+    width   = 0.24
 
-    fig, ax = plt.subplots(figsize=(11, 6))
+    with plt.rc_context(_CHART_STYLE):
+        fig, ax = plt.subplots(figsize=(10, 5.5))
+        fig.patch.set_facecolor("white")
 
-    for si, scheme in enumerate(schemes):
-        offsets   = x + (si - (n_s - 1) / 2) * width
-        bar_totals = []
-        for n in SIZES:
-            d   = load_summary(scheme, n)
-            tot = 0.0
-            if d:
-                for phase in phases:
-                    if phase in d:
-                        tot += d[phase]["avg_energy"] * d[phase]["n_devices"]
-            bar_totals.append(tot)
+        all_totals = []
+        for si, scheme in enumerate(schemes):
+            offsets    = x + (si - (n_s - 1) / 2) * width
+            bar_totals = []
+            for n in SIZES:
+                d   = load_summary(scheme, n)
+                tot = 0.0
+                if d:
+                    for phase in phases:
+                        if phase in d:
+                            key = "avg_energy" if metric == "avg_energy" else "avg_cpu"
+                            tot += d[phase][key] * d[phase]["n_devices"]
+                bar_totals.append(tot)
+            all_totals.append(max(bar_totals))
 
-        ax.bar(offsets, bar_totals, width,
-               label=scheme,
-               color=SCHEME_COLORS[scheme],
-               edgecolor="black", linewidth=0.6)
+            color = SCHEME_COLORS[scheme]
+            bars  = ax.bar(offsets, bar_totals, width,
+                           label=scheme,
+                           color=color, alpha=0.88,
+                           edgecolor="white", linewidth=0.8)
 
-    ax.set_xticks(x)
-    ax.set_xticklabels([f"N = {n}" for n in SIZES], fontsize=11)
-    ax.set_xlabel("Total Network Nodes", fontsize=12)
-    ax.set_ylabel("Total Energy — All Devices (mJ)", fontsize=12)
-    ax.set_title("Total Energy Consumption vs Network Size — All Schemes",
-                 fontsize=13, fontweight="bold")
-    ax.yaxis.grid(True, linestyle="--", alpha=0.5)
-    ax.set_axisbelow(True)
-    ax.legend(fontsize=10)
+            # value labels on top of each bar
+            for offset, val in zip(offsets, bar_totals):
+                if val > 0:
+                    ax.text(offset, val + max(all_totals + [1]) * 0.012,
+                            f"{val:.0f}" if metric == "avg_energy" else f"{val:.1f}",
+                            ha="center", va="bottom",
+                            fontsize=7.5, color="#555555")
 
-    fig.tight_layout()
-    fig.savefig(out_path, dpi=150, bbox_inches="tight")
-    if show:
-        plt.show()
-    plt.close(fig)
+        ax.set_xticks(x)
+        ax.set_xticklabels([f"N = {n}" for n in SIZES])
+        ax.set_xlabel("Total Network Nodes", labelpad=8)
+        ax.set_ylabel(ylabel, labelpad=8)
+        ax.set_title(title, pad=14, color="#222222")
+
+        # subtle horizontal grid only
+        ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
+        ax.set_axisbelow(True)
+        ax.tick_params(axis="y", length=0)
+
+        # clean up spines
+        ax.spines["left"].set_color("#cccccc")
+        ax.spines["bottom"].set_color("#cccccc")
+
+        # legend inside, top-left, clean box
+        ax.legend(loc="upper left",
+                  frameon=True, framealpha=0.92,
+                  edgecolor="#dddddd",
+                  handlelength=1.4, handleheight=1.0,
+                  borderpad=0.7)
+
+        fig.tight_layout()
+        fig.savefig(out_path, dpi=180, bbox_inches="tight",
+                    facecolor="white")
+        if show:
+            plt.show()
+        plt.close(fig)
     print(f"  Saved: {os.path.basename(out_path)}")
+
+
+def total_energy_grouped_bar(out_path, show=False):
+    _grouped_bar(
+        "avg_energy",
+        "Total Energy — All Devices (mJ)",
+        "Total Energy Consumption vs Network Size",
+        out_path, show,
+    )
 
 
 def total_cpu_grouped_bar(out_path, show=False):
-    """
-    Same layout as total_energy_grouped_bar but for CPU time (seconds).
-    Bar height = avg_cpu × n_devices summed across all phases.
-    """
-    phases  = ["Enrollment", "Authentication", "Key Exchange"]
-    schemes = list(RESULTS.keys())
-    n_s     = len(schemes)
-    x       = np.arange(len(SIZES))
-    width   = 0.22
-
-    fig, ax = plt.subplots(figsize=(11, 6))
-
-    for si, scheme in enumerate(schemes):
-        offsets   = x + (si - (n_s - 1) / 2) * width
-        bar_totals = []
-        for n in SIZES:
-            d   = load_summary(scheme, n)
-            tot = 0.0
-            if d:
-                for phase in phases:
-                    if phase in d:
-                        tot += d[phase]["avg_cpu"] * d[phase]["n_devices"]
-            bar_totals.append(tot)
-
-        ax.bar(offsets, bar_totals, width,
-               label=scheme,
-               color=SCHEME_COLORS[scheme],
-               edgecolor="black", linewidth=0.6)
-
-    ax.set_xticks(x)
-    ax.set_xticklabels([f"N = {n}" for n in SIZES], fontsize=11)
-    ax.set_xlabel("Total Network Nodes", fontsize=12)
-    ax.set_ylabel("Total CPU Time — All Devices (s)", fontsize=12)
-    ax.set_title("Total CPU Time vs Network Size — All Schemes",
-                 fontsize=13, fontweight="bold")
-    ax.yaxis.grid(True, linestyle="--", alpha=0.5)
-    ax.set_axisbelow(True)
-    ax.legend(fontsize=10)
-
-    fig.tight_layout()
-    fig.savefig(out_path, dpi=150, bbox_inches="tight")
-    if show:
-        plt.show()
-    plt.close(fig)
-    print(f"  Saved: {os.path.basename(out_path)}")
+    _grouped_bar(
+        "avg_cpu",
+        "Total CPU Time — All Devices (s)",
+        "Total CPU Time vs Network Size",
+        out_path, show,
+    )
 
 
 # ─────────────────────────────────────────────────────────────────────────────
