@@ -662,7 +662,8 @@ its $m_\mathsf{curr}$ unchanged while $AS$ has already advanced to
 $m_\mathsf{new}$.  On the next authentication attempt, $D$ computes its PID
 from the stale $m_\mathsf{curr}$, which equals $\mathsf{PID}_\mathsf{old}$
 at $AS$.  $AS$ recognizes it via the dual-state lookup and resumes from the
-consistent prior state without re-enrolment.  $GW$ similarly retains the
+consistent prior state, allowing $D$ to re-authenticate without
+re-enrolment.  $GW$ similarly retains the
 mapping $\mathsf{PID}_\mathsf{old} \to K_{GW\text{-}D}$ for session
 continuity.
 
