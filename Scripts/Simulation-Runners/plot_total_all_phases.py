@@ -13,11 +13,37 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 
-BASE    = r"c:\ANUP\MTP\Proposing\Codes For COOJA"
+BASE    = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 OUT_DIR = os.path.join(BASE, "Results", "Charts", "Revised-vs-LAAKA-vs-Zhou")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# Style — matches plot_network_variation.py charts 12 & 13
+# ─────────────────────────────────────────────────────────────────────────────
+_CHART_STYLE = {
+    "font.family":       "DejaVu Sans",
+    "font.size":         10,
+    "axes.titlesize":    12,
+    "axes.titleweight":  "normal",
+    "axes.labelsize":    10,
+    "axes.spines.top":   False,
+    "axes.spines.right": False,
+    "axes.linewidth":    0.7,
+    "xtick.labelsize":   10,
+    "ytick.labelsize":   9,
+    "xtick.major.size":  0,
+    "legend.fontsize":   9,
+    "legend.framealpha": 0.9,
+    "legend.edgecolor":  "#cccccc",
+    "grid.color":        "#e5e5e5",
+    "grid.linewidth":    0.6,
+}
+
+COLORS  = ["#2C6FAC", "#B85C2C", "#3A7D44"]   # muted steel blue, terracotta, forest green
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Helpers
+# ─────────────────────────────────────────────────────────────────────────────
 def load(path, id_col, cpu_col, en_col):
     rows = {}
     with open(path, newline="") as f:
@@ -33,7 +59,9 @@ def ci95(lst):
     n = len(lst)
     return 1.96 * statistics.stdev(lst) / math.sqrt(n) if n > 1 else 0
 
-# ── Load data ─────────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# Load data
+# ─────────────────────────────────────────────────────────────────────────────
 RA_DIR = os.path.join(BASE, "Results", "CSV-Data", "Revised-Anonymity")
 ra_enr   = load(os.path.join(RA_DIR, "enroll-results.csv"), "Device",    "CPU_s",      "Energy_J")
 ra_auth  = load(os.path.join(RA_DIR, "auth-results.csv"),   "Device",    "CPU_s",      "Energy_J")
@@ -46,7 +74,7 @@ lk_keyex = load(os.path.join(LK_DIR, "keyex-results.csv"),  "Device_ID", "CPU_Ti
 
 zh_raw = {}
 with open(os.path.join(BASE, "Zhou-Scheme", "zhou-auth-results.csv"), newline="") as f:
-    for r in csv.DictReader(f):
+    for r in csv.DictReader(f, skipinitialspace=True):
         try:
             zh_raw[int(r["Device_ID"])] = {
                 "cpu":        float(r["Avg_CPU_s"]),
@@ -56,7 +84,9 @@ with open(os.path.join(BASE, "Zhou-Scheme", "zhou-auth-results.csv"), newline=""
         except (ValueError, KeyError):
             pass
 
-# ── Per-device totals (only devices present in ALL phases of that scheme) ─────
+# ─────────────────────────────────────────────────────────────────────────────
+# Per-device totals (only devices present in ALL phases of that scheme)
+# ─────────────────────────────────────────────────────────────────────────────
 ra_ids = sorted(set(ra_enr) & set(ra_auth) & set(ra_keyex))
 ra_en  = [(ra_enr[i]["en"] + ra_auth[i]["en"] + ra_keyex[i]["en"]) * 1000 for i in ra_ids]
 ra_cpu = [ ra_enr[i]["cpu"] + ra_auth[i]["cpu"] + ra_keyex[i]["cpu"]       for i in ra_ids]
@@ -66,10 +96,12 @@ lk_en  = [(lk_enr[i]["en"] + lk_auth[i]["en"] + lk_keyex[i]["en"]) * 1000 for i 
 lk_cpu = [ lk_enr[i]["cpu"] + lk_auth[i]["cpu"] + lk_keyex[i]["cpu"]       for i in lk_ids]
 
 zh_ids = sorted(zh_raw)
-zh_en  = [zh_raw[i]["en"]  * 1000 for i in zh_ids]   # enroll + auth energy combined
-zh_cpu = [zh_raw[i]["cpu"] + zh_raw[i]["enroll_cpu"] for i in zh_ids]  # enroll + auth CPU
+zh_en  = [zh_raw[i]["en"]  * 1000 for i in zh_ids]
+zh_cpu = [zh_raw[i]["cpu"] + zh_raw[i]["enroll_cpu"] for i in zh_ids]
 
-# ── Summary stats ─────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# Summary stats
+# ─────────────────────────────────────────────────────────────────────────────
 def stats(lst):
     return statistics.mean(lst), ci95(lst), len(lst)
 
@@ -78,89 +110,91 @@ LK  = {"en": stats(lk_en),  "cpu": stats(lk_cpu)}
 ZH  = {"en": stats(zh_en),  "cpu": stats(zh_cpu)}
 
 schemes = ["Revised-\nAnonymity", "LAAKA", "Zhou"]
-colors  = ["#1565C0", "#E65100", "#2E7D32"]
 data    = [RA, LK, ZH]
 
-# ── Figure: 1 row × 2 panels ──────────────────────────────────────────────────
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 7))
-fig.suptitle(
-    "Per-Device Mean Total Cost — All 3 Phases\n"
-    "(Enrollment + Authentication + Key Exchange)   |   COOJA Simulation, 20 TelosB Motes",
-    fontsize=13, fontweight="bold", y=1.02
-)
+# ─────────────────────────────────────────────────────────────────────────────
+# Figure: 1 row × 2 panels
+# ─────────────────────────────────────────────────────────────────────────────
+def _apply_axes_style(ax, ylabel, xlabel=None):
+    ax.set_ylabel(ylabel, labelpad=8)
+    if xlabel:
+        ax.set_xlabel(xlabel, labelpad=8)
+    ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
+    ax.set_axisbelow(True)
+    ax.tick_params(axis="y", length=0)
+    ax.spines["left"].set_color("#cccccc")
+    ax.spines["bottom"].set_color("#cccccc")
+
+CI_PATCH = mpatches.Patch(facecolor="none", edgecolor="#888888",
+                           linewidth=1.0, label="Error bars = 95% CI")
 
 x = np.arange(len(schemes))
 w = 0.45
-CI_PATCH = mpatches.Patch(facecolor="none", edgecolor="#333",
-                           linewidth=1.2, label="Error bars = 95% CI")
 
-def draw_panel(ax, metric, ylabel, unit, decimals=2, note=None):
-    vals = [d[metric][0] for d in data]
-    cis  = [d[metric][1] for d in data]
-    ns   = [d[metric][2] for d in data]
+with plt.rc_context(_CHART_STYLE):
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 7))
+    fig.patch.set_facecolor("white")
+    fig.suptitle(
+        "Per-Device Mean Total Cost — All 3 Phases\n"
+        "(Enrollment + Authentication + Key Exchange)   |   COOJA Simulation",
+        color="#222222", y=1.02,
+    )
 
-    bars = ax.bar(x, vals, width=w, color=colors, edgecolor="black",
-                  linewidth=0.9, yerr=cis, capsize=8,
-                  error_kw={"elinewidth": 2.0, "ecolor": "#111111"})
+    def draw_panel(ax, metric, ylabel, unit, decimals=2, note=None):
+        vals = [d[metric][0] for d in data]
+        cis  = [d[metric][1] for d in data]
+        ns   = [d[metric][2] for d in data]
 
-    top = max(v + c for v, c in zip(vals, cis))
-    ax.set_ylim(0, top * 1.45)
+        bars = ax.bar(x, vals, width=w, color=COLORS,
+                      edgecolor="white", linewidth=0.8, alpha=0.88)
+        ax.errorbar(x, vals, yerr=cis, fmt="none", capsize=4,
+                    elinewidth=1.2, ecolor="#888888")
 
-    fmt = f"{{:.{decimals}f}}"
+        top = max(v + c for v, c in zip(vals, cis))
+        ax.set_ylim(0, top * 1.42)
 
-    # Mean value bold above bar
-    for bar, v, ci_v in zip(bars, vals, cis):
-        cx = bar.get_x() + bar.get_width() / 2
-        base = bar.get_height() + ci_v + top * 0.03
-        ax.text(cx, base,
-                fmt.format(v) + f" {unit}",
-                ha="center", va="bottom", fontsize=10.5, fontweight="bold", color="#111")
-        # ±CI value in smaller text just below mean label
-        ax.text(cx, base - top * 0.001,
-                f"± {fmt.format(ci_v)} {unit}",
-                ha="center", va="top", fontsize=8.5, color="#444")
+        fmt = f"{{:.{decimals}f}}"
+        for bar, v, ci_v in zip(bars, vals, cis):
+            cx = bar.get_x() + bar.get_width() / 2
+            base = bar.get_height() + ci_v + top * 0.03
+            ax.text(cx, base,
+                    fmt.format(v) + f" {unit}",
+                    ha="center", va="bottom", fontsize=10.5,
+                    fontweight="bold", color="#222222")
+            ax.text(cx, base + top * 0.045,
+                    f"± {fmt.format(ci_v)} {unit}",
+                    ha="center", va="bottom", fontsize=8.5, color="#555555")
 
-    # n= inside bar
-    for bar, v, n in zip(bars, vals, ns):
-        ax.text(bar.get_x() + bar.get_width() / 2,
-                v / 2,
-                f"n = {n}", ha="center", va="center",
-                fontsize=9.5, color="white", fontweight="bold")
+        ax.set_xticks(x)
+        ax.set_xticklabels(schemes)
+        _apply_axes_style(ax, ylabel)
 
-    ax.set_xticks(x)
-    ax.set_xticklabels(schemes, fontsize=11)
-    ax.set_ylabel(ylabel, fontsize=12)
-    ax.yaxis.grid(True, linestyle="--", alpha=0.45, color="#cccccc")
-    ax.set_axisbelow(True)
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.tick_params(axis="both", labelsize=10)
+        if note:
+            ax.text(0.5, -0.12, note, transform=ax.transAxes,
+                    ha="center", fontsize=8, color="#666666", style="italic")
 
-    if note:
-        ax.text(0.5, -0.12, note, transform=ax.transAxes,
-                ha="center", fontsize=8, color="#666", style="italic")
+    draw_panel(ax1, "en",  "Per-Device Mean Total Energy (mJ)", "mJ", decimals=2,
+               note="Zhou: Enrollment + Auth energy  (Key Exchange is included in Auth)")
+    draw_panel(ax2, "cpu", "Per-Device Mean Total CPU Time (s)", "s", decimals=4,
+               note="Zhou CPU: Enrollment + Auth  (Key Exchange included in Auth phase)")
 
-draw_panel(ax1, "en",  "Per-Device Mean Total Energy (mJ)", "mJ", decimals=2,
-           note="Zhou: Enrollment + Auth energy  (Key Exchange is included in Auth)")
-draw_panel(ax2, "cpu", "Per-Device Mean Total CPU Time (s)", "s", decimals=4,
-           note="Zhou CPU: Enrollment + Auth  (Key Exchange included in Auth phase)")
+    scheme_handles = [mpatches.Patch(color=c, alpha=0.88, label=s.replace("\n", "-"))
+                      for c, s in zip(COLORS, schemes)]
+    scheme_handles.append(CI_PATCH)
+    fig.legend(handles=scheme_handles,
+               loc="lower center", bbox_to_anchor=(0.5, -0.07),
+               ncol=len(scheme_handles),
+               frameon=True, framealpha=0.92, edgecolor="#dddddd")
 
-# Single legend below both panels
-scheme_handles = [mpatches.Patch(color=c, label=s.replace("\n", "-"))
-                  for c, s in zip(colors, schemes)]
-scheme_handles.append(CI_PATCH)
-fig.legend(handles=scheme_handles,
-           loc="lower center", bbox_to_anchor=(0.5, -0.07),
-           ncol=len(scheme_handles), fontsize=10,
-           framealpha=0.95, edgecolor="#aaaaaa")
+    fig.tight_layout()
+    out = os.path.join(OUT_DIR, "18_total_all_phases.png")
+    fig.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    print(f"Saved: 18_total_all_phases.png")
 
-plt.tight_layout()
-out = os.path.join(OUT_DIR, "18_total_all_phases.png")
-fig.savefig(out, dpi=150, bbox_inches="tight")
-plt.close(fig)
-print(f"Saved: 18_total_all_phases.png")
-
-# ── Console summary ───────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# Console summary
+# ─────────────────────────────────────────────────────────────────────────────
 print()
 print("="*65)
 print("TOTAL COST — All 3 Phases  (mean ± 95% CI)")

@@ -15,6 +15,7 @@
 \usepackage{url}
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 
 \begin{document}
 
@@ -66,11 +67,11 @@ schemes distribute this responsibility; however, a plain parent-node scheme
 overloads whichever node a set of new devices happened to join under, while
 all other capable nodes remain idle~\cite{rosa2023lightsae}.
 
-A further deficiency shared by all existing lightweight schemes is the
+A further deficiency shared by existing lightweight schemes is the
 \emph{absence of device anonymity}.  Every scheme in the literature
 transmits the real device identity $ID_D$ on the open channel during
 authentication, allowing an adversary with radio access to track a device
-across sessions.  Privacy regulations such as GDPR require that device
+across sessions.  Privacy regulations require that device
 identities not be linkable across time, a property entirely absent from
 prior IoT authentication work.
 
@@ -81,14 +82,14 @@ simultaneously:
   \item \textbf{Decoupling:} A gateway-selected authentication server (AS)
     may be any capable node—parent or non-parent—preventing skewed load on
     parent nodes.
-  \item \textbf{Anonymity:} A rotating pseudonym $\mathsf{PID} =
-    H(ID_D \| m_\mathsf{curr})$, refreshed after each successful key
+  \item \textbf{Anonymity:} A rotating pseudonym $\mathit{PID} =
+    H(ID_D \| m_{\mathrm{curr}})$, refreshed after each successful key
     exchange, replaces $ID_D$ in all open-channel messages.  The gateway
     never learns the real device identity.
   \item \textbf{Desynchronization resilience:} A dual-state mechanism
-    ($\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{old}$,
-    $m_\mathsf{curr}$, $m_\mathsf{old}$) at both the AS and the gateway
-    tolerates single-packet loss without re-enrolment.
+    ($\mathit{PID}_{\mathrm{curr}}$, $\mathit{PID}_{\mathrm{old}}$,
+    $m_{\mathrm{curr}}$, $m_{\mathrm{old}}$) at both the AS and the gateway
+    tolerates single-packet loss without re-authentication.
 \end{itemize}
 
 The scheme also incorporates a PUF-based secret derivation mechanism
@@ -239,10 +240,10 @@ value $H(s, Y)$.
 \subsection{Pseudonym-Based Device Anonymity}
 
 A \emph{pseudonym} is a session-scoped, unlinkable identifier derived from
-the real identity.  In this work, $\mathsf{PID} = H(ID_D \| m_\mathsf{curr})$,
-where $m_\mathsf{curr}$ is a session-based random renewed after every
+the real identity.  In this work, $\mathit{PID} = H(ID_D \| m_{\mathrm{curr}})$,
+where $m_{\mathrm{curr}}$ is a session-based random renewed after every
 successful key exchange.  Because $H$ is collision-resistant and
-$m_\mathsf{curr}$ is unpredictable to an observer, successive pseudonyms
+$m_{\mathrm{curr}}$ is unpredictable to an observer, successive pseudonyms
 are computationally unlinkable.  The real identity $ID_D$ is transmitted only once, over a
 secure enrolment channel, and never appears on the open network again.
 
@@ -284,13 +285,13 @@ group membership:
 $T_\mathsf{Acc} \mathbin{\&} H(y_D) \stackrel{?}{=} T_\mathsf{Acc}$.
 
 \textbf{Phase 3 — Session Key Exchange (open channel).}
-$AS$ generates $m_\mathsf{new} = H(n_1)$, derives $K_{GW\text{-}D} =
-H(R_D' \| m_\mathsf{new})$, and simultaneously delivers: (i)~masked
-$m_H = m_\mathsf{new} \oplus H(Y_D^{H'} \| m_D \| R_D' \| ID_{AS} \|
+$AS$ generates $m_{\mathrm{new}} = H(n_1)$, derives $K_{GW\text{-}D} =
+H(R_D' \| m_{\mathrm{new}})$, and simultaneously delivers: (i)~masked
+$m_H = m_{\mathrm{new}} \oplus H(Y_D^{H'} \| m_D \| R_D' \| ID_{AS} \|
 ID_D \| ts_2)$ to $D$, and (ii)~an AES-encrypted token
 $\mathsf{SE}(K_{GW\text{-}AS}, ID_D \| ID_{AS} \| K_{GW\text{-}D} \|
-ts_\mathsf{auth})$ to $GW$.  $D$ unmasks $m_\mathsf{new}$ and derives
-$K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$.
+ts_{\mathrm{auth}})$ to $GW$.  $D$ unmasks $m_{\mathrm{new}}$ and derives
+$K_{GW\text{-}D} = H(R_D \| m_{\mathrm{new}})$.
 
 \subsection{Identified Limitations}
 \label{sec:limitations}
@@ -308,7 +309,7 @@ modern privacy requirements such as GDPR.
 \textbf{L2 — No Desynchronization Recovery.}
 Both $AS$ and $D$ maintain only a single session state ($m_D$).  If the
 Phase~3 delivery of $m_H$ to $D$ is lost due to packet loss, $D$ retains
-the old $m_D$ while $AS$ has already advanced to $m_\mathsf{new}$.  Their
+the old $m_D$ while $AS$ has already advanced to $m_{\mathrm{new}}$.  Their
 session states diverge, causing all subsequent authentication attempts to
 fail until the device re-enrols — an energy-costly operation for
 battery-powered nodes in a multihop network.
@@ -371,15 +372,15 @@ session key exchange.  The following sections elaborate on these phases.
     $\mathbin{\&}$ & Bitwise AND operation \\
     $c_D$, $c_{AS\text{-}D}$ & PUF challenges for $D$ (issued by $AS$) and $AS$ (by $D$) \\
     $m_D$ & Session-based random issued by $AS$ during enrolment \\
-    $m_\mathsf{curr}$, $m_\mathsf{old}$ & Current and previous session-based randoms at $D$ and $AS$ \\
+    $m_{\mathrm{curr}}$, $m_{\mathrm{old}}$ & Current and previous session-based randoms at $D$ and $AS$ \\
     $y_D$, $R_D$ & Group secret and PUF response of $D$ \\
-    $Y_D^H$ & Hashed group secret: $H(y_D)$ \\
+    $Y_D^H$ & Hashed unique secret: $H(y_D)$ \\
     $T_\mathsf{Acc}$ & Accumulated group-membership value at $AS$ \\
     $\Phi_{AS\text{-}D}$ & PUF-response binding: $\mathsf{PUF}_{AS}(c_{AS\text{-}D}) \oplus R_D$ \\
-    $\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{old}$ & Current and previous pseudonyms of $D$ \\
+    $\mathit{PID}_{\mathrm{curr}}$, $\mathit{PID}_{\mathrm{old}}$ & Current and previous pseudonyms of $D$ \\
     $K_{GW\text{-}D}$ & Session key between $GW$ and $D$ \\
     $K_{GW\text{-}AS}$ & Long-term shared key between $GW$ and $AS$ \\
-    $ts_1$, $ts_2$, $ts_\mathsf{auth}$ & Timestamps for freshness verification \\
+    $ts_1$, $ts_2$, $ts_{\mathrm{auth}}$ & Timestamps for freshness verification \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -416,7 +417,7 @@ of the entire scheme critically depends on maintaining the confidentiality
 of $y_D$.  $D$ picks a reverse challenge $c_{AS\text{-}D}$ and sends
 $(y_D, R_D, c_{AS\text{-}D})$ back to $AS$ over the secure channel,
 maintaining the confidentiality of $y_D$.  $D$ stores
-$\{y_D,\, c_D,\, m_\mathsf{curr}{=}m_D\}$.
+$\{y_D,\, c_D,\, m_{\mathrm{curr}}{=}m_D\}$.
 
 $AS$ inputs $y_D$ to the hash function $H(\cdot)$, generating the tag
 $Y_D^H = H(y_D)$, then performs a bitwise AND with the current accumulated
@@ -431,22 +432,22 @@ XOR-protected form for further secure communications.
 To protect $D$'s identity in all subsequent open-channel messages, $AS$
 initialises a per-session pseudonym record.  Since $ID_D$ must not appear
 on the open channel after enrolment, $D$ will instead be identified by the
-\emph{pseudonym} $\mathsf{PID} = H(ID_D \| m_\mathsf{curr})$ in all future
-authentication messages.  Because $H$ is one-way and $m_\mathsf{curr}$ is
+\emph{pseudonym} $\mathit{PID} = H(ID_D \| m_{\mathrm{curr}})$ in all future
+authentication messages.  Because $H$ is one-way and $m_{\mathrm{curr}}$ is
 private, this pseudonym cannot be linked to $ID_D$ or to pseudonyms from
 other sessions by a channel observer.  $AS$ pre-computes
-$\mathsf{PID}_\mathsf{curr} = H(ID_D \| m_\mathsf{curr})$ and sets
-$\mathsf{PID}_\mathsf{old} = \perp$, $m_\mathsf{old} = \perp$.  The
-\emph{dual state} ($m_\mathsf{curr}$, $m_\mathsf{old}$,
-$\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{old}$) is maintained
-because Phase~3 delivers the updated session random $m_\mathsf{new}$ over
+$\mathit{PID}_{\mathrm{curr}} = H(ID_D \| m_{\mathrm{curr}})$ and sets
+$\mathit{PID}_{\mathrm{old}} = \perp$, $m_{\mathrm{old}} = \perp$.  The
+\emph{dual state} ($m_{\mathrm{curr}}$, $m_{\mathrm{old}}$,
+$\mathit{PID}_{\mathrm{curr}}$, $\mathit{PID}_{\mathrm{old}}$) is maintained
+because Phase~3 delivers the updated session random $m_{\mathrm{new}}$ over
 the open channel, where a single packet loss can cause $D$ to retain
-$m_\mathsf{curr}$ while $AS$ has already advanced.  By retaining both the
+$m_{\mathrm{curr}}$ while $AS$ has already advanced.  By retaining both the
 current and the previous pseudonym, $AS$ can recover from such
 desynchronisation without requiring $D$ to re-authenticate.  $AS$ stores
 $\{T_\mathsf{Acc},\, ID_D,\, \Phi_{AS\text{-}D},\, c_{AS\text{-}D},\,
-m_\mathsf{curr},\, m_\mathsf{old},\, \mathsf{PID}_\mathsf{curr},\,
-\mathsf{PID}_\mathsf{old}\}$.
+m_{\mathrm{curr}},\, m_{\mathrm{old}},\, \mathit{PID}_{\mathrm{curr}},\,
+\mathit{PID}_{\mathrm{old}}\}$.
 
 \subsection{Node Authentication Phase}
 
@@ -454,9 +455,9 @@ The main purpose of this phase is to prove the membership of $D$'s unique
 secret $y_D$ to $AS$.  Since authentication is executed over the open
 channel, $y_D$ must be communicated in a secure form.  Both the PUF-based
 challenge-response, producing the secret $R_D$, and the session-based random
-$m_\mathsf{curr}$, incorporating unpredictability, are known only to $D$ and
+$m_{\mathrm{curr}}$, incorporating unpredictability, are known only to $D$ and
 $AS$.  Additionally, the proposed scheme replaces the real identity $ID_D$
-with the current pseudonym $\mathsf{PID}$, so that a passive observer cannot
+with the current pseudonym $\mathit{PID}$, so that a passive observer cannot
 link successive sessions to the same device.
 Figure~\ref{fig:auth} illustrates the phase.
 
@@ -470,23 +471,23 @@ Figure~\ref{fig:auth} illustrates the phase.
 The phase is initiated by $D$.  $D$ regenerates $R_D = \mathsf{PUF}_D(c_D)$
 from the stored challenge $c_D$, obtained during enrolment.  Rather than
 including its real identity $ID_D$—which would enable cross-session
-tracking—$D$ computes its current pseudonym $\mathsf{PID} = H(ID_D \| m_\mathsf{curr})$.
+tracking—$D$ computes its current pseudonym $\mathit{PID} = H(ID_D \| m_{\mathrm{curr}})$.
 $D$ then produces the hashed secret $Y_D^H = H(y_D)$ in XOR-masked form:
-$Y_{AS\text{-}D}^H = H(y_D) \oplus H(R_D \| m_\mathsf{curr} \| \mathsf{PID} \| ts_1)$.
+$Y_{AS\text{-}D}^H = H(y_D) \oplus H(R_D \| m_{\mathrm{curr}} \| \mathit{PID} \| ts_1)$.
 The XOR mask is the hash of $R_D$ (regenerated from $c_D$), the
-session-based random $m_\mathsf{curr}$, the pseudonym $\mathsf{PID}$, and
+session-based random $m_{\mathrm{curr}}$, the pseudonym $\mathit{PID}$, and
 the current timestamp $ts_1$.  The timestamp provides replay protection to
-the XOR-masked $Y_D^H$.  The complete message $(\mathsf{PID},\,
+the XOR-masked $Y_D^H$.  The complete message $(\mathit{PID},\,
 Y_{AS\text{-}D}^H,\, ts_1)$ is sent to $AS$.  An attacker cannot obtain
 $H(y_D)$ from $Y_{AS\text{-}D}^H$ without knowing $R_D$ (which can only be
-generated by $D$'s PUF) and $m_\mathsf{curr}$ (known only to $D$ and $AS$).
+generated by $D$'s PUF) and $m_{\mathrm{curr}}$ (known only to $D$ and $AS$).
 
 After receiving the message, $AS$ performs a \emph{dual-state lookup}~\cite{zhong2025survey}: it
-checks whether the received $\mathsf{PID}$ matches $\mathsf{PID}_\mathsf{curr}$
-or $\mathsf{PID}_\mathsf{old}$ in its records.  A match on
-$\mathsf{PID}_\mathsf{old}$ indicates that $D$ missed the Phase~3 delivery
-in the previous session and still holds the prior $m_\mathsf{curr}$; $AS$
-then uses the stored $m_\mathsf{old}$ for this verification, recovering from
+checks whether the received $\mathit{PID}$ matches $\mathit{PID}_{\mathrm{curr}}$
+or $\mathit{PID}_{\mathrm{old}}$ in its records.  A match on
+$\mathit{PID}_{\mathrm{old}}$ indicates that $D$ missed the Phase~3 delivery
+in the previous session and still holds the prior $m_{\mathrm{curr}}$; $AS$
+then uses the stored $m_{\mathrm{old}}$ for this verification, recovering from
 the desynchronisation without requiring re-enrolment.  $AS$ verifies
 the freshness of $ts_1$.  $R_D'$ is calculated as $\Phi_{AS\text{-}D} \oplus
 \mathsf{PUF}_{AS}(c_{AS\text{-}D})$, where both $\Phi_{AS\text{-}D}$ and
@@ -506,7 +507,7 @@ Phase~3.
 This phase is executed by $AS$ to inform $GW$ about the successful
 authentication of the newly joined node $D$ and to mediate the session key
 between $GW$ and $D$.  In addition to the base session-key mechanism, the
-proposed scheme derives a fresh pseudonym $\mathsf{PID}_\mathsf{new}$ for
+proposed scheme derives a fresh pseudonym $\mathit{PID}_{\mathrm{new}}$ for
 $D$ at the end of each session and updates the dual-state records at both
 $AS$ and $GW$, ensuring that successive sessions are unlinkable.  The two
 deliveries to $D$ and to $GW$ are sent simultaneously.
@@ -520,52 +521,52 @@ Figure~\ref{fig:keyex} shows the phase.
 \end{figure}
 
 $AS$ uses $\mathsf{auth\_token}_D$ to deliver the session key $K_{GW\text{-}D}$
-to $GW$.  $K_{GW\text{-}D}$ is computed as $H(R_D' \| m_\mathsf{new})$,
+to $GW$.  $K_{GW\text{-}D}$ is computed as $H(R_D' \| m_{\mathrm{new}})$,
 where $R_D'$ is the PUF response of $D$ regenerated by $AS$ during the
 authentication phase and thus known only to $AS$ and $D$, and
-$m_\mathsf{new} = H(n_1)$ is derived from a fresh random $n_1$ generated by
-$AS$.  The computed $m_\mathsf{new}$ also serves as the updated session-based
+$m_{\mathrm{new}} = H(n_1)$ is derived from a fresh random $n_1$ generated by
+$AS$.  The computed $m_{\mathrm{new}}$ also serves as the updated session-based
 random for the next authentication session between $AS$ and $D$,
 incorporating an update to the authentication secret.  In addition, $AS$
-derives the session key $K_{GW\text{-}D} = H(R_D' \| m_\mathsf{new})$ and
-the next pseudonym $\mathsf{PID}_\mathsf{new} = H(ID_D \| m_\mathsf{new})$.
-Because $\mathsf{PID}_\mathsf{new}$ is based on the fresh $m_\mathsf{new}$,
-it is computationally unlinkable to the $\mathsf{PID}$ used in the current
+derives the session key $K_{GW\text{-}D} = H(R_D' \| m_{\mathrm{new}})$ and
+the next pseudonym $\mathit{PID}_{\mathrm{new}} = H(ID_D \| m_{\mathrm{new}})$.
+Because $\mathit{PID}_{\mathrm{new}}$ is based on the fresh $m_{\mathrm{new}}$,
+it is computationally unlinkable to the $\mathit{PID}$ used in the current
 session.  The session key, $ID_{AS}$, $ID_D$, the next pseudonym
-$\mathsf{PID}_\mathsf{new}$, and the authentication completion timestamp
-$ts_\mathsf{auth}$ are encrypted under $K_{GW\text{-}AS}$ to form
-$\mathsf{auth\_token}_D$.  The token carries $\mathsf{PID}_\mathsf{new}$ so
+$\mathit{PID}_{\mathrm{new}}$, and the authentication completion timestamp
+$ts_{\mathrm{auth}}$ are encrypted under $K_{GW\text{-}AS}$ to form
+$\mathsf{auth\_token}_D$.  The token carries $\mathit{PID}_{\mathrm{new}}$ so
 that $GW$ can update its pseudonym mapping for $D$'s future communications.
 
-$AS$ also informs $D$ of $m_\mathsf{new}$ so that $D$ can independently
-derive $K_{GW\text{-}D}$ and its next pseudonym.  $AS$ masks $m_\mathsf{new}$
-to protect it from adversaries—if an adversary captures $m_\mathsf{new}$, the
+$AS$ also informs $D$ of $m_{\mathrm{new}}$ so that $D$ can independently
+derive $K_{GW\text{-}D}$ and its next pseudonym.  $AS$ masks $m_{\mathrm{new}}$
+to protect it from adversaries—if an adversary captures $m_{\mathrm{new}}$, the
 probability of predicting future session key material increases—so it is
-masked as $m_H = m_\mathsf{new} \oplus H(Y_D^{H'} \| m_\mathsf{curr} \| R_D' \| ID_{AS} \| \mathsf{PID}_\mathsf{curr} \| ts_2)$.
+masked as $m_H = m_{\mathrm{new}} \oplus H(Y_D^{H'} \| m_{\mathrm{curr}} \| R_D' \| ID_{AS} \| \mathit{PID}_{\mathrm{curr}} \| ts_2)$.
 Here, $Y_D^{H'}$ is the hashed group secret known to $AS$ from the
-authentication phase; $m_\mathsf{curr}$ and $R_D'$ are likewise known from
+authentication phase; $m_{\mathrm{curr}}$ and $R_D'$ are likewise known from
 authentication; and $ts_2$ prevents replay of $m_H$ in a future session.
 $AS$ simultaneously sends $(m_H,\, ts_2)$ to $D$ and $(ID_{AS},\,
 \mathsf{auth\_token}_D)$ to $GW$, then advances its own dual state:
-$m_\mathsf{old} \leftarrow m_\mathsf{curr}$, $m_\mathsf{curr} \leftarrow
-m_\mathsf{new}$, $\mathsf{PID}_\mathsf{old} \leftarrow
-\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{curr} \leftarrow
-\mathsf{PID}_\mathsf{new}$.
+$m_{\mathrm{old}} \leftarrow m_{\mathrm{curr}}$, $m_{\mathrm{curr}} \leftarrow
+m_{\mathrm{new}}$, $\mathit{PID}_{\mathrm{old}} \leftarrow
+\mathit{PID}_{\mathrm{curr}}$, $\mathit{PID}_{\mathrm{curr}} \leftarrow
+\mathit{PID}_{\mathrm{new}}$.
 
 Obtaining $m_H$, $D$ verifies the freshness of $ts_2$ and recovers
-$m_\mathsf{new}$ by regenerating the same hash mask and XOR-ing with $m_H$;
-all inputs ($Y_D^H$, $R_D$, $m_\mathsf{curr}$, $ID_{AS}$, $\mathsf{PID}$,
+$m_{\mathrm{new}}$ by regenerating the same hash mask and XOR-ing with $m_H$;
+all inputs ($Y_D^H$, $R_D$, $m_{\mathrm{curr}}$, $ID_{AS}$, $\mathit{PID}$,
 $ts_2$) are already known to $D$.  $D$ establishes the session key
-$K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$, updates its pseudonym
-$\mathsf{PID}_\mathsf{curr} = H(ID_D \| m_\mathsf{new})$, advances
-$m_\mathsf{curr} \leftarrow m_\mathsf{new}$, and stores $K_{GW\text{-}D}$.
+$K_{GW\text{-}D} = H(R_D \| m_{\mathrm{new}})$, updates its pseudonym
+$\mathit{PID}_{\mathrm{curr}} = H(ID_D \| m_{\mathrm{new}})$, advances
+$m_{\mathrm{curr}} \leftarrow m_{\mathrm{new}}$, and stores $K_{GW\text{-}D}$.
 
-$GW$ decrypts the token with $K_{GW\text{-}AS}$, verifies $ts_\mathsf{auth}$,
-and extracts $K_{GW\text{-}D}$ and $\mathsf{PID}_\mathsf{new}$.  $GW$ updates
-its pseudonym record: $\mathsf{PID}_\mathsf{old} \leftarrow
-\mathsf{PID}_\mathsf{curr}$, $\mathsf{PID}_\mathsf{curr} \leftarrow
-\mathsf{PID}_\mathsf{new}$, and stores the session keyed by both.
-Retaining $\mathsf{PID}_\mathsf{old}$ ensures that if the Phase~3 delivery
+$GW$ decrypts the token with $K_{GW\text{-}AS}$, verifies $ts_{\mathrm{auth}}$,
+and extracts $K_{GW\text{-}D}$ and $\mathit{PID}_{\mathrm{new}}$.  $GW$ updates
+its pseudonym record: $\mathit{PID}_{\mathrm{old}} \leftarrow
+\mathit{PID}_{\mathrm{curr}}$, $\mathit{PID}_{\mathrm{curr}} \leftarrow
+\mathit{PID}_{\mathrm{new}}$, and stores the session keyed by both.
+Retaining $\mathit{PID}_{\mathrm{old}}$ ensures that if the Phase~3 delivery
 to $D$ was lost, $GW$ can still service $D$'s data frames under the prior
 session key pending re-authentication.
 
@@ -609,13 +610,13 @@ data only if the device transmitted it (non-injective data-plane authenticity).
 
 \subsubsection{Secrecy and Forward Secrecy (Q10--Q16)}
 
-The session key $K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$ is confirmed
+The session key $K_{GW\text{-}D} = H(R_D \| m_{\mathrm{new}})$ is confirmed
 unreachable by the adversary from all three principals' perspectives
 independently (Q10--Q12): $\mathsf{query}\ \mathsf{attacker}(\mathsf{SecretK\_GW\_D\_Device}[])\;\Rightarrow\;\mathtt{false}$,
 and equivalently for \texttt{SecretK\_GW\_D\_AS} and \texttt{SecretK\_GW\_D\_GW}.
-Q13 additionally confirms that the rotated session seed $m_\mathsf{new} =
+Q13 additionally confirms that the rotated session seed $m_{\mathrm{new}} =
 H(n_1)$ is secret: an adversary who compromises a session key cannot recover
-$m_\mathsf{new}$ to derive future keys, establishing forward secrecy.  Q14
+$m_{\mathrm{new}}$ to derive future keys, establishing forward secrecy.  Q14
 confirms that the PUF response $R_D$ is never attacker-reachable, preserving
 PUF unclonability.  Q15 confirms that the real device identity $ID_D$—wrapped
 in \texttt{SecretID\_D} and never sent in plaintext after enrollment—is
@@ -636,40 +637,39 @@ and dictionary attacks against the session key.
 
 \subsubsection{Replay Attack Resistance}
 Phase~1 is executed over a secure channel and immune to replay.  Phases~2
-and~3 embed timestamps ($ts_1$, $ts_2$, $ts_\mathsf{auth}$) and the
-session-based random $m_\mathsf{curr}$ into the hash masks.  A replayed
-message with a stale timestamp or stale $m_\mathsf{curr}$ will fail the
+and~3 embed timestamps ($ts_1$, $ts_2$, $ts_{\mathrm{auth}}$) and the
+session-based random $m_{\mathrm{curr}}$ into the hash masks.  A replayed
+message with a stale timestamp or stale $m_{\mathrm{curr}}$ will fail the
 freshness check at $AS$, $D$, or $GW$ respectively.
 
 \subsubsection{MITM Attack Resistance}
 Phase~1 is conducted over an encrypted channel; MITM is precluded.  In
 Phases~2--3, the PUF response $R_D$ (device-specific, unreproducible) and
-session random $m_\mathsf{curr}$ (private to $D$ and $AS$) are embedded in
-every XOR mask.  Without $R_D$ and the current $m_\mathsf{curr}$, no
+session random $m_{\mathrm{curr}}$ (private to $D$ and $AS$) are embedded in
+every XOR mask.  Without $R_D$ and the current $m_{\mathrm{curr}}$, no
 adversary can forge a valid masked tag $Y_{AS\text{-}D}^H$ or unmask $m_H$.
 
 \subsubsection{Device Anonymity}
 $ID_D$ is transmitted only once, over the secure enrolment channel, and is
 never exposed on the open network again.  All open-channel messages use
-$\mathsf{PID} = H(ID_D \| m_\mathsf{curr})$, which is refreshed to
-$H(ID_D \| m_\mathsf{new})$ after every key exchange.  Because $m_\mathsf{new}$
+$\mathit{PID} = H(ID_D \| m_{\mathrm{curr}})$, which is refreshed to
+$H(ID_D \| m_{\mathrm{new}})$ after every key exchange.  Because $m_{\mathrm{new}}$
 is derived from a freshly generated nonce $n_1$, successive pseudonyms are
 computationally unlinkable.
 
 \subsubsection{Desynchronization Recovery}
 If the Phase~3 simultaneous delivery to $D$ fails (packet loss), $D$ retains
-its $m_\mathsf{curr}$ unchanged while $AS$ has already advanced to
-$m_\mathsf{new}$.  On the next authentication attempt, $D$ computes its PID
-from the stale $m_\mathsf{curr}$, which equals $\mathsf{PID}_\mathsf{old}$
+its $m_{\mathrm{curr}}$ unchanged while $AS$ has already advanced to
+$m_{\mathrm{new}}$.  On the next authentication attempt, $D$ computes its PID
+from the stale $m_{\mathrm{curr}}$, which equals $\mathit{PID}_{\mathrm{old}}$
 at $AS$.  $AS$ recognizes it via the dual-state lookup and resumes from the
-consistent prior state, allowing $D$ to re-authenticate without
-re-enrolment.  $GW$ similarly retains the
-mapping $\mathsf{PID}_\mathsf{old} \to K_{GW\text{-}D}$ for session
+consistent prior state without re-enrolment.  $GW$ similarly retains the
+mapping $\mathit{PID}_{\mathrm{old}} \to K_{GW\text{-}D}$ for session
 continuity.
 
 \subsubsection{Forward Secrecy}
-$K_{GW\text{-}D} = H(R_D \| m_\mathsf{new})$.  Compromise of a session key
-does not reveal previous session keys because $m_\mathsf{new}$ is
+$K_{GW\text{-}D} = H(R_D \| m_{\mathrm{new}})$.  Compromise of a session key
+does not reveal previous session keys because $m_{\mathrm{new}}$ is
 independently generated from a fresh nonce and $R_D$ is PUF-derived.
 
 % -------------------------------------------------------
@@ -717,7 +717,7 @@ Table~\ref{tab:comp_enroll} compares enrolment cost.
 $D$ executes $T_\mathsf{puf} + 6T_\mathsf{hash}$ (Phase~2: PUF +
 $H(y_D)$, PID, mask; Phase~3: mask, $K_{GW\text{-}D}$, PID update).
 $AS$ executes $T_\mathsf{puf} + 5T_\mathsf{hash} + T_\mathsf{rand} +
-T_\mathsf{aes}$ (Phase~2: PUF + unmask; Phase~3: $m_\mathsf{new}$,
+T_\mathsf{aes}$ (Phase~2: PUF + unmask; Phase~3: $m_{\mathrm{new}}$,
 $m_H$ mask, $K_{GW\text{-}D}$, PID\_new, token encryption).
 $GW$ executes $T_\mathsf{aes}$ (token decryption).
 Total: $2T_\mathsf{puf} + 11T_\mathsf{hash} + 2T_\mathsf{aes} +
@@ -782,11 +782,11 @@ Total: $\mathbf{1312}$\,bits.
 
 \textbf{Authentication and Key Exchange} (Table~\ref{tab:comm_auth}).
 The two-round design yields five distinct messages:
-(1)~$D \to AS$: $\mathsf{PID}(256) + Y_{AS\text{-}D}^H(256) + ts_1(32)$ = 544\,b;
+(1)~$D \to AS$: $\mathit{PID}(256) + Y_{AS\text{-}D}^H(256) + ts_1(32)$ = 544\,b;
 (2)~$AS \to D$: $\mathsf{ACK}(8) + ts_2(32)$ = 40\,b;
-(3)~$D \to AS$: $\mathsf{PID}(256) + ts_2(32)$ = 288\,b;
+(3)~$D \to AS$: $\mathit{PID}(256) + ts_2(32)$ = 288\,b;
 (4)~$AS \to D$: $m_H(256) + ts_2(32)$ = 288\,b;
-(5)~$AS \to GW$: $\mathsf{PID}_\mathsf{new}(256) + ID_{AS}(32) + \mathsf{auth\_token}(256)$ = 544\,b.
+(5)~$AS \to GW$: $\mathit{PID}_{\mathrm{new}}(256) + ID_{AS}(32) + \mathsf{auth\_token}(256)$ = 544\,b.
 Total: $\mathbf{1704}$\,bits across 5 messages.  The increase over the base
 scheme~\cite{das2026comsnets} (928\,bits, 3 messages) reflects the cost of (a)~256-bit pseudonyms
 replacing 32-bit identity fields and (b)~the additional round-trip that
