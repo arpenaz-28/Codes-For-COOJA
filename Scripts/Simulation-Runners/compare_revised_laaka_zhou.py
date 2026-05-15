@@ -10,9 +10,37 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 
-BASE     = r"c:\ANUP\MTP\Proposing\Codes For COOJA"
+BASE     = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 OUT_DIR  = os.path.join(BASE, "Results", "Charts", "Revised-vs-LAAKA-vs-Zhou")
 os.makedirs(OUT_DIR, exist_ok=True)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Style — matches plot_network_variation.py charts 12 & 13
+# ─────────────────────────────────────────────────────────────────────────────
+_CHART_STYLE = {
+    "font.family":       "DejaVu Sans",
+    "font.size":         10,
+    "axes.titlesize":    12,
+    "axes.titleweight":  "normal",
+    "axes.labelsize":    10,
+    "axes.spines.top":   False,
+    "axes.spines.right": False,
+    "axes.linewidth":    0.7,
+    "xtick.labelsize":   10,
+    "ytick.labelsize":   9,
+    "xtick.major.size":  0,
+    "legend.fontsize":   9,
+    "legend.framealpha": 0.9,
+    "legend.edgecolor":  "#cccccc",
+    "grid.color":        "#e5e5e5",
+    "grid.linewidth":    0.6,
+}
+
+COLORS = {
+    "Revised-Anonymity": "#2C6FAC",   # deep steel blue
+    "LAAKA":             "#B85C2C",   # muted terracotta
+    "Zhou":              "#3A7D44",   # muted forest green
+}
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Data loaders
@@ -35,7 +63,7 @@ def load_laaka(path, id_col="Device_ID", cpu_col="CPU_Time_s", en_col="Energy_J"
 def load_zhou(path):
     rows = []
     with open(path, newline="") as f:
-        for r in csv.DictReader(f):
+        for r in csv.DictReader(f, skipinitialspace=True):
             try:
                 rows.append({"id":        int(r["Device_ID"]),
                              "cpu_auth":  float(r["Avg_CPU_s"]),
@@ -48,7 +76,6 @@ def load_zhou(path):
 def avg(lst):    return statistics.mean(lst) if lst else 0
 def stddev(lst): return statistics.stdev(lst) if len(lst) > 1 else 0
 def ci95(lst):
-    """95% Confidence Interval half-width = 1.96 * std / sqrt(n)"""
     n = len(lst)
     if n < 2: return 0
     return 1.96 * statistics.stdev(lst) / math.sqrt(n)
@@ -168,83 +195,66 @@ for phase_name, en_key, cpu_key in phases:
     print()
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Style constants
+# Style helpers
 # ─────────────────────────────────────────────────────────────────────────────
-COLORS = {
-    "Revised-Anonymity": "#1565C0",
-    "LAAKA":             "#E65100",
-    "Zhou":              "#2E7D32",
-}
-CI_PATCH = mpatches.Patch(facecolor="none", edgecolor="black",
-                           linewidth=1.2, label="Error bars = 95% Confidence Interval")
+CI_PATCH = mpatches.Patch(facecolor="none", edgecolor="#888888",
+                           linewidth=1.0, label="Error bars = 95% CI")
 
-plt.rcParams.update({
-    "font.family":  "DejaVu Sans",
-    "axes.spines.top":   False,
-    "axes.spines.right": False,
-})
-
-def apply_style(ax, title, ylabel, xlabel=None):
-    ax.set_title(title, fontsize=13, fontweight="bold", pad=12)
-    ax.set_ylabel(ylabel, fontsize=12)
+def _apply_axes_style(ax, title, ylabel, xlabel=None):
+    ax.set_title(title, pad=14, color="#222222")
+    ax.set_ylabel(ylabel, labelpad=8)
     if xlabel:
-        ax.set_xlabel(xlabel, fontsize=12)
-    ax.yaxis.grid(True, linestyle="--", alpha=0.5, color="#cccccc")
+        ax.set_xlabel(xlabel, labelpad=8)
+    ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
-    ax.tick_params(axis="both", labelsize=11)
+    ax.tick_params(axis="y", length=0)
+    ax.spines["left"].set_color("#cccccc")
+    ax.spines["bottom"].set_color("#cccccc")
 
 def save(fig, name):
     path = os.path.join(OUT_DIR, name)
-    fig.savefig(path, dpi=150, bbox_inches="tight")
+    fig.savefig(path, dpi=180, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print(f"  Saved: {name}")
-
-def n_label(n): return f"n={n}" if n > 0 else ""
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Helper — single-phase bar chart (3 schemes)
 # ─────────────────────────────────────────────────────────────────────────────
 def bar_chart(title, ylabel, data, filename, note=None):
     """data = list of (scheme_name, display_label, mean, ci, n)"""
-    fig, ax = plt.subplots(figsize=(8, 5.5))
+    with plt.rc_context(_CHART_STYLE):
+        fig, ax = plt.subplots(figsize=(8, 5.5))
+        fig.patch.set_facecolor("white")
 
-    labels = [d[1] for d in data]
-    vals   = [d[2] for d in data]
-    cis    = [d[3] for d in data]
-    ns     = [d[4] for d in data]
-    colors = [COLORS.get(d[0], "#9E9E9E") for d in data]
-    x = np.arange(len(labels))
+        labels = [d[1] for d in data]
+        vals   = [d[2] for d in data]
+        cis    = [d[3] for d in data]
+        colors = [COLORS.get(d[0], "#9E9E9E") for d in data]
+        x = np.arange(len(labels))
 
-    bars = ax.bar(x, vals, width=0.5, color=colors, edgecolor="black",
-                  linewidth=0.9, yerr=cis, capsize=6,
-                  error_kw={"elinewidth": 1.5, "ecolor": "#333333"})
+        bars = ax.bar(x, vals, width=0.5, color=colors,
+                      edgecolor="white", linewidth=0.8, alpha=0.88)
+        ax.errorbar(x, vals, yerr=cis, fmt="none", capsize=4,
+                    elinewidth=1.2, ecolor="#888888")
 
-    # Value label above bar, n= label inside bar
-    top = max(v + ci for v, ci in zip(vals, cis))
-    for bar, v, ci_v, n in zip(bars, vals, cis, ns):
-        ax.text(bar.get_x() + bar.get_width()/2,
-                bar.get_height() + ci_v + top * 0.03,
-                f"{v:.2f} mJ", ha="center", va="bottom", fontsize=9.5, fontweight="bold")
-        if n > 0:
-            ax.text(bar.get_x() + bar.get_width()/2,
-                    bar.get_height() / 2,
-                    n_label(n), ha="center", va="center",
-                    fontsize=9, color="white", fontweight="bold")
+        top = max(v + ci for v, ci in zip(vals, cis))
+        for bar, v, ci_v in zip(bars, vals, cis):
+            ax.text(bar.get_x() + bar.get_width() / 2,
+                    bar.get_height() + ci_v + top * 0.025,
+                    f"{v:.2f} mJ", ha="center", va="bottom",
+                    fontsize=7.5, color="#555555")
 
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels, fontsize=11)
-    # Extra headroom: value label height (~fontsize pts) + CI + note line below
-    ax.set_ylim(0, top * 1.35)
-    # Legend in upper right — safe because ylim gives space above bars
-    ax.legend(handles=[CI_PATCH], fontsize=9, loc="upper right",
-              framealpha=0.9, edgecolor="#aaaaaa")
-    apply_style(ax, title, ylabel)
-    plt.tight_layout()
-    # Note goes below the chart as a figure-level caption
-    if note:
-        fig.text(0.5, -0.02, note, ha="center", va="top",
-                 fontsize=8, color="#555555", style="italic")
-    save(fig, filename)
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels)
+        ax.set_ylim(0, top * 1.30)
+        ax.legend(handles=[CI_PATCH], loc="upper right",
+                  frameon=True, framealpha=0.92, edgecolor="#dddddd")
+        _apply_axes_style(ax, title, ylabel)
+        fig.tight_layout()
+        if note:
+            fig.text(0.5, -0.02, note, ha="center", va="top",
+                     fontsize=8, color="#555555", style="italic")
+        save(fig, filename)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Helper — grouped bar chart (multiple phases × multiple schemes)
@@ -256,44 +266,52 @@ def grouped_bar(title, ylabel, groups, group_labels, scheme_labels, filename, no
     width     = 0.22
     x         = np.arange(n_groups)
 
-    fig, ax = plt.subplots(figsize=(12, 6.5))
-    all_tops = []
-    for i, scheme in enumerate(scheme_labels):
-        vals = [groups[scheme][j][0] for j in range(n_groups)]
-        cis  = [groups[scheme][j][1] for j in range(n_groups)]
-        all_tops.extend(v + c for v, c in zip(vals, cis))
-        offset = (i - n_schemes / 2 + 0.5) * width
-        ax.bar(x + offset, vals, width, label=scheme,
-               color=COLORS[scheme], edgecolor="black", linewidth=0.7,
-               yerr=cis, capsize=4,
-               error_kw={"elinewidth": 1.2, "ecolor": "#333333"})
+    with plt.rc_context(_CHART_STYLE):
+        fig, ax = plt.subplots(figsize=(12, 6.5))
+        fig.patch.set_facecolor("white")
 
-    # Set ylim with enough headroom so error bar caps never clip
-    ax.set_ylim(0, max(all_tops) * 1.30)
-    ax.set_xticks(x)
-    ax.set_xticklabels(group_labels, fontsize=11)
+        all_tops = []
+        for i, scheme in enumerate(scheme_labels):
+            vals = [groups[scheme][j][0] for j in range(n_groups)]
+            cis  = [groups[scheme][j][1] for j in range(n_groups)]
+            all_tops.extend(v + c for v, c in zip(vals, cis))
+            offset = (i - n_schemes / 2 + 0.5) * width
+            ax.bar(x + offset, vals, width,
+                   label=scheme, color=COLORS[scheme],
+                   edgecolor="white", linewidth=0.8, alpha=0.88)
+            ax.errorbar(x + offset, vals, yerr=cis, fmt="none",
+                        capsize=3, elinewidth=1.0, ecolor="#888888")
 
-    # Legend placed below the chart, outside the axes, so it never overlaps bars
-    legend_handles = [mpatches.Patch(color=COLORS[s], label=s) for s in scheme_labels]
-    legend_handles.append(CI_PATCH)
-    ax.legend(handles=legend_handles, fontsize=9,
-              loc="upper center", bbox_to_anchor=(0.5, -0.14),
-              ncol=len(legend_handles), framealpha=0.9, edgecolor="#aaaaaa")
+            for j, (v, ci_v) in enumerate(zip(vals, cis)):
+                if v > 0:
+                    ax.text(x[j] + offset, v + ci_v + max(all_tops + [1]) * 0.012,
+                            f"{v:.1f}", ha="center", va="bottom",
+                            fontsize=7, color="#555555")
 
-    apply_style(ax, title, ylabel)
-    plt.tight_layout()
-    # Note below legend
-    if note:
-        fig.text(0.5, -0.06, note, ha="center", va="top",
-                 fontsize=8, color="#555555", style="italic")
-    save(fig, filename)
+        ax.set_ylim(0, max(all_tops) * 1.28)
+        ax.set_xticks(x)
+        ax.set_xticklabels(group_labels)
+
+        legend_handles = [mpatches.Patch(color=COLORS[s], alpha=0.88, label=s)
+                          for s in scheme_labels]
+        legend_handles.append(CI_PATCH)
+        ax.legend(handles=legend_handles,
+                  loc="upper center", bbox_to_anchor=(0.5, -0.14),
+                  ncol=len(legend_handles),
+                  frameon=True, framealpha=0.92, edgecolor="#dddddd")
+
+        _apply_axes_style(ax, title, ylabel)
+        fig.tight_layout()
+        if note:
+            fig.text(0.5, -0.06, note, ha="center", va="top",
+                     fontsize=8, color="#555555", style="italic")
+        save(fig, filename)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Generate charts 01–06
 # ─────────────────────────────────────────────────────────────────────────────
 print("\nGenerating charts...")
 
-# 1. Enrollment energy
 bar_chart(
     "Enrollment Phase — Energy Consumption\n(COOJA Simulation, TelosB Motes)",
     "Mean Energy (mJ)",
@@ -304,7 +322,6 @@ bar_chart(
     note="* Zhou enrollment energy measured from COOJA simulation logs"
 )
 
-# 2. Authentication Round 1 energy
 bar_chart(
     "Authentication Phase — Energy Consumption\n(COOJA Simulation, TelosB Motes)",
     "Mean Energy (mJ)",
@@ -315,7 +332,6 @@ bar_chart(
     note="* Zhou performs Auth and Key Exchange in a single round"
 )
 
-# 3. Key Exchange energy (RA and LAAKA only)
 bar_chart(
     "Key Exchange Phase — Energy Consumption\n(COOJA Simulation, TelosB Motes)",
     "Mean Energy (mJ)",
@@ -325,7 +341,6 @@ bar_chart(
     note="* Zhou has no separate Key Exchange phase (included in Authentication)"
 )
 
-# 4. Combined Auth+KeyEx energy — apples-to-apples
 bar_chart(
     "Auth + Key Exchange (Combined) — Energy Consumption\n(COOJA Simulation, TelosB Motes)",
     "Mean Energy (mJ)",
@@ -336,7 +351,6 @@ bar_chart(
     note="* All schemes compared on total cost of completing authentication + session key establishment"
 )
 
-# 5. Grouped: all phases energy
 grouped_bar(
     "Energy Consumption per Phase — All Schemes\n(COOJA Simulation, 20 TelosB Motes)",
     "Mean Energy (mJ)",
@@ -361,7 +375,6 @@ grouped_bar(
     note="* Zhou Key Exchange is included in its Authentication phase (single-round design)"
 )
 
-# 6. Grouped: CPU time
 grouped_bar(
     "CPU Computation Time per Phase — All Schemes\n(COOJA Simulation, 20 TelosB Motes)",
     "Mean CPU Time (s)",
@@ -389,7 +402,11 @@ grouped_bar(
 # ─────────────────────────────────────────────────────────────────────────────
 # Chart 07 — Per-device scatter: Auth+KeyEx energy
 # ─────────────────────────────────────────────────────────────────────────────
-fig, ax = plt.subplots(figsize=(11, 5.5))
+SCHEME_MARKERS = {
+    "Revised-Anonymity": "o",
+    "LAAKA":             "s",
+    "Zhou":              "^",
+}
 
 ra_ids     = [r["id"] for r in ra_auth]
 ra_ak_vals = [(a + k) * 1000 for a, k in
@@ -398,38 +415,44 @@ lk_ak_vals = [v * 1000 for v in lk_en_total]
 zh_vals    = [r["en_auth"] * 1000 for r in zhou_raw]
 zh_ids     = [r["id"] for r in zhou_raw]
 
-ax.plot(ra_ids, ra_ak_vals, "o-",
-        color=COLORS["Revised-Anonymity"], label="Revised-Anonymity  (Auth + Key Exchange)",
-        markersize=6, linewidth=1.8)
-ax.plot(sorted(common_ids), lk_ak_vals, "s--",
-        color=COLORS["LAAKA"], label="LAAKA  (Auth + Key Exchange)",
-        markersize=6, linewidth=1.8)
-ax.plot(zh_ids, zh_vals, "^:",
-        color=COLORS["Zhou"], label="Zhou  (Auth, combined with Key Exchange)",
-        markersize=6, linewidth=1.8)
+with plt.rc_context(_CHART_STYLE):
+    fig, ax = plt.subplots(figsize=(11, 5.5))
+    fig.patch.set_facecolor("white")
 
-# Average reference lines
-for scheme, vals, ids in [("Revised-Anonymity", ra_ak_vals, ra_ids),
-                           ("LAAKA", lk_ak_vals, common_ids),
-                           ("Zhou", zh_vals, zh_ids)]:
-    m = statistics.mean(vals)
-    ax.axhline(m, color=COLORS[scheme], linestyle=":", alpha=0.55, linewidth=1.2)
-    ax.text(max(ids) + 0.3, m, f"avg={m:.1f}", fontsize=7.5,
-            color=COLORS[scheme], va="center")
+    ax.plot(ra_ids, ra_ak_vals, "o-",
+            color=COLORS["Revised-Anonymity"],
+            label="Revised-Anonymity  (Auth + Key Exchange)",
+            markersize=6, linewidth=1.8, alpha=0.9)
+    ax.plot(sorted(common_ids), lk_ak_vals, "s--",
+            color=COLORS["LAAKA"],
+            label="LAAKA  (Auth + Key Exchange)",
+            markersize=6, linewidth=1.8, alpha=0.9)
+    ax.plot(zh_ids, zh_vals, "^:",
+            color=COLORS["Zhou"],
+            label="Zhou  (Auth, combined with Key Exchange)",
+            markersize=6, linewidth=1.8, alpha=0.9)
 
-apply_style(ax,
-    "Per-Device Auth + Key Exchange Energy — All Schemes\n(COOJA Simulation, TelosB Motes)",
-    "Energy (mJ)",
-    xlabel="Device ID")
-ax.legend(fontsize=10, loc="upper left", framealpha=0.88, edgecolor="#aaaaaa")
-ax.text(0.01, 0.01,
-        "Dotted horizontal lines = per-scheme mean",
-        transform=ax.transAxes, fontsize=8, va="bottom", color="#555555", style="italic")
-plt.tight_layout()
-save(fig, "07_per_device_authkeyex_energy.png")
+    for scheme, vals, ids in [("Revised-Anonymity", ra_ak_vals, ra_ids),
+                               ("LAAKA", lk_ak_vals, common_ids),
+                               ("Zhou", zh_vals, zh_ids)]:
+        m = statistics.mean(vals)
+        ax.axhline(m, color=COLORS[scheme], linestyle=":", alpha=0.55, linewidth=1.2)
+        ax.text(max(ids) + 0.3, m, f"avg={m:.1f}", fontsize=7.5,
+                color=COLORS[scheme], va="center")
+
+    ax.legend(loc="upper left", frameon=True, framealpha=0.92, edgecolor="#dddddd",
+              handlelength=1.4)
+    ax.text(0.01, 0.01, "Dotted horizontal lines = per-scheme mean",
+            transform=ax.transAxes, fontsize=8, va="bottom", color="#555555", style="italic")
+    _apply_axes_style(ax,
+        "Per-Device Auth + Key Exchange Energy — All Schemes\n(COOJA Simulation, TelosB Motes)",
+        "Energy (mJ)",
+        xlabel="Device ID")
+    fig.tight_layout()
+    save(fig, "07_per_device_authkeyex_energy.png")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Save comparison CSV  (now stores mean + 95% CI + n)
+# Save comparison CSV
 # ─────────────────────────────────────────────────────────────────────────────
 cmp_path = os.path.join(OUT_DIR, "comparison_summary.csv")
 with open(cmp_path, "w", newline="") as f:
@@ -442,19 +465,26 @@ with open(cmp_path, "w", newline="") as f:
         for phase_name, en_key, cpu_key in phases:
             en_m,  en_ci,  en_n  = stats[scheme][en_key]
             cpu_m, cpu_ci, cpu_n = stats[scheme][cpu_key]
-            # recompute std for CSV record
-            en_lists  = {"Revised-Anonymity": {"enroll_en": ra_en_enroll, "auth_en": ra_en_auth,
-                                                "keyex_en": ra_en_keyex,  "total_en": ra_en_total,
-                                                "enroll_cpu": ra_cpu_enroll,"auth_cpu": ra_cpu_auth,
-                                                "keyex_cpu": ra_cpu_keyex, "total_cpu": ra_cpu_total},
-                         "LAAKA":             {"enroll_en": lk_en_enroll, "auth_en": lk_en_auth,
-                                                "keyex_en": lk_en_keyex,  "total_en": lk_en_total,
-                                                "enroll_cpu": lk_cpu_enroll,"auth_cpu": lk_cpu_auth,
-                                                "keyex_cpu": lk_cpu_keyex, "total_cpu": lk_cpu_total},
-                         "Zhou":              {"enroll_en": zhou_en_enroll, "auth_en": zhou_en_auth,
-                                                "keyex_en": [], "total_en": zhou_en_auth,
-                                                "enroll_cpu": [], "auth_cpu": zhou_cpu_auth,
-                                                "keyex_cpu": [], "total_cpu": zhou_cpu_auth}}
+            en_lists = {
+                "Revised-Anonymity": {
+                    "enroll_en": ra_en_enroll, "auth_en": ra_en_auth,
+                    "keyex_en": ra_en_keyex,   "total_en": ra_en_total,
+                    "enroll_cpu": ra_cpu_enroll, "auth_cpu": ra_cpu_auth,
+                    "keyex_cpu": ra_cpu_keyex,   "total_cpu": ra_cpu_total,
+                },
+                "LAAKA": {
+                    "enroll_en": lk_en_enroll, "auth_en": lk_en_auth,
+                    "keyex_en": lk_en_keyex,   "total_en": lk_en_total,
+                    "enroll_cpu": lk_cpu_enroll, "auth_cpu": lk_cpu_auth,
+                    "keyex_cpu": lk_cpu_keyex,   "total_cpu": lk_cpu_total,
+                },
+                "Zhou": {
+                    "enroll_en": zhou_en_enroll, "auth_en": zhou_en_auth,
+                    "keyex_en": [], "total_en": zhou_en_auth,
+                    "enroll_cpu": [], "auth_cpu": zhou_cpu_auth,
+                    "keyex_cpu": [], "total_cpu": zhou_cpu_auth,
+                },
+            }
             en_std  = stddev(en_lists[scheme][en_key])  * 1000
             cpu_std = stddev(en_lists[scheme][cpu_key])
             w.writerow([scheme, phase_name,

@@ -1,13 +1,13 @@
-Scheme           , Phase         , Avg_Energy_mJ, Std_Energy_mJ, CI95_Energy_mJ, Avg_CPU_s, Std_CPU_s, CI95_CPU_s, n
-Revised-Anonymity, Enrollment    ,       23.3349,        4.1496,         1.8186,  0.378433,  0.067135,   0.029423, 20
-Revised-Anonymity, Authentication,       16.1689,        2.6778,         1.1736,  0.262333,  0.043320,   0.018986, 20
-Revised-Anonymity, Key Exchange  ,       12.7043,        3.1953,         1.4004,  0.205991,  0.051705,   0.022661, 20
-Revised-Anonymity, Auth+KeyEx    ,       28.8732,        5.1092,         2.2392,  0.468324,  0.082665,   0.036230, 20
-LAAKA            , Enrollment    ,       13.2488,        3.0718,         1.3463,  0.214873,  0.049714,   0.021788, 20
-LAAKA            , Authentication,       44.4768,        6.4779,         2.8391,  0.721346,  0.104826,   0.045942, 20
-LAAKA            , Key Exchange  ,       33.4930,        5.0497,         2.2131,  0.543182,  0.081707,   0.035810, 20
-LAAKA            , Auth+KeyEx    ,       77.9697,       11.4817,         5.0321,  1.264528,  0.185790,   0.081426, 20
-Zhou             , Enrollment    ,       22.7591,        3.7264,         1.6332,  0.000000,  0.000000,   0.000000, 20
-Zhou             , Authentication,       57.0556,       11.0327,         4.8353,  0.924336,  0.178525,   0.078242, 20
-Zhou             , Key Exchange  ,        0.0000,        0.0000,         0.0000,  0.000000,  0.000000,   0.000000,  0
-Zhou             , Auth+KeyEx    ,       57.0556,       11.0327,         4.8353,  0.924336,  0.178525,   0.078242, 20
+Scheme,Phase,Avg_Energy_mJ,Std_Energy_mJ,CI95_Energy_mJ,Avg_CPU_s,Std_CPU_s,CI95_CPU_s,n
+Revised-Anonymity,Enrollment,23.3349,4.1496,1.8186,0.378433,0.067135,0.029423,20
+Revised-Anonymity,Authentication,16.1689,2.6778,1.1736,0.262333,0.043320,0.018986,20
+Revised-Anonymity,Key Exchange,12.7043,3.1953,1.4004,0.205991,0.051705,0.022661,20
+Revised-Anonymity,Auth+KeyEx,28.8732,5.1092,2.2392,0.468324,0.082665,0.036230,20
+LAAKA,Enrollment,13.2488,3.0718,1.3463,0.214873,0.049714,0.021788,20
+LAAKA,Authentication,44.4768,6.4779,2.8391,0.721346,0.104826,0.045942,20
+LAAKA,Key Exchange,33.4930,5.0497,2.2131,0.543182,0.081707,0.035810,20
+LAAKA,Auth+KeyEx,77.9697,11.4817,5.0321,1.264528,0.185790,0.081426,20
+Zhou,Enrollment,22.7591,3.7264,1.6332,0.000000,0.000000,0.000000,20
+Zhou,Authentication,57.0556,11.0327,4.8353,0.924336,0.178525,0.078242,20
+Zhou,Key Exchange,0.0000,0.0000,0.0000,0.000000,0.000000,0.000000,0
+Zhou,Auth+KeyEx,57.0556,11.0327,4.8353,0.924336,0.178525,0.078242,20

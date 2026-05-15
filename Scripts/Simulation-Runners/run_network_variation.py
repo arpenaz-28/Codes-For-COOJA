@@ -28,7 +28,8 @@ COOJA_DIR   = os.path.join(CONTIKI, "tools", "cooja")
 BUILD_DIR   = "/tmp/cooja-netvar-build"   # scratch build area
 TESTLOG     = os.path.join(COOJA_DIR, "COOJA.testlog")
 
-SEEDS = [123456, 234567, 345678, 456789, 567890]
+SEEDS = [123456, 234567, 345678, 456789, 567890,
+         678901, 789012, 890123, 901234, 112345]
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Variant catalogue
@@ -479,13 +480,25 @@ def run_variant(scheme, n_total, seeds):
     print(f"  {scheme}  N={n_total}  ({SIZES[n_total][1]} devices, 2 active AS)")
     print(f"{'='*70}")
 
-    prepare_build(scheme, n_total)
-    if not build_firmware():
-        print("  Skipping — build failed.")
-        return
-
+    # Load any existing logs first (skip re-running them)
     all_seeds = {}
     for seed in seeds:
+        log_dest = os.path.join(log_dir, f"testlog_seed{seed}.txt")
+        if os.path.isfile(log_dest):
+            enroll, auth, keyex = extract_first(log_dest)
+            all_seeds[seed] = {"enroll": enroll, "auth": auth, "keyex": keyex}
+            print(f"\n  --- Seed {seed}  [loaded from existing log]")
+            print(f"  Devices parsed: E={len(enroll)}  A={len(auth)}  K={len(keyex)}")
+
+    # Run only seeds that don't have a log yet
+    new_seeds = [s for s in seeds if s not in all_seeds]
+    if new_seeds:
+        prepare_build(scheme, n_total)
+        if not build_firmware():
+            print("  Skipping new seeds — build failed.")
+            new_seeds = []
+
+    for seed in new_seeds:
         print(f"\n  --- Seed {seed}")
         ok, elapsed, log_tmp = run_simulation(scheme, n_total, seed)
         status = "TEST OK" if ok else "TIMEOUT/FAILED"
@@ -529,7 +542,7 @@ def main():
                         default=[20, 50, 80, 100],
                         help="Network sizes to simulate (default: all four)")
     parser.add_argument("--seeds", type=int, default=5,
-                        help="Number of random seeds to use (1–5, default: 5)")
+                        help="Number of random seeds to use (1–10, default: 5)")
     args = parser.parse_args()
 
     seeds = SEEDS[:args.seeds]

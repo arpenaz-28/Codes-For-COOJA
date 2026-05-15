@@ -44,14 +44,34 @@ RESULTS = {
 }
 
 SCHEME_COLORS = {
-    "Revised-Anonymity": "#2196F3",   # blue
-    "LAAKA":             "#FF9800",   # orange
-    "Zhou":              "#4CAF50",   # green
+    "Revised-Anonymity": "#2C6FAC",   # deep steel blue
+    "LAAKA":             "#B85C2C",   # muted terracotta
+    "Zhou":              "#3A7D44",   # muted forest green
 }
 SCHEME_MARKERS = {
     "Revised-Anonymity": "o",
     "LAAKA":             "s",
     "Zhou":              "^",
+}
+
+# Global aesthetic style applied to both charts
+_CHART_STYLE = {
+    "font.family":        "DejaVu Sans",
+    "font.size":          10,
+    "axes.titlesize":     12,
+    "axes.titleweight":   "normal",
+    "axes.labelsize":     10,
+    "axes.spines.top":    False,
+    "axes.spines.right":  False,
+    "axes.linewidth":     0.7,
+    "xtick.labelsize":    10,
+    "ytick.labelsize":    9,
+    "xtick.major.size":   0,
+    "legend.fontsize":    9,
+    "legend.framealpha":  0.9,
+    "legend.edgecolor":   "#cccccc",
+    "grid.color":         "#e5e5e5",
+    "grid.linewidth":     0.6,
 }
 
 PHASE_LABELS = {
@@ -193,6 +213,179 @@ def grouped_bar_chart(phases, metric, ylabel, title, out_path, show=False):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Combined all-schemes × all-phases line chart
+# ─────────────────────────────────────────────────────────────────────────────
+PHASE_STYLES = {
+    "Enrollment":     {"linestyle": "-",  "marker": "o"},
+    "Authentication": {"linestyle": "--", "marker": "s"},
+    "Key Exchange":   {"linestyle": ":",  "marker": "^"},
+}
+
+def combined_energy_line_chart(out_path, show=False):
+    """
+    Single figure: energy vs network size.
+    Colour = scheme, line style+marker = phase.
+    Zhou has no Key Exchange phase — only two lines are drawn for it.
+    """
+    phases = ["Enrollment", "Authentication", "Key Exchange"]
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    for scheme in RESULTS:
+        color = SCHEME_COLORS[scheme]
+        marker_scheme = SCHEME_MARKERS[scheme]
+        for phase in phases:
+            xs, ys, errs = [], [], []
+            for n in SIZES:
+                d = load_summary(scheme, n)
+                if d is None or phase not in d:
+                    continue
+                xs.append(n)
+                ys.append(d[phase]["avg_energy"])
+                errs.append(d[phase]["ci_energy"])
+            if not xs:
+                continue
+            style = PHASE_STYLES[phase]
+            label = f"{scheme} — {PHASE_LABELS[phase]}"
+            ax.errorbar(xs, ys, yerr=errs,
+                        label=label,
+                        color=color,
+                        linestyle=style["linestyle"],
+                        marker=marker_scheme,
+                        linewidth=2, markersize=7, capsize=4,
+                        alpha=0.9)
+
+    ax.set_xlabel("Total Network Nodes", fontsize=12)
+    ax.set_ylabel("Average Energy per Device (mJ)", fontsize=12)
+    ax.set_title("Energy Consumption vs Network Size\nAll Schemes · All Phases",
+                 fontsize=13, fontweight="bold")
+    ax.set_xticks(SIZES)
+    ax.yaxis.grid(True, linestyle="--", alpha=0.5)
+    ax.set_axisbelow(True)
+
+    # Two-column legend: schemes as colour, phases as line style
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles, labels, fontsize=9, ncol=2,
+              loc="upper left", framealpha=0.85)
+
+    # Annotation explaining Zhou's missing Key Exchange
+    ax.annotate("† Zhou scheme has no separate\n  Key Exchange phase",
+                xy=(0.99, 0.02), xycoords="axes fraction",
+                ha="right", va="bottom", fontsize=8,
+                color="#4CAF50",
+                bbox=dict(boxstyle="round,pad=0.3", fc="white", alpha=0.7))
+
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=150, bbox_inches="tight")
+    if show:
+        plt.show()
+    plt.close(fig)
+    print(f"  Saved: {os.path.basename(out_path)}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Grouped + stacked bar: total energy per network, all schemes, all phases
+# ─────────────────────────────────────────────────────────────────────────────
+PHASE_COLORS = {
+    "Enrollment":     "#90CAF9",   # light blue
+    "Authentication": "#FFB74D",   # light orange
+    "Key Exchange":   "#A5D6A7",   # light green
+}
+
+def _grouped_bar(metric, ylabel, title, out_path, show=False):
+    """
+    Shared renderer for charts 12 and 13.
+    metric : "avg_energy" | "avg_cpu"
+    """
+    phases  = ["Enrollment", "Authentication", "Key Exchange"]
+    schemes = list(RESULTS.keys())
+    n_s     = len(schemes)
+    x       = np.arange(len(SIZES))
+    width   = 0.24
+
+    with plt.rc_context(_CHART_STYLE):
+        fig, ax = plt.subplots(figsize=(10, 5.5))
+        fig.patch.set_facecolor("white")
+
+        all_totals = []
+        for si, scheme in enumerate(schemes):
+            offsets    = x + (si - (n_s - 1) / 2) * width
+            bar_totals = []
+            for n in SIZES:
+                d   = load_summary(scheme, n)
+                tot = 0.0
+                if d:
+                    for phase in phases:
+                        if phase in d:
+                            key = "avg_energy" if metric == "avg_energy" else "avg_cpu"
+                            tot += d[phase][key] * d[phase]["n_devices"]
+                bar_totals.append(tot)
+            all_totals.append(max(bar_totals))
+
+            color = SCHEME_COLORS[scheme]
+            bars  = ax.bar(offsets, bar_totals, width,
+                           label=scheme,
+                           color=color, alpha=0.88,
+                           edgecolor="white", linewidth=0.8)
+
+            # value labels on top of each bar
+            for offset, val in zip(offsets, bar_totals):
+                if val > 0:
+                    ax.text(offset, val + max(all_totals + [1]) * 0.012,
+                            f"{val:.0f}" if metric == "avg_energy" else f"{val:.1f}",
+                            ha="center", va="bottom",
+                            fontsize=7.5, color="#555555")
+
+        ax.set_xticks(x)
+        ax.set_xticklabels([f"N = {n}" for n in SIZES])
+        ax.set_xlabel("Total Network Nodes", labelpad=8)
+        ax.set_ylabel(ylabel, labelpad=8)
+        ax.set_title(title, pad=14, color="#222222")
+
+        # subtle horizontal grid only
+        ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
+        ax.set_axisbelow(True)
+        ax.tick_params(axis="y", length=0)
+
+        # clean up spines
+        ax.spines["left"].set_color("#cccccc")
+        ax.spines["bottom"].set_color("#cccccc")
+
+        # legend inside, top-left, clean box
+        ax.legend(loc="upper left",
+                  frameon=True, framealpha=0.92,
+                  edgecolor="#dddddd",
+                  handlelength=1.4, handleheight=1.0,
+                  borderpad=0.7)
+
+        fig.tight_layout()
+        fig.savefig(out_path, dpi=180, bbox_inches="tight",
+                    facecolor="white")
+        if show:
+            plt.show()
+        plt.close(fig)
+    print(f"  Saved: {os.path.basename(out_path)}")
+
+
+def total_energy_grouped_bar(out_path, show=False):
+    _grouped_bar(
+        "avg_energy",
+        "Total Energy — All Devices (mJ)",
+        "Total Energy Consumption vs Network Size",
+        out_path, show,
+    )
+
+
+def total_cpu_grouped_bar(out_path, show=False):
+    _grouped_bar(
+        "avg_cpu",
+        "Total CPU Time — All Devices (s)",
+        "Total CPU Time vs Network Size",
+        out_path, show,
+    )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Summary CSV
 # ─────────────────────────────────────────────────────────────────────────────
 def write_master_summary():
@@ -233,62 +426,15 @@ def main():
 
     os.makedirs(OUT_DIR, exist_ok=True)
 
-    phases_energy = [
-        ("Enrollment",     "01_energy_vs_network_size_enrollment.png"),
-        ("Authentication", "02_energy_vs_network_size_auth.png"),
-        ("Key Exchange",   "03_energy_vs_network_size_keyex.png"),
-        ("Auth+KeyEx",     "04_energy_vs_network_size_auth_keyex.png"),
-    ]
-    phases_cpu = [
-        ("Enrollment",     "05_cpu_vs_network_size_enrollment.png"),
-        ("Authentication", "06_cpu_vs_network_size_auth.png"),
-        ("Key Exchange",   "07_cpu_vs_network_size_keyex.png"),
-        ("Auth+KeyEx",     "08_cpu_vs_network_size_auth_keyex.png"),
-    ]
-
-    print("Generating line charts — Energy vs Network Size")
-    for phase, fname in phases_energy:
-        series = build_series(phase, "avg_energy")
-        if not series:
-            print(f"  No data for {phase} — skipping.")
-            continue
-        line_chart(
-            series,
-            ylabel=f"Average Energy (mJ) — {PHASE_LABELS.get(phase, phase)}",
-            title=f"Energy Consumption vs Network Size\n{PHASE_LABELS.get(phase, phase)} Phase",
-            out_path=os.path.join(OUT_DIR, fname),
-            show=args.show,
-        )
-
-    print("\nGenerating line charts — CPU vs Network Size")
-    for phase, fname in phases_cpu:
-        series = build_series(phase, "avg_cpu")
-        if not series:
-            print(f"  No data for {phase} — skipping.")
-            continue
-        line_chart(
-            series,
-            ylabel=f"Average CPU Time (s) — {PHASE_LABELS.get(phase, phase)}",
-            title=f"CPU Time vs Network Size\n{PHASE_LABELS.get(phase, phase)} Phase",
-            out_path=os.path.join(OUT_DIR, fname),
-            show=args.show,
-        )
-
-    print("\nGenerating combined grouped bar charts")
-    grouped_bar_chart(
-        ["Enrollment", "Authentication", "Key Exchange"],
-        "avg_energy",
-        "Average Energy (mJ)",
-        "Energy per Phase vs Network Size — All Schemes",
-        os.path.join(OUT_DIR, "09_combined_energy_all_phases.png"),
+    print("Generating total-energy grouped bar chart")
+    total_energy_grouped_bar(
+        os.path.join(OUT_DIR, "12_total_energy_grouped_bar.png"),
         show=args.show,
     )
-    grouped_bar_chart(
-        ["Enrollment", "Authentication", "Key Exchange"],
-        "avg_cpu",
-        "Average CPU Time (s)",
-        "CPU Time per Phase vs Network Size — All Schemes",
-        os.path.join(OUT_DIR, "10_combined_cpu_all_phases.png"),
+
+    print("\nGenerating total-CPU grouped bar chart")
+    total_cpu_grouped_bar(
+        os.path.join(OUT_DIR, "13_total_cpu_grouped_bar.png"),
         show=args.show,
     )
 
