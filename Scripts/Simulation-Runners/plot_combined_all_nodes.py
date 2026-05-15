@@ -12,6 +12,7 @@ Note: Zhou has no separate keyex phase.
 """
 import csv, os, statistics, math
 import matplotlib
+import matplotlib.ticker
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -64,7 +65,7 @@ lk_keyex = load(os.path.join(LK_DIR, "keyex-results.csv"),  "Device_ID","CPU_Tim
 # ── Zhou ─────────────────────────────────────────────────────────────────────
 zh_raw = {}
 with open(os.path.join(BASE, "Zhou-Scheme", "zhou-auth-results.csv"), newline="") as f:
-    for r in csv.DictReader(f):
+    for r in csv.DictReader(f, skipinitialspace=True):
         try:
             zh_raw[int(r["Device_ID"])] = {
                 "en_auth":   float(r["Avg_Energy_J"]),
@@ -258,6 +259,7 @@ ax.set_axisbelow(True)
 ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
 ax.text(0.01, 0.01, "Dotted horizontal lines = per-scheme mean",
         transform=ax.transAxes, fontsize=8, va="bottom", color="#555555", style="italic")
+ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
 plt.tight_layout()
 p = os.path.join(OUT_DIR, "10_per_device_combined_cost_line.png")
 plt.savefig(p, dpi=150); plt.close()
