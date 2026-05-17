@@ -12,6 +12,7 @@ Note: Zhou has no separate keyex phase.
 """
 import csv, os, statistics, math
 import matplotlib
+import matplotlib.ticker
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -274,6 +275,7 @@ with plt.rc_context(_CHART_STYLE):
               handlelength=1.4)
     ax.text(0.01, 0.01, "Dotted horizontal lines = per-scheme mean",
             transform=ax.transAxes, fontsize=8, va="bottom", color="#555555", style="italic")
+    ax.xaxis.set_major_locator(matplotlib.ticker.MaxNLocator(integer=True))
     _apply_axes_style(ax,
         "Per-Device Combined Energy Cost (Enrollment + Auth + Key Exchange)\n"
         "COOJA Simulation, TelosB Motes",
