@@ -29,20 +29,23 @@ REPO = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 SCHEMES = {
     "RA":    os.path.join(REPO, "Revised-Anonymity", "Simulation results", "as-variation"),
     "LAAKA": os.path.join(REPO, "LAAKA",             "Simulation results", "as-variation"),
+    "Zhou":  os.path.join(REPO, "Zhou-Scheme",        "Simulation results", "as-variation"),
 }
 
-AS_COUNTS  = [2, 5, 10, 15]
+AS_COUNTS  = [2, 5, 10]
 N_DEVICES  = 20   # fixed for all variants
 PHASES     = ["Enrollment", "Authentication", "Key Exchange"]
 
-# Colour palette consistent with compare_revised_laaka_zhou.py
+# Colour palette consistent with compare_revised_laaka_zhou.py / plot_network_variation.py
 COLORS = {
     "RA":    "#2C6FAC",   # deep steel blue
     "LAAKA": "#B85C2C",   # muted terracotta
+    "Zhou":  "#3A7D44",   # muted forest green
 }
 HATCH = {
     "RA":    "",
     "LAAKA": "///",
+    "Zhou":  "xxx",
 }
 
 OUT_DEFAULT = os.path.join(REPO, "Results", "Charts", "Authenticator_variation")
@@ -96,6 +99,8 @@ def collect_data():
     for scheme, base in SCHEMES.items():
         for n in AS_COUNTS:
             summary_path = os.path.join(base, f"N{n}", "csv", "summary.csv")
+            # Zhou: path uses "Zhou-Scheme/Simulation results/as-variation/N{n}/csv/summary.csv"
+            # (already accounted for in SCHEMES dict)
             phases = load_summary(summary_path)
             if not phases:
                 print(f"  [WARN] Missing data: {summary_path}")
@@ -145,19 +150,18 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
     schemes     = [s for s in SCHEMES if any(n in data[s] for n in AS_COUNTS)]
     n_schemes   = len(schemes)
     n_groups    = len(AS_COUNTS)
-    bar_width   = 0.35
-    group_gap   = 0.1
+    bar_width   = 0.28
+    group_gap   = 0.12
     total_width = n_schemes * bar_width + group_gap
 
     x = np.arange(n_groups) * total_width
     offsets = np.linspace(-(n_schemes - 1) / 2, (n_schemes - 1) / 2, n_schemes) * bar_width
 
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(9, 5))
 
     for i, scheme in enumerate(schemes):
         vals  = []
         cis   = []
-        ticks = []
         for n in AS_COUNTS:
             if n in data[scheme]:
                 vals.append(data[scheme][n][metric_key] * unit_scale)
@@ -165,7 +169,6 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
             else:
                 vals.append(0.0)
                 cis.append(0.0)
-            ticks.append(n)
 
         bars = ax.bar(
             x + offsets[i], vals,
@@ -175,25 +178,25 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
             hatch=HATCH[scheme],
             edgecolor="white",
             linewidth=0.6,
-            yerr=cis,
-            capsize=4,
-            error_kw={"elinewidth": 1.2, "ecolor": "#444", "capthick": 1.2},
             zorder=3,
         )
 
         # Value labels on bars
-        for bar, v, ci in zip(bars, vals, cis):
+        all_vals = [v for v in vals if v > 0]
+        top_ref  = max(all_vals) if all_vals else 1
+        for bar, v in zip(bars, vals):
             if v > 0:
                 lbl = f"{v:.1f}" if abs(v) < 1000 else f"{v:.0f}"
                 ax.text(
                     bar.get_x() + bar.get_width() / 2,
-                    bar.get_height() + ci + 0.01 * max(vals + [1]),
+                    bar.get_height() + 0.01 * top_ref,
                     lbl,
                     ha="center", va="bottom",
-                    fontsize=7.5, color="#222",
+                    fontsize=7, color="#222",
                 )
 
-    ax.set_xticks(x + (bar_width / 2) * (n_schemes - 1) / n_schemes * 0.5)
+    # Centre ticks on each group
+    ax.set_xticks(x + offsets[n_schemes // 2] / 2)
     ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=11)
     ax.set_xlabel("Number of Active Authentication Servers", fontsize=11)
     ax.set_ylabel(f"{ylabel}{' (' + unit_label + ')' if unit_label else ''}", fontsize=11)
@@ -220,6 +223,7 @@ def stacked_bar_chart(data, metric_key_prefix, ci_key_prefix, ylabel, title, out
     phase_hatch = {
         "RA":    {"Enrollment": "",    "Authentication": "",   "Key Exchange": ""},
         "LAAKA": {"Enrollment": "///", "Authentication": "///","Key Exchange": "///"},
+        "Zhou":  {"Enrollment": "xxx", "Authentication": "xxx","Key Exchange": "xxx"},
     }
 
     schemes   = [s for s in SCHEMES if any(n in data[s] for n in AS_COUNTS)]

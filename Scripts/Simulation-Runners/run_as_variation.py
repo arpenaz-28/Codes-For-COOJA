@@ -44,7 +44,7 @@ FIRST_DEV_ID   = 81   # nodes 81–100 are devices
 # ─────────────────────────────────────────────────────────────────────────────
 SCHEME_CFG = {
     "RA": {
-        "base_source_dir":    os.path.join(REPO, "Revised-Anonymity", "Revised-Anonymity-79_20"),
+        "base_source_dir":    os.path.join(REPO, "Revised-Anonymity", "Src-ASVariation"),
         "variant_source_dir": os.path.join(REPO, "Revised-Anonymity", "AS-Variation"),
         "conf_dirs": {
             n: os.path.join(REPO, "Revised-Anonymity", "AS-Variation", f"N{n}")

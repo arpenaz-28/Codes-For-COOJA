@@ -8,8 +8,8 @@ import csv, os, statistics, math
 
 BASE = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 OLD_CSV = os.path.join(BASE, "Results", "CSV-Data", "Revised-Anonymity")
-NEW_CSV = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Revised-Anonymity", "50_50", "csv")
-OUT     = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Revised-Anonymity", "50_50", "comparison_report.html")
+NEW_CSV = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Preliminary", "50_50", "csv")
+OUT     = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Preliminary", "50_50", "comparison_report.html")
 
 # ─── load helpers ────────────────────────────────────────────────────────────
 

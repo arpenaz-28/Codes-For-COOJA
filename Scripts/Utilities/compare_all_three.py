@@ -11,9 +11,9 @@ import csv, os, statistics, math
 
 BASE  = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 A_CSV = os.path.join(BASE, "Results", "CSV-Data", "Revised-Anonymity")
-B_CSV = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Revised-Anonymity", "50_50", "csv")
-C_CSV = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Revised-Anonymity", "20_79", "csv")
-OUT   = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Revised-Anonymity", "20_79", "comparison_all_three.html")
+B_CSV = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Preliminary", "50_50", "csv")
+C_CSV = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Preliminary", "20_79", "csv")
+OUT   = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Preliminary", "20_79", "comparison_all_three.html")
 
 CONFIGS = [
     {"key": "A", "label": "79 AS / 20 Dev", "short": "79AS·20D",

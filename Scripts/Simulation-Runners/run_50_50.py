@@ -29,13 +29,13 @@ BASE        = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 CONTIKI_DIR = "/home/apex/contiki-ng"
 COOJA_DIR   = "/home/apex/contiki-ng/tools/cooja"
 PROJECT_DIR = "/home/apex/contiki-ng/examples/cooja_50_50"
-SCHEME_PATH = os.path.join(BASE, "Revised-Anonymity", "Revised-Anonymity-50_50")
+SCHEME_PATH = os.path.join(BASE, "Revised-Anonymity", "Src-50AS-50Dev")
 
 SEEDS       = [123456, 234567, 345678, 456789, 567890]   # 5 seeds
 NUM_DEVICES = 50
 
-OUTPUT_DIR  = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Revised-Anonymity", "50_50", "csv")
-LOG_DIR     = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Revised-Anonymity", "50_50", "logs")
+OUTPUT_DIR  = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Preliminary", "50_50", "csv")
+LOG_DIR     = os.path.join(BASE, "Revised-Anonymity", "Simulation results", "Preliminary", "50_50", "logs")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(LOG_DIR,    exist_ok=True)
 

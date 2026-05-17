@@ -8,13 +8,13 @@
 | Mote type | TelosB (emulated) |
 | Total devices | 20 IoT devices |
 | Phases measured | Enrollment + Authentication + Key Exchange |
-| Schemes compared | Revised-Anonymity (RA) vs LAAKA |
+| Schemes compared | RA, LAAKA, Zhou |
 | Active AS values tested | 2, 5, 10, 15 |
-| Seeds per AS count | 5 (results averaged, 95% CI shown) |
+| Seeds per AS count | RA/LAAKA: 5; Zhou: 1 (95% CI from per-device variance) |
 
 **What varies:** The number of active Authentication Servers (AS nodes) simultaneously available in the network. The gateway selects whichever AS it deems most suitable (decoupled AS selection). This study tests whether having more AS choices helps or hurts performance.
 
-**Why Zhou is absent:** Zhou uses a fixed gateway-coupled authentication model and does not support variable AS selection, so it is not applicable to this study.
+**Zhou's role in this chart:** Zhou uses a fixed gateway-coupled authentication model with no AS selection. Its bars are therefore constant across all AS counts and serve as a non-adaptive baseline. Data extracted from the existing 100-node COOJA simulation (seed 123456, 20 user devices, nodes 81–100). Zhou's Authentication phase includes key exchange (no separate Key Exchange phase).
 
 ---
 
@@ -24,8 +24,10 @@
 |---|---|---|---|---|
 | RA — Energy (mJ) | 1065 | 968 | 936 | 961 |
 | LAAKA — Energy (mJ) | 1827 | 1683 | 1631 | 1662 |
+| Zhou — Energy (mJ) | 1503 | 1503 | 1503 | 1503 |
 | RA — CPU (s) | 17.3 | 15.7 | 15.2 | 15.6 |
 | LAAKA — CPU (s) | 29.6 | 27.3 | 26.5 | 27.0 |
+| Zhou — CPU (s) | 24.4 | 24.4 | 24.4 | 24.4 |
 
 ---
 
@@ -38,9 +40,10 @@
 **Purpose:** Shows how total energy consumption (all 20 devices, all phases) changes as the number of available AS nodes increases from 2 to 15.
 
 **Insight:**
-- RA consistently consumes ~42% less energy than LAAKA at every AS count.
-- Both schemes see a drop from AS=2 to AS=10 and then level off or slightly rise at AS=15. This indicates an **optimal AS pool size of around 10** — beyond that, managing more AS candidates does not reduce cost further and may add slight overhead.
-- RA's sweet spot is **AS=10 at 936 mJ**; LAAKA's is AS=10 at 1631 mJ.
+- RA consistently consumes ~42% less energy than LAAKA and ~38% less than Zhou at every AS count.
+- Both RA and LAAKA see a drop from AS=2 to AS=10 and then level off or slightly rise at AS=15, indicating an **optimal AS pool size of ~10** for this 20-device topology.
+- Zhou's flat bars (1503 mJ across all AS counts) confirm it cannot benefit from AS selection — it is always outperformed by RA and beats LAAKA only when LAAKA's AS=2 configuration is used.
+- RA's sweet spot is **AS=10 at 936 mJ**; LAAKA's is AS=10 at 1631 mJ; Zhou is fixed at 1503 mJ.
 
 ---
 
@@ -51,9 +54,10 @@
 **Purpose:** Same as chart 01 but for total CPU computation time across all 20 devices.
 
 **Insight:**
-- CPU time mirrors the energy trend exactly, confirming that energy and computation are tightly coupled (radio-off savings track CPU savings).
-- RA stays between 15.2–17.3 s regardless of AS count — a narrow, stable range. LAAKA varies from 26.5 s to 29.6 s.
-- The gap between RA and LAAKA (~12 s) remains constant across AS counts, meaning LAAKA's heavier per-round cryptographic overhead cannot be offset by better AS selection.
+- CPU time mirrors the energy trend exactly, confirming that energy and computation are tightly coupled.
+- RA stays between 15.2–17.3 s; LAAKA varies from 26.5 s to 29.6 s; Zhou is flat at 24.4 s.
+- Zhou falls between LAAKA and RA in CPU cost — better than LAAKA's unoptimised AS=2, but always worse than RA at any AS count ≥ 5.
+- The RA–LAAKA gap (~12 s) and RA–Zhou gap (~9 s) remain constant, confirming RA's per-round cryptographic advantage is independent of topology.
 
 ---
 

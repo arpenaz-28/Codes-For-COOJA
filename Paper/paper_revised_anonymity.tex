@@ -15,6 +15,8 @@
 \usepackage{url}
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 
 \begin{document}
@@ -37,7 +39,7 @@ The Internet of Things (IoT) demands lightweight and secure authentication
 for resource-constrained multihop networks, while also protecting the privacy of individual devices.  Existing distributed schemes reduce communication overhead on intermediate nodes but fail to provide device
 anonymity—real identifiers are exposed on every authentication transaction, enabling adversarial tracking across sessions.  This paper presents a lightweight, anonymous, and decoupled distributed authentication scheme for multihop IoT networks.  Gateway-selected authentication servers (which may
 be parent or non-parent nodes) authenticate newly joined devices using a two-round protocol that separates the process of authentication from session key establishment.  Device anonymity is preserved through per-session pseudonym rotation: a rotating pseudonym replaces the real device identity in all open-channel communications, preventing long-term tracking.  A dual-state synchronization mechanism maintained at the authentication
-server enables seamless recovery from packet-loss events without re-authenticate.  Physically Unclonable Function (PUF) responses eliminate long-term secret storage, and a lightweight hash-based accumulator with XOR operations minimize computational overhead. Securityis validated formally (ProVerif) and informally. In addition, performance analysis is conducted through theoretical and simulation-based frameworks, focusing on energy consumption, CPU time, and communication
+server enables seamless recovery from packet-loss events without re-enrolment.  Physically Unclonable Function (PUF) responses eliminate long-term secret storage, and a lightweight hash-based accumulator with XOR operations minimize computational overhead. Securityis validated formally (ProVerif) and informally. In addition, performance analysis is conducted through theoretical and simulation-based frameworks, focusing on energy consumption, CPU time, and communication
 overhead. Analysis demonstrates that the proposed scheme is secure while maintaining a lightweight structure over existing
 methods.
 \end{abstract}
@@ -72,31 +74,29 @@ A further deficiency shared by existing lightweight schemes is the
 transmits the real device identity $ID_D$ on the open channel during
 authentication, allowing an adversary with radio access to track a device
 across sessions.  Privacy regulations require that device
-identities not be linkable across time, a property entirely absent from
-prior IoT authentication work.
+identities not be linkable across time.
 
-This paper proposes a \emph{lightweight, anonymous, and decoupled
-distributed authentication} scheme that addresses all three gaps
-simultaneously:
-\begin{itemize}
-  \item \textbf{Decoupling:} A gateway-selected authentication server (AS)
-    may be any capable node—parent or non-parent—preventing skewed load on
-    parent nodes.
-  \item \textbf{Anonymity:} A rotating pseudonym $\mathit{PID} =
-    H(ID_D \| m_{\mathrm{curr}})$, refreshed after each successful key
-    exchange, replaces $ID_D$ in all open-channel messages.  The gateway
-    never learns the real device identity.
-  \item \textbf{Desynchronization resilience:} A dual-state mechanism
-    ($\mathit{PID}_{\mathrm{curr}}$, $\mathit{PID}_{\mathrm{old}}$,
-    $m_{\mathrm{curr}}$, $m_{\mathrm{old}}$) at both the AS and the gateway
-    tolerates single-packet loss without re-authentication.
-\end{itemize}
+This paper makes the following key contributions.
+\begin{enumerate}
+  \item A lightweight, anonymous, and decoupled distributed authentication
+    scheme is proposed for multihop IoT networks, where gateway-selected
+    IoT nodes authenticate newly joined devices using per-session pseudonym
+    rotation for anonymity, a dual-state mechanism for desynchronisation
+    recovery without re-enrolment, PUF-based secret derivation, and a
+    hash-based accumulator with XOR operations for lightweight operation.
+  \item The security of the scheme is validated through both informal and
+    formal (using ProVerif) analysis.
+  \item The efficiency of the scheme is evaluated using both theoretical and
+    simulation-based (COOJA/Contiki-NG) frameworks, emphasising energy
+    consumption, CPU time, and communication overhead in a multihop
+    constrained setting.
+\end{enumerate}
 
-The scheme also incorporates a PUF-based secret derivation mechanism
-(eliminating long-term key storage), a hash-based one-way accumulator for
-group-membership verification, and timestamp-plus-session-random replay
-protection.  Security is validated through ProVerif formal analysis and
-informal argument.
+Section~II, III, and IV elaborate on related literature, prerequisites, and
+the base scheme, respectively.  Section~V presents the proposed scheme.
+Furthermore, Section~VI contains the detailed security analysis.  Finally,
+Section~VII presents the performance analysis, with Section~VIII stating the
+conclusion.
 
 
 
@@ -444,7 +444,7 @@ because Phase~3 delivers the updated session random $m_{\mathrm{new}}$ over
 the open channel, where a single packet loss can cause $D$ to retain
 $m_{\mathrm{curr}}$ while $AS$ has already advanced.  By retaining both the
 current and the previous pseudonym, $AS$ can recover from such
-desynchronisation without requiring $D$ to re-authenticate.  $AS$ stores
+desynchronisation without requiring $D$ to re-enrol.  $AS$ stores
 $\{T_\mathsf{Acc},\, ID_D,\, \Phi_{AS\text{-}D},\, c_{AS\text{-}D},\,
 m_{\mathrm{curr}},\, m_{\mathrm{old}},\, \mathit{PID}_{\mathrm{curr}},\,
 \mathit{PID}_{\mathrm{old}}\}$.
@@ -499,8 +499,7 @@ combined into an accumulated value using bitwise AND and the same operation is
 again performed between them, it gives back the same accumulated value.  If
 $T_\mathsf{Acc}^\mathsf{new} = T_\mathsf{Acc}$, it proves that the unique
 secret of $D$ is already a legitimate member of $AS$, completing
-authentication.  $AS$ replies with $(\mathsf{ACK},\, ts_2)$ and proceeds to
-Phase~3.
+authentication.  On success, $AS$ proceeds to Phase~3.
 
 \subsection{Node Session Key Exchange Phase}
 
@@ -569,6 +568,61 @@ its pseudonym record: $\mathit{PID}_{\mathrm{old}} \leftarrow
 Retaining $\mathit{PID}_{\mathrm{old}}$ ensures that if the Phase~3 delivery
 to $D$ was lost, $GW$ can still service $D$'s data frames under the prior
 session key pending re-authentication.
+
+\subsection{Desynchronization Recovery}
+
+If the Phase~3 delivery $(m_H,\,ts_2)$ is lost, $D$ retains its stale
+$m_{\mathrm{curr}}$, so the pseudonym it computes in the next session equals
+$\mathit{PID}_{\mathrm{old}}$ from $AS$'s perspective.  Algorithm~\ref{alg:desync}
+shows how the scheme adapts Phases~2 and~3 to recover without re-enrolment.
+$D$'s behaviour is \emph{identical} in both paths—it always uses its own
+$m_{\mathrm{curr}}$ and $\mathit{PID}$.  Only $AS$ adapts: the dual-state
+lookup detects which nonce $D$ is on, then constructs $m_H$ with the matching
+$(m_{\mathrm{old}},\,\mathit{PID}_{\mathrm{old}})$ so that $D$'s symmetric
+decryption succeeds and the states converge.
+The dual-state mechanism tolerates a single consecutive Phase~3 loss;
+two or more consecutive losses exhaust both slots, requiring re-enrolment---a
+deliberate trade-off between storage overhead and recovery depth.
+
+\begin{algorithm}[t]
+\caption{Desynchronization Recovery}
+\label{alg:desync}
+\begin{algorithmic}[1]
+\Statex \textbf{Precondition:} $D$ holds stale $m_{\mathrm{curr}}\!=\!m_{\mathrm{old}}$;\;
+       $AS$ holds $(m_{\mathrm{curr}},\,m_{\mathrm{old}},\,
+       \mathit{PID}_{\mathrm{curr}},\,\mathit{PID}_{\mathrm{old}})$
+
+\Statex
+\Statex \textit{Phase 2 — Authentication}
+\State $\mathit{PID} \gets H(\mathit{ID}_D \| m_{\mathrm{curr}})$
+       \hfill\Comment{stale $m_{\mathrm{curr}}$ $\Rightarrow$ $\mathit{PID} = \mathit{PID}_{\mathrm{old}}$}
+\State $D \to AS$: $(\mathit{PID},\; Y_{AS\text{-}D}^H,\; ts_1)$
+\If{$\mathit{PID} = \mathit{PID}_{\mathrm{curr}}$}
+    \State $AS$ verifies using $m_{\mathrm{curr}}$ \hfill\Comment{normal path}
+\ElsIf{$\mathit{PID} = \mathit{PID}_{\mathrm{old}}$}
+    \State $AS$ verifies using $m_{\mathrm{old}}$ \hfill\Comment{desync detected}
+\Else
+    \State $AS$ rejects $D$
+\EndIf
+
+\Statex
+\Statex \textit{Phase 3 — Key Exchange (desync path)}
+\State $m_{\mathrm{new}} \gets \mathsf{rand}()$
+\State $m_H \gets m_{\mathrm{new}} \oplus
+       H\!\left(Y_D^{H'} \| m_{\mathrm{old}} \| R_D' \|
+       \mathit{ID}_{AS} \| \mathit{PID}_{\mathrm{old}} \| ts_2\right)$
+       \hfill\Comment{$AS$ uses $m_{\mathrm{old}}$, $\mathit{PID}_{\mathrm{old}}$}
+\State $AS \to D$ (via $GW$): $(m_H,\; ts_2)$
+\State $m_{\mathrm{new}} \gets m_H \oplus
+       H\!\left(Y_D^{H} \| m_{\mathrm{curr}} \| R_D \|
+       \mathit{ID}_{AS} \| \mathit{PID} \| ts_2\right)$
+       \hfill\Comment{$D$ uses its own $m_{\mathrm{curr}}\!=\!m_{\mathrm{old}}$ — recovers correctly}
+\State $m_{\mathrm{old}} \gets m_{\mathrm{curr}}$;\quad
+       $m_{\mathrm{curr}} \gets m_{\mathrm{new}}$;\quad
+       $\mathit{PID} \gets H(\mathit{ID}_D \| m_{\mathrm{curr}})$
+\Statex \textbf{Result:} $D$ and $AS$ re-synchronised; $\mathit{PID}$ rotated
+\end{algorithmic}
+\end{algorithm}
 
 % -------------------------------------------------------
 \FloatBarrier
@@ -681,8 +735,7 @@ Benchmarks (average of 100 iterations on the same test platform as prior
 work~\cite{rosa2023lightsae}): $T_\mathsf{rand} = 0.0018$\,ms,
 $T_\mathsf{puf} = 0.0522$\,ms,
 $T_\mathsf{hash} = 0.0353$\,ms (SHA-256),
-$T_\mathsf{aes} = 0.0867$\,ms (AES-128),
-$T_\mathsf{ecc} = 0.9973$\,ms (ECC mult./add.).
+$T_\mathsf{aes} = 0.0867$\,ms (AES-128).
 
 \textbf{Enrolment.}  $D$ executes $T_\mathsf{puf} + 2T_\mathsf{rand}$;
 $AS$ executes $T_\mathsf{puf} + 2T_\mathsf{hash} + 2T_\mathsf{rand}$
@@ -700,9 +753,8 @@ Table~\ref{tab:comp_enroll} compares enrolment cost.
     \toprule
     Scheme & Operations & Cost (ms) \\
     \midrule
-    \cite{alruwaili2025raaf} & $T_\mathsf{puf}+2T_\mathsf{hash}+6T_\mathsf{aes}$ & 0.64 \\
-    \cite{yang2024sakms}     & $5T_\mathsf{hash}+2T_\mathsf{ecc}+2T_\mathsf{rand}$ & 2.17 \\
-    \cite{li2020puf}         & $3T_\mathsf{hash}+T_\mathsf{ecc}+3T_\mathsf{rand}$ & 1.10 \\
+    \cite{ali2024laaka}      & $3T_\mathsf{hash}$ & 0.11 \\
+    \cite{zhou2024auth}      & $T_\mathsf{puf}+2T_\mathsf{hash}+3T_\mathsf{rand}$ & 0.13 \\
     \cite{zheng2022puf}      & $2T_\mathsf{puf}+8T_\mathsf{hash}+4T_\mathsf{aes}+5T_\mathsf{rand}$ & 0.69 \\
     \cite{rosa2023lightsae}  & $4T_\mathsf{rand}$ & 0.01 \\
     \textbf{Proposed}        & $2T_\mathsf{puf}+2T_\mathsf{hash}+4T_\mathsf{rand}$ & \textbf{0.18} \\
@@ -710,7 +762,7 @@ Table~\ref{tab:comp_enroll} compares enrolment cost.
   \end{tabular}\\[3pt]
   \scriptsize
   Benchmark (avg.\ 100 iterations): $T_\mathsf{rand}$=0.0018\,ms, $T_\mathsf{puf}$=0.0522\,ms,
-  $T_\mathsf{hash}$=0.0353\,ms, $T_\mathsf{aes}$=0.0867\,ms, $T_\mathsf{ecc}$=0.9973\,ms.
+  $T_\mathsf{hash}$=0.0353\,ms, $T_\mathsf{aes}$=0.0867\,ms.
 \end{table}
 
 \textbf{Authentication and Key Exchange.}
@@ -721,11 +773,15 @@ T_\mathsf{aes}$ (Phase~2: PUF + unmask; Phase~3: $m_{\mathrm{new}}$,
 $m_H$ mask, $K_{GW\text{-}D}$, PID\_new, token encryption).
 $GW$ executes $T_\mathsf{aes}$ (token decryption).
 Total: $2T_\mathsf{puf} + 11T_\mathsf{hash} + 2T_\mathsf{aes} +
-T_\mathsf{rand} = 0.67$\,ms.  The additional hash operations vs.\ prior
-lightweight schemes are the direct cost of computing and rotating pseudonyms.
-Table~\ref{tab:comp_auth} compares authentication cost; the proposed scheme
-surpasses all ECC-based schemes and is comparable to AES-heavy schemes while
-providing anonymity properties that none of the others offer.
+T_\mathsf{rand} = 0.67$\,ms.  The additional operations in the proposed scheme over the hash-only
+competitors reflect the PUF challenge--response and AES token encryption.
+Table~\ref{tab:comp_auth} compares authentication cost.
+LAAKA~\cite{ali2024laaka} (0.56\,ms) and Zhou~\cite{zhou2024auth} (0.53\,ms)
+both use hash-only operations and provide session-based anonymity via temporary
+identifiers, but neither employs PUF-based group membership, a decoupled
+distributed AS, or dual-state desynchronization recovery.
+The proposed scheme provides all of these at 0.67\,ms---a modest overhead
+attributable to the PUF challenge--response pair and AES-encrypted gateway token.
 
 \begin{table}[!t]
   \centering
@@ -737,9 +793,8 @@ providing anonymity properties that none of the others offer.
     \toprule
     Scheme & Operations & Cost (ms) \\
     \midrule
-    \cite{alruwaili2025raaf} & $2T_\mathsf{puf}+8T_\mathsf{hash}+3T_\mathsf{ecc}+3T_\mathsf{rand}$ & 3.39 \\
-    \cite{yang2024sakms}     & $6T_\mathsf{hash}+4T_\mathsf{ecc}$ & 4.20 \\
-    \cite{li2020puf}         & $2T_\mathsf{puf}+12T_\mathsf{hash}+2T_\mathsf{ecc}+4T_\mathsf{rand}$ & 2.53 \\
+    \cite{ali2024laaka}      & $16T_\mathsf{hash}$ & 0.56 \\
+    \cite{zhou2024auth}      & $15T_\mathsf{hash}$ & 0.53 \\
     \cite{zheng2022puf}      & $2T_\mathsf{puf}+6T_\mathsf{hash}+4T_\mathsf{aes}+5T_\mathsf{rand}$ & 0.67 \\
     \cite{rosa2023lightsae}  & $14T_\mathsf{aes}$ & 1.21 \\
     \textbf{Proposed}        & $2T_\mathsf{puf}+11T_\mathsf{hash}+2T_\mathsf{aes}+T_\mathsf{rand}$ & \textbf{0.67} \\
@@ -750,7 +805,7 @@ providing anonymity properties that none of the others offer.
 \subsection{Theoretical Communication Cost}
 
 Assuming: IDs and timestamps = 32\,bits; nonces, hashes, challenges,
-responses, and ciphertexts = 256\,bits; ECC points (P-256) = 320\,bits.
+responses, and ciphertexts = 256\,bits.
 
 \textbf{Enrolment} (Table~\ref{tab:comm_enroll}).
 Three messages are exchanged: (1)~$D \to AS$: $ID_D$ (32\,b);
@@ -768,34 +823,30 @@ Total: $\mathbf{1312}$\,bits.
     \toprule
     Scheme & \# Messages & Cost (bits) \\
     \midrule
-    \cite{alruwaili2025raaf} & 2 & 864 \\
-    \cite{yang2024sakms}     & 2 & 1824 \\
-    \cite{li2020puf}         & 2 & 992 \\
+    \cite{ali2024laaka}      & 3 & 2592 \\
+    \cite{zhou2024auth}      & 5 & 1344 \\
     \cite{zheng2022puf}      & 3 & 1600 \\
     \cite{rosa2023lightsae}  & 2 & 1056 \\
     \textbf{Proposed}        & 3 & \textbf{1312} \\
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
-  IDs/timestamps = 32\,b; hashes/nonces/challenges/ciphertexts = 256\,b; ECC = 320\,b.
+  IDs/timestamps = 32\,b; hashes/nonces/challenges/ciphertexts = 256\,b.
 \end{table}
 
 \textbf{Authentication and Key Exchange} (Table~\ref{tab:comm_auth}).
-The two-round design yields five distinct messages:
+Three messages are exchanged:
 (1)~$D \to AS$: $\mathit{PID}(256) + Y_{AS\text{-}D}^H(256) + ts_1(32)$ = 544\,b;
-(2)~$AS \to D$: $\mathsf{ACK}(8) + ts_2(32)$ = 40\,b;
-(3)~$D \to AS$: $\mathit{PID}(256) + ts_2(32)$ = 288\,b;
-(4)~$AS \to D$: $m_H(256) + ts_2(32)$ = 288\,b;
-(5)~$AS \to GW$: $\mathit{PID}_{\mathrm{new}}(256) + ID_{AS}(32) + \mathsf{auth\_token}(256)$ = 544\,b.
-Total: $\mathbf{1704}$\,bits across 5 messages.  The increase over the base
-scheme~\cite{das2026comsnets} (928\,bits, 3 messages) reflects the cost of (a)~256-bit pseudonyms
-replacing 32-bit identity fields and (b)~the additional round-trip that
-cleanly separates group-membership verification from key material derivation.
-Hardware measurements (Section~\ref{sec:hw}) show that despite this
-theoretical increase, the actual byte overhead at the socket level is lower
-than the base scheme~\cite{das2026comsnets} for authentication and key
-exchange, because the XOR-mask approach generates more compact payloads than
-the AES-heavy base scheme design.
+(2)~$AS \to D$: $m_H(256) + ts_2(32)$ = 288\,b;
+(3)~$AS \to GW$: $\mathit{PID}_{\mathrm{new}}(256) + ID_{AS}(32) + \mathsf{auth\_token}(256)$ = 544\,b.
+Total: $\mathbf{1376}$\,bits across 3 messages.  The base
+scheme~\cite{das2026comsnets} requires 928\,bits (32-bit $ID_D$ instead of
+256-bit $\mathit{PID}$), so the 448-bit increase directly reflects pseudonym
+widening.  LAAKA's three-entity (IoT--RA--fog) registration-and-auth round
+yields 2400\,bits; Zhou's four-message three-entity round totals 2464\,bits
+(per~\cite{zhou2024auth} Table~VII).  Simulation results confirm that the
+proposed scheme achieves substantially lower energy and CPU cost than all
+compared schemes (Section~\ref{sec:sim}).
 
 \begin{table}[!t]
   \centering
@@ -807,136 +858,132 @@ the AES-heavy base scheme design.
     \toprule
     Scheme & \# Messages & Cost (bits) \\
     \midrule
-    \cite{alruwaili2025raaf} & 2 & 1408 \\
-    \cite{yang2024sakms}     & 2 & 2612 \\
-    \cite{li2020puf}         & 3 & 4160 \\
+    \cite{ali2024laaka}      & 3 & 2400 \\
+    \cite{zhou2024auth}      & 4 & 2464 \\
     \cite{zheng2022puf}      & 3 & 1600 \\
     \cite{rosa2023lightsae}  & 6 & 1536 \\
-    \textbf{Proposed}        & 5 & \textbf{1704} \\
+    \textbf{Proposed}        & 3 & \textbf{1376} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\subsection{Hardware-Based Performance Evaluation}
-\label{sec:hw}
 
-A hardware deployment was conducted to obtain realistic, implementation-level
-performance measurements.  Table~\ref{tab:hwsetup} lists the setup
-parameters.
+\subsection{Simulation-Based Performance Analysis}
+\label{sec:sim}
+
+A simulation-based performance evaluation was conducted using the COOJA
+simulator within the Contiki-NG framework.  Three complementary studies are
+reported: (i)~an overall per-device comparison of RA against
+LAAKA~\cite{das2026comsnets} and Zhou~\cite{zhou2024auth} in a fixed
+20-node network; (ii)~an authentication server (AS) pool-size study that
+varies the number of active AS nodes from 2 to 15; and (iii)~a network
+scalability study that grows the total node count from 20 to 100.  All
+results are averaged over five independent random seeds and reported with
+95\,\% confidence intervals.  Table~\ref{tab:simparams} summarises the
+common simulation parameters.
 
 \begin{table}[!t]
   \centering
-  \caption{Hardware Evaluation Setup.}
-  \label{tab:hwsetup}
+  \caption{Simulation Parameters.}
+  \label{tab:simparams}
   \scriptsize
   \setlength{\tabcolsep}{4pt}
   \begin{tabular}{ll}
     \toprule
     Parameter & Value \\
     \midrule
-    Device ($D$)          & RPi 3B+ — Node ID~81 (192.168.1.113) \\
-    Auth.\ Server ($AS$)  & RPi 3B+ (192.168.1.132) \\
-    Gateway ($GW$)        & Laptop (192.168.1.202) \\
-    Network               & Ethernet LAN, UDP/IP \\
-    Runtime               & Python 3.x, PyCryptodome \\
-    Encryption            & AES-128-ECB \\
-    Hash                  & SHA-256 \\
-    PUF                   & Software-simulated SRAM PUF \\
-    Simulation runs       & 10 per configuration \\
-    CPU energy model      & $P_\mathsf{CPU} = 2.5$\,W \\
-    Network energy model  & $e_\mathsf{net} = 2\times10^{-6}$\,J/byte \\
+    Simulator          & COOJA (Contiki-NG) \\
+    Mote type          & TelosB (emulated) \\
+    Devices (fixed)    & 20 IoT device nodes \\
+    Phases measured    & Enrolment, Authentication, Key Exchange \\
+    Schemes compared   & RA (proposed), LAAKA~\cite{das2026comsnets}, Zhou~\cite{zhou2024auth} \\
+    Active AS (study~ii) & 2, 5, 10, 15 \\
+    Network size (study~iii) & $N \in \{20, 50, 80, 100\}$ nodes \\
+    Random seeds       & 5 per configuration \\
+    Confidence bands   & 95\,\% CI ($1.96\,\sigma/\!\sqrt{n}$) \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\subsubsection{Per-Phase Results}
+\subsubsection{Overall Per-Device Performance}
 
-Table~\ref{tab:hwresults} reports CPU time, total bytes exchanged
-(Tx\,+\,Rx at the device), and energy consumption for each phase.
-Energy is computed as $E = t_\mathsf{CPU} \times P_\mathsf{CPU} + (B_\mathsf{Tx}+B_\mathsf{Rx}) \times e_\mathsf{net}$.
+Figure~\ref{fig:sim_total} consolidates both energy (left panel) and
+CPU time (right panel) across all three phases for the fixed 20-node
+network.  The proposed scheme achieves a total per-device energy of
+52.21\,mJ — a \textbf{42.8\,\%} reduction over LAAKA (91.22\,mJ) and a
+\textbf{34.6\,\%} reduction over Zhou (79.81\,mJ).  CPU time follows the
+same ranking: RA (0.847\,s) is 42.7\,\% faster than LAAKA (1.479\,s) and
+8.3\,\% faster than Zhou (0.924\,s).  The narrow 95\,\% CI bands confirm
+statistical stability across all seeds.  The dominant savings arise in
+authentication and key exchange (RA: 28.87\,mJ vs.\ LAAKA: 77.97\,mJ and
+Zhou: 57.06\,mJ).
 
-\begin{table}[!t]
+\begin{figure}[!t]
   \centering
-  \caption{Hardware Results: Per-Phase and Total (Device Perspective).}
-  \label{tab:hwresults}
-  \scriptsize
-  \setlength{\tabcolsep}{4pt}
-  \begin{tabular}{lccc}
-    \toprule
-    Phase & CPU Time (ms) & Total Bytes (B) & Energy (mJ) \\
-    \midrule
-    Enrolment         & 2.67 & 327 & 7.34 \\
-    Authentication     & 0.32 & 200 & 1.21 \\
-    Key Exchange       & 0.27 & 192 & 1.05 \\
-    Auth + Key Ex.     & 0.59 & 392 & 2.25 \\
-    \midrule
-    \textbf{Total}     & \textbf{3.26} & \textbf{719} & \textbf{9.59} \\
-    \bottomrule
-  \end{tabular}\\[3pt]
-  \scriptsize
-  CPU energy = CPU\_time $\times$ 2.5\,W.\ \
-  Network energy = Total\_bytes $\times$ 2$\times$10$^{-6}$\,J/byte.\\
-  CPU share: 85.0\%; Network share: 15.0\% of total energy.
-\end{table}
+  \includegraphics[width=\columnwidth]{fig_sim_total}
+  \caption{Per-device mean total cost — all phases:
+           (a)~energy and (b)~CPU time. Error bars = 95\,\% CI.}
+  \label{fig:sim_total}
+\end{figure}
 
-The enrolment phase, executed once per device lifetime, consumes 2.67\,ms
-of CPU time and 7.34\,mJ of energy.  The authentication-and-key-exchange
-pair—executed at every session—requires only 0.59\,ms of on-device
-computation and 2.25\,mJ, confirming low per-session overhead.
+\subsubsection{Effect of Authentication Server Pool Size}
 
-\subsubsection{Comparison with Base Scheme}
+The decoupled design allows the gateway to select any capable node as the
+AS, so the size of the AS pool may affect performance.
+Figures~\ref{fig:sim_as}(a) and~\ref{fig:sim_as}(b) show total
+authentication energy and CPU time, respectively, for all 20 devices as
+the number of active AS nodes increases from 2 to 15.  Zhou is excluded
+from this study because its gateway-coupled model does not support variable
+AS selection.
 
-Table~\ref{tab:hwcompare} compares byte-level overhead between the proposed
-scheme and the base scheme~\cite{das2026comsnets}, both implemented
-and deployed on the same hardware platform (Python~3, Raspberry Pi~3B+).
+RA consistently consumes $\approx$42\,\% less energy and CPU time than
+LAAKA at every AS count.  Both schemes improve from AS\,=\,2 to AS\,=\,10
+(RA: 1065\,mJ $\rightarrow$ 936\,mJ; LAAKA: 1827\,mJ $\rightarrow$
+1631\,mJ) and then plateau or rise slightly at AS\,=\,15, indicating an
+optimal pool size of approximately 10 AS nodes for a 20-device network.
+The gap between RA and LAAKA ($\approx$12\,s in CPU) remains constant
+across all AS counts, confirming that LAAKA's heavier per-round
+cryptographic overhead cannot be offset by better AS selection.
 
-\begin{table}[!t]
+\begin{figure}[!htb]
   \centering
-  \caption{Hardware Byte Comparison: Proposed vs.\ Base Scheme~\cite{das2026comsnets}.}
-  \label{tab:hwcompare}
-  \scriptsize
-  \setlength{\tabcolsep}{4pt}
-  \begin{tabular}{lccc}
-    \toprule
-    Phase & Proposed (B) & Base~\cite{das2026comsnets} (B) & Saving (\%) \\
-    \midrule
-    Enrolment       & 327 & 278  & $-$17.6 \\
-    Auth + Key Ex.   & 392 & 497  & $+$\textbf{26.8} \\
-    \midrule
-    \textbf{Total}   & \textbf{719} & \textbf{775}  & $+$\textbf{7.8} \\
-    \bottomrule
-  \end{tabular}\\[3pt]
-  \scriptsize
-  Positive saving = proposed scheme is smaller.\\
-  Base scheme enrolment uses 2 AES-encrypted exchange blocks; proposed uses 3.\\
-  Base scheme auth.\ is AES-heavy, inflating authentication payload size.
-\end{table}
+  \includegraphics[width=0.78\columnwidth]{fig_sim_as_energy}\\[2pt]
+  \small (a)\\[5pt]
+  \includegraphics[width=0.78\columnwidth]{fig_sim_as_cpu}\\[2pt]
+  \small (b)
+  \caption{Total authentication cost vs.\ number of active AS nodes (20 devices):
+           (a)~energy and (b)~CPU time.}
+  \label{fig:sim_as}
+\end{figure}
 
-The proposed scheme achieves a $\mathbf{26.8\%}$ reduction in
-authentication-and-key-exchange bytes compared with the base
-scheme~\cite{das2026comsnets}.  This is counterintuitive given the larger
-theoretical bit count but is explained by implementation efficiency: the
-base scheme's AES-heavy authentication produces padded 16-byte boundary
-payloads, whereas the proposed scheme's XOR-mask approach produces
-tighter packets (65\,B AUTH\_REQ, 2\,B AUTH\_REP, 33\,B KEYEX\_REQ,
-32\,B KEYEX\_REP, 81\,B GW\_TOKEN).
+\subsubsection{Network Scalability}
 
-The enrolment overhead is slightly higher in the proposed scheme: enrolment
-adds a third message exchange for the group-secret transmission ($+49$\,B),
-which is the direct cost of the anonymity setup.  Overall, the three-phase
-total is 7.8\% lower (719\,B vs.\ 775\,B) than the base scheme.
+Figures~\ref{fig:sim_network}(a) and~\ref{fig:sim_network}(b) report
+total network energy and CPU time, respectively, as the network size
+$N$ grows from 20 to 100 nodes.  At $N = 100$, RA consumes 519\,mJ and
+8.4\,s — \textbf{42.2\,\%} and \textbf{42.5\,\%} lower than LAAKA
+(898\,mJ, 14.6\,s) and approximately \textbf{50.6\,\%} lower than Zhou
+(1051\,mJ, 17.0\,s) on both metrics.  LAAKA and Zhou exhibit steeper
+growth with $N$ because their heavier per-device cryptographic load
+(AES-intensive authentication in LAAKA; a single heavy combined
+Auth+KeyEx round in Zhou) accumulates faster as the device count
+increases.  RA's lightweight XOR-hash design keeps per-device cost low
+and stable, producing a near-linear total cost curve that remains
+consistently the lowest at every network size tested.
 
-\subsubsection{Energy Breakdown}
-
-CPU computation dominates energy (85.0\% of total), confirming that
-hash-and-XOR operations are more CPU-energy-intensive than the byte cost
-in this implementation.  The total measured energy across all three phases
-is 9.59\,mJ, of which only 2.25\,mJ is attributed to the
-authentication-and-key-exchange phases repeated at each session.  This
-makes the scheme suitable for duty-cycled IoT devices with millijoule
-energy budgets per event.
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=0.78\columnwidth]{fig_sim_net_energy}\\[2pt]
+  \small (a)\\[5pt]
+  \includegraphics[width=0.78\columnwidth]{fig_sim_net_cpu}\\[2pt]
+  \small (b)
+  \caption{Network scalability with 95\,\% CI:
+           (a)~total energy and (b)~total CPU time vs.\ network size~$N$.}
+  \label{fig:sim_network}
+\end{figure}
 
 % -------------------------------------------------------
+\FloatBarrier
 \section{Conclusion}
 
 This paper presented a lightweight, anonymous, and decoupled distributed
@@ -953,15 +1000,18 @@ overhead low.
 
 Formal verification in ProVerif confirms authentication correspondence,
 session key secrecy, resistance to offline guessing attacks, and
-observational-equivalence-based anonymity.  A hardware deployment on
-Raspberry Pi~3B+ nodes demonstrates a 26.8\% reduction in
-authentication-and-key-exchange communication overhead versus the base
-scheme~\cite{das2026comsnets}, with a total three-phase energy of 9.59\,mJ
-and per-authentication CPU time of 0.59\,ms, validating practical
-suitability for resource-constrained multihop IoT deployments.
+observational-equivalence-based anonymity.  COOJA/Contiki-NG simulations on emulated TelosB nodes confirm practical
+suitability: the proposed scheme achieves a per-device three-phase energy of
+52.21\,mJ, reducing total energy by 42.8\,\% over LAAKA~\cite{das2026comsnets}
+and 34.6\,\% over Zhou~\cite{zhou2024auth}, with consistent gains across
+varying network sizes (up to $N=100$ nodes) and AS pool sizes.
 
 % -------------------------------------------------------
 \balance
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+
+\iffalse
 \begin{thebibliography}{25}
 
 \bibitem{das2026comsnets}
@@ -969,6 +1019,12 @@ S.~Das and M.~Khatua,
 ``Lightweight and Decoupled Distributed Authentication for Multihop IoT
 Networks,''
 in \emph{Proc.\ IEEE COMSNETS}, 2026.
+
+\bibitem{ali2024laaka}
+H.~Ali and I.~Ahmed,
+``LAAKA: A Lightweight Anonymous Authentication and Key Agreement Scheme for
+IoT-Fog Environment,''
+\emph{Computers \& Security}, vol.~140, p.~103770, 2024.
 
 \bibitem{zhong2025survey}
 J.~Zhong, S.~He, Z.~Liu, and L.~Xiong,
@@ -981,6 +1037,12 @@ I.~Zhou, I.~Makhdoom, N.~Shariati, M.~A.~Raza, R.~Keshavarz, J.~Lipman,
 M.~Abolhasan, and A.~Jamalipour,
 ``Internet of Things 2.0: Concepts, Applications, and Future Directions,''
 \emph{IEEE Access}, vol.~9, pp.~70961--71012, 2021.
+
+\bibitem{zhou2024auth}
+X.~Zhou, S.~Wang, K.~Wen, B.~Hu, X.~Tan, and Q.~Xie,
+``Security-Enhanced Lightweight and Anonymity-Preserving User Authentication
+Scheme for IoT-Based Healthcare,''
+\emph{IEEE Internet of Things Journal}, vol.~11, no.~6, pp.~9718--9731, 2024.
 
 \bibitem{kang2017iae}
 B.~Kang, D.~Kim, and H.~Choo,
@@ -1098,5 +1160,6 @@ D.~Dolev and A.~Yao,
 \emph{IEEE Trans.\ Information Theory}, vol.~29, no.~2, pp.~198--208, 1983.
 
 \end{thebibliography}
+\fi
 
 \end{document}

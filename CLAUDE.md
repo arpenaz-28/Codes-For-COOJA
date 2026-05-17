@@ -39,8 +39,14 @@
 | `fig_auth.png` | `Diagrams/diagrams/Authentication phase+Datacomm - Anonymity.png` | Phase 2 — Authentication + Data Comm |
 | `fig_keyex.jpg` | `Diagrams/diagrams/Key_Exchange_Anonymity.jpg.jpeg` | Phase 3 — Key Exchange |
 | `fig_proverif.png` | `ProVerif-Security-Analysis/Revised_Anonymity_Proverif.png` | ProVerif terminal output |
+| `fig_sim_total.png` | `Results/Charts/Revised-vs-LAAKA-vs-Zhou/18_total_all_phases.png` | Sim — total all-phases (dual panel energy+CPU) |
+| `fig_sim_as_energy.png` | `Results/Charts/Authenticator_variation/01_as_variation_total_energy.png` | Sim — total energy vs active AS count |
+| `fig_sim_as_cpu.png` | `Results/Charts/Authenticator_variation/02_as_variation_total_time.png` | Sim — total CPU time vs active AS count |
+| `fig_sim_net_energy.png` | `Results/Charts/Network_variation/12_total_energy_grouped_bar.png` | Sim — total energy vs network size |
+| `fig_sim_net_cpu.png` | `Results/Charts/Network_variation/13_total_cpu_grouped_bar.png` | Sim — total CPU time vs network size |
 
 All phase figures are referenced with `\includegraphics[width=\columnwidth]{fig_*}` (single column).
+Simulation subfigure pairs use `\minipage[b]{0.48\columnwidth}` side-by-side layout.
 
 ## ProVerif analysis summary
 
@@ -82,4 +88,5 @@ All phase figures are referenced with `\includegraphics[width=\columnwidth]{fig_
 - When editing the `.tex` file, always check that float barriers are in place before any `\section{}` that follows a figure-heavy section.
 - The `\balance` package is loaded to equalize the two columns on the last page; call `\balance` just before `\section{Conclusion}` if needed.
 - Performance evaluation hardware: Raspberry Pi 3B+ (three nodes acting as D, AS, GW).
-- The comparison schemes in evaluation charts are: **Proposed** (this paper), **Base** (das2026comsnets), **Zhou** (zhou2021iot).
+- The comparison schemes in evaluation charts are: **Proposed** (this paper), **LAAKA** (das2026comsnets), **Zhou** (zhou2024auth).
+- **Zhou scheme implemented:** Xin Zhou et al., "Security-Enhanced Lightweight and Anonymity-Preserving User Authentication Scheme for IoT-Based Healthcare," IEEE IoT Journal, Vol. 11, No. 6, 2024. Source code in `Zhou-Scheme/`. **Distinct from** `zhou2021iot` (I. Zhou et al., IEEE Access 2021, IoT survey paper — used only in the Introduction as a general IoT reference).

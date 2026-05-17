@@ -53,12 +53,12 @@ ZHOU_SIZES = {
 
 SCHEME_CFG = {
     "RA": {
-        "source_dir":  os.path.join(REPO, "Revised-Anonymity", "Revised-Anonymity-20_79"),
+        "source_dir":  os.path.join(REPO, "Revised-Anonymity", "Src-20AS-79Dev"),
         "conf_dirs": {
-            20:  os.path.join(REPO, "Revised-Anonymity", "RA_2_17"),
-            50:  os.path.join(REPO, "Revised-Anonymity", "RA_5_44"),
-            80:  os.path.join(REPO, "Revised-Anonymity", "RA_8_71"),
-            100: os.path.join(REPO, "Revised-Anonymity", "RA_10_89"),
+            20:  os.path.join(REPO, "Revised-Anonymity", "NetVar-N20"),
+            50:  os.path.join(REPO, "Revised-Anonymity", "NetVar-N50"),
+            80:  os.path.join(REPO, "Revised-Anonymity", "NetVar-N80"),
+            100: os.path.join(REPO, "Revised-Anonymity", "NetVar-N100"),
         },
         "results_base": os.path.join(REPO, "Revised-Anonymity", "Simulation results", "network-variation"),
         "node_files":   ["gw-node.c", "as-node.c", "device-node.c"],
