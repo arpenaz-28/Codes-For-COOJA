@@ -1,41 +1,31 @@
-Scheme           , N_total, Phase         , Avg_Energy_mJ, CI95_Energy_mJ, Avg_CPU_s, CI95_CPU_s, N_devices
-Revised-Anonymity,      20, Enrollment    ,      310.5948,       204.6869,  5.027012,   3.312291,         2
-Revised-Anonymity,      20, Authentication,       11.2638,         1.4348,  0.182950,   0.023215,         2
-Revised-Anonymity,      20, Key Exchange  ,       10.0048,         1.2481,  0.162373,   0.020252,         2
-Revised-Anonymity,      20, Auth+KeyEx    ,       21.2686,         1.9017,  0.345323,   0.030807,         2
-Revised-Anonymity,      50, Enrollment    ,       18.0047,         0.4263,  0.292178,   0.006889,         5
-Revised-Anonymity,      50, Authentication,       13.7481,         1.3394,  0.223147,   0.021673,         5
-Revised-Anonymity,      50, Key Exchange  ,       11.1648,         1.4155,  0.181079,   0.022905,         5
-Revised-Anonymity,      50, Auth+KeyEx    ,       24.9129,         1.9488,  0.404226,   0.031533,         5
-Revised-Anonymity,      80, Enrollment    ,       23.1488,         0.7211,  0.375420,   0.011673,         8
-Revised-Anonymity,      80, Authentication,       17.7613,         0.4216,  0.288093,   0.006830,         8
-Revised-Anonymity,      80, Key Exchange  ,       12.7664,         0.9381,  0.207002,   0.015182,         8
-Revised-Anonymity,      80, Auth+KeyEx    ,       30.5277,         1.0285,  0.495095,   0.016648,         8
-Revised-Anonymity,     100, Enrollment    ,       23.2530,         0.9069,  0.377090,   0.014675,        10
-Revised-Anonymity,     100, Authentication,       16.7197,         0.5084,  0.271234,   0.008225,        10
-Revised-Anonymity,     100, Key Exchange  ,       11.9007,         0.9706,  0.192993,   0.015696,        10
-Revised-Anonymity,     100, Auth+KeyEx    ,       28.6204,         1.0957,  0.464227,   0.017720,        10
-LAAKA            ,      20, Enrollment    ,        3.2291,         0.3899,  0.052646,   0.006308,         2
-LAAKA            ,      20, Authentication,       32.1837,         1.4095,  0.522424,   0.022808,         2
-LAAKA            ,      20, Key Exchange  ,       23.9307,         1.0461,  0.388456,   0.016927,         2
-LAAKA            ,      20, Auth+KeyEx    ,       56.1144,         1.7553,  0.910880,   0.028403,         2
-LAAKA            ,      50, Enrollment    ,        4.7285,         0.6697,  0.076938,   0.010838,         5
-LAAKA            ,      50, Authentication,       32.4280,         1.2957,  0.526379,   0.020970,         5
-LAAKA            ,      50, Key Exchange  ,       23.8808,         1.1940,  0.387653,   0.019325,         5
-LAAKA            ,      50, Auth+KeyEx    ,       56.3088,         1.7620,  0.914032,   0.028517,         5
-LAAKA            ,      80, Enrollment    ,       11.1704,         1.1234,  0.181247,   0.018176,         8
-LAAKA            ,      80, Authentication,       46.2689,         0.9535,  0.750385,   0.015426,         8
-LAAKA            ,      80, Key Exchange  ,       34.7955,         0.9187,  0.564290,   0.014867,         8
-LAAKA            ,      80, Auth+KeyEx    ,       81.0644,         1.3241,  1.314675,   0.021424,         8
-LAAKA            ,     100, Enrollment    ,       10.7746,         1.0324,  0.174840,   0.016717,        10
-LAAKA            ,     100, Authentication,       45.2001,         0.4047,  0.733064,   0.006547,        10
-LAAKA            ,     100, Key Exchange  ,       33.8495,         0.2573,  0.548974,   0.004171,        10
-LAAKA            ,     100, Auth+KeyEx    ,       79.0496,         0.4796,  1.282038,   0.007763,        10
-Zhou             ,      20, Enrollment    ,      169.6798,        76.9197,  2.746848,   1.244805,         2
-Zhou             ,      20, Authentication,       25.1122,         2.9343,  0.407320,   0.047480,         1
-Zhou             ,      50, Enrollment    ,       18.9187,         1.2540,  0.307022,   0.020364,         5
-Zhou             ,      50, Authentication,      113.7456,       130.6925,  1.841711,   2.114943,         5
-Zhou             ,      80, Enrollment    ,       23.5474,         0.9493,  0.381942,   0.015384,         8
-Zhou             ,      80, Authentication,       98.8962,        67.1022,  1.601446,   1.085764,         8
-Zhou             ,     100, Enrollment    ,       22.5131,         0.6359,  0.365134,   0.010288,        10
-Zhou             ,     100, Authentication,       82.5567,        35.0668,  1.336966,   0.567423,        10
+Scheme,N_total,Phase,Avg_Energy_mJ,CI95_Energy_mJ,Avg_CPU_s,CI95_CPU_s,N_devices
+Proposed,50,Enrollment,18.0047,0.4263,0.292178,0.006889,5
+Proposed,50,Authentication,13.7481,1.3394,0.223147,0.021673,5
+Proposed,50,Key Exchange,11.1648,1.4155,0.181079,0.022905,5
+Proposed,50,Auth+KeyEx,24.9129,1.9488,0.404226,0.031533,5
+Proposed,80,Enrollment,23.1488,0.7211,0.375420,0.011673,8
+Proposed,80,Authentication,17.7613,0.4216,0.288093,0.006830,8
+Proposed,80,Key Exchange,12.7664,0.9381,0.207002,0.015182,8
+Proposed,80,Auth+KeyEx,30.5277,1.0285,0.495095,0.016648,8
+Proposed,100,Enrollment,23.2530,0.9069,0.377090,0.014675,10
+Proposed,100,Authentication,16.7197,0.5084,0.271234,0.008225,10
+Proposed,100,Key Exchange,11.9007,0.9706,0.192993,0.015696,10
+Proposed,100,Auth+KeyEx,28.6204,1.0957,0.464227,0.017720,10
+LAAKA,50,Enrollment,4.7285,0.6697,0.076938,0.010838,5
+LAAKA,50,Authentication,32.4280,1.2957,0.526379,0.020970,5
+LAAKA,50,Key Exchange,23.8808,1.1940,0.387653,0.019325,5
+LAAKA,50,Auth+KeyEx,56.3088,1.7620,0.914032,0.028517,5
+LAAKA,80,Enrollment,11.1704,1.1234,0.181247,0.018176,8
+LAAKA,80,Authentication,46.2689,0.9535,0.750385,0.015426,8
+LAAKA,80,Key Exchange,34.7955,0.9187,0.564290,0.014867,8
+LAAKA,80,Auth+KeyEx,81.0644,1.3241,1.314675,0.021424,8
+LAAKA,100,Enrollment,10.7746,1.0324,0.174840,0.016717,10
+LAAKA,100,Authentication,45.2001,0.4047,0.733064,0.006547,10
+LAAKA,100,Key Exchange,33.8495,0.2573,0.548974,0.004171,10
+LAAKA,100,Auth+KeyEx,79.0496,0.4796,1.282038,0.007763,10
+Zhou,50,Enrollment,18.9187,1.2540,0.307022,0.020364,5
+Zhou,50,Authentication,113.7456,130.6925,1.841711,2.114943,5
+Zhou,80,Enrollment,23.5474,0.9493,0.381942,0.015384,8
+Zhou,80,Authentication,98.8962,67.1022,1.601446,1.085764,8
+Zhou,100,Enrollment,22.5131,0.6359,0.365134,0.010288,10
+Zhou,100,Authentication,82.5567,35.0668,1.336966,0.567423,10

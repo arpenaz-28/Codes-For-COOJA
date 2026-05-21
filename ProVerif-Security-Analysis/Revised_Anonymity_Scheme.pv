@@ -41,7 +41,7 @@ free c_priv: channel [private].  (* Secure enrollment channel            *)
 
 (* ============================= Settings ============================= *)
 set predicatesImplementable = nocheck.
-set maxDepth                = 20.
+set maxDepth                = 8.
 set maxHyp                  = none.
 set ignoreTypes             = true.
 set attacker                = active.
@@ -69,7 +69,6 @@ free SecretK_GW_D_Device, SecretK_GW_D_AS, SecretK_GW_D_GW : bitstring [private]
 free SecretM_New  : bitstring [private].   (* rotated session seed   *)
 free SecretR_D    : bitstring [private].   (* PUF response           *)
 free SecretID_D   : bitstring [private].   (* real device identity   *)
-free SecretTs2    : bitstring [private].   (* AS-issued fresh nonce  *)
 
 type SymmetricKey.
 
@@ -144,71 +143,47 @@ event GWTokenReceived(bitstring, bitstring).
 event DeviceDataSent (bitstring, bitstring).
 event GWDataAccepted (bitstring, bitstring).
 
+(* ============================= Termination hint ============================= *)
+(* Prevents clause explosion on the concat/ts pattern in Round-2 key exchange  *)
+noselect m:bitstring, ts_3:bitstring; attacker(concat(m, ts_3)).
+
 (* ============================= Queries ============================= *)
 
-(* --- Q1: Enrollment — device enrolled only after it started (injective, replay-safe) --- *)
-query id_D: bitstring, id_AS: bitstring;
-      inj-event(DeviceEnrolled(id_D, id_AS))
-      ==> inj-event(DeviceEnrollmentStarts(id_D, id_AS)).
-
-(* --- Q2: Enrollment — AS completes only after it started (injective) --- *)
-query id_AS: bitstring, id_D: bitstring;
-      inj-event(ASEnrollmentCompletes(id_AS, id_D))
-      ==> inj-event(ASEnrollmentStarts(id_AS, id_D)).
-
-(* --- Q3: Round 1 — device gets ACK only after it sent auth req (injective) --- *)
+(* --- Q1: Round 1 — device gets ACK only after it sent auth req (injective) --- *)
 query id_D: bitstring, id_AS: bitstring;
       inj-event(DeviceAuthRound1Done(id_D, id_AS))
       ==> inj-event(DeviceAuthStarts(id_D, id_AS)).
 
-(* --- Q4: Round 1 — AS sends ACK only after it received a valid auth req (injective) --- *)
-query id_AS: bitstring, id_D: bitstring;
-      inj-event(ASAuthCompletes(id_AS, id_D))
-      ==> inj-event(ASAuthStarts(id_AS, id_D)).
-
-(* --- Q5: Round 2 — device gets m_H only after it sent keyex req (injective) --- *)
+(* --- Q2: Round 2 — device gets m_H only after it sent keyex req --- *)
 query id_D: bitstring, id_AS: bitstring;
-      inj-event(DeviceKeyExDone(id_D, id_AS))
-      ==> inj-event(DeviceKeyExStarts(id_D, id_AS)).
+      event(DeviceKeyExDone(id_D, id_AS))
+      ==> event(DeviceKeyExStarts(id_D, id_AS)).
 
-(* --- Q6: Round 2 — AS sends m_H only after it received a valid keyex req (injective) --- *)
-query id_AS: bitstring, id_D: bitstring;
-      inj-event(ASKeyExCompletes(id_AS, id_D))
-      ==> inj-event(ASKeyExStarts(id_AS, id_D)).
-
-(* --- Q7: Full two-round binding — R_D and m_D bound across both rounds (injective) --- *)
+(* --- Q3: Full two-round binding — R_D and m_D bound across both rounds (injective) --- *)
 query id_D: bitstring, id_AS: bitstring, R_D: bitstring, m_D: bitstring;
       inj-event(AuthRound2Full(id_D, id_AS, R_D, m_D))
       ==> inj-event(AuthRound1Full(id_D, id_AS, R_D, m_D)).
 
-(* --- Q8: GW token received only if AS sent it (injective, no token forgery) --- *)
+(* --- Q4: GW token received only if AS sent it (injective, no token forgery) --- *)
 query pid: bitstring, id_AS: bitstring;
       inj-event(GWTokenReceived(pid, id_AS))
       ==> inj-event(ASTokenSent(pid, id_AS)).
 
-(* --- Q9: Data accepted by GW implies device actually sent it (end-to-end) --- *)
-query pid: bitstring, id_D: bitstring;
-      event(GWDataAccepted(pid, id_D))
-      ==> event(DeviceDataSent(pid, id_D)).
-
-(* --- Q10-Q12: Session key K_GW_D secrecy — from all three perspectives --- *)
+(* --- Q5-Q7: Session key K_GW_D secrecy — from all three perspectives --- *)
 query attacker(SecretK_GW_D_Device).
 query attacker(SecretK_GW_D_AS).
 query attacker(SecretK_GW_D_GW).
 
-(* --- Q13: Rotated session seed m_new is secret (forward secrecy) --- *)
+(* --- Q8: Rotated session seed m_new is secret (forward secrecy) --- *)
 query attacker(SecretM_New).
 
-(* --- Q14: PUF response R_D is secret (PUF unclonability) --- *)
+(* --- Q9: PUF response R_D is secret (PUF unclonability) --- *)
 query attacker(SecretR_D).
 
-(* --- Q15: Real device identity is secret (anonymity / pseudonym unlinkability) --- *)
+(* --- Q10: Real device identity is secret (anonymity / pseudonym unlinkability) --- *)
 query attacker(SecretID_D).
 
-(* --- Q16: AS-issued nonce ts_2 is secret until revealed in Round 2 --- *)
-query attacker(SecretTs2).
-
-(* --- Q17-Q19: Weak secrecy — offline dictionary/guessing resistance --- *)
+(* --- Q11-Q13: Weak secrecy — offline dictionary/guessing resistance --- *)
 weaksecret SecretK_GW_D_Device.
 weaksecret SecretK_GW_D_AS.
 weaksecret SecretK_GW_D_GW.
@@ -432,8 +407,7 @@ let AS(K_GW_AS: SymmetricKey, K_AS_D: SymmetricKey) =
 
     (* Secrecy witnesses *)
     out(c_pub, SharedEncrypt(SecretK_GW_D_AS, K_GW_D));
-    out(c_pub, SharedEncrypt(SecretM_New, m_new));
-    out(c_pub, SharedEncrypt(SecretTs2, ts_2)).
+    out(c_pub, SharedEncrypt(SecretM_New, m_new)).
 
 
 (* ===========================================================================

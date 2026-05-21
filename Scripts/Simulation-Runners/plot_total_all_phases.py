@@ -21,18 +21,18 @@ os.makedirs(OUT_DIR, exist_ok=True)
 # Style — matches plot_network_variation.py charts 12 & 13
 # ─────────────────────────────────────────────────────────────────────────────
 _CHART_STYLE = {
-    "font.family":       "DejaVu Sans",
-    "font.size":         10,
-    "axes.titlesize":    12,
-    "axes.titleweight":  "normal",
-    "axes.labelsize":    10,
+    "font.family":       "Liberation Sans",
+    "font.size":         13,
+    "axes.titlesize":    16,
+    "axes.titleweight":  "bold",
+    "axes.labelsize":    17,
     "axes.spines.top":   False,
     "axes.spines.right": False,
     "axes.linewidth":    0.7,
-    "xtick.labelsize":   10,
-    "ytick.labelsize":   9,
+    "xtick.labelsize":   13,
+    "ytick.labelsize":   13,
     "xtick.major.size":  0,
-    "legend.fontsize":   9,
+    "legend.fontsize":   13,
     "legend.framealpha": 0.9,
     "legend.edgecolor":  "#cccccc",
     "grid.color":        "#e5e5e5",
@@ -109,24 +109,21 @@ RA  = {"en": stats(ra_en),  "cpu": stats(ra_cpu)}
 LK  = {"en": stats(lk_en),  "cpu": stats(lk_cpu)}
 ZH  = {"en": stats(zh_en),  "cpu": stats(zh_cpu)}
 
-schemes = ["Revised-\nAnonymity", "LAAKA", "Zhou"]
+schemes = ["Proposed", "LAAKA", "Zhou"]
 data    = [RA, LK, ZH]
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Figure: 1 row × 2 panels
 # ─────────────────────────────────────────────────────────────────────────────
 def _apply_axes_style(ax, ylabel, xlabel=None):
-    ax.set_ylabel(ylabel, labelpad=8)
+    ax.set_ylabel(ylabel, labelpad=8, fontsize=17, fontweight="bold")
     if xlabel:
-        ax.set_xlabel(xlabel, labelpad=8)
+        ax.set_xlabel(xlabel, labelpad=8, fontsize=17, fontweight="bold")
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
     ax.tick_params(axis="y", length=0)
     ax.spines["left"].set_color("#cccccc")
     ax.spines["bottom"].set_color("#cccccc")
-
-CI_PATCH = mpatches.Patch(facecolor="none", edgecolor="#888888",
-                           linewidth=1.0, label="Error bars = 95% CI")
 
 x = np.arange(len(schemes))
 w = 0.45
@@ -135,56 +132,41 @@ with plt.rc_context(_CHART_STYLE):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 7))
     fig.patch.set_facecolor("white")
     fig.suptitle(
-        "Per-Device Mean Total Cost — All 3 Phases\n"
-        "(Enrollment + Authentication + Key Exchange)   |   COOJA Simulation",
-        color="#222222", y=1.02,
+        "Per-Device Mean Total Cost — All 3 Phases",
+        color="#222222", fontsize=18, fontweight="bold", y=1.02,
     )
 
-    def draw_panel(ax, metric, ylabel, unit, decimals=2, note=None):
+    def draw_panel(ax, metric, ylabel, unit, decimals=2):
         vals = [d[metric][0] for d in data]
         cis  = [d[metric][1] for d in data]
-        ns   = [d[metric][2] for d in data]
 
         bars = ax.bar(x, vals, width=w, color=COLORS,
                       edgecolor="white", linewidth=0.8, alpha=0.88)
-        ax.errorbar(x, vals, yerr=cis, fmt="none", capsize=4,
-                    elinewidth=1.2, ecolor="#888888")
 
-        top = max(v + c for v, c in zip(vals, cis))
-        ax.set_ylim(0, top * 1.42)
+        top = max(vals)
+        ax.set_ylim(0, top * 1.45)
 
         fmt = f"{{:.{decimals}f}}"
-        for bar, v, ci_v in zip(bars, vals, cis):
+        for bar, v in zip(bars, vals):
             cx = bar.get_x() + bar.get_width() / 2
-            base = bar.get_height() + ci_v + top * 0.03
+            base = bar.get_height() + top * 0.04
             ax.text(cx, base,
                     fmt.format(v) + f" {unit}",
-                    ha="center", va="bottom", fontsize=10.5,
+                    ha="center", va="bottom", fontsize=16,
                     fontweight="bold", color="#222222")
-            ax.text(cx, base + top * 0.045,
-                    f"± {fmt.format(ci_v)} {unit}",
-                    ha="center", va="bottom", fontsize=8.5, color="#555555")
 
         ax.set_xticks(x)
-        ax.set_xticklabels(schemes)
+        ax.set_xticklabels(schemes, rotation=0, ha="center", fontsize=15)
         _apply_axes_style(ax, ylabel)
 
-        if note:
-            ax.text(0.5, -0.12, note, transform=ax.transAxes,
-                    ha="center", fontsize=8, color="#666666", style="italic")
+    draw_panel(ax1, "en",  "Per-Device Mean Total Energy (mJ)", "mJ", decimals=2)
+    draw_panel(ax2, "cpu", "Per-Device Mean Total CPU Time (s)", "s",  decimals=4)
 
-    draw_panel(ax1, "en",  "Per-Device Mean Total Energy (mJ)", "mJ", decimals=2,
-               note="Zhou: Enrollment + Auth energy  (Key Exchange is included in Auth)")
-    draw_panel(ax2, "cpu", "Per-Device Mean Total CPU Time (s)", "s", decimals=4,
-               note="Zhou CPU: Enrollment + Auth  (Key Exchange included in Auth phase)")
-
-    scheme_handles = [mpatches.Patch(color=c, alpha=0.88, label=s.replace("\n", "-"))
+    scheme_handles = [mpatches.Patch(color=c, alpha=0.88, label=s)
                       for c, s in zip(COLORS, schemes)]
-    scheme_handles.append(CI_PATCH)
-    fig.legend(handles=scheme_handles,
-               loc="lower center", bbox_to_anchor=(0.5, -0.07),
-               ncol=len(scheme_handles),
-               frameon=True, framealpha=0.92, edgecolor="#dddddd")
+    ax2.legend(handles=scheme_handles,
+               loc="upper right", frameon=True,
+               framealpha=0.85, edgecolor="#dddddd", fontsize=13)
 
     fig.tight_layout()
     out = os.path.join(OUT_DIR, "18_total_all_phases.png")
@@ -201,7 +183,7 @@ print("TOTAL COST — All 3 Phases  (mean ± 95% CI)")
 print("="*65)
 print(f"{'Scheme':<22} {'Energy (mJ)':>14}  {'± CI':>8}   {'CPU (s)':>10}  {'± CI':>8}   n")
 print("-"*65)
-for name, d in zip(["Revised-Anonymity", "LAAKA", "Zhou"], data):
+for name, d in zip(["Proposed", "LAAKA", "Zhou"], data):
     em, ec, en = d["en"]
     cm, cc, cn = d["cpu"]
     print(f"  {name:<20} {em:>14.2f}  {ec:>8.2f}   {cm:>10.4f}  {cc:>8.4f}   {en}")

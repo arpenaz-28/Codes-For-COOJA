@@ -23,13 +23,15 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import numpy as np
 
+matplotlib.rcParams["font.family"] = "Liberation Sans"
+
 # ─────────────────────────────────────────────────────────────────────────────
 REPO = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 
 SCHEMES = {
-    "RA":    os.path.join(REPO, "Revised-Anonymity", "Simulation results", "as-variation"),
-    "LAAKA": os.path.join(REPO, "LAAKA",             "Simulation results", "as-variation"),
-    "Zhou":  os.path.join(REPO, "Zhou-Scheme",        "Simulation results", "as-variation"),
+    "Proposed": os.path.join(REPO, "Revised-Anonymity", "Simulation results", "as-variation"),
+    "LAAKA":    os.path.join(REPO, "LAAKA",             "Simulation results", "as-variation"),
+    "Zhou":     os.path.join(REPO, "Zhou-Scheme",        "Simulation results", "as-variation"),
 }
 
 AS_COUNTS  = [2, 5, 10]
@@ -38,14 +40,14 @@ PHASES     = ["Enrollment", "Authentication", "Key Exchange"]
 
 # Colour palette consistent with compare_revised_laaka_zhou.py / plot_network_variation.py
 COLORS = {
-    "RA":    "#2C6FAC",   # deep steel blue
-    "LAAKA": "#B85C2C",   # muted terracotta
-    "Zhou":  "#3A7D44",   # muted forest green
+    "Proposed": "#2C6FAC",   # deep steel blue
+    "LAAKA":    "#B85C2C",   # muted terracotta
+    "Zhou":     "#3A7D44",   # muted forest green
 }
 HATCH = {
-    "RA":    "",
-    "LAAKA": "///",
-    "Zhou":  "xxx",
+    "Proposed": "",
+    "LAAKA":    "///",
+    "Zhou":     "xxx",
 }
 
 OUT_DEFAULT = os.path.join(REPO, "Results", "Charts", "Authenticator_variation")
@@ -192,19 +194,24 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
                     bar.get_height() + 0.01 * top_ref,
                     lbl,
                     ha="center", va="bottom",
-                    fontsize=7, color="#222",
+                    fontsize=14, color="#222",
                 )
 
     # Centre ticks on each group
     ax.set_xticks(x + offsets[n_schemes // 2] / 2)
-    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=11)
-    ax.set_xlabel("Number of Active Authentication Servers", fontsize=11)
-    ax.set_ylabel(f"{ylabel}{' (' + unit_label + ')' if unit_label else ''}", fontsize=11)
-    ax.set_title(title, fontsize=12, pad=10)
+    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=14)
+    ax.set_xlabel("Number of Active Authentication Servers", fontsize=17, fontweight="bold")
+    ax.set_ylabel(f"{ylabel}{' (' + unit_label + ')' if unit_label else ''}", fontsize=17, fontweight="bold")
+    ax.set_title(title, fontsize=16, fontweight="bold", pad=10)
     ax.yaxis.grid(True, linestyle="--", alpha=0.45, zorder=0)
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(fontsize=10, framealpha=0.85)
+    y_max = max(
+        data[s][n][metric_key] * unit_scale
+        for s in schemes for n in AS_COUNTS if n in data[s]
+    )
+    ax.set_ylim(0, y_max * 1.45)
+    ax.legend(fontsize=13, framealpha=0.85, loc="upper right")
     fig.tight_layout()
     save_fig(fig, out_path)
 
@@ -221,9 +228,9 @@ def stacked_bar_chart(data, metric_key_prefix, ci_key_prefix, ylabel, title, out
         "Key Exchange":   "#5BAA68",
     }
     phase_hatch = {
-        "RA":    {"Enrollment": "",    "Authentication": "",   "Key Exchange": ""},
-        "LAAKA": {"Enrollment": "///", "Authentication": "///","Key Exchange": "///"},
-        "Zhou":  {"Enrollment": "xxx", "Authentication": "xxx","Key Exchange": "xxx"},
+        "Proposed": {"Enrollment": "",    "Authentication": "",   "Key Exchange": ""},
+        "LAAKA":    {"Enrollment": "///", "Authentication": "///","Key Exchange": "///"},
+        "Zhou":     {"Enrollment": "xxx", "Authentication": "xxx","Key Exchange": "xxx"},
     }
 
     schemes   = [s for s in SCHEMES if any(n in data[s] for n in AS_COUNTS)]
@@ -268,14 +275,14 @@ def stacked_bar_chart(data, metric_key_prefix, ci_key_prefix, ylabel, title, out
             bottoms += phase_arr
 
     ax.set_xticks(x + (bar_width / 2) * (n_schemes - 1) / n_schemes * 0.5)
-    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=11)
-    ax.set_xlabel("Number of Active Authentication Servers", fontsize=11)
-    ax.set_ylabel(f"{ylabel}{' (' + unit_label + ')' if unit_label else ''}", fontsize=11)
-    ax.set_title(title, fontsize=12, pad=10)
+    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=14)
+    ax.set_xlabel("Number of Active Authentication Servers", fontsize=17, fontweight="bold")
+    ax.set_ylabel(f"{ylabel}{' (' + unit_label + ')' if unit_label else ''}", fontsize=17, fontweight="bold")
+    ax.set_title(title, fontsize=16, fontweight="bold", pad=10)
     ax.yaxis.grid(True, linestyle="--", alpha=0.45, zorder=0)
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(fontsize=8, framealpha=0.85, ncol=2, loc="upper right")
+    ax.legend(fontsize=11, framealpha=0.85, ncol=2, loc="upper right")
     fig.tight_layout()
     save_fig(fig, out_path)
 
@@ -329,8 +336,7 @@ def main():
         metric_key="total_energy_mj",
         ci_key="ci95_energy_mj",
         ylabel="Total Energy (all devices, all phases)",
-        title="Total Authentication Energy vs. Number of Active AS\n"
-              "(20 devices × Enrollment + Auth + Key Exchange)",
+        title="Total Authentication Energy vs. Number of Active AS",
         out_path=os.path.join(args.out, "01_as_variation_total_energy.png"),
         unit_label="mJ",
     )
@@ -341,8 +347,7 @@ def main():
         metric_key="total_cpu_s",
         ci_key="ci95_cpu_s",
         ylabel="Total CPU Time (all devices, all phases)",
-        title="Total Authentication CPU Time vs. Number of Active AS\n"
-              "(20 devices × Enrollment + Auth + Key Exchange)",
+        title="Total Authentication CPU Time vs. Number of Active AS",
         out_path=os.path.join(args.out, "02_as_variation_total_time.png"),
         unit_label="s",
     )
@@ -402,19 +407,17 @@ def _plot_per_device_line(data, out_dir):
             errs_arr = np.array(errs)
             ax.plot(xs_arr, ys_arr, marker="o", label=scheme,
                     color=COLORS[scheme], linewidth=1.8)
-            ax.fill_between(xs_arr, ys_arr - errs_arr, ys_arr + errs_arr,
-                            alpha=0.18, color=COLORS[scheme])
 
-        ax.set_xlabel("Number of Active Authentication Servers", fontsize=10)
-        ax.set_ylabel(ylabel, fontsize=10)
+        ax.set_xlabel("Number of Active Authentication Servers", fontsize=17, fontweight="bold")
+        ax.set_ylabel(ylabel, fontsize=17, fontweight="bold")
         ax.set_xticks(AS_COUNTS)
         ax.yaxis.grid(True, linestyle="--", alpha=0.45)
         ax.set_axisbelow(True)
         ax.spines[["top", "right"]].set_visible(False)
-        ax.legend(fontsize=9)
+        ax.legend(fontsize=12)
 
-    axes[0].set_title("Per-Device Energy vs. Active AS Count", fontsize=11)
-    axes[1].set_title("Per-Device CPU Time vs. Active AS Count", fontsize=11)
+    axes[0].set_title("Per-Device Energy vs. Active AS Count", fontsize=16, fontweight="bold")
+    axes[1].set_title("Per-Device CPU Time vs. Active AS Count", fontsize=16, fontweight="bold")
     fig.tight_layout()
     save_fig(fig, os.path.join(out_dir, "05_as_variation_per_device_line.png"))
 

@@ -32,42 +32,42 @@ import numpy as np
 # ─────────────────────────────────────────────────────────────────────────────
 REPO     = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 OUT_DIR  = os.path.join(REPO, "Results", "Charts", "Network_variation")
-SIZES    = [20, 50, 80, 100]
+SIZES    = [50, 80, 100]
 
 RESULTS = {
-    "Revised-Anonymity": os.path.join(REPO, "Revised-Anonymity",
-                                      "Simulation results", "network-variation"),
-    "LAAKA":             os.path.join(REPO, "LAAKA",
-                                      "Simulation results", "network-variation"),
-    "Zhou":              os.path.join(REPO, "Zhou-Scheme",
-                                      "Simulation results", "network-variation"),
+    "Proposed": os.path.join(REPO, "Revised-Anonymity",
+                             "Simulation results", "network-variation"),
+    "LAAKA":    os.path.join(REPO, "LAAKA",
+                             "Simulation results", "network-variation"),
+    "Zhou":     os.path.join(REPO, "Zhou-Scheme",
+                             "Simulation results", "network-variation"),
 }
 
 SCHEME_COLORS = {
-    "Revised-Anonymity": "#2C6FAC",   # deep steel blue
-    "LAAKA":             "#B85C2C",   # muted terracotta
-    "Zhou":              "#3A7D44",   # muted forest green
+    "Proposed": "#2C6FAC",   # deep steel blue
+    "LAAKA":    "#B85C2C",   # muted terracotta
+    "Zhou":     "#3A7D44",   # muted forest green
 }
 SCHEME_MARKERS = {
-    "Revised-Anonymity": "o",
-    "LAAKA":             "s",
-    "Zhou":              "^",
+    "Proposed": "o",
+    "LAAKA":    "s",
+    "Zhou":     "^",
 }
 
 # Global aesthetic style applied to both charts
 _CHART_STYLE = {
-    "font.family":        "DejaVu Sans",
-    "font.size":          10,
-    "axes.titlesize":     12,
-    "axes.titleweight":   "normal",
-    "axes.labelsize":     10,
+    "font.family":        "Liberation Sans",
+    "font.size":          13,
+    "axes.titlesize":     16,
+    "axes.titleweight":   "bold",
+    "axes.labelsize":     17,
     "axes.spines.top":    False,
     "axes.spines.right":  False,
     "axes.linewidth":     0.7,
-    "xtick.labelsize":    10,
-    "ytick.labelsize":    9,
+    "xtick.labelsize":    13,
+    "ytick.labelsize":    13,
     "xtick.major.size":   0,
-    "legend.fontsize":    9,
+    "legend.fontsize":    13,
     "legend.framealpha":  0.9,
     "legend.edgecolor":   "#cccccc",
     "grid.color":         "#e5e5e5",
@@ -141,12 +141,12 @@ def build_series(phase_name, metric):
 # ─────────────────────────────────────────────────────────name = "Energy"───────
 # ─────────────────────────────────────────────────────────────────────────────
 def _apply_style(ax, xlabel, ylabel, title):
-    ax.set_xlabel(xlabel, fontsize=12)
-    ax.set_ylabel(ylabel, fontsize=12)
-    ax.set_title(title, fontsize=13, fontweight="bold")
+    ax.set_xlabel(xlabel, fontsize=17, fontweight="bold")
+    ax.set_ylabel(ylabel, fontsize=17, fontweight="bold")
+    ax.set_title(title, fontsize=16, fontweight="bold")
     ax.yaxis.grid(True, linestyle="--", alpha=0.5)
     ax.set_axisbelow(True)
-    ax.legend(fontsize=10)
+    ax.legend(fontsize=13)
     ax.set_xticks(SIZES)
 
 
@@ -334,7 +334,7 @@ def _grouped_bar(metric, ylabel, title, out_path, show=False):
                     ax.text(offset, val + max(all_totals + [1]) * 0.012,
                             f"{val:.0f}" if metric == "avg_energy" else f"{val:.1f}",
                             ha="center", va="bottom",
-                            fontsize=7.5, color="#555555")
+                            fontsize=14, color="#555555")
 
         ax.set_xticks(x)
         ax.set_xticklabels([f"N = {n}" for n in SIZES])
