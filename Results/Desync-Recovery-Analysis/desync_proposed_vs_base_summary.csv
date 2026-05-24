@@ -1,5 +1,7 @@
-Scheme,Cycle,Energy_mJ,CPU_s,Overhead_Energy_mJ,Overhead_CPU_s,Overhead_pct
-Proposed (with recovery),Normal,28.8732,0.468324,0,0,0
-Proposed (with recovery),Post-loss,28.8732,0.468324,0.0000,0.000000,0.0
-Base scheme (no recovery),Normal,77.9697,1.264528,0,0,0
-Base scheme (no recovery),Post-loss,91.2185,1.479401,13.2488,0.214873,17.0
+Scheme,Session_type,Phases_included,Energy_mJ,CPU_s,Note
+Proposed,Pre-loss,Enrol+Auth+KeyEx,52.2081,0.846757,Normal first session
+Proposed,Post-loss,Auth+KeyEx,28.8732,0.468324,Dual-state recovery; no re-enrol
+Proposed,Overhead,Auth+KeyEx,28.8732,0.468324,Extra session cost per desync event
+Base,Pre-loss,Enrol+Auth+KeyEx,91.2185,1.479401,Normal first session
+Base,Post-loss,Enrol+Auth+KeyEx,91.2185,1.479401,Forced re-enrol after nonce mismatch
+Base,Overhead,Enrol+Auth+KeyEx,91.2185,1.479401,Extra session cost per desync event
