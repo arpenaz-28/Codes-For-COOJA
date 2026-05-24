@@ -1,0 +1,5 @@
+Scheme,Cycle,Energy_mJ,CPU_s,Overhead_Energy_mJ,Overhead_CPU_s,Overhead_pct
+Proposed (with recovery),Normal,28.8732,0.468324,0,0,0
+Proposed (with recovery),Post-loss,28.8732,0.468324,0.0000,0.000000,0.0
+Base scheme (no recovery),Normal,77.9697,1.264528,0,0,0
+Base scheme (no recovery),Post-loss,91.2185,1.479401,13.2488,0.214873,17.0
