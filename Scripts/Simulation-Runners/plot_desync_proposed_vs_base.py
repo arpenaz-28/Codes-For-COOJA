@@ -168,7 +168,7 @@ def make_chart(data, metric, ylabel, title, filename):
                            hatch=H_AFTER,  linewidth=1.5,
                            label="Base — After loss\n(Enrol + Auth + Key Exchange)"),
         ]
-        ax.legend(handles=legend_handles, loc="upper right",
+        ax.legend(handles=legend_handles, loc="upper left",
                   fontsize=12, framealpha=0.88,
                   edgecolor="#dddddd", handlelength=2.0, handleheight=1.4)
 
