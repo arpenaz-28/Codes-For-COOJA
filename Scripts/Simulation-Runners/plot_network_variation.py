@@ -53,21 +53,26 @@ SCHEME_MARKERS = {
     "LAAKA":    "s",
     "Zhou":     "^",
 }
+SCHEME_HATCHES = {
+    "Proposed": "///",
+    "LAAKA":    "\\\\",
+    "Zhou":     "xxx",
+}
 
 # Global aesthetic style applied to both charts
 _CHART_STYLE = {
     "font.family":        "Liberation Sans",
-    "font.size":          13,
-    "axes.titlesize":     16,
+    "font.size":          15,
+    "axes.titlesize":     18,
     "axes.titleweight":   "bold",
-    "axes.labelsize":     17,
+    "axes.labelsize":     19,
     "axes.spines.top":    False,
     "axes.spines.right":  False,
     "axes.linewidth":     0.7,
-    "xtick.labelsize":    13,
-    "ytick.labelsize":    13,
+    "xtick.labelsize":    15,
+    "ytick.labelsize":    15,
     "xtick.major.size":   0,
-    "legend.fontsize":    13,
+    "legend.fontsize":    15,
     "legend.framealpha":  0.9,
     "legend.edgecolor":   "#cccccc",
     "grid.color":         "#e5e5e5",
@@ -141,12 +146,12 @@ def build_series(phase_name, metric):
 # ─────────────────────────────────────────────────────────name = "Energy"───────
 # ─────────────────────────────────────────────────────────────────────────────
 def _apply_style(ax, xlabel, ylabel, title):
-    ax.set_xlabel(xlabel, fontsize=17, fontweight="bold")
-    ax.set_ylabel(ylabel, fontsize=17, fontweight="bold")
-    ax.set_title(title, fontsize=16, fontweight="bold")
+    ax.set_xlabel(xlabel, fontsize=19, fontweight="bold")
+    ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
+    ax.set_title(title, fontsize=18, fontweight="bold")
     ax.yaxis.grid(True, linestyle="--", alpha=0.5)
     ax.set_axisbelow(True)
-    ax.legend(fontsize=13)
+    ax.legend(fontsize=15)
     ax.set_xticks(SIZES)
 
 
@@ -191,19 +196,20 @@ def grouped_bar_chart(phases, metric, ylabel, title, out_path, show=False):
                        for n in xs]
             ax.bar(offsets, ys, width, yerr=errs, capsize=4,
                    label=f"{scheme} – {PHASE_LABELS.get(phase, phase)}",
-                   color=SCHEME_COLORS[scheme],
-                   alpha=0.6 + 0.15 * pi,
-                   edgecolor="black", linewidth=0.5)
+                   facecolor="none",
+                   edgecolor=SCHEME_COLORS[scheme],
+                   hatch=SCHEME_HATCHES[scheme],
+                   linewidth=1.2)
             idx += 1
 
     ax.set_xticks(x)
     ax.set_xticklabels([f"N={n}" for n in SIZES])
-    ax.set_xlabel("Total Network Nodes", fontsize=12)
-    ax.set_ylabel(ylabel, fontsize=12)
-    ax.set_title(title, fontsize=13, fontweight="bold")
+    ax.set_xlabel("Total Network Nodes", fontsize=14)
+    ax.set_ylabel(ylabel, fontsize=14)
+    ax.set_title(title, fontsize=15, fontweight="bold")
     ax.yaxis.grid(True, linestyle="--", alpha=0.5)
     ax.set_axisbelow(True)
-    ax.legend(fontsize=7, ncol=3)
+    ax.legend(fontsize=10, ncol=3)
     fig.tight_layout()
     fig.savefig(out_path, dpi=150, bbox_inches="tight")
     if show:
@@ -255,23 +261,23 @@ def combined_energy_line_chart(out_path, show=False):
                         linewidth=2, markersize=7, capsize=4,
                         alpha=0.9)
 
-    ax.set_xlabel("Total Network Nodes", fontsize=12)
-    ax.set_ylabel("Average Energy per Device (mJ)", fontsize=12)
+    ax.set_xlabel("Total Network Nodes", fontsize=14)
+    ax.set_ylabel("Average Energy per Device (mJ)", fontsize=14)
     ax.set_title("Energy Consumption vs Network Size\nAll Schemes · All Phases",
-                 fontsize=13, fontweight="bold")
+                 fontsize=15, fontweight="bold")
     ax.set_xticks(SIZES)
     ax.yaxis.grid(True, linestyle="--", alpha=0.5)
     ax.set_axisbelow(True)
 
     # Two-column legend: schemes as colour, phases as line style
     handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles, labels, fontsize=9, ncol=2,
+    ax.legend(handles, labels, fontsize=11, ncol=2,
               loc="upper left", framealpha=0.85)
 
     # Annotation explaining Zhou's missing Key Exchange
     ax.annotate("† Zhou scheme has no separate\n  Key Exchange phase",
                 xy=(0.99, 0.02), xycoords="axes fraction",
-                ha="right", va="bottom", fontsize=8,
+                ha="right", va="bottom", fontsize=10,
                 color="#4CAF50",
                 bbox=dict(boxstyle="round,pad=0.3", fc="white", alpha=0.7))
 
@@ -325,8 +331,10 @@ def _grouped_bar(metric, ylabel, title, out_path, show=False):
             color = SCHEME_COLORS[scheme]
             bars  = ax.bar(offsets, bar_totals, width,
                            label=scheme,
-                           color=color, alpha=0.88,
-                           edgecolor="white", linewidth=0.8)
+                           facecolor="none",
+                           edgecolor=color,
+                           hatch=SCHEME_HATCHES[scheme],
+                           linewidth=1.5)
 
             # value labels on top of each bar
             for offset, val in zip(offsets, bar_totals):
@@ -334,7 +342,7 @@ def _grouped_bar(metric, ylabel, title, out_path, show=False):
                     ax.text(offset, val + max(all_totals + [1]) * 0.012,
                             f"{val:.0f}" if metric == "avg_energy" else f"{val:.1f}",
                             ha="center", va="bottom",
-                            fontsize=14, color="#555555")
+                            fontsize=16, color="#555555")
 
         ax.set_xticks(x)
         ax.set_xticklabels([f"N = {n}" for n in SIZES])
@@ -370,7 +378,7 @@ def _grouped_bar(metric, ylabel, title, out_path, show=False):
 def total_energy_grouped_bar(out_path, show=False):
     _grouped_bar(
         "avg_energy",
-        "Total Energy — All Devices (mJ)",
+        "Total Energy — All Devices",
         "Total Energy Consumption vs Network Size",
         out_path, show,
     )
@@ -379,7 +387,7 @@ def total_energy_grouped_bar(out_path, show=False):
 def total_cpu_grouped_bar(out_path, show=False):
     _grouped_bar(
         "avg_cpu",
-        "Total CPU Time — All Devices (s)",
+        "Total CPU Time — All Devices",
         "Total CPU Time vs Network Size",
         out_path, show,
     )

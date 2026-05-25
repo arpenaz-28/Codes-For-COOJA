@@ -905,7 +905,8 @@ A simulation-based performance evaluation has been conducted to detect the effic
 the proposed authentication scheme using the COOJA simulator within the Contiki-NG
 framework. Three complementary studies are reported: (i)~an overall per-device comparison
 of the proposed scheme against LAAKA~\cite{ali2024laaka} and Zhou~\cite{zhou2024auth} in
-a fixed 20-node network; (ii)~an authentication server (AS) pool-size study that varies
+a fixed 100-node network comprising 1 gateway, 79 AS nodes (2 active), and 20 newly joined
+devices; (ii)~an authentication server (AS) pool-size study that varies
 the number of active AS nodes from 2 to 10; and (iii)~a network scalability study that
 grows the total node count from 50 to 100. All results are averaged over five independent
 random seeds. Table~\ref{tab:simparams} elaborates the common simulation parameters.
@@ -922,7 +923,7 @@ random seeds. Table~\ref{tab:simparams} elaborates the common simulation paramet
     \midrule
     Simulator          & COOJA (Contiki-NG) \\
     Mote type          & TelosB (emulated) \\
-    Devices (fixed)    & 20 IoT device nodes \\
+    Network topology (study~i) & 100 nodes: 1 GW, 79 AS (2 active), 20 devices \\
     Phases measured    & Enrolment, Authentication, Key Exchange \\
     Schemes compared   & Proposed scheme, LAAKA~\cite{ali2024laaka}, Zhou~\cite{zhou2024auth} \\
     Active AS (study~ii) & 2, 5, 10 \\
@@ -936,7 +937,8 @@ random seeds. Table~\ref{tab:simparams} elaborates the common simulation paramet
 
 Initially, the authentication schemes are evaluated by considering the overhead of one
 complete authentication cycle — enrolment, authentication, and key exchange — per device.
-For 20 newly joined nodes in the fixed network, the proposed scheme demonstrated a
+For 20 newly joined nodes in a fixed 100-node network (1 gateway, 79 AS nodes with 2 active,
+and 20 newly joined devices), the proposed scheme demonstrated a
 consistent advantage over LAAKA~\cite{ali2024laaka} and Zhou~\cite{zhou2024auth} by
 achieving a reduction of 42.8\,\% and 34.6\,\% with respect to total per-device energy
 consumption (Figure~\ref{fig:sim_total}a), respectively. Similarly, a reduction of

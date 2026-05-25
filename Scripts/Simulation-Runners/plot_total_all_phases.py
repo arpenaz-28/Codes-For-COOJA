@@ -22,24 +22,25 @@ os.makedirs(OUT_DIR, exist_ok=True)
 # ─────────────────────────────────────────────────────────────────────────────
 _CHART_STYLE = {
     "font.family":       "Liberation Sans",
-    "font.size":         13,
-    "axes.titlesize":    16,
+    "font.size":         15,
+    "axes.titlesize":    18,
     "axes.titleweight":  "bold",
-    "axes.labelsize":    17,
+    "axes.labelsize":    19,
     "axes.spines.top":   False,
     "axes.spines.right": False,
     "axes.linewidth":    0.7,
-    "xtick.labelsize":   13,
-    "ytick.labelsize":   13,
+    "xtick.labelsize":   15,
+    "ytick.labelsize":   15,
     "xtick.major.size":  0,
-    "legend.fontsize":   13,
+    "legend.fontsize":   15,
     "legend.framealpha": 0.9,
     "legend.edgecolor":  "#cccccc",
     "grid.color":        "#e5e5e5",
     "grid.linewidth":    0.6,
 }
 
-COLORS  = ["#2C6FAC", "#B85C2C", "#3A7D44"]   # muted steel blue, terracotta, forest green
+COLORS   = ["#2C6FAC", "#B85C2C", "#3A7D44"]   # muted steel blue, terracotta, forest green
+HATCHES  = ["///", "\\\\", "xxx"]
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Helpers
@@ -116,9 +117,9 @@ data    = [RA, LK, ZH]
 # Figure: 1 row × 2 panels
 # ─────────────────────────────────────────────────────────────────────────────
 def _apply_axes_style(ax, ylabel, xlabel=None):
-    ax.set_ylabel(ylabel, labelpad=8, fontsize=17, fontweight="bold")
+    ax.set_ylabel(ylabel, labelpad=16, fontsize=22, fontweight="bold")
     if xlabel:
-        ax.set_xlabel(xlabel, labelpad=8, fontsize=17, fontweight="bold")
+        ax.set_xlabel(xlabel, labelpad=16, fontsize=22, fontweight="bold")
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
     ax.tick_params(axis="y", length=0)
@@ -129,46 +130,46 @@ x = np.arange(len(schemes))
 w = 0.45
 
 with plt.rc_context(_CHART_STYLE):
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 7))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7))
     fig.patch.set_facecolor("white")
     fig.suptitle(
         "Per-Device Mean Total Cost — All 3 Phases",
-        color="#222222", fontsize=18, fontweight="bold", y=1.02,
+        color="#222222", fontsize=26, fontweight="bold",
     )
 
     def draw_panel(ax, metric, ylabel, unit, decimals=2):
         vals = [d[metric][0] for d in data]
         cis  = [d[metric][1] for d in data]
 
-        bars = ax.bar(x, vals, width=w, color=COLORS,
-                      edgecolor="white", linewidth=0.8, alpha=0.88)
-
         top = max(vals)
         ax.set_ylim(0, top * 1.45)
 
         fmt = f"{{:.{decimals}f}}"
-        for bar, v in zip(bars, vals):
-            cx = bar.get_x() + bar.get_width() / 2
-            base = bar.get_height() + top * 0.04
+        for xi, (v, color, hatch) in enumerate(zip(vals, COLORS, HATCHES)):
+            b = ax.bar(x[xi], v, width=w,
+                       facecolor="none", edgecolor=color,
+                       hatch=hatch, linewidth=1.5)
+            cx = b[0].get_x() + b[0].get_width() / 2
+            base = b[0].get_height() + top * 0.04
             ax.text(cx, base,
                     fmt.format(v) + f" {unit}",
-                    ha="center", va="bottom", fontsize=16,
+                    ha="center", va="bottom", fontsize=18,
                     fontweight="bold", color="#222222")
 
         ax.set_xticks(x)
-        ax.set_xticklabels(schemes, rotation=0, ha="center", fontsize=15)
+        ax.set_xticklabels(schemes, rotation=0, ha="center", fontsize=17)
         _apply_axes_style(ax, ylabel)
 
-    draw_panel(ax1, "en",  "Per-Device Mean Total Energy (mJ)", "mJ", decimals=2)
-    draw_panel(ax2, "cpu", "Per-Device Mean Total CPU Time (s)", "s",  decimals=4)
+    draw_panel(ax1, "en",  "Per-Device Mean Total Energy", "mJ", decimals=2)
+    draw_panel(ax2, "cpu", "Per-Device Mean Total CPU Time", "s",  decimals=4)
 
-    scheme_handles = [mpatches.Patch(color=c, alpha=0.88, label=s)
-                      for c, s in zip(COLORS, schemes)]
+    scheme_handles = [mpatches.Patch(facecolor="none", edgecolor=c, hatch=h, label=s)
+                      for c, h, s in zip(COLORS, HATCHES, schemes)]
     ax2.legend(handles=scheme_handles,
                loc="upper right", frameon=True,
-               framealpha=0.85, edgecolor="#dddddd", fontsize=13)
+               framealpha=0.85, edgecolor="#dddddd", fontsize=15)
 
-    fig.tight_layout()
+    fig.tight_layout(rect=[0, 0, 1, 0.93])
     out = os.path.join(OUT_DIR, "18_total_all_phases.png")
     fig.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
     plt.close(fig)

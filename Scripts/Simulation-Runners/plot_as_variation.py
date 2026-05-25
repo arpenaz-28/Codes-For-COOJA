@@ -45,8 +45,8 @@ COLORS = {
     "Zhou":     "#3A7D44",   # muted forest green
 }
 HATCH = {
-    "Proposed": "",
-    "LAAKA":    "///",
+    "Proposed": "///",
+    "LAAKA":    "\\\\",
     "Zhou":     "xxx",
 }
 
@@ -176,10 +176,10 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
             x + offsets[i], vals,
             width=bar_width,
             label=scheme,
-            color=COLORS[scheme],
+            facecolor="none",
+            edgecolor=COLORS[scheme],
             hatch=HATCH[scheme],
-            edgecolor="white",
-            linewidth=0.6,
+            linewidth=1.5,
             zorder=3,
         )
 
@@ -194,15 +194,15 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
                     bar.get_height() + 0.01 * top_ref,
                     lbl,
                     ha="center", va="bottom",
-                    fontsize=14, color="#222",
+                    fontsize=16, color="#222",
                 )
 
     # Centre ticks on each group
     ax.set_xticks(x + offsets[n_schemes // 2] / 2)
-    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=14)
-    ax.set_xlabel("Number of Active Authentication Servers", fontsize=17, fontweight="bold")
-    ax.set_ylabel(f"{ylabel}{' (' + unit_label + ')' if unit_label else ''}", fontsize=17, fontweight="bold")
-    ax.set_title(title, fontsize=16, fontweight="bold", pad=10)
+    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=16)
+    ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="bold")
+    ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
+    ax.set_title(title, fontsize=18, fontweight="bold", pad=10)
     ax.yaxis.grid(True, linestyle="--", alpha=0.45, zorder=0)
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
@@ -211,7 +211,7 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
         for s in schemes for n in AS_COUNTS if n in data[s]
     )
     ax.set_ylim(0, y_max * 1.45)
-    ax.legend(fontsize=13, framealpha=0.85, loc="upper right")
+    ax.legend(fontsize=15, framealpha=0.85, loc="upper right")
     fig.tight_layout()
     save_fig(fig, out_path)
 
@@ -265,24 +265,23 @@ def stacked_bar_chart(data, metric_key_prefix, ci_key_prefix, ylabel, title, out
                 width=bar_width,
                 bottom=bottoms,
                 label=f"{scheme} – {phase}",
-                color=phase_colors[phase],
+                facecolor="none",
+                edgecolor=phase_colors[phase],
                 hatch=phase_hatch[scheme][phase],
-                edgecolor="white",
-                linewidth=0.5,
-                alpha=0.88,
+                linewidth=1.0,
                 zorder=3,
             )
             bottoms += phase_arr
 
     ax.set_xticks(x + (bar_width / 2) * (n_schemes - 1) / n_schemes * 0.5)
-    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=14)
-    ax.set_xlabel("Number of Active Authentication Servers", fontsize=17, fontweight="bold")
-    ax.set_ylabel(f"{ylabel}{' (' + unit_label + ')' if unit_label else ''}", fontsize=17, fontweight="bold")
-    ax.set_title(title, fontsize=16, fontweight="bold", pad=10)
+    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=16)
+    ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="bold")
+    ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
+    ax.set_title(title, fontsize=18, fontweight="bold", pad=10)
     ax.yaxis.grid(True, linestyle="--", alpha=0.45, zorder=0)
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(fontsize=11, framealpha=0.85, ncol=2, loc="upper right")
+    ax.legend(fontsize=13, framealpha=0.85, ncol=2, loc="upper right")
     fig.tight_layout()
     save_fig(fig, out_path)
 
@@ -335,7 +334,7 @@ def main():
         data,
         metric_key="total_energy_mj",
         ci_key="ci95_energy_mj",
-        ylabel="Total Energy (all devices, all phases)",
+        ylabel="Total Energy",
         title="Total Authentication Energy vs. Number of Active AS",
         out_path=os.path.join(args.out, "01_as_variation_total_energy.png"),
         unit_label="mJ",
@@ -346,7 +345,7 @@ def main():
         data,
         metric_key="total_cpu_s",
         ci_key="ci95_cpu_s",
-        ylabel="Total CPU Time (all devices, all phases)",
+        ylabel="Total CPU Time",
         title="Total Authentication CPU Time vs. Number of Active AS",
         out_path=os.path.join(args.out, "02_as_variation_total_time.png"),
         unit_label="s",
@@ -357,7 +356,7 @@ def main():
         data,
         metric_key_prefix="energy",
         ci_key_prefix="energy",
-        ylabel="Total Energy (all devices)",
+        ylabel="Total Energy",
         title="Per-Phase Energy Breakdown vs. Number of Active AS",
         out_path=os.path.join(args.out, "03_as_variation_stacked_energy.png"),
         unit_label="mJ",
@@ -368,7 +367,7 @@ def main():
         data,
         metric_key_prefix="cpu",
         ci_key_prefix="cpu",
-        ylabel="Total CPU Time (all devices)",
+        ylabel="Total CPU Time",
         title="Per-Phase CPU Time Breakdown vs. Number of Active AS",
         out_path=os.path.join(args.out, "04_as_variation_stacked_time.png"),
         unit_label="s",
@@ -387,9 +386,9 @@ def _plot_per_device_line(data, out_dir):
     """Line chart: avg per-device total cost vs AS count, with shaded CI band."""
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.5))
     metrics = [
-        ("total_energy_mj", "ci95_energy_mj", "Avg Per-Device Total Energy (mJ)",
+        ("total_energy_mj", "ci95_energy_mj", "Avg Per-Device Total Energy",
          "Energy"),
-        ("total_cpu_s",     "ci95_cpu_s",     "Avg Per-Device Total CPU Time (s)",
+        ("total_cpu_s",     "ci95_cpu_s",     "Avg Per-Device Total CPU Time",
          "CPU Time"),
     ]
     for ax, (mk, ck, ylabel, _) in zip(axes, metrics):
@@ -408,16 +407,16 @@ def _plot_per_device_line(data, out_dir):
             ax.plot(xs_arr, ys_arr, marker="o", label=scheme,
                     color=COLORS[scheme], linewidth=1.8)
 
-        ax.set_xlabel("Number of Active Authentication Servers", fontsize=17, fontweight="bold")
-        ax.set_ylabel(ylabel, fontsize=17, fontweight="bold")
+        ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="bold")
+        ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
         ax.set_xticks(AS_COUNTS)
         ax.yaxis.grid(True, linestyle="--", alpha=0.45)
         ax.set_axisbelow(True)
         ax.spines[["top", "right"]].set_visible(False)
-        ax.legend(fontsize=12)
+        ax.legend(fontsize=14)
 
-    axes[0].set_title("Per-Device Energy vs. Active AS Count", fontsize=16, fontweight="bold")
-    axes[1].set_title("Per-Device CPU Time vs. Active AS Count", fontsize=16, fontweight="bold")
+    axes[0].set_title("Per-Device Energy vs. Active AS Count", fontsize=18, fontweight="bold")
+    axes[1].set_title("Per-Device CPU Time vs. Active AS Count", fontsize=18, fontweight="bold")
     fig.tight_layout()
     save_fig(fig, os.path.join(out_dir, "05_as_variation_per_device_line.png"))
 

@@ -1,16 +1,18 @@
 /* ==========================================================================
- * device-node.c  —  Desync Demonstration Device Node
+ * device-node.c  —  Desync Demonstration Device Node (Base Scheme)
  *
- * Demonstrates the dual-state storage (PID_curr/PID_old, m_curr/m_old)
- * desynchronization recovery mechanism in the Anonymity-Extended scheme.
+ * Demonstrates the LACK of desynchronization recovery in the base scheme
+ * (single-state only — no dual-state storage).
  *
  * Protocol rounds:
+ *   Round 0: Enrollment (reg step-0 + reg step-1) with AS
  *   Round 1: Normal auth → success (both sides in sync)
- *   Round 2: Auth sent, AS processes & rotates → device DROPS the reply
- *            → AS advanced to new state, device stuck on old = DESYNC
- *   Round 3: Device retries with OLD PID/mask → AS matches PID_old
- *            → Desync recovery succeeds → both sides re-synced
- *   Round 4: Normal auth with new synced state → confirms recovery
+ *   Round 2: Auth sent, AS processes & advances M_d → device DROPS the reply
+ *            → AS has new M_d, device stuck on old M_d = DESYNC
+ *   Round 3: Device retries with OLD M_d → AS hash mismatch → auth FAILS
+ *            → Device detects failure → RE-ENROLLS → retries auth
+ *            → TOTAL energy of Round 3 = re-enroll + auth costs
+ *   Round 4: Normal auth post-recovery → confirms system re-synced
  * ========================================================================== */
 
 #include <stdio.h>
@@ -29,9 +31,9 @@
 #include "sys/energest.h"
 
 /* --------------------------------------------------------------------------
- * Shared long-term key
+ * Shared long-term key (AS and device share this)
  * -------------------------------------------------------------------------- */
-static const uint8_t K_AS_D[16] = {
+static const uint8_t k_as_d[16] = {
     0x67,0x61,0x74,0x73,0x20,0x6D,0x79,0x20,
     0x4B,0x75,0x6F,0x67,0x20,0x46,0x75,0x00
 };
@@ -42,27 +44,28 @@ static const uint8_t K_AS_D[16] = {
 static uint8_t id_d;
 static uint8_t id_as;
 
-static uint8_t c_d;
-static uint8_t c_as_d = 3;
 static uint8_t y_d    = 2;
-static uint8_t h_d;
-static uint8_t ts_1   = 1;
+static uint8_t c_as_d = 3;
+static uint8_t c_d;
+static uint8_t h_d;       /* helper value from PUF */
+static uint8_t ts_1   = 0;
 static uint8_t last_ts2 = 0;
 
-static uint8_t m_d[32];
+/* Single-state M_d (base scheme: no old/new dual-state) */
+static uint8_t M_d[32];
 static uint8_t k_gw_d[32];
-static uint8_t PID[32];
-static uint8_t auth_PID[32];
-static uint8_t auth_Y_dH[32];
 
-static uint8_t reg   = 0;
-static uint8_t auth_round = 0;  /* counts auth rounds: 0, 1, 2, 3 */
+static uint8_t reg        = 0;
+static uint8_t auth_round = 0;  /* 0=enroll, 1=round1, 2=round2-drop, 3=round3-recovery, 4=round4-postrecovery */
 
 /* Flag: when 1, device intentionally ignores the AS reply to trigger desync */
 static uint8_t simulate_drop = 0;
 
-/* Store whether last auth succeeded or was dropped */
+/* Store whether last auth succeeded */
 static uint8_t last_auth_ok = 0;
+
+/* Buffers shared between prepare_auth and client_auth_handler */
+static uint8_t hpayload[34];
 
 /* --------------------------------------------------------------------------
  * ENERGEST energy measurement
@@ -98,24 +101,8 @@ static void print_energest_stats(double *seconds_cpu, double *total_energy)
 }
 
 /* --------------------------------------------------------------------------
- * Endpoints
+ * Crypto helpers
  * -------------------------------------------------------------------------- */
-static coap_endpoint_t ep_as, ep_gw;
-static coap_message_t  request[1];
-
-/* --------------------------------------------------------------------------
- * Helpers
- * -------------------------------------------------------------------------- */
-static uint8_t puf_response(uint8_t challenge)
-{
-    uint32_t s = ((uint32_t)node_id   * 2246822519UL)
-               ^ ((uint32_t)challenge * 2654435761UL);
-    s = ((s >> 16) ^ s) * 0x45d9f3bUL;
-    s = ((s >> 16) ^ s) * 0x45d9f3bUL;
-    s ^= (s >> 16);
-    return (uint8_t)(s & 0xFF);
-}
-
 static void H(const uint8_t *in, uint16_t len, uint8_t *out)
 {
     SHA256_CTX ctx;
@@ -124,21 +111,22 @@ static void H(const uint8_t *in, uint16_t len, uint8_t *out)
     sha256_final(&ctx, out);
 }
 
-static void aes_enc(const uint8_t *key, uint8_t *buf, uint8_t n)
+static uint8_t simulate_puf_response(uint8_t c)
 {
-    struct AES_ctx ctx;
-    for (uint8_t i = 0; i < n; i++) {
-        AES_init_ctx(&ctx, key);
-        AES_ECB_encrypt(&ctx, buf + i * 16);
-    }
+    uint8_t path1 = random_rand() ^ c;
+    uint8_t path2 = random_rand() ^ c;
+    return (path1 > path2) ? 1 : 0;
 }
-static void aes_dec(const uint8_t *key, uint8_t *buf, uint8_t n)
+
+static void generate_helper(uint8_t response, uint8_t *helper, uint8_t *secret)
 {
-    struct AES_ctx ctx;
-    for (uint8_t i = 0; i < n; i++) {
-        AES_init_ctx(&ctx, key);
-        AES_ECB_decrypt(&ctx, buf + i * 16);
-    }
+    *secret = 1;
+    *helper = *secret & response;
+}
+
+static uint8_t regenerate_response(uint8_t challenge, uint8_t helper)
+{
+    return (helper == 0) ? (helper & challenge) : (helper || challenge);
 }
 
 static int ts2_seq_fresh(uint8_t recv, uint8_t last)
@@ -146,6 +134,12 @@ static int ts2_seq_fresh(uint8_t recv, uint8_t last)
     int diff = ((int)recv - (int)last + 256) % 256;
     return (diff > 0 && diff <= 200);
 }
+
+/* --------------------------------------------------------------------------
+ * Endpoints
+ * -------------------------------------------------------------------------- */
+static coap_endpoint_t ep_as, ep_gw;
+static coap_message_t  request[1];
 
 static void discover_endpoints(void)
 {
@@ -168,21 +162,27 @@ static void discover_endpoints(void)
  * CoAP response handlers
  * ========================================================================== */
 
+/* reg step-0: receive [c_d, M_d[0]] AES-encrypted */
+static uint8_t reg_payload[16];
+
 static void client_reg_handler(coap_message_t *resp)
 {
     const uint8_t *chunk;
-    if (!resp || coap_get_payload(resp, &chunk) < 48) {
+    if (!resp || coap_get_payload(resp, &chunk) < 16) {
         printf("DESYNC_LOG|Node %u|Reg-0 dropped\n", id_d);
         return;
     }
-    uint8_t plain[48];
-    memcpy(plain, chunk, 48);
-    aes_dec(K_AS_D, plain, 3);
-    c_d = plain[0];
-    memcpy(m_d, plain + 1, 32);
-    printf("DESYNC_LOG|Node %u|Reg-0 OK|c_d=%u\n", id_d, c_d);
+    memcpy(reg_payload, chunk, 16);
+    struct AES_ctx ctx;
+    AES_init_ctx(&ctx, k_as_d);
+    AES_ECB_decrypt(&ctx, reg_payload);
+    c_d = reg_payload[0];
+    memset(M_d, 0, 32);
+    M_d[0] = reg_payload[1];
+    printf("DESYNC_LOG|Node %u|Reg-0 OK|c_d=%u|M_d[0]=%u\n", id_d, c_d, M_d[0]);
 }
 
+/* reg step-1: just confirm enrollment */
 static void client_reg1_handler(coap_message_t *resp)
 {
     if (!resp) {
@@ -192,79 +192,84 @@ static void client_reg1_handler(coap_message_t *resp)
     printf("DESYNC_LOG|Node %u|Reg-1 OK|Enrolled\n", id_d);
 }
 
+/* auth reply: [AS_id(1), masked_key(32), ts_2(1)] = 34 bytes
+ * Base scheme: only single-state M_d — if AS fails to match, it sends
+ * no payload (< 34 bytes), so last_auth_ok = 0.
+ */
 static void client_auth_handler(coap_message_t *resp)
 {
     const uint8_t *chunk;
     if (!resp || coap_get_payload(resp, &chunk) < 34) {
-        printf("DESYNC_LOG|Node %u|Round %u|Auth reply not received\n",
+        printf("DESYNC_LOG|Node %u|Round %u|Auth reply not received (auth FAILED — hash mismatch or no response)\n",
                id_d, auth_round);
         last_auth_ok = 0;
         return;
     }
 
-    /* ---- DESYNC TRIGGER: On round 2, device ignores the reply ---- */
+    /* ---- DESYNC TRIGGER: On round 2, device ignores the valid AS reply ---- */
     if (simulate_drop) {
         printf("DESYNC_LOG|Node %u|Round %u|SIMULATED DROP — ignoring valid AS reply\n",
                id_d, auth_round);
-        printf("DESYNC_LOG|Node %u|Round %u|Device keeps OLD PID=%02x%02x%02x and OLD m_d\n",
-               id_d, auth_round, PID[0], PID[1], PID[2]);
-        printf("DESYNC_LOG|Node %u|Round %u|AS has ALREADY ROTATED to new PID/m → STATE IS DESYNCHRONIZED\n",
+        printf("DESYNC_LOG|Node %u|Round %u|Device keeps OLD M_d\n", id_d, auth_round);
+        printf("DESYNC_LOG|Node %u|Round %u|AS has ALREADY ADVANCED M_d → STATE IS DESYNCHRONIZED\n",
                id_d, auth_round);
         simulate_drop = 0;  /* only drop once */
         last_auth_ok = 0;
-        /* Do NOT update m_d, PID, ts_1, last_ts2 — device stays on old state */
+        /* Do NOT update M_d or k_gw_d — device stays on old state */
         return;
     }
 
-    uint8_t ack  = chunk[0];
-    uint8_t m_H[32];
-    uint8_t ts_2 = chunk[33];
-    memcpy(m_H, chunk + 1, 32);
+    memcpy(hpayload, chunk, 34);
 
-    if (ack != 0xAC) {
-        printf("DESYNC_LOG|Node %u|Round %u|Bad ACK 0x%02x\n", id_d, auth_round, ack);
-        last_auth_ok = 0;
-        return;
-    }
+    uint8_t as_id = hpayload[0];
+    uint8_t ts_2  = hpayload[33];
+
     if (!ts2_seq_fresh(ts_2, last_ts2)) {
         printf("DESYNC_LOG|Node %u|Round %u|Stale ts_2\n", id_d, auth_round);
         last_auth_ok = 0;
         return;
     }
 
-    /* Key exchange — device side */
-    uint8_t R_d = h_d;
-    uint8_t Y_dH[32];
-    memcpy(Y_dH, auth_Y_dH, 32);
+    /* Regenerate R_d from stored helper h_d */
+    uint8_t R_d = regenerate_response(c_d, h_d);
 
-    uint8_t mh_in[99], mh_mask[32], m_new[32];
-    memcpy(mh_in,      Y_dH,     32);
-    memcpy(mh_in + 32, m_d,      32);
-    mh_in[64] = R_d;
-    mh_in[65] = id_as;
-    memcpy(mh_in + 66, auth_PID, 32);
-    mh_in[98] = ts_2;
-    H(mh_in, 99, mh_mask);
-    for (int i = 0; i < 32; i++) m_new[i] = m_H[i] ^ mh_mask[i];
+    /* Recompute Y_d_H = SHA256(y_d) */
+    uint8_t Y_d_H[32];
+    H(&y_d, 1, Y_d_H);
 
-    uint8_t kd_in[33];
-    kd_in[0] = R_d;
-    memcpy(kd_in + 1, m_new, 32);
-    H(kd_in, 33, k_gw_d);
+    /* Recompute mask: SHA256([Y_d_H, M_d(32), R_d, id_as, id_d, ts_2]) */
+    uint8_t data_dash[68];
+    memset(data_dash, 0, 68);
+    memcpy(data_dash,      Y_d_H, 32);
+    memcpy(data_dash + 32, M_d,   32);
+    data_dash[64] = R_d;
+    data_dash[65] = as_id;
+    data_dash[66] = id_d;
+    data_dash[67] = ts_2;
+
+    uint8_t hash[32];
+    H(data_dash, 68, hash);
+
+    /* Unmask received key: M_d_new = received[1..32] XOR hash */
+    uint8_t M_d_new[32];
+    memcpy(M_d_new, hpayload + 1, 32);
+    for (int i = 0; i < 32; i++)
+        M_d_new[i] = M_d_new[i] ^ hash[i];
+
+    /* k_gw_d = SHA256([R_d, M_d_new]) */
+    uint8_t key_in[33];
+    key_in[0] = R_d;
+    memcpy(key_in + 1, M_d_new, 32);
+    H(key_in, 33, k_gw_d);
 
     /* Commit new state */
-    memcpy(m_d, m_new, 32);
-    uint8_t pid_buf[33];
-    pid_buf[0] = id_d;
-    memcpy(pid_buf + 1, m_new, 32);
-    H(pid_buf, 33, PID);
-
+    memcpy(M_d, M_d_new, 32);
     last_ts2 = ts_2;
     ts_1++;
     last_auth_ok = 1;
 
-    printf("DESYNC_LOG|Node %u|Round %u|Auth OK|New PID=%02x%02x%02x|SYNCED\n",
-           id_d, auth_round, PID[0], PID[1], PID[2]);
+    printf("DESYNC_LOG|Node %u|Round %u|Auth OK|M_d updated|SYNCED\n",
+           id_d, auth_round);
 }
 
 static void client_data_handler(coap_message_t *resp)
@@ -277,55 +282,102 @@ static void client_data_handler(coap_message_t *resp)
 }
 
 /* ==========================================================================
- * Inline macros: prepare auth payload and data payload
- * (COAP_BLOCKING_REQUEST must be called directly inside PROCESS_THREAD)
+ * Auth payload preparation
+ * Auth payload = [id_d(1) | masked_Y_dH(32) | ts_1(1)] = 34 bytes
+ * Matches Base-Scheme as-node.c res_auth_handler expectations.
  * ========================================================================== */
-static uint8_t auth_payload[65];
-static uint8_t data_payload[48];
+static uint8_t auth_payload[34];
+static uint8_t data_payload[17];
 
 static void prepare_auth(void)
 {
-    uint8_t R_d = h_d;
-    uint8_t pid_buf[33];
-    pid_buf[0] = id_d;
-    memcpy(pid_buf + 1, m_d, 32);
-    H(pid_buf, 33, auth_PID);
-    H(&y_d, 1, auth_Y_dH);
+    uint8_t R_d = regenerate_response(c_d, h_d);
 
-    uint8_t mask_in[66], mask[32];
-    mask_in[0] = R_d;
-    memcpy(mask_in + 1,  m_d,      32);
-    memcpy(mask_in + 33, auth_PID, 32);
-    mask_in[65] = ts_1;
-    H(mask_in, 66, mask);
+    /* Y_d_H = SHA256(y_d) */
+    uint8_t Y_d_H[32];
+    H(&y_d, 1, Y_d_H);
 
-    uint8_t y_asd[32];
-    for (int i = 0; i < 32; i++) y_asd[i] = auth_Y_dH[i] ^ mask[i];
+    /* hash = SHA256([R_d, M_d(32), id_d, ts_1]) */
+    uint8_t data_c[35];
+    memset(data_c, 0, 35);
+    data_c[0] = R_d;
+    memcpy(data_c + 1, M_d, 32);
+    data_c[33] = id_d;
+    data_c[34] = ts_1;
 
-    memcpy(auth_payload,      auth_PID, 32);
-    memcpy(auth_payload + 32, y_asd,   32);
-    auth_payload[64] = ts_1;
+    uint8_t hash[32];
+    H(data_c, 35, hash);
 
-    printf("DESYNC_LOG|Node %u|Round %u|Sending auth|PID=%02x%02x%02x|ts_1=%u\n",
-           id_d, auth_round, auth_PID[0], auth_PID[1], auth_PID[2], ts_1);
+    /* mask Y_d_H: hash XOR Y_d_H */
+    for (int i = 0; i < 32; i++)
+        hash[i] = hash[i] ^ Y_d_H[i];
+
+    auth_payload[0] = id_d;
+    memcpy(auth_payload + 1, hash, 32);
+    auth_payload[33] = ts_1;
+
+    printf("DESYNC_LOG|Node %u|Round %u|Sending auth|id_d=%u|ts_1=%u|M_d[0]=%u\n",
+           id_d, auth_round, id_d, ts_1, M_d[0]);
 }
 
 static void prepare_data(void)
 {
-    uint8_t sensor[16];
-    memset(sensor, 0, 16);
-    sensor[0] = 9;
-    uint8_t K_AES[16];
-    memcpy(K_AES, k_gw_d, 16);
-    aes_enc(K_AES, sensor, 1);
-    memcpy(data_payload,      PID,    32);
-    memcpy(data_payload + 32, sensor, 16);
+    uint8_t sensor = 9;
+    uint8_t K[16];
+    memcpy(K, k_gw_d, 16);
+    uint8_t payload[16];
+    memset(payload, 0, 16);
+    payload[0] = sensor;
+    struct AES_ctx ctx;
+    AES_init_ctx(&ctx, K);
+    AES_ECB_encrypt(&ctx, payload);
+    data_payload[0] = id_d;
+    memcpy(data_payload + 1, payload, 16);
+}
+
+/* ==========================================================================
+ * Enrollment helper — used for initial enrollment AND re-enrollment in Round 3
+ * Returns 1 on success, 0 on failure.
+ * ========================================================================== */
+static int do_enrollment(void)
+{
+    /* Step 0: send AES(k_as_d, [id_d, pad...]) → get [c_d, M_d[0]] */
+    uint8_t payload[16];
+    memset(payload, 0, 16);
+    payload[0] = id_d;
+    struct AES_ctx ctx;
+    AES_init_ctx(&ctx, k_as_d);
+    AES_ECB_encrypt(&ctx, payload);
+
+    coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
+    coap_set_header_uri_path(request, "test/reg");
+    coap_set_payload(request, payload, 16);
+    COAP_BLOCKING_REQUEST(&ep_as, request, client_reg_handler);
+
+    /* Step 1: send AES(k_as_d, [id_d, y_d, R_d, c_as_d]) → "Registered" */
+    memset(payload, 0, 16);
+    payload[0] = id_d;
+    payload[1] = y_d;
+    uint8_t R_d = simulate_puf_response(c_d);
+    uint8_t secret;
+    generate_helper(R_d, &h_d, &secret);
+    payload[2] = R_d;
+    payload[3] = c_as_d;
+    AES_init_ctx(&ctx, k_as_d);
+    AES_ECB_encrypt(&ctx, payload);
+
+    coap_init_message(request, COAP_TYPE_CON, COAP_GET, 1);
+    coap_set_header_uri_path(request, "test/reg1");
+    coap_set_payload(request, payload, 16);
+    COAP_BLOCKING_REQUEST(&ep_as, request, client_reg1_handler);
+
+    return 1;
 }
 
 /* ==========================================================================
  * Main process
  * ========================================================================== */
-PROCESS(device_node, "Device Node");
+PROCESS(device_node, "Device Node (Base Desync Demo)");
 AUTOSTART_PROCESSES(&device_node);
 static struct etimer et;
 
@@ -346,62 +398,21 @@ PROCESS_THREAD(device_node, ev, data)
         if (etimer_expired(&et)) {
 
             /* ============================================================
-             * ENROLLMENT
+             * ENROLLMENT (auth_round == 0, reg == 0)
              * ============================================================ */
             if (reg == 0) {
                 printf("DESYNC_LOG|Node %u|=== ENROLLMENT START ===\n", id_d);
 
                 print_energest_stats(&cpu_before, &energy_before);
 
-                /* Reg-0 */
-                {
-                    uint8_t p0[16];
-                    memset(p0, 0, 16);
-                    p0[0] = id_d;
-                    aes_enc(K_AS_D, p0, 1);
-
-                    coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
-                    coap_set_header_uri_path(request, "test/reg");
-                    coap_set_payload(request, p0, 16);
-                    COAP_BLOCKING_REQUEST(&ep_as, request, client_reg_handler);
-                }
-
-                /* Reg-1 */
-                {
-                    uint8_t R_d = puf_response(c_d);
-                    h_d = R_d;
-
-                    uint8_t Y_dH[32];
-                    H(&y_d, 1, Y_dH);
-
-                    uint8_t p1[48];
-                    memset(p1, 0, 48);
-                    p1[0] = id_d;
-                    memcpy(p1 + 1, Y_dH, 32);
-                    p1[33] = R_d;
-                    p1[34] = c_as_d;
-                    aes_enc(K_AS_D, p1, 3);
-
-                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, 1);
-                    coap_set_header_uri_path(request, "test/reg1");
-                    coap_set_payload(request, p1, 48);
-                    COAP_BLOCKING_REQUEST(&ep_as, request, client_reg1_handler);
-                }
-
-                /* Compute initial PID */
-                {
-                    uint8_t pid_buf[33];
-                    pid_buf[0] = id_d;
-                    memcpy(pid_buf + 1, m_d, 32);
-                    H(pid_buf, 33, PID);
-                }
+                do_enrollment();
 
                 reg = 1;
                 print_energest_stats(&cpu_after, &energy_after);
                 printf("\nDESYNC_ENROLL_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
                        id_d, cpu_after - cpu_before, energy_after - energy_before);
-                printf("DESYNC_LOG|Node %u|=== ENROLLMENT COMPLETE ===|Initial PID=%02x%02x%02x\n",
-                       id_d, PID[0], PID[1], PID[2]);
+                printf("DESYNC_LOG|Node %u|=== ENROLLMENT COMPLETE ===|M_d[0]=%u\n",
+                       id_d, M_d[0]);
 
             /* ============================================================
              * ROUND 1: Normal authentication (establishes sync)
@@ -416,14 +427,14 @@ PROCESS_THREAD(device_node, ev, data)
                 prepare_auth();
                 coap_init_message(request, COAP_TYPE_CON, COAP_POST, 2);
                 coap_set_header_uri_path(request, "test/auth");
-                coap_set_payload(request, auth_payload, 65);
+                coap_set_payload(request, auth_payload, 34);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
 
                 if (last_auth_ok) {
                     prepare_data();
                     coap_init_message(request, COAP_TYPE_CON, COAP_POST, 3);
                     coap_set_header_uri_path(request, "test/data");
-                    coap_set_payload(request, data_payload, 48);
+                    coap_set_payload(request, data_payload, 17);
                     COAP_BLOCKING_REQUEST(&ep_gw, request, client_data_handler);
                     printf("DESYNC_LOG|Node %u|Round 1|RESULT: SUCCESS — both sides synced\n", id_d);
                     print_energest_stats(&cpu_after, &energy_after);
@@ -433,7 +444,8 @@ PROCESS_THREAD(device_node, ev, data)
 
             /* ============================================================
              * ROUND 2: Auth succeeds on AS side, but device DROPS reply
-             * → Causes desynchronization
+             * → Causes desynchronization (base scheme: AS advances M_d,
+             *   device keeps old M_d)
              * ============================================================ */
             } else if (auth_round == 1) {
                 auth_round = 2;
@@ -446,47 +458,81 @@ PROCESS_THREAD(device_node, ev, data)
                 prepare_auth();
                 coap_init_message(request, COAP_TYPE_CON, COAP_POST, 2);
                 coap_set_header_uri_path(request, "test/auth");
-                coap_set_payload(request, auth_payload, 65);
+                coap_set_payload(request, auth_payload, 34);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
 
                 printf("DESYNC_LOG|Node %u|Round 2|RESULT: DESYNCHRONIZED\n", id_d);
                 print_energest_stats(&cpu_after, &energy_after);
                 printf("\nDESYNC_ROUND2_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
                        id_d, cpu_after - cpu_before, energy_after - energy_before);
-                printf("DESYNC_LOG|Node %u|Round 2|Device state: PID=%02x%02x%02x (OLD), ts_1=%u\n",
-                       id_d, PID[0], PID[1], PID[2], ts_1);
+                printf("DESYNC_LOG|Node %u|Round 2|Device state: OLD M_d[0]=%u\n",
+                       id_d, M_d[0]);
 
             /* ============================================================
-             * ROUND 3: Device retries with OLD PID → AS uses PID_old
-             * → Desync recovery via dual-state storage
+             * ROUND 3: Device retries with OLD M_d → AS hash mismatch → FAIL
+             * Base scheme has NO dual-state, so AS rejects the request.
+             * Device detects failure → RE-ENROLLS → retries auth.
+             * TOTAL energy = re-enroll + re-auth costs (measured together).
              * ============================================================ */
             } else if (auth_round == 2) {
                 auth_round = 3;
                 printf("\nDESYNC_LOG|Node %u|========================================\n", id_d);
-                printf("DESYNC_LOG|Node %u|Round 3|DESYNC RECOVERY — retrying with old PID\n", id_d);
-                printf("DESYNC_LOG|Node %u|Round 3|Device using PID=%02x%02x%02x (same as before drop)\n",
-                       id_d, PID[0], PID[1], PID[2]);
+                printf("DESYNC_LOG|Node %u|Round 3|RETRY WITH OLD M_d (expect failure in base scheme)\n", id_d);
                 printf("DESYNC_LOG|Node %u|========================================\n", id_d);
 
+                /* Start energy measurement for entire Round 3 block */
                 print_energest_stats(&cpu_before, &energy_before);
+
+                /* First attempt: auth with old M_d — will fail */
                 prepare_auth();
                 coap_init_message(request, COAP_TYPE_CON, COAP_POST, 2);
                 coap_set_header_uri_path(request, "test/auth");
-                coap_set_payload(request, auth_payload, 65);
+                coap_set_payload(request, auth_payload, 34);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
 
-                if (last_auth_ok) {
-                    prepare_data();
-                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, 3);
-                    coap_set_header_uri_path(request, "test/data");
-                    coap_set_payload(request, data_payload, 48);
-                    COAP_BLOCKING_REQUEST(&ep_gw, request, client_data_handler);
-                    printf("DESYNC_LOG|Node %u|Round 3|RESULT: RECOVERY SUCCESSFUL — re-synced via dual-state\n", id_d);
-                    print_energest_stats(&cpu_after, &energy_after);
-                    printf("\nDESYNC_ROUND3_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
-                           id_d, cpu_after - cpu_before, energy_after - energy_before);
+                if (!last_auth_ok) {
+                    printf("DESYNC_LOG|Node %u|Round 3|Auth FAILED as expected (no dual-state at AS)\n", id_d);
+                    printf("DESYNC_LOG|Node %u|Round 3|Base scheme: device must RE-ENROLL to recover\n", id_d);
+
+                    /* RE-ENROLLMENT: get new c_d and M_d from AS */
+                    printf("DESYNC_LOG|Node %u|Round 3|RE-ENROLLING...\n", id_d);
+                    reg = 0;
+                    do_enrollment();
+                    reg = 1;
+                    printf("DESYNC_LOG|Node %u|Round 3|Re-enrollment complete|New M_d[0]=%u\n",
+                           id_d, M_d[0]);
+
+                    /* Reset ts counters after re-enrollment */
+                    ts_1    = 0;
+                    last_ts2 = 0;
+
+                    /* Retry auth with new M_d */
+                    printf("DESYNC_LOG|Node %u|Round 3|Retrying auth after re-enrollment...\n", id_d);
+                    prepare_auth();
+                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, 2);
+                    coap_set_header_uri_path(request, "test/auth");
+                    coap_set_payload(request, auth_payload, 34);
+                    COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
+
+                    if (last_auth_ok) {
+                        prepare_data();
+                        coap_init_message(request, COAP_TYPE_CON, COAP_POST, 3);
+                        coap_set_header_uri_path(request, "test/data");
+                        coap_set_payload(request, data_payload, 17);
+                        COAP_BLOCKING_REQUEST(&ep_gw, request, client_data_handler);
+                        printf("DESYNC_LOG|Node %u|Round 3|RESULT: RECOVERY via RE-ENROLL — high cost\n", id_d);
+                        print_energest_stats(&cpu_after, &energy_after);
+                        printf("\nDESYNC_ROUND3_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
+                               id_d, cpu_after - cpu_before, energy_after - energy_before);
+                    } else {
+                        printf("DESYNC_LOG|Node %u|Round 3|RESULT: Recovery failed even after re-enroll\n", id_d);
+                        print_energest_stats(&cpu_after, &energy_after);
+                        printf("\nDESYNC_ROUND3_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
+                               id_d, cpu_after - cpu_before, energy_after - energy_before);
+                    }
                 } else {
-                    printf("DESYNC_LOG|Node %u|Round 3|RESULT: Recovery failed\n", id_d);
+                    /* Unexpected: auth succeeded even with old M_d (should not happen) */
+                    printf("DESYNC_LOG|Node %u|Round 3|Unexpected auth success with old M_d\n", id_d);
                     print_energest_stats(&cpu_after, &energy_after);
                     printf("\nDESYNC_ROUND3_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
                            id_d, cpu_after - cpu_before, energy_after - energy_before);
@@ -505,14 +551,14 @@ PROCESS_THREAD(device_node, ev, data)
                 prepare_auth();
                 coap_init_message(request, COAP_TYPE_CON, COAP_POST, 2);
                 coap_set_header_uri_path(request, "test/auth");
-                coap_set_payload(request, auth_payload, 65);
+                coap_set_payload(request, auth_payload, 34);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
 
                 if (last_auth_ok) {
                     prepare_data();
                     coap_init_message(request, COAP_TYPE_CON, COAP_POST, 3);
                     coap_set_header_uri_path(request, "test/data");
-                    coap_set_payload(request, data_payload, 48);
+                    coap_set_payload(request, data_payload, 17);
                     COAP_BLOCKING_REQUEST(&ep_gw, request, client_data_handler);
                     printf("DESYNC_LOG|Node %u|Round 4|RESULT: SUCCESS — system fully recovered\n", id_d);
                     print_energest_stats(&cpu_after, &energy_after);
@@ -520,7 +566,7 @@ PROCESS_THREAD(device_node, ev, data)
                            id_d, cpu_after - cpu_before, energy_after - energy_before);
                 }
 
-                printf("\nDESYNC_LOG|Node %u|=== DESYNC DEMONSTRATION COMPLETE ===\n", id_d);
+                printf("\nDESYNC_LOG|Node %u|=== DESYNC DEMONSTRATION COMPLETE (BASE SCHEME) ===\n", id_d);
             }
 
             etimer_reset(&et);
