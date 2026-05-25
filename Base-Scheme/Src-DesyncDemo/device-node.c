@@ -335,44 +335,8 @@ static void prepare_data(void)
     memcpy(data_payload + 1, payload, 16);
 }
 
-/* ==========================================================================
- * Enrollment helper — used for initial enrollment AND re-enrollment in Round 3
- * Returns 1 on success, 0 on failure.
- * ========================================================================== */
-static int do_enrollment(void)
-{
-    /* Step 0: send AES(k_as_d, [id_d, pad...]) → get [c_d, M_d[0]] */
-    uint8_t payload[16];
-    memset(payload, 0, 16);
-    payload[0] = id_d;
-    struct AES_ctx ctx;
-    AES_init_ctx(&ctx, k_as_d);
-    AES_ECB_encrypt(&ctx, payload);
-
-    coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
-    coap_set_header_uri_path(request, "test/reg");
-    coap_set_payload(request, payload, 16);
-    COAP_BLOCKING_REQUEST(&ep_as, request, client_reg_handler);
-
-    /* Step 1: send AES(k_as_d, [id_d, y_d, R_d, c_as_d]) → "Registered" */
-    memset(payload, 0, 16);
-    payload[0] = id_d;
-    payload[1] = y_d;
-    uint8_t R_d = simulate_puf_response(c_d);
-    uint8_t secret;
-    generate_helper(R_d, &h_d, &secret);
-    payload[2] = R_d;
-    payload[3] = c_as_d;
-    AES_init_ctx(&ctx, k_as_d);
-    AES_ECB_encrypt(&ctx, payload);
-
-    coap_init_message(request, COAP_TYPE_CON, COAP_GET, 1);
-    coap_set_header_uri_path(request, "test/reg1");
-    coap_set_payload(request, payload, 16);
-    COAP_BLOCKING_REQUEST(&ep_as, request, client_reg1_handler);
-
-    return 1;
-}
+/* shared buffer for enrollment steps (inlined in PROCESS_THREAD) */
+static uint8_t enroll_payload[16];
 
 /* ==========================================================================
  * Main process
@@ -405,7 +369,36 @@ PROCESS_THREAD(device_node, ev, data)
 
                 print_energest_stats(&cpu_before, &energy_before);
 
-                do_enrollment();
+                /* --- enrollment step 0 --- */
+                {
+                    struct AES_ctx _ctx;
+                    memset(enroll_payload, 0, 16);
+                    enroll_payload[0] = id_d;
+                    AES_init_ctx(&_ctx, k_as_d);
+                    AES_ECB_encrypt(&_ctx, enroll_payload);
+                    coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
+                    coap_set_header_uri_path(request, "test/reg");
+                    coap_set_payload(request, enroll_payload, 16);
+                    COAP_BLOCKING_REQUEST(&ep_as, request, client_reg_handler);
+                }
+                /* --- enrollment step 1 --- */
+                {
+                    struct AES_ctx _ctx;
+                    uint8_t _R_d = simulate_puf_response(c_d);
+                    uint8_t _secret;
+                    generate_helper(_R_d, &h_d, &_secret);
+                    memset(enroll_payload, 0, 16);
+                    enroll_payload[0] = id_d;
+                    enroll_payload[1] = y_d;
+                    enroll_payload[2] = _R_d;
+                    enroll_payload[3] = c_as_d;
+                    AES_init_ctx(&_ctx, k_as_d);
+                    AES_ECB_encrypt(&_ctx, enroll_payload);
+                    coap_init_message(request, COAP_TYPE_CON, COAP_GET, 1);
+                    coap_set_header_uri_path(request, "test/reg1");
+                    coap_set_payload(request, enroll_payload, 16);
+                    COAP_BLOCKING_REQUEST(&ep_as, request, client_reg1_handler);
+                }
 
                 reg = 1;
                 print_energest_stats(&cpu_after, &energy_after);
@@ -497,7 +490,36 @@ PROCESS_THREAD(device_node, ev, data)
                     /* RE-ENROLLMENT: get new c_d and M_d from AS */
                     printf("DESYNC_LOG|Node %u|Round 3|RE-ENROLLING...\n", id_d);
                     reg = 0;
-                    do_enrollment();
+                    /* re-enrol step 0 */
+                    {
+                        struct AES_ctx _ctx;
+                        memset(enroll_payload, 0, 16);
+                        enroll_payload[0] = id_d;
+                        AES_init_ctx(&_ctx, k_as_d);
+                        AES_ECB_encrypt(&_ctx, enroll_payload);
+                        coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
+                        coap_set_header_uri_path(request, "test/reg");
+                        coap_set_payload(request, enroll_payload, 16);
+                        COAP_BLOCKING_REQUEST(&ep_as, request, client_reg_handler);
+                    }
+                    /* re-enrol step 1 */
+                    {
+                        struct AES_ctx _ctx;
+                        uint8_t _R_d = simulate_puf_response(c_d);
+                        uint8_t _secret;
+                        generate_helper(_R_d, &h_d, &_secret);
+                        memset(enroll_payload, 0, 16);
+                        enroll_payload[0] = id_d;
+                        enroll_payload[1] = y_d;
+                        enroll_payload[2] = _R_d;
+                        enroll_payload[3] = c_as_d;
+                        AES_init_ctx(&_ctx, k_as_d);
+                        AES_ECB_encrypt(&_ctx, enroll_payload);
+                        coap_init_message(request, COAP_TYPE_CON, COAP_GET, 1);
+                        coap_set_header_uri_path(request, "test/reg1");
+                        coap_set_payload(request, enroll_payload, 16);
+                        COAP_BLOCKING_REQUEST(&ep_as, request, client_reg1_handler);
+                    }
                     reg = 1;
                     printf("DESYNC_LOG|Node %u|Round 3|Re-enrollment complete|New M_d[0]=%u\n",
                            id_d, M_d[0]);

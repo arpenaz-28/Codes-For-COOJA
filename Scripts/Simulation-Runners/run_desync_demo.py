@@ -216,7 +216,7 @@ def build_firmware():
     return True
 
 
-TESTLOG = os.path.join(COOJA_DIR, "build", "libs", "TEST_OK.log")
+TESTLOG = os.path.join(COOJA_DIR, "COOJA.testlog")
 
 def run_seed(seed, scheme, log_dir):
     log_dest = os.path.join(log_dir, f"testlog_seed{seed}.txt")
