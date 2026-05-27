@@ -98,17 +98,17 @@ def make_chart(metric, ylabel, title, filename):
     w       = 0.7
 
     xlabels = [
-        "Proposed\nBefore loss",
-        "Proposed\nAfter loss",
-        "Base\nBefore loss",
-        "Base\nAfter loss",
+        "Proposed\nBefore loss\n(Enroll+Auth+KeyEx)",
+        "Proposed\nAfter loss\n(Auth+KeyEx only)",
+        "Base\nBefore loss\n(Enroll+Auth+KeyEx)",
+        "Base\nAfter loss\n(Full re-enroll+Auth)",
     ]
 
     fmt     = ".1f" if metric == "energy" else ".3f"
     max_val = max(v + ci for v, ci in zip(vals, cis))
 
     with plt.rc_context(_CHART_STYLE):
-        fig, ax = plt.subplots(figsize=(11, 7))
+        fig, ax = plt.subplots(figsize=(11, 8.5))
         fig.patch.set_facecolor("white")
 
         for xi, (v, ci, color, hatch) in enumerate(zip(vals, cis, colors, hatches)):
@@ -123,7 +123,7 @@ def make_chart(metric, ylabel, title, filename):
                     fontsize=17, fontweight="bold", color="#222222")
 
         ax.set_xticks(pos)
-        ax.set_xticklabels(xlabels, rotation=0, ha="center", fontsize=15)
+        ax.set_xticklabels(xlabels, rotation=0, ha="center", fontsize=12)
         ax.set_ylabel(ylabel, labelpad=14, fontsize=19, fontweight="bold")
         ax.set_title(title, fontsize=18, fontweight="bold", pad=14, color="#222222")
         ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
@@ -137,16 +137,16 @@ def make_chart(metric, ylabel, title, filename):
         legend_handles = [
             mpatches.Patch(facecolor="none", edgecolor=C_PROPOSED,
                            hatch=H_BEFORE, linewidth=1.5,
-                           label=f"Proposed — Before loss\n(Normal auth session: {p_before:{fmt}} {unit})"),
+                           label=f"Proposed — Before loss\n(Enroll + Auth + Key Exchange: {p_before:{fmt}} {unit})"),
             mpatches.Patch(facecolor="none", edgecolor=C_PROPOSED,
                            hatch=H_AFTER,  linewidth=1.5,
-                           label=f"Proposed — After loss\n(Dual-state recovery: {p_after:{fmt}} {unit})"),
+                           label=f"Proposed — After loss\n(Auth + Key Exchange only: {p_after:{fmt}} {unit})"),
             mpatches.Patch(facecolor="none", edgecolor=C_BASE,
                            hatch=H_BEFORE, linewidth=1.5,
-                           label=f"Base — Before loss\n(Normal auth session: {b_before:{fmt}} {unit})"),
+                           label=f"Base — Before loss\n(Enroll + Auth + Key Exchange: {b_before:{fmt}} {unit})"),
             mpatches.Patch(facecolor="none", edgecolor=C_BASE,
                            hatch=H_AFTER,  linewidth=1.5,
-                           label=f"Base — After loss\n(Re-enrol + retry auth: {b_after:{fmt}} {unit})"),
+                           label=f"Base — After loss\n(Full re-enrollment + Auth: {b_after:{fmt}} {unit})"),
         ]
         ax.legend(handles=legend_handles, loc="upper left",
                   fontsize=12, framealpha=0.88,
@@ -163,13 +163,13 @@ def main():
     make_chart(
         "energy",
         "Avg Energy per Device (mJ)",
-        "Energy Cost: Before vs After (mH, ts2) Loss in Phase 3\n(COOJA Simulation — Deliberate Packet Drop)",
+        "Energy Cost: Before vs After Phase-3 Packet Loss\n(COOJA Simulation — Deliberate Packet Drop)",
         "sim_01_energy_before_after.png",
     )
     make_chart(
         "cpu",
         "Avg CPU Time per Device (s)",
-        "CPU Time: Before vs After (mH, ts2) Loss in Phase 3\n(COOJA Simulation — Deliberate Packet Drop)",
+        "CPU Time: Before vs After Phase-3 Packet Loss\n(COOJA Simulation — Deliberate Packet Drop)",
         "sim_02_cpu_before_after.png",
     )
     print(f"\nOutputs → {OUT_DIR}")
