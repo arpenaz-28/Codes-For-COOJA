@@ -50,7 +50,7 @@ HATCH = {
     "Zhou":     "xxx",
 }
 
-OUT_DEFAULT = os.path.join(REPO, "Results", "Charts", "Authenticator_variation")
+OUT_DEFAULT = os.path.join(REPO, "Results", "COOJA-Simulation", "Charts", "Authenticator_variation")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

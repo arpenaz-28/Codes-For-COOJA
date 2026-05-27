@@ -92,21 +92,21 @@ CFLAGS += -Wno-error=unused-result -Wno-error=unused-but-set-variable
 include $(CONTIKI)/Makefile.include
 """.format(contiki=CONTIKI)
 
-# ── Custom project-conf.h for Zhou — 1 active GW-server (node 2 only) ────────
+# ── Custom project-conf.h for Zhou — 2 active GW-servers, balanced 10/10 ─────
 ZHOU_PROJECT_CONF = """\
 #ifndef PROJECT_CONF_H_
 #define PROJECT_CONF_H_
 
-/* 100-mote comparison topology — Zhou scheme, 1 active GW-server:
+/* 100-mote comparison topology — Zhou scheme, 2 active GW-servers (balanced):
  *   Node 1        = GW  (RPL root, data receiver)
- *   Node 2        = GW-Server (the single active auth/reg server)
- *   Node 3        = GW-Server (firmware loaded but idle — no devices routed here)
- *   Nodes 4-23   = Sensor Nodes (20 SNs, all registered with node 2)
+ *   Nodes 2-3    = GW-Servers (both active, 10 users + 10 SNs each)
+ *   Nodes 4-23   = Sensor Nodes (20 SNs; SN_id = user_id - 77)
  *   Nodes 24-80  = Filler motes (inactive)
- *   Nodes 81-100 = User devices (20 users, all registered with node 2)
+ *   Nodes 81-100 = User devices (20 users)
  *
- *   GW_USER_SPLIT=100  → all user IDs (81-100) ≤ 100 → GW_SERVER_ID=2
- *   GW_SN_SPLIT=23     → all SN IDs  (4-23)   ≤ 23  → GW_SERVER_ID=2
+ *   GW_USER_SPLIT=90  → users 81-90 → GW_SERVER_ID=2, users 91-100 → GW_SERVER_ID2=3
+ *   GW_SN_SPLIT=13    → SNs  4-13  → GW_SERVER_ID=2, SNs  14-23  → GW_SERVER_ID2=3
+ *   Matches LAAKA: AS2 handles 10 devices, AS3 handles 10 devices (parity).
  */
 #define GW_NODE_ID       1
 #define GW_SERVER_ID     2
@@ -116,8 +116,8 @@ ZHOU_PROJECT_CONF = """\
 #define FIRST_USER_ID    81
 
 #define SN_USER_OFFSET    77
-#define GW_USER_SPLIT    100   /* all users (81-100) → GW_SERVER_ID=2 */
-#define GW_SN_SPLIT       23   /* all SNs   (4-23)  → GW_SERVER_ID=2 */
+#define GW_USER_SPLIT     90   /* users 81-90 → GW_SERVER_ID=2, 91-100 → GW_SERVER_ID2=3 */
+#define GW_SN_SPLIT       13   /* SNs  4-13   → GW_SERVER_ID=2, 14-23  → GW_SERVER_ID2=3 */
 
 #define ENERGEST_CONF_ON 1
 

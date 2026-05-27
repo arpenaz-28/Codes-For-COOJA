@@ -35,17 +35,17 @@ HATCHES      = {"Proposed": "///",     "LAAKA": "\\\\\\", "Zhou": "xxx"}
 
 _STYLE = {
     "font.family":       "Liberation Sans",
-    "font.size":         14,
-    "axes.titlesize":    16,
+    "font.size":         19,
+    "axes.titlesize":    23,
     "axes.titleweight":  "bold",
-    "axes.labelsize":    16,
+    "axes.labelsize":    22,
     "axes.spines.top":   False,
     "axes.spines.right": False,
     "axes.linewidth":    0.7,
-    "xtick.labelsize":   13,
-    "ytick.labelsize":   13,
+    "xtick.labelsize":   20,
+    "ytick.labelsize":   19,
     "xtick.major.size":  0,
-    "legend.fontsize":   11,
+    "legend.fontsize":   18,
     "legend.framealpha": 0.9,
     "legend.edgecolor":  "#cccccc",
     "grid.color":        "#e5e5e5",
@@ -111,18 +111,16 @@ def draw_panel(ax, stats, ylabel, fmt):
         color  = COLORS[name]
         hatch  = HATCHES[name]
         ax.bar(pos[i], mu, w,
-               facecolor="none", edgecolor=color, hatch=hatch, linewidth=1.5,
-               yerr=ci, capsize=6,
-               error_kw={"linewidth": 1.5, "ecolor": color})
-        ax.text(pos[i], mu + ci + max_val * 0.02,
+               facecolor="none", edgecolor=color, hatch=hatch, linewidth=1.5)
+        ax.text(pos[i], mu + max_val * 0.03,
                 f"{mu:{fmt}}",
                 ha="center", va="bottom",
-                fontsize=14, fontweight="bold", color="#222222")
+                fontsize=21, fontweight="bold", color="#222222")
 
     ax.set_xticks(pos)
     ax.set_xticklabels([SCHEME_LABEL[s] for s, _, _ in stats],
-                       fontsize=13, ha="center")
-    ax.set_ylabel(ylabel, labelpad=12, fontsize=15, fontweight="bold")
+                       fontsize=20, ha="center")
+    ax.set_ylabel(ylabel, labelpad=20, fontsize=22, fontweight="bold")
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
     ax.tick_params(axis="y", length=0)
@@ -200,25 +198,28 @@ def make_perdev_chart(scheme_records):
         fig, (ax_e, ax_c) = plt.subplots(1, 2, figsize=(14, 7))
         fig.patch.set_facecolor("white")
         fig.suptitle(
-            "Per-Device Mean Cost (Enroll + Auth + Key Exchange)\n"
-            "COOJA Simulation · 10 Seeds · 100-Mote Network",
-            fontsize=16, fontweight="bold", color="#222222", y=1.01
+            "Per-Device Mean Total Cost",
+            fontsize=30, fontweight="bold", color="#222222",
         )
 
-        draw_panel(ax_e, e_stats, "Mean Energy per Device (mJ)", ".2f")
-        draw_panel(ax_c, c_stats, "Mean CPU Time per Device (s)", ".3f")
+        draw_panel(ax_e, e_stats, "Mean Energy (mJ)", ".2f")
+        draw_panel(ax_c, c_stats, "Mean CPU Time (s)", ".3f")
 
-        ax_e.set_title("Energy", fontsize=15, fontweight="bold", pad=10)
-        ax_c.set_title("CPU Time", fontsize=15, fontweight="bold", pad=10)
+        ax_e.set_title("Energy", fontsize=23, fontweight="bold", pad=12)
+        ax_c.set_title("CPU Time", fontsize=23, fontweight="bold", pad=12)
 
-        ax_e.legend(handles=legend_patches("mJ", e_stats),
-                    loc="upper right", fontsize=10, framealpha=0.9,
-                    edgecolor="#dddddd", handlelength=2.0, handleheight=1.4)
-        ax_c.legend(handles=legend_patches("s", c_stats),
-                    loc="upper right", fontsize=10, framealpha=0.9,
-                    edgecolor="#dddddd", handlelength=2.0, handleheight=1.4)
+        scheme_patches = [
+            mpatches.Patch(facecolor="none", edgecolor=COLORS[s],
+                           hatch=HATCHES[s], linewidth=1.5,
+                           label=SCHEME_LABEL[s])
+            for s in SCHEMES
+        ]
+        fig.legend(handles=scheme_patches,
+                   loc="lower center", bbox_to_anchor=(0.5, 0.0),
+                   ncol=3, fontsize=19, framealpha=0.9,
+                   edgecolor="#dddddd", handlelength=2.2, handleheight=1.6)
 
-        fig.tight_layout()
+        fig.tight_layout(rect=[0, 0.09, 1, 0.92])
         out = os.path.join(OUT_DIR, "cooja_02_perdev_energy_cpu.png")
         fig.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
         plt.close(fig)

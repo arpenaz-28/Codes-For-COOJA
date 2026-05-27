@@ -31,16 +31,42 @@ import numpy as np
 
 # ─────────────────────────────────────────────────────────────────────────────
 REPO     = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
-OUT_DIR  = os.path.join(REPO, "Results", "Charts", "Network_variation")
-SIZES    = [50, 80, 100]
+OUT_DIR  = os.path.join(REPO, "Results", "COOJA-Simulation", "Charts", "Network_variation")
+PAPER_DIR = os.path.join(REPO, "Paper")
+SIZES    = [30, 50, 80, 100]
+
+# Path to the consolidated small-network summary (contains N=30 data)
+_SMALL_NET_CSV = os.path.join(
+    REPO, "Results", "COOJA-Simulation", "Network-Variation", "Charts",
+    "small_network_variation_summary.csv"
+)
 
 RESULTS = {
     "Proposed": os.path.join(REPO, "Revised-Anonymity",
                              "Simulation results", "network-variation"),
     "LAAKA":    os.path.join(REPO, "LAAKA",
                              "Simulation results", "network-variation"),
-    "Zhou":     os.path.join(REPO, "Zhou-Scheme",
-                             "Simulation results", "network-variation"),
+    "Zhou":     os.path.join(REPO, "Results", "COOJA-Simulation",
+                             "Zhou-Simulation", "network-variation"),
+}
+
+# Raw per-device CSV directories: direct source of truth for the bar charts.
+# Each folder must contain enroll-results.csv, auth-results.csv, keyex-results.csv
+# (seed-averaged per-device values).  N=30 data lives in the small-network tree.
+_SMALL_RAW = os.path.join(REPO, "Results", "COOJA-Simulation", "Network-Variation", "CSV-Data")
+_RAW_CSV_DIRS = {
+    ("Proposed", 30):  os.path.join(_SMALL_RAW, "RA",    "N30"),
+    ("Proposed", 50):  os.path.join(REPO, "Revised-Anonymity", "Simulation results", "network-variation", "N50",  "csv"),
+    ("Proposed", 80):  os.path.join(REPO, "Revised-Anonymity", "Simulation results", "network-variation", "N80",  "csv"),
+    ("Proposed", 100): os.path.join(REPO, "Revised-Anonymity", "Simulation results", "network-variation", "N100", "csv"),
+    ("LAAKA",    30):  os.path.join(_SMALL_RAW, "LAAKA", "N30"),
+    ("LAAKA",    50):  os.path.join(REPO, "LAAKA", "Simulation results", "network-variation", "N50",  "csv"),
+    ("LAAKA",    80):  os.path.join(REPO, "LAAKA", "Simulation results", "network-variation", "N80",  "csv"),
+    ("LAAKA",    100): os.path.join(REPO, "LAAKA", "Simulation results", "network-variation", "N100", "csv"),
+    ("Zhou",     30):  os.path.join(_SMALL_RAW, "Zhou",  "N30"),
+    ("Zhou",     50):  os.path.join(REPO, "Results", "COOJA-Simulation", "Zhou-Simulation", "network-variation", "N50",  "csv"),
+    ("Zhou",     80):  os.path.join(REPO, "Results", "COOJA-Simulation", "Zhou-Simulation", "network-variation", "N80",  "csv"),
+    ("Zhou",     100): os.path.join(REPO, "Results", "COOJA-Simulation", "Zhou-Simulation", "network-variation", "N100", "csv"),
 }
 
 SCHEME_COLORS = {
@@ -89,8 +115,87 @@ PHASE_LABELS = {
 # ─────────────────────────────────────────────────────────────────────────────
 # Data loading
 # ─────────────────────────────────────────────────────────────────────────────
+
+def load_raw_total(scheme_label, n, metric):
+    """
+    Read enroll/auth/keyex raw per-device CSVs and return (total, n_devices).
+      metric="energy" → sum of Energy_J across all devices × all phases, converted to mJ
+      metric="cpu"    → sum of CPU_Time_s across all devices × all phases
+    This is the transparent approach: no intermediate averaging, direct sum from
+    seed-averaged per-device measurements logged by COOJA.
+    Returns (0.0, 0) when data is unavailable.
+    """
+    csv_dir = _RAW_CSV_DIRS.get((scheme_label, n))
+    if not csv_dir or not os.path.isdir(csv_dir):
+        return 0.0, 0
+
+    col = "Energy_J" if metric == "energy" else "CPU_Time_s"
+    device_totals = {}
+
+    for phase_file in ["enroll-results.csv", "auth-results.csv", "keyex-results.csv"]:
+        path = os.path.join(csv_dir, phase_file)
+        if not os.path.isfile(path):
+            continue
+        with open(path, newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                did = int(row["Device_ID"])
+                device_totals[did] = device_totals.get(did, 0.0) + float(row[col])
+
+    if not device_totals:
+        return 0.0, 0
+
+    total = sum(device_totals.values())
+    if metric == "energy":
+        total *= 1000   # J → mJ
+    return total, len(device_totals)
+
+
+_N30_CACHE = {}   # {scheme_label: {phase: {...}}}  — used by line charts only
+
+def _load_n30_data():
+    """Parse consolidated small_network_variation_summary.csv for N=30 rows."""
+    global _N30_CACHE
+    data = {s: {} for s in RESULTS}
+    if not os.path.isfile(_SMALL_NET_CSV):
+        return data
+    with open(_SMALL_NET_CSV, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            if int(row["N_total"]) != 30:
+                continue
+            scheme = row["Scheme"]
+            phase  = row["Phase"]
+            if scheme not in data:
+                continue
+            data[scheme][phase] = {
+                "avg_cpu":    float(row["Avg_CPU_s"]),
+                "ci_cpu":     float(row["CI95_CPU_s"]),
+                "avg_energy": float(row["Avg_Energy_mJ"]),
+                "ci_energy":  float(row["CI95_Energy_mJ"]),
+                "n_devices":  int(row["N_devices"]),
+            }
+    for scheme in data:
+        r = data[scheme]
+        if "Auth+KeyEx" not in r:
+            a = r.get("Authentication")
+            k = r.get("Key Exchange")
+            if a and k:
+                r["Auth+KeyEx"] = {
+                    "avg_cpu":    a["avg_cpu"]    + k["avg_cpu"],
+                    "ci_cpu":     math.sqrt(a["ci_cpu"]**2    + k["ci_cpu"]**2),
+                    "avg_energy": a["avg_energy"] + k["avg_energy"],
+                    "ci_energy":  math.sqrt(a["ci_energy"]**2 + k["ci_energy"]**2),
+                    "n_devices":  a["n_devices"],
+                }
+    _N30_CACHE = data
+    return data
+
+
 def load_summary(scheme_label, n_total):
-    """Return dict keyed by phase name → {avg_cpu, ci_cpu, avg_energy_mj, ci_energy_mj}"""
+    """Return dict keyed by phase name → {avg_cpu, ci_cpu, avg_energy, ci_energy, n_devices}"""
+    if n_total == 30:
+        if not _N30_CACHE:
+            _load_n30_data()
+        return _N30_CACHE.get(scheme_label)
     path = os.path.join(RESULTS[scheme_label], f"N{n_total}", "csv", "summary.csv")
     if not os.path.isfile(path):
         return None
@@ -99,13 +204,12 @@ def load_summary(scheme_label, n_total):
         for row in csv.DictReader(f):
             phase = row["Phase"]
             result[phase] = {
-                "avg_cpu":      float(row["Avg_CPU_s"]),
-                "ci_cpu":       float(row["CI95_CPU_s"]),
-                "avg_energy":   float(row["Avg_Energy_mJ"]),
-                "ci_energy":    float(row["CI95_Energy_mJ"]),
-                "n_devices":    int(row["n_devices"]),
+                "avg_cpu":    float(row["Avg_CPU_s"]),
+                "ci_cpu":     float(row["CI95_CPU_s"]),
+                "avg_energy": float(row["Avg_Energy_mJ"]),
+                "ci_energy":  float(row["CI95_Energy_mJ"]),
+                "n_devices":  int(row["n_devices"]),
             }
-    # compute Auth+KeyEx if not already present
     if "Auth+KeyEx" not in result:
         a = result.get("Authentication")
         k = result.get("Key Exchange")
@@ -298,98 +402,98 @@ PHASE_COLORS = {
     "Key Exchange":   "#A5D6A7",   # light green
 }
 
-def _grouped_bar(metric, ylabel, title, out_path, show=False):
+def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
     """
     Shared renderer for charts 12 and 13.
     metric : "avg_energy" | "avg_cpu"
     """
-    phases  = ["Enrollment", "Authentication", "Key Exchange"]
     schemes = list(RESULTS.keys())
     n_s     = len(schemes)
-    x       = np.arange(len(SIZES))
-    width   = 0.24
+    spacing = 0.80                          # reduce inter-group gap
+    x       = np.arange(len(SIZES)) * spacing
+    width   = 0.20
 
     with plt.rc_context(_CHART_STYLE):
-        fig, ax = plt.subplots(figsize=(10, 5.5))
+        fig, ax = plt.subplots(figsize=(12, 6.5))
         fig.patch.set_facecolor("white")
 
+        raw_metric = "energy" if metric == "avg_energy" else "cpu"
+
         all_totals = []
+        bar_data = []    # (offsets, bar_totals, scheme) — collected first pass
         for si, scheme in enumerate(schemes):
             offsets    = x + (si - (n_s - 1) / 2) * width
             bar_totals = []
             for n in SIZES:
-                d   = load_summary(scheme, n)
-                tot = 0.0
-                if d:
-                    for phase in phases:
-                        if phase in d:
-                            key = "avg_energy" if metric == "avg_energy" else "avg_cpu"
-                            tot += d[phase][key] * d[phase]["n_devices"]
+                tot, _ = load_raw_total(scheme, n, raw_metric)
                 bar_totals.append(tot)
-            all_totals.append(max(bar_totals))
+            all_totals.extend(bar_totals)
+            bar_data.append((offsets, bar_totals, scheme))
 
+        global_max = max(all_totals) if all_totals else 1
+        ax.set_ylim(0, global_max * 1.32)
+        ax.set_xlim(-spacing * 0.6, x[-1] + spacing * 0.6)
+
+        for offsets, bar_totals, scheme in bar_data:
             color = SCHEME_COLORS[scheme]
-            bars  = ax.bar(offsets, bar_totals, width,
-                           label=scheme,
-                           facecolor="none",
-                           edgecolor=color,
-                           hatch=SCHEME_HATCHES[scheme],
-                           linewidth=1.5)
+            ax.bar(offsets, bar_totals, width,
+                   label=scheme,
+                   facecolor="none",
+                   edgecolor=color,
+                   hatch=SCHEME_HATCHES[scheme],
+                   linewidth=1.5)
 
-            # value labels on top of each bar
             for offset, val in zip(offsets, bar_totals):
                 if val > 0:
-                    ax.text(offset, val + max(all_totals + [1]) * 0.012,
+                    ax.text(offset, val + global_max * 0.015,
                             f"{val:.0f}" if metric == "avg_energy" else f"{val:.1f}",
                             ha="center", va="bottom",
-                            fontsize=16, color="#555555")
+                            fontsize=15, color="#333333", fontweight="bold")
 
         ax.set_xticks(x)
-        ax.set_xticklabels([f"N = {n}" for n in SIZES])
-        ax.set_xlabel("Total Network Nodes", labelpad=8)
-        ax.set_ylabel(ylabel, labelpad=8)
-        ax.set_title(title, pad=14, color="#222222")
+        ax.set_xticklabels([f"N = {n}" for n in SIZES], fontsize=17)
+        ax.set_xlabel("Total Network Nodes", labelpad=8, fontsize=20, fontweight="bold")
+        ax.set_ylabel(ylabel, labelpad=8, fontsize=20, fontweight="bold")
+        ax.set_title(title, pad=14, color="#222222", fontsize=21, fontweight="bold")
 
-        # subtle horizontal grid only
         ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
         ax.set_axisbelow(True)
-        ax.tick_params(axis="y", length=0)
-
-        # clean up spines
+        ax.tick_params(axis="y", length=0, labelsize=16)
         ax.spines["left"].set_color("#cccccc")
         ax.spines["bottom"].set_color("#cccccc")
 
-        # legend inside, top-left, clean box
         ax.legend(loc="upper left",
                   frameon=True, framealpha=0.92,
                   edgecolor="#dddddd",
                   handlelength=1.4, handleheight=1.0,
-                  borderpad=0.7)
+                  borderpad=0.7, fontsize=16)
 
         fig.tight_layout()
-        fig.savefig(out_path, dpi=180, bbox_inches="tight",
-                    facecolor="white")
+        fig.savefig(out_path, dpi=180, bbox_inches="tight", facecolor="white")
+        if paper_path:
+            fig.savefig(paper_path, dpi=180, bbox_inches="tight", facecolor="white")
+            print(f"  Saved: {os.path.basename(paper_path)}  (Paper/)")
         if show:
             plt.show()
         plt.close(fig)
     print(f"  Saved: {os.path.basename(out_path)}")
 
 
-def total_energy_grouped_bar(out_path, show=False):
+def total_energy_grouped_bar(out_path, paper_path=None, show=False):
     _grouped_bar(
         "avg_energy",
-        "Total Energy — All Devices",
+        "Total Energy — All Devices (mJ)",
         "Total Energy Consumption vs Network Size",
-        out_path, show,
+        out_path, paper_path, show,
     )
 
 
-def total_cpu_grouped_bar(out_path, show=False):
+def total_cpu_grouped_bar(out_path, paper_path=None, show=False):
     _grouped_bar(
         "avg_cpu",
-        "Total CPU Time — All Devices",
+        "Total CPU Time — All Devices (s)",
         "Total CPU Time vs Network Size",
-        out_path, show,
+        out_path, paper_path, show,
     )
 
 
@@ -437,12 +541,14 @@ def main():
     print("Generating total-energy grouped bar chart")
     total_energy_grouped_bar(
         os.path.join(OUT_DIR, "12_total_energy_grouped_bar.png"),
+        paper_path=os.path.join(PAPER_DIR, "fig_sim_net_energy.png"),
         show=args.show,
     )
 
     print("\nGenerating total-CPU grouped bar chart")
     total_cpu_grouped_bar(
         os.path.join(OUT_DIR, "13_total_cpu_grouped_bar.png"),
+        paper_path=os.path.join(PAPER_DIR, "fig_sim_net_cpu.png"),
         show=args.show,
     )
 
