@@ -3,17 +3,23 @@ run_network_variation.py
 Run all 3 schemes × 4 network sizes for the network-scalability study.
 Uses the local COOJA installation (no Docker required).
 
-Topology (all sizes, 2 active AS):
-  N=20  : 1 GW + 17 AS (2 active) +  2 devices  (IDs 19–20)
-  N=50  : 1 GW + 44 AS (2 active) +  5 devices  (IDs 46–50)
-  N=80  : 1 GW + 71 AS (2 active) +  8 devices  (IDs 73–80)
-  N=100 : 1 GW + 89 AS (2 active) + 10 devices  (IDs 91–100)
+Topology (all sizes, 20% devices, 2 active AS/GW-servers):
+  N=30  : 1 GW + 23 AS (2 active) +  6 devices  (IDs 25–30)
+  N=50  : 1 GW + 39 AS (2 active) + 10 devices  (IDs 41–50)
+  N=80  : 1 GW + 63 AS (2 active) + 16 devices  (IDs 65–80)
+  N=100 : 1 GW + 79 AS (2 active) + 20 devices  (IDs 81–100)
+
+Zhou additionally has paired SN nodes (1 SN per user/device).
+
+Simulations terminate early once all devices log their final-phase
+energy marker (KEYEX_ENERGY for RA/LAAKA, AUTH_ENERGY for Zhou).
+A per-size safety timeout is used if early exit never triggers.
 
 Usage:
   python3 run_network_variation.py                      # all schemes, all sizes
   python3 run_network_variation.py --scheme RA          # only Revised-Anonymity
-  python3 run_network_variation.py --scheme LAAKA --size 20 50
-  python3 run_network_variation.py --seeds 3            # use 3 seeds instead of 5
+  python3 run_network_variation.py --scheme LAAKA --size 30 50
+  python3 run_network_variation.py --seeds 5            # use 5 seeds instead of 10
 """
 
 import subprocess, os, re, csv, time, math, sys, shutil, argparse
@@ -36,26 +42,26 @@ SEEDS = [123456, 234567, 345678, 456789, 567890,
 # ─────────────────────────────────────────────────────────────────────────────
 # Each entry: (n_as, n_devices, first_device_id)  — for RA and LAAKA
 SIZES = {
-    20:  (17,  2, 19),
-    50:  (44,  5, 46),
-    80:  (71,  8, 73),
-    100: (89, 10, 91),
+    30:  (23,  6, 25),
+    50:  (39, 10, 41),
+    80:  (63, 16, 65),
+    100: (79, 20, 81),
 }
 
 # Zhou topology: 1 GW + 2 GW-servers + N_SN sensor nodes + N_users user nodes
 # Each entry: (n_sn, last_sn_id, n_users, first_user_id)
 ZHOU_SIZES = {
-    20:  (15, 18,  2, 19),
-    50:  (42, 45,  5, 46),
-    80:  (69, 72,  8, 73),
-    100: (87, 90, 10, 91),
+    30:  (21, 24,  6, 25),
+    50:  (37, 40, 10, 41),
+    80:  (61, 64, 16, 65),
+    100: (77, 80, 20, 81),
 }
 
 SCHEME_CFG = {
     "RA": {
         "source_dir":  os.path.join(REPO, "Revised-Anonymity", "Src-20AS-79Dev"),
         "conf_dirs": {
-            20:  os.path.join(REPO, "Revised-Anonymity", "NetVar-N20"),
+            30:  os.path.join(REPO, "Revised-Anonymity", "NetVar-N30"),
             50:  os.path.join(REPO, "Revised-Anonymity", "NetVar-N50"),
             80:  os.path.join(REPO, "Revised-Anonymity", "NetVar-N80"),
             100: os.path.join(REPO, "Revised-Anonymity", "NetVar-N100"),
@@ -67,7 +73,7 @@ SCHEME_CFG = {
     "LAAKA": {
         "source_dir":  os.path.join(REPO, "LAAKA"),
         "conf_dirs": {
-            20:  os.path.join(REPO, "LAAKA", "Network-Variation", "N20"),
+            30:  os.path.join(REPO, "LAAKA", "Network-Variation", "N30"),
             50:  os.path.join(REPO, "LAAKA", "Network-Variation", "N50"),
             80:  os.path.join(REPO, "LAAKA", "Network-Variation", "N80"),
             100: os.path.join(REPO, "LAAKA", "Network-Variation", "N100"),
@@ -79,7 +85,7 @@ SCHEME_CFG = {
     "Zhou": {
         "source_dir":  os.path.join(REPO, "Zhou-Scheme"),
         "conf_dirs": {
-            20:  os.path.join(REPO, "Zhou-Scheme", "Network-Variation", "N20"),
+            30:  os.path.join(REPO, "Zhou-Scheme", "Network-Variation", "N30"),
             50:  os.path.join(REPO, "Zhou-Scheme", "Network-Variation", "N50"),
             80:  os.path.join(REPO, "Zhou-Scheme", "Network-Variation", "N80"),
             100: os.path.join(REPO, "Zhou-Scheme", "Network-Variation", "N100"),
@@ -188,6 +194,11 @@ def generate_csc(scheme, n_total, seed, project_dir):
     """
     n_as, n_dev, first_dev = SIZES[n_total]
 
+    # Early-exit defaults (RA / LAAKA): all devices have logged KEYEX_ENERGY
+    _done_marker = "KEYEX_ENERGY"
+    _n_expected  = n_dev
+    _first_id    = first_dev
+
     # GW — always node 1, centre
     gw_motes = _mote_entry(150.0, 150.0, 1)
 
@@ -207,6 +218,10 @@ def generate_csc(scheme, n_total, seed, project_dir):
     if scheme == "Zhou":
         # Zhou topology: 1 GW + 2 GW-servers (nodes 2-3) + N_SN sn-nodes + N_users user-nodes
         n_sn, last_sn_id, n_users, first_user_id = ZHOU_SIZES[n_total]
+        # Override early-exit: all users have logged AUTH_ENERGY (no KeyEx phase)
+        _done_marker = "AUTH_ENERGY"
+        _n_expected  = n_users
+        _first_id    = first_user_id
 
         # GW-server motes: nodes 2 and 3
         gw_srv_motes = "\n".join(_mote_entry(30.0 * (i + 1), 30.0, 2 + i) for i in range(2))
@@ -239,7 +254,9 @@ def generate_csc(scheme, n_total, seed, project_dir):
 
     gw_block = _motetype_block("GW Node", "gw-node.c", "gw-node.cooja", gw_motes)
 
-    timeout_ms = 1800000  # 30 min — sufficient for all network sizes
+    # Per-size safety timeout (early exit fires before this in normal runs)
+    _timeouts_ms = {30: 600000, 50: 900000, 80: 1200000, 100: 1500000}
+    timeout_ms = _timeouts_ms.get(n_total, 1800000)
 
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <simconf version="2022112801">
@@ -273,9 +290,21 @@ def generate_csc(scheme, n_total, seed, project_dir):
     org.contikios.cooja.plugins.ScriptRunner
     <plugin_config>
       <script>
+var completed = {{}};
+var nExpected = {_n_expected};
+var firstId   = {_first_id};
 TIMEOUT({timeout_ms}, log.testOK());
 while(true) {{
   log.log(time + " " + id + " " + msg + "\\n");
+  if (msg.indexOf("{_done_marker}") !== -1 && id >= firstId) {{
+    completed[id] = 1;
+    var count = 0;
+    for (var k in completed) {{ count++; }}
+    if (count >= nExpected) {{
+      log.log("EARLY EXIT: all " + nExpected + " nodes done\\n");
+      log.testOK();
+    }}
+  }}
   YIELD();
 }}
       </script>
@@ -538,11 +567,11 @@ def main():
     parser.add_argument("--scheme", nargs="+", choices=["RA", "LAAKA", "Zhou"],
                         default=["RA", "LAAKA", "Zhou"],
                         help="Which schemes to run (default: all three)")
-    parser.add_argument("--size", nargs="+", type=int, choices=[20, 50, 80, 100],
-                        default=[20, 50, 80, 100],
+    parser.add_argument("--size", nargs="+", type=int, choices=[30, 50, 80, 100],
+                        default=[30, 50, 80, 100],
                         help="Network sizes to simulate (default: all four)")
-    parser.add_argument("--seeds", type=int, default=5,
-                        help="Number of random seeds to use (1–10, default: 5)")
+    parser.add_argument("--seeds", type=int, default=10,
+                        help="Number of random seeds to use (1–10, default: 10)")
     args = parser.parse_args()
 
     seeds = SEEDS[:args.seeds]

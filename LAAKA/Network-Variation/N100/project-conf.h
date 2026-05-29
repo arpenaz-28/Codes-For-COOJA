@@ -2,19 +2,19 @@
 #define PROJECT_CONF_H_
 
 /* --------------------------------------------------------------------------
- * Network Variation — N=100 total nodes
+ * Network Variation — N=100 total nodes (20% devices)
  *   Node 1          = GW (RPL root + Registration Authority)
  *   Nodes 2–3       = Active Fog AS (FOG1=2, FOG2=3)
- *   Nodes 4–90      = Filler Fog motes (inactive, affect RF medium only)
- *   Nodes 91–100    = IoT Devices (10 newly joined)
+ *   Nodes 4–80      = Filler Fog motes (inactive, affect RF medium only)
+ *   Nodes 81–100    = IoT Devices (20 newly joined; 20% of N=100)
  *
- *   Devices 91–95   → FOG1 (node_id < FOG_SPLIT_ID)
- *   Devices 96–100  → FOG2 (node_id >= FOG_SPLIT_ID)
+ *   Devices 81–90   → FOG1 (node_id < FOG_SPLIT_ID=91)
+ *   Devices 91–100  → FOG2 (node_id >= FOG_SPLIT_ID=91)
  * -------------------------------------------------------------------------- */
 #define GW_NODE_ID       1
 #define FOG1_NODE_ID     2
 #define FOG2_NODE_ID     3
-#define FOG_SPLIT_ID     96    /* devices [91,95] → FOG1, [96,100] → FOG2 */
+#define FOG_SPLIT_ID     91    /* devices [81,90] → FOG1, [91,100] → FOG2 */
 #define FOG_IDENTITY_ID  1
 
 #define ENERGEST_CONF_ON 1

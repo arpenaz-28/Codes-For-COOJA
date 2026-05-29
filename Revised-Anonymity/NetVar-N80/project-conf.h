@@ -2,19 +2,19 @@
 #define PROJECT_CONF_H_
 
 /* --------------------------------------------------------------------------
- * Network Variation — N=80 total nodes
+ * Network Variation — N=80 total nodes (20% devices)
  *   Node 1          = Gateway (RPL root)
  *   Nodes 2–3       = Active Authentication Servers (2 active)
- *   Nodes 4–72      = Filler AS motes (inactive, affect RF medium only)
- *   Nodes 73–80     = Device nodes (8 newly joined devices)
+ *   Nodes 4–64      = Filler AS motes (inactive, affect RF medium only)
+ *   Nodes 65–80     = Device nodes (16 newly joined devices; 20% of N=80)
  *
  *   Device → AS assignment: AS_NODE_ID + ((node_id - FIRST_DEVICE_ID) % NUM_AS)
- *   → devices 73,75,77,79 → AS 2,  devices 74,76,78,80 → AS 3
+ *   → devices 65,67,69,71,73,75,77,79 → AS 2;  devices 66,68,70,72,74,76,78,80 → AS 3
  * -------------------------------------------------------------------------- */
 #define GW_NODE_ID       1
 #define AS_NODE_ID       2
 #define NUM_AS           2
-#define FIRST_DEVICE_ID  73
+#define FIRST_DEVICE_ID  65
 
 #define ENERGEST_CONF_ON 1
 
