@@ -156,7 +156,7 @@ var firstId   = 3;
 TIMEOUT(600000, log.testOK());
 while(true) {
   log.log(time + " " + id + " " + msg + "\n");
-  if (msg.indexOf("DESYNC_ROUND3_ENERGY") !== -1) {
+  if (msg.indexOf("DESYNC_ROUND4_ENERGY") !== -1) {
     if (id >= firstId) {
       completed[id] = 1;
       var count = 0;

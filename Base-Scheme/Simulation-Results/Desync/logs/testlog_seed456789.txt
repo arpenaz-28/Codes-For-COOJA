@@ -113,7 +113,7 @@ Random seed: 456789
 24501000 3 DESYNC_LOG|Node 3|========================================
 24501000 3 DESYNC_LOG|Node 3|Round 2|DESYNC TRIGGER ﾀﾔ will drop AS reply
 24501000 3 DESYNC_LOG|Node 3|========================================
-24501000 3 DESYNC_LOG|Node 3|Round 2|Sending auth|id_d=3|ts_1=1|M_d[0]=219
+24501000 3 DESYNC_LOG|Node 3|Round 2|Sending auth|id_d=3|ts_1=1|M_d[0]=75
 24570200 2 AS 2: Auth OK for device 3
 24597880 3 DESYNC_LOG|Node 3|Round 2|SIMULATED DROP ﾀﾔ ignoring valid AS reply
 24597880 3 DESYNC_LOG|Node 3|Round 2|Device keeps OLD M_d
@@ -121,14 +121,14 @@ Random seed: 456789
 24597880 3 DESYNC_LOG|Node 3|Round 2|RESULT: DESYNCHRONIZED
 24597880 3 
 24597880 3 DESYNC_ROUND2_ENERGY|3|cpu_s=0.096880|energy_j=0.005961
-24597880 3 DESYNC_LOG|Node 3|Round 2|Device state: OLD M_d[0]=219
+24597880 3 DESYNC_LOG|Node 3|Round 2|Device state: OLD M_d[0]=75
 24604552 1 GW: Auth token received for device 3
 24619760 2 AS 2: Token delivered to GW
 27696000 4 
 27696000 4 DESYNC_LOG|Node 4|========================================
 27696000 4 DESYNC_LOG|Node 4|Round 2|DESYNC TRIGGER ﾀﾔ will drop AS reply
 27696000 4 DESYNC_LOG|Node 4|========================================
-27696000 4 DESYNC_LOG|Node 4|Round 2|Sending auth|id_d=4|ts_1=1|M_d[0]=219
+27696000 4 DESYNC_LOG|Node 4|Round 2|Sending auth|id_d=4|ts_1=1|M_d[0]=75
 27770200 2 AS 2: Auth OK for device 4
 27827552 1 GW: Auth token received for device 4
 27838880 4 DESYNC_LOG|Node 4|Round 2|SIMULATED DROP ﾀﾔ ignoring valid AS reply
@@ -137,13 +137,13 @@ Random seed: 456789
 27838880 4 DESYNC_LOG|Node 4|Round 2|RESULT: DESYNCHRONIZED
 27838880 4 
 27838880 4 DESYNC_ROUND2_ENERGY|4|cpu_s=0.142880|energy_j=0.008804
-27838880 4 DESYNC_LOG|Node 4|Round 2|Device state: OLD M_d[0]=219
+27838880 4 DESYNC_LOG|Node 4|Round 2|Device state: OLD M_d[0]=75
 27844640 2 AS 2: Token delivered to GW
 30507000 5 
 30507000 5 DESYNC_LOG|Node 5|========================================
 30507000 5 DESYNC_LOG|Node 5|Round 2|DESYNC TRIGGER ﾀﾔ will drop AS reply
 30507000 5 DESYNC_LOG|Node 5|========================================
-30507000 5 DESYNC_LOG|Node 5|Round 2|Sending auth|id_d=5|ts_1=1|M_d[0]=219
+30507000 5 DESYNC_LOG|Node 5|Round 2|Sending auth|id_d=5|ts_1=1|M_d[0]=75
 30560200 2 AS 2: Auth OK for device 5
 30589728 5 DESYNC_LOG|Node 5|Round 2|SIMULATED DROP ﾀﾔ ignoring valid AS reply
 30589728 5 DESYNC_LOG|Node 5|Round 2|Device keeps OLD M_d
@@ -151,122 +151,130 @@ Random seed: 456789
 30589728 5 DESYNC_LOG|Node 5|Round 2|RESULT: DESYNCHRONIZED
 30589728 5 
 30589728 5 DESYNC_ROUND2_ENERGY|5|cpu_s=0.082728|energy_j=0.005087
-30589728 5 DESYNC_LOG|Node 5|Round 2|Device state: OLD M_d[0]=219
+30589728 5 DESYNC_LOG|Node 5|Round 2|Device state: OLD M_d[0]=75
 30603552 1 GW: Auth token received for device 5
 30643760 2 AS 2: Token delivered to GW
 32501000 3 
 32501000 3 DESYNC_LOG|Node 3|========================================
 32501000 3 DESYNC_LOG|Node 3|Round 3|RETRY WITH OLD M_d (expect failure in base scheme)
 32501000 3 DESYNC_LOG|Node 3|========================================
-32501000 3 DESYNC_LOG|Node 3|Round 3|Sending auth|id_d=3|ts_1=1|M_d[0]=219
-32554200 2 AS 2: Auth OK for device 3
-32609552 1 GW: Auth token received for device 3
-32628880 3 DESYNC_LOG|Node 3|Round 3|Stale ts_2
-32628880 3 DESYNC_LOG|Node 3|Round 3|Auth FAILED as expected (no dual-state at AS)
-32628880 3 DESYNC_LOG|Node 3|Round 3|Base scheme: device must RE-ENROLL to recover
-32628880 3 DESYNC_LOG|Node 3|Round 3|RE-ENROLLING...
-32634640 2 AS 2: Token delivered to GW
-32672592 2 AS 2: Device 3 already registered or full
-32707760 3 DESYNC_LOG|Node 3|Reg-0 dropped
-32772624 2 AS 2: Reg step-1 for device 3 done
-32856112 3 DESYNC_LOG|Node 3|Reg-1 OK|Enrolled
-32856112 3 DESYNC_LOG|Node 3|Round 3|Re-enrollment complete|New M_d[0]=219
-32856112 3 DESYNC_LOG|Node 3|Round 3|Retrying auth after re-enrollment...
-32856112 3 DESYNC_LOG|Node 3|Round 3|Sending auth|id_d=3|ts_1=0|M_d[0]=219
-32886200 2 AS 2: Auth OK for device 3
-32908880 3 DESYNC_LOG|Node 3|Round 3|Auth OK|M_d updated|SYNCED
-32960472 3 DESYNC_LOG|Node 3|Round 3|Data confirmed by GW
-32960472 3 DESYNC_LOG|Node 3|Round 3|RESULT: RECOVERY via RE-ENROLL ﾀﾔ high cost
-32960472 3 
-32960472 3 DESYNC_ROUND3_ENERGY|3|cpu_s=0.459472|energy_j=0.028274
-32967552 1 GW: Auth token received for device 3
-32974760 2 AS 2: Token delivered to GW
+32501000 3 DESYNC_LOG|Node 3|Round 3|Sending auth|id_d=3|ts_1=1|M_d[0]=75
+32554200 2 AS 2: Auth failed for device 3 (accumulator)
+32626760 3 DESYNC_LOG|Node 3|Round 3|Auth reply not received (auth FAILED ﾀﾔ hash mismatch or no response)
+32626760 3 DESYNC_LOG|Node 3|Round 3|Auth FAILED as expected (no dual-state at AS)
+32626760 3 DESYNC_LOG|Node 3|Round 3|Base scheme: device must RE-ENROLL to recover
+32626760 3 DESYNC_LOG|Node 3|Round 3|RE-ENROLLING...
+32674592 2 AS 2: Device 3 re-enrolling ﾀﾔ resetting state
+32674592 2 AS 2: Reg step-0 for device 3 done
+32710304 3 DESYNC_LOG|Node 3|Reg-0 OK|c_d=6|M_d[0]=5
+32782624 2 AS 2: Reg step-1 for device 3 done
+32840112 3 DESYNC_LOG|Node 3|Reg-1 OK|Enrolled
+32840112 3 DESYNC_LOG|Node 3|Round 3|Re-enrollment complete|New M_d[0]=5
+32840112 3 DESYNC_LOG|Node 3|Round 3|Retrying auth after re-enrollment...
+32840112 3 DESYNC_LOG|Node 3|Round 3|Sending auth|id_d=3|ts_1=0|M_d[0]=5
+32897200 2 AS 2: Auth OK for device 3
+32932552 1 GW: Auth token received for device 3
+32964880 3 DESYNC_LOG|Node 3|Round 3|Auth OK|M_d updated|SYNCED
+32978008 2 AS 2: Token delivered to GW
+32983480 3 DESYNC_LOG|Node 3|Round 3|Data confirmed by GW
+32983480 3 DESYNC_LOG|Node 3|Round 3|RESULT: RECOVERY via RE-ENROLL ﾀﾔ high cost
+32983480 3 
+32983480 3 DESYNC_ROUND3_ENERGY|3|cpu_s=0.482480|energy_j=0.029696
 36696000 4 
 36696000 4 DESYNC_LOG|Node 4|========================================
 36696000 4 DESYNC_LOG|Node 4|Round 3|RETRY WITH OLD M_d (expect failure in base scheme)
 36696000 4 DESYNC_LOG|Node 4|========================================
-36696000 4 DESYNC_LOG|Node 4|Round 3|Sending auth|id_d=4|ts_1=1|M_d[0]=219
-36732200 2 AS 2: Auth OK for device 4
-36749552 1 GW: Auth token received for device 4
-36777880 4 DESYNC_LOG|Node 4|Round 3|Stale ts_2
-36777880 4 DESYNC_LOG|Node 4|Round 3|Auth FAILED as expected (no dual-state at AS)
-36777880 4 DESYNC_LOG|Node 4|Round 3|Base scheme: device must RE-ENROLL to recover
-36777880 4 DESYNC_LOG|Node 4|Round 3|RE-ENROLLING...
-36785760 2 AS 2: Token delivered to GW
-36861592 2 AS 2: Device 4 already registered or full
-36905488 4 DESYNC_LOG|Node 4|Reg-0 dropped
-36944624 2 AS 2: Reg step-1 for device 4 done
-36979192 4 DESYNC_LOG|Node 4|Reg-1 OK|Enrolled
-36979192 4 DESYNC_LOG|Node 4|Round 3|Re-enrollment complete|New M_d[0]=219
-36979192 4 DESYNC_LOG|Node 4|Round 3|Retrying auth after re-enrollment...
-36979192 4 DESYNC_LOG|Node 4|Round 3|Sending auth|id_d=4|ts_1=0|M_d[0]=219
-37043200 2 AS 2: Auth OK for device 4
-37093552 1 GW: Auth token received for device 4
-37105880 4 DESYNC_LOG|Node 4|Round 3|Auth OK|M_d updated|SYNCED
-37129760 2 AS 2: Token delivered to GW
-37174472 4 DESYNC_LOG|Node 4|Round 3|Data confirmed by GW
-37174472 4 DESYNC_LOG|Node 4|Round 3|RESULT: RECOVERY via RE-ENROLL ﾀﾔ high cost
-37174472 4 
-37174472 4 DESYNC_ROUND3_ENERGY|4|cpu_s=0.478472|energy_j=0.029444
+36696000 4 DESYNC_LOG|Node 4|Round 3|Sending auth|id_d=4|ts_1=1|M_d[0]=75
+36732200 2 AS 2: Auth failed for device 4 (accumulator)
+36785760 4 DESYNC_LOG|Node 4|Round 3|Auth reply not received (auth FAILED ﾀﾔ hash mismatch or no response)
+36785760 4 DESYNC_LOG|Node 4|Round 3|Auth FAILED as expected (no dual-state at AS)
+36785760 4 DESYNC_LOG|Node 4|Round 3|Base scheme: device must RE-ENROLL to recover
+36785760 4 DESYNC_LOG|Node 4|Round 3|RE-ENROLLING...
+36832592 2 AS 2: Device 4 re-enrolling ﾀﾔ resetting state
+36832592 2 AS 2: Reg step-0 for device 4 done
+36889304 4 DESYNC_LOG|Node 4|Reg-0 OK|c_d=6|M_d[0]=5
+36918216 2 AS 2: Reg step-1 for device 4 done
+36977112 4 DESYNC_LOG|Node 4|Reg-1 OK|Enrolled
+36977112 4 DESYNC_LOG|Node 4|Round 3|Re-enrollment complete|New M_d[0]=5
+36977112 4 DESYNC_LOG|Node 4|Round 3|Retrying auth after re-enrollment...
+36977112 4 DESYNC_LOG|Node 4|Round 3|Sending auth|id_d=4|ts_1=0|M_d[0]=5
+36996368 2 AS 2: Auth OK for device 4
+37028880 4 DESYNC_LOG|Node 4|Round 3|Auth OK|M_d updated|SYNCED
+37050552 1 GW: Auth token received for device 4
+37078760 2 AS 2: Token delivered to GW
+37104472 4 DESYNC_LOG|Node 4|Round 3|Data confirmed by GW
+37104472 4 DESYNC_LOG|Node 4|Round 3|RESULT: RECOVERY via RE-ENROLL ﾀﾔ high cost
+37104472 4 
+37104472 4 DESYNC_ROUND3_ENERGY|4|cpu_s=0.408472|energy_j=0.025122
 40501000 3 
 40501000 3 DESYNC_LOG|Node 3|========================================
 40501000 3 DESYNC_LOG|Node 3|Round 4|POST-RECOVERY NORMAL AUTH
 40501000 3 DESYNC_LOG|Node 3|========================================
-40501000 3 DESYNC_LOG|Node 3|Round 4|Sending auth|id_d=3|ts_1=1|M_d[0]=219
+40501000 3 DESYNC_LOG|Node 3|Round 4|Sending auth|id_d=3|ts_1=1|M_d[0]=75
 40507000 5 
 40507000 5 DESYNC_LOG|Node 5|========================================
 40507000 5 DESYNC_LOG|Node 5|Round 3|RETRY WITH OLD M_d (expect failure in base scheme)
 40507000 5 DESYNC_LOG|Node 5|========================================
-40507000 5 DESYNC_LOG|Node 5|Round 3|Sending auth|id_d=5|ts_1=1|M_d[0]=219
-40561200 2 AS 2: Auth OK for device 3
-40570200 2 AS 2: Auth OK for device 5
-40623880 3 DESYNC_LOG|Node 3|Round 4|Stale ts_2
-40623880 3 
-40623880 3 DESYNC_LOG|Node 3|=== DESYNC DEMONSTRATION COMPLETE (BASE SCHEME) ===
-40632552 1 GW: Auth token received for device 3
-40662880 5 DESYNC_LOG|Node 5|Round 3|Stale ts_2
-40662880 5 DESYNC_LOG|Node 5|Round 3|Auth FAILED as expected (no dual-state at AS)
-40662880 5 DESYNC_LOG|Node 5|Round 3|Base scheme: device must RE-ENROLL to recover
-40662880 5 DESYNC_LOG|Node 5|Round 3|RE-ENROLLING...
-40719760 2 AS 2: Token delivered to GW
-40728592 2 AS 2: Device 5 already registered or full
-40745552 1 GW: Auth token received for device 5
-40786760 5 DESYNC_LOG|Node 5|Reg-0 dropped
-40791760 2 AS 2: Token delivered to GW
-40848624 2 AS 2: Reg step-1 for device 5 done
-40893112 5 DESYNC_LOG|Node 5|Reg-1 OK|Enrolled
-40893112 5 DESYNC_LOG|Node 5|Round 3|Re-enrollment complete|New M_d[0]=219
-40893112 5 DESYNC_LOG|Node 5|Round 3|Retrying auth after re-enrollment...
-40893112 5 DESYNC_LOG|Node 5|Round 3|Sending auth|id_d=5|ts_1=0|M_d[0]=219
-40938200 2 AS 2: Auth OK for device 5
-40955728 5 DESYNC_LOG|Node 5|Round 3|Auth OK|M_d updated|SYNCED
-40985552 1 GW: Auth token received for device 5
-40993760 2 AS 2: Token delivered to GW
-40999232 5 DESYNC_LOG|Node 5|Round 3|Data confirmed by GW
-40999232 5 DESYNC_LOG|Node 5|Round 3|RESULT: RECOVERY via RE-ENROLL ﾀﾔ high cost
-40999232 5 
-40999232 5 DESYNC_ROUND3_ENERGY|5|cpu_s=0.492232|energy_j=0.030299
+40507000 5 DESYNC_LOG|Node 5|Round 3|Sending auth|id_d=5|ts_1=1|M_d[0]=75
+40576200 2 AS 2: Auth OK for device 3
+40595200 2 AS 2: Auth failed for device 5 (accumulator)
+40610880 3 DESYNC_LOG|Node 3|Round 4|Auth OK|M_d updated|SYNCED
+40636552 1 GW: Auth token received for device 3
+40642760 2 AS 2: Token delivered to GW
+40648232 3 DESYNC_LOG|Node 3|Round 4|Data confirmed by GW
+40648232 3 DESYNC_LOG|Node 3|Round 4|RESULT: SUCCESS ﾀﾔ system fully recovered
+40648232 3 
+40648232 3 DESYNC_ROUND4_ENERGY|3|cpu_s=0.147232|energy_j=0.009050
+40648232 3 
+40648232 3 DESYNC_LOG|Node 3|=== DESYNC DEMONSTRATION COMPLETE (BASE SCHEME) ===
+40709760 5 DESYNC_LOG|Node 5|Round 3|Auth reply not received (auth FAILED ﾀﾔ hash mismatch or no response)
+40709760 5 DESYNC_LOG|Node 5|Round 3|Auth FAILED as expected (no dual-state at AS)
+40709760 5 DESYNC_LOG|Node 5|Round 3|Base scheme: device must RE-ENROLL to recover
+40709760 5 DESYNC_LOG|Node 5|Round 3|RE-ENROLLING...
+40773592 2 AS 2: Device 5 re-enrolling ﾀﾔ resetting state
+40773592 2 AS 2: Reg step-0 for device 5 done
+40798304 5 DESYNC_LOG|Node 5|Reg-0 OK|c_d=6|M_d[0]=5
+40841624 2 AS 2: Reg step-1 for device 5 done
+40913112 5 DESYNC_LOG|Node 5|Reg-1 OK|Enrolled
+40913112 5 DESYNC_LOG|Node 5|Round 3|Re-enrollment complete|New M_d[0]=5
+40913112 5 DESYNC_LOG|Node 5|Round 3|Retrying auth after re-enrollment...
+40913112 5 DESYNC_LOG|Node 5|Round 3|Sending auth|id_d=5|ts_1=0|M_d[0]=5
+40954200 2 AS 2: Auth OK for device 5
+40992880 5 DESYNC_LOG|Node 5|Round 3|Auth OK|M_d updated|SYNCED
+41025472 5 DESYNC_LOG|Node 5|Round 3|Data confirmed by GW
+41025472 5 DESYNC_LOG|Node 5|Round 3|RESULT: RECOVERY via RE-ENROLL ﾀﾔ high cost
+41025472 5 
+41025472 5 DESYNC_ROUND3_ENERGY|5|cpu_s=0.518472|energy_j=0.031920
+41055552 1 GW: Auth token received for device 5
+41091760 2 AS 2: Token delivered to GW
 45696000 4 
 45696000 4 DESYNC_LOG|Node 4|========================================
 45696000 4 DESYNC_LOG|Node 4|Round 4|POST-RECOVERY NORMAL AUTH
 45696000 4 DESYNC_LOG|Node 4|========================================
-45696000 4 DESYNC_LOG|Node 4|Round 4|Sending auth|id_d=4|ts_1=1|M_d[0]=219
-45728200 2 AS 2: Auth OK for device 4
-45768552 1 GW: Auth token received for device 4
-45779880 4 DESYNC_LOG|Node 4|Round 4|Stale ts_2
-45779880 4 
-45779880 4 DESYNC_LOG|Node 4|=== DESYNC DEMONSTRATION COMPLETE (BASE SCHEME) ===
-45800760 2 AS 2: Token delivered to GW
+45696000 4 DESYNC_LOG|Node 4|Round 4|Sending auth|id_d=4|ts_1=1|M_d[0]=75
+45721368 2 AS 2: Auth OK for device 4
+45766552 1 GW: Auth token received for device 4
+45774880 4 DESYNC_LOG|Node 4|Round 4|Auth OK|M_d updated|SYNCED
+45789760 2 AS 2: Token delivered to GW
+45823472 4 DESYNC_LOG|Node 4|Round 4|Data confirmed by GW
+45823472 4 DESYNC_LOG|Node 4|Round 4|RESULT: SUCCESS ﾀﾔ system fully recovered
+45823472 4 
+45823472 4 DESYNC_ROUND4_ENERGY|4|cpu_s=0.127472|energy_j=0.007829
+45823472 4 
+45823472 4 DESYNC_LOG|Node 4|=== DESYNC DEMONSTRATION COMPLETE (BASE SCHEME) ===
 50507000 5 
 50507000 5 DESYNC_LOG|Node 5|========================================
 50507000 5 DESYNC_LOG|Node 5|Round 4|POST-RECOVERY NORMAL AUTH
 50507000 5 DESYNC_LOG|Node 5|========================================
-50507000 5 DESYNC_LOG|Node 5|Round 4|Sending auth|id_d=5|ts_1=1|M_d[0]=219
-50554200 2 AS 2: Auth OK for device 5
-50580400 1 GW: Auth token received for device 5
-50612880 5 DESYNC_LOG|Node 5|Round 4|Stale ts_2
-50612880 5 
-50612880 5 DESYNC_LOG|Node 5|=== DESYNC DEMONSTRATION COMPLETE (BASE SCHEME) ===
-50621760 2 AS 2: Token delivered to GW
+50507000 5 DESYNC_LOG|Node 5|Round 4|Sending auth|id_d=5|ts_1=1|M_d[0]=75
+50555200 2 AS 2: Auth OK for device 5
+50599552 1 GW: Auth token received for device 5
+50623880 5 DESYNC_LOG|Node 5|Round 4|Auth OK|M_d updated|SYNCED
+50638760 2 AS 2: Token delivered to GW
+50761472 5 DESYNC_LOG|Node 5|Round 4|Data confirmed by GW
+50761472 5 DESYNC_LOG|Node 5|Round 4|RESULT: SUCCESS ﾀﾔ system fully recovered
+50761472 5 
+50761472 5 DESYNC_ROUND4_ENERGY|5|cpu_s=0.254472|energy_j=0.015670
+EARLY EXIT: all 3 nodes done
 TEST OK
-Test ended at simulation time: 900000000
+Test ended at simulation time: 50761472

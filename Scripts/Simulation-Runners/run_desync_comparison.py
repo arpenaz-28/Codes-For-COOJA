@@ -132,8 +132,8 @@ def generate_csc(scheme, seed):
     as_block  = _motetype_block("AS Node",     "as-node.c",     "as-node.cooja",     as_mote)
     dev_block = _motetype_block("Device Node", "device-node.c", "device-node.cooja", dev_motes)
 
-    # ScriptRunner: exit when all 3 device nodes (IDs 3-5) log DESYNC_ROUND3_ENERGY
-    # (Round 3 is the recovery round and is the key measurement).
+    # ScriptRunner: exit when all 3 device nodes (IDs 3-5) log DESYNC_ROUND4_ENERGY
+    # (Round 4 confirms post-recovery normal operation; all earlier markers are present too).
     # No && in JS to avoid bare & in XML — use nested if instead.
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <simconf version="2022112801">
@@ -174,7 +174,7 @@ var firstId   = 3;
 TIMEOUT(600000, log.testOK());
 while(true) {{
   log.log(time + " " + id + " " + msg + "\\n");
-  if (msg.indexOf("DESYNC_ROUND3_ENERGY") !== -1) {{
+  if (msg.indexOf("DESYNC_ROUND4_ENERGY") !== -1) {{
     if (id >= firstId) {{
       completed[id] = 1;
       var count = 0;

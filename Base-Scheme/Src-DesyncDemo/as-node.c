@@ -44,6 +44,8 @@ typedef struct {
     uint8_t c_as_d;
     uint8_t PHI_d;
     uint8_t h_as_d;
+    uint8_t ts_2;   /* per-device ts_2 counter; incremented on each auth reply */
+    uint8_t n_d;    /* per-device nonce counter; incremented each auth; used to derive new M_d */
 } as_client_t;
 
 static as_client_t cl[MAX_CLIENTS];
@@ -60,7 +62,6 @@ static uint8_t token_count = 0;
 static uint8_t sent_index  = 0;
 
 static uint8_t c_d = 6;
-static uint8_t n_d = 2;
 
 /* --------------------------------------------------------------------------
  * GW endpoint for forwarding auth tokens
@@ -128,14 +129,22 @@ static void res_reg_handler(coap_message_t *request, coap_message_t *response,
     uint8_t id_d = payload[0];
     uint8_t idx  = id_d % MAX_CLIENTS;
 
-    if (cl[idx].ID_d == id_d || reg_count >= MAX_CLIENTS) {
-        printf("AS %u: Device %u already registered or full\n", node_id, id_d);
-        return;
+    if (cl[idx].ID_d != id_d) {
+        /* First enrollment */
+        if (reg_count >= MAX_CLIENTS) {
+            printf("AS %u: Registry full, rejecting device %u\n", node_id, id_d);
+            return;
+        }
+        reg_count++;
+    } else {
+        /* Re-enrollment after desync: reset per-device state */
+        printf("AS %u: Device %u re-enrolling — resetting state\n", node_id, id_d);
     }
-
-    reg_count++;
     cl[idx].ID_d   = id_d;
+    memset(cl[idx].M_d, 0, 32);   /* full M_d reset so device and AS start from same {5,0,...} */
     cl[idx].M_d[0] = 5;
+    cl[idx].ts_2   = 0;   /* reset ts_2 counter on (re-)enrollment */
+    cl[idx].n_d    = 0;   /* reset nonce counter so M_d derivation restarts fresh */
 
     /* Reply: [c_d, M_d[0]] encrypted */
     memset(payload, 0, 16);
@@ -254,7 +263,7 @@ static void res_auth_handler(coap_message_t *request, coap_message_t *response,
     }
 
     /* Compute session key mask */
-    uint8_t ts_2 = 1;
+    uint8_t ts_2 = ++cl[idx].ts_2;   /* increment per-device ts_2 counter */
     uint8_t data[68];
     memset(data, 0, 68);
     memcpy(data, Y_d_H, 32);
@@ -266,9 +275,10 @@ static void res_auth_handler(coap_message_t *request, coap_message_t *response,
 
     H(data, 68, hash_dash);
 
-    /* n = SHA256(n_d) */
+    /* n = SHA256(n_d) where n_d increments each auth → M_d actually changes per round */
+    uint8_t nd = ++cl[idx].n_d;
     uint8_t n[32];
-    H(&n_d, 1, n);
+    H(&nd, 1, n);
 
     /* XOR mask with n → session key response */
     for (int i = 0; i < 32; i++)
