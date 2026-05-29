@@ -1,0 +1,4 @@
+Phase,Seeds,n_devices,Avg_CPU_s,Std_CPU_s,CI95_CPU_s,Avg_Energy_mJ,Std_Energy_mJ,CI95_Energy_mJ
+Enrollment,10,10,0.067872,0.006884,0.004267,4.1695,0.4255,0.2637
+Authentication,10,9,0.555313,0.020064,0.012436,34.2162,1.2399,0.7685
+Key Exchange,10,10,0.405225,0.014018,0.008688,24.9667,0.8663,0.5370
