@@ -296,13 +296,15 @@ var firstId   = {_first_id};
 TIMEOUT({timeout_ms}, log.testOK());
 while(true) {{
   log.log(time + " " + id + " " + msg + "\\n");
-  if (msg.indexOf("{_done_marker}") !== -1 && id >= firstId) {{
-    completed[id] = 1;
-    var count = 0;
-    for (var k in completed) {{ count++; }}
-    if (count >= nExpected) {{
-      log.log("EARLY EXIT: all " + nExpected + " nodes done\\n");
-      log.testOK();
+  if (msg.indexOf("{_done_marker}") !== -1) {{
+    if (id >= firstId) {{
+      completed[id] = 1;
+      var count = 0;
+      for (var k in completed) {{ count++; }}
+      if (count >= nExpected) {{
+        log.log("EARLY EXIT: all " + nExpected + " nodes done\\n");
+        log.testOK();
+      }}
     }}
   }}
   YIELD();
