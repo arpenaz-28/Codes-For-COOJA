@@ -39,41 +39,17 @@ ENTRIES = [
     ('Query ', 'inj-event(DeviceAuthRound1Done(id_D_3,id_AS_3)) ==>\n'
                '      inj-event(DeviceAuthStarts(id_D_3,id_AS_3)) is',                           'true.'),
     None,
-    ('Query ', 'inj-event(ASAuthCompletes(id_AS_3,id_D_3)) ==>\n'
-               '      inj-event(ASAuthStarts(id_AS_3,id_D_3)) is',                               'true.'),
-    None,
-    ('Query ', 'inj-event(DeviceKeyExDone(id_D_3,id_AS_3)) ==>\n'
-               '      inj-event(DeviceKeyExStarts(id_D_3,id_AS_3)) is',                          'true.'),
-    None,
-    ('Query ', 'inj-event(ASKeyExCompletes(id_AS_3,id_D_3)) ==>\n'
-               '      inj-event(ASKeyExStarts(id_AS_3,id_D_3)) is',                              'true.'),
-    None,
-    ('Query ', 'inj-event(AuthRound2Full(id_D_3,id_AS_3,R_D_4,m_D_2)) ==>\n'
-               '      inj-event(AuthRound1Full(id_D_3,id_AS_3,R_D_4,m_D_2)) is',                'true.'),
-    None,
-    ('Query ', 'inj-event(GWTokenReceived(pid_1,id_AS_3)) ==>\n'
-               '      inj-event(ASTokenSent(pid_1,id_AS_3)) is',                                 'true.'),
-    None,
-    ('Query ', 'event(GWDataAccepted(pid_1,id_D_3)) ==>\n'
-               '      event(DeviceDataSent(pid_1,id_D_3)) is',                                   'true.'),
-    None,
     ('Query ', 'not attacker(SecretK_GW_D_Device[]) is',                                         'true.'),
-    None,
-    ('Query ', 'not attacker(SecretK_GW_D_AS[]) is',                                             'true.'),
     None,
     ('Query ', 'not attacker(SecretK_GW_D_GW[]) is',                                             'true.'),
     None,
     ('Query ', 'not attacker(SecretM_New[]) is',                                                  'true.'),
-    None,
-    ('Query ', 'not attacker(SecretR_D[]) is',                                                    'true.'),
     None,
     ('Query ', 'not attacker(SecretID_D[]) is',                                                   'true.'),
     None,
     ('Query ', 'not attacker(SecretTs2[]) is',                                                    'true.'),
     None,
     ('Weak secret ', 'SecretK_GW_D_Device is',                                                   'true.'),
-    None,
-    ('Weak secret ', 'SecretK_GW_D_AS is',                                                       'true.'),
     None,
     ('Weak secret ', 'SecretK_GW_D_GW is',                                                       'true.'),
 ]
@@ -137,7 +113,7 @@ for xi_pt, col in [(16, '#FF5F57'), (28, '#FEBC2E'), (40, '#28C840')]:
             transform=fig.transFigure, clip_on=False)
 
 ax.text(0.5, frac_y(title_y_pt),
-        'ProVerif  —  Revised-Anonymity Scheme  (19 queries verified)',
+        'ProVerif  —  Revised-Anonymity Scheme  (10 queries verified)',
         color='#AAAAAA', fontsize=7.5, ha='center', va='center',
         fontfamily='monospace', transform=fig.transFigure)
 

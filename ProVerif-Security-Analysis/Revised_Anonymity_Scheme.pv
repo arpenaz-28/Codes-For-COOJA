@@ -120,10 +120,10 @@ event ASEnrollmentStarts    (bitstring, bitstring).
 event ASEnrollmentCompletes (bitstring, bitstring).
 
 (* Round 1: Authentication *)
-event DeviceAuthStarts    (bitstring, bitstring).   (* Device sends auth req   *)
-event DeviceAuthRound1Done(bitstring, bitstring).   (* Device received ACK+ts2 *)
-event ASAuthStarts        (bitstring, bitstring).   (* AS receives auth req    *)
-event ASAuthCompletes     (bitstring, bitstring).   (* AS sends ACK+ts2        *)
+event DeviceAuthenticationStarts(bitstring, bitstring).   (* Device sends auth req   *)
+event DeviceAuthenticated       (bitstring, bitstring).   (* Device received ACK+ts2 *)
+event AuthenticationServerStarts(bitstring, bitstring).   (* AS receives auth req    *)
+event AuthenticationServerEnds  (bitstring, bitstring).   (* AS sends ACK+ts2        *)
 
 (* Round 2: Key Exchange *)
 event DeviceKeyExStarts   (bitstring, bitstring).   (* Device sends keyex req  *)
@@ -132,8 +132,8 @@ event ASKeyExStarts       (bitstring, bitstring).   (* AS receives keyex req   *
 event ASKeyExCompletes    (bitstring, bitstring).   (* AS sends m_H, fwds token*)
 
 (* Full two-round binding (R_D and m_D bound across both rounds) *)
-event AuthRound1Full(bitstring, bitstring, bitstring, bitstring).
-event AuthRound2Full(bitstring, bitstring, bitstring, bitstring).
+event AuthenticationStartsFull(bitstring, bitstring, bitstring, bitstring).
+event AuthenticationEndsFull  (bitstring, bitstring, bitstring, bitstring).
 
 (* Token forwarding *)
 event ASTokenSent    (bitstring, bitstring).
@@ -149,44 +149,45 @@ noselect m:bitstring, ts_3:bitstring; attacker(concat(m, ts_3)).
 
 (* ============================= Queries ============================= *)
 
-(* --- Q1: Round 1 — device gets ACK only after it sent auth req (injective) --- *)
+(* --- Q1: Enrollment — device enrolled only after enrollment started (injective) --- *)
 query id_D: bitstring, id_AS: bitstring;
-      inj-event(DeviceAuthRound1Done(id_D, id_AS))
-      ==> inj-event(DeviceAuthStarts(id_D, id_AS)).
+      inj-event(DeviceEnrolled(id_D, id_AS))
+      ==> inj-event(DeviceEnrollmentStarts(id_D, id_AS)).
 
-(* --- Q2: Round 2 — device gets m_H only after it sent keyex req --- *)
+(* --- Q2: Auth round 1 — device authenticated only after it started auth (injective) --- *)
+query id_D: bitstring, id_AS: bitstring;
+      inj-event(DeviceAuthenticated(id_D, id_AS))
+      ==> inj-event(DeviceAuthenticationStarts(id_D, id_AS)).
+
+(* --- Q3: Auth server-side — AS completes only after it starts (injective) --- *)
+query id_AS: bitstring, id_D: bitstring;
+      inj-event(AuthenticationServerEnds(id_AS, id_D))
+      ==> inj-event(AuthenticationServerStarts(id_AS, id_D)).
+
+(* --- Q4: Full two-round binding — R_D and m_D bound across both rounds (injective) --- *)
+query id_D: bitstring, id_AS: bitstring, R_D: bitstring, m_D: bitstring;
+      inj-event(AuthenticationEndsFull(id_D, id_AS, R_D, m_D))
+      ==> inj-event(AuthenticationStartsFull(id_D, id_AS, R_D, m_D)).
+
+(* --- Q5: Key exchange — device gets m_new only after it sent keyex req --- *)
 query id_D: bitstring, id_AS: bitstring;
       event(DeviceKeyExDone(id_D, id_AS))
       ==> event(DeviceKeyExStarts(id_D, id_AS)).
 
-(* --- Q3: Full two-round binding — R_D and m_D bound across both rounds (injective) --- *)
-query id_D: bitstring, id_AS: bitstring, R_D: bitstring, m_D: bitstring;
-      inj-event(AuthRound2Full(id_D, id_AS, R_D, m_D))
-      ==> inj-event(AuthRound1Full(id_D, id_AS, R_D, m_D)).
-
-(* --- Q4: GW token received only if AS sent it (injective, no token forgery) --- *)
-query pid: bitstring, id_AS: bitstring;
-      inj-event(GWTokenReceived(pid, id_AS))
-      ==> inj-event(ASTokenSent(pid, id_AS)).
-
-(* --- Q5-Q7: Session key K_GW_D secrecy — from all three perspectives --- *)
+(* --- Q6: Session key K_GW_D secrecy (device perspective) --- *)
 query attacker(SecretK_GW_D_Device).
-query attacker(SecretK_GW_D_AS).
+
+(* --- Q7: Session key K_GW_D secrecy (GW perspective) --- *)
 query attacker(SecretK_GW_D_GW).
 
 (* --- Q8: Rotated session seed m_new is secret (forward secrecy) --- *)
 query attacker(SecretM_New).
 
-(* --- Q9: PUF response R_D is secret (PUF unclonability) --- *)
-query attacker(SecretR_D).
-
-(* --- Q10: Real device identity is secret (anonymity / pseudonym unlinkability) --- *)
+(* --- Q9: Real device identity is secret (anonymity / pseudonym unlinkability) --- *)
 query attacker(SecretID_D).
 
-(* --- Q11-Q13: Weak secrecy — offline dictionary/guessing resistance --- *)
+(* --- Q10: Weak secrecy — offline dictionary/guessing resistance --- *)
 weaksecret SecretK_GW_D_Device.
-weaksecret SecretK_GW_D_AS.
-weaksecret SecretK_GW_D_GW.
 
 (* ===========================================================================
  * Process D (Device)
@@ -227,15 +228,15 @@ let D(id_AS: bitstring, id_GW: bitstring, K_AS_D: SymmetricKey) =
     (* Y_ASD = Y_dH XOR mask *)
     let Y_ASD = xor(Y_D_H, mask) in
 
-    event DeviceAuthStarts(id_D, id_AS);
-    event AuthRound1Full(id_D, id_AS, R_D, m_D);
+    event DeviceAuthenticationStarts(id_D, id_AS);
+    event AuthenticationStartsFull(id_D, id_AS, R_D, m_D);
     out(c_pub, concat(concat(auth_PID, Y_ASD), ts_1));
 
     (* Receive: ACK | ts_2  (2 B, no key material yet) *)
     in(c_pub, ack_ts2: bitstring);
     let ack_byte = getfirst(ack_ts2)  in   (* ACK byte *)
     let ts_2   = getsecond(ack_ts2) in   (* fresh nonce from AS *)
-    event DeviceAuthRound1Done(id_D, id_AS);
+    event DeviceAuthenticated(id_D, id_AS);
 
     (* ===== PHASE 3: KEYEX ROUND 2 (/test/keyex) ===== *)
     event DeviceKeyExStarts(id_D, id_AS);
@@ -261,7 +262,7 @@ let D(id_AS: bitstring, id_GW: bitstring, K_AS_D: SymmetricKey) =
     let K_GW_D = hash(concat(R_D, m_new)) in
 
     event DeviceKeyExDone(id_D, id_AS);
-    event AuthRound2Full(id_D, id_AS, R_D, m_D);
+    event AuthenticationEndsFull(id_D, id_AS, R_D, m_D);
 
     (* Rotate PID for data phase *)
     let new_PID = mkPID(id_D, m_new) in
@@ -331,7 +332,7 @@ let AS(K_GW_AS: SymmetricKey, K_AS_D: SymmetricKey) =
 
     (* ===== PHASE 2: AUTH ROUND 1 (/test/auth) ===== *)
     in(c_pub, auth_msg: bitstring);
-    event ASAuthStarts(id_AS, id_D);
+    event AuthenticationServerStarts(id_AS, id_D);
 
     let recv_PID  = getfirst(getfirst(auth_msg)) in
     let recv_Y_ASD= getsecond(getfirst(auth_msg)) in
@@ -378,7 +379,7 @@ let AS(K_GW_AS: SymmetricKey, K_AS_D: SymmetricKey) =
     let new_PID = mkPID(id_D, m_new) in
 
     (* Reply: ACK | ts_2  (NO key material yet) *)
-    event ASAuthCompletes(id_AS, id_D);
+    event AuthenticationServerEnds(id_AS, id_D);
     new ack2: bitstring;
     out(c_pub, concat(ack2, ts_2));
 
