@@ -157,8 +157,51 @@ static void res_data_handler(coap_message_t *req, coap_message_t *resp,
     coap_set_payload(resp, reply, 1);
 }
 
+/* ==========================================================================
+ * POST /test/keyex  —  Phase 3 key exchange confirmation (48 B from device)
+ * Device sends [PID(32), AES(K_GW_D, [nonce(1), ...])(16)] = 48 B
+ * GW replies   AES(K_GW_D, [nonce+1, ...])(16) = 16 B
+ * K_GW_D is NOT modified — both sides confirmed same key from Phase 2.
+ * ========================================================================== */
+static void res_keyex_handler(coap_message_t *req, coap_message_t *resp,
+                              uint8_t *buf, uint16_t ps, int32_t *off)
+{
+    const uint8_t *chunk;
+    if (coap_get_payload(req, &chunk) != 48) return;
+
+    uint8_t recv_PID[32], enc_block[16];
+    memcpy(recv_PID,  chunk,      32);
+    memcpy(enc_block, chunk + 32, 16);
+
+    gw_session_t *sess = find_by_pid(recv_PID);
+    if (!sess) {
+        printf("DESYNC_LOG|GW|KeyEx rejected — PID %02x%02x%02x not found\n",
+               recv_PID[0], recv_PID[1], recv_PID[2]);
+        return;
+    }
+
+    struct AES_ctx ctx;
+    uint8_t K_AES[16];
+    memcpy(K_AES, sess->K_GW_D, 16);
+    AES_init_ctx(&ctx, K_AES);
+    AES_ECB_decrypt(&ctx, enc_block);
+
+    uint8_t nonce = enc_block[0];
+    memset(enc_block, 0, 16);
+    enc_block[0] = (uint8_t)(nonce + 1);
+    AES_init_ctx(&ctx, K_AES);
+    AES_ECB_encrypt(&ctx, enc_block);
+
+    coap_set_payload(resp, enc_block, 16);
+    printf("DESYNC_LOG|GW|KeyEx OK|device %u|PID=%02x%02x%02x\n",
+           sess->ID_d, recv_PID[0], recv_PID[1], recv_PID[2]);
+}
+
 RESOURCE(res_authtoken, "title=\"AuthToken\"",
          NULL, res_authtoken_handler, NULL, NULL);
+RESOURCE(res_keyex, "title=\"KeyEx\"",
+         NULL, res_keyex_handler, NULL, NULL);
+
 RESOURCE(res_data, "title=\"Data\"",
          NULL, res_data_handler, NULL, NULL);
 
@@ -177,6 +220,7 @@ PROCESS_THREAD(gw_node, ev, data)
     coap_engine_init();
 
     coap_activate_resource(&res_authtoken, "test/auth_token");
+    coap_activate_resource(&res_keyex,     "test/keyex");
     coap_activate_resource(&res_data,      "test/data");
 
     printf("DESYNC_LOG|GW %u|Started (RPL root + CoAP server)\n", node_id);

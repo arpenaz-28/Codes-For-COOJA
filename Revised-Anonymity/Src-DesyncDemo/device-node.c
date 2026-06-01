@@ -267,6 +267,22 @@ static void client_auth_handler(coap_message_t *resp)
            id_d, auth_round, PID[0], PID[1], PID[2]);
 }
 
+static void client_keyex_handler(coap_message_t *resp)
+{
+    const uint8_t *chunk;
+    if (!resp || coap_get_payload(resp, &chunk) < 16) {
+        printf("DESYNC_LOG|Node %u|Round %u|Key exchange reply missing\n", id_d, auth_round);
+        return;
+    }
+    uint8_t reply[16];
+    memcpy(reply, chunk, 16);
+    struct AES_ctx _ctx;
+    AES_init_ctx(&_ctx, k_gw_d);
+    AES_ECB_decrypt(&_ctx, reply);
+    printf("DESYNC_LOG|Node %u|Round %u|Key Exchange OK|nonce_resp=%u\n",
+           id_d, auth_round, reply[0]);
+}
+
 static void client_data_handler(coap_message_t *resp)
 {
     if (!resp) {
@@ -281,7 +297,21 @@ static void client_data_handler(coap_message_t *resp)
  * (COAP_BLOCKING_REQUEST must be called directly inside PROCESS_THREAD)
  * ========================================================================== */
 static uint8_t auth_payload[65];
+/* key exchange payload: [PID(32), AES(k_gw_d, [nonce,...])(16)] = 48 B */
+static uint8_t ke_payload[48];
 static uint8_t data_payload[48];
+
+static void prepare_keyex(void)
+{
+    uint8_t ke_block[16];
+    memset(ke_block, 0, 16);
+    ke_block[0] = ts_1;   /* nonce = current ts_1 */
+    struct AES_ctx _ctx;
+    AES_init_ctx(&_ctx, k_gw_d);
+    AES_ECB_encrypt(&_ctx, ke_block);
+    memcpy(ke_payload,      PID,      32);
+    memcpy(ke_payload + 32, ke_block, 16);
+}
 
 static void prepare_auth(void)
 {
@@ -360,7 +390,7 @@ PROCESS_THREAD(device_node, ev, data)
                     p0[0] = id_d;
                     aes_enc(K_AS_D, p0, 1);
 
-                    coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
+                    coap_init_message(request, COAP_TYPE_CON, COAP_GET, coap_get_mid());
                     coap_set_header_uri_path(request, "test/reg");
                     coap_set_payload(request, p0, 16);
                     COAP_BLOCKING_REQUEST(&ep_as, request, client_reg_handler);
@@ -382,7 +412,7 @@ PROCESS_THREAD(device_node, ev, data)
                     p1[34] = c_as_d;
                     aes_enc(K_AS_D, p1, 3);
 
-                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, 1);
+                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
                     coap_set_header_uri_path(request, "test/reg1");
                     coap_set_payload(request, p1, 48);
                     COAP_BLOCKING_REQUEST(&ep_as, request, client_reg1_handler);
@@ -414,14 +444,20 @@ PROCESS_THREAD(device_node, ev, data)
 
                 print_energest_stats(&cpu_before, &energy_before);
                 prepare_auth();
-                coap_init_message(request, COAP_TYPE_CON, COAP_POST, 2);
+                coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
                 coap_set_header_uri_path(request, "test/auth");
                 coap_set_payload(request, auth_payload, 65);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
 
                 if (last_auth_ok) {
+                    prepare_keyex();
+                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
+                    coap_set_header_uri_path(request, "test/keyex");
+                    coap_set_payload(request, ke_payload, 48);
+                    COAP_BLOCKING_REQUEST(&ep_gw, request, client_keyex_handler);
+
                     prepare_data();
-                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, 3);
+                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
                     coap_set_header_uri_path(request, "test/data");
                     coap_set_payload(request, data_payload, 48);
                     COAP_BLOCKING_REQUEST(&ep_gw, request, client_data_handler);
@@ -444,7 +480,7 @@ PROCESS_THREAD(device_node, ev, data)
                 print_energest_stats(&cpu_before, &energy_before);
                 simulate_drop = 1;
                 prepare_auth();
-                coap_init_message(request, COAP_TYPE_CON, COAP_POST, 2);
+                coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
                 coap_set_header_uri_path(request, "test/auth");
                 coap_set_payload(request, auth_payload, 65);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
@@ -470,14 +506,20 @@ PROCESS_THREAD(device_node, ev, data)
 
                 print_energest_stats(&cpu_before, &energy_before);
                 prepare_auth();
-                coap_init_message(request, COAP_TYPE_CON, COAP_POST, 2);
+                coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
                 coap_set_header_uri_path(request, "test/auth");
                 coap_set_payload(request, auth_payload, 65);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
 
                 if (last_auth_ok) {
+                    prepare_keyex();
+                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
+                    coap_set_header_uri_path(request, "test/keyex");
+                    coap_set_payload(request, ke_payload, 48);
+                    COAP_BLOCKING_REQUEST(&ep_gw, request, client_keyex_handler);
+
                     prepare_data();
-                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, 3);
+                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
                     coap_set_header_uri_path(request, "test/data");
                     coap_set_payload(request, data_payload, 48);
                     COAP_BLOCKING_REQUEST(&ep_gw, request, client_data_handler);
@@ -503,14 +545,20 @@ PROCESS_THREAD(device_node, ev, data)
 
                 print_energest_stats(&cpu_before, &energy_before);
                 prepare_auth();
-                coap_init_message(request, COAP_TYPE_CON, COAP_POST, 2);
+                coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
                 coap_set_header_uri_path(request, "test/auth");
                 coap_set_payload(request, auth_payload, 65);
                 COAP_BLOCKING_REQUEST(&ep_as, request, client_auth_handler);
 
                 if (last_auth_ok) {
+                    prepare_keyex();
+                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
+                    coap_set_header_uri_path(request, "test/keyex");
+                    coap_set_payload(request, ke_payload, 48);
+                    COAP_BLOCKING_REQUEST(&ep_gw, request, client_keyex_handler);
+
                     prepare_data();
-                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, 3);
+                    coap_init_message(request, COAP_TYPE_CON, COAP_POST, coap_get_mid());
                     coap_set_header_uri_path(request, "test/data");
                     coap_set_payload(request, data_payload, 48);
                     COAP_BLOCKING_REQUEST(&ep_gw, request, client_data_handler);

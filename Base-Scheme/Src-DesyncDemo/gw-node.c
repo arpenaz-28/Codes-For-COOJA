@@ -93,7 +93,10 @@ RESOURCE(res_authtoken,
          res_authtoken_handler, NULL, NULL, NULL);
 
 /* --------------------------------------------------------------------------
- * CoAP resource: /test/keyupdate — DH key exchange with device
+ * CoAP resource: /test/keyupdate — Phase 3 key exchange confirmation
+ * Device sends [id_d(1), AES(k_gw_d, [nonce(1), ...])(16)] = 17 B
+ * GW replies    AES(k_gw_d, [nonce+1, ...])(16) = 16 B
+ * k_gw_d is NOT modified — both sides confirmed same key from Phase 2.
  * -------------------------------------------------------------------------- */
 static void res_keyupdate_handler(coap_message_t *request, coap_message_t *response,
                                   uint8_t *buffer, uint16_t preferred_size,
@@ -112,33 +115,26 @@ static void res_keyupdate_handler(coap_message_t *request, coap_message_t *respo
     uint8_t payload[16];
     memcpy(payload, chunk + 1, 16);
 
-    /* Decrypt with first 16 bytes of k_gw_d */
     uint8_t K[16];
     memcpy(K, clients[idx].k_gw_d, 16);
     struct AES_ctx ctx;
     AES_init_ctx(&ctx, K);
     AES_ECB_decrypt(&ctx, payload);
 
-    uint8_t alpha = payload[0];
-    /* Update session key: k_gw_d[0] = (alpha XOR b) mod p */
-    clients[idx].k_gw_d[0] = (alpha ^ b) % p;
-    for (int i = 1; i < 32; i++)
-        clients[idx].k_gw_d[i] = 0;
-
-    /* Reply with beta = (g XOR b) mod p, encrypted */
-    uint8_t beta = (g ^ b) % p;
+    /* Respond with nonce+1 to confirm shared key */
+    uint8_t nonce = payload[0];
     memset(payload, 0, 16);
-    payload[0] = beta;
+    payload[0] = (uint8_t)(nonce + 1);
     AES_init_ctx(&ctx, K);
     AES_ECB_encrypt(&ctx, payload);
 
     coap_set_payload(response, payload, 16);
-    printf("GW: Key update done for device %u\n", id_d);
+    printf("GW: Key exchange confirmed for device %u\n", id_d);
 }
 
 RESOURCE(res_keyupdate,
          "title=\"keyupdate\";rt=\"Text\"",
-         res_keyupdate_handler, NULL, NULL, NULL);
+         NULL, res_keyupdate_handler, NULL, NULL);
 
 /* --------------------------------------------------------------------------
  * CoAP resource: /test/data — receive encrypted data from device
@@ -174,7 +170,7 @@ static void res_data_handler(coap_message_t *request, coap_message_t *response,
 
 RESOURCE(res_data,
          "title=\"data\";rt=\"Text\"",
-         res_data_handler, NULL, NULL, NULL);
+         NULL, res_data_handler, NULL, NULL);
 
 /* --------------------------------------------------------------------------
  * Main process
