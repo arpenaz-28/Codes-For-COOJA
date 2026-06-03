@@ -1,0 +1,5902 @@
+00:00.026	ID:39	[INFO: Main      ] Starting Contiki-NG
+00:00.026	ID:39	[INFO: Main      ] - Routing: RPL Lite
+00:00.026	ID:39	[INFO: Main      ] - Net: sicslowpan
+00:00.026	ID:39	[INFO: Main      ] - MAC: CSMA
+00:00.026	ID:39	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.026	ID:39	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.026	ID:39	[INFO: Main      ] Node ID: 39
+00:00.026	ID:39	[INFO: Main      ] Link-layer address: 0027.0027.0027.0027
+00:00.026	ID:39	[INFO: Main      ] Tentative link-local IPv6 address: fe80::227:27:27:27
+00:00.026	ID:39	[INFO: coap-bt-server] Starting CoAP server
+00:00.027	ID:34	[INFO: Main      ] Starting Contiki-NG
+00:00.027	ID:34	[INFO: Main      ] - Routing: RPL Lite
+00:00.027	ID:34	[INFO: Main      ] - Net: sicslowpan
+00:00.027	ID:34	[INFO: Main      ] - MAC: CSMA
+00:00.027	ID:34	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.027	ID:34	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.027	ID:34	[INFO: Main      ] Node ID: 34
+00:00.027	ID:34	[INFO: Main      ] Link-layer address: 0022.0022.0022.0022
+00:00.027	ID:34	[INFO: Main      ] Tentative link-local IPv6 address: fe80::222:22:22:22
+00:00.027	ID:34	[INFO: coap-bt-server] Starting CoAP server
+00:00.035	ID:24	[INFO: Main      ] Starting Contiki-NG
+00:00.035	ID:24	[INFO: Main      ] - Routing: RPL Lite
+00:00.035	ID:24	[INFO: Main      ] - Net: sicslowpan
+00:00.035	ID:24	[INFO: Main      ] - MAC: CSMA
+00:00.035	ID:24	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.035	ID:24	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.035	ID:24	[INFO: Main      ] Node ID: 24
+00:00.035	ID:24	[INFO: Main      ] Link-layer address: 0018.0018.0018.0018
+00:00.035	ID:24	[INFO: Main      ] Tentative link-local IPv6 address: fe80::218:18:18:18
+00:00.035	ID:24	[INFO: coap-bt-server] Starting CoAP server
+00:00.073	ID:8	[INFO: Main      ] Starting Contiki-NG
+00:00.073	ID:8	[INFO: Main      ] - Routing: RPL Lite
+00:00.073	ID:8	[INFO: Main      ] - Net: sicslowpan
+00:00.073	ID:8	[INFO: Main      ] - MAC: CSMA
+00:00.073	ID:8	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.073	ID:8	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.073	ID:8	[INFO: Main      ] Node ID: 8
+00:00.073	ID:8	[INFO: Main      ] Link-layer address: 0008.0008.0008.0008
+00:00.073	ID:8	[INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
+00:00.073	ID:8	[INFO: coap-bt-server] Starting CoAP server
+00:00.106	ID:48	[INFO: Main      ] Starting Contiki-NG
+00:00.106	ID:48	[INFO: Main      ] - Routing: RPL Lite
+00:00.106	ID:48	[INFO: Main      ] - Net: sicslowpan
+00:00.106	ID:48	[INFO: Main      ] - MAC: CSMA
+00:00.106	ID:48	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.106	ID:48	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.106	ID:48	[INFO: Main      ] Node ID: 48
+00:00.106	ID:48	[INFO: Main      ] Link-layer address: 0030.0030.0030.0030
+00:00.106	ID:48	[INFO: Main      ] Tentative link-local IPv6 address: fe80::230:30:30:30
+00:00.124	ID:50	[INFO: Main      ] Starting Contiki-NG
+00:00.124	ID:50	[INFO: Main      ] - Routing: RPL Lite
+00:00.124	ID:50	[INFO: Main      ] - Net: sicslowpan
+00:00.124	ID:50	[INFO: Main      ] - MAC: CSMA
+00:00.124	ID:50	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.124	ID:50	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.124	ID:50	[INFO: Main      ] Node ID: 50
+00:00.124	ID:50	[INFO: Main      ] Link-layer address: 0032.0032.0032.0032
+00:00.124	ID:50	[INFO: Main      ] Tentative link-local IPv6 address: fe80::232:32:32:32
+00:00.142	ID:28	[INFO: Main      ] Starting Contiki-NG
+00:00.142	ID:28	[INFO: Main      ] - Routing: RPL Lite
+00:00.142	ID:28	[INFO: Main      ] - Net: sicslowpan
+00:00.142	ID:28	[INFO: Main      ] - MAC: CSMA
+00:00.142	ID:28	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.142	ID:28	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.142	ID:28	[INFO: Main      ] Node ID: 28
+00:00.142	ID:28	[INFO: Main      ] Link-layer address: 001c.001c.001c.001c
+00:00.142	ID:28	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21c:1c:1c:1c
+00:00.142	ID:28	[INFO: coap-bt-server] Starting CoAP server
+00:00.190	ID:11	[INFO: Main      ] Starting Contiki-NG
+00:00.190	ID:11	[INFO: Main      ] - Routing: RPL Lite
+00:00.190	ID:11	[INFO: Main      ] - Net: sicslowpan
+00:00.190	ID:11	[INFO: Main      ] - MAC: CSMA
+00:00.190	ID:11	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.190	ID:11	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.190	ID:11	[INFO: Main      ] Node ID: 11
+00:00.190	ID:11	[INFO: Main      ] Link-layer address: 000b.000b.000b.000b
+00:00.190	ID:11	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20b:b:b:b
+00:00.190	ID:11	[INFO: coap-bt-server] Starting CoAP server
+00:00.203	ID:31	[INFO: Main      ] Starting Contiki-NG
+00:00.203	ID:31	[INFO: Main      ] - Routing: RPL Lite
+00:00.203	ID:31	[INFO: Main      ] - Net: sicslowpan
+00:00.203	ID:31	[INFO: Main      ] - MAC: CSMA
+00:00.203	ID:31	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.203	ID:31	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.203	ID:31	[INFO: Main      ] Node ID: 31
+00:00.203	ID:31	[INFO: Main      ] Link-layer address: 001f.001f.001f.001f
+00:00.203	ID:31	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21f:1f:1f:1f
+00:00.203	ID:31	[INFO: coap-bt-server] Starting CoAP server
+00:00.213	ID:35	[INFO: Main      ] Starting Contiki-NG
+00:00.213	ID:35	[INFO: Main      ] - Routing: RPL Lite
+00:00.213	ID:35	[INFO: Main      ] - Net: sicslowpan
+00:00.213	ID:35	[INFO: Main      ] - MAC: CSMA
+00:00.213	ID:35	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.213	ID:35	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.213	ID:35	[INFO: Main      ] Node ID: 35
+00:00.213	ID:35	[INFO: Main      ] Link-layer address: 0023.0023.0023.0023
+00:00.213	ID:35	[INFO: Main      ] Tentative link-local IPv6 address: fe80::223:23:23:23
+00:00.213	ID:35	[INFO: coap-bt-server] Starting CoAP server
+00:00.217	ID:44	[INFO: Main      ] Starting Contiki-NG
+00:00.217	ID:44	[INFO: Main      ] - Routing: RPL Lite
+00:00.217	ID:44	[INFO: Main      ] - Net: sicslowpan
+00:00.217	ID:44	[INFO: Main      ] - MAC: CSMA
+00:00.217	ID:44	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.217	ID:44	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.217	ID:44	[INFO: Main      ] Node ID: 44
+00:00.217	ID:44	[INFO: Main      ] Link-layer address: 002c.002c.002c.002c
+00:00.217	ID:44	[INFO: Main      ] Tentative link-local IPv6 address: fe80::22c:2c:2c:2c
+00:00.218	ID:45	[INFO: Main      ] Starting Contiki-NG
+00:00.218	ID:45	[INFO: Main      ] - Routing: RPL Lite
+00:00.218	ID:45	[INFO: Main      ] - Net: sicslowpan
+00:00.218	ID:45	[INFO: Main      ] - MAC: CSMA
+00:00.218	ID:45	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.218	ID:45	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.218	ID:45	[INFO: Main      ] Node ID: 45
+00:00.218	ID:45	[INFO: Main      ] Link-layer address: 002d.002d.002d.002d
+00:00.218	ID:45	[INFO: Main      ] Tentative link-local IPv6 address: fe80::22d:2d:2d:2d
+00:00.236	ID:2	[INFO: Main      ] Starting Contiki-NG
+00:00.236	ID:2	[INFO: Main      ] - Routing: RPL Lite
+00:00.236	ID:2	[INFO: Main      ] - Net: sicslowpan
+00:00.236	ID:2	[INFO: Main      ] - MAC: CSMA
+00:00.236	ID:2	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.236	ID:2	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.236	ID:2	[INFO: Main      ] Node ID: 2
+00:00.236	ID:2	[INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+00:00.236	ID:2	[INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+00:00.236	ID:2	[INFO: coap-bt-server] Starting CoAP server
+00:00.244	ID:30	[INFO: Main      ] Starting Contiki-NG
+00:00.244	ID:30	[INFO: Main      ] - Routing: RPL Lite
+00:00.244	ID:30	[INFO: Main      ] - Net: sicslowpan
+00:00.244	ID:30	[INFO: Main      ] - MAC: CSMA
+00:00.244	ID:30	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.244	ID:30	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.244	ID:30	[INFO: Main      ] Node ID: 30
+00:00.244	ID:30	[INFO: Main      ] Link-layer address: 001e.001e.001e.001e
+00:00.244	ID:30	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21e:1e:1e:1e
+00:00.244	ID:30	[INFO: coap-bt-server] Starting CoAP server
+00:00.250	ID:6	[INFO: Main      ] Starting Contiki-NG
+00:00.250	ID:6	[INFO: Main      ] - Routing: RPL Lite
+00:00.250	ID:6	[INFO: Main      ] - Net: sicslowpan
+00:00.250	ID:6	[INFO: Main      ] - MAC: CSMA
+00:00.250	ID:6	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.250	ID:6	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.250	ID:6	[INFO: Main      ] Node ID: 6
+00:00.250	ID:6	[INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+00:00.250	ID:6	[INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+00:00.250	ID:6	[INFO: coap-bt-server] Starting CoAP server
+00:00.326	ID:18	[INFO: Main      ] Starting Contiki-NG
+00:00.326	ID:18	[INFO: Main      ] - Routing: RPL Lite
+00:00.326	ID:18	[INFO: Main      ] - Net: sicslowpan
+00:00.326	ID:18	[INFO: Main      ] - MAC: CSMA
+00:00.326	ID:18	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.326	ID:18	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.326	ID:18	[INFO: Main      ] Node ID: 18
+00:00.326	ID:18	[INFO: Main      ] Link-layer address: 0012.0012.0012.0012
+00:00.326	ID:18	[INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
+00:00.326	ID:18	[INFO: coap-bt-server] Starting CoAP server
+00:00.348	ID:4	[INFO: Main      ] Starting Contiki-NG
+00:00.348	ID:4	[INFO: Main      ] - Routing: RPL Lite
+00:00.348	ID:4	[INFO: Main      ] - Net: sicslowpan
+00:00.348	ID:4	[INFO: Main      ] - MAC: CSMA
+00:00.348	ID:4	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.348	ID:4	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.348	ID:4	[INFO: Main      ] Node ID: 4
+00:00.348	ID:4	[INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+00:00.348	ID:4	[INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+00:00.348	ID:4	[INFO: coap-bt-server] Starting CoAP server
+00:00.355	ID:33	[INFO: Main      ] Starting Contiki-NG
+00:00.355	ID:33	[INFO: Main      ] - Routing: RPL Lite
+00:00.355	ID:33	[INFO: Main      ] - Net: sicslowpan
+00:00.355	ID:33	[INFO: Main      ] - MAC: CSMA
+00:00.355	ID:33	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.355	ID:33	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.355	ID:33	[INFO: Main      ] Node ID: 33
+00:00.355	ID:33	[INFO: Main      ] Link-layer address: 0021.0021.0021.0021
+00:00.355	ID:33	[INFO: Main      ] Tentative link-local IPv6 address: fe80::221:21:21:21
+00:00.355	ID:33	[INFO: coap-bt-server] Starting CoAP server
+00:00.382	ID:1	[INFO: Main      ] Starting Contiki-NG
+00:00.382	ID:1	[INFO: Main      ] - Routing: RPL Lite
+00:00.382	ID:1	[INFO: Main      ] - Net: sicslowpan
+00:00.382	ID:1	[INFO: Main      ] - MAC: CSMA
+00:00.382	ID:1	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.382	ID:1	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.382	ID:1	[INFO: Main      ] Node ID: 1
+00:00.382	ID:1	[INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+00:00.382	ID:1	[INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+00:00.382	ID:1	[INFO: coap-hello-gateway] Starting Erbium Example Server
+00:00.382	ID:1	[INFO: coap-hello-gateway] Server is listening for requests
+00:00.385	ID:27	[INFO: Main      ] Starting Contiki-NG
+00:00.385	ID:27	[INFO: Main      ] - Routing: RPL Lite
+00:00.385	ID:27	[INFO: Main      ] - Net: sicslowpan
+00:00.385	ID:27	[INFO: Main      ] - MAC: CSMA
+00:00.385	ID:27	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.385	ID:27	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.385	ID:27	[INFO: Main      ] Node ID: 27
+00:00.385	ID:27	[INFO: Main      ] Link-layer address: 001b.001b.001b.001b
+00:00.385	ID:27	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21b:1b:1b:1b
+00:00.385	ID:27	[INFO: coap-bt-server] Starting CoAP server
+00:00.389	ID:41	[INFO: Main      ] Starting Contiki-NG
+00:00.389	ID:41	[INFO: Main      ] - Routing: RPL Lite
+00:00.389	ID:41	[INFO: Main      ] - Net: sicslowpan
+00:00.389	ID:41	[INFO: Main      ] - MAC: CSMA
+00:00.389	ID:41	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.389	ID:41	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.389	ID:41	[INFO: Main      ] Node ID: 41
+00:00.389	ID:41	[INFO: Main      ] Link-layer address: 0029.0029.0029.0029
+00:00.389	ID:41	[INFO: Main      ] Tentative link-local IPv6 address: fe80::229:29:29:29
+00:00.402	ID:7	[INFO: Main      ] Starting Contiki-NG
+00:00.402	ID:7	[INFO: Main      ] - Routing: RPL Lite
+00:00.402	ID:7	[INFO: Main      ] - Net: sicslowpan
+00:00.402	ID:7	[INFO: Main      ] - MAC: CSMA
+00:00.402	ID:7	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.402	ID:7	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.402	ID:7	[INFO: Main      ] Node ID: 7
+00:00.402	ID:7	[INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+00:00.402	ID:7	[INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+00:00.402	ID:7	[INFO: coap-bt-server] Starting CoAP server
+00:00.412	ID:40	[INFO: Main      ] Starting Contiki-NG
+00:00.412	ID:40	[INFO: Main      ] - Routing: RPL Lite
+00:00.412	ID:40	[INFO: Main      ] - Net: sicslowpan
+00:00.412	ID:40	[INFO: Main      ] - MAC: CSMA
+00:00.412	ID:40	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.412	ID:40	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.412	ID:40	[INFO: Main      ] Node ID: 40
+00:00.412	ID:40	[INFO: Main      ] Link-layer address: 0028.0028.0028.0028
+00:00.412	ID:40	[INFO: Main      ] Tentative link-local IPv6 address: fe80::228:28:28:28
+00:00.412	ID:40	[INFO: coap-bt-server] Starting CoAP server
+00:00.412	ID:47	[INFO: Main      ] Starting Contiki-NG
+00:00.412	ID:47	[INFO: Main      ] - Routing: RPL Lite
+00:00.412	ID:47	[INFO: Main      ] - Net: sicslowpan
+00:00.412	ID:47	[INFO: Main      ] - MAC: CSMA
+00:00.412	ID:47	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.412	ID:47	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.412	ID:47	[INFO: Main      ] Node ID: 47
+00:00.412	ID:47	[INFO: Main      ] Link-layer address: 002f.002f.002f.002f
+00:00.412	ID:47	[INFO: Main      ] Tentative link-local IPv6 address: fe80::22f:2f:2f:2f
+00:00.450	ID:14	[INFO: Main      ] Starting Contiki-NG
+00:00.450	ID:14	[INFO: Main      ] - Routing: RPL Lite
+00:00.450	ID:14	[INFO: Main      ] - Net: sicslowpan
+00:00.450	ID:14	[INFO: Main      ] - MAC: CSMA
+00:00.450	ID:14	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.450	ID:14	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.450	ID:14	[INFO: Main      ] Node ID: 14
+00:00.450	ID:14	[INFO: Main      ] Link-layer address: 000e.000e.000e.000e
+00:00.450	ID:14	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
+00:00.450	ID:14	[INFO: coap-bt-server] Starting CoAP server
+00:00.462	ID:15	[INFO: Main      ] Starting Contiki-NG
+00:00.462	ID:15	[INFO: Main      ] - Routing: RPL Lite
+00:00.462	ID:15	[INFO: Main      ] - Net: sicslowpan
+00:00.462	ID:15	[INFO: Main      ] - MAC: CSMA
+00:00.462	ID:15	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.462	ID:15	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.462	ID:15	[INFO: Main      ] Node ID: 15
+00:00.462	ID:15	[INFO: Main      ] Link-layer address: 000f.000f.000f.000f
+00:00.462	ID:15	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
+00:00.462	ID:15	[INFO: coap-bt-server] Starting CoAP server
+00:00.465	ID:46	[INFO: Main      ] Starting Contiki-NG
+00:00.465	ID:46	[INFO: Main      ] - Routing: RPL Lite
+00:00.465	ID:46	[INFO: Main      ] - Net: sicslowpan
+00:00.465	ID:46	[INFO: Main      ] - MAC: CSMA
+00:00.465	ID:46	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.465	ID:46	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.465	ID:46	[INFO: Main      ] Node ID: 46
+00:00.465	ID:46	[INFO: Main      ] Link-layer address: 002e.002e.002e.002e
+00:00.465	ID:46	[INFO: Main      ] Tentative link-local IPv6 address: fe80::22e:2e:2e:2e
+00:00.467	ID:25	[INFO: Main      ] Starting Contiki-NG
+00:00.467	ID:25	[INFO: Main      ] - Routing: RPL Lite
+00:00.467	ID:25	[INFO: Main      ] - Net: sicslowpan
+00:00.467	ID:25	[INFO: Main      ] - MAC: CSMA
+00:00.467	ID:25	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.467	ID:25	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.467	ID:25	[INFO: Main      ] Node ID: 25
+00:00.467	ID:25	[INFO: Main      ] Link-layer address: 0019.0019.0019.0019
+00:00.467	ID:25	[INFO: Main      ] Tentative link-local IPv6 address: fe80::219:19:19:19
+00:00.467	ID:25	[INFO: coap-bt-server] Starting CoAP server
+00:00.472	ID:20	[INFO: Main      ] Starting Contiki-NG
+00:00.472	ID:20	[INFO: Main      ] - Routing: RPL Lite
+00:00.472	ID:20	[INFO: Main      ] - Net: sicslowpan
+00:00.472	ID:20	[INFO: Main      ] - MAC: CSMA
+00:00.472	ID:20	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.472	ID:20	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.472	ID:20	[INFO: Main      ] Node ID: 20
+00:00.472	ID:20	[INFO: Main      ] Link-layer address: 0014.0014.0014.0014
+00:00.472	ID:20	[INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
+00:00.472	ID:20	[INFO: coap-bt-server] Starting CoAP server
+00:00.473	ID:16	[INFO: Main      ] Starting Contiki-NG
+00:00.473	ID:16	[INFO: Main      ] - Routing: RPL Lite
+00:00.473	ID:16	[INFO: Main      ] - Net: sicslowpan
+00:00.473	ID:16	[INFO: Main      ] - MAC: CSMA
+00:00.473	ID:16	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.473	ID:16	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.473	ID:16	[INFO: Main      ] Node ID: 16
+00:00.473	ID:16	[INFO: Main      ] Link-layer address: 0010.0010.0010.0010
+00:00.473	ID:16	[INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
+00:00.473	ID:16	[INFO: coap-bt-server] Starting CoAP server
+00:00.473	ID:37	[INFO: Main      ] Starting Contiki-NG
+00:00.473	ID:37	[INFO: Main      ] - Routing: RPL Lite
+00:00.473	ID:37	[INFO: Main      ] - Net: sicslowpan
+00:00.473	ID:37	[INFO: Main      ] - MAC: CSMA
+00:00.473	ID:37	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.473	ID:37	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.473	ID:37	[INFO: Main      ] Node ID: 37
+00:00.473	ID:37	[INFO: Main      ] Link-layer address: 0025.0025.0025.0025
+00:00.473	ID:37	[INFO: Main      ] Tentative link-local IPv6 address: fe80::225:25:25:25
+00:00.473	ID:37	[INFO: coap-bt-server] Starting CoAP server
+00:00.556	ID:10	[INFO: Main      ] Starting Contiki-NG
+00:00.556	ID:10	[INFO: Main      ] - Routing: RPL Lite
+00:00.556	ID:10	[INFO: Main      ] - Net: sicslowpan
+00:00.556	ID:10	[INFO: Main      ] - MAC: CSMA
+00:00.556	ID:10	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.556	ID:10	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.556	ID:10	[INFO: Main      ] Node ID: 10
+00:00.556	ID:10	[INFO: Main      ] Link-layer address: 000a.000a.000a.000a
+00:00.556	ID:10	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
+00:00.556	ID:10	[INFO: coap-bt-server] Starting CoAP server
+00:00.594	ID:12	[INFO: Main      ] Starting Contiki-NG
+00:00.594	ID:12	[INFO: Main      ] - Routing: RPL Lite
+00:00.594	ID:12	[INFO: Main      ] - Net: sicslowpan
+00:00.594	ID:12	[INFO: Main      ] - MAC: CSMA
+00:00.594	ID:12	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.594	ID:12	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.594	ID:12	[INFO: Main      ] Node ID: 12
+00:00.594	ID:12	[INFO: Main      ] Link-layer address: 000c.000c.000c.000c
+00:00.594	ID:12	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
+00:00.594	ID:12	[INFO: coap-bt-server] Starting CoAP server
+00:00.625	ID:49	[INFO: Main      ] Starting Contiki-NG
+00:00.625	ID:49	[INFO: Main      ] - Routing: RPL Lite
+00:00.625	ID:49	[INFO: Main      ] - Net: sicslowpan
+00:00.625	ID:49	[INFO: Main      ] - MAC: CSMA
+00:00.625	ID:49	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.625	ID:49	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.625	ID:49	[INFO: Main      ] Node ID: 49
+00:00.625	ID:49	[INFO: Main      ] Link-layer address: 0031.0031.0031.0031
+00:00.625	ID:49	[INFO: Main      ] Tentative link-local IPv6 address: fe80::231:31:31:31
+00:00.637	ID:29	[INFO: Main      ] Starting Contiki-NG
+00:00.637	ID:29	[INFO: Main      ] - Routing: RPL Lite
+00:00.637	ID:29	[INFO: Main      ] - Net: sicslowpan
+00:00.637	ID:29	[INFO: Main      ] - MAC: CSMA
+00:00.637	ID:29	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.637	ID:29	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.637	ID:29	[INFO: Main      ] Node ID: 29
+00:00.637	ID:29	[INFO: Main      ] Link-layer address: 001d.001d.001d.001d
+00:00.637	ID:29	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21d:1d:1d:1d
+00:00.637	ID:29	[INFO: coap-bt-server] Starting CoAP server
+00:00.663	ID:22	[INFO: Main      ] Starting Contiki-NG
+00:00.663	ID:22	[INFO: Main      ] - Routing: RPL Lite
+00:00.663	ID:22	[INFO: Main      ] - Net: sicslowpan
+00:00.663	ID:22	[INFO: Main      ] - MAC: CSMA
+00:00.663	ID:22	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.663	ID:22	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.663	ID:22	[INFO: Main      ] Node ID: 22
+00:00.663	ID:22	[INFO: Main      ] Link-layer address: 0016.0016.0016.0016
+00:00.663	ID:22	[INFO: Main      ] Tentative link-local IPv6 address: fe80::216:16:16:16
+00:00.663	ID:22	[INFO: coap-bt-server] Starting CoAP server
+00:00.689	ID:43	[INFO: Main      ] Starting Contiki-NG
+00:00.689	ID:43	[INFO: Main      ] - Routing: RPL Lite
+00:00.689	ID:43	[INFO: Main      ] - Net: sicslowpan
+00:00.689	ID:43	[INFO: Main      ] - MAC: CSMA
+00:00.689	ID:43	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.689	ID:43	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.689	ID:43	[INFO: Main      ] Node ID: 43
+00:00.689	ID:43	[INFO: Main      ] Link-layer address: 002b.002b.002b.002b
+00:00.689	ID:43	[INFO: Main      ] Tentative link-local IPv6 address: fe80::22b:2b:2b:2b
+00:00.690	ID:26	[INFO: Main      ] Starting Contiki-NG
+00:00.690	ID:26	[INFO: Main      ] - Routing: RPL Lite
+00:00.690	ID:26	[INFO: Main      ] - Net: sicslowpan
+00:00.690	ID:26	[INFO: Main      ] - MAC: CSMA
+00:00.690	ID:26	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.690	ID:26	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.690	ID:26	[INFO: Main      ] Node ID: 26
+00:00.690	ID:26	[INFO: Main      ] Link-layer address: 001a.001a.001a.001a
+00:00.690	ID:26	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21a:1a:1a:1a
+00:00.690	ID:26	[INFO: coap-bt-server] Starting CoAP server
+00:00.708	ID:9	[INFO: Main      ] Starting Contiki-NG
+00:00.708	ID:9	[INFO: Main      ] - Routing: RPL Lite
+00:00.708	ID:9	[INFO: Main      ] - Net: sicslowpan
+00:00.708	ID:9	[INFO: Main      ] - MAC: CSMA
+00:00.708	ID:9	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.708	ID:9	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.708	ID:9	[INFO: Main      ] Node ID: 9
+00:00.708	ID:9	[INFO: Main      ] Link-layer address: 0009.0009.0009.0009
+00:00.708	ID:9	[INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
+00:00.708	ID:9	[INFO: coap-bt-server] Starting CoAP server
+00:00.715	ID:5	[INFO: Main      ] Starting Contiki-NG
+00:00.715	ID:5	[INFO: Main      ] - Routing: RPL Lite
+00:00.715	ID:5	[INFO: Main      ] - Net: sicslowpan
+00:00.715	ID:5	[INFO: Main      ] - MAC: CSMA
+00:00.715	ID:5	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.715	ID:5	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.715	ID:5	[INFO: Main      ] Node ID: 5
+00:00.715	ID:5	[INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+00:00.715	ID:5	[INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+00:00.715	ID:5	[INFO: coap-bt-server] Starting CoAP server
+00:00.719	ID:19	[INFO: Main      ] Starting Contiki-NG
+00:00.719	ID:19	[INFO: Main      ] - Routing: RPL Lite
+00:00.719	ID:19	[INFO: Main      ] - Net: sicslowpan
+00:00.719	ID:19	[INFO: Main      ] - MAC: CSMA
+00:00.719	ID:19	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.719	ID:19	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.719	ID:19	[INFO: Main      ] Node ID: 19
+00:00.719	ID:19	[INFO: Main      ] Link-layer address: 0013.0013.0013.0013
+00:00.719	ID:19	[INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
+00:00.719	ID:19	[INFO: coap-bt-server] Starting CoAP server
+00:00.719	ID:42	[INFO: Main      ] Starting Contiki-NG
+00:00.719	ID:42	[INFO: Main      ] - Routing: RPL Lite
+00:00.719	ID:42	[INFO: Main      ] - Net: sicslowpan
+00:00.719	ID:42	[INFO: Main      ] - MAC: CSMA
+00:00.719	ID:42	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.719	ID:42	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.719	ID:42	[INFO: Main      ] Node ID: 42
+00:00.719	ID:42	[INFO: Main      ] Link-layer address: 002a.002a.002a.002a
+00:00.719	ID:42	[INFO: Main      ] Tentative link-local IPv6 address: fe80::22a:2a:2a:2a
+00:00.788	ID:38	[INFO: Main      ] Starting Contiki-NG
+00:00.788	ID:38	[INFO: Main      ] - Routing: RPL Lite
+00:00.788	ID:38	[INFO: Main      ] - Net: sicslowpan
+00:00.788	ID:38	[INFO: Main      ] - MAC: CSMA
+00:00.788	ID:38	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.788	ID:38	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.788	ID:38	[INFO: Main      ] Node ID: 38
+00:00.788	ID:38	[INFO: Main      ] Link-layer address: 0026.0026.0026.0026
+00:00.788	ID:38	[INFO: Main      ] Tentative link-local IPv6 address: fe80::226:26:26:26
+00:00.788	ID:38	[INFO: coap-bt-server] Starting CoAP server
+00:00.809	ID:17	[INFO: Main      ] Starting Contiki-NG
+00:00.809	ID:17	[INFO: Main      ] - Routing: RPL Lite
+00:00.809	ID:17	[INFO: Main      ] - Net: sicslowpan
+00:00.809	ID:17	[INFO: Main      ] - MAC: CSMA
+00:00.809	ID:17	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.809	ID:17	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.809	ID:17	[INFO: Main      ] Node ID: 17
+00:00.809	ID:17	[INFO: Main      ] Link-layer address: 0011.0011.0011.0011
+00:00.809	ID:17	[INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
+00:00.809	ID:17	[INFO: coap-bt-server] Starting CoAP server
+00:00.881	ID:36	[INFO: Main      ] Starting Contiki-NG
+00:00.881	ID:36	[INFO: Main      ] - Routing: RPL Lite
+00:00.881	ID:36	[INFO: Main      ] - Net: sicslowpan
+00:00.881	ID:36	[INFO: Main      ] - MAC: CSMA
+00:00.881	ID:36	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.881	ID:36	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.881	ID:36	[INFO: Main      ] Node ID: 36
+00:00.881	ID:36	[INFO: Main      ] Link-layer address: 0024.0024.0024.0024
+00:00.881	ID:36	[INFO: Main      ] Tentative link-local IPv6 address: fe80::224:24:24:24
+00:00.881	ID:36	[INFO: coap-bt-server] Starting CoAP server
+00:00.884	ID:13	[INFO: Main      ] Starting Contiki-NG
+00:00.884	ID:13	[INFO: Main      ] - Routing: RPL Lite
+00:00.884	ID:13	[INFO: Main      ] - Net: sicslowpan
+00:00.884	ID:13	[INFO: Main      ] - MAC: CSMA
+00:00.884	ID:13	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.884	ID:13	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.884	ID:13	[INFO: Main      ] Node ID: 13
+00:00.884	ID:13	[INFO: Main      ] Link-layer address: 000d.000d.000d.000d
+00:00.884	ID:13	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
+00:00.884	ID:13	[INFO: coap-bt-server] Starting CoAP server
+00:00.899	ID:3	[INFO: Main      ] Starting Contiki-NG
+00:00.899	ID:3	[INFO: Main      ] - Routing: RPL Lite
+00:00.899	ID:3	[INFO: Main      ] - Net: sicslowpan
+00:00.899	ID:3	[INFO: Main      ] - MAC: CSMA
+00:00.899	ID:3	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.899	ID:3	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.899	ID:3	[INFO: Main      ] Node ID: 3
+00:00.899	ID:3	[INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+00:00.899	ID:3	[INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+00:00.899	ID:3	[INFO: coap-bt-server] Starting CoAP server
+00:00.906	ID:21	[INFO: Main      ] Starting Contiki-NG
+00:00.906	ID:21	[INFO: Main      ] - Routing: RPL Lite
+00:00.906	ID:21	[INFO: Main      ] - Net: sicslowpan
+00:00.906	ID:21	[INFO: Main      ] - MAC: CSMA
+00:00.906	ID:21	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.906	ID:21	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.906	ID:21	[INFO: Main      ] Node ID: 21
+00:00.906	ID:21	[INFO: Main      ] Link-layer address: 0015.0015.0015.0015
+00:00.906	ID:21	[INFO: Main      ] Tentative link-local IPv6 address: fe80::215:15:15:15
+00:00.906	ID:21	[INFO: coap-bt-server] Starting CoAP server
+00:00.945	ID:23	[INFO: Main      ] Starting Contiki-NG
+00:00.945	ID:23	[INFO: Main      ] - Routing: RPL Lite
+00:00.945	ID:23	[INFO: Main      ] - Net: sicslowpan
+00:00.945	ID:23	[INFO: Main      ] - MAC: CSMA
+00:00.945	ID:23	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.945	ID:23	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.945	ID:23	[INFO: Main      ] Node ID: 23
+00:00.945	ID:23	[INFO: Main      ] Link-layer address: 0017.0017.0017.0017
+00:00.945	ID:23	[INFO: Main      ] Tentative link-local IPv6 address: fe80::217:17:17:17
+00:00.945	ID:23	[INFO: coap-bt-server] Starting CoAP server
+00:00.978	ID:32	[INFO: Main      ] Starting Contiki-NG
+00:00.978	ID:32	[INFO: Main      ] - Routing: RPL Lite
+00:00.978	ID:32	[INFO: Main      ] - Net: sicslowpan
+00:00.978	ID:32	[INFO: Main      ] - MAC: CSMA
+00:00.978	ID:32	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.978	ID:32	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.978	ID:32	[INFO: Main      ] Node ID: 32
+00:00.978	ID:32	[INFO: Main      ] Link-layer address: 0020.0020.0020.0020
+00:00.978	ID:32	[INFO: Main      ] Tentative link-local IPv6 address: fe80::220:20:20:20
+00:00.978	ID:32	[INFO: coap-bt-server] Starting CoAP server
+00:09.689	ID:43	Sending registration request to server...
+00:14.217	ID:44	Sending registration request to server...
+00:24.218	ID:45	Sending registration request to server...
+00:27.106	ID:48	Sending registration request to server...
+00:28.389	ID:41	Sending registration request to server...
+00:29.124	ID:50	Sending registration request to server...
+00:29.209	ID:3	[INFO: coap-bt-server] Handler reg called!
+00:29.260	ID:50	
+00:29.260	ID:50	193
+00:29.260	ID:50	133
+00:29.260	ID:50	56
+00:29.260	ID:50	194
+00:29.260	ID:50	31
+00:29.260	ID:50	182
+00:29.260	ID:50	166
+00:29.260	ID:50	248
+00:29.260	ID:50	125
+00:29.260	ID:50	229
+00:29.260	ID:50	124
+00:29.260	ID:50	8
+00:29.260	ID:50	28
+00:29.260	ID:50	167
+00:29.260	ID:50	251
+00:29.260	ID:50	68Received reg payload
+00:29.260	ID:50	Simulate PUF response: challenge=6 response=1
+00:29.260	ID:50	
+00:29.260	ID:50	 24
+00:29.260	ID:50	 58
+00:29.260	ID:50	 35
+00:29.260	ID:50	 212
+00:29.260	ID:50	 41
+00:29.260	ID:50	 37
+00:29.260	ID:50	 221
+00:29.260	ID:50	 179
+00:29.260	ID:50	 132
+00:29.260	ID:50	 205
+00:29.260	ID:50	 221
+00:29.260	ID:50	 253
+00:29.260	ID:50	 95
+00:29.260	ID:50	 133
+00:29.260	ID:50	 174
+00:29.260	ID:50	 166Sending reg1 request
+00:29.301	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+00:29.301	ID:3	
+00:29.301	ID:3	 during reg R_d is 1
+00:29.719	ID:42	Sending registration request to server...
+00:32.465	ID:46	Sending registration request to server...
+00:34.287	ID:2	[INFO: coap-bt-server] Handler reg called!
+00:34.381	ID:42	
+00:34.381	ID:42	193
+00:34.381	ID:42	133
+00:34.381	ID:42	56
+00:34.381	ID:42	194
+00:34.381	ID:42	31
+00:34.381	ID:42	182
+00:34.381	ID:42	166
+00:34.381	ID:42	248
+00:34.381	ID:42	125
+00:34.381	ID:42	229
+00:34.381	ID:42	124
+00:34.381	ID:42	8
+00:34.381	ID:42	28
+00:34.381	ID:42	167
+00:34.381	ID:42	251
+00:34.381	ID:42	68Received reg payload
+00:34.381	ID:42	Simulate PUF response: challenge=6 response=1
+00:34.381	ID:42	
+00:34.381	ID:42	 108
+00:34.381	ID:42	 36
+00:34.381	ID:42	 162
+00:34.381	ID:42	 217
+00:34.381	ID:42	 185
+00:34.381	ID:42	 160
+00:34.381	ID:42	 29
+00:34.381	ID:42	 207
+00:34.381	ID:42	 9
+00:34.381	ID:42	 172
+00:34.381	ID:42	 121
+00:34.381	ID:42	 232
+00:34.381	ID:42	 110
+00:34.381	ID:42	 244
+00:34.381	ID:42	 89
+00:34.381	ID:42	 90Sending reg1 request
+00:34.412	ID:47	Sending registration request to server...
+00:34.577	ID:2	[INFO: coap-bt-server] Handler reg1 called!
+00:34.577	ID:2	
+00:34.577	ID:2	 during reg R_d is 1
+00:34.699	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134[INFO: coap-bt-server] Handler reg called!
+00:34.762	ID:47	
+00:34.762	ID:47	193
+00:34.762	ID:47	133
+00:34.762	ID:47	56
+00:34.762	ID:47	194
+00:34.762	ID:47	31
+00:34.762	ID:47	182
+00:34.762	ID:47	166
+00:34.762	ID:47	248
+00:34.762	ID:47	125
+00:34.762	ID:47	229
+00:34.762	ID:47	124
+00:34.762	ID:47	8
+00:34.762	ID:47	28
+00:34.762	ID:47	167
+00:34.762	ID:47	251
+00:34.762	ID:47	68Received reg payload
+00:34.762	ID:47	Simulate PUF response: challenge=6 response=0
+00:34.762	ID:47	
+00:34.762	ID:47	 97
+00:34.762	ID:47	 204
+00:34.762	ID:47	 134
+00:34.762	ID:47	 33
+00:34.762	ID:47	 255
+00:34.762	ID:47	 139
+00:34.762	ID:47	 35
+00:34.762	ID:47	 111
+00:34.762	ID:47	 249
+00:34.762	ID:47	 49
+00:34.762	ID:47	 199
+00:34.762	ID:47	 118
+00:34.762	ID:47	 211
+00:34.762	ID:47	 119
+00:34.762	ID:47	 200
+00:34.762	ID:47	 97Sending reg1 request
+00:34.866	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+00:34.866	ID:3	
+00:34.866	ID:3	 during reg R_d is 0
+00:35.396	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134[INFO: coap-bt-server] Handler reg called!
+00:35.474	ID:45	
+00:35.474	ID:45	193
+00:35.474	ID:45	133
+00:35.474	ID:45	56
+00:35.474	ID:45	194
+00:35.474	ID:45	31
+00:35.474	ID:45	182
+00:35.474	ID:45	166
+00:35.474	ID:45	248
+00:35.474	ID:45	125
+00:35.474	ID:45	229
+00:35.474	ID:45	124
+00:35.474	ID:45	8
+00:35.474	ID:45	28
+00:35.474	ID:45	167
+00:35.474	ID:45	251
+00:35.474	ID:45	68Received reg payload
+00:35.474	ID:45	Simulate PUF response: challenge=6 response=1
+00:35.474	ID:45	
+00:35.474	ID:45	 108
+00:35.474	ID:45	 214
+00:35.474	ID:45	 212
+00:35.474	ID:45	 124
+00:35.474	ID:45	 80
+00:35.474	ID:45	 61
+00:35.474	ID:45	 212
+00:35.474	ID:45	 146
+00:35.474	ID:45	 198
+00:35.474	ID:45	 233
+00:35.474	ID:45	 198
+00:35.474	ID:45	 75
+00:35.474	ID:45	 236
+00:35.474	ID:45	 29
+00:35.474	ID:45	 136
+00:35.474	ID:45	 150Sending reg1 request
+00:35.546	ID:2	[INFO: coap-bt-server] Handler reg1 called!
+00:35.546	ID:2	
+00:35.546	ID:2	 during reg R_d is 1
+00:35.806	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134[INFO: coap-bt-server] Handler reg called!
+00:35.889	ID:46	
+00:35.889	ID:46	193
+00:35.889	ID:46	133
+00:35.889	ID:46	56
+00:35.889	ID:46	194
+00:35.889	ID:46	31
+00:35.889	ID:46	182
+00:35.889	ID:46	166
+00:35.889	ID:46	248
+00:35.889	ID:46	125
+00:35.889	ID:46	229
+00:35.889	ID:46	124
+00:35.889	ID:46	8
+00:35.889	ID:46	28
+00:35.889	ID:46	167
+00:35.889	ID:46	251
+00:35.889	ID:46	68Received reg payload
+00:35.889	ID:46	Simulate PUF response: challenge=6 response=1
+00:35.889	ID:46	
+00:35.889	ID:46	 103
+00:35.889	ID:46	 3
+00:35.889	ID:46	 107
+00:35.889	ID:46	 207
+00:35.889	ID:46	 187
+00:35.889	ID:46	 28
+00:35.889	ID:46	 134
+00:35.889	ID:46	 163
+00:35.889	ID:46	 197
+00:35.889	ID:46	 20
+00:35.889	ID:46	 220
+00:35.889	ID:46	 134
+00:35.889	ID:46	 32
+00:35.889	ID:46	 22
+00:35.889	ID:46	 57
+00:35.889	ID:46	 55Sending reg1 request
+00:35.960	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+00:35.960	ID:3	
+00:35.960	ID:3	 during reg R_d is 1
+00:36.594	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134[INFO: coap-bt-server] Handler reg called!
+00:36.607	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134[INFO: coap-bt-server] Handler reg called!
+00:36.670	ID:43	
+00:36.670	ID:43	193
+00:36.670	ID:43	133
+00:36.670	ID:43	56
+00:36.670	ID:43	194
+00:36.670	ID:43	31
+00:36.670	ID:43	182
+00:36.670	ID:43	166
+00:36.670	ID:43	248
+00:36.670	ID:43	125
+00:36.670	ID:43	229
+00:36.670	ID:43	124
+00:36.670	ID:43	8
+00:36.670	ID:43	28
+00:36.670	ID:43	167
+00:36.670	ID:43	251
+00:36.670	ID:43	68Received reg payload
+00:36.670	ID:43	Simulate PUF response: challenge=6 response=0
+00:36.670	ID:43	
+00:36.670	ID:43	 110
+00:36.670	ID:43	 254
+00:36.670	ID:43	 12
+00:36.670	ID:43	 236
+00:36.670	ID:43	 220
+00:36.670	ID:43	 168
+00:36.670	ID:43	 190
+00:36.670	ID:43	 171
+00:36.670	ID:43	 188
+00:36.670	ID:43	 44
+00:36.670	ID:43	 171
+00:36.670	ID:43	 120
+00:36.670	ID:43	 248
+00:36.670	ID:43	 236
+00:36.670	ID:43	 83
+00:36.670	ID:43	 107Sending reg1 request
+00:36.711	ID:48	
+00:36.711	ID:48	193
+00:36.711	ID:48	133
+00:36.711	ID:48	56
+00:36.711	ID:48	194
+00:36.711	ID:48	31
+00:36.711	ID:48	182
+00:36.711	ID:48	166
+00:36.711	ID:48	248
+00:36.711	ID:48	125
+00:36.711	ID:48	229
+00:36.711	ID:48	124
+00:36.711	ID:48	8
+00:36.711	ID:48	28
+00:36.711	ID:48	167
+00:36.711	ID:48	251
+00:36.711	ID:48	68Received reg payload
+00:36.711	ID:48	Simulate PUF response: challenge=6 response=1
+00:36.711	ID:48	
+00:36.711	ID:48	 107
+00:36.711	ID:48	 78
+00:36.711	ID:48	 19
+00:36.711	ID:48	 222
+00:36.711	ID:48	 252
+00:36.711	ID:48	 137
+00:36.711	ID:48	 20
+00:36.711	ID:48	 223
+00:36.711	ID:48	 225
+00:36.711	ID:48	 63
+00:36.711	ID:48	 186
+00:36.711	ID:48	 162
+00:36.711	ID:48	 118
+00:36.711	ID:48	 223
+00:36.711	ID:48	 29
+00:36.711	ID:48	 158Sending reg1 request
+00:36.766	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+00:36.766	ID:3	
+00:36.766	ID:3	 during reg R_d is 1
+00:36.942	ID:2	[INFO: coap-bt-server] Handler reg1 called!
+00:36.942	ID:2	
+00:36.942	ID:2	 during reg R_d is 0
+00:36.987	ID:43	Registered
+00:36.987	ID:43	 The CPU time and energy at the end of registration for client 43 are 36.298112 and 2.242927
+00:36.987	ID:43	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:36.987	ID:43	 the value of R_d is 0
+00:36.987	ID:43	 the value of M_d is 5
+00:37.083	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134[INFO: coap-bt-server] Handler auth called!
+00:37.083	ID:2	
+00:37.083	ID:2	 the value of R_d is 0
+00:37.083	ID:2	 the value of M_d is 5
+00:37.083	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:37.083	ID:2	 the value of M_d is 5
+00:37.083	ID:2	 the value of R_d is 0
+00:37.083	ID:2	 the value of id_d is 43
+00:37.083	ID:2	 The value of session key is mask50
+00:37.083	ID:2	58
+00:37.083	ID:2	123
+00:37.083	ID:2	34
+00:37.083	ID:2	125
+00:37.083	ID:2	105
+00:37.083	ID:2	132
+00:37.083	ID:2	163
+00:37.083	ID:2	154
+00:37.083	ID:2	143
+00:37.083	ID:2	144
+00:37.083	ID:2	85
+00:37.083	ID:2	125
+00:37.083	ID:2	123
+00:37.083	ID:2	248
+00:37.083	ID:2	61
+00:37.083	ID:2	13
+00:37.083	ID:2	53
+00:37.083	ID:2	105
+00:37.083	ID:2	193
+00:37.083	ID:2	114
+00:37.083	ID:2	204
+00:37.083	ID:2	75
+00:37.083	ID:2	216
+00:37.083	ID:2	158
+00:37.083	ID:2	86
+00:37.083	ID:2	151
+00:37.083	ID:2	215
+00:37.083	ID:2	131
+00:37.083	ID:2	68
+00:37.083	ID:2	26
+00:37.083	ID:2	162
+00:37.083	ID:2	
+00:37.083	ID:2	 The value of session key is n219
+00:37.083	ID:2	193
+00:37.083	ID:2	180
+00:37.083	ID:2	201
+00:37.083	ID:2	0
+00:37.083	ID:2	255
+00:37.083	ID:2	228
+00:37.083	ID:2	141
+00:37.083	ID:2	87
+00:37.083	ID:2	91
+00:37.083	ID:2	93
+00:37.083	ID:2	165
+00:37.083	ID:2	198
+00:37.083	ID:2	56
+00:37.083	ID:2	4
+00:37.083	ID:2	1
+00:37.083	ID:2	37
+00:37.083	ID:2	246
+00:37.083	ID:2	93
+00:37.083	ID:2	176
+00:37.083	ID:2	254
+00:37.083	ID:2	62
+00:37.083	ID:2	36
+00:37.083	ID:2	73
+00:37.083	ID:2	75
+00:37.083	ID:2	118
+00:37.083	ID:2	234
+00:37.083	ID:2	152
+00:37.083	ID:2	100
+00:37.083	ID:2	87
+00:37.083	ID:2	217
+00:37.083	ID:2	134
+00:37.083	ID:2	
+00:37.083	ID:2	 The value of payload is n2
+00:37.083	ID:2	233
+00:37.083	ID:2	251
+00:37.083	ID:2	207
+00:37.083	ID:2	235
+00:37.083	ID:2	125
+00:37.083	ID:2	150
+00:37.083	ID:2	96
+00:37.083	ID:2	46
+00:37.083	ID:2	205
+00:37.083	ID:2	212
+00:37.083	ID:2	205
+00:37.083	ID:2	240
+00:37.083	ID:2	187
+00:37.083	ID:2	67
+00:37.083	ID:2	252
+00:37.083	ID:2	60
+00:37.083	ID:2	40
+00:37.083	ID:2	195
+00:37.083	ID:2	52
+00:37.083	ID:2	113
+00:37.083	ID:2	140
+00:37.083	ID:2	242
+00:37.083	ID:2	111
+00:37.083	ID:2	145
+00:37.083	ID:2	213
+00:37.083	ID:2	32
+00:37.083	ID:2	125
+00:37.083	ID:2	79
+00:37.083	ID:2	231
+00:37.083	ID:2	19
+00:37.083	ID:2	195
+00:37.083	ID:2	36
+00:37.083	ID:2	1
+00:37.083	ID:2	
+00:37.083	ID:2	 Hpayload sent
+00:37.083	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:37.083	ID:2	 The token count and send index is 0 and 0 before if 
+00:37.083	ID:2	 The token count and send index is 1 and 0 in the if
+00:37.083	ID:2	 The CPU time and energy at the end of authentication for client 43 by server 2 is 0.140576 and 0.008666
+00:37.084	ID:2	 The token count and send index is 1 and 0
+00:37.084	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:37.237	ID:2	[INFO: coap-bt-server] Handler reg called!
+00:37.299	ID:1	
+00:37.299	ID:1	Received auth tokenAuthentication token for Node 43
+00:37.299	ID:1	
+00:37.299	ID:1	 Obtained auth_token is 43
+00:37.299	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:37.317	ID:43	 Sending auth_request
+00:37.317	ID:43	 The value of payload is n2
+00:37.317	ID:43	233
+00:37.317	ID:43	251
+00:37.317	ID:43	207
+00:37.317	ID:43	235
+00:37.317	ID:43	125
+00:37.317	ID:43	150
+00:37.317	ID:43	96
+00:37.317	ID:43	46
+00:37.317	ID:43	205
+00:37.317	ID:43	212
+00:37.317	ID:43	205
+00:37.317	ID:43	240
+00:37.317	ID:43	187
+00:37.317	ID:43	67
+00:37.317	ID:43	252
+00:37.317	ID:43	60
+00:37.317	ID:43	40
+00:37.317	ID:43	195
+00:37.317	ID:43	52
+00:37.317	ID:43	113
+00:37.317	ID:43	140
+00:37.317	ID:43	242
+00:37.317	ID:43	111
+00:37.317	ID:43	145
+00:37.317	ID:43	213
+00:37.317	ID:43	32
+00:37.317	ID:43	125
+00:37.317	ID:43	79
+00:37.317	ID:43	231
+00:37.317	ID:43	19
+00:37.317	ID:43	195
+00:37.317	ID:43	36
+00:37.317	ID:43	
+00:37.317	ID:43	 The timestamp is 1
+00:37.317	ID:43	 the value of M_d is 5
+00:37.317	ID:43	 the value of R_d is 0
+00:37.317	ID:43	 the value of id_as is 2
+00:37.317	ID:43	 the value of id_d is 43
+00:37.317	ID:43	 the value of ts_2 is 1
+00:37.317	ID:43	 The value of session key is mask 25058123341251051321631541431448512512324861135310519311420475216158861512151316826162
+00:37.317	ID:43	 The value of session key is n219
+00:37.317	ID:43	193
+00:37.317	ID:43	180
+00:37.317	ID:43	201
+00:37.317	ID:43	0
+00:37.317	ID:43	255
+00:37.317	ID:43	228
+00:37.317	ID:43	141
+00:37.317	ID:43	87
+00:37.317	ID:43	91
+00:37.317	ID:43	93
+00:37.317	ID:43	165
+00:37.317	ID:43	198
+00:37.317	ID:43	56
+00:37.317	ID:43	4
+00:37.317	ID:43	1
+00:37.317	ID:43	37
+00:37.317	ID:43	246
+00:37.317	ID:43	93
+00:37.317	ID:43	176
+00:37.317	ID:43	254
+00:37.317	ID:43	62
+00:37.317	ID:43	36
+00:37.317	ID:43	73
+00:37.317	ID:43	75
+00:37.317	ID:43	118
+00:37.317	ID:43	234
+00:37.317	ID:43	152
+00:37.317	ID:43	100
+00:37.317	ID:43	87
+00:37.317	ID:43	217
+00:37.317	ID:43	134
+00:37.317	ID:43	
+00:37.317	ID:43	 The value of mask50
+00:37.317	ID:43	58
+00:37.317	ID:43	123
+00:37.317	ID:43	34
+00:37.317	ID:43	125
+00:37.317	ID:43	105
+00:37.317	ID:43	132
+00:37.317	ID:43	163
+00:37.317	ID:43	154
+00:37.317	ID:43	143
+00:37.317	ID:43	144
+00:37.317	ID:43	85
+00:37.317	ID:43	125
+00:37.317	ID:43	123
+00:37.317	ID:43	248
+00:37.317	ID:43	61
+00:37.317	ID:43	13
+00:37.317	ID:43	53
+00:37.317	ID:43	105
+00:37.317	ID:43	193
+00:37.317	ID:43	114
+00:37.317	ID:43	204
+00:37.317	ID:43	75
+00:37.317	ID:43	216
+00:37.317	ID:43	158
+00:37.317	ID:43	86
+00:37.317	ID:43	151
+00:37.317	ID:43	215
+00:37.317	ID:43	131
+00:37.317	ID:43	68
+00:37.317	ID:43	26
+00:37.317	ID:43	162
+00:37.317	ID:43	
+00:37.317	ID:43	 The value of R_d is 0
+00:37.317	ID:43	 The CPU time and energy at the end of authentication 1 for client 43 are 0.330768 and 0.020398
+00:37.317	ID:43	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+00:37.327	ID:1	 The CPU time and energy at the end of authenticatication for client 43 by server 2 and gateway 1 are 36.917840 and 2.279325
+00:37.327	ID:1	Authentication successful for Node 43
+00:37.327	ID:1	
+00:37.348	ID:43	39208441431136014423412551441741219134172Data length: 1
+00:37.348	ID:43	Data payload: 0
+00:37.348	ID:43	
+00:37.348	ID:43	 The CPU time and energy at the end of registration for client 43 are 36.659552 and 2.265198
+00:37.348	ID:43	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:37.348	ID:43	 the value of R_d is 0
+00:37.348	ID:43	 the value of M_d is 219
+00:37.364	ID:44	
+00:37.364	ID:44	193
+00:37.364	ID:44	133
+00:37.364	ID:44	56
+00:37.364	ID:44	194
+00:37.364	ID:44	31
+00:37.364	ID:44	182
+00:37.364	ID:44	166
+00:37.364	ID:44	248
+00:37.364	ID:44	125
+00:37.364	ID:44	229
+00:37.364	ID:44	124
+00:37.364	ID:44	8
+00:37.364	ID:44	28
+00:37.364	ID:44	167
+00:37.364	ID:44	251
+00:37.364	ID:44	68Received reg payload
+00:37.364	ID:44	Simulate PUF response: challenge=6 response=0
+00:37.364	ID:44	
+00:37.364	ID:44	 165
+00:37.364	ID:44	 127
+00:37.364	ID:44	 56
+00:37.364	ID:44	 134
+00:37.364	ID:44	 239
+00:37.364	ID:44	 134
+00:37.364	ID:44	 90
+00:37.364	ID:44	 73
+00:37.364	ID:44	 127
+00:37.364	ID:44	 207
+00:37.364	ID:44	 154
+00:37.364	ID:44	 82
+00:37.364	ID:44	 199
+00:37.364	ID:44	 34
+00:37.364	ID:44	 5
+00:37.364	ID:44	 4Sending reg1 request
+00:37.537	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+00:37.537	ID:2	
+00:37.537	ID:2	 the value of R_d is 0
+00:37.537	ID:2	 the value of M_d is 219
+00:37.537	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:37.537	ID:2	 the value of M_d is 219
+00:37.537	ID:2	 the value of R_d is 0
+00:37.537	ID:2	 the value of id_d is 43
+00:37.537	ID:2	 The value of session key is mask115
+00:37.537	ID:2	56
+00:37.537	ID:2	173
+00:37.537	ID:2	108
+00:37.537	ID:2	15
+00:37.537	ID:2	129
+00:37.537	ID:2	30
+00:37.537	ID:2	211
+00:37.537	ID:2	80
+00:37.537	ID:2	117
+00:37.537	ID:2	51
+00:37.537	ID:2	121
+00:37.537	ID:2	77
+00:37.537	ID:2	135
+00:37.537	ID:2	10
+00:37.537	ID:2	233
+00:37.537	ID:2	181
+00:37.537	ID:2	207
+00:37.537	ID:2	133
+00:37.537	ID:2	122
+00:37.537	ID:2	246
+00:37.537	ID:2	106
+00:37.537	ID:2	186
+00:37.537	ID:2	40
+00:37.537	ID:2	196
+00:37.537	ID:2	99
+00:37.537	ID:2	54
+00:37.537	ID:2	109
+00:37.537	ID:2	79
+00:37.537	ID:2	38
+00:37.537	ID:2	109
+00:37.537	ID:2	179
+00:37.537	ID:2	
+00:37.537	ID:2	 The value of session key is n219
+00:37.537	ID:2	193
+00:37.537	ID:2	180
+00:37.537	ID:2	201
+00:37.537	ID:2	0
+00:37.537	ID:2	255
+00:37.537	ID:2	228
+00:37.537	ID:2	141
+00:37.537	ID:2	87
+00:37.537	ID:2	91
+00:37.537	ID:2	93
+00:37.537	ID:2	165
+00:37.537	ID:2	198
+00:37.537	ID:2	56
+00:37.537	ID:2	4
+00:37.537	ID:2	1
+00:37.537	ID:2	37
+00:37.537	ID:2	246
+00:37.537	ID:2	93
+00:37.537	ID:2	176
+00:37.537	ID:2	254
+00:37.537	ID:2	62
+00:37.537	ID:2	36
+00:37.537	ID:2	73
+00:37.537	ID:2	75
+00:37.537	ID:2	118
+00:37.537	ID:2	234
+00:37.537	ID:2	152
+00:37.537	ID:2	100
+00:37.537	ID:2	87
+00:37.537	ID:2	217
+00:37.537	ID:2	134
+00:37.537	ID:2	
+00:37.537	ID:2	 The value of payload is n2
+00:37.537	ID:2	168
+00:37.537	ID:2	249
+00:37.537	ID:2	25
+00:37.537	ID:2	165
+00:37.537	ID:2	15
+00:37.537	ID:2	126
+00:37.537	ID:2	250
+00:37.537	ID:2	94
+00:37.537	ID:2	7
+00:37.537	ID:2	46
+00:37.537	ID:2	110
+00:37.537	ID:2	220
+00:37.537	ID:2	139
+00:37.537	ID:2	191
+00:37.537	ID:2	14
+00:37.537	ID:2	232
+00:37.537	ID:2	144
+00:37.537	ID:2	57
+00:37.537	ID:2	216
+00:37.537	ID:2	202
+00:37.537	ID:2	8
+00:37.537	ID:2	84
+00:37.537	ID:2	158
+00:37.537	ID:2	97
+00:37.537	ID:2	143
+00:37.537	ID:2	21
+00:37.537	ID:2	220
+00:37.537	ID:2	245
+00:37.537	ID:2	43
+00:37.537	ID:2	113
+00:37.537	ID:2	180
+00:37.537	ID:2	53
+00:37.537	ID:2	1
+00:37.537	ID:2	
+00:37.537	ID:2	 Hpayload sent
+00:37.537	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:37.537	ID:2	 The token count and send index is 1 and 1 before if 
+00:37.537	ID:2	 The token count and send index is 2 and 1 in the if
+00:37.537	ID:2	 The CPU time and energy at the end of authentication for client 43 by server 2 is 0.454000 and 0.027961
+00:37.538	ID:2	 The token count and send index is 2 and 1
+00:37.538	ID:2	 The token count and send index is 2 and 1 before while[INFO: coap-bt-server] Token count = 2, Sent index = 1
+00:37.561	ID:2	[INFO: coap-bt-server] Handler reg1 called!
+00:37.561	ID:2	
+00:37.561	ID:2	 during reg R_d is 0
+00:37.608	ID:43	 Sending auth_request
+00:37.608	ID:43	 The value of payload is n2
+00:37.608	ID:43	168
+00:37.608	ID:43	249
+00:37.608	ID:43	25
+00:37.608	ID:43	165
+00:37.608	ID:43	15
+00:37.608	ID:43	126
+00:37.608	ID:43	250
+00:37.608	ID:43	94
+00:37.608	ID:43	7
+00:37.608	ID:43	46
+00:37.608	ID:43	110
+00:37.608	ID:43	220
+00:37.608	ID:43	139
+00:37.608	ID:43	191
+00:37.608	ID:43	14
+00:37.608	ID:43	232
+00:37.608	ID:43	144
+00:37.608	ID:43	57
+00:37.608	ID:43	216
+00:37.608	ID:43	202
+00:37.608	ID:43	8
+00:37.608	ID:43	84
+00:37.608	ID:43	158
+00:37.608	ID:43	97
+00:37.608	ID:43	143
+00:37.608	ID:43	21
+00:37.608	ID:43	220
+00:37.608	ID:43	245
+00:37.608	ID:43	43
+00:37.608	ID:43	113
+00:37.608	ID:43	180
+00:37.608	ID:43	53
+00:37.608	ID:43	
+00:37.608	ID:43	 The timestamp is 1
+00:37.608	ID:43	 the value of M_d is 219
+00:37.608	ID:43	 the value of R_d is 0
+00:37.608	ID:43	 the value of id_as is 2
+00:37.608	ID:43	 the value of id_d is 43
+00:37.608	ID:43	 the value of ts_2 is 1
+00:37.608	ID:43	 The value of session key is mask 2115561731081512930211801175112177135102331812071331222461061864019699541097938109179
+00:37.608	ID:43	 The value of session key is n219
+00:37.608	ID:43	193
+00:37.608	ID:43	180
+00:37.608	ID:43	201
+00:37.608	ID:43	0
+00:37.608	ID:43	255
+00:37.608	ID:43	228
+00:37.608	ID:43	141
+00:37.608	ID:43	87
+00:37.608	ID:43	91
+00:37.608	ID:43	93
+00:37.608	ID:43	165
+00:37.608	ID:43	198
+00:37.608	ID:43	56
+00:37.608	ID:43	4
+00:37.608	ID:43	1
+00:37.608	ID:43	37
+00:37.608	ID:43	246
+00:37.608	ID:43	93
+00:37.608	ID:43	176
+00:37.608	ID:43	254
+00:37.608	ID:43	62
+00:37.608	ID:43	36
+00:37.608	ID:43	73
+00:37.608	ID:43	75
+00:37.608	ID:43	118
+00:37.608	ID:43	234
+00:37.608	ID:43	152
+00:37.608	ID:43	100
+00:37.608	ID:43	87
+00:37.608	ID:43	217
+00:37.608	ID:43	134
+00:37.608	ID:43	
+00:37.608	ID:43	 The value of mask115
+00:37.608	ID:43	56
+00:37.608	ID:43	173
+00:37.608	ID:43	108
+00:37.608	ID:43	15
+00:37.608	ID:43	129
+00:37.608	ID:43	30
+00:37.608	ID:43	211
+00:37.608	ID:43	80
+00:37.608	ID:43	117
+00:37.608	ID:43	51
+00:37.608	ID:43	121
+00:37.608	ID:43	77
+00:37.608	ID:43	135
+00:37.608	ID:43	10
+00:37.608	ID:43	233
+00:37.608	ID:43	181
+00:37.608	ID:43	207
+00:37.608	ID:43	133
+00:37.608	ID:43	122
+00:37.608	ID:43	246
+00:37.608	ID:43	106
+00:37.608	ID:43	186
+00:37.608	ID:43	40
+00:37.608	ID:43	196
+00:37.608	ID:43	99
+00:37.608	ID:43	54
+00:37.608	ID:43	109
+00:37.608	ID:43	79
+00:37.608	ID:43	38
+00:37.608	ID:43	109
+00:37.608	ID:43	179
+00:37.608	ID:43	
+00:37.608	ID:43	 The value of R_d is 0
+00:37.625	ID:49	Sending registration request to server...
+00:37.671	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134[INFO: coap-bt-server] Handler reg called!
+00:37.738	ID:49	
+00:37.738	ID:49	193
+00:37.738	ID:49	133
+00:37.738	ID:49	56
+00:37.738	ID:49	194
+00:37.738	ID:49	31
+00:37.738	ID:49	182
+00:37.738	ID:49	166
+00:37.738	ID:49	248
+00:37.738	ID:49	125
+00:37.738	ID:49	229
+00:37.738	ID:49	124
+00:37.738	ID:49	8
+00:37.738	ID:49	28
+00:37.738	ID:49	167
+00:37.738	ID:49	251
+00:37.738	ID:49	68Received reg payload
+00:37.738	ID:49	Simulate PUF response: challenge=6 response=0
+00:37.738	ID:49	
+00:37.738	ID:49	 9
+00:37.738	ID:49	 192
+00:37.738	ID:49	 235
+00:37.738	ID:49	 206
+00:37.738	ID:49	 178
+00:37.738	ID:49	 144
+00:37.738	ID:49	 197
+00:37.738	ID:49	 186
+00:37.738	ID:49	 137
+00:37.738	ID:49	 244
+00:37.738	ID:49	 161
+00:37.738	ID:49	 80
+00:37.738	ID:49	 214
+00:37.738	ID:49	 181
+00:37.738	ID:49	 215
+00:37.738	ID:49	 19Sending reg1 request
+00:37.748	ID:1	 The message obtained for node 43 is 9
+00:37.748	ID:1	Received auth tokenAuthentication token for Node 43
+00:37.748	ID:1	
+00:37.748	ID:1	 Obtained auth_token is 43
+00:37.748	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:37.817	ID:44	Registered
+00:37.817	ID:44	 The CPU time and energy at the end of registration for client 44 are 37.600112 and 2.323353
+00:37.817	ID:44	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:37.817	ID:44	 the value of R_d is 0
+00:37.817	ID:44	 the value of M_d is 5
+00:37.901	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+00:37.901	ID:3	
+00:37.901	ID:3	 during reg R_d is 0
+00:38.093	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134Received[INFO: coap-bt-server] Handler auth called!
+00:38.093	ID:2	
+00:38.093	ID:2	 the value of R_d is 0
+00:38.093	ID:2	 the value of M_d is 5
+00:38.093	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:38.093	ID:2	 the value of M_d is 5
+00:38.093	ID:2	 the value of R_d is 0
+00:38.093	ID:2	 the value of id_d is 44
+00:38.093	ID:2	 The value of session key is mask223
+00:38.093	ID:2	204
+00:38.093	ID:2	171
+00:38.093	ID:2	189
+00:38.093	ID:2	131
+00:38.093	ID:2	210
+00:38.093	ID:2	90
+00:38.093	ID:2	188
+00:38.093	ID:2	80
+00:38.093	ID:2	191
+00:38.093	ID:2	33
+00:38.093	ID:2	227
+00:38.093	ID:2	199
+00:38.093	ID:2	178
+00:38.093	ID:2	86
+00:38.093	ID:2	172
+00:38.093	ID:2	28
+00:38.093	ID:2	117
+00:38.093	ID:2	44
+00:38.093	ID:2	141
+00:38.093	ID:2	82
+00:38.093	ID:2	78
+00:38.093	ID:2	79
+00:38.093	ID:2	235
+00:38.093	ID:2	18
+00:38.093	ID:2	215
+00:38.093	ID:2	70
+00:38.093	ID:2	23
+00:38.093	ID:2	20
+00:38.093	ID:2	160
+00:38.093	ID:2	242
+00:38.093	ID:2	224
+00:38.093	ID:2	
+00:38.093	ID:2	 The value of session key is n219
+00:38.093	ID:2	193
+00:38.093	ID:2	180
+00:38.093	ID:2	201
+00:38.093	ID:2	0
+00:38.093	ID:2	255
+00:38.093	ID:2	228
+00:38.093	ID:2	141
+00:38.093	ID:2	87
+00:38.093	ID:2	91
+00:38.093	ID:2	93
+00:38.093	ID:2	165
+00:38.093	ID:2	198
+00:38.093	ID:2	56
+00:38.093	ID:2	4
+00:38.093	ID:2	1
+00:38.093	ID:2	37
+00:38.093	ID:2	246
+00:38.093	ID:2	93
+00:38.093	ID:2	176
+00:38.093	ID:2	254
+00:38.093	ID:2	62
+00:38.093	ID:2	36
+00:38.093	ID:2	73
+00:38.093	ID:2	75
+00:38.093	ID:2	118
+00:38.093	ID:2	234
+00:38.093	ID:2	152
+00:38.093	ID:2	100
+00:38.093	ID:2	87
+00:38.093	ID:2	217
+00:38.093	ID:2	134
+00:38.093	ID:2	
+00:38.093	ID:2	 The value of payload is n2
+00:38.093	ID:2	4
+00:38.093	ID:2	13
+00:38.093	ID:2	31
+00:38.093	ID:2	116
+00:38.093	ID:2	131
+00:38.093	ID:2	45
+00:38.093	ID:2	190
+00:38.093	ID:2	49
+00:38.093	ID:2	7
+00:38.093	ID:2	228
+00:38.093	ID:2	124
+00:38.093	ID:2	70
+00:38.093	ID:2	1
+00:38.093	ID:2	138
+00:38.093	ID:2	82
+00:38.093	ID:2	173
+00:38.093	ID:2	57
+00:38.093	ID:2	131
+00:38.093	ID:2	113
+00:38.093	ID:2	61
+00:38.093	ID:2	172
+00:38.093	ID:2	112
+00:38.093	ID:2	107
+00:38.093	ID:2	162
+00:38.093	ID:2	89
+00:38.093	ID:2	161
+00:38.093	ID:2	172
+00:38.093	ID:2	143
+00:38.093	ID:2	112
+00:38.093	ID:2	247
+00:38.093	ID:2	43
+00:38.093	ID:2	102
+00:38.093	ID:2	1
+00:38.093	ID:2	
+00:38.093	ID:2	 Hpayload sent
+00:38.093	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:38.093	ID:2	 The token count and send index is 2 and 2 before if 
+00:38.093	ID:2	 The token count and send index is 3 and 2 in the if
+00:38.093	ID:2	 The CPU time and energy at the end of authentication for client 44 by server 2 is 0.531576 and 0.032701
+00:38.094	ID:2	 The token count and send index is 3 and 2
+00:38.094	ID:2	 The token count and send index is 3 and 2 before while[INFO: coap-bt-server] Token count = 3, Sent index = 2
+00:38.203	ID:44	 Sending auth_request
+00:38.203	ID:44	 The value of payload is n2
+00:38.203	ID:44	4
+00:38.203	ID:44	13
+00:38.203	ID:44	31
+00:38.203	ID:44	116
+00:38.203	ID:44	131
+00:38.203	ID:44	45
+00:38.203	ID:44	190
+00:38.203	ID:44	49
+00:38.203	ID:44	7
+00:38.203	ID:44	228
+00:38.203	ID:44	124
+00:38.203	ID:44	70
+00:38.203	ID:44	1
+00:38.203	ID:44	138
+00:38.203	ID:44	82
+00:38.203	ID:44	173
+00:38.203	ID:44	57
+00:38.203	ID:44	131
+00:38.203	ID:44	113
+00:38.203	ID:44	61
+00:38.203	ID:44	172
+00:38.203	ID:44	112
+00:38.203	ID:44	107
+00:38.203	ID:44	162
+00:38.203	ID:44	89
+00:38.203	ID:44	161
+00:38.203	ID:44	172
+00:38.203	ID:44	143
+00:38.203	ID:44	112
+00:38.203	ID:44	247
+00:38.203	ID:44	43
+00:38.203	ID:44	102
+00:38.203	ID:44	
+00:38.203	ID:44	 The timestamp is 1
+00:38.203	ID:44	 the value of M_d is 5
+00:38.203	ID:44	 the value of R_d is 0
+00:38.203	ID:44	 the value of id_as is 2
+00:38.203	ID:44	 the value of id_d is 44
+00:38.203	ID:44	 the value of ts_2 is 1
+00:38.203	ID:44	 The value of session key is mask 222320417118913121090188801913322719917886172281174414182787923518215702320160242224
+00:38.203	ID:44	 The value of session key is n219
+00:38.203	ID:44	193
+00:38.203	ID:44	180
+00:38.203	ID:44	201
+00:38.203	ID:44	0
+00:38.203	ID:44	255
+00:38.203	ID:44	228
+00:38.203	ID:44	141
+00:38.203	ID:44	87
+00:38.203	ID:44	91
+00:38.203	ID:44	93
+00:38.203	ID:44	165
+00:38.203	ID:44	198
+00:38.203	ID:44	56
+00:38.203	ID:44	4
+00:38.203	ID:44	1
+00:38.203	ID:44	37
+00:38.203	ID:44	246
+00:38.203	ID:44	93
+00:38.203	ID:44	176
+00:38.203	ID:44	254
+00:38.203	ID:44	62
+00:38.203	ID:44	36
+00:38.203	ID:44	73
+00:38.203	ID:44	75
+00:38.203	ID:44	118
+00:38.203	ID:44	234
+00:38.203	ID:44	152
+00:38.203	ID:44	100
+00:38.203	ID:44	87
+00:38.203	ID:44	217
+00:38.203	ID:44	134
+00:38.203	ID:44	
+00:38.203	ID:44	 The value of mask223
+00:38.203	ID:44	204
+00:38.203	ID:44	171
+00:38.203	ID:44	189
+00:38.203	ID:44	131
+00:38.203	ID:44	210
+00:38.203	ID:44	90
+00:38.203	ID:44	188
+00:38.203	ID:44	80
+00:38.203	ID:44	191
+00:38.203	ID:44	33
+00:38.203	ID:44	227
+00:38.203	ID:44	199
+00:38.203	ID:44	178
+00:38.203	ID:44	86
+00:38.203	ID:44	172
+00:38.203	ID:44	28
+00:38.203	ID:44	117
+00:38.203	ID:44	44
+00:38.203	ID:44	141
+00:38.203	ID:44	82
+00:38.203	ID:44	78
+00:38.203	ID:44	79
+00:38.203	ID:44	235
+00:38.203	ID:44	18
+00:38.203	ID:44	215
+00:38.203	ID:44	70
+00:38.203	ID:44	23
+00:38.203	ID:44	20
+00:38.203	ID:44	160
+00:38.203	ID:44	242
+00:38.203	ID:44	224
+00:38.203	ID:44	
+00:38.203	ID:44	 The value of R_d is 0
+00:38.274	ID:1	 The CPU time and energy at the end of authenticatication for client 43 by server 2 and gateway 1 are 0.449000 and 0.027521
+00:38.274	ID:1	Received auth tokenAuthentication token for Node 44
+00:38.274	ID:1	
+00:38.274	ID:1	 Obtained auth_token is 44
+00:38.274	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:40.311	ID:2	Received[INFO: coap-bt-server] Handler reg called!
+00:40.339	ID:41	
+00:40.339	ID:41	193
+00:40.339	ID:41	133
+00:40.339	ID:41	56
+00:40.339	ID:41	194
+00:40.339	ID:41	31
+00:40.339	ID:41	182
+00:40.339	ID:41	166
+00:40.339	ID:41	248
+00:40.339	ID:41	125
+00:40.339	ID:41	229
+00:40.339	ID:41	124
+00:40.339	ID:41	8
+00:40.339	ID:41	28
+00:40.339	ID:41	167
+00:40.339	ID:41	251
+00:40.339	ID:41	68Received reg payload
+00:40.339	ID:41	Simulate PUF response: challenge=6 response=1
+00:40.339	ID:41	
+00:40.339	ID:41	 154
+00:40.339	ID:41	 182
+00:40.339	ID:41	 219
+00:40.339	ID:41	 166
+00:40.339	ID:41	 11
+00:40.339	ID:41	 97
+00:40.339	ID:41	 113
+00:40.339	ID:41	 70
+00:40.339	ID:41	 139
+00:40.339	ID:41	 228
+00:40.339	ID:41	 2
+00:40.339	ID:41	 129
+00:40.339	ID:41	 185
+00:40.339	ID:41	 140
+00:40.339	ID:41	 225
+00:40.339	ID:41	 33Sending reg1 request
+00:40.417	ID:2	[INFO: coap-bt-server] Handler reg1 called!
+00:40.417	ID:2	
+00:40.417	ID:2	 during reg R_d is 1
+00:42.217	ID:44	 The CPU time and energy at the end of authentication 1 for client 44 are 0.386768 and 0.023876
+00:42.217	ID:44	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+00:42.256	ID:1	 The CPU time and energy at the end of authenticatication for client 44 by server 2 and gateway 1 are 0.526000 and 0.032361
+00:42.256	ID:1	Authentication successful for Node 44
+00:42.256	ID:1	
+00:42.269	ID:44	39208441431136014423412551441741219134172Data length: 1
+00:42.269	ID:44	Data payload: 0
+00:45.689	ID:43	 The CPU time and energy at the end of authentication 2 for client 43 are 0.260328 and 0.016062
+00:45.689	ID:43	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+00:45.730	ID:1	 The message obtained for node 44 is 9
+00:45.730	ID:1	Authentication successful for Node 43
+00:45.730	ID:1	
+00:45.757	ID:43	39208441431136014423412551441741219134172Data length: 1
+00:45.757	ID:43	Data payload: 0
+00:48.218	ID:45	Registered
+00:48.218	ID:45	 The CPU time and energy at the end of registration for client 45 are 48.000000 and 2.966105
+00:48.218	ID:45	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:48.218	ID:45	 the value of R_d is 1
+00:48.218	ID:45	 the value of M_d is 5
+00:48.308	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134[INFO: coap-bt-server] Handler auth called!
+00:48.308	ID:2	
+00:48.308	ID:2	 the value of R_d is 1
+00:48.308	ID:2	 the value of M_d is 5
+00:48.308	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:48.308	ID:2	 the value of M_d is 5
+00:48.308	ID:2	 the value of R_d is 1
+00:48.308	ID:2	 the value of id_d is 45
+00:48.308	ID:2	 The value of session key is mask210
+00:48.308	ID:2	247
+00:48.308	ID:2	52
+00:48.308	ID:2	51
+00:48.308	ID:2	88
+00:48.308	ID:2	104
+00:48.308	ID:2	71
+00:48.308	ID:2	93
+00:48.308	ID:2	99
+00:48.308	ID:2	185
+00:48.308	ID:2	67
+00:48.308	ID:2	141
+00:48.308	ID:2	105
+00:48.308	ID:2	105
+00:48.308	ID:2	165
+00:48.308	ID:2	152
+00:48.308	ID:2	50
+00:48.308	ID:2	83
+00:48.308	ID:2	76
+00:48.308	ID:2	22
+00:48.308	ID:2	96
+00:48.308	ID:2	226
+00:48.308	ID:2	25
+00:48.308	ID:2	134
+00:48.308	ID:2	33
+00:48.308	ID:2	196
+00:48.308	ID:2	31
+00:48.308	ID:2	204
+00:48.308	ID:2	17
+00:48.308	ID:2	72
+00:48.308	ID:2	124
+00:48.308	ID:2	209
+00:48.308	ID:2	
+00:48.308	ID:2	 The value of session key is n219
+00:48.308	ID:2	193
+00:48.308	ID:2	180
+00:48.308	ID:2	201
+00:48.308	ID:2	0
+00:48.308	ID:2	255
+00:48.308	ID:2	228
+00:48.308	ID:2	141
+00:48.308	ID:2	87
+00:48.308	ID:2	91
+00:48.308	ID:2	93
+00:48.308	ID:2	165
+00:48.308	ID:2	198
+00:48.308	ID:2	56
+00:48.308	ID:2	4
+00:48.308	ID:2	1
+00:48.308	ID:2	37
+00:48.308	ID:2	246
+00:48.308	ID:2	93
+00:48.308	ID:2	176
+00:48.308	ID:2	254
+00:48.308	ID:2	62
+00:48.308	ID:2	36
+00:48.308	ID:2	73
+00:48.308	ID:2	75
+00:48.308	ID:2	118
+00:48.308	ID:2	234
+00:48.308	ID:2	152
+00:48.308	ID:2	100
+00:48.308	ID:2	87
+00:48.308	ID:2	217
+00:48.308	ID:2	134
+00:48.308	ID:2	
+00:48.308	ID:2	 The value of payload is n2
+00:48.308	ID:2	9
+00:48.308	ID:2	54
+00:48.308	ID:2	128
+00:48.308	ID:2	250
+00:48.308	ID:2	88
+00:48.308	ID:2	151
+00:48.308	ID:2	163
+00:48.308	ID:2	208
+00:48.308	ID:2	52
+00:48.308	ID:2	226
+00:48.308	ID:2	30
+00:48.308	ID:2	40
+00:48.308	ID:2	175
+00:48.308	ID:2	81
+00:48.308	ID:2	161
+00:48.308	ID:2	153
+00:48.308	ID:2	23
+00:48.308	ID:2	165
+00:48.308	ID:2	17
+00:48.308	ID:2	166
+00:48.308	ID:2	158
+00:48.308	ID:2	220
+00:48.308	ID:2	61
+00:48.308	ID:2	207
+00:48.308	ID:2	106
+00:48.308	ID:2	178
+00:48.308	ID:2	245
+00:48.308	ID:2	84
+00:48.308	ID:2	117
+00:48.308	ID:2	31
+00:48.308	ID:2	165
+00:48.308	ID:2	87
+00:48.308	ID:2	1
+00:48.308	ID:2	
+00:48.308	ID:2	 Hpayload sent
+00:48.308	ID:2	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:48.308	ID:2	 The token count and send index is 3 and 3 before if 
+00:48.308	ID:2	 The token count and send index is 4 and 3 in the if
+00:48.308	ID:2	 The CPU time and energy at the end of authentication for client 45 by server 2 is 7.890576 and 0.487595
+00:48.309	ID:2	 The token count and send index is 4 and 3
+00:48.309	ID:2	 The token count and send index is 4 and 3 before while[INFO: coap-bt-server] Token count = 4, Sent index = 3
+00:48.371	ID:1	 The message obtained for node 43 is 9
+00:48.371	ID:1	Received auth tokenAuthentication token for Node 45
+00:48.371	ID:1	
+00:48.371	ID:1	 Obtained auth_token is 45
+00:48.371	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:48.386	ID:45	 Sending auth_request
+00:48.386	ID:45	 The value of payload is n2
+00:48.386	ID:45	9
+00:48.386	ID:45	54
+00:48.386	ID:45	128
+00:48.386	ID:45	250
+00:48.386	ID:45	88
+00:48.386	ID:45	151
+00:48.386	ID:45	163
+00:48.386	ID:45	208
+00:48.386	ID:45	52
+00:48.386	ID:45	226
+00:48.386	ID:45	30
+00:48.386	ID:45	40
+00:48.386	ID:45	175
+00:48.386	ID:45	81
+00:48.386	ID:45	161
+00:48.386	ID:45	153
+00:48.386	ID:45	23
+00:48.386	ID:45	165
+00:48.386	ID:45	17
+00:48.386	ID:45	166
+00:48.386	ID:45	158
+00:48.386	ID:45	220
+00:48.386	ID:45	61
+00:48.386	ID:45	207
+00:48.386	ID:45	106
+00:48.386	ID:45	178
+00:48.386	ID:45	245
+00:48.386	ID:45	84
+00:48.386	ID:45	117
+00:48.386	ID:45	31
+00:48.386	ID:45	165
+00:48.386	ID:45	87
+00:48.386	ID:45	
+00:48.386	ID:45	 The timestamp is 1
+00:48.386	ID:45	 the value of M_d is 5
+00:48.386	ID:45	 the value of R_d is 1
+00:48.386	ID:45	 the value of id_as is 2
+00:48.386	ID:45	 the value of id_d is 45
+00:48.386	ID:45	 the value of ts_2 is 1
+00:48.386	ID:45	 The value of session key is mask 22102475251881047193991856714110510516515250837622962262513433196312041772124209
+00:48.386	ID:45	 The value of session key is n219
+00:48.386	ID:45	193
+00:48.386	ID:45	180
+00:48.386	ID:45	201
+00:48.386	ID:45	0
+00:48.386	ID:45	255
+00:48.386	ID:45	228
+00:48.386	ID:45	141
+00:48.386	ID:45	87
+00:48.386	ID:45	91
+00:48.386	ID:45	93
+00:48.386	ID:45	165
+00:48.386	ID:45	198
+00:48.386	ID:45	56
+00:48.386	ID:45	4
+00:48.386	ID:45	1
+00:48.386	ID:45	37
+00:48.386	ID:45	246
+00:48.386	ID:45	93
+00:48.386	ID:45	176
+00:48.386	ID:45	254
+00:48.386	ID:45	62
+00:48.386	ID:45	36
+00:48.386	ID:45	73
+00:48.386	ID:45	75
+00:48.386	ID:45	118
+00:48.386	ID:45	234
+00:48.386	ID:45	152
+00:48.386	ID:45	100
+00:48.386	ID:45	87
+00:48.386	ID:45	217
+00:48.386	ID:45	134
+00:48.386	ID:45	
+00:48.386	ID:45	 The value of mask210
+00:48.386	ID:45	247
+00:48.386	ID:45	52
+00:48.386	ID:45	51
+00:48.386	ID:45	88
+00:48.386	ID:45	104
+00:48.386	ID:45	71
+00:48.386	ID:45	93
+00:48.386	ID:45	99
+00:48.386	ID:45	185
+00:48.386	ID:45	67
+00:48.386	ID:45	141
+00:48.386	ID:45	105
+00:48.386	ID:45	105
+00:48.386	ID:45	165
+00:48.386	ID:45	152
+00:48.386	ID:45	50
+00:48.386	ID:45	83
+00:48.386	ID:45	76
+00:48.386	ID:45	22
+00:48.386	ID:45	96
+00:48.386	ID:45	226
+00:48.386	ID:45	25
+00:48.386	ID:45	134
+00:48.386	ID:45	33
+00:48.386	ID:45	196
+00:48.386	ID:45	31
+00:48.386	ID:45	204
+00:48.386	ID:45	17
+00:48.386	ID:45	72
+00:48.386	ID:45	124
+00:48.386	ID:45	209
+00:48.386	ID:45	
+00:48.386	ID:45	 The value of R_d is 1
+00:54.106	ID:48	Registered
+00:54.106	ID:48	 The CPU time and energy at the end of registration for client 48 are 54.000000 and 3.336987
+00:54.106	ID:48	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:54.106	ID:48	 the value of R_d is 1
+00:54.106	ID:48	 the value of M_d is 5
+00:54.186	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134[INFO: coap-bt-server] Handler auth called!
+00:54.186	ID:3	
+00:54.186	ID:3	 the value of R_d is 1
+00:54.186	ID:3	 the value of M_d is 5
+00:54.186	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:54.186	ID:3	 the value of M_d is 5
+00:54.186	ID:3	 the value of R_d is 1
+00:54.186	ID:3	 the value of id_d is 48
+00:54.186	ID:3	 The value of session key is mask98
+00:54.186	ID:3	130
+00:54.186	ID:3	129
+00:54.186	ID:3	90
+00:54.186	ID:3	127
+00:54.186	ID:3	228
+00:54.186	ID:3	39
+00:54.186	ID:3	83
+00:54.186	ID:3	146
+00:54.186	ID:3	221
+00:54.186	ID:3	28
+00:54.186	ID:3	182
+00:54.186	ID:3	171
+00:54.186	ID:3	105
+00:54.186	ID:3	94
+00:54.186	ID:3	221
+00:54.186	ID:3	251
+00:54.186	ID:3	47
+00:54.186	ID:3	254
+00:54.186	ID:3	117
+00:54.186	ID:3	43
+00:54.186	ID:3	32
+00:54.186	ID:3	149
+00:54.186	ID:3	132
+00:54.186	ID:3	70
+00:54.186	ID:3	169
+00:54.186	ID:3	201
+00:54.186	ID:3	107
+00:54.186	ID:3	100
+00:54.186	ID:3	32
+00:54.186	ID:3	43
+00:54.186	ID:3	134
+00:54.186	ID:3	
+00:54.186	ID:3	 The value of session key is n219
+00:54.186	ID:3	193
+00:54.186	ID:3	180
+00:54.186	ID:3	201
+00:54.186	ID:3	0
+00:54.186	ID:3	255
+00:54.186	ID:3	228
+00:54.186	ID:3	141
+00:54.186	ID:3	87
+00:54.186	ID:3	91
+00:54.186	ID:3	93
+00:54.186	ID:3	165
+00:54.186	ID:3	198
+00:54.186	ID:3	56
+00:54.186	ID:3	4
+00:54.186	ID:3	1
+00:54.186	ID:3	37
+00:54.186	ID:3	246
+00:54.186	ID:3	93
+00:54.186	ID:3	176
+00:54.186	ID:3	254
+00:54.186	ID:3	62
+00:54.186	ID:3	36
+00:54.186	ID:3	73
+00:54.186	ID:3	75
+00:54.186	ID:3	118
+00:54.186	ID:3	234
+00:54.186	ID:3	152
+00:54.186	ID:3	100
+00:54.186	ID:3	87
+00:54.186	ID:3	217
+00:54.186	ID:3	134
+00:54.186	ID:3	
+00:54.186	ID:3	 The value of payload is n3
+00:54.186	ID:3	185
+00:54.186	ID:3	67
+00:54.186	ID:3	53
+00:54.186	ID:3	147
+00:54.186	ID:3	127
+00:54.186	ID:3	27
+00:54.186	ID:3	195
+00:54.186	ID:3	222
+00:54.186	ID:3	197
+00:54.186	ID:3	134
+00:54.186	ID:3	65
+00:54.186	ID:3	19
+00:54.186	ID:3	109
+00:54.186	ID:3	81
+00:54.186	ID:3	90
+00:54.186	ID:3	220
+00:54.186	ID:3	222
+00:54.186	ID:3	217
+00:54.186	ID:3	163
+00:54.186	ID:3	197
+00:54.186	ID:3	213
+00:54.186	ID:3	30
+00:54.186	ID:3	177
+00:54.186	ID:3	205
+00:54.186	ID:3	13
+00:54.186	ID:3	223
+00:54.186	ID:3	35
+00:54.186	ID:3	243
+00:54.186	ID:3	0
+00:54.186	ID:3	119
+00:54.186	ID:3	242
+00:54.186	ID:3	0
+00:54.186	ID:3	1
+00:54.186	ID:3	
+00:54.186	ID:3	 Hpayload sent
+00:54.186	ID:3	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:54.186	ID:3	 The token count and send index is 0 and 0 before if 
+00:54.186	ID:3	 The token count and send index is 1 and 0 in the if
+00:54.186	ID:3	 The CPU time and energy at the end of authentication for client 48 by server 3 is 16.284576 and 1.006327
+00:54.187	ID:3	 The token count and send index is 1 and 0
+00:54.187	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:54.210	ID:1	 The CPU time and energy at the end of authenticatication for client 45 by server 2 and gateway 1 are 10.097000 and 0.623728
+00:54.210	ID:1	Received auth tokenAuthentication token for Node 48
+00:54.210	ID:1	
+00:54.210	ID:1	 Obtained auth_token is 48
+00:54.210	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:54.282	ID:48	 Sending auth_request
+00:54.282	ID:48	 The value of payload is n3
+00:54.282	ID:48	185
+00:54.282	ID:48	67
+00:54.282	ID:48	53
+00:54.282	ID:48	147
+00:54.282	ID:48	127
+00:54.282	ID:48	27
+00:54.282	ID:48	195
+00:54.282	ID:48	222
+00:54.282	ID:48	197
+00:54.282	ID:48	134
+00:54.282	ID:48	65
+00:54.282	ID:48	19
+00:54.282	ID:48	109
+00:54.282	ID:48	81
+00:54.282	ID:48	90
+00:54.282	ID:48	220
+00:54.282	ID:48	222
+00:54.282	ID:48	217
+00:54.282	ID:48	163
+00:54.282	ID:48	197
+00:54.282	ID:48	213
+00:54.282	ID:48	30
+00:54.282	ID:48	177
+00:54.282	ID:48	205
+00:54.282	ID:48	13
+00:54.282	ID:48	223
+00:54.282	ID:48	35
+00:54.282	ID:48	243
+00:54.282	ID:48	0
+00:54.282	ID:48	119
+00:54.282	ID:48	242
+00:54.282	ID:48	0
+00:54.282	ID:48	
+00:54.282	ID:48	 The timestamp is 1
+00:54.282	ID:48	 the value of M_d is 5
+00:54.282	ID:48	 the value of R_d is 1
+00:54.282	ID:48	 the value of id_as is 3
+00:54.282	ID:48	 the value of id_d is 48
+00:54.282	ID:48	 the value of ts_2 is 1
+00:54.282	ID:48	 The value of session key is mask 2981301299012722839831462212818217110594221251472541174332149132701692011071003243134
+00:54.282	ID:48	 The value of session key is n219
+00:54.282	ID:48	193
+00:54.282	ID:48	180
+00:54.282	ID:48	201
+00:54.282	ID:48	0
+00:54.282	ID:48	255
+00:54.282	ID:48	228
+00:54.282	ID:48	141
+00:54.282	ID:48	87
+00:54.282	ID:48	91
+00:54.282	ID:48	93
+00:54.282	ID:48	165
+00:54.282	ID:48	198
+00:54.282	ID:48	56
+00:54.282	ID:48	4
+00:54.282	ID:48	1
+00:54.282	ID:48	37
+00:54.282	ID:48	246
+00:54.282	ID:48	93
+00:54.282	ID:48	176
+00:54.282	ID:48	254
+00:54.282	ID:48	62
+00:54.282	ID:48	36
+00:54.282	ID:48	73
+00:54.282	ID:48	75
+00:54.282	ID:48	118
+00:54.282	ID:48	234
+00:54.282	ID:48	152
+00:54.282	ID:48	100
+00:54.282	ID:48	87
+00:54.282	ID:48	217
+00:54.282	ID:48	134
+00:54.282	ID:48	
+00:54.282	ID:48	 The value of mask98
+00:54.282	ID:48	130
+00:54.282	ID:48	129
+00:54.282	ID:48	90
+00:54.282	ID:48	127
+00:54.282	ID:48	228
+00:54.282	ID:48	39
+00:54.282	ID:48	83
+00:54.282	ID:48	146
+00:54.282	ID:48	221
+00:54.282	ID:48	28
+00:54.282	ID:48	182
+00:54.282	ID:48	171
+00:54.282	ID:48	105
+00:54.282	ID:48	94
+00:54.282	ID:48	221
+00:54.282	ID:48	251
+00:54.282	ID:48	47
+00:54.282	ID:48	254
+00:54.282	ID:48	117
+00:54.282	ID:48	43
+00:54.282	ID:48	32
+00:54.282	ID:48	149
+00:54.282	ID:48	132
+00:54.282	ID:48	70
+00:54.282	ID:48	169
+00:54.282	ID:48	201
+00:54.282	ID:48	107
+00:54.282	ID:48	100
+00:54.282	ID:48	32
+00:54.282	ID:48	43
+00:54.282	ID:48	134
+00:54.282	ID:48	
+00:54.282	ID:48	 The value of R_d is 1
+00:54.689	ID:43	
+00:54.689	ID:43	 The CPU time and energy at the end of registration for client 43 are 54.000000 and 3.336789
+00:54.689	ID:43	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:54.689	ID:43	 the value of R_d is 0
+00:54.689	ID:43	 the value of M_d is 219
+00:54.796	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+00:54.796	ID:2	
+00:54.796	ID:2	 the value of R_d is 0
+00:54.796	ID:2	 the value of M_d is 219
+00:54.796	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:54.796	ID:2	 the value of M_d is 219
+00:54.796	ID:2	 the value of R_d is 0
+00:54.796	ID:2	 the value of id_d is 43
+00:54.796	ID:2	 The value of session key is mask115
+00:54.796	ID:2	56
+00:54.796	ID:2	173
+00:54.796	ID:2	108
+00:54.796	ID:2	15
+00:54.796	ID:2	129
+00:54.796	ID:2	30
+00:54.796	ID:2	211
+00:54.796	ID:2	80
+00:54.796	ID:2	117
+00:54.796	ID:2	51
+00:54.796	ID:2	121
+00:54.796	ID:2	77
+00:54.796	ID:2	135
+00:54.796	ID:2	10
+00:54.796	ID:2	233
+00:54.796	ID:2	181
+00:54.796	ID:2	207
+00:54.796	ID:2	133
+00:54.796	ID:2	122
+00:54.796	ID:2	246
+00:54.796	ID:2	106
+00:54.796	ID:2	186
+00:54.796	ID:2	40
+00:54.796	ID:2	196
+00:54.796	ID:2	99
+00:54.796	ID:2	54
+00:54.796	ID:2	109
+00:54.796	ID:2	79
+00:54.796	ID:2	38
+00:54.796	ID:2	109
+00:54.796	ID:2	179
+00:54.796	ID:2	
+00:54.796	ID:2	 The value of session key is n219
+00:54.796	ID:2	193
+00:54.796	ID:2	180
+00:54.796	ID:2	201
+00:54.796	ID:2	0
+00:54.796	ID:2	255
+00:54.796	ID:2	228
+00:54.796	ID:2	141
+00:54.796	ID:2	87
+00:54.796	ID:2	91
+00:54.796	ID:2	93
+00:54.796	ID:2	165
+00:54.796	ID:2	198
+00:54.796	ID:2	56
+00:54.796	ID:2	4
+00:54.796	ID:2	1
+00:54.796	ID:2	37
+00:54.796	ID:2	246
+00:54.796	ID:2	93
+00:54.796	ID:2	176
+00:54.796	ID:2	254
+00:54.796	ID:2	62
+00:54.796	ID:2	36
+00:54.796	ID:2	73
+00:54.796	ID:2	75
+00:54.796	ID:2	118
+00:54.796	ID:2	234
+00:54.796	ID:2	152
+00:54.796	ID:2	100
+00:54.796	ID:2	87
+00:54.796	ID:2	217
+00:54.796	ID:2	134
+00:54.796	ID:2	
+00:54.796	ID:2	 The value of payload is n2
+00:54.796	ID:2	168
+00:54.796	ID:2	249
+00:54.796	ID:2	25
+00:54.796	ID:2	165
+00:54.796	ID:2	15
+00:54.796	ID:2	126
+00:54.796	ID:2	250
+00:54.796	ID:2	94
+00:54.796	ID:2	7
+00:54.796	ID:2	46
+00:54.796	ID:2	110
+00:54.796	ID:2	220
+00:54.796	ID:2	139
+00:54.796	ID:2	191
+00:54.796	ID:2	14
+00:54.796	ID:2	232
+00:54.796	ID:2	144
+00:54.796	ID:2	57
+00:54.796	ID:2	216
+00:54.796	ID:2	202
+00:54.796	ID:2	8
+00:54.796	ID:2	84
+00:54.796	ID:2	158
+00:54.796	ID:2	97
+00:54.796	ID:2	143
+00:54.796	ID:2	21
+00:54.796	ID:2	220
+00:54.796	ID:2	245
+00:54.796	ID:2	43
+00:54.796	ID:2	113
+00:54.796	ID:2	180
+00:54.796	ID:2	53
+00:54.796	ID:2	1
+00:54.796	ID:2	
+00:54.796	ID:2	 Hpayload sent
+00:54.796	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:54.796	ID:2	 The token count and send index is 4 and 4 before if 
+00:54.796	ID:2	 The token count and send index is 5 and 4 in the if
+00:54.796	ID:2	 The CPU time and energy at the end of authentication for client 43 by server 2 is 6.488000 and 0.400905
+00:54.797	ID:2	 The token count and send index is 5 and 4
+00:54.797	ID:2	 The token count and send index is 5 and 4 before while[INFO: coap-bt-server] Token count = 5, Sent index = 4
+00:54.957	ID:1	 The CPU time and energy at the end of authenticatication for client 48 by server 3 and gateway 1 are 5.838712 and 0.360761
+00:54.957	ID:1	Received auth tokenAuthentication token for Node 43
+00:54.957	ID:1	
+00:54.957	ID:1	 Obtained auth_token is 43
+00:54.957	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:54.987	ID:43	 Sending auth_request
+00:54.987	ID:43	 The value of payload is n2
+00:54.987	ID:43	168
+00:54.987	ID:43	249
+00:54.987	ID:43	25
+00:54.987	ID:43	165
+00:54.987	ID:43	15
+00:54.987	ID:43	126
+00:54.987	ID:43	250
+00:54.987	ID:43	94
+00:54.987	ID:43	7
+00:54.987	ID:43	46
+00:54.987	ID:43	110
+00:54.987	ID:43	220
+00:54.987	ID:43	139
+00:54.987	ID:43	191
+00:54.987	ID:43	14
+00:54.987	ID:43	232
+00:54.987	ID:43	144
+00:54.987	ID:43	57
+00:54.987	ID:43	216
+00:54.987	ID:43	202
+00:54.987	ID:43	8
+00:54.987	ID:43	84
+00:54.987	ID:43	158
+00:54.987	ID:43	97
+00:54.987	ID:43	143
+00:54.987	ID:43	21
+00:54.987	ID:43	220
+00:54.987	ID:43	245
+00:54.987	ID:43	43
+00:54.987	ID:43	113
+00:54.987	ID:43	180
+00:54.987	ID:43	53
+00:54.987	ID:43	
+00:54.987	ID:43	 The timestamp is 1
+00:54.987	ID:43	 the value of M_d is 219
+00:54.987	ID:43	 the value of R_d is 0
+00:54.987	ID:43	 the value of id_as is 2
+00:54.987	ID:43	 the value of id_d is 43
+00:54.987	ID:43	 the value of ts_2 is 1
+00:54.987	ID:43	 The value of session key is mask 2115561731081512930211801175112177135102331812071331222461061864019699541097938109179
+00:54.987	ID:43	 The value of session key is n219
+00:54.987	ID:43	193
+00:54.987	ID:43	180
+00:54.987	ID:43	201
+00:54.987	ID:43	0
+00:54.987	ID:43	255
+00:54.987	ID:43	228
+00:54.987	ID:43	141
+00:54.987	ID:43	87
+00:54.987	ID:43	91
+00:54.987	ID:43	93
+00:54.987	ID:43	165
+00:54.987	ID:43	198
+00:54.987	ID:43	56
+00:54.987	ID:43	4
+00:54.987	ID:43	1
+00:54.987	ID:43	37
+00:54.987	ID:43	246
+00:54.987	ID:43	93
+00:54.987	ID:43	176
+00:54.987	ID:43	254
+00:54.987	ID:43	62
+00:54.987	ID:43	36
+00:54.987	ID:43	73
+00:54.987	ID:43	75
+00:54.987	ID:43	118
+00:54.987	ID:43	234
+00:54.987	ID:43	152
+00:54.987	ID:43	100
+00:54.987	ID:43	87
+00:54.987	ID:43	217
+00:54.987	ID:43	134
+00:54.987	ID:43	
+00:54.987	ID:43	 The value of mask115
+00:54.987	ID:43	56
+00:54.987	ID:43	173
+00:54.987	ID:43	108
+00:54.987	ID:43	15
+00:54.987	ID:43	129
+00:54.987	ID:43	30
+00:54.987	ID:43	211
+00:54.987	ID:43	80
+00:54.987	ID:43	117
+00:54.987	ID:43	51
+00:54.987	ID:43	121
+00:54.987	ID:43	77
+00:54.987	ID:43	135
+00:54.987	ID:43	10
+00:54.987	ID:43	233
+00:54.987	ID:43	181
+00:54.987	ID:43	207
+00:54.987	ID:43	133
+00:54.987	ID:43	122
+00:54.987	ID:43	246
+00:54.987	ID:43	106
+00:54.987	ID:43	186
+00:54.987	ID:43	40
+00:54.987	ID:43	196
+00:54.987	ID:43	99
+00:54.987	ID:43	54
+00:54.987	ID:43	109
+00:54.987	ID:43	79
+00:54.987	ID:43	38
+00:54.987	ID:43	109
+00:54.987	ID:43	179
+00:54.987	ID:43	
+00:54.987	ID:43	 The value of R_d is 0
+00:56.217	ID:44	
+00:56.217	ID:44	 The CPU time and energy at the end of registration for client 44 are 56.000000 and 3.460396
+00:56.217	ID:44	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:56.217	ID:44	 the value of R_d is 0
+00:56.217	ID:44	 the value of M_d is 219
+00:56.287	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+00:56.287	ID:2	
+00:56.287	ID:2	 the value of R_d is 0
+00:56.287	ID:2	 the value of M_d is 219
+00:56.287	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:56.287	ID:2	 the value of M_d is 219
+00:56.287	ID:2	 the value of R_d is 0
+00:56.287	ID:2	 the value of id_d is 44
+00:56.287	ID:2	 The value of session key is mask23
+00:56.287	ID:2	129
+00:56.287	ID:2	16
+00:56.287	ID:2	8
+00:56.287	ID:2	23
+00:56.287	ID:2	20
+00:56.287	ID:2	219
+00:56.287	ID:2	79
+00:56.287	ID:2	169
+00:56.287	ID:2	127
+00:56.287	ID:2	10
+00:56.287	ID:2	174
+00:56.287	ID:2	21
+00:56.287	ID:2	221
+00:56.287	ID:2	16
+00:56.287	ID:2	111
+00:56.287	ID:2	174
+00:56.287	ID:2	146
+00:56.287	ID:2	243
+00:56.287	ID:2	97
+00:56.287	ID:2	245
+00:56.287	ID:2	66
+00:56.287	ID:2	60
+00:56.287	ID:2	47
+00:56.287	ID:2	189
+00:56.287	ID:2	77
+00:56.287	ID:2	100
+00:56.287	ID:2	231
+00:56.287	ID:2	130
+00:56.287	ID:2	178
+00:56.287	ID:2	21
+00:56.287	ID:2	193
+00:56.287	ID:2	
+00:56.287	ID:2	 The value of session key is n219
+00:56.287	ID:2	193
+00:56.287	ID:2	180
+00:56.287	ID:2	201
+00:56.287	ID:2	0
+00:56.287	ID:2	255
+00:56.287	ID:2	228
+00:56.287	ID:2	141
+00:56.287	ID:2	87
+00:56.287	ID:2	91
+00:56.287	ID:2	93
+00:56.287	ID:2	165
+00:56.287	ID:2	198
+00:56.287	ID:2	56
+00:56.287	ID:2	4
+00:56.287	ID:2	1
+00:56.287	ID:2	37
+00:56.287	ID:2	246
+00:56.287	ID:2	93
+00:56.287	ID:2	176
+00:56.287	ID:2	254
+00:56.287	ID:2	62
+00:56.287	ID:2	36
+00:56.287	ID:2	73
+00:56.287	ID:2	75
+00:56.287	ID:2	118
+00:56.287	ID:2	234
+00:56.287	ID:2	152
+00:56.287	ID:2	100
+00:56.287	ID:2	87
+00:56.287	ID:2	217
+00:56.287	ID:2	134
+00:56.287	ID:2	
+00:56.287	ID:2	 The value of payload is n2
+00:56.287	ID:2	204
+00:56.287	ID:2	64
+00:56.287	ID:2	164
+00:56.287	ID:2	193
+00:56.287	ID:2	23
+00:56.287	ID:2	235
+00:56.287	ID:2	63
+00:56.287	ID:2	194
+00:56.287	ID:2	254
+00:56.287	ID:2	36
+00:56.287	ID:2	87
+00:56.287	ID:2	11
+00:56.287	ID:2	211
+00:56.287	ID:2	229
+00:56.287	ID:2	20
+00:56.287	ID:2	110
+00:56.287	ID:2	139
+00:56.287	ID:2	100
+00:56.287	ID:2	174
+00:56.287	ID:2	209
+00:56.287	ID:2	11
+00:56.287	ID:2	124
+00:56.287	ID:2	24
+00:56.287	ID:2	102
+00:56.287	ID:2	246
+00:56.287	ID:2	59
+00:56.287	ID:2	142
+00:56.287	ID:2	127
+00:56.287	ID:2	230
+00:56.287	ID:2	229
+00:56.287	ID:2	204
+00:56.287	ID:2	71
+00:56.287	ID:2	1
+00:56.287	ID:2	
+00:56.287	ID:2	 Hpayload sent
+00:56.287	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:56.287	ID:2	 The token count and send index is 5 and 5 before if 
+00:56.287	ID:2	 The token count and send index is 6 and 5 in the if
+00:56.287	ID:2	 The CPU time and energy at the end of authentication for client 44 by server 2 is 1.491000 and 0.092086
+00:56.288	ID:2	 The token count and send index is 6 and 5
+00:56.288	ID:2	 The token count and send index is 6 and 5 before while[INFO: coap-bt-server] Token count = 6, Sent index = 5
+00:56.345	ID:44	 Sending auth_request
+00:56.345	ID:44	 The value of payload is n2
+00:56.345	ID:44	204
+00:56.345	ID:44	64
+00:56.345	ID:44	164
+00:56.345	ID:44	193
+00:56.345	ID:44	23
+00:56.345	ID:44	235
+00:56.345	ID:44	63
+00:56.345	ID:44	194
+00:56.345	ID:44	254
+00:56.345	ID:44	36
+00:56.345	ID:44	87
+00:56.345	ID:44	11
+00:56.345	ID:44	211
+00:56.345	ID:44	229
+00:56.345	ID:44	20
+00:56.345	ID:44	110
+00:56.345	ID:44	139
+00:56.345	ID:44	100
+00:56.345	ID:44	174
+00:56.345	ID:44	209
+00:56.345	ID:44	11
+00:56.345	ID:44	124
+00:56.345	ID:44	24
+00:56.345	ID:44	102
+00:56.345	ID:44	246
+00:56.345	ID:44	59
+00:56.345	ID:44	142
+00:56.345	ID:44	127
+00:56.345	ID:44	230
+00:56.345	ID:44	229
+00:56.345	ID:44	204
+00:56.345	ID:44	71
+00:56.345	ID:44	
+00:56.345	ID:44	 The timestamp is 1
+00:56.345	ID:44	 the value of M_d is 219
+00:56.345	ID:44	 the value of R_d is 0
+00:56.345	ID:44	 the value of id_as is 2
+00:56.345	ID:44	 the value of id_d is 44
+00:56.345	ID:44	 the value of ts_2 is 1
+00:56.345	ID:44	 The value of session key is mask 223129168232021979169127101742122116111174146243972456660471897710023113017821193
+00:56.345	ID:44	 The value of session key is n219
+00:56.345	ID:44	193
+00:56.345	ID:44	180
+00:56.345	ID:44	201
+00:56.345	ID:44	0
+00:56.345	ID:44	255
+00:56.345	ID:44	228
+00:56.345	ID:44	141
+00:56.345	ID:44	87
+00:56.345	ID:44	91
+00:56.345	ID:44	93
+00:56.345	ID:44	165
+00:56.345	ID:44	198
+00:56.345	ID:44	56
+00:56.345	ID:44	4
+00:56.345	ID:44	1
+00:56.345	ID:44	37
+00:56.345	ID:44	246
+00:56.345	ID:44	93
+00:56.345	ID:44	176
+00:56.345	ID:44	254
+00:56.345	ID:44	62
+00:56.345	ID:44	36
+00:56.345	ID:44	73
+00:56.345	ID:44	75
+00:56.345	ID:44	118
+00:56.345	ID:44	234
+00:56.345	ID:44	152
+00:56.345	ID:44	100
+00:56.345	ID:44	87
+00:56.345	ID:44	217
+00:56.345	ID:44	134
+00:56.345	ID:44	
+00:56.345	ID:44	 The value of mask23
+00:56.345	ID:44	129
+00:56.345	ID:44	16
+00:56.345	ID:44	8
+00:56.345	ID:44	23
+00:56.345	ID:44	20
+00:56.345	ID:44	219
+00:56.345	ID:44	79
+00:56.345	ID:44	169
+00:56.345	ID:44	127
+00:56.345	ID:44	10
+00:56.345	ID:44	174
+00:56.345	ID:44	21
+00:56.345	ID:44	221
+00:56.345	ID:44	16
+00:56.345	ID:44	111
+00:56.345	ID:44	174
+00:56.345	ID:44	146
+00:56.345	ID:44	243
+00:56.345	ID:44	97
+00:56.345	ID:44	245
+00:56.345	ID:44	66
+00:56.345	ID:44	60
+00:56.345	ID:44	47
+00:56.345	ID:44	189
+00:56.345	ID:44	77
+00:56.345	ID:44	100
+00:56.345	ID:44	231
+00:56.345	ID:44	130
+00:56.345	ID:44	178
+00:56.345	ID:44	21
+00:56.345	ID:44	193
+00:56.345	ID:44	
+00:56.345	ID:44	 The value of R_d is 0
+00:56.365	ID:1	 The CPU time and energy at the end of authenticatication for client 43 by server 2 and gateway 1 are 0.747288 and 0.046110
+00:56.365	ID:1	Received auth tokenAuthentication token for Node 44
+00:56.365	ID:1	
+00:56.365	ID:1	 Obtained auth_token is 44
+00:56.365	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:56.389	ID:41	Registered
+00:56.389	ID:41	 The CPU time and energy at the end of registration for client 41 are 56.000000 and 3.460519
+00:56.389	ID:41	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:56.389	ID:41	 the value of R_d is 1
+00:56.389	ID:41	 the value of M_d is 5
+00:56.528	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+00:56.528	ID:2	
+00:56.528	ID:2	 the value of R_d is 1
+00:56.528	ID:2	 the value of M_d is 5
+00:56.528	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:56.528	ID:2	 the value of M_d is 5
+00:56.528	ID:2	 the value of R_d is 1
+00:56.528	ID:2	 the value of id_d is 41
+00:56.528	ID:2	 The value of session key is mask34
+00:56.528	ID:2	254
+00:56.528	ID:2	230
+00:56.528	ID:2	12
+00:56.528	ID:2	86
+00:56.528	ID:2	27
+00:56.528	ID:2	77
+00:56.528	ID:2	105
+00:56.528	ID:2	221
+00:56.528	ID:2	188
+00:56.528	ID:2	12
+00:56.528	ID:2	179
+00:56.528	ID:2	31
+00:56.528	ID:2	95
+00:56.528	ID:2	24
+00:56.528	ID:2	68
+00:56.528	ID:2	50
+00:56.528	ID:2	138
+00:56.528	ID:2	196
+00:56.528	ID:2	206
+00:56.528	ID:2	52
+00:56.528	ID:2	86
+00:56.528	ID:2	103
+00:56.528	ID:2	198
+00:56.528	ID:2	153
+00:56.528	ID:2	167
+00:56.528	ID:2	212
+00:56.528	ID:2	199
+00:56.528	ID:2	21
+00:56.528	ID:2	12
+00:56.528	ID:2	254
+00:56.528	ID:2	254
+00:56.528	ID:2	
+00:56.528	ID:2	 The value of session key is n219
+00:56.528	ID:2	193
+00:56.528	ID:2	180
+00:56.528	ID:2	201
+00:56.528	ID:2	0
+00:56.528	ID:2	255
+00:56.528	ID:2	228
+00:56.528	ID:2	141
+00:56.528	ID:2	87
+00:56.528	ID:2	91
+00:56.528	ID:2	93
+00:56.528	ID:2	165
+00:56.528	ID:2	198
+00:56.528	ID:2	56
+00:56.528	ID:2	4
+00:56.528	ID:2	1
+00:56.528	ID:2	37
+00:56.528	ID:2	246
+00:56.528	ID:2	93
+00:56.528	ID:2	176
+00:56.528	ID:2	254
+00:56.528	ID:2	62
+00:56.528	ID:2	36
+00:56.528	ID:2	73
+00:56.528	ID:2	75
+00:56.528	ID:2	118
+00:56.528	ID:2	234
+00:56.528	ID:2	152
+00:56.528	ID:2	100
+00:56.528	ID:2	87
+00:56.528	ID:2	217
+00:56.528	ID:2	134
+00:56.528	ID:2	
+00:56.528	ID:2	 The value of payload is n2
+00:56.528	ID:2	249
+00:56.528	ID:2	63
+00:56.528	ID:2	82
+00:56.528	ID:2	197
+00:56.528	ID:2	86
+00:56.528	ID:2	228
+00:56.528	ID:2	169
+00:56.528	ID:2	228
+00:56.528	ID:2	138
+00:56.528	ID:2	231
+00:56.528	ID:2	81
+00:56.528	ID:2	22
+00:56.528	ID:2	217
+00:56.528	ID:2	103
+00:56.528	ID:2	28
+00:56.528	ID:2	69
+00:56.528	ID:2	23
+00:56.528	ID:2	124
+00:56.528	ID:2	153
+00:56.528	ID:2	126
+00:56.528	ID:2	202
+00:56.528	ID:2	104
+00:56.528	ID:2	67
+00:56.528	ID:2	143
+00:56.528	ID:2	210
+00:56.528	ID:2	209
+00:56.528	ID:2	62
+00:56.528	ID:2	95
+00:56.528	ID:2	113
+00:56.528	ID:2	91
+00:56.528	ID:2	39
+00:56.528	ID:2	120
+00:56.528	ID:2	1
+00:56.528	ID:2	
+00:56.528	ID:2	 Hpayload sent
+00:56.528	ID:2	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:56.528	ID:2	 The token count and send index is 6 and 6 before if 
+00:56.528	ID:2	 The token count and send index is 7 and 6 in the if
+00:56.528	ID:2	 The CPU time and energy at the end of authentication for client 41 by server 2 is 0.241000 and 0.014841
+00:56.529	ID:2	 The token count and send index is 7 and 6
+00:56.529	ID:2	 The token count and send index is 7 and 6 before while[INFO: coap-bt-server] Token count = 7, Sent index = 6
+00:56.605	ID:1	 The CPU time and energy at the end of authenticatication for client 44 by server 2 and gateway 1 are 1.408000 and 0.086925
+00:56.605	ID:1	Received auth tokenAuthentication token for Node 41
+00:56.605	ID:1	
+00:56.605	ID:1	 Obtained auth_token is 41
+00:56.605	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:56.612	ID:41	 Sending auth_request
+00:56.612	ID:41	 The value of payload is n2
+00:56.612	ID:41	249
+00:56.612	ID:41	63
+00:56.612	ID:41	82
+00:56.612	ID:41	197
+00:56.612	ID:41	86
+00:56.612	ID:41	228
+00:56.612	ID:41	169
+00:56.612	ID:41	228
+00:56.612	ID:41	138
+00:56.612	ID:41	231
+00:56.612	ID:41	81
+00:56.612	ID:41	22
+00:56.612	ID:41	217
+00:56.612	ID:41	103
+00:56.612	ID:41	28
+00:56.612	ID:41	69
+00:56.612	ID:41	23
+00:56.612	ID:41	124
+00:56.612	ID:41	153
+00:56.612	ID:41	126
+00:56.612	ID:41	202
+00:56.612	ID:41	104
+00:56.612	ID:41	67
+00:56.612	ID:41	143
+00:56.612	ID:41	210
+00:56.612	ID:41	209
+00:56.612	ID:41	62
+00:56.612	ID:41	95
+00:56.612	ID:41	113
+00:56.612	ID:41	91
+00:56.612	ID:41	39
+00:56.612	ID:41	120
+00:56.612	ID:41	
+00:56.612	ID:41	 The timestamp is 1
+00:56.612	ID:41	 the value of M_d is 5
+00:56.612	ID:41	 the value of R_d is 1
+00:56.612	ID:41	 the value of id_as is 2
+00:56.612	ID:41	 the value of id_d is 41
+00:56.612	ID:41	 the value of ts_2 is 1
+00:56.612	ID:41	 The value of session key is mask 2342542301286277710522118812179319524685013819620652861031981531672121992112254254
+00:56.612	ID:41	 The value of session key is n219
+00:56.612	ID:41	193
+00:56.612	ID:41	180
+00:56.612	ID:41	201
+00:56.612	ID:41	0
+00:56.612	ID:41	255
+00:56.612	ID:41	228
+00:56.612	ID:41	141
+00:56.612	ID:41	87
+00:56.612	ID:41	91
+00:56.612	ID:41	93
+00:56.612	ID:41	165
+00:56.612	ID:41	198
+00:56.612	ID:41	56
+00:56.612	ID:41	4
+00:56.612	ID:41	1
+00:56.612	ID:41	37
+00:56.612	ID:41	246
+00:56.612	ID:41	93
+00:56.612	ID:41	176
+00:56.612	ID:41	254
+00:56.612	ID:41	62
+00:56.612	ID:41	36
+00:56.612	ID:41	73
+00:56.612	ID:41	75
+00:56.612	ID:41	118
+00:56.612	ID:41	234
+00:56.612	ID:41	152
+00:56.612	ID:41	100
+00:56.612	ID:41	87
+00:56.612	ID:41	217
+00:56.612	ID:41	134
+00:56.612	ID:41	
+00:56.612	ID:41	 The value of mask34
+00:56.612	ID:41	254
+00:56.612	ID:41	230
+00:56.612	ID:41	12
+00:56.612	ID:41	86
+00:56.612	ID:41	27
+00:56.612	ID:41	77
+00:56.612	ID:41	105
+00:56.612	ID:41	221
+00:56.612	ID:41	188
+00:56.612	ID:41	12
+00:56.612	ID:41	179
+00:56.612	ID:41	31
+00:56.612	ID:41	95
+00:56.612	ID:41	24
+00:56.612	ID:41	68
+00:56.612	ID:41	50
+00:56.612	ID:41	138
+00:56.612	ID:41	196
+00:56.612	ID:41	206
+00:56.612	ID:41	52
+00:56.612	ID:41	86
+00:56.612	ID:41	103
+00:56.612	ID:41	198
+00:56.612	ID:41	153
+00:56.612	ID:41	167
+00:56.612	ID:41	212
+00:56.612	ID:41	199
+00:56.612	ID:41	21
+00:56.612	ID:41	12
+00:56.612	ID:41	254
+00:56.612	ID:41	254
+00:56.612	ID:41	
+00:56.612	ID:41	 The value of R_d is 1
+00:58.124	ID:50	Registered
+00:58.124	ID:50	 The CPU time and energy at the end of registration for client 50 are 58.000000 and 3.584159
+00:58.124	ID:50	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:58.124	ID:50	 the value of R_d is 1
+00:58.124	ID:50	 the value of M_d is 5
+00:58.191	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+00:58.191	ID:3	
+00:58.191	ID:3	 the value of R_d is 1
+00:58.191	ID:3	 the value of M_d is 5
+00:58.191	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:58.191	ID:3	 the value of M_d is 5
+00:58.191	ID:3	 the value of R_d is 1
+00:58.191	ID:3	 the value of id_d is 50
+00:58.191	ID:3	 The value of session key is mask3
+00:58.191	ID:3	101
+00:58.191	ID:3	228
+00:58.191	ID:3	2
+00:58.191	ID:3	53
+00:58.191	ID:3	116
+00:58.191	ID:3	200
+00:58.191	ID:3	19
+00:58.191	ID:3	230
+00:58.191	ID:3	184
+00:58.191	ID:3	111
+00:58.191	ID:3	145
+00:58.191	ID:3	40
+00:58.191	ID:3	184
+00:58.191	ID:3	243
+00:58.191	ID:3	98
+00:58.191	ID:3	90
+00:58.191	ID:3	104
+00:58.191	ID:3	1
+00:58.191	ID:3	77
+00:58.191	ID:3	132
+00:58.191	ID:3	0
+00:58.191	ID:3	27
+00:58.191	ID:3	60
+00:58.191	ID:3	36
+00:58.191	ID:3	190
+00:58.191	ID:3	141
+00:58.191	ID:3	217
+00:58.191	ID:3	11
+00:58.191	ID:3	96
+00:58.191	ID:3	199
+00:58.191	ID:3	228
+00:58.191	ID:3	
+00:58.191	ID:3	 The value of session key is n219
+00:58.191	ID:3	193
+00:58.191	ID:3	180
+00:58.191	ID:3	201
+00:58.191	ID:3	0
+00:58.191	ID:3	255
+00:58.191	ID:3	228
+00:58.191	ID:3	141
+00:58.191	ID:3	87
+00:58.191	ID:3	91
+00:58.191	ID:3	93
+00:58.191	ID:3	165
+00:58.191	ID:3	198
+00:58.191	ID:3	56
+00:58.191	ID:3	4
+00:58.191	ID:3	1
+00:58.191	ID:3	37
+00:58.191	ID:3	246
+00:58.191	ID:3	93
+00:58.191	ID:3	176
+00:58.191	ID:3	254
+00:58.191	ID:3	62
+00:58.191	ID:3	36
+00:58.191	ID:3	73
+00:58.191	ID:3	75
+00:58.191	ID:3	118
+00:58.191	ID:3	234
+00:58.191	ID:3	152
+00:58.191	ID:3	100
+00:58.191	ID:3	87
+00:58.191	ID:3	217
+00:58.191	ID:3	134
+00:58.191	ID:3	
+00:58.191	ID:3	 The value of payload is n3
+00:58.191	ID:3	216
+00:58.191	ID:3	164
+00:58.191	ID:3	80
+00:58.191	ID:3	203
+00:58.191	ID:3	53
+00:58.191	ID:3	139
+00:58.191	ID:3	44
+00:58.191	ID:3	158
+00:58.191	ID:3	177
+00:58.191	ID:3	227
+00:58.191	ID:3	50
+00:58.191	ID:3	52
+00:58.191	ID:3	238
+00:58.191	ID:3	128
+00:58.191	ID:3	247
+00:58.191	ID:3	99
+00:58.191	ID:3	127
+00:58.191	ID:3	158
+00:58.191	ID:3	92
+00:58.191	ID:3	253
+00:58.191	ID:3	122
+00:58.191	ID:3	62
+00:58.191	ID:3	63
+00:58.191	ID:3	117
+00:58.191	ID:3	111
+00:58.191	ID:3	200
+00:58.191	ID:3	103
+00:58.191	ID:3	65
+00:58.191	ID:3	111
+00:58.191	ID:3	55
+00:58.191	ID:3	30
+00:58.191	ID:3	98
+00:58.191	ID:3	1
+00:58.191	ID:3	
+00:58.191	ID:3	 Hpayload sent
+00:58.191	ID:3	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:58.191	ID:3	 The token count and send index is 1 and 1 before if 
+00:58.191	ID:3	 The token count and send index is 2 and 1 in the if
+00:58.191	ID:3	 The CPU time and energy at the end of authentication for client 50 by server 3 is 4.005000 and 0.247457
+00:58.192	ID:3	 The token count and send index is 2 and 1
+00:58.192	ID:3	 The token count and send index is 2 and 1 before while[INFO: coap-bt-server] Token count = 2, Sent index = 1
+00:58.243	ID:1	 The CPU time and energy at the end of authenticatication for client 41 by server 2 and gateway 1 are 0.240000 and 0.014779
+00:58.243	ID:1	Received auth tokenAuthentication token for Node 50
+00:58.243	ID:1	
+00:58.243	ID:1	 Obtained auth_token is 50
+00:58.243	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:58.253	ID:50	 Sending auth_request
+00:58.253	ID:50	 The value of payload is n3
+00:58.253	ID:50	216
+00:58.253	ID:50	164
+00:58.253	ID:50	80
+00:58.253	ID:50	203
+00:58.253	ID:50	53
+00:58.253	ID:50	139
+00:58.253	ID:50	44
+00:58.253	ID:50	158
+00:58.253	ID:50	177
+00:58.253	ID:50	227
+00:58.253	ID:50	50
+00:58.253	ID:50	52
+00:58.253	ID:50	238
+00:58.253	ID:50	128
+00:58.253	ID:50	247
+00:58.253	ID:50	99
+00:58.253	ID:50	127
+00:58.253	ID:50	158
+00:58.253	ID:50	92
+00:58.253	ID:50	253
+00:58.253	ID:50	122
+00:58.253	ID:50	62
+00:58.253	ID:50	63
+00:58.253	ID:50	117
+00:58.253	ID:50	111
+00:58.253	ID:50	200
+00:58.253	ID:50	103
+00:58.253	ID:50	65
+00:58.253	ID:50	111
+00:58.253	ID:50	55
+00:58.253	ID:50	30
+00:58.253	ID:50	98
+00:58.253	ID:50	
+00:58.253	ID:50	 The timestamp is 1
+00:58.253	ID:50	 the value of M_d is 5
+00:58.253	ID:50	 the value of R_d is 1
+00:58.253	ID:50	 the value of id_as is 3
+00:58.253	ID:50	 the value of id_d is 50
+00:58.253	ID:50	 the value of ts_2 is 1
+00:58.253	ID:50	 The value of session key is mask 231012282531162001923018411114540184243989010417713202760361901412171196199228
+00:58.253	ID:50	 The value of session key is n219
+00:58.253	ID:50	193
+00:58.253	ID:50	180
+00:58.253	ID:50	201
+00:58.253	ID:50	0
+00:58.253	ID:50	255
+00:58.253	ID:50	228
+00:58.253	ID:50	141
+00:58.253	ID:50	87
+00:58.253	ID:50	91
+00:58.253	ID:50	93
+00:58.253	ID:50	165
+00:58.253	ID:50	198
+00:58.253	ID:50	56
+00:58.253	ID:50	4
+00:58.253	ID:50	1
+00:58.253	ID:50	37
+00:58.253	ID:50	246
+00:58.253	ID:50	93
+00:58.253	ID:50	176
+00:58.253	ID:50	254
+00:58.253	ID:50	62
+00:58.253	ID:50	36
+00:58.253	ID:50	73
+00:58.253	ID:50	75
+00:58.253	ID:50	118
+00:58.253	ID:50	234
+00:58.253	ID:50	152
+00:58.253	ID:50	100
+00:58.253	ID:50	87
+00:58.253	ID:50	217
+00:58.253	ID:50	134
+00:58.253	ID:50	
+00:58.253	ID:50	 The value of mask3
+00:58.253	ID:50	101
+00:58.253	ID:50	228
+00:58.253	ID:50	2
+00:58.253	ID:50	53
+00:58.253	ID:50	116
+00:58.253	ID:50	200
+00:58.253	ID:50	19
+00:58.253	ID:50	230
+00:58.253	ID:50	184
+00:58.253	ID:50	111
+00:58.253	ID:50	145
+00:58.253	ID:50	40
+00:58.253	ID:50	184
+00:58.253	ID:50	243
+00:58.253	ID:50	98
+00:58.253	ID:50	90
+00:58.253	ID:50	104
+00:58.253	ID:50	1
+00:58.253	ID:50	77
+00:58.253	ID:50	132
+00:58.253	ID:50	0
+00:58.253	ID:50	27
+00:58.253	ID:50	60
+00:58.253	ID:50	36
+00:58.253	ID:50	190
+00:58.253	ID:50	141
+00:58.253	ID:50	217
+00:58.253	ID:50	11
+00:58.253	ID:50	96
+00:58.253	ID:50	199
+00:58.253	ID:50	228
+00:58.253	ID:50	
+00:58.253	ID:50	 The value of R_d is 1
+00:58.719	ID:42	Registered
+00:58.719	ID:42	 The CPU time and energy at the end of registration for client 42 are 58.000000 and 3.584097
+00:58.719	ID:42	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:58.719	ID:42	 the value of R_d is 1
+00:58.719	ID:42	 the value of M_d is 5
+00:58.845	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+00:58.845	ID:2	
+00:58.845	ID:2	 the value of R_d is 1
+00:58.845	ID:2	 the value of M_d is 5
+00:58.845	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+00:58.845	ID:2	 the value of M_d is 5
+00:58.845	ID:2	 the value of R_d is 1
+00:58.845	ID:2	 the value of id_d is 42
+00:58.845	ID:2	 The value of session key is mask150
+00:58.845	ID:2	15
+00:58.845	ID:2	159
+00:58.845	ID:2	219
+00:58.845	ID:2	230
+00:58.845	ID:2	45
+00:58.845	ID:2	159
+00:58.845	ID:2	206
+00:58.845	ID:2	203
+00:58.845	ID:2	42
+00:58.845	ID:2	6
+00:58.845	ID:2	117
+00:58.845	ID:2	192
+00:58.845	ID:2	13
+00:58.845	ID:2	158
+00:58.845	ID:2	172
+00:58.845	ID:2	242
+00:58.845	ID:2	244
+00:58.845	ID:2	71
+00:58.845	ID:2	186
+00:58.845	ID:2	186
+00:58.845	ID:2	54
+00:58.845	ID:2	210
+00:58.845	ID:2	100
+00:58.845	ID:2	107
+00:58.845	ID:2	112
+00:58.845	ID:2	235
+00:58.845	ID:2	11
+00:58.845	ID:2	75
+00:58.845	ID:2	86
+00:58.845	ID:2	204
+00:58.845	ID:2	157
+00:58.845	ID:2	
+00:58.845	ID:2	 The value of session key is n219
+00:58.845	ID:2	193
+00:58.845	ID:2	180
+00:58.845	ID:2	201
+00:58.845	ID:2	0
+00:58.845	ID:2	255
+00:58.845	ID:2	228
+00:58.845	ID:2	141
+00:58.845	ID:2	87
+00:58.845	ID:2	91
+00:58.845	ID:2	93
+00:58.845	ID:2	165
+00:58.845	ID:2	198
+00:58.845	ID:2	56
+00:58.845	ID:2	4
+00:58.845	ID:2	1
+00:58.845	ID:2	37
+00:58.845	ID:2	246
+00:58.845	ID:2	93
+00:58.845	ID:2	176
+00:58.845	ID:2	254
+00:58.845	ID:2	62
+00:58.845	ID:2	36
+00:58.845	ID:2	73
+00:58.845	ID:2	75
+00:58.845	ID:2	118
+00:58.845	ID:2	234
+00:58.845	ID:2	152
+00:58.845	ID:2	100
+00:58.845	ID:2	87
+00:58.845	ID:2	217
+00:58.845	ID:2	134
+00:58.845	ID:2	
+00:58.845	ID:2	 The value of payload is n2
+00:58.845	ID:2	77
+00:58.845	ID:2	206
+00:58.845	ID:2	43
+00:58.845	ID:2	18
+00:58.845	ID:2	230
+00:58.845	ID:2	210
+00:58.845	ID:2	123
+00:58.845	ID:2	67
+00:58.845	ID:2	156
+00:58.845	ID:2	113
+00:58.845	ID:2	91
+00:58.845	ID:2	208
+00:58.845	ID:2	6
+00:58.845	ID:2	53
+00:58.845	ID:2	154
+00:58.845	ID:2	173
+00:58.845	ID:2	215
+00:58.845	ID:2	2
+00:58.845	ID:2	26
+00:58.845	ID:2	10
+00:58.845	ID:2	68
+00:58.845	ID:2	8
+00:58.845	ID:2	246
+00:58.845	ID:2	45
+00:58.845	ID:2	32
+00:58.845	ID:2	6
+00:58.845	ID:2	1
+00:58.845	ID:2	147
+00:58.845	ID:2	47
+00:58.845	ID:2	1
+00:58.845	ID:2	21
+00:58.845	ID:2	27
+00:58.845	ID:2	1
+00:58.845	ID:2	
+00:58.845	ID:2	 Hpayload sent
+00:58.845	ID:2	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:58.845	ID:2	 The token count and send index is 7 and 7 before if 
+00:58.845	ID:2	 The token count and send index is 8 and 7 in the if
+00:58.845	ID:2	 The CPU time and energy at the end of authentication for client 42 by server 2 is 2.317000 and 0.143137
+00:58.846	ID:2	 The token count and send index is 8 and 7
+00:58.846	ID:2	 The token count and send index is 8 and 7 before while[INFO: coap-bt-server] Token count = 8, Sent index = 7
+00:58.925	ID:1	 The CPU time and energy at the end of authenticatication for client 50 by server 3 and gateway 1 are 1.637712 and 0.101139
+00:58.925	ID:1	Received auth tokenAuthentication token for Node 42
+00:58.925	ID:1	
+00:58.925	ID:1	 Obtained auth_token is 42
+00:58.925	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:58.989	ID:42	 Sending auth_request
+00:58.989	ID:42	 The value of payload is n2
+00:58.989	ID:42	77
+00:58.989	ID:42	206
+00:58.989	ID:42	43
+00:58.989	ID:42	18
+00:58.989	ID:42	230
+00:58.989	ID:42	210
+00:58.989	ID:42	123
+00:58.989	ID:42	67
+00:58.989	ID:42	156
+00:58.989	ID:42	113
+00:58.989	ID:42	91
+00:58.989	ID:42	208
+00:58.989	ID:42	6
+00:58.989	ID:42	53
+00:58.989	ID:42	154
+00:58.989	ID:42	173
+00:58.989	ID:42	215
+00:58.989	ID:42	2
+00:58.989	ID:42	26
+00:58.989	ID:42	10
+00:58.989	ID:42	68
+00:58.989	ID:42	8
+00:58.989	ID:42	246
+00:58.989	ID:42	45
+00:58.989	ID:42	32
+00:58.989	ID:42	6
+00:58.989	ID:42	1
+00:58.989	ID:42	147
+00:58.989	ID:42	47
+00:58.989	ID:42	1
+00:58.989	ID:42	21
+00:58.989	ID:42	27
+00:58.989	ID:42	
+00:58.989	ID:42	 The timestamp is 1
+00:58.989	ID:42	 the value of M_d is 5
+00:58.989	ID:42	 the value of R_d is 1
+00:58.989	ID:42	 the value of id_as is 2
+00:58.989	ID:42	 the value of id_d is 42
+00:58.989	ID:42	 the value of ts_2 is 1
+00:58.989	ID:42	 The value of session key is mask 21501515921923045159206203426117192131581722422447118618654210100107112235117586204157
+00:58.989	ID:42	 The value of session key is n219
+00:58.989	ID:42	193
+00:58.989	ID:42	180
+00:58.989	ID:42	201
+00:58.989	ID:42	0
+00:58.989	ID:42	255
+00:58.989	ID:42	228
+00:58.989	ID:42	141
+00:58.989	ID:42	87
+00:58.989	ID:42	91
+00:58.989	ID:42	93
+00:58.989	ID:42	165
+00:58.989	ID:42	198
+00:58.989	ID:42	56
+00:58.989	ID:42	4
+00:58.989	ID:42	1
+00:58.989	ID:42	37
+00:58.989	ID:42	246
+00:58.989	ID:42	93
+00:58.989	ID:42	176
+00:58.989	ID:42	254
+00:58.989	ID:42	62
+00:58.989	ID:42	36
+00:58.989	ID:42	73
+00:58.989	ID:42	75
+00:58.989	ID:42	118
+00:58.989	ID:42	234
+00:58.989	ID:42	152
+00:58.989	ID:42	100
+00:58.989	ID:42	87
+00:58.989	ID:42	217
+00:58.989	ID:42	134
+00:58.989	ID:42	
+00:58.989	ID:42	 The value of mask150
+00:58.989	ID:42	15
+00:58.989	ID:42	159
+00:58.989	ID:42	219
+00:58.989	ID:42	230
+00:58.989	ID:42	45
+00:58.989	ID:42	159
+00:58.989	ID:42	206
+00:58.989	ID:42	203
+00:58.989	ID:42	42
+00:58.989	ID:42	6
+00:58.989	ID:42	117
+00:58.989	ID:42	192
+00:58.989	ID:42	13
+00:58.989	ID:42	158
+00:58.989	ID:42	172
+00:58.989	ID:42	242
+00:58.989	ID:42	244
+00:58.989	ID:42	71
+00:58.989	ID:42	186
+00:58.989	ID:42	186
+00:58.989	ID:42	54
+00:58.989	ID:42	210
+00:58.989	ID:42	100
+00:58.989	ID:42	107
+00:58.989	ID:42	112
+00:58.989	ID:42	235
+00:58.989	ID:42	11
+00:58.989	ID:42	75
+00:58.989	ID:42	86
+00:58.989	ID:42	204
+00:58.989	ID:42	157
+00:58.989	ID:42	
+00:58.989	ID:42	 The value of R_d is 1
+01:03.689	ID:43	 The CPU time and energy at the end of authentication 3 for client 43 are 0.298896 and 0.018446
+01:03.689	ID:43	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+01:03.695	ID:1	 The CPU time and energy at the end of authenticatication for client 42 by server 2 and gateway 1 are 0.682288 and 0.042072
+01:03.695	ID:1	Authentication successful for Node 43
+01:03.695	ID:1	
+01:03.717	ID:43	39208441431136014423412551441741219134172Data length: 1
+01:03.717	ID:43	Data payload: 0
+01:04.465	ID:46	Registered
+01:04.465	ID:46	 The CPU time and energy at the end of registration for client 46 are 64.000000 and 3.954946
+01:04.465	ID:46	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:04.465	ID:46	 the value of R_d is 1
+01:04.465	ID:46	 the value of M_d is 5
+01:04.546	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+01:04.546	ID:3	
+01:04.546	ID:3	 the value of R_d is 1
+01:04.546	ID:3	 the value of M_d is 5
+01:04.546	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:04.546	ID:3	 the value of M_d is 5
+01:04.546	ID:3	 the value of R_d is 1
+01:04.546	ID:3	 the value of id_d is 46
+01:04.546	ID:3	 The value of session key is mask232
+01:04.546	ID:3	140
+01:04.546	ID:3	85
+01:04.546	ID:3	151
+01:04.546	ID:3	86
+01:04.546	ID:3	181
+01:04.546	ID:3	63
+01:04.546	ID:3	254
+01:04.546	ID:3	185
+01:04.546	ID:3	240
+01:04.546	ID:3	242
+01:04.546	ID:3	61
+01:04.546	ID:3	82
+01:04.546	ID:3	81
+01:04.546	ID:3	180
+01:04.546	ID:3	230
+01:04.546	ID:3	139
+01:04.546	ID:3	81
+01:04.546	ID:3	179
+01:04.546	ID:3	157
+01:04.546	ID:3	42
+01:04.546	ID:3	215
+01:04.546	ID:3	211
+01:04.546	ID:3	81
+01:04.546	ID:3	183
+01:04.546	ID:3	162
+01:04.546	ID:3	204
+01:04.546	ID:3	42
+01:04.546	ID:3	145
+01:04.546	ID:3	1
+01:04.546	ID:3	153
+01:04.546	ID:3	24
+01:04.546	ID:3	
+01:04.546	ID:3	 The value of session key is n219
+01:04.546	ID:3	193
+01:04.546	ID:3	180
+01:04.546	ID:3	201
+01:04.546	ID:3	0
+01:04.546	ID:3	255
+01:04.546	ID:3	228
+01:04.546	ID:3	141
+01:04.546	ID:3	87
+01:04.546	ID:3	91
+01:04.546	ID:3	93
+01:04.546	ID:3	165
+01:04.546	ID:3	198
+01:04.546	ID:3	56
+01:04.546	ID:3	4
+01:04.546	ID:3	1
+01:04.546	ID:3	37
+01:04.546	ID:3	246
+01:04.546	ID:3	93
+01:04.546	ID:3	176
+01:04.546	ID:3	254
+01:04.546	ID:3	62
+01:04.546	ID:3	36
+01:04.546	ID:3	73
+01:04.546	ID:3	75
+01:04.546	ID:3	118
+01:04.546	ID:3	234
+01:04.546	ID:3	152
+01:04.546	ID:3	100
+01:04.546	ID:3	87
+01:04.546	ID:3	217
+01:04.546	ID:3	134
+01:04.546	ID:3	
+01:04.546	ID:3	 The value of payload is n3
+01:04.546	ID:3	51
+01:04.546	ID:3	77
+01:04.546	ID:3	225
+01:04.546	ID:3	94
+01:04.546	ID:3	86
+01:04.546	ID:3	74
+01:04.546	ID:3	219
+01:04.546	ID:3	115
+01:04.546	ID:3	238
+01:04.546	ID:3	171
+01:04.546	ID:3	175
+01:04.546	ID:3	152
+01:04.546	ID:3	148
+01:04.546	ID:3	105
+01:04.546	ID:3	176
+01:04.546	ID:3	231
+01:04.546	ID:3	174
+01:04.546	ID:3	167
+01:04.546	ID:3	238
+01:04.546	ID:3	45
+01:04.546	ID:3	212
+01:04.546	ID:3	233
+01:04.546	ID:3	247
+01:04.546	ID:3	24
+01:04.546	ID:3	252
+01:04.546	ID:3	212
+01:04.546	ID:3	38
+01:04.546	ID:3	178
+01:04.546	ID:3	245
+01:04.546	ID:3	86
+01:04.546	ID:3	64
+01:04.546	ID:3	158
+01:04.546	ID:3	1
+01:04.546	ID:3	
+01:04.546	ID:3	 Hpayload sent
+01:04.546	ID:3	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+01:04.546	ID:3	 The token count and send index is 2 and 2 before if 
+01:04.546	ID:3	 The token count and send index is 3 and 2 in the if
+01:04.546	ID:3	 The CPU time and energy at the end of authentication for client 46 by server 3 is 6.355000 and 0.392687
+01:04.547	ID:3	 The token count and send index is 3 and 2
+01:04.547	ID:3	 The token count and send index is 3 and 2 before while[INFO: coap-bt-server] Token count = 3, Sent index = 2
+01:04.608	ID:1	 The message obtained for node 43 is 9
+01:04.608	ID:1	Received auth tokenAuthentication token for Node 46
+01:04.608	ID:1	
+01:04.608	ID:1	 Obtained auth_token is 46
+01:04.608	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+01:04.622	ID:46	 Sending auth_request
+01:04.622	ID:46	 The value of payload is n3
+01:04.622	ID:46	51
+01:04.622	ID:46	77
+01:04.622	ID:46	225
+01:04.622	ID:46	94
+01:04.622	ID:46	86
+01:04.622	ID:46	74
+01:04.622	ID:46	219
+01:04.622	ID:46	115
+01:04.622	ID:46	238
+01:04.622	ID:46	171
+01:04.622	ID:46	175
+01:04.622	ID:46	152
+01:04.622	ID:46	148
+01:04.622	ID:46	105
+01:04.622	ID:46	176
+01:04.622	ID:46	231
+01:04.622	ID:46	174
+01:04.622	ID:46	167
+01:04.622	ID:46	238
+01:04.622	ID:46	45
+01:04.622	ID:46	212
+01:04.622	ID:46	233
+01:04.622	ID:46	247
+01:04.622	ID:46	24
+01:04.622	ID:46	252
+01:04.622	ID:46	212
+01:04.622	ID:46	38
+01:04.622	ID:46	178
+01:04.622	ID:46	245
+01:04.622	ID:46	86
+01:04.622	ID:46	64
+01:04.622	ID:46	158
+01:04.622	ID:46	
+01:04.622	ID:46	 The timestamp is 1
+01:04.622	ID:46	 the value of M_d is 5
+01:04.622	ID:46	 the value of R_d is 1
+01:04.622	ID:46	 the value of id_as is 3
+01:04.622	ID:46	 the value of id_d is 46
+01:04.622	ID:46	 the value of ts_2 is 1
+01:04.622	ID:46	 The value of session key is mask 223214085151861816325418524024261828118023013981179157422152118118316220442145115324
+01:04.622	ID:46	 The value of session key is n219
+01:04.622	ID:46	193
+01:04.622	ID:46	180
+01:04.622	ID:46	201
+01:04.622	ID:46	0
+01:04.622	ID:46	255
+01:04.622	ID:46	228
+01:04.622	ID:46	141
+01:04.622	ID:46	87
+01:04.622	ID:46	91
+01:04.622	ID:46	93
+01:04.622	ID:46	165
+01:04.622	ID:46	198
+01:04.622	ID:46	56
+01:04.622	ID:46	4
+01:04.622	ID:46	1
+01:04.622	ID:46	37
+01:04.622	ID:46	246
+01:04.622	ID:46	93
+01:04.622	ID:46	176
+01:04.622	ID:46	254
+01:04.622	ID:46	62
+01:04.622	ID:46	36
+01:04.622	ID:46	73
+01:04.622	ID:46	75
+01:04.622	ID:46	118
+01:04.622	ID:46	234
+01:04.622	ID:46	152
+01:04.622	ID:46	100
+01:04.622	ID:46	87
+01:04.622	ID:46	217
+01:04.622	ID:46	134
+01:04.622	ID:46	
+01:04.622	ID:46	 The value of mask232
+01:04.622	ID:46	140
+01:04.622	ID:46	85
+01:04.622	ID:46	151
+01:04.622	ID:46	86
+01:04.622	ID:46	181
+01:04.622	ID:46	63
+01:04.622	ID:46	254
+01:04.622	ID:46	185
+01:04.622	ID:46	240
+01:04.622	ID:46	242
+01:04.622	ID:46	61
+01:04.622	ID:46	82
+01:04.622	ID:46	81
+01:04.622	ID:46	180
+01:04.622	ID:46	230
+01:04.622	ID:46	139
+01:04.622	ID:46	81
+01:04.622	ID:46	179
+01:04.622	ID:46	157
+01:04.622	ID:46	42
+01:04.622	ID:46	215
+01:04.622	ID:46	211
+01:04.622	ID:46	81
+01:04.622	ID:46	183
+01:04.622	ID:46	162
+01:04.622	ID:46	204
+01:04.622	ID:46	42
+01:04.622	ID:46	145
+01:04.622	ID:46	1
+01:04.622	ID:46	153
+01:04.622	ID:46	24
+01:04.622	ID:46	
+01:04.622	ID:46	 The value of R_d is 1
+01:08.412	ID:47	Registered
+01:08.412	ID:47	 The CPU time and energy at the end of registration for client 47 are 68.000000 and 4.202059
+01:08.412	ID:47	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:08.412	ID:47	 the value of R_d is 0
+01:08.412	ID:47	 the value of M_d is 5
+01:08.487	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+01:08.487	ID:3	
+01:08.487	ID:3	 the value of R_d is 0
+01:08.487	ID:3	 the value of M_d is 5
+01:08.487	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:08.487	ID:3	 the value of M_d is 5
+01:08.487	ID:3	 the value of R_d is 0
+01:08.487	ID:3	 the value of id_d is 47
+01:08.487	ID:3	 The value of session key is mask142
+01:08.487	ID:3	234
+01:08.487	ID:3	94
+01:08.487	ID:3	208
+01:08.487	ID:3	30
+01:08.487	ID:3	143
+01:08.487	ID:3	95
+01:08.487	ID:3	80
+01:08.487	ID:3	67
+01:08.487	ID:3	222
+01:08.487	ID:3	205
+01:08.487	ID:3	218
+01:08.487	ID:3	106
+01:08.487	ID:3	158
+01:08.487	ID:3	94
+01:08.487	ID:3	176
+01:08.487	ID:3	137
+01:08.487	ID:3	221
+01:08.487	ID:3	105
+01:08.487	ID:3	213
+01:08.487	ID:3	53
+01:08.487	ID:3	200
+01:08.487	ID:3	87
+01:08.487	ID:3	223
+01:08.487	ID:3	127
+01:08.487	ID:3	60
+01:08.487	ID:3	179
+01:08.487	ID:3	118
+01:08.487	ID:3	236
+01:08.487	ID:3	142
+01:08.487	ID:3	95
+01:08.487	ID:3	154
+01:08.487	ID:3	
+01:08.487	ID:3	 The value of session key is n219
+01:08.487	ID:3	193
+01:08.487	ID:3	180
+01:08.487	ID:3	201
+01:08.487	ID:3	0
+01:08.487	ID:3	255
+01:08.487	ID:3	228
+01:08.487	ID:3	141
+01:08.487	ID:3	87
+01:08.487	ID:3	91
+01:08.487	ID:3	93
+01:08.487	ID:3	165
+01:08.487	ID:3	198
+01:08.487	ID:3	56
+01:08.487	ID:3	4
+01:08.487	ID:3	1
+01:08.487	ID:3	37
+01:08.487	ID:3	246
+01:08.487	ID:3	93
+01:08.487	ID:3	176
+01:08.487	ID:3	254
+01:08.487	ID:3	62
+01:08.487	ID:3	36
+01:08.487	ID:3	73
+01:08.487	ID:3	75
+01:08.487	ID:3	118
+01:08.487	ID:3	234
+01:08.487	ID:3	152
+01:08.487	ID:3	100
+01:08.487	ID:3	87
+01:08.487	ID:3	217
+01:08.487	ID:3	134
+01:08.487	ID:3	
+01:08.487	ID:3	 The value of payload is n3
+01:08.487	ID:3	85
+01:08.487	ID:3	43
+01:08.487	ID:3	234
+01:08.487	ID:3	25
+01:08.487	ID:3	30
+01:08.487	ID:3	112
+01:08.487	ID:3	187
+01:08.487	ID:3	221
+01:08.487	ID:3	20
+01:08.487	ID:3	133
+01:08.487	ID:3	144
+01:08.487	ID:3	127
+01:08.487	ID:3	172
+01:08.487	ID:3	166
+01:08.487	ID:3	90
+01:08.487	ID:3	177
+01:08.487	ID:3	172
+01:08.487	ID:3	43
+01:08.487	ID:3	52
+01:08.487	ID:3	101
+01:08.487	ID:3	203
+01:08.487	ID:3	246
+01:08.487	ID:3	115
+01:08.487	ID:3	150
+01:08.487	ID:3	52
+01:08.487	ID:3	74
+01:08.487	ID:3	89
+01:08.487	ID:3	238
+01:08.487	ID:3	136
+01:08.487	ID:3	217
+01:08.487	ID:3	134
+01:08.487	ID:3	28
+01:08.487	ID:3	1
+01:08.487	ID:3	
+01:08.487	ID:3	 Hpayload sent
+01:08.487	ID:3	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:08.487	ID:3	 The token count and send index is 3 and 3 before if 
+01:08.487	ID:3	 The token count and send index is 4 and 3 in the if
+01:08.487	ID:3	 The CPU time and energy at the end of authentication for client 47 by server 3 is 3.941000 and 0.243502
+01:08.488	ID:3	 The token count and send index is 4 and 3
+01:08.488	ID:3	 The token count and send index is 4 and 3 before while[INFO: coap-bt-server] Token count = 4, Sent index = 3
+01:08.548	ID:1	 The CPU time and energy at the end of authenticatication for client 46 by server 3 and gateway 1 are 5.682712 and 0.351100
+01:08.548	ID:1	Received auth tokenAuthentication token for Node 47
+01:08.548	ID:1	
+01:08.548	ID:1	 Obtained auth_token is 47
+01:08.548	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:08.606	ID:47	 Sending auth_request
+01:08.606	ID:47	 The value of payload is n3
+01:08.606	ID:47	85
+01:08.606	ID:47	43
+01:08.606	ID:47	234
+01:08.606	ID:47	25
+01:08.606	ID:47	30
+01:08.606	ID:47	112
+01:08.606	ID:47	187
+01:08.606	ID:47	221
+01:08.606	ID:47	20
+01:08.606	ID:47	133
+01:08.606	ID:47	144
+01:08.606	ID:47	127
+01:08.606	ID:47	172
+01:08.606	ID:47	166
+01:08.606	ID:47	90
+01:08.606	ID:47	177
+01:08.606	ID:47	172
+01:08.606	ID:47	43
+01:08.606	ID:47	52
+01:08.606	ID:47	101
+01:08.606	ID:47	203
+01:08.606	ID:47	246
+01:08.606	ID:47	115
+01:08.606	ID:47	150
+01:08.606	ID:47	52
+01:08.606	ID:47	74
+01:08.606	ID:47	89
+01:08.606	ID:47	238
+01:08.606	ID:47	136
+01:08.606	ID:47	217
+01:08.606	ID:47	134
+01:08.606	ID:47	28
+01:08.606	ID:47	
+01:08.606	ID:47	 The timestamp is 1
+01:08.606	ID:47	 the value of M_d is 5
+01:08.606	ID:47	 the value of R_d is 0
+01:08.606	ID:47	 the value of id_as is 3
+01:08.606	ID:47	 the value of id_d is 47
+01:08.606	ID:47	 the value of ts_2 is 1
+01:08.606	ID:47	 The value of session key is mask 214223494208301439580672222052181061589417613722110521353200872231276017911823614295154
+01:08.606	ID:47	 The value of session key is n219
+01:08.606	ID:47	193
+01:08.606	ID:47	180
+01:08.606	ID:47	201
+01:08.606	ID:47	0
+01:08.606	ID:47	255
+01:08.606	ID:47	228
+01:08.606	ID:47	141
+01:08.606	ID:47	87
+01:08.606	ID:47	91
+01:08.606	ID:47	93
+01:08.606	ID:47	165
+01:08.606	ID:47	198
+01:08.606	ID:47	56
+01:08.606	ID:47	4
+01:08.606	ID:47	1
+01:08.606	ID:47	37
+01:08.606	ID:47	246
+01:08.606	ID:47	93
+01:08.606	ID:47	176
+01:08.606	ID:47	254
+01:08.606	ID:47	62
+01:08.606	ID:47	36
+01:08.606	ID:47	73
+01:08.606	ID:47	75
+01:08.606	ID:47	118
+01:08.606	ID:47	234
+01:08.606	ID:47	152
+01:08.606	ID:47	100
+01:08.606	ID:47	87
+01:08.606	ID:47	217
+01:08.606	ID:47	134
+01:08.606	ID:47	
+01:08.606	ID:47	 The value of mask142
+01:08.606	ID:47	234
+01:08.606	ID:47	94
+01:08.606	ID:47	208
+01:08.606	ID:47	30
+01:08.606	ID:47	143
+01:08.606	ID:47	95
+01:08.606	ID:47	80
+01:08.606	ID:47	67
+01:08.606	ID:47	222
+01:08.606	ID:47	205
+01:08.606	ID:47	218
+01:08.606	ID:47	106
+01:08.606	ID:47	158
+01:08.606	ID:47	94
+01:08.606	ID:47	176
+01:08.606	ID:47	137
+01:08.606	ID:47	221
+01:08.606	ID:47	105
+01:08.606	ID:47	213
+01:08.606	ID:47	53
+01:08.606	ID:47	200
+01:08.606	ID:47	87
+01:08.606	ID:47	223
+01:08.606	ID:47	127
+01:08.606	ID:47	60
+01:08.606	ID:47	179
+01:08.606	ID:47	118
+01:08.606	ID:47	236
+01:08.606	ID:47	142
+01:08.606	ID:47	95
+01:08.606	ID:47	154
+01:08.606	ID:47	
+01:08.606	ID:47	 The value of R_d is 0
+01:10.217	ID:44	 The CPU time and energy at the end of authentication 2 for client 44 are 0.128920 and 0.007941
+01:10.217	ID:44	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+01:10.223	ID:1	 The CPU time and energy at the end of authenticatication for client 47 by server 3 and gateway 1 are 3.940000 and 0.243441
+01:10.223	ID:1	Authentication successful for Node 44
+01:10.223	ID:1	
+01:10.259	ID:44	39208441431136014423412551441741219134172Data length: 1
+01:10.259	ID:44	Data payload: 0
+01:12.218	ID:45	 The CPU time and energy at the end of authentication 1 for client 45 are 0.168880 and 0.010411
+01:12.218	ID:45	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100Authentication success, sending data request
+01:12.264	ID:1	 The message obtained for node 44 is 9
+01:12.264	ID:1	Authentication successful for Node 45
+01:12.264	ID:1	
+01:12.291	ID:45	1636510324120641232632431071614231782375Data length: 1
+01:12.291	ID:45	Data payload: 0
+01:12.689	ID:43	
+01:12.689	ID:43	 The CPU time and energy at the end of registration for client 43 are 72.000000 and 4.449106
+01:12.689	ID:43	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:12.689	ID:43	 the value of R_d is 0
+01:12.689	ID:43	 the value of M_d is 219
+01:12.800	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+01:12.800	ID:2	
+01:12.800	ID:2	 the value of R_d is 0
+01:12.800	ID:2	 the value of M_d is 219
+01:12.800	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:12.800	ID:2	 the value of M_d is 219
+01:12.800	ID:2	 the value of R_d is 0
+01:12.800	ID:2	 the value of id_d is 43
+01:12.800	ID:2	 The value of session key is mask115
+01:12.800	ID:2	56
+01:12.800	ID:2	173
+01:12.800	ID:2	108
+01:12.800	ID:2	15
+01:12.800	ID:2	129
+01:12.800	ID:2	30
+01:12.800	ID:2	211
+01:12.800	ID:2	80
+01:12.800	ID:2	117
+01:12.800	ID:2	51
+01:12.800	ID:2	121
+01:12.800	ID:2	77
+01:12.800	ID:2	135
+01:12.800	ID:2	10
+01:12.800	ID:2	233
+01:12.800	ID:2	181
+01:12.800	ID:2	207
+01:12.800	ID:2	133
+01:12.800	ID:2	122
+01:12.800	ID:2	246
+01:12.800	ID:2	106
+01:12.800	ID:2	186
+01:12.800	ID:2	40
+01:12.800	ID:2	196
+01:12.800	ID:2	99
+01:12.800	ID:2	54
+01:12.800	ID:2	109
+01:12.800	ID:2	79
+01:12.800	ID:2	38
+01:12.800	ID:2	109
+01:12.800	ID:2	179
+01:12.800	ID:2	
+01:12.800	ID:2	 The value of session key is n219
+01:12.800	ID:2	193
+01:12.800	ID:2	180
+01:12.800	ID:2	201
+01:12.800	ID:2	0
+01:12.800	ID:2	255
+01:12.800	ID:2	228
+01:12.800	ID:2	141
+01:12.800	ID:2	87
+01:12.800	ID:2	91
+01:12.800	ID:2	93
+01:12.800	ID:2	165
+01:12.800	ID:2	198
+01:12.800	ID:2	56
+01:12.800	ID:2	4
+01:12.800	ID:2	1
+01:12.800	ID:2	37
+01:12.800	ID:2	246
+01:12.800	ID:2	93
+01:12.800	ID:2	176
+01:12.800	ID:2	254
+01:12.800	ID:2	62
+01:12.800	ID:2	36
+01:12.800	ID:2	73
+01:12.800	ID:2	75
+01:12.800	ID:2	118
+01:12.800	ID:2	234
+01:12.800	ID:2	152
+01:12.800	ID:2	100
+01:12.800	ID:2	87
+01:12.800	ID:2	217
+01:12.800	ID:2	134
+01:12.800	ID:2	
+01:12.800	ID:2	 The value of payload is n2
+01:12.800	ID:2	168
+01:12.800	ID:2	249
+01:12.800	ID:2	25
+01:12.800	ID:2	165
+01:12.800	ID:2	15
+01:12.800	ID:2	126
+01:12.800	ID:2	250
+01:12.800	ID:2	94
+01:12.800	ID:2	7
+01:12.800	ID:2	46
+01:12.800	ID:2	110
+01:12.800	ID:2	220
+01:12.800	ID:2	139
+01:12.800	ID:2	191
+01:12.800	ID:2	14
+01:12.800	ID:2	232
+01:12.800	ID:2	144
+01:12.800	ID:2	57
+01:12.800	ID:2	216
+01:12.800	ID:2	202
+01:12.800	ID:2	8
+01:12.800	ID:2	84
+01:12.800	ID:2	158
+01:12.800	ID:2	97
+01:12.800	ID:2	143
+01:12.800	ID:2	21
+01:12.800	ID:2	220
+01:12.800	ID:2	245
+01:12.800	ID:2	43
+01:12.800	ID:2	113
+01:12.800	ID:2	180
+01:12.800	ID:2	53
+01:12.800	ID:2	1
+01:12.800	ID:2	
+01:12.800	ID:2	 Hpayload sent
+01:12.800	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:12.800	ID:2	 The token count and send index is 8 and 8 before if 
+01:12.800	ID:2	 The token count and send index is 9 and 8 in the if
+01:12.800	ID:2	 The CPU time and energy at the end of authentication for client 43 by server 2 is 13.955000 and 0.862345
+01:12.801	ID:2	 The token count and send index is 9 and 8
+01:12.801	ID:2	 The token count and send index is 9 and 8 before while[INFO: coap-bt-server] Token count = 9, Sent index = 8
+01:12.901	ID:1	 The message obtained for node 45 is 9
+01:12.901	ID:1	Received auth tokenAuthentication token for Node 43
+01:12.901	ID:1	
+01:12.901	ID:1	 Obtained auth_token is 43
+01:12.901	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:12.923	ID:43	 Sending auth_request
+01:12.923	ID:43	 The value of payload is n2
+01:12.923	ID:43	168
+01:12.923	ID:43	249
+01:12.923	ID:43	25
+01:12.923	ID:43	165
+01:12.923	ID:43	15
+01:12.923	ID:43	126
+01:12.923	ID:43	250
+01:12.923	ID:43	94
+01:12.923	ID:43	7
+01:12.923	ID:43	46
+01:12.923	ID:43	110
+01:12.923	ID:43	220
+01:12.923	ID:43	139
+01:12.923	ID:43	191
+01:12.923	ID:43	14
+01:12.923	ID:43	232
+01:12.923	ID:43	144
+01:12.923	ID:43	57
+01:12.923	ID:43	216
+01:12.923	ID:43	202
+01:12.923	ID:43	8
+01:12.923	ID:43	84
+01:12.923	ID:43	158
+01:12.923	ID:43	97
+01:12.923	ID:43	143
+01:12.923	ID:43	21
+01:12.923	ID:43	220
+01:12.923	ID:43	245
+01:12.923	ID:43	43
+01:12.923	ID:43	113
+01:12.923	ID:43	180
+01:12.923	ID:43	53
+01:12.923	ID:43	
+01:12.923	ID:43	 The timestamp is 1
+01:12.923	ID:43	 the value of M_d is 219
+01:12.923	ID:43	 the value of R_d is 0
+01:12.923	ID:43	 the value of id_as is 2
+01:12.923	ID:43	 the value of id_d is 43
+01:12.923	ID:43	 the value of ts_2 is 1
+01:12.923	ID:43	 The value of session key is mask 2115561731081512930211801175112177135102331812071331222461061864019699541097938109179
+01:12.923	ID:43	 The value of session key is n219
+01:12.923	ID:43	193
+01:12.923	ID:43	180
+01:12.923	ID:43	201
+01:12.923	ID:43	0
+01:12.923	ID:43	255
+01:12.923	ID:43	228
+01:12.923	ID:43	141
+01:12.923	ID:43	87
+01:12.923	ID:43	91
+01:12.923	ID:43	93
+01:12.923	ID:43	165
+01:12.923	ID:43	198
+01:12.923	ID:43	56
+01:12.923	ID:43	4
+01:12.923	ID:43	1
+01:12.923	ID:43	37
+01:12.923	ID:43	246
+01:12.923	ID:43	93
+01:12.923	ID:43	176
+01:12.923	ID:43	254
+01:12.923	ID:43	62
+01:12.923	ID:43	36
+01:12.923	ID:43	73
+01:12.923	ID:43	75
+01:12.923	ID:43	118
+01:12.923	ID:43	234
+01:12.923	ID:43	152
+01:12.923	ID:43	100
+01:12.923	ID:43	87
+01:12.923	ID:43	217
+01:12.923	ID:43	134
+01:12.923	ID:43	
+01:12.923	ID:43	 The value of mask115
+01:12.923	ID:43	56
+01:12.923	ID:43	173
+01:12.923	ID:43	108
+01:12.923	ID:43	15
+01:12.923	ID:43	129
+01:12.923	ID:43	30
+01:12.923	ID:43	211
+01:12.923	ID:43	80
+01:12.923	ID:43	117
+01:12.923	ID:43	51
+01:12.923	ID:43	121
+01:12.923	ID:43	77
+01:12.923	ID:43	135
+01:12.923	ID:43	10
+01:12.923	ID:43	233
+01:12.923	ID:43	181
+01:12.923	ID:43	207
+01:12.923	ID:43	133
+01:12.923	ID:43	122
+01:12.923	ID:43	246
+01:12.923	ID:43	106
+01:12.923	ID:43	186
+01:12.923	ID:43	40
+01:12.923	ID:43	196
+01:12.923	ID:43	99
+01:12.923	ID:43	54
+01:12.923	ID:43	109
+01:12.923	ID:43	79
+01:12.923	ID:43	38
+01:12.923	ID:43	109
+01:12.923	ID:43	179
+01:12.923	ID:43	
+01:12.923	ID:43	 The value of R_d is 0
+01:14.625	ID:49	Registered
+01:14.625	ID:49	 The CPU time and energy at the end of registration for client 49 are 74.000000 and 4.572929
+01:14.625	ID:49	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:14.625	ID:49	 the value of R_d is 0
+01:14.625	ID:49	 the value of M_d is 5
+01:14.691	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+01:14.691	ID:3	
+01:14.691	ID:3	 the value of R_d is 0
+01:14.691	ID:3	 the value of M_d is 5
+01:14.691	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:14.691	ID:3	 the value of M_d is 5
+01:14.691	ID:3	 the value of R_d is 0
+01:14.691	ID:3	 the value of id_d is 49
+01:14.691	ID:3	 The value of session key is mask54
+01:14.691	ID:3	107
+01:14.691	ID:3	231
+01:14.691	ID:3	96
+01:14.691	ID:3	171
+01:14.691	ID:3	117
+01:14.691	ID:3	126
+01:14.691	ID:3	238
+01:14.691	ID:3	161
+01:14.691	ID:3	204
+01:14.691	ID:3	71
+01:14.691	ID:3	69
+01:14.691	ID:3	92
+01:14.691	ID:3	99
+01:14.691	ID:3	206
+01:14.691	ID:3	236
+01:14.691	ID:3	165
+01:14.691	ID:3	131
+01:14.691	ID:3	232
+01:14.691	ID:3	138
+01:14.691	ID:3	83
+01:14.691	ID:3	23
+01:14.691	ID:3	114
+01:14.691	ID:3	109
+01:14.691	ID:3	30
+01:14.691	ID:3	157
+01:14.691	ID:3	0
+01:14.691	ID:3	121
+01:14.691	ID:3	193
+01:14.691	ID:3	250
+01:14.691	ID:3	0
+01:14.691	ID:3	223
+01:14.691	ID:3	
+01:14.691	ID:3	 The value of session key is n219
+01:14.691	ID:3	193
+01:14.691	ID:3	180
+01:14.691	ID:3	201
+01:14.691	ID:3	0
+01:14.691	ID:3	255
+01:14.691	ID:3	228
+01:14.691	ID:3	141
+01:14.691	ID:3	87
+01:14.691	ID:3	91
+01:14.691	ID:3	93
+01:14.691	ID:3	165
+01:14.691	ID:3	198
+01:14.691	ID:3	56
+01:14.691	ID:3	4
+01:14.691	ID:3	1
+01:14.691	ID:3	37
+01:14.691	ID:3	246
+01:14.691	ID:3	93
+01:14.691	ID:3	176
+01:14.691	ID:3	254
+01:14.691	ID:3	62
+01:14.691	ID:3	36
+01:14.691	ID:3	73
+01:14.691	ID:3	75
+01:14.691	ID:3	118
+01:14.691	ID:3	234
+01:14.691	ID:3	152
+01:14.691	ID:3	100
+01:14.691	ID:3	87
+01:14.691	ID:3	217
+01:14.691	ID:3	134
+01:14.691	ID:3	
+01:14.691	ID:3	 The value of payload is n3
+01:14.691	ID:3	237
+01:14.691	ID:3	170
+01:14.691	ID:3	83
+01:14.691	ID:3	169
+01:14.691	ID:3	171
+01:14.691	ID:3	138
+01:14.691	ID:3	154
+01:14.691	ID:3	99
+01:14.691	ID:3	246
+01:14.691	ID:3	151
+01:14.691	ID:3	26
+01:14.691	ID:3	224
+01:14.691	ID:3	154
+01:14.691	ID:3	91
+01:14.691	ID:3	202
+01:14.691	ID:3	237
+01:14.691	ID:3	128
+01:14.691	ID:3	117
+01:14.691	ID:3	181
+01:14.691	ID:3	58
+01:14.691	ID:3	173
+01:14.691	ID:3	41
+01:14.691	ID:3	86
+01:14.691	ID:3	36
+01:14.691	ID:3	85
+01:14.691	ID:3	235
+01:14.691	ID:3	234
+01:14.691	ID:3	225
+01:14.691	ID:3	165
+01:14.691	ID:3	173
+01:14.691	ID:3	217
+01:14.691	ID:3	89
+01:14.691	ID:3	1
+01:14.691	ID:3	
+01:14.691	ID:3	 Hpayload sent
+01:14.691	ID:3	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:14.691	ID:3	 The token count and send index is 4 and 4 before if 
+01:14.691	ID:3	 The token count and send index is 5 and 4 in the if
+01:14.691	ID:3	 The CPU time and energy at the end of authentication for client 49 by server 3 is 6.204000 and 0.383329
+01:14.692	ID:3	 The token count and send index is 5 and 4
+01:14.692	ID:3	 The token count and send index is 5 and 4 before while[INFO: coap-bt-server] Token count = 5, Sent index = 4
+01:14.726	ID:49	 Sending auth_request
+01:14.726	ID:49	 The value of payload is n3
+01:14.726	ID:49	237
+01:14.726	ID:49	170
+01:14.726	ID:49	83
+01:14.726	ID:49	169
+01:14.726	ID:49	171
+01:14.726	ID:49	138
+01:14.726	ID:49	154
+01:14.726	ID:49	99
+01:14.726	ID:49	246
+01:14.726	ID:49	151
+01:14.726	ID:49	26
+01:14.726	ID:49	224
+01:14.726	ID:49	154
+01:14.726	ID:49	91
+01:14.726	ID:49	202
+01:14.726	ID:49	237
+01:14.726	ID:49	128
+01:14.726	ID:49	117
+01:14.726	ID:49	181
+01:14.726	ID:49	58
+01:14.726	ID:49	173
+01:14.726	ID:49	41
+01:14.726	ID:49	86
+01:14.726	ID:49	36
+01:14.726	ID:49	85
+01:14.726	ID:49	235
+01:14.726	ID:49	234
+01:14.726	ID:49	225
+01:14.726	ID:49	165
+01:14.726	ID:49	173
+01:14.726	ID:49	217
+01:14.726	ID:49	89
+01:14.726	ID:49	
+01:14.726	ID:49	 The timestamp is 1
+01:14.726	ID:49	 the value of M_d is 5
+01:14.726	ID:49	 the value of R_d is 0
+01:14.726	ID:49	 the value of id_as is 3
+01:14.726	ID:49	 the value of id_d is 49
+01:14.726	ID:49	 the value of ts_2 is 1
+01:14.726	ID:49	 The value of session key is mask 254107231961711171262381612047169929920623616513123213883231141093015701211932500223
+01:14.726	ID:49	 The value of session key is n219
+01:14.726	ID:49	193
+01:14.726	ID:49	180
+01:14.726	ID:49	201
+01:14.726	ID:49	0
+01:14.726	ID:49	255
+01:14.726	ID:49	228
+01:14.726	ID:49	141
+01:14.726	ID:49	87
+01:14.726	ID:49	91
+01:14.726	ID:49	93
+01:14.726	ID:49	165
+01:14.726	ID:49	198
+01:14.726	ID:49	56
+01:14.726	ID:49	4
+01:14.726	ID:49	1
+01:14.726	ID:49	37
+01:14.726	ID:49	246
+01:14.726	ID:49	93
+01:14.726	ID:49	176
+01:14.726	ID:49	254
+01:14.726	ID:49	62
+01:14.726	ID:49	36
+01:14.726	ID:49	73
+01:14.726	ID:49	75
+01:14.726	ID:49	118
+01:14.726	ID:49	234
+01:14.726	ID:49	152
+01:14.726	ID:49	100
+01:14.726	ID:49	87
+01:14.726	ID:49	217
+01:14.726	ID:49	134
+01:14.726	ID:49	
+01:14.726	ID:49	 The value of mask54
+01:14.726	ID:49	107
+01:14.726	ID:49	231
+01:14.726	ID:49	96
+01:14.726	ID:49	171
+01:14.726	ID:49	117
+01:14.726	ID:49	126
+01:14.726	ID:49	238
+01:14.726	ID:49	161
+01:14.726	ID:49	204
+01:14.726	ID:49	71
+01:14.726	ID:49	69
+01:14.726	ID:49	92
+01:14.726	ID:49	99
+01:14.726	ID:49	206
+01:14.726	ID:49	236
+01:14.726	ID:49	165
+01:14.726	ID:49	131
+01:14.726	ID:49	232
+01:14.726	ID:49	138
+01:14.726	ID:49	83
+01:14.726	ID:49	23
+01:14.726	ID:49	114
+01:14.726	ID:49	109
+01:14.726	ID:49	30
+01:14.726	ID:49	157
+01:14.726	ID:49	0
+01:14.726	ID:49	121
+01:14.726	ID:49	193
+01:14.726	ID:49	250
+01:14.726	ID:49	0
+01:14.726	ID:49	223
+01:14.726	ID:49	
+01:14.726	ID:49	 The value of R_d is 0
+01:14.758	ID:1	 The CPU time and energy at the end of authenticatication for client 43 by server 2 and gateway 1 are 4.353288 and 0.268915
+01:14.758	ID:1	Received auth tokenAuthentication token for Node 49
+01:14.758	ID:1	
+01:14.758	ID:1	 Obtained auth_token is 49
+01:14.758	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:21.106	ID:48	 The CPU time and energy at the end of authentication 1 for client 48 are 0.176136 and 0.010859
+01:21.106	ID:48	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100Authentication success, sending data request
+01:21.153	ID:1	 The CPU time and energy at the end of authenticatication for client 49 by server 3 and gateway 1 are 1.856712 and 0.114653
+01:21.153	ID:1	Authentication successful for Node 48
+01:21.153	ID:1	
+01:21.185	ID:48	1636510324120641232632431071614231782375Data length: 1
+01:21.185	ID:48	Data payload: 0
+01:21.689	ID:43	 The CPU time and energy at the end of authentication 4 for client 43 are 0.234880 and 0.014490
+01:21.689	ID:43	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+01:21.700	ID:1	 The message obtained for node 48 is 9
+01:21.700	ID:1	Authentication successful for Node 43
+01:21.700	ID:1	
+01:21.727	ID:43	39208441431136014423412551441741219134172Data length: 1
+01:21.727	ID:43	Data payload: 0
+01:24.217	ID:44	
+01:24.217	ID:44	 The CPU time and energy at the end of registration for client 44 are 84.000000 and 5.190683
+01:24.217	ID:44	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:24.217	ID:44	 the value of R_d is 0
+01:24.217	ID:44	 the value of M_d is 219
+01:24.303	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+01:24.303	ID:2	
+01:24.303	ID:2	 the value of R_d is 0
+01:24.303	ID:2	 the value of M_d is 219
+01:24.303	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:24.303	ID:2	 the value of M_d is 219
+01:24.303	ID:2	 the value of R_d is 0
+01:24.303	ID:2	 the value of id_d is 44
+01:24.303	ID:2	 The value of session key is mask23
+01:24.303	ID:2	129
+01:24.303	ID:2	16
+01:24.303	ID:2	8
+01:24.303	ID:2	23
+01:24.303	ID:2	20
+01:24.303	ID:2	219
+01:24.303	ID:2	79
+01:24.303	ID:2	169
+01:24.303	ID:2	127
+01:24.303	ID:2	10
+01:24.303	ID:2	174
+01:24.303	ID:2	21
+01:24.303	ID:2	221
+01:24.303	ID:2	16
+01:24.303	ID:2	111
+01:24.303	ID:2	174
+01:24.303	ID:2	146
+01:24.303	ID:2	243
+01:24.303	ID:2	97
+01:24.303	ID:2	245
+01:24.303	ID:2	66
+01:24.303	ID:2	60
+01:24.303	ID:2	47
+01:24.303	ID:2	189
+01:24.303	ID:2	77
+01:24.303	ID:2	100
+01:24.303	ID:2	231
+01:24.303	ID:2	130
+01:24.303	ID:2	178
+01:24.303	ID:2	21
+01:24.303	ID:2	193
+01:24.303	ID:2	
+01:24.303	ID:2	 The value of session key is n219
+01:24.303	ID:2	193
+01:24.303	ID:2	180
+01:24.303	ID:2	201
+01:24.303	ID:2	0
+01:24.303	ID:2	255
+01:24.303	ID:2	228
+01:24.303	ID:2	141
+01:24.303	ID:2	87
+01:24.303	ID:2	91
+01:24.303	ID:2	93
+01:24.303	ID:2	165
+01:24.303	ID:2	198
+01:24.303	ID:2	56
+01:24.303	ID:2	4
+01:24.303	ID:2	1
+01:24.303	ID:2	37
+01:24.303	ID:2	246
+01:24.303	ID:2	93
+01:24.303	ID:2	176
+01:24.303	ID:2	254
+01:24.303	ID:2	62
+01:24.303	ID:2	36
+01:24.303	ID:2	73
+01:24.303	ID:2	75
+01:24.303	ID:2	118
+01:24.303	ID:2	234
+01:24.303	ID:2	152
+01:24.303	ID:2	100
+01:24.303	ID:2	87
+01:24.303	ID:2	217
+01:24.303	ID:2	134
+01:24.303	ID:2	
+01:24.303	ID:2	 The value of payload is n2
+01:24.303	ID:2	204
+01:24.303	ID:2	64
+01:24.303	ID:2	164
+01:24.303	ID:2	193
+01:24.303	ID:2	23
+01:24.303	ID:2	235
+01:24.303	ID:2	63
+01:24.303	ID:2	194
+01:24.303	ID:2	254
+01:24.303	ID:2	36
+01:24.303	ID:2	87
+01:24.303	ID:2	11
+01:24.303	ID:2	211
+01:24.303	ID:2	229
+01:24.303	ID:2	20
+01:24.303	ID:2	110
+01:24.303	ID:2	139
+01:24.303	ID:2	100
+01:24.303	ID:2	174
+01:24.303	ID:2	209
+01:24.303	ID:2	11
+01:24.303	ID:2	124
+01:24.303	ID:2	24
+01:24.303	ID:2	102
+01:24.303	ID:2	246
+01:24.303	ID:2	59
+01:24.303	ID:2	142
+01:24.303	ID:2	127
+01:24.303	ID:2	230
+01:24.303	ID:2	229
+01:24.303	ID:2	204
+01:24.303	ID:2	71
+01:24.303	ID:2	1
+01:24.303	ID:2	
+01:24.303	ID:2	 Hpayload sent
+01:24.303	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:24.303	ID:2	 The token count and send index is 9 and 9 before if 
+01:24.303	ID:2	 The token count and send index is 0 and 9 in the if
+01:24.303	ID:2	 The CPU time and energy at the end of authentication for client 44 by server 2 is 11.503000 and 0.710832
+01:24.304	ID:2	 The token count and send index is 0 and 9
+01:24.389	ID:41	 The CPU time and energy at the end of authentication 1 for client 41 are 0.223880 and 0.013806
+01:24.389	ID:41	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100Authentication success, sending data request
+01:24.397	ID:1	 The message obtained for node 43 is 9
+01:24.397	ID:1	Authentication successful for Node 41
+01:24.397	ID:1	
+01:24.404	ID:41	1636510324120641232632431071614231782375Data length: 1
+01:24.404	ID:41	Data payload: 0
+01:24.418	ID:44	 Sending auth_request
+01:24.418	ID:44	 The value of payload is n2
+01:24.418	ID:44	204
+01:24.418	ID:44	64
+01:24.418	ID:44	164
+01:24.418	ID:44	193
+01:24.418	ID:44	23
+01:24.418	ID:44	235
+01:24.418	ID:44	63
+01:24.418	ID:44	194
+01:24.418	ID:44	254
+01:24.418	ID:44	36
+01:24.418	ID:44	87
+01:24.418	ID:44	11
+01:24.418	ID:44	211
+01:24.418	ID:44	229
+01:24.418	ID:44	20
+01:24.418	ID:44	110
+01:24.418	ID:44	139
+01:24.418	ID:44	100
+01:24.418	ID:44	174
+01:24.418	ID:44	209
+01:24.418	ID:44	11
+01:24.418	ID:44	124
+01:24.418	ID:44	24
+01:24.418	ID:44	102
+01:24.418	ID:44	246
+01:24.418	ID:44	59
+01:24.418	ID:44	142
+01:24.418	ID:44	127
+01:24.418	ID:44	230
+01:24.418	ID:44	229
+01:24.418	ID:44	204
+01:24.418	ID:44	71
+01:24.418	ID:44	
+01:24.418	ID:44	 The timestamp is 1
+01:24.418	ID:44	 the value of M_d is 219
+01:24.418	ID:44	 the value of R_d is 0
+01:24.418	ID:44	 the value of id_as is 2
+01:24.418	ID:44	 the value of id_d is 44
+01:24.418	ID:44	 the value of ts_2 is 1
+01:24.418	ID:44	 The value of session key is mask 223129168232021979169127101742122116111174146243972456660471897710023113017821193
+01:24.418	ID:44	 The value of session key is n219
+01:24.418	ID:44	193
+01:24.418	ID:44	180
+01:24.418	ID:44	201
+01:24.418	ID:44	0
+01:24.418	ID:44	255
+01:24.418	ID:44	228
+01:24.418	ID:44	141
+01:24.418	ID:44	87
+01:24.418	ID:44	91
+01:24.418	ID:44	93
+01:24.418	ID:44	165
+01:24.418	ID:44	198
+01:24.418	ID:44	56
+01:24.418	ID:44	4
+01:24.418	ID:44	1
+01:24.418	ID:44	37
+01:24.418	ID:44	246
+01:24.418	ID:44	93
+01:24.418	ID:44	176
+01:24.418	ID:44	254
+01:24.418	ID:44	62
+01:24.418	ID:44	36
+01:24.418	ID:44	73
+01:24.418	ID:44	75
+01:24.418	ID:44	118
+01:24.418	ID:44	234
+01:24.418	ID:44	152
+01:24.418	ID:44	100
+01:24.418	ID:44	87
+01:24.418	ID:44	217
+01:24.418	ID:44	134
+01:24.418	ID:44	
+01:24.418	ID:44	 The value of mask23
+01:24.418	ID:44	129
+01:24.418	ID:44	16
+01:24.418	ID:44	8
+01:24.418	ID:44	23
+01:24.418	ID:44	20
+01:24.418	ID:44	219
+01:24.418	ID:44	79
+01:24.418	ID:44	169
+01:24.418	ID:44	127
+01:24.418	ID:44	10
+01:24.418	ID:44	174
+01:24.418	ID:44	21
+01:24.418	ID:44	221
+01:24.418	ID:44	16
+01:24.418	ID:44	111
+01:24.418	ID:44	174
+01:24.418	ID:44	146
+01:24.418	ID:44	243
+01:24.418	ID:44	97
+01:24.418	ID:44	245
+01:24.418	ID:44	66
+01:24.418	ID:44	60
+01:24.418	ID:44	47
+01:24.418	ID:44	189
+01:24.418	ID:44	77
+01:24.418	ID:44	100
+01:24.418	ID:44	231
+01:24.418	ID:44	130
+01:24.418	ID:44	178
+01:24.418	ID:44	21
+01:24.418	ID:44	193
+01:24.418	ID:44	
+01:24.418	ID:44	 The value of R_d is 0
+01:27.124	ID:50	 The CPU time and energy at the end of authentication 1 for client 50 are 0.129880 and 0.008001
+01:27.124	ID:50	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100Authentication success, sending data request
+01:27.160	ID:1	 The message obtained for node 41 is 9
+01:27.160	ID:1	Authentication successful for Node 50
+01:27.160	ID:1	
+01:27.169	ID:50	1636510324120641232632431071614231782375Data length: 1
+01:27.169	ID:50	Data payload: 0
+01:27.719	ID:42	 The CPU time and energy at the end of authentication 1 for client 42 are 0.270440 and 0.016687
+01:27.719	ID:42	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100Authentication success, sending data request
+01:27.776	ID:1	 The message obtained for node 50 is 9
+01:27.776	ID:1	Authentication successful for Node 42
+01:27.776	ID:1	
+01:27.814	ID:42	1636510324120641232632431071614231782375Data length: 1
+01:27.814	ID:42	Data payload: 0
+01:30.689	ID:43	
+01:30.689	ID:43	 The CPU time and energy at the end of registration for client 43 are 90.000000 and 5.561448
+01:30.689	ID:43	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:30.689	ID:43	 the value of R_d is 0
+01:30.689	ID:43	 the value of M_d is 219
+01:30.806	ID:2	 The token count and send index is 0 and 9 before while[INFO: coap-bt-server] Handler auth called!
+01:30.806	ID:2	
+01:30.806	ID:2	 the value of R_d is 0
+01:30.806	ID:2	 the value of M_d is 219
+01:30.806	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:30.806	ID:2	 the value of M_d is 219
+01:30.806	ID:2	 the value of R_d is 0
+01:30.806	ID:2	 the value of id_d is 43
+01:30.806	ID:2	 The value of session key is mask115
+01:30.806	ID:2	56
+01:30.806	ID:2	173
+01:30.806	ID:2	108
+01:30.806	ID:2	15
+01:30.806	ID:2	129
+01:30.806	ID:2	30
+01:30.806	ID:2	211
+01:30.806	ID:2	80
+01:30.806	ID:2	117
+01:30.806	ID:2	51
+01:30.806	ID:2	121
+01:30.806	ID:2	77
+01:30.806	ID:2	135
+01:30.806	ID:2	10
+01:30.806	ID:2	233
+01:30.806	ID:2	181
+01:30.806	ID:2	207
+01:30.806	ID:2	133
+01:30.806	ID:2	122
+01:30.806	ID:2	246
+01:30.806	ID:2	106
+01:30.806	ID:2	186
+01:30.806	ID:2	40
+01:30.806	ID:2	196
+01:30.806	ID:2	99
+01:30.806	ID:2	54
+01:30.806	ID:2	109
+01:30.806	ID:2	79
+01:30.806	ID:2	38
+01:30.806	ID:2	109
+01:30.806	ID:2	179
+01:30.806	ID:2	
+01:30.806	ID:2	 The value of session key is n219
+01:30.806	ID:2	193
+01:30.806	ID:2	180
+01:30.806	ID:2	201
+01:30.806	ID:2	0
+01:30.806	ID:2	255
+01:30.806	ID:2	228
+01:30.806	ID:2	141
+01:30.806	ID:2	87
+01:30.806	ID:2	91
+01:30.806	ID:2	93
+01:30.806	ID:2	165
+01:30.806	ID:2	198
+01:30.806	ID:2	56
+01:30.806	ID:2	4
+01:30.806	ID:2	1
+01:30.806	ID:2	37
+01:30.806	ID:2	246
+01:30.806	ID:2	93
+01:30.806	ID:2	176
+01:30.806	ID:2	254
+01:30.806	ID:2	62
+01:30.806	ID:2	36
+01:30.806	ID:2	73
+01:30.806	ID:2	75
+01:30.806	ID:2	118
+01:30.806	ID:2	234
+01:30.806	ID:2	152
+01:30.806	ID:2	100
+01:30.806	ID:2	87
+01:30.806	ID:2	217
+01:30.806	ID:2	134
+01:30.806	ID:2	
+01:30.806	ID:2	 The value of payload is n2
+01:30.806	ID:2	168
+01:30.806	ID:2	249
+01:30.806	ID:2	25
+01:30.806	ID:2	165
+01:30.806	ID:2	15
+01:30.806	ID:2	126
+01:30.806	ID:2	250
+01:30.806	ID:2	94
+01:30.806	ID:2	7
+01:30.806	ID:2	46
+01:30.806	ID:2	110
+01:30.806	ID:2	220
+01:30.806	ID:2	139
+01:30.806	ID:2	191
+01:30.806	ID:2	14
+01:30.806	ID:2	232
+01:30.806	ID:2	144
+01:30.806	ID:2	57
+01:30.806	ID:2	216
+01:30.806	ID:2	202
+01:30.806	ID:2	8
+01:30.806	ID:2	84
+01:30.806	ID:2	158
+01:30.806	ID:2	97
+01:30.806	ID:2	143
+01:30.806	ID:2	21
+01:30.806	ID:2	220
+01:30.806	ID:2	245
+01:30.806	ID:2	43
+01:30.806	ID:2	113
+01:30.806	ID:2	180
+01:30.806	ID:2	53
+01:30.806	ID:2	1
+01:30.806	ID:2	
+01:30.806	ID:2	 Hpayload sent
+01:30.806	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:30.806	ID:2	 The token count and send index is 0 and 9 before if 
+01:30.806	ID:2	 The token count and send index is 1 and 9 in the if
+01:30.806	ID:2	 The CPU time and energy at the end of authentication for client 43 by server 2 is 6.503000 and 0.401818
+01:30.807	ID:2	 The token count and send index is 1 and 9
+01:30.882	ID:43	 Sending auth_request
+01:30.882	ID:43	 The value of payload is n2
+01:30.882	ID:43	168
+01:30.882	ID:43	249
+01:30.882	ID:43	25
+01:30.882	ID:43	165
+01:30.882	ID:43	15
+01:30.882	ID:43	126
+01:30.882	ID:43	250
+01:30.882	ID:43	94
+01:30.882	ID:43	7
+01:30.882	ID:43	46
+01:30.882	ID:43	110
+01:30.882	ID:43	220
+01:30.882	ID:43	139
+01:30.882	ID:43	191
+01:30.882	ID:43	14
+01:30.882	ID:43	232
+01:30.882	ID:43	144
+01:30.882	ID:43	57
+01:30.882	ID:43	216
+01:30.882	ID:43	202
+01:30.882	ID:43	8
+01:30.882	ID:43	84
+01:30.882	ID:43	158
+01:30.882	ID:43	97
+01:30.882	ID:43	143
+01:30.882	ID:43	21
+01:30.882	ID:43	220
+01:30.882	ID:43	245
+01:30.882	ID:43	43
+01:30.882	ID:43	113
+01:30.882	ID:43	180
+01:30.882	ID:43	53
+01:30.882	ID:43	
+01:30.882	ID:43	 The timestamp is 1
+01:30.882	ID:43	 the value of M_d is 219
+01:30.882	ID:43	 the value of R_d is 0
+01:30.882	ID:43	 the value of id_as is 2
+01:30.882	ID:43	 the value of id_d is 43
+01:30.882	ID:43	 the value of ts_2 is 1
+01:30.882	ID:43	 The value of session key is mask 2115561731081512930211801175112177135102331812071331222461061864019699541097938109179
+01:30.882	ID:43	 The value of session key is n219
+01:30.882	ID:43	193
+01:30.882	ID:43	180
+01:30.882	ID:43	201
+01:30.882	ID:43	0
+01:30.882	ID:43	255
+01:30.882	ID:43	228
+01:30.882	ID:43	141
+01:30.882	ID:43	87
+01:30.882	ID:43	91
+01:30.882	ID:43	93
+01:30.882	ID:43	165
+01:30.882	ID:43	198
+01:30.882	ID:43	56
+01:30.882	ID:43	4
+01:30.882	ID:43	1
+01:30.882	ID:43	37
+01:30.882	ID:43	246
+01:30.882	ID:43	93
+01:30.882	ID:43	176
+01:30.882	ID:43	254
+01:30.882	ID:43	62
+01:30.882	ID:43	36
+01:30.882	ID:43	73
+01:30.882	ID:43	75
+01:30.882	ID:43	118
+01:30.882	ID:43	234
+01:30.882	ID:43	152
+01:30.882	ID:43	100
+01:30.882	ID:43	87
+01:30.882	ID:43	217
+01:30.882	ID:43	134
+01:30.882	ID:43	
+01:30.882	ID:43	 The value of mask115
+01:30.882	ID:43	56
+01:30.882	ID:43	173
+01:30.882	ID:43	108
+01:30.882	ID:43	15
+01:30.882	ID:43	129
+01:30.882	ID:43	30
+01:30.882	ID:43	211
+01:30.882	ID:43	80
+01:30.882	ID:43	117
+01:30.882	ID:43	51
+01:30.882	ID:43	121
+01:30.882	ID:43	77
+01:30.882	ID:43	135
+01:30.882	ID:43	10
+01:30.882	ID:43	233
+01:30.882	ID:43	181
+01:30.882	ID:43	207
+01:30.882	ID:43	133
+01:30.882	ID:43	122
+01:30.882	ID:43	246
+01:30.882	ID:43	106
+01:30.882	ID:43	186
+01:30.882	ID:43	40
+01:30.882	ID:43	196
+01:30.882	ID:43	99
+01:30.882	ID:43	54
+01:30.882	ID:43	109
+01:30.882	ID:43	79
+01:30.882	ID:43	38
+01:30.882	ID:43	109
+01:30.882	ID:43	179
+01:30.882	ID:43	
+01:30.882	ID:43	 The value of R_d is 0
+01:36.218	ID:45	
+01:36.218	ID:45	 The CPU time and energy at the end of registration for client 45 are 96.000000 and 5.932409
+01:36.218	ID:45	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:36.218	ID:45	 the value of R_d is 1
+01:36.218	ID:45	 the value of M_d is 219
+01:36.282	ID:2	 The token count and send index is 1 and 9 before while[INFO: coap-bt-server] Handler auth called!
+01:36.282	ID:2	
+01:36.282	ID:2	 the value of R_d is 1
+01:36.282	ID:2	 the value of M_d is 219
+01:36.282	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:36.282	ID:2	 the value of M_d is 219
+01:36.282	ID:2	 the value of R_d is 1
+01:36.282	ID:2	 the value of id_d is 45
+01:36.282	ID:2	 The value of session key is mask180
+01:36.282	ID:2	94
+01:36.282	ID:2	9
+01:36.282	ID:2	221
+01:36.282	ID:2	247
+01:36.282	ID:2	237
+01:36.282	ID:2	149
+01:36.282	ID:2	26
+01:36.282	ID:2	45
+01:36.282	ID:2	108
+01:36.282	ID:2	126
+01:36.282	ID:2	65
+01:36.282	ID:2	23
+01:36.282	ID:2	40
+01:36.282	ID:2	56
+01:36.282	ID:2	91
+01:36.282	ID:2	63
+01:36.282	ID:2	6
+01:36.282	ID:2	194
+01:36.282	ID:2	185
+01:36.282	ID:2	111
+01:36.282	ID:2	111
+01:36.282	ID:2	211
+01:36.282	ID:2	167
+01:36.282	ID:2	252
+01:36.282	ID:2	45
+01:36.282	ID:2	134
+01:36.282	ID:2	131
+01:36.282	ID:2	225
+01:36.282	ID:2	229
+01:36.282	ID:2	139
+01:36.282	ID:2	154
+01:36.282	ID:2	
+01:36.282	ID:2	 The value of session key is n219
+01:36.282	ID:2	193
+01:36.282	ID:2	180
+01:36.282	ID:2	201
+01:36.282	ID:2	0
+01:36.282	ID:2	255
+01:36.282	ID:2	228
+01:36.282	ID:2	141
+01:36.282	ID:2	87
+01:36.282	ID:2	91
+01:36.282	ID:2	93
+01:36.282	ID:2	165
+01:36.282	ID:2	198
+01:36.282	ID:2	56
+01:36.282	ID:2	4
+01:36.282	ID:2	1
+01:36.282	ID:2	37
+01:36.282	ID:2	246
+01:36.282	ID:2	93
+01:36.282	ID:2	176
+01:36.282	ID:2	254
+01:36.282	ID:2	62
+01:36.282	ID:2	36
+01:36.282	ID:2	73
+01:36.282	ID:2	75
+01:36.282	ID:2	118
+01:36.282	ID:2	234
+01:36.282	ID:2	152
+01:36.282	ID:2	100
+01:36.282	ID:2	87
+01:36.282	ID:2	217
+01:36.282	ID:2	134
+01:36.282	ID:2	
+01:36.282	ID:2	 The value of payload is n2
+01:36.282	ID:2	111
+01:36.282	ID:2	159
+01:36.282	ID:2	189
+01:36.282	ID:2	20
+01:36.282	ID:2	247
+01:36.282	ID:2	18
+01:36.282	ID:2	113
+01:36.282	ID:2	151
+01:36.282	ID:2	122
+01:36.282	ID:2	55
+01:36.282	ID:2	35
+01:36.282	ID:2	228
+01:36.282	ID:2	209
+01:36.282	ID:2	16
+01:36.282	ID:2	60
+01:36.282	ID:2	90
+01:36.282	ID:2	26
+01:36.282	ID:2	240
+01:36.282	ID:2	159
+01:36.282	ID:2	9
+01:36.282	ID:2	145
+01:36.282	ID:2	81
+01:36.282	ID:2	247
+01:36.282	ID:2	238
+01:36.282	ID:2	183
+01:36.282	ID:2	91
+01:36.282	ID:2	108
+01:36.282	ID:2	27
+01:36.282	ID:2	133
+01:36.282	ID:2	178
+01:36.282	ID:2	82
+01:36.282	ID:2	28
+01:36.282	ID:2	1
+01:36.282	ID:2	
+01:36.282	ID:2	 Hpayload sent
+01:36.282	ID:2	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+01:36.282	ID:2	 The token count and send index is 1 and 9 before if 
+01:36.282	ID:2	 The token count and send index is 2 and 9 in the if
+01:36.282	ID:2	 The CPU time and energy at the end of authentication for client 45 by server 2 is 5.476000 and 0.338392
+01:36.283	ID:2	 The token count and send index is 2 and 9
+01:36.349	ID:45	 Sending auth_request
+01:36.349	ID:45	 The value of payload is n2
+01:36.349	ID:45	111
+01:36.349	ID:45	159
+01:36.349	ID:45	189
+01:36.349	ID:45	20
+01:36.349	ID:45	247
+01:36.349	ID:45	18
+01:36.349	ID:45	113
+01:36.349	ID:45	151
+01:36.349	ID:45	122
+01:36.349	ID:45	55
+01:36.349	ID:45	35
+01:36.349	ID:45	228
+01:36.349	ID:45	209
+01:36.349	ID:45	16
+01:36.349	ID:45	60
+01:36.349	ID:45	90
+01:36.349	ID:45	26
+01:36.349	ID:45	240
+01:36.349	ID:45	159
+01:36.349	ID:45	9
+01:36.349	ID:45	145
+01:36.349	ID:45	81
+01:36.349	ID:45	247
+01:36.349	ID:45	238
+01:36.349	ID:45	183
+01:36.349	ID:45	91
+01:36.349	ID:45	108
+01:36.349	ID:45	27
+01:36.349	ID:45	133
+01:36.349	ID:45	178
+01:36.349	ID:45	82
+01:36.349	ID:45	28
+01:36.349	ID:45	
+01:36.349	ID:45	 The timestamp is 1
+01:36.349	ID:45	 the value of M_d is 219
+01:36.349	ID:45	 the value of R_d is 1
+01:36.349	ID:45	 the value of id_as is 2
+01:36.349	ID:45	 the value of id_d is 45
+01:36.349	ID:45	 the value of ts_2 is 1
+01:36.349	ID:45	 The value of session key is mask 21809492212472371492645108126652340569163619418511111121116725245134131225229139154
+01:36.349	ID:45	 The value of session key is n219
+01:36.349	ID:45	193
+01:36.349	ID:45	180
+01:36.349	ID:45	201
+01:36.349	ID:45	0
+01:36.349	ID:45	255
+01:36.349	ID:45	228
+01:36.349	ID:45	141
+01:36.349	ID:45	87
+01:36.349	ID:45	91
+01:36.349	ID:45	93
+01:36.349	ID:45	165
+01:36.349	ID:45	198
+01:36.349	ID:45	56
+01:36.349	ID:45	4
+01:36.349	ID:45	1
+01:36.349	ID:45	37
+01:36.349	ID:45	246
+01:36.349	ID:45	93
+01:36.349	ID:45	176
+01:36.349	ID:45	254
+01:36.349	ID:45	62
+01:36.349	ID:45	36
+01:36.349	ID:45	73
+01:36.349	ID:45	75
+01:36.349	ID:45	118
+01:36.349	ID:45	234
+01:36.349	ID:45	152
+01:36.349	ID:45	100
+01:36.349	ID:45	87
+01:36.349	ID:45	217
+01:36.349	ID:45	134
+01:36.349	ID:45	
+01:36.349	ID:45	 The value of mask180
+01:36.349	ID:45	94
+01:36.349	ID:45	9
+01:36.349	ID:45	221
+01:36.349	ID:45	247
+01:36.349	ID:45	237
+01:36.349	ID:45	149
+01:36.349	ID:45	26
+01:36.349	ID:45	45
+01:36.349	ID:45	108
+01:36.349	ID:45	126
+01:36.349	ID:45	65
+01:36.349	ID:45	23
+01:36.349	ID:45	40
+01:36.349	ID:45	56
+01:36.349	ID:45	91
+01:36.349	ID:45	63
+01:36.349	ID:45	6
+01:36.349	ID:45	194
+01:36.349	ID:45	185
+01:36.349	ID:45	111
+01:36.349	ID:45	111
+01:36.349	ID:45	211
+01:36.349	ID:45	167
+01:36.349	ID:45	252
+01:36.349	ID:45	45
+01:36.349	ID:45	134
+01:36.349	ID:45	131
+01:36.349	ID:45	225
+01:36.349	ID:45	229
+01:36.349	ID:45	139
+01:36.349	ID:45	154
+01:36.349	ID:45	
+01:36.349	ID:45	 The value of R_d is 1
+01:36.465	ID:46	 The CPU time and energy at the end of authentication 1 for client 46 are 0.157136 and 0.009685
+01:36.465	ID:46	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100Authentication success, sending data request
+01:36.514	ID:1	 The message obtained for node 42 is 9
+01:36.514	ID:1	Authentication successful for Node 46
+01:36.514	ID:1	
+01:36.580	ID:46	1636510324120641232632431071614231782375Data length: 1
+01:36.580	ID:46	Data payload: 0
+01:38.217	ID:44	 The CPU time and energy at the end of authentication 3 for client 44 are 0.201880 and 0.012450
+01:38.217	ID:44	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+01:38.251	ID:1	 The message obtained for node 46 is 9
+01:38.251	ID:1	Authentication successful for Node 44
+01:38.251	ID:1	
+01:38.285	ID:44	39208441431136014423412551441741219134172Data length: 1
+01:38.285	ID:44	Data payload: 0
+01:39.689	ID:43	 The CPU time and energy at the end of authentication 5 for client 43 are 0.193880 and 0.011956
+01:39.689	ID:43	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+01:39.707	ID:1	 The message obtained for node 44 is 9
+01:39.707	ID:1	Authentication successful for Node 43
+01:39.707	ID:1	
+01:39.713	ID:43	39208441431136014423412551441741219134172Data length: 1
+01:39.713	ID:43	Data payload: 0
+01:42.412	ID:47	 The CPU time and energy at the end of authentication 1 for client 47 are 0.194136 and 0.011972
+01:42.412	ID:47	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+01:42.465	ID:1	 The message obtained for node 43 is 9
+01:42.465	ID:1	Authentication successful for Node 47
+01:42.465	ID:1	
+01:42.487	ID:47	39208441431136014423412551441741219134172Data length: 1
+01:42.487	ID:47	Data payload: 0
+01:48.106	ID:48	
+01:48.106	ID:48	 The CPU time and energy at the end of registration for client 48 are 108.000000 and 6.674055
+01:48.106	ID:48	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:48.106	ID:48	 the value of R_d is 1
+01:48.106	ID:48	 the value of M_d is 219
+01:48.187	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+01:48.187	ID:3	
+01:48.187	ID:3	 the value of R_d is 1
+01:48.187	ID:3	 the value of M_d is 219
+01:48.187	ID:3	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:48.187	ID:3	 the value of M_d is 219
+01:48.187	ID:3	 the value of R_d is 1
+01:48.187	ID:3	 the value of id_d is 48
+01:48.187	ID:3	 The value of session key is mask254
+01:48.187	ID:3	165
+01:48.187	ID:3	229
+01:48.187	ID:3	157
+01:48.187	ID:3	79
+01:48.187	ID:3	235
+01:48.187	ID:3	132
+01:48.187	ID:3	7
+01:48.187	ID:3	17
+01:48.187	ID:3	210
+01:48.187	ID:3	5
+01:48.187	ID:3	162
+01:48.187	ID:3	227
+01:48.187	ID:3	95
+01:48.187	ID:3	221
+01:48.187	ID:3	27
+01:48.187	ID:3	225
+01:48.187	ID:3	17
+01:48.187	ID:3	79
+01:48.187	ID:3	98
+01:48.187	ID:3	129
+01:48.187	ID:3	139
+01:48.187	ID:3	244
+01:48.187	ID:3	153
+01:48.187	ID:3	91
+01:48.187	ID:3	37
+01:48.187	ID:3	225
+01:48.187	ID:3	238
+01:48.187	ID:3	16
+01:48.187	ID:3	242
+01:48.187	ID:3	110
+01:48.187	ID:3	186
+01:48.187	ID:3	
+01:48.187	ID:3	 The value of session key is n219
+01:48.187	ID:3	193
+01:48.187	ID:3	180
+01:48.187	ID:3	201
+01:48.187	ID:3	0
+01:48.187	ID:3	255
+01:48.187	ID:3	228
+01:48.187	ID:3	141
+01:48.187	ID:3	87
+01:48.187	ID:3	91
+01:48.187	ID:3	93
+01:48.187	ID:3	165
+01:48.187	ID:3	198
+01:48.187	ID:3	56
+01:48.187	ID:3	4
+01:48.187	ID:3	1
+01:48.187	ID:3	37
+01:48.187	ID:3	246
+01:48.187	ID:3	93
+01:48.187	ID:3	176
+01:48.187	ID:3	254
+01:48.187	ID:3	62
+01:48.187	ID:3	36
+01:48.187	ID:3	73
+01:48.187	ID:3	75
+01:48.187	ID:3	118
+01:48.187	ID:3	234
+01:48.187	ID:3	152
+01:48.187	ID:3	100
+01:48.187	ID:3	87
+01:48.187	ID:3	217
+01:48.187	ID:3	134
+01:48.187	ID:3	
+01:48.187	ID:3	 The value of payload is n3
+01:48.187	ID:3	37
+01:48.187	ID:3	100
+01:48.187	ID:3	81
+01:48.187	ID:3	84
+01:48.187	ID:3	79
+01:48.187	ID:3	20
+01:48.187	ID:3	96
+01:48.187	ID:3	138
+01:48.187	ID:3	70
+01:48.187	ID:3	137
+01:48.187	ID:3	88
+01:48.187	ID:3	7
+01:48.187	ID:3	37
+01:48.187	ID:3	103
+01:48.187	ID:3	217
+01:48.187	ID:3	26
+01:48.187	ID:3	196
+01:48.187	ID:3	231
+01:48.187	ID:3	18
+01:48.187	ID:3	210
+01:48.187	ID:3	127
+01:48.187	ID:3	181
+01:48.187	ID:3	208
+01:48.187	ID:3	208
+01:48.187	ID:3	16
+01:48.187	ID:3	83
+01:48.187	ID:3	11
+01:48.187	ID:3	118
+01:48.187	ID:3	116
+01:48.187	ID:3	165
+01:48.187	ID:3	183
+01:48.187	ID:3	60
+01:48.187	ID:3	1
+01:48.187	ID:3	
+01:48.187	ID:3	 Hpayload sent
+01:48.187	ID:3	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+01:48.187	ID:3	 The token count and send index is 5 and 5 before if 
+01:48.187	ID:3	 The token count and send index is 6 and 5 in the if
+01:48.187	ID:3	 The CPU time and energy at the end of authentication for client 48 by server 3 is 33.496000 and 2.069960
+01:48.188	ID:3	 The token count and send index is 6 and 5
+01:48.188	ID:3	 The token count and send index is 6 and 5 before while[INFO: coap-bt-server] Token count = 6, Sent index = 5
+01:48.227	ID:48	 Sending auth_request
+01:48.227	ID:48	 The value of payload is n3
+01:48.227	ID:48	37
+01:48.227	ID:48	100
+01:48.227	ID:48	81
+01:48.227	ID:48	84
+01:48.227	ID:48	79
+01:48.227	ID:48	20
+01:48.227	ID:48	96
+01:48.227	ID:48	138
+01:48.227	ID:48	70
+01:48.227	ID:48	137
+01:48.227	ID:48	88
+01:48.227	ID:48	7
+01:48.227	ID:48	37
+01:48.227	ID:48	103
+01:48.227	ID:48	217
+01:48.227	ID:48	26
+01:48.227	ID:48	196
+01:48.227	ID:48	231
+01:48.227	ID:48	18
+01:48.227	ID:48	210
+01:48.227	ID:48	127
+01:48.227	ID:48	181
+01:48.227	ID:48	208
+01:48.227	ID:48	208
+01:48.227	ID:48	16
+01:48.227	ID:48	83
+01:48.227	ID:48	11
+01:48.227	ID:48	118
+01:48.227	ID:48	116
+01:48.227	ID:48	165
+01:48.227	ID:48	183
+01:48.227	ID:48	60
+01:48.227	ID:48	
+01:48.227	ID:48	 The timestamp is 1
+01:48.227	ID:48	 the value of M_d is 219
+01:48.227	ID:48	 the value of R_d is 1
+01:48.227	ID:48	 the value of id_as is 3
+01:48.227	ID:48	 the value of id_d is 48
+01:48.227	ID:48	 the value of ts_2 is 1
+01:48.227	ID:48	 The value of session key is mask 22541652291577923513271721051622279522127225177998129139244153913722523816242110186
+01:48.227	ID:48	 The value of session key is n219
+01:48.227	ID:48	193
+01:48.227	ID:48	180
+01:48.227	ID:48	201
+01:48.227	ID:48	0
+01:48.227	ID:48	255
+01:48.227	ID:48	228
+01:48.227	ID:48	141
+01:48.227	ID:48	87
+01:48.227	ID:48	91
+01:48.227	ID:48	93
+01:48.227	ID:48	165
+01:48.227	ID:48	198
+01:48.227	ID:48	56
+01:48.227	ID:48	4
+01:48.227	ID:48	1
+01:48.227	ID:48	37
+01:48.227	ID:48	246
+01:48.227	ID:48	93
+01:48.227	ID:48	176
+01:48.227	ID:48	254
+01:48.227	ID:48	62
+01:48.227	ID:48	36
+01:48.227	ID:48	73
+01:48.227	ID:48	75
+01:48.227	ID:48	118
+01:48.227	ID:48	234
+01:48.227	ID:48	152
+01:48.227	ID:48	100
+01:48.227	ID:48	87
+01:48.227	ID:48	217
+01:48.227	ID:48	134
+01:48.227	ID:48	
+01:48.227	ID:48	 The value of mask254
+01:48.227	ID:48	165
+01:48.227	ID:48	229
+01:48.227	ID:48	157
+01:48.227	ID:48	79
+01:48.227	ID:48	235
+01:48.227	ID:48	132
+01:48.227	ID:48	7
+01:48.227	ID:48	17
+01:48.227	ID:48	210
+01:48.227	ID:48	5
+01:48.227	ID:48	162
+01:48.227	ID:48	227
+01:48.227	ID:48	95
+01:48.227	ID:48	221
+01:48.227	ID:48	27
+01:48.227	ID:48	225
+01:48.227	ID:48	17
+01:48.227	ID:48	79
+01:48.227	ID:48	98
+01:48.227	ID:48	129
+01:48.227	ID:48	139
+01:48.227	ID:48	244
+01:48.227	ID:48	153
+01:48.227	ID:48	91
+01:48.227	ID:48	37
+01:48.227	ID:48	225
+01:48.227	ID:48	238
+01:48.227	ID:48	16
+01:48.227	ID:48	242
+01:48.227	ID:48	110
+01:48.227	ID:48	186
+01:48.227	ID:48	
+01:48.227	ID:48	 The value of R_d is 1
+01:48.232	ID:1	 The message obtained for node 47 is 9
+01:48.232	ID:1	Received auth tokenAuthentication token for Node 48
+01:48.232	ID:1	
+01:48.232	ID:1	 Obtained auth_token is 48
+01:48.232	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+01:48.689	ID:43	
+01:48.689	ID:43	 The CPU time and energy at the end of registration for client 43 are 108.000000 and 6.673769
+01:48.689	ID:43	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:48.689	ID:43	 the value of R_d is 0
+01:48.689	ID:43	 the value of M_d is 219
+01:48.760	ID:2	 The token count and send index is 2 and 9 before while[INFO: coap-bt-server] Handler auth called!
+01:48.760	ID:2	
+01:48.760	ID:2	 the value of R_d is 0
+01:48.760	ID:2	 the value of M_d is 219
+01:48.760	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:48.760	ID:2	 the value of M_d is 219
+01:48.760	ID:2	 the value of R_d is 0
+01:48.760	ID:2	 the value of id_d is 43
+01:48.760	ID:2	 The value of session key is mask115
+01:48.760	ID:2	56
+01:48.760	ID:2	173
+01:48.760	ID:2	108
+01:48.760	ID:2	15
+01:48.760	ID:2	129
+01:48.760	ID:2	30
+01:48.760	ID:2	211
+01:48.760	ID:2	80
+01:48.760	ID:2	117
+01:48.760	ID:2	51
+01:48.760	ID:2	121
+01:48.760	ID:2	77
+01:48.760	ID:2	135
+01:48.760	ID:2	10
+01:48.760	ID:2	233
+01:48.760	ID:2	181
+01:48.760	ID:2	207
+01:48.760	ID:2	133
+01:48.760	ID:2	122
+01:48.760	ID:2	246
+01:48.760	ID:2	106
+01:48.760	ID:2	186
+01:48.760	ID:2	40
+01:48.760	ID:2	196
+01:48.760	ID:2	99
+01:48.760	ID:2	54
+01:48.760	ID:2	109
+01:48.760	ID:2	79
+01:48.760	ID:2	38
+01:48.760	ID:2	109
+01:48.760	ID:2	179
+01:48.760	ID:2	
+01:48.760	ID:2	 The value of session key is n219
+01:48.760	ID:2	193
+01:48.760	ID:2	180
+01:48.760	ID:2	201
+01:48.760	ID:2	0
+01:48.760	ID:2	255
+01:48.760	ID:2	228
+01:48.760	ID:2	141
+01:48.760	ID:2	87
+01:48.760	ID:2	91
+01:48.760	ID:2	93
+01:48.760	ID:2	165
+01:48.760	ID:2	198
+01:48.760	ID:2	56
+01:48.760	ID:2	4
+01:48.760	ID:2	1
+01:48.760	ID:2	37
+01:48.760	ID:2	246
+01:48.760	ID:2	93
+01:48.760	ID:2	176
+01:48.760	ID:2	254
+01:48.760	ID:2	62
+01:48.760	ID:2	36
+01:48.760	ID:2	73
+01:48.760	ID:2	75
+01:48.760	ID:2	118
+01:48.760	ID:2	234
+01:48.760	ID:2	152
+01:48.760	ID:2	100
+01:48.760	ID:2	87
+01:48.760	ID:2	217
+01:48.760	ID:2	134
+01:48.760	ID:2	
+01:48.760	ID:2	 The value of payload is n2
+01:48.760	ID:2	168
+01:48.760	ID:2	249
+01:48.760	ID:2	25
+01:48.760	ID:2	165
+01:48.760	ID:2	15
+01:48.760	ID:2	126
+01:48.760	ID:2	250
+01:48.760	ID:2	94
+01:48.760	ID:2	7
+01:48.760	ID:2	46
+01:48.760	ID:2	110
+01:48.760	ID:2	220
+01:48.760	ID:2	139
+01:48.760	ID:2	191
+01:48.760	ID:2	14
+01:48.760	ID:2	232
+01:48.760	ID:2	144
+01:48.760	ID:2	57
+01:48.760	ID:2	216
+01:48.760	ID:2	202
+01:48.760	ID:2	8
+01:48.760	ID:2	84
+01:48.760	ID:2	158
+01:48.760	ID:2	97
+01:48.760	ID:2	143
+01:48.760	ID:2	21
+01:48.760	ID:2	220
+01:48.760	ID:2	245
+01:48.760	ID:2	43
+01:48.760	ID:2	113
+01:48.760	ID:2	180
+01:48.760	ID:2	53
+01:48.760	ID:2	1
+01:48.760	ID:2	
+01:48.760	ID:2	 Hpayload sent
+01:48.760	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:48.760	ID:2	 The token count and send index is 2 and 9 before if 
+01:48.760	ID:2	 The token count and send index is 3 and 9 in the if
+01:48.760	ID:2	 The CPU time and energy at the end of authentication for client 43 by server 2 is 12.478000 and 0.771116
+01:48.761	ID:2	 The token count and send index is 3 and 9
+01:48.856	ID:43	 Sending auth_request
+01:48.856	ID:43	 The value of payload is n2
+01:48.856	ID:43	168
+01:48.856	ID:43	249
+01:48.856	ID:43	25
+01:48.856	ID:43	165
+01:48.856	ID:43	15
+01:48.856	ID:43	126
+01:48.856	ID:43	250
+01:48.856	ID:43	94
+01:48.856	ID:43	7
+01:48.856	ID:43	46
+01:48.856	ID:43	110
+01:48.856	ID:43	220
+01:48.856	ID:43	139
+01:48.856	ID:43	191
+01:48.856	ID:43	14
+01:48.856	ID:43	232
+01:48.856	ID:43	144
+01:48.856	ID:43	57
+01:48.856	ID:43	216
+01:48.856	ID:43	202
+01:48.856	ID:43	8
+01:48.856	ID:43	84
+01:48.856	ID:43	158
+01:48.856	ID:43	97
+01:48.856	ID:43	143
+01:48.856	ID:43	21
+01:48.856	ID:43	220
+01:48.856	ID:43	245
+01:48.856	ID:43	43
+01:48.856	ID:43	113
+01:48.856	ID:43	180
+01:48.856	ID:43	53
+01:48.856	ID:43	
+01:48.856	ID:43	 The timestamp is 1
+01:48.856	ID:43	 the value of M_d is 219
+01:48.856	ID:43	 the value of R_d is 0
+01:48.856	ID:43	 the value of id_as is 2
+01:48.856	ID:43	 the value of id_d is 43
+01:48.856	ID:43	 the value of ts_2 is 1
+01:48.856	ID:43	 The value of session key is mask 2115561731081512930211801175112177135102331812071331222461061864019699541097938109179
+01:48.856	ID:43	 The value of session key is n219
+01:48.856	ID:43	193
+01:48.856	ID:43	180
+01:48.856	ID:43	201
+01:48.856	ID:43	0
+01:48.856	ID:43	255
+01:48.856	ID:43	228
+01:48.856	ID:43	141
+01:48.856	ID:43	87
+01:48.856	ID:43	91
+01:48.856	ID:43	93
+01:48.856	ID:43	165
+01:48.856	ID:43	198
+01:48.856	ID:43	56
+01:48.856	ID:43	4
+01:48.856	ID:43	1
+01:48.856	ID:43	37
+01:48.856	ID:43	246
+01:48.856	ID:43	93
+01:48.856	ID:43	176
+01:48.856	ID:43	254
+01:48.856	ID:43	62
+01:48.856	ID:43	36
+01:48.856	ID:43	73
+01:48.856	ID:43	75
+01:48.856	ID:43	118
+01:48.856	ID:43	234
+01:48.856	ID:43	152
+01:48.856	ID:43	100
+01:48.856	ID:43	87
+01:48.856	ID:43	217
+01:48.856	ID:43	134
+01:48.856	ID:43	
+01:48.856	ID:43	 The value of mask115
+01:48.856	ID:43	56
+01:48.856	ID:43	173
+01:48.856	ID:43	108
+01:48.856	ID:43	15
+01:48.856	ID:43	129
+01:48.856	ID:43	30
+01:48.856	ID:43	211
+01:48.856	ID:43	80
+01:48.856	ID:43	117
+01:48.856	ID:43	51
+01:48.856	ID:43	121
+01:48.856	ID:43	77
+01:48.856	ID:43	135
+01:48.856	ID:43	10
+01:48.856	ID:43	233
+01:48.856	ID:43	181
+01:48.856	ID:43	207
+01:48.856	ID:43	133
+01:48.856	ID:43	122
+01:48.856	ID:43	246
+01:48.856	ID:43	106
+01:48.856	ID:43	186
+01:48.856	ID:43	40
+01:48.856	ID:43	196
+01:48.856	ID:43	99
+01:48.856	ID:43	54
+01:48.856	ID:43	109
+01:48.856	ID:43	79
+01:48.856	ID:43	38
+01:48.856	ID:43	109
+01:48.856	ID:43	179
+01:48.856	ID:43	
+01:48.856	ID:43	 The value of R_d is 0
+01:51.625	ID:49	 The CPU time and energy at the end of authentication 1 for client 49 are 0.101880 and 0.006270
+01:51.625	ID:49	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268Authentication success, sending data request
+01:51.671	ID:1	 The CPU time and energy at the end of authenticatication for client 48 by server 3 and gateway 1 are 33.474136 and 2.068299
+01:51.671	ID:1	Authentication successful for Node 49
+01:51.671	ID:1	
+01:51.696	ID:49	39208441431136014423412551441741219134172Data length: 1
+01:51.696	ID:49	Data payload: 0
+01:52.217	ID:44	
+01:52.217	ID:44	 The CPU time and energy at the end of registration for client 44 are 112.000000 and 6.921013
+01:52.217	ID:44	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:52.217	ID:44	 the value of R_d is 0
+01:52.217	ID:44	 the value of M_d is 219
+01:52.291	ID:2	 The token count and send index is 3 and 9 before while[INFO: coap-bt-server] Handler auth called!
+01:52.291	ID:2	
+01:52.291	ID:2	 the value of R_d is 0
+01:52.291	ID:2	 the value of M_d is 219
+01:52.291	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:52.291	ID:2	 the value of M_d is 219
+01:52.291	ID:2	 the value of R_d is 0
+01:52.291	ID:2	 the value of id_d is 44
+01:52.291	ID:2	 The value of session key is mask23
+01:52.291	ID:2	129
+01:52.291	ID:2	16
+01:52.291	ID:2	8
+01:52.291	ID:2	23
+01:52.291	ID:2	20
+01:52.291	ID:2	219
+01:52.291	ID:2	79
+01:52.291	ID:2	169
+01:52.291	ID:2	127
+01:52.291	ID:2	10
+01:52.291	ID:2	174
+01:52.291	ID:2	21
+01:52.291	ID:2	221
+01:52.291	ID:2	16
+01:52.291	ID:2	111
+01:52.291	ID:2	174
+01:52.291	ID:2	146
+01:52.291	ID:2	243
+01:52.291	ID:2	97
+01:52.291	ID:2	245
+01:52.291	ID:2	66
+01:52.291	ID:2	60
+01:52.291	ID:2	47
+01:52.291	ID:2	189
+01:52.291	ID:2	77
+01:52.291	ID:2	100
+01:52.291	ID:2	231
+01:52.291	ID:2	130
+01:52.291	ID:2	178
+01:52.291	ID:2	21
+01:52.291	ID:2	193
+01:52.291	ID:2	
+01:52.291	ID:2	 The value of session key is n219
+01:52.291	ID:2	193
+01:52.291	ID:2	180
+01:52.291	ID:2	201
+01:52.291	ID:2	0
+01:52.291	ID:2	255
+01:52.291	ID:2	228
+01:52.291	ID:2	141
+01:52.291	ID:2	87
+01:52.291	ID:2	91
+01:52.291	ID:2	93
+01:52.291	ID:2	165
+01:52.291	ID:2	198
+01:52.291	ID:2	56
+01:52.291	ID:2	4
+01:52.291	ID:2	1
+01:52.291	ID:2	37
+01:52.291	ID:2	246
+01:52.291	ID:2	93
+01:52.291	ID:2	176
+01:52.291	ID:2	254
+01:52.291	ID:2	62
+01:52.291	ID:2	36
+01:52.291	ID:2	73
+01:52.291	ID:2	75
+01:52.291	ID:2	118
+01:52.291	ID:2	234
+01:52.291	ID:2	152
+01:52.291	ID:2	100
+01:52.291	ID:2	87
+01:52.291	ID:2	217
+01:52.291	ID:2	134
+01:52.291	ID:2	
+01:52.291	ID:2	 The value of payload is n2
+01:52.291	ID:2	204
+01:52.291	ID:2	64
+01:52.291	ID:2	164
+01:52.291	ID:2	193
+01:52.291	ID:2	23
+01:52.291	ID:2	235
+01:52.291	ID:2	63
+01:52.291	ID:2	194
+01:52.291	ID:2	254
+01:52.291	ID:2	36
+01:52.291	ID:2	87
+01:52.291	ID:2	11
+01:52.291	ID:2	211
+01:52.291	ID:2	229
+01:52.291	ID:2	20
+01:52.291	ID:2	110
+01:52.291	ID:2	139
+01:52.291	ID:2	100
+01:52.291	ID:2	174
+01:52.291	ID:2	209
+01:52.291	ID:2	11
+01:52.291	ID:2	124
+01:52.291	ID:2	24
+01:52.291	ID:2	102
+01:52.291	ID:2	246
+01:52.291	ID:2	59
+01:52.291	ID:2	142
+01:52.291	ID:2	127
+01:52.291	ID:2	230
+01:52.291	ID:2	229
+01:52.291	ID:2	204
+01:52.291	ID:2	71
+01:52.291	ID:2	1
+01:52.291	ID:2	
+01:52.291	ID:2	 Hpayload sent
+01:52.291	ID:2	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:52.291	ID:2	 The token count and send index is 3 and 9 before if 
+01:52.291	ID:2	 The token count and send index is 4 and 9 in the if
+01:52.291	ID:2	 The CPU time and energy at the end of authentication for client 44 by server 2 is 3.531456 and 0.218219
+01:52.292	ID:2	 The token count and send index is 4 and 9
+01:52.385	ID:44	 Sending auth_request
+01:52.385	ID:44	 The value of payload is n2
+01:52.385	ID:44	204
+01:52.385	ID:44	64
+01:52.385	ID:44	164
+01:52.385	ID:44	193
+01:52.385	ID:44	23
+01:52.385	ID:44	235
+01:52.385	ID:44	63
+01:52.385	ID:44	194
+01:52.385	ID:44	254
+01:52.385	ID:44	36
+01:52.385	ID:44	87
+01:52.385	ID:44	11
+01:52.385	ID:44	211
+01:52.385	ID:44	229
+01:52.385	ID:44	20
+01:52.385	ID:44	110
+01:52.385	ID:44	139
+01:52.385	ID:44	100
+01:52.385	ID:44	174
+01:52.385	ID:44	209
+01:52.385	ID:44	11
+01:52.385	ID:44	124
+01:52.385	ID:44	24
+01:52.385	ID:44	102
+01:52.385	ID:44	246
+01:52.385	ID:44	59
+01:52.385	ID:44	142
+01:52.385	ID:44	127
+01:52.385	ID:44	230
+01:52.385	ID:44	229
+01:52.385	ID:44	204
+01:52.385	ID:44	71
+01:52.385	ID:44	
+01:52.385	ID:44	 The timestamp is 1
+01:52.385	ID:44	 the value of M_d is 219
+01:52.385	ID:44	 the value of R_d is 0
+01:52.385	ID:44	 the value of id_as is 2
+01:52.385	ID:44	 the value of id_d is 44
+01:52.385	ID:44	 the value of ts_2 is 1
+01:52.385	ID:44	 The value of session key is mask 223129168232021979169127101742122116111174146243972456660471897710023113017821193
+01:52.385	ID:44	 The value of session key is n219
+01:52.385	ID:44	193
+01:52.385	ID:44	180
+01:52.385	ID:44	201
+01:52.385	ID:44	0
+01:52.385	ID:44	255
+01:52.385	ID:44	228
+01:52.385	ID:44	141
+01:52.385	ID:44	87
+01:52.385	ID:44	91
+01:52.385	ID:44	93
+01:52.385	ID:44	165
+01:52.385	ID:44	198
+01:52.385	ID:44	56
+01:52.385	ID:44	4
+01:52.385	ID:44	1
+01:52.385	ID:44	37
+01:52.385	ID:44	246
+01:52.385	ID:44	93
+01:52.385	ID:44	176
+01:52.385	ID:44	254
+01:52.385	ID:44	62
+01:52.385	ID:44	36
+01:52.385	ID:44	73
+01:52.385	ID:44	75
+01:52.385	ID:44	118
+01:52.385	ID:44	234
+01:52.385	ID:44	152
+01:52.385	ID:44	100
+01:52.385	ID:44	87
+01:52.385	ID:44	217
+01:52.385	ID:44	134
+01:52.385	ID:44	
+01:52.385	ID:44	 The value of mask23
+01:52.385	ID:44	129
+01:52.385	ID:44	16
+01:52.385	ID:44	8
+01:52.385	ID:44	23
+01:52.385	ID:44	20
+01:52.385	ID:44	219
+01:52.385	ID:44	79
+01:52.385	ID:44	169
+01:52.385	ID:44	127
+01:52.385	ID:44	10
+01:52.385	ID:44	174
+01:52.385	ID:44	21
+01:52.385	ID:44	221
+01:52.385	ID:44	16
+01:52.385	ID:44	111
+01:52.385	ID:44	174
+01:52.385	ID:44	146
+01:52.385	ID:44	243
+01:52.385	ID:44	97
+01:52.385	ID:44	245
+01:52.385	ID:44	66
+01:52.385	ID:44	60
+01:52.385	ID:44	47
+01:52.385	ID:44	189
+01:52.385	ID:44	77
+01:52.385	ID:44	100
+01:52.385	ID:44	231
+01:52.385	ID:44	130
+01:52.385	ID:44	178
+01:52.385	ID:44	21
+01:52.385	ID:44	193
+01:52.385	ID:44	
+01:52.385	ID:44	 The value of R_d is 0
+01:52.389	ID:41	
+01:52.389	ID:41	 The CPU time and energy at the end of registration for client 41 are 112.000000 and 6.921224
+01:52.389	ID:41	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:52.389	ID:41	 the value of R_d is 1
+01:52.389	ID:41	 the value of M_d is 219
+01:52.489	ID:2	 The token count and send index is 4 and 9 before while[INFO: coap-bt-server] Handler auth called!
+01:52.489	ID:2	
+01:52.489	ID:2	 the value of R_d is 1
+01:52.489	ID:2	 the value of M_d is 219
+01:52.489	ID:2	 Hashed value of y_d2191931802010255228141879193165198564137246931762546236737511823415210087217134
+01:52.489	ID:2	 the value of M_d is 219
+01:52.489	ID:2	 the value of R_d is 1
+01:52.489	ID:2	 the value of id_d is 41
+01:52.489	ID:2	 The value of session key is mask156
+01:52.489	ID:2	236
+01:52.489	ID:2	136
+01:52.489	ID:2	168
+01:52.489	ID:2	75
+01:52.489	ID:2	191
+01:52.489	ID:2	217
+01:52.489	ID:2	16
+01:52.489	ID:2	219
+01:52.489	ID:2	48
+01:52.489	ID:2	221
+01:52.489	ID:2	131
+01:52.489	ID:2	148
+01:52.489	ID:2	239
+01:52.489	ID:2	6
+01:52.489	ID:2	234
+01:52.489	ID:2	251
+01:52.489	ID:2	168
+01:52.489	ID:2	148
+01:52.489	ID:2	116
+01:52.489	ID:2	156
+01:52.489	ID:2	218
+01:52.489	ID:2	215
+01:52.489	ID:2	24
+01:52.489	ID:2	223
+01:52.489	ID:2	204
+01:52.489	ID:2	73
+01:52.489	ID:2	70
+01:52.489	ID:2	173
+01:52.489	ID:2	161
+01:52.489	ID:2	66
+01:52.489	ID:2	170
+01:52.489	ID:2	
+01:52.489	ID:2	 The value of session key is n219
+01:52.489	ID:2	193
+01:52.489	ID:2	180
+01:52.489	ID:2	201
+01:52.489	ID:2	0
+01:52.489	ID:2	255
+01:52.489	ID:2	228
+01:52.489	ID:2	141
+01:52.489	ID:2	87
+01:52.489	ID:2	91
+01:52.489	ID:2	93
+01:52.489	ID:2	165
+01:52.489	ID:2	198
+01:52.489	ID:2	56
+01:52.489	ID:2	4
+01:52.489	ID:2	1
+01:52.489	ID:2	37
+01:52.489	ID:2	246
+01:52.489	ID:2	93
+01:52.489	ID:2	176
+01:52.489	ID:2	254
+01:52.489	ID:2	62
+01:52.489	ID:2	36
+01:52.489	ID:2	73
+01:52.489	ID:2	75
+01:52.489	ID:2	118
+01:52.489	ID:2	234
+01:52.489	ID:2	152
+01:52.489	ID:2	100
+01:52.489	ID:2	87
+01:52.489	ID:2	217
+01:52.489	ID:2	134
+01:52.489	ID:2	
+01:52.489	ID:2	 The value of payload is n2
+01:52.489	ID:2	71
+01:52.489	ID:2	45
+01:52.489	ID:2	60
+01:52.489	ID:2	97
+01:52.489	ID:2	75
+01:52.489	ID:2	64
+01:52.489	ID:2	61
+01:52.489	ID:2	157
+01:52.489	ID:2	140
+01:52.489	ID:2	107
+01:52.489	ID:2	128
+01:52.489	ID:2	38
+01:52.489	ID:2	82
+01:52.489	ID:2	215
+01:52.489	ID:2	2
+01:52.489	ID:2	235
+01:52.489	ID:2	222
+01:52.489	ID:2	94
+01:52.489	ID:2	201
+01:52.489	ID:2	196
+01:52.489	ID:2	98
+01:52.489	ID:2	228
+01:52.489	ID:2	243
+01:52.489	ID:2	81
+01:52.489	ID:2	148
+01:52.489	ID:2	186
+01:52.489	ID:2	163
+01:52.489	ID:2	222
+01:52.489	ID:2	201
+01:52.489	ID:2	246
+01:52.489	ID:2	155
+01:52.489	ID:2	44
+01:52.489	ID:2	1
+01:52.489	ID:2	
+01:52.489	ID:2	 Hpayload sent
+01:52.489	ID:2	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+01:52.489	ID:2	 The token count and send index is 4 and 9 before if 
+01:52.489	ID:2	 The token count and send index is 5 and 9 in the if
+01:52.489	ID:2	 The CPU time and energy at the end of authentication for client 41 by server 2 is 0.197544 and 0.012184
+01:52.490	ID:2	 The token count and send index is 5 and 9
+01:52.574	ID:41	 Sending auth_request
+01:52.574	ID:41	 The value of payload is n2
+01:52.574	ID:41	71
+01:52.574	ID:41	45
+01:52.574	ID:41	60
+01:52.574	ID:41	97
+01:52.574	ID:41	75
+01:52.574	ID:41	64
+01:52.574	ID:41	61
+01:52.574	ID:41	157
+01:52.574	ID:41	140
+01:52.574	ID:41	107
+01:52.574	ID:41	128
+01:52.574	ID:41	38
+01:52.574	ID:41	82
+01:52.574	ID:41	215
+01:52.574	ID:41	2
+01:52.574	ID:41	235
+01:52.574	ID:41	222
+01:52.574	ID:41	94
+01:52.574	ID:41	201
+01:52.574	ID:41	196
+01:52.574	ID:41	98
+01:52.574	ID:41	228
+01:52.574	ID:41	243
+01:52.574	ID:41	81
+01:52.574	ID:41	148
+01:52.574	ID:41	186
+01:52.574	ID:41	163
+01:52.574	ID:41	222
+01:52.574	ID:41	201
+01:52.574	ID:41	246
+01:52.574	ID:41	155
+01:52.574	ID:41	44
+01:52.574	ID:41	
+01:52.574	ID:41	 The timestamp is 1
+01:52.574	ID:41	 the value of M_d is 219
+01:52.574	ID:41	 the value of R_d is 1
+01:52.574	ID:41	 the value of id_as is 2
+01:52.574	ID:41	 the value of id_d is 41
+01:52.574	ID:41	 the value of ts_2 is 1
+01:52.574	ID:41	 The value of session key is mask 2156236136168751912171621948221131148239623425116814811615621821524223204737017316166170
+01:52.574	ID:41	 The value of session key is n219
+01:52.574	ID:41	193
+01:52.574	ID:41	180
+01:52.574	ID:41	201
+01:52.574	ID:41	0
+01:52.574	ID:41	255
+01:52.574	ID:41	228
+01:52.574	ID:41	141
+01:52.574	ID:41	87
+01:52.574	ID:41	91
+01:52.574	ID:41	93
+01:52.574	ID:41	165
+01:52.574	ID:41	198
+01:52.574	ID:41	56
+01:52.574	ID:41	4
+01:52.574	ID:41	1
+01:52.574	ID:41	37
+01:52.574	ID:41	246
+01:52.574	ID:41	93
+01:52.574	ID:41	176
+01:52.574	ID:41	254
+01:52.574	ID:41	62
+01:52.574	ID:41	36
+01:52.574	ID:41	73
+01:52.574	ID:41	75
+01:52.574	ID:41	118
+01:52.574	ID:41	234
+01:52.574	ID:41	152
+01:52.574	ID:41	100
+01:52.574	ID:41	87
+01:52.574	ID:41	217
+01:52.574	ID:41	134
+01:52.574	ID:41	
+01:52.574	ID:41	 The value of mask156
+01:52.574	ID:41	236
+01:52.574	ID:41	136
+01:52.574	ID:41	168
+01:52.574	ID:41	75
+01:52.574	ID:41	191
+01:52.574	ID:41	217
+01:52.574	ID:41	16
+01:52.574	ID:41	219
+01:52.574	ID:41	48
+01:52.574	ID:41	221
+01:52.574	ID:41	131
+01:52.574	ID:41	148
+01:52.574	ID:41	239
+01:52.574	ID:41	6
+01:52.574	ID:41	234
+01:52.574	ID:41	251
+01:52.574	ID:41	168
+01:52.574	ID:41	148
+01:52.574	ID:41	116
+01:52.574	ID:41	156
+01:52.574	ID:41	218
+01:52.574	ID:41	215
+01:52.574	ID:41	24
+01:52.574	ID:41	223
+01:52.574	ID:41	204
+01:52.574	ID:41	73
+01:52.574	ID:41	70
+01:52.574	ID:41	173
+01:52.574	ID:41	161
+01:52.574	ID:41	66
+01:52.574	ID:41	170
+01:52.574	ID:41	
+01:52.574	ID:41	 The value of R_d is 1

@@ -1,0 +1,1766 @@
+00:00.073	ID:8	[INFO: Main      ] Starting Contiki-NG
+00:00.073	ID:8	[INFO: Main      ] - Routing: RPL Lite
+00:00.073	ID:8	[INFO: Main      ] - Net: sicslowpan
+00:00.073	ID:8	[INFO: Main      ] - MAC: CSMA
+00:00.073	ID:8	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.073	ID:8	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.073	ID:8	[INFO: Main      ] Node ID: 8
+00:00.073	ID:8	[INFO: Main      ] Link-layer address: 0008.0008.0008.0008
+00:00.073	ID:8	[INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
+00:00.073	ID:8	[INFO: coap-bt-server] Starting CoAP server
+00:00.236	ID:2	[INFO: Main      ] Starting Contiki-NG
+00:00.236	ID:2	[INFO: Main      ] - Routing: RPL Lite
+00:00.236	ID:2	[INFO: Main      ] - Net: sicslowpan
+00:00.236	ID:2	[INFO: Main      ] - MAC: CSMA
+00:00.236	ID:2	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.236	ID:2	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.236	ID:2	[INFO: Main      ] Node ID: 2
+00:00.236	ID:2	[INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+00:00.236	ID:2	[INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+00:00.236	ID:2	[INFO: coap-bt-server] Starting CoAP server
+00:00.250	ID:6	[INFO: Main      ] Starting Contiki-NG
+00:00.250	ID:6	[INFO: Main      ] - Routing: RPL Lite
+00:00.250	ID:6	[INFO: Main      ] - Net: sicslowpan
+00:00.250	ID:6	[INFO: Main      ] - MAC: CSMA
+00:00.250	ID:6	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.250	ID:6	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.250	ID:6	[INFO: Main      ] Node ID: 6
+00:00.250	ID:6	[INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+00:00.250	ID:6	[INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+00:00.250	ID:6	[INFO: coap-bt-server] Starting CoAP server
+00:00.348	ID:4	[INFO: Main      ] Starting Contiki-NG
+00:00.348	ID:4	[INFO: Main      ] - Routing: RPL Lite
+00:00.348	ID:4	[INFO: Main      ] - Net: sicslowpan
+00:00.348	ID:4	[INFO: Main      ] - MAC: CSMA
+00:00.348	ID:4	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.348	ID:4	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.348	ID:4	[INFO: Main      ] Node ID: 4
+00:00.348	ID:4	[INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+00:00.348	ID:4	[INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+00:00.348	ID:4	[INFO: coap-bt-server] Starting CoAP server
+00:00.382	ID:1	[INFO: Main      ] Starting Contiki-NG
+00:00.382	ID:1	[INFO: Main      ] - Routing: RPL Lite
+00:00.382	ID:1	[INFO: Main      ] - Net: sicslowpan
+00:00.382	ID:1	[INFO: Main      ] - MAC: CSMA
+00:00.382	ID:1	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.382	ID:1	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.382	ID:1	[INFO: Main      ] Node ID: 1
+00:00.382	ID:1	[INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+00:00.382	ID:1	[INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+00:00.382	ID:1	[INFO: coap-hello-gateway] Starting Erbium Example Server
+00:00.382	ID:1	[INFO: coap-hello-gateway] Server is listening for requests
+00:00.402	ID:7	[INFO: Main      ] Starting Contiki-NG
+00:00.402	ID:7	[INFO: Main      ] - Routing: RPL Lite
+00:00.402	ID:7	[INFO: Main      ] - Net: sicslowpan
+00:00.402	ID:7	[INFO: Main      ] - MAC: CSMA
+00:00.402	ID:7	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.402	ID:7	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.402	ID:7	[INFO: Main      ] Node ID: 7
+00:00.402	ID:7	[INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+00:00.402	ID:7	[INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+00:00.402	ID:7	[INFO: coap-bt-server] Starting CoAP server
+00:00.556	ID:10	[INFO: Main      ] Starting Contiki-NG
+00:00.556	ID:10	[INFO: Main      ] - Routing: RPL Lite
+00:00.556	ID:10	[INFO: Main      ] - Net: sicslowpan
+00:00.556	ID:10	[INFO: Main      ] - MAC: CSMA
+00:00.556	ID:10	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.556	ID:10	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.556	ID:10	[INFO: Main      ] Node ID: 10
+00:00.556	ID:10	[INFO: Main      ] Link-layer address: 000a.000a.000a.000a
+00:00.556	ID:10	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
+00:00.708	ID:9	[INFO: Main      ] Starting Contiki-NG
+00:00.708	ID:9	[INFO: Main      ] - Routing: RPL Lite
+00:00.708	ID:9	[INFO: Main      ] - Net: sicslowpan
+00:00.708	ID:9	[INFO: Main      ] - MAC: CSMA
+00:00.708	ID:9	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.708	ID:9	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.708	ID:9	[INFO: Main      ] Node ID: 9
+00:00.708	ID:9	[INFO: Main      ] Link-layer address: 0009.0009.0009.0009
+00:00.708	ID:9	[INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
+00:00.715	ID:5	[INFO: Main      ] Starting Contiki-NG
+00:00.715	ID:5	[INFO: Main      ] - Routing: RPL Lite
+00:00.715	ID:5	[INFO: Main      ] - Net: sicslowpan
+00:00.715	ID:5	[INFO: Main      ] - MAC: CSMA
+00:00.715	ID:5	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.715	ID:5	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.715	ID:5	[INFO: Main      ] Node ID: 5
+00:00.715	ID:5	[INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+00:00.715	ID:5	[INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+00:00.715	ID:5	[INFO: coap-bt-server] Starting CoAP server
+00:00.899	ID:3	[INFO: Main      ] Starting Contiki-NG
+00:00.899	ID:3	[INFO: Main      ] - Routing: RPL Lite
+00:00.899	ID:3	[INFO: Main      ] - Net: sicslowpan
+00:00.899	ID:3	[INFO: Main      ] - MAC: CSMA
+00:00.899	ID:3	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.899	ID:3	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.899	ID:3	[INFO: Main      ] Node ID: 3
+00:00.899	ID:3	[INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+00:00.899	ID:3	[INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+00:00.899	ID:3	[INFO: coap-bt-server] Starting CoAP server
+00:14.708	ID:9	Sending registration request to server...
+00:15.556	ID:10	Sending registration request to server...
+00:40.948	ID:3	[INFO: coap-bt-server] Handler reg called!
+00:40.973	ID:10	Received reg payload
+00:40.973	ID:10	Simulate PUF response: challenge=6 response=1
+00:40.973	ID:10	Sending reg1 request
+00:41.055	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+00:41.055	ID:3	
+00:41.097	ID:10	Registered
+00:41.097	ID:10	 the value of R_d is 1
+00:41.097	ID:10	 the value of M_d is 5
+00:41.199	ID:3	 during reg R_d is 1[INFO: coap-bt-server] Handler auth called!
+00:41.199	ID:3	
+00:41.199	ID:3	 the value of R_d is 1
+00:41.199	ID:3	 the value of M_d is 5
+00:41.199	ID:3	 the value of M_d is 5
+00:41.199	ID:3	 the value of R_d is 1
+00:41.199	ID:3	 the value of id_d is 10
+00:41.199	ID:3	 The CPU time and energy at the end of authentication for server 3 are 40.300200 and 2.490373
+00:41.199	ID:3	 Hpayload sent
+00:41.199	ID:3	 The token count and send index is 0 and 0 before if 
+00:41.199	ID:3	 The token count and send index is 1 and 0 in the if
+00:41.200	ID:3	 The token count and send index is 1 and 0
+00:41.200	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:41.234	ID:10	 Sending auth_request
+00:41.234	ID:10	 The timestamp is 1
+00:41.234	ID:10	 the value of M_d is 5
+00:41.234	ID:10	 the value of R_d is 1
+00:41.234	ID:10	 the value of id_as is 3
+00:41.234	ID:10	 the value of id_d is 10
+00:41.234	ID:10	 the value of ts_2 is 1
+00:41.234	ID:10	 The value of R_d is 1
+00:41.321	ID:1	
+00:41.321	ID:1	Received auth tokenAuthentication token for Node 10
+00:41.321	ID:1	
+00:41.321	ID:1	 Obtained auth_token is 10
+00:41.808	ID:2	[INFO: coap-bt-server] Handler reg called!
+00:41.897	ID:9	Received reg payload
+00:41.897	ID:9	Simulate PUF response: challenge=6 response=0
+00:41.897	ID:9	Sending reg1 request
+00:41.978	ID:2	[INFO: coap-bt-server] Handler reg1 called!
+00:41.978	ID:2	
+00:42.042	ID:9	Registered
+00:42.042	ID:9	 the value of R_d is 0
+00:42.042	ID:9	 the value of M_d is 5
+00:42.151	ID:2	 during reg R_d is 0[INFO: coap-bt-server] Handler auth called!
+00:42.151	ID:2	
+00:42.151	ID:2	 the value of R_d is 0
+00:42.151	ID:2	 the value of M_d is 5
+00:42.151	ID:2	 the value of M_d is 5
+00:42.151	ID:2	 the value of R_d is 0
+00:42.151	ID:2	 the value of id_d is 9
+00:42.151	ID:2	 The CPU time and energy at the end of authentication for server 2 are 41.915200 and 2.590136
+00:42.151	ID:2	 Hpayload sent
+00:42.151	ID:2	 The token count and send index is 0 and 0 before if 
+00:42.151	ID:2	 The token count and send index is 1 and 0 in the if
+00:42.152	ID:2	 The token count and send index is 1 and 0
+00:42.152	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:42.205	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:42.205	ID:1	Received auth tokenAuthentication token for Node 9
+00:42.205	ID:1	
+00:42.205	ID:1	 Obtained auth_token is 9
+00:42.233	ID:9	 Sending auth_request
+00:42.233	ID:9	 The timestamp is 1
+00:42.233	ID:9	 the value of M_d is 5
+00:42.233	ID:9	 the value of R_d is 0
+00:42.233	ID:9	 the value of id_as is 2
+00:42.233	ID:9	 the value of id_d is 9
+00:42.233	ID:9	 the value of ts_2 is 1
+00:42.233	ID:9	 The value of R_d is 0
+00:42.708	ID:9	 The CPU time and energy at the end of authentication 1 for client 9 are 0.190768 and 0.011764Authentication success, sending data request
+00:42.788	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:42.788	ID:1	Authentication failed or stale packet for Node 9
+00:42.821	ID:9	Data length: 1
+00:42.821	ID:9	Data payload: 0
+00:45.556	ID:10	 The CPU time and energy at the end of authentication 1 for client 10 are 0.136768 and 0.008400Authentication success, sending data request
+00:45.574	ID:1	
+00:45.574	ID:1	Authentication failed or stale packet for Node 10
+00:45.581	ID:10	Data length: 1
+00:45.581	ID:10	Data payload: 0
+00:56.708	ID:9	
+00:56.708	ID:9	 the value of R_d is 0
+00:56.708	ID:9	 the value of M_d is 219
+00:56.796	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+00:56.796	ID:2	
+00:56.796	ID:2	 the value of R_d is 0
+00:56.796	ID:2	 the value of M_d is 219
+00:56.796	ID:2	 the value of M_d is 219
+00:56.796	ID:2	 the value of R_d is 0
+00:56.796	ID:2	 the value of id_d is 9
+00:56.796	ID:2	 The CPU time and energy at the end of authentication for server 2 are 56.560200 and 3.495145
+00:56.796	ID:2	 Hpayload sent
+00:56.796	ID:2	 The token count and send index is 1 and 1 before if 
+00:56.796	ID:2	 The token count and send index is 1 and 0 in the if
+00:56.797	ID:2	 The token count and send index is 1 and 0
+00:56.797	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:56.877	ID:1	
+00:56.877	ID:1	Received auth tokenAuthentication token for Node 9
+00:56.877	ID:1	
+00:56.877	ID:1	 Obtained auth_token is 9
+00:56.916	ID:9	 Sending auth_request
+00:56.916	ID:9	 The timestamp is 1
+00:56.916	ID:9	 the value of M_d is 219
+00:56.916	ID:9	 the value of R_d is 0
+00:56.916	ID:9	 the value of id_as is 2
+00:56.916	ID:9	 the value of id_d is 9
+00:56.916	ID:9	 the value of ts_2 is 1
+00:56.916	ID:9	 The value of R_d is 0
+01:00.556	ID:10	
+01:00.556	ID:10	 the value of R_d is 1
+01:00.556	ID:10	 the value of M_d is 219
+01:00.652	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+01:00.652	ID:3	
+01:00.652	ID:3	 the value of R_d is 1
+01:00.652	ID:3	 the value of M_d is 219
+01:00.652	ID:3	 the value of M_d is 219
+01:00.652	ID:3	 the value of R_d is 1
+01:00.652	ID:3	 the value of id_d is 10
+01:00.652	ID:3	 The CPU time and energy at the end of authentication for server 3 are 59.753200 and 3.692474
+01:00.652	ID:3	 Hpayload sent
+01:00.652	ID:3	 The token count and send index is 1 and 1 before if 
+01:00.652	ID:3	 The token count and send index is 1 and 0 in the if
+01:00.653	ID:3	 The token count and send index is 1 and 0
+01:00.653	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+01:00.687	ID:10	 Sending auth_request
+01:00.687	ID:10	 The timestamp is 1
+01:00.687	ID:10	 the value of M_d is 219
+01:00.687	ID:10	 the value of R_d is 1
+01:00.687	ID:10	 the value of id_as is 3
+01:00.687	ID:10	 the value of id_d is 10
+01:00.687	ID:10	 the value of ts_2 is 1
+01:00.687	ID:10	 The value of R_d is 1
+01:00.743	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:00.743	ID:1	Received auth tokenAuthentication token for Node 10
+01:00.743	ID:1	
+01:00.743	ID:1	 Obtained auth_token is 10
+01:10.708	ID:9	 The CPU time and energy at the end of authentication 2 for client 9 are 0.208136 and 0.012837Authentication success, sending data request
+01:10.769	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+01:10.769	ID:1	Authentication failed or stale packet for Node 9
+01:10.789	ID:9	Data length: 1
+01:10.789	ID:9	Data payload: 0
+01:15.556	ID:10	 The CPU time and energy at the end of authentication 2 for client 10 are 0.131592 and 0.008080Authentication success, sending data request
+01:15.567	ID:1	
+01:15.567	ID:1	Authentication failed or stale packet for Node 10
+01:15.604	ID:10	Data length: 1
+01:15.604	ID:10	Data payload: 0
+01:24.708	ID:9	
+01:24.708	ID:9	 the value of R_d is 0
+01:24.708	ID:9	 the value of M_d is 219
+01:24.784	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+01:24.784	ID:2	
+01:24.784	ID:2	 the value of R_d is 0
+01:24.784	ID:2	 the value of M_d is 219
+01:24.784	ID:2	 the value of M_d is 219
+01:24.784	ID:2	 the value of R_d is 0
+01:24.784	ID:2	 the value of id_d is 9
+01:24.784	ID:2	 The CPU time and energy at the end of authentication for server 2 are 84.548200 and 5.224721
+01:24.784	ID:2	 Hpayload sent
+01:24.784	ID:2	 The token count and send index is 1 and 1 before if 
+01:24.784	ID:2	 The token count and send index is 1 and 0 in the if
+01:24.785	ID:2	 The token count and send index is 1 and 0
+01:24.785	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+01:24.822	ID:1	
+01:24.822	ID:1	Received auth tokenAuthentication token for Node 9
+01:24.822	ID:1	
+01:24.822	ID:1	 Obtained auth_token is 9
+01:24.853	ID:9	 Sending auth_request
+01:24.853	ID:9	 The timestamp is 1
+01:24.853	ID:9	 the value of M_d is 219
+01:24.853	ID:9	 the value of R_d is 0
+01:24.853	ID:9	 the value of id_as is 2
+01:24.853	ID:9	 the value of id_d is 9
+01:24.853	ID:9	 the value of ts_2 is 1
+01:24.853	ID:9	 The value of R_d is 0
+01:30.556	ID:10	
+01:30.556	ID:10	 the value of R_d is 1
+01:30.556	ID:10	 the value of M_d is 219
+01:30.641	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+01:30.641	ID:3	
+01:30.641	ID:3	 the value of R_d is 1
+01:30.641	ID:3	 the value of M_d is 219
+01:30.641	ID:3	 the value of M_d is 219
+01:30.641	ID:3	 the value of R_d is 1
+01:30.641	ID:3	 the value of id_d is 10
+01:30.641	ID:3	 The CPU time and energy at the end of authentication for server 3 are 89.742200 and 5.545699
+01:30.641	ID:3	 Hpayload sent
+01:30.641	ID:3	 The token count and send index is 1 and 1 before if 
+01:30.641	ID:3	 The token count and send index is 1 and 0 in the if
+01:30.642	ID:3	 The token count and send index is 1 and 0
+01:30.642	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+01:30.650	ID:10	 Sending auth_request
+01:30.650	ID:10	 The timestamp is 1
+01:30.650	ID:10	 the value of M_d is 219
+01:30.650	ID:10	 the value of R_d is 1
+01:30.650	ID:10	 the value of id_as is 3
+01:30.650	ID:10	 the value of id_d is 10
+01:30.650	ID:10	 the value of ts_2 is 1
+01:30.650	ID:10	 The value of R_d is 1
+01:30.716	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:30.716	ID:1	Received auth tokenAuthentication token for Node 10
+01:30.716	ID:1	
+01:30.716	ID:1	 Obtained auth_token is 10
+01:38.708	ID:9	 The CPU time and energy at the end of authentication 3 for client 9 are 0.145136 and 0.008943Authentication success, sending data request
+01:38.761	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+01:38.761	ID:1	Authentication failed or stale packet for Node 9
+01:38.820	ID:9	Data length: 1
+01:38.820	ID:9	Data payload: 0
+01:45.556	ID:10	 The CPU time and energy at the end of authentication 3 for client 10 are 0.094592 and 0.005794Authentication success, sending data request
+01:45.602	ID:1	
+01:45.602	ID:1	Authentication failed or stale packet for Node 10
+01:45.610	ID:10	Data length: 1
+01:45.610	ID:10	Data payload: 0
+01:52.708	ID:9	
+01:52.708	ID:9	 the value of R_d is 0
+01:52.708	ID:9	 the value of M_d is 219
+01:52.797	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+01:52.797	ID:2	
+01:52.797	ID:2	 the value of R_d is 0
+01:52.797	ID:2	 the value of M_d is 219
+01:52.797	ID:2	 the value of M_d is 219
+01:52.797	ID:2	 the value of R_d is 0
+01:52.797	ID:2	 the value of id_d is 9
+01:52.797	ID:2	 The CPU time and energy at the end of authentication for server 2 are 112.561200 and 6.955851
+01:52.797	ID:2	 Hpayload sent
+01:52.797	ID:2	 The token count and send index is 1 and 1 before if 
+01:52.797	ID:2	 The token count and send index is 1 and 0 in the if
+01:52.798	ID:2	 The token count and send index is 1 and 0
+01:52.798	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+01:52.842	ID:1	
+01:52.842	ID:1	Received auth tokenAuthentication token for Node 9
+01:52.842	ID:1	
+01:52.842	ID:1	 Obtained auth_token is 9
+01:52.868	ID:9	 Sending auth_request
+01:52.868	ID:9	 The timestamp is 1
+01:52.868	ID:9	 the value of M_d is 219
+01:52.868	ID:9	 the value of R_d is 0
+01:52.868	ID:9	 the value of id_as is 2
+01:52.868	ID:9	 the value of id_d is 9
+01:52.868	ID:9	 the value of ts_2 is 1
+01:52.868	ID:9	 The value of R_d is 0
+02:00.556	ID:10	
+02:00.556	ID:10	 the value of R_d is 1
+02:00.556	ID:10	 the value of M_d is 219
+02:00.592	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+02:00.592	ID:3	
+02:00.592	ID:3	 the value of R_d is 1
+02:00.592	ID:3	 the value of M_d is 219
+02:00.592	ID:3	 the value of M_d is 219
+02:00.592	ID:3	 the value of R_d is 1
+02:00.592	ID:3	 the value of id_d is 10
+02:00.592	ID:3	 The CPU time and energy at the end of authentication for server 3 are 119.693656 and 7.396647
+02:00.592	ID:3	 Hpayload sent
+02:00.592	ID:3	 The token count and send index is 1 and 1 before if 
+02:00.592	ID:3	 The token count and send index is 1 and 0 in the if
+02:00.593	ID:3	 The token count and send index is 1 and 0
+02:00.593	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+02:00.614	ID:10	 Sending auth_request
+02:00.614	ID:10	 The timestamp is 1
+02:00.614	ID:10	 the value of M_d is 219
+02:00.614	ID:10	 the value of R_d is 1
+02:00.614	ID:10	 the value of id_as is 3
+02:00.614	ID:10	 the value of id_d is 10
+02:00.614	ID:10	 the value of ts_2 is 1
+02:00.614	ID:10	 The value of R_d is 1
+02:00.689	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+02:00.689	ID:1	Received auth tokenAuthentication token for Node 10
+02:00.689	ID:1	
+02:00.689	ID:1	 Obtained auth_token is 10
+02:06.708	ID:9	 The CPU time and energy at the end of authentication 4 for client 9 are 0.160136 and 0.009870Authentication success, sending data request
+02:06.731	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+02:06.731	ID:1	Authentication failed or stale packet for Node 9
+02:06.770	ID:9	Data length: 1
+02:06.770	ID:9	Data payload: 0
+02:15.556	ID:10	 The CPU time and energy at the end of authentication 4 for client 10 are 0.058592 and 0.003569Authentication success, sending data request
+02:15.586	ID:1	
+02:15.586	ID:1	Authentication failed or stale packet for Node 10
+02:15.594	ID:10	Data length: 1
+02:15.594	ID:10	Data payload: 0
+02:20.708	ID:9	
+02:20.708	ID:9	 the value of R_d is 0
+02:20.708	ID:9	 the value of M_d is 219
+02:20.742	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+02:20.742	ID:2	
+02:20.742	ID:2	 the value of R_d is 0
+02:20.742	ID:2	 the value of M_d is 219
+02:20.742	ID:2	 the value of M_d is 219
+02:20.742	ID:2	 the value of R_d is 0
+02:20.742	ID:2	 the value of id_d is 9
+02:20.742	ID:2	 The CPU time and energy at the end of authentication for server 2 are 140.506200 and 8.682774
+02:20.742	ID:2	 Hpayload sent
+02:20.742	ID:2	 The token count and send index is 1 and 1 before if 
+02:20.742	ID:2	 The token count and send index is 1 and 0 in the if
+02:20.743	ID:2	 The token count and send index is 1 and 0
+02:20.743	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+02:20.785	ID:1	
+02:20.785	ID:1	Received auth tokenAuthentication token for Node 9
+02:20.785	ID:1	
+02:20.785	ID:1	 Obtained auth_token is 9
+02:20.793	ID:9	 Sending auth_request
+02:20.793	ID:9	 The timestamp is 1
+02:20.793	ID:9	 the value of M_d is 219
+02:20.793	ID:9	 the value of R_d is 0
+02:20.793	ID:9	 the value of id_as is 2
+02:20.793	ID:9	 the value of id_d is 9
+02:20.793	ID:9	 the value of ts_2 is 1
+02:20.793	ID:9	 The value of R_d is 0
+02:30.556	ID:10	
+02:30.556	ID:10	 the value of R_d is 1
+02:30.556	ID:10	 the value of M_d is 219
+02:30.633	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+02:30.633	ID:3	
+02:30.633	ID:3	 the value of R_d is 1
+02:30.633	ID:3	 the value of M_d is 219
+02:30.633	ID:3	 the value of M_d is 219
+02:30.633	ID:3	 the value of R_d is 1
+02:30.633	ID:3	 the value of id_d is 10
+02:30.633	ID:3	 The CPU time and energy at the end of authentication for server 3 are 149.734200 and 9.253100
+02:30.633	ID:3	 Hpayload sent
+02:30.633	ID:3	 The token count and send index is 1 and 1 before if 
+02:30.633	ID:3	 The token count and send index is 1 and 0 in the if
+02:30.634	ID:3	 The token count and send index is 1 and 0
+02:30.634	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+02:30.662	ID:10	 Sending auth_request
+02:30.662	ID:10	 The timestamp is 1
+02:30.662	ID:10	 the value of M_d is 219
+02:30.662	ID:10	 the value of R_d is 1
+02:30.662	ID:10	 the value of id_as is 3
+02:30.662	ID:10	 the value of id_d is 10
+02:30.662	ID:10	 the value of ts_2 is 1
+02:30.662	ID:10	 The value of R_d is 1
+02:30.710	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+02:30.710	ID:1	Received auth tokenAuthentication token for Node 10
+02:30.710	ID:1	
+02:30.710	ID:1	 Obtained auth_token is 10
+02:34.708	ID:9	 The CPU time and energy at the end of authentication 5 for client 9 are 0.085136 and 0.005235Authentication success, sending data request
+02:34.762	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+02:34.762	ID:1	Authentication failed or stale packet for Node 9
+02:34.787	ID:9	Data length: 1
+02:34.787	ID:9	Data payload: 0
+02:45.556	ID:10	 The CPU time and energy at the end of authentication 5 for client 10 are 0.106592 and 0.006535Authentication success, sending data request
+02:45.600	ID:1	
+02:45.600	ID:1	Authentication failed or stale packet for Node 10
+02:45.637	ID:10	Data length: 1
+02:45.637	ID:10	Data payload: 0
+02:48.708	ID:9	
+02:48.708	ID:9	 the value of R_d is 0
+02:48.708	ID:9	 the value of M_d is 219
+02:48.754	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+02:48.754	ID:2	
+02:48.754	ID:2	 the value of R_d is 0
+02:48.754	ID:2	 the value of M_d is 219
+02:48.754	ID:2	 the value of M_d is 219
+02:48.754	ID:2	 the value of R_d is 0
+02:48.754	ID:2	 the value of id_d is 9
+02:48.754	ID:2	 The CPU time and energy at the end of authentication for server 2 are 168.518200 and 10.413859
+02:48.754	ID:2	 Hpayload sent
+02:48.754	ID:2	 The token count and send index is 1 and 1 before if 
+02:48.754	ID:2	 The token count and send index is 1 and 0 in the if
+02:48.755	ID:2	 The token count and send index is 1 and 0
+02:48.755	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+02:48.803	ID:1	
+02:48.803	ID:1	Received auth tokenAuthentication token for Node 9
+02:48.803	ID:1	
+02:48.803	ID:1	 Obtained auth_token is 9
+02:48.831	ID:9	 Sending auth_request
+02:48.831	ID:9	 The timestamp is 1
+02:48.831	ID:9	 the value of M_d is 219
+02:48.831	ID:9	 the value of R_d is 0
+02:48.831	ID:9	 the value of id_as is 2
+02:48.831	ID:9	 the value of id_d is 9
+02:48.831	ID:9	 the value of ts_2 is 1
+02:48.831	ID:9	 The value of R_d is 0
+03:00.556	ID:10	
+03:00.556	ID:10	 the value of R_d is 1
+03:00.556	ID:10	 the value of M_d is 219
+03:00.662	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+03:00.662	ID:3	
+03:00.662	ID:3	 the value of R_d is 1
+03:00.662	ID:3	 the value of M_d is 219
+03:00.662	ID:3	 the value of M_d is 219
+03:00.662	ID:3	 the value of R_d is 1
+03:00.662	ID:3	 the value of id_d is 10
+03:00.662	ID:3	 The CPU time and energy at the end of authentication for server 3 are 179.763200 and 11.108797
+03:00.662	ID:3	 Hpayload sent
+03:00.662	ID:3	 The token count and send index is 1 and 1 before if 
+03:00.662	ID:3	 The token count and send index is 1 and 0 in the if
+03:00.663	ID:3	 The token count and send index is 1 and 0
+03:00.663	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+03:00.681	ID:10	 Sending auth_request
+03:00.681	ID:10	 The timestamp is 1
+03:00.681	ID:10	 the value of M_d is 219
+03:00.681	ID:10	 the value of R_d is 1
+03:00.681	ID:10	 the value of id_as is 3
+03:00.681	ID:10	 the value of id_d is 10
+03:00.681	ID:10	 the value of ts_2 is 1
+03:00.681	ID:10	 The value of R_d is 1
+03:00.740	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+03:00.740	ID:1	Received auth tokenAuthentication token for Node 10
+03:00.740	ID:1	
+03:00.740	ID:1	 Obtained auth_token is 10
+03:02.708	ID:9	 The CPU time and energy at the end of authentication 6 for client 9 are 0.123136 and 0.007584Authentication success, sending data request
+03:02.775	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+03:02.775	ID:1	Authentication failed or stale packet for Node 9
+03:02.814	ID:9	Data length: 1
+03:02.814	ID:9	Data payload: 0
+03:15.556	ID:10	 The CPU time and energy at the end of authentication 6 for client 10 are 0.125592 and 0.007710Authentication success, sending data request
+03:15.576	ID:1	
+03:15.576	ID:1	Authentication failed or stale packet for Node 10
+03:15.595	ID:10	Data length: 1
+03:15.595	ID:10	Data payload: 0
+03:16.708	ID:9	
+03:16.708	ID:9	 the value of R_d is 0
+03:16.708	ID:9	 the value of M_d is 219
+03:16.811	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+03:16.811	ID:2	
+03:16.811	ID:2	 the value of R_d is 0
+03:16.811	ID:2	 the value of M_d is 219
+03:16.811	ID:2	 the value of M_d is 219
+03:16.811	ID:2	 the value of R_d is 0
+03:16.811	ID:2	 the value of id_d is 9
+03:16.811	ID:2	 The CPU time and energy at the end of authentication for server 2 are 196.575200 and 12.147707
+03:16.811	ID:2	 Hpayload sent
+03:16.811	ID:2	 The token count and send index is 1 and 1 before if 
+03:16.811	ID:2	 The token count and send index is 1 and 0 in the if
+03:16.812	ID:2	 The token count and send index is 1 and 0
+03:16.812	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+03:16.841	ID:1	
+03:16.841	ID:1	Received auth tokenAuthentication token for Node 9
+03:16.841	ID:1	
+03:16.841	ID:1	 Obtained auth_token is 9
+03:16.902	ID:9	 Sending auth_request
+03:16.902	ID:9	 The timestamp is 1
+03:16.902	ID:9	 the value of M_d is 219
+03:16.902	ID:9	 the value of R_d is 0
+03:16.902	ID:9	 the value of id_as is 2
+03:16.902	ID:9	 the value of id_d is 9
+03:16.902	ID:9	 the value of ts_2 is 1
+03:16.902	ID:9	 The value of R_d is 0
+03:30.556	ID:10	
+03:30.556	ID:10	 the value of R_d is 1
+03:30.556	ID:10	 the value of M_d is 219
+03:30.619	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+03:30.619	ID:3	
+03:30.619	ID:3	 the value of R_d is 1
+03:30.619	ID:3	 the value of M_d is 219
+03:30.619	ID:3	 the value of M_d is 219
+03:30.619	ID:3	 the value of R_d is 1
+03:30.619	ID:3	 the value of id_d is 10
+03:30.619	ID:3	 The CPU time and energy at the end of authentication for server 3 are 209.720200 and 12.960088
+03:30.619	ID:3	 Hpayload sent
+03:30.619	ID:3	 The token count and send index is 1 and 1 before if 
+03:30.619	ID:3	 The token count and send index is 1 and 0 in the if
+03:30.620	ID:3	 The token count and send index is 1 and 0
+03:30.620	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+03:30.635	ID:10	 Sending auth_request
+03:30.635	ID:10	 The timestamp is 1
+03:30.635	ID:10	 the value of M_d is 219
+03:30.635	ID:10	 the value of R_d is 1
+03:30.635	ID:10	 the value of id_as is 3
+03:30.635	ID:10	 the value of id_d is 10
+03:30.635	ID:10	 the value of ts_2 is 1
+03:30.635	ID:10	 The value of R_d is 1
+03:30.693	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+03:30.693	ID:1	Received auth tokenAuthentication token for Node 10
+03:30.693	ID:1	
+03:30.693	ID:1	 Obtained auth_token is 10
+03:30.708	ID:9	 The CPU time and energy at the end of authentication 7 for client 9 are 0.194136 and 0.011972Authentication success, sending data request
+03:30.761	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+03:30.761	ID:1	Authentication failed or stale packet for Node 9
+03:30.877	ID:9	Data length: 1
+03:30.877	ID:9	Data payload: 0
+03:44.708	ID:9	
+03:44.708	ID:9	 the value of R_d is 0
+03:44.708	ID:9	 the value of M_d is 219
+03:44.820	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+03:44.820	ID:2	
+03:44.820	ID:2	 the value of R_d is 0
+03:44.820	ID:2	 the value of M_d is 219
+03:44.820	ID:2	 the value of M_d is 219
+03:44.820	ID:2	 the value of R_d is 0
+03:44.820	ID:2	 the value of id_d is 9
+03:44.820	ID:2	 The CPU time and energy at the end of authentication for server 2 are 224.584200 and 13.878585
+03:44.820	ID:2	 Hpayload sent
+03:44.820	ID:2	 The token count and send index is 1 and 1 before if 
+03:44.820	ID:2	 The token count and send index is 1 and 0 in the if
+03:44.821	ID:2	 The token count and send index is 1 and 0
+03:44.821	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+03:44.891	ID:1	
+03:44.891	ID:1	Received auth tokenAuthentication token for Node 9
+03:44.891	ID:1	
+03:44.891	ID:1	 Obtained auth_token is 9
+03:44.942	ID:9	 Sending auth_request
+03:44.942	ID:9	 The timestamp is 1
+03:44.942	ID:9	 the value of M_d is 219
+03:44.942	ID:9	 the value of R_d is 0
+03:44.942	ID:9	 the value of id_as is 2
+03:44.942	ID:9	 the value of id_d is 9
+03:44.942	ID:9	 the value of ts_2 is 1
+03:44.942	ID:9	 The value of R_d is 0
+03:45.556	ID:10	 The CPU time and energy at the end of authentication 7 for client 10 are 0.079592 and 0.004867Authentication success, sending data request
+03:45.571	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+03:45.571	ID:1	Authentication failed or stale packet for Node 10
+03:45.581	ID:10	Data length: 1
+03:45.581	ID:10	Data payload: 0
+03:58.708	ID:9	 The CPU time and energy at the end of authentication 8 for client 9 are 0.234136 and 0.014444Authentication success, sending data request
+03:58.782	ID:1	
+03:58.782	ID:1	Authentication failed or stale packet for Node 9
+03:58.843	ID:9	Data length: 1
+03:58.843	ID:9	Data payload: 0
+04:00.556	ID:10	
+04:00.556	ID:10	 the value of R_d is 1
+04:00.556	ID:10	 the value of M_d is 219
+04:00.671	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+04:00.671	ID:3	
+04:00.671	ID:3	 the value of R_d is 1
+04:00.671	ID:3	 the value of M_d is 219
+04:00.671	ID:3	 the value of M_d is 219
+04:00.671	ID:3	 the value of R_d is 1
+04:00.671	ID:3	 the value of id_d is 10
+04:00.671	ID:3	 The CPU time and energy at the end of authentication for server 3 are 239.772200 and 14.817206
+04:00.671	ID:3	 Hpayload sent
+04:00.671	ID:3	 The token count and send index is 1 and 1 before if 
+04:00.671	ID:3	 The token count and send index is 1 and 0 in the if
+04:00.672	ID:3	 The token count and send index is 1 and 0
+04:00.672	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+04:00.697	ID:10	 Sending auth_request
+04:00.697	ID:10	 The timestamp is 1
+04:00.697	ID:10	 the value of M_d is 219
+04:00.697	ID:10	 the value of R_d is 1
+04:00.697	ID:10	 the value of id_as is 3
+04:00.697	ID:10	 the value of id_d is 10
+04:00.697	ID:10	 the value of ts_2 is 1
+04:00.697	ID:10	 The value of R_d is 1
+04:00.756	ID:1	
+04:00.756	ID:1	Received auth tokenAuthentication token for Node 10
+04:00.756	ID:1	
+04:00.756	ID:1	 Obtained auth_token is 10
+04:12.708	ID:9	
+04:12.708	ID:9	 the value of R_d is 0
+04:12.708	ID:9	 the value of M_d is 219
+04:12.799	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+04:12.799	ID:2	
+04:12.799	ID:2	 the value of R_d is 0
+04:12.799	ID:2	 the value of M_d is 219
+04:12.799	ID:2	 the value of M_d is 219
+04:12.799	ID:2	 the value of R_d is 0
+04:12.799	ID:2	 the value of id_d is 9
+04:12.799	ID:2	 The CPU time and energy at the end of authentication for server 2 are 252.563200 and 15.607609
+04:12.799	ID:2	 Hpayload sent
+04:12.799	ID:2	 The token count and send index is 1 and 1 before if 
+04:12.799	ID:2	 The token count and send index is 1 and 0 in the if
+04:12.800	ID:2	 The token count and send index is 1 and 0
+04:12.800	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+04:12.866	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+04:12.866	ID:1	Received auth tokenAuthentication token for Node 9
+04:12.866	ID:1	
+04:12.866	ID:1	 Obtained auth_token is 9
+04:12.870	ID:9	 Sending auth_request
+04:12.870	ID:9	 The timestamp is 1
+04:12.870	ID:9	 the value of M_d is 219
+04:12.870	ID:9	 the value of R_d is 0
+04:12.870	ID:9	 the value of id_as is 2
+04:12.870	ID:9	 the value of id_d is 9
+04:12.870	ID:9	 the value of ts_2 is 1
+04:12.870	ID:9	 The value of R_d is 0
+04:15.556	ID:10	 The CPU time and energy at the end of authentication 8 for client 10 are 0.141592 and 0.008698Authentication success, sending data request
+04:15.562	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+04:15.562	ID:1	Authentication failed or stale packet for Node 10
+04:15.594	ID:10	Data length: 1
+04:15.594	ID:10	Data payload: 0
+04:26.708	ID:9	 The CPU time and energy at the end of authentication 9 for client 9 are 0.162688 and 0.010028Authentication success, sending data request
+04:26.746	ID:1	
+04:26.746	ID:1	Authentication successful for Node 9
+04:26.746	ID:1	
+04:26.763	ID:9	Data length: 1
+04:26.763	ID:9	Data payload: 0
+04:30.556	ID:10	
+04:30.556	ID:10	 the value of R_d is 1
+04:30.556	ID:10	 the value of M_d is 219
+04:30.657	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+04:30.657	ID:3	
+04:30.657	ID:3	 the value of R_d is 1
+04:30.657	ID:3	 the value of M_d is 219
+04:30.657	ID:3	 the value of M_d is 219
+04:30.657	ID:3	 the value of R_d is 1
+04:30.657	ID:3	 the value of id_d is 10
+04:30.657	ID:3	 The CPU time and energy at the end of authentication for server 3 are 269.758200 and 16.670289
+04:30.657	ID:3	 Hpayload sent
+04:30.657	ID:3	 The token count and send index is 1 and 1 before if 
+04:30.657	ID:3	 The token count and send index is 1 and 0 in the if
+04:30.658	ID:3	 The token count and send index is 1 and 0
+04:30.658	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+04:30.694	ID:10	 Sending auth_request
+04:30.694	ID:10	 The timestamp is 1
+04:30.694	ID:10	 the value of M_d is 219
+04:30.694	ID:10	 the value of R_d is 1
+04:30.694	ID:10	 the value of id_as is 3
+04:30.694	ID:10	 the value of id_d is 10
+04:30.694	ID:10	 the value of ts_2 is 1
+04:30.694	ID:10	 The value of R_d is 1
+04:30.744	ID:1	 The message obtained for node 9 is 9
+04:30.744	ID:1	Received auth tokenAuthentication token for Node 10
+04:30.744	ID:1	
+04:30.744	ID:1	 Obtained auth_token is 10
+04:40.708	ID:9	
+04:40.708	ID:9	 the value of R_d is 0
+04:40.708	ID:9	 the value of M_d is 219
+04:40.735	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+04:40.735	ID:2	
+04:40.735	ID:2	 the value of R_d is 0
+04:40.735	ID:2	 the value of M_d is 219
+04:40.735	ID:2	 the value of M_d is 219
+04:40.735	ID:2	 the value of R_d is 0
+04:40.735	ID:2	 the value of id_d is 9
+04:40.735	ID:2	 The CPU time and energy at the end of authentication for server 2 are 280.499200 and 17.333976
+04:40.735	ID:2	 Hpayload sent
+04:40.735	ID:2	 The token count and send index is 1 and 1 before if 
+04:40.735	ID:2	 The token count and send index is 1 and 0 in the if
+04:40.736	ID:2	 The token count and send index is 1 and 0
+04:40.736	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+04:40.820	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+04:40.820	ID:1	Received auth tokenAuthentication token for Node 9
+04:40.820	ID:1	
+04:40.820	ID:1	 Obtained auth_token is 9
+04:40.849	ID:9	 Sending auth_request
+04:40.849	ID:9	 The timestamp is 1
+04:40.849	ID:9	 the value of M_d is 219
+04:40.849	ID:9	 the value of R_d is 0
+04:40.849	ID:9	 the value of id_as is 2
+04:40.849	ID:9	 the value of id_d is 9
+04:40.849	ID:9	 the value of ts_2 is 1
+04:40.849	ID:9	 The value of R_d is 0
+04:45.556	ID:10	 The CPU time and energy at the end of authentication 9 for client 10 are 0.138592 and 0.008513Authentication success, sending data request
+04:45.595	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+04:45.595	ID:1	Authentication failed or stale packet for Node 10
+04:45.629	ID:10	Data length: 1
+04:45.629	ID:10	Data payload: 0
+04:54.708	ID:9	 The CPU time and energy at the end of authentication 10 for client 9 are 0.141136 and 0.008696Authentication success, sending data request
+04:54.763	ID:1	
+04:54.763	ID:1	Authentication failed or stale packet for Node 9
+04:54.805	ID:9	Data length: 1
+04:54.805	ID:9	Data payload: 0
+05:00.556	ID:10	
+05:00.556	ID:10	 the value of R_d is 1
+05:00.556	ID:10	 the value of M_d is 219
+05:00.649	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+05:00.649	ID:3	
+05:00.649	ID:3	 the value of R_d is 1
+05:00.649	ID:3	 the value of M_d is 219
+05:00.649	ID:3	 the value of M_d is 219
+05:00.649	ID:3	 the value of R_d is 1
+05:00.649	ID:3	 the value of id_d is 10
+05:00.649	ID:3	 The CPU time and energy at the end of authentication for server 3 are 299.750200 and 18.523716
+05:00.649	ID:3	 Hpayload sent
+05:00.649	ID:3	 The token count and send index is 1 and 1 before if 
+05:00.649	ID:3	 The token count and send index is 1 and 0 in the if
+05:00.650	ID:3	 The token count and send index is 1 and 0
+05:00.650	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+05:00.693	ID:10	 Sending auth_request
+05:00.693	ID:10	 The timestamp is 1
+05:00.693	ID:10	 the value of M_d is 219
+05:00.693	ID:10	 the value of R_d is 1
+05:00.693	ID:10	 the value of id_as is 3
+05:00.693	ID:10	 the value of id_d is 10
+05:00.693	ID:10	 the value of ts_2 is 1
+05:00.693	ID:10	 The value of R_d is 1
+05:00.757	ID:1	
+05:00.757	ID:1	Received auth tokenAuthentication token for Node 10
+05:00.757	ID:1	
+05:00.757	ID:1	 Obtained auth_token is 10
+05:08.708	ID:9	
+05:08.708	ID:9	 the value of R_d is 0
+05:08.708	ID:9	 the value of M_d is 219
+05:08.806	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+05:08.806	ID:2	
+05:08.806	ID:2	 the value of R_d is 0
+05:08.806	ID:2	 the value of M_d is 219
+05:08.806	ID:2	 the value of M_d is 219
+05:08.806	ID:2	 the value of R_d is 0
+05:08.806	ID:2	 the value of id_d is 9
+05:08.806	ID:2	 The CPU time and energy at the end of authentication for server 2 are 308.570200 and 19.068707
+05:08.806	ID:2	 Hpayload sent
+05:08.806	ID:2	 The token count and send index is 1 and 1 before if 
+05:08.806	ID:2	 The token count and send index is 1 and 0 in the if
+05:08.807	ID:2	 The token count and send index is 1 and 0
+05:08.807	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+05:08.842	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+05:08.842	ID:1	Received auth tokenAuthentication token for Node 9
+05:08.842	ID:1	
+05:08.842	ID:1	 Obtained auth_token is 9
+05:08.894	ID:9	 Sending auth_request
+05:08.894	ID:9	 The timestamp is 1
+05:08.894	ID:9	 the value of M_d is 219
+05:08.894	ID:9	 the value of R_d is 0
+05:08.894	ID:9	 the value of id_as is 2
+05:08.894	ID:9	 the value of id_d is 9
+05:08.894	ID:9	 the value of ts_2 is 1
+05:08.894	ID:9	 The value of R_d is 0
+05:15.556	ID:10	 The CPU time and energy at the end of authentication 10 for client 10 are 0.137592 and 0.008451Authentication success, sending data request
+05:15.562	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+05:15.562	ID:1	Authentication failed or stale packet for Node 10
+05:15.603	ID:10	Data length: 1
+05:15.603	ID:10	Data payload: 0
+05:22.708	ID:9	 The CPU time and energy at the end of authentication 11 for client 9 are 0.186136 and 0.011477Authentication success, sending data request
+05:22.776	ID:1	
+05:22.776	ID:1	Authentication failed or stale packet for Node 9
+05:22.808	ID:9	Data length: 1
+05:22.808	ID:9	Data payload: 0
+05:30.556	ID:10	
+05:30.556	ID:10	 the value of R_d is 1
+05:30.556	ID:10	 the value of M_d is 219
+05:30.679	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+05:30.679	ID:3	
+05:30.679	ID:3	 the value of R_d is 1
+05:30.679	ID:3	 the value of M_d is 219
+05:30.679	ID:3	 the value of M_d is 219
+05:30.679	ID:3	 the value of R_d is 1
+05:30.679	ID:3	 the value of id_d is 10
+05:30.679	ID:3	 The CPU time and energy at the end of authentication for server 3 are 329.780200 and 20.379518
+05:30.679	ID:3	 Hpayload sent
+05:30.679	ID:3	 The token count and send index is 1 and 1 before if 
+05:30.679	ID:3	 The token count and send index is 1 and 0 in the if
+05:30.680	ID:3	 The token count and send index is 1 and 0
+05:30.680	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+05:30.723	ID:10	 Sending auth_request
+05:30.723	ID:10	 The timestamp is 1
+05:30.723	ID:10	 the value of M_d is 219
+05:30.723	ID:10	 the value of R_d is 1
+05:30.723	ID:10	 the value of id_as is 3
+05:30.723	ID:10	 the value of id_d is 10
+05:30.723	ID:10	 the value of ts_2 is 1
+05:30.723	ID:10	 The value of R_d is 1
+05:30.787	ID:1	
+05:30.787	ID:1	Received auth tokenAuthentication token for Node 10
+05:30.787	ID:1	
+05:30.787	ID:1	 Obtained auth_token is 10
+05:36.708	ID:9	
+05:36.708	ID:9	 the value of R_d is 0
+05:36.708	ID:9	 the value of M_d is 219
+05:36.781	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+05:36.781	ID:2	
+05:36.781	ID:2	 the value of R_d is 0
+05:36.781	ID:2	 the value of M_d is 219
+05:36.781	ID:2	 the value of M_d is 219
+05:36.781	ID:2	 the value of R_d is 0
+05:36.781	ID:2	 the value of id_d is 9
+05:36.781	ID:2	 The CPU time and energy at the end of authentication for server 2 are 336.545200 and 20.797510
+05:36.781	ID:2	 Hpayload sent
+05:36.781	ID:2	 The token count and send index is 1 and 1 before if 
+05:36.781	ID:2	 The token count and send index is 1 and 0 in the if
+05:36.782	ID:2	 The token count and send index is 1 and 0
+05:36.782	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+05:36.833	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+05:36.833	ID:1	Received auth tokenAuthentication token for Node 9
+05:36.833	ID:1	
+05:36.833	ID:1	 Obtained auth_token is 9
+05:36.886	ID:9	 Sending auth_request
+05:36.886	ID:9	 The timestamp is 1
+05:36.886	ID:9	 the value of M_d is 219
+05:36.886	ID:9	 the value of R_d is 0
+05:36.886	ID:9	 the value of id_as is 2
+05:36.886	ID:9	 the value of id_d is 9
+05:36.886	ID:9	 the value of ts_2 is 1
+05:36.886	ID:9	 The value of R_d is 0
+05:45.556	ID:10	 The CPU time and energy at the end of authentication 11 for client 10 are 0.167592 and 0.010305Authentication success, sending data request
+05:45.590	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+05:45.590	ID:1	Authentication failed or stale packet for Node 10
+05:45.625	ID:10	Data length: 1
+05:45.625	ID:10	Data payload: 0
+05:50.708	ID:9	 The CPU time and energy at the end of authentication 12 for client 9 are 0.178136 and 0.010983Authentication success, sending data request
+05:50.763	ID:1	
+05:50.763	ID:1	Authentication failed or stale packet for Node 9
+05:50.834	ID:9	Data length: 1
+05:50.834	ID:9	Data payload: 0
+06:00.556	ID:10	
+06:00.556	ID:10	 the value of R_d is 1
+06:00.556	ID:10	 the value of M_d is 219
+06:00.646	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+06:00.646	ID:3	
+06:00.646	ID:3	 the value of R_d is 1
+06:00.646	ID:3	 the value of M_d is 219
+06:00.646	ID:3	 the value of M_d is 219
+06:00.646	ID:3	 the value of R_d is 1
+06:00.646	ID:3	 the value of id_d is 10
+06:00.646	ID:3	 The CPU time and energy at the end of authentication for server 3 are 359.747200 and 22.231427
+06:00.646	ID:3	 Hpayload sent
+06:00.646	ID:3	 The token count and send index is 1 and 1 before if 
+06:00.646	ID:3	 The token count and send index is 1 and 0 in the if
+06:00.647	ID:3	 The token count and send index is 1 and 0
+06:00.647	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+06:00.685	ID:10	 Sending auth_request
+06:00.685	ID:10	 The timestamp is 1
+06:00.685	ID:10	 the value of M_d is 219
+06:00.685	ID:10	 the value of R_d is 1
+06:00.685	ID:10	 the value of id_as is 3
+06:00.685	ID:10	 the value of id_d is 10
+06:00.685	ID:10	 the value of ts_2 is 1
+06:00.685	ID:10	 The value of R_d is 1
+06:00.760	ID:1	
+06:00.760	ID:1	Received auth tokenAuthentication token for Node 10
+06:00.760	ID:1	
+06:00.760	ID:1	 Obtained auth_token is 10
+06:04.708	ID:9	
+06:04.708	ID:9	 the value of R_d is 0
+06:04.708	ID:9	 the value of M_d is 219
+06:04.784	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+06:04.784	ID:2	
+06:04.784	ID:2	 the value of R_d is 0
+06:04.784	ID:2	 the value of M_d is 219
+06:04.784	ID:2	 the value of M_d is 219
+06:04.784	ID:2	 the value of R_d is 0
+06:04.784	ID:2	 the value of id_d is 9
+06:04.784	ID:2	 The CPU time and energy at the end of authentication for server 2 are 364.548200 and 22.528034
+06:04.784	ID:2	 Hpayload sent
+06:04.784	ID:2	 The token count and send index is 1 and 1 before if 
+06:04.784	ID:2	 The token count and send index is 1 and 0 in the if
+06:04.785	ID:2	 The token count and send index is 1 and 0
+06:04.785	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+06:04.834	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+06:04.834	ID:1	Received auth tokenAuthentication token for Node 9
+06:04.834	ID:1	
+06:04.834	ID:1	 Obtained auth_token is 9
+06:04.846	ID:9	 Sending auth_request
+06:04.846	ID:9	 The timestamp is 1
+06:04.846	ID:9	 the value of M_d is 219
+06:04.846	ID:9	 the value of R_d is 0
+06:04.846	ID:9	 the value of id_as is 2
+06:04.846	ID:9	 the value of id_d is 9
+06:04.846	ID:9	 the value of ts_2 is 1
+06:04.846	ID:9	 The value of R_d is 0
+06:15.556	ID:10	 The CPU time and energy at the end of authentication 12 for client 10 are 0.129592 and 0.007957Authentication success, sending data request
+06:15.578	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+06:15.578	ID:1	Authentication failed or stale packet for Node 10
+06:15.592	ID:10	Data length: 1
+06:15.592	ID:10	Data payload: 0
+06:18.708	ID:9	 The CPU time and energy at the end of authentication 13 for client 9 are 0.138136 and 0.008511Authentication success, sending data request
+06:18.794	ID:1	
+06:18.794	ID:1	Authentication failed or stale packet for Node 9
+06:18.839	ID:9	Data length: 1
+06:18.839	ID:9	Data payload: 0
+06:30.556	ID:10	
+06:30.556	ID:10	 the value of R_d is 1
+06:30.556	ID:10	 the value of M_d is 219
+06:30.638	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+06:30.638	ID:3	
+06:30.638	ID:3	 the value of R_d is 1
+06:30.638	ID:3	 the value of M_d is 219
+06:30.638	ID:3	 the value of M_d is 219
+06:30.638	ID:3	 the value of R_d is 1
+06:30.638	ID:3	 the value of id_d is 10
+06:30.638	ID:3	 The CPU time and energy at the end of authentication for server 3 are 389.739200 and 24.084880
+06:30.638	ID:3	 Hpayload sent
+06:30.638	ID:3	 The token count and send index is 1 and 1 before if 
+06:30.638	ID:3	 The token count and send index is 1 and 0 in the if
+06:30.639	ID:3	 The token count and send index is 1 and 0
+06:30.639	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+06:30.683	ID:10	 Sending auth_request
+06:30.683	ID:10	 The timestamp is 1
+06:30.683	ID:10	 the value of M_d is 219
+06:30.683	ID:10	 the value of R_d is 1
+06:30.683	ID:10	 the value of id_as is 3
+06:30.683	ID:10	 the value of id_d is 10
+06:30.683	ID:10	 the value of ts_2 is 1
+06:30.683	ID:10	 The value of R_d is 1
+06:30.745	ID:1	
+06:30.745	ID:1	Received auth tokenAuthentication token for Node 10
+06:30.745	ID:1	
+06:30.745	ID:1	 Obtained auth_token is 10
+06:32.708	ID:9	
+06:32.708	ID:9	 the value of R_d is 0
+06:32.708	ID:9	 the value of M_d is 219
+06:32.775	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+06:32.775	ID:2	
+06:32.775	ID:2	 the value of R_d is 0
+06:32.775	ID:2	 the value of M_d is 219
+06:32.775	ID:2	 the value of M_d is 219
+06:32.775	ID:2	 the value of R_d is 0
+06:32.775	ID:2	 the value of id_d is 9
+06:32.775	ID:2	 The CPU time and energy at the end of authentication for server 2 are 392.539200 and 24.257804
+06:32.775	ID:2	 Hpayload sent
+06:32.775	ID:2	 The token count and send index is 1 and 1 before if 
+06:32.775	ID:2	 The token count and send index is 1 and 0 in the if
+06:32.776	ID:2	 The token count and send index is 1 and 0
+06:32.776	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+06:32.818	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+06:32.818	ID:1	Received auth tokenAuthentication token for Node 9
+06:32.818	ID:1	
+06:32.818	ID:1	 Obtained auth_token is 9
+06:32.854	ID:9	 Sending auth_request
+06:32.854	ID:9	 The timestamp is 1
+06:32.854	ID:9	 the value of M_d is 219
+06:32.854	ID:9	 the value of R_d is 0
+06:32.854	ID:9	 the value of id_as is 2
+06:32.854	ID:9	 the value of id_d is 9
+06:32.854	ID:9	 the value of ts_2 is 1
+06:32.854	ID:9	 The value of R_d is 0
+06:45.556	ID:10	 The CPU time and energy at the end of authentication 13 for client 10 are 0.127592 and 0.007833Authentication success, sending data request
+06:45.595	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+06:45.595	ID:1	Authentication failed or stale packet for Node 10
+06:45.619	ID:10	Data length: 1
+06:45.619	ID:10	Data payload: 0
+06:46.708	ID:9	 The CPU time and energy at the end of authentication 14 for client 9 are 0.146272 and 0.009014Authentication success, sending data request
+06:46.768	ID:1	
+06:46.768	ID:1	Authentication failed or stale packet for Node 9
+06:46.818	ID:9	Data length: 1
+06:46.818	ID:9	Data payload: 0
+07:00.556	ID:10	
+07:00.556	ID:10	 the value of R_d is 1
+07:00.556	ID:10	 the value of M_d is 219
+07:00.605	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+07:00.605	ID:3	
+07:00.605	ID:3	 the value of R_d is 1
+07:00.605	ID:3	 the value of M_d is 219
+07:00.605	ID:3	 the value of M_d is 219
+07:00.605	ID:3	 the value of R_d is 1
+07:00.605	ID:3	 the value of id_d is 10
+07:00.605	ID:3	 The CPU time and energy at the end of authentication for server 3 are 419.706200 and 25.936789
+07:00.605	ID:3	 Hpayload sent
+07:00.605	ID:3	 The token count and send index is 1 and 1 before if 
+07:00.605	ID:3	 The token count and send index is 1 and 0 in the if
+07:00.606	ID:3	 The token count and send index is 1 and 0
+07:00.606	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+07:00.628	ID:10	 Sending auth_request
+07:00.628	ID:10	 The timestamp is 1
+07:00.628	ID:10	 the value of M_d is 219
+07:00.628	ID:10	 the value of R_d is 1
+07:00.628	ID:10	 the value of id_as is 3
+07:00.628	ID:10	 the value of id_d is 10
+07:00.628	ID:10	 the value of ts_2 is 1
+07:00.628	ID:10	 The value of R_d is 1
+07:00.700	ID:1	
+07:00.700	ID:1	Received auth tokenAuthentication token for Node 10
+07:00.700	ID:1	
+07:00.700	ID:1	 Obtained auth_token is 10
+07:00.708	ID:9	
+07:00.708	ID:9	 the value of R_d is 0
+07:00.708	ID:9	 the value of M_d is 219
+07:00.773	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+07:00.773	ID:2	
+07:00.773	ID:2	 the value of R_d is 0
+07:00.773	ID:2	 the value of M_d is 219
+07:00.773	ID:2	 the value of M_d is 219
+07:00.773	ID:2	 the value of R_d is 0
+07:00.773	ID:2	 the value of id_d is 9
+07:00.773	ID:2	 The CPU time and energy at the end of authentication for server 2 are 420.537200 and 25.988028
+07:00.773	ID:2	 Hpayload sent
+07:00.773	ID:2	 The token count and send index is 1 and 1 before if 
+07:00.773	ID:2	 The token count and send index is 1 and 0 in the if
+07:00.774	ID:2	 The token count and send index is 1 and 0
+07:00.774	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+07:00.828	ID:9	 Sending auth_request
+07:00.828	ID:9	 The timestamp is 1
+07:00.828	ID:9	 the value of M_d is 219
+07:00.828	ID:9	 the value of R_d is 0
+07:00.828	ID:9	 the value of id_as is 2
+07:00.828	ID:9	 the value of id_d is 9
+07:00.828	ID:9	 the value of ts_2 is 1
+07:00.828	ID:9	 The value of R_d is 0
+07:00.839	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+07:00.839	ID:1	Received auth tokenAuthentication token for Node 9
+07:00.839	ID:1	
+07:00.839	ID:1	 Obtained auth_token is 9
+07:14.708	ID:9	 The CPU time and energy at the end of authentication 15 for client 9 are 0.120272 and 0.007407Authentication success, sending data request
+07:14.744	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+07:14.744	ID:1	Authentication failed or stale packet for Node 9
+07:14.788	ID:9	Data length: 1
+07:14.788	ID:9	Data payload: 0
+07:15.556	ID:10	 The CPU time and energy at the end of authentication 14 for client 10 are 0.072592 and 0.004434Authentication success, sending data request
+07:15.590	ID:1	
+07:15.590	ID:1	Authentication failed or stale packet for Node 10
+07:15.603	ID:10	Data length: 1
+07:15.603	ID:10	Data payload: 0
+07:28.708	ID:9	
+07:28.708	ID:9	 the value of R_d is 0
+07:28.708	ID:9	 the value of M_d is 219
+07:28.808	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+07:28.808	ID:2	
+07:28.808	ID:2	 the value of R_d is 0
+07:28.808	ID:2	 the value of M_d is 219
+07:28.808	ID:2	 the value of M_d is 219
+07:28.808	ID:2	 the value of R_d is 0
+07:28.808	ID:2	 the value of id_d is 9
+07:28.808	ID:2	 The CPU time and energy at the end of authentication for server 2 are 448.572200 and 27.720497
+07:28.808	ID:2	 Hpayload sent
+07:28.808	ID:2	 The token count and send index is 1 and 1 before if 
+07:28.808	ID:2	 The token count and send index is 1 and 0 in the if
+07:28.809	ID:2	 The token count and send index is 1 and 0
+07:28.809	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+07:28.864	ID:1	
+07:28.864	ID:1	Received auth tokenAuthentication token for Node 9
+07:28.864	ID:1	
+07:28.864	ID:1	 Obtained auth_token is 9
+07:28.868	ID:9	 Sending auth_request
+07:28.868	ID:9	 The timestamp is 1
+07:28.868	ID:9	 the value of M_d is 219
+07:28.868	ID:9	 the value of R_d is 0
+07:28.868	ID:9	 the value of id_as is 2
+07:28.868	ID:9	 the value of id_d is 9
+07:28.868	ID:9	 the value of ts_2 is 1
+07:28.868	ID:9	 The value of R_d is 0
+07:30.556	ID:10	
+07:30.556	ID:10	 the value of R_d is 1
+07:30.556	ID:10	 the value of M_d is 219
+07:30.664	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+07:30.664	ID:3	
+07:30.664	ID:3	 the value of R_d is 1
+07:30.664	ID:3	 the value of M_d is 219
+07:30.664	ID:3	 the value of M_d is 219
+07:30.664	ID:3	 the value of R_d is 1
+07:30.664	ID:3	 the value of id_d is 10
+07:30.664	ID:3	 The CPU time and energy at the end of authentication for server 3 are 449.765200 and 27.794374
+07:30.664	ID:3	 Hpayload sent
+07:30.664	ID:3	 The token count and send index is 1 and 1 before if 
+07:30.664	ID:3	 The token count and send index is 1 and 0 in the if
+07:30.665	ID:3	 The token count and send index is 1 and 0
+07:30.665	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+07:30.694	ID:10	 Sending auth_request
+07:30.694	ID:10	 The timestamp is 1
+07:30.694	ID:10	 the value of M_d is 219
+07:30.694	ID:10	 the value of R_d is 1
+07:30.694	ID:10	 the value of id_as is 3
+07:30.694	ID:10	 the value of id_d is 10
+07:30.694	ID:10	 the value of ts_2 is 1
+07:30.694	ID:10	 The value of R_d is 1
+07:30.765	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+07:30.765	ID:1	Received auth tokenAuthentication token for Node 10
+07:30.765	ID:1	
+07:30.765	ID:1	 Obtained auth_token is 10
+07:42.708	ID:9	 The CPU time and energy at the end of authentication 16 for client 9 are 0.160688 and 0.009905Authentication success, sending data request
+07:42.762	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+07:42.762	ID:1	Authentication failed or stale packet for Node 9
+07:42.837	ID:9	Data length: 1
+07:42.837	ID:9	Data payload: 0
+07:45.556	ID:10	 The CPU time and energy at the end of authentication 15 for client 10 are 0.138592 and 0.008513Authentication success, sending data request
+07:45.600	ID:1	
+07:45.600	ID:1	Authentication failed or stale packet for Node 10
+07:45.609	ID:10	Data length: 1
+07:45.609	ID:10	Data payload: 0
+07:56.708	ID:9	
+07:56.708	ID:9	 the value of R_d is 0
+07:56.708	ID:9	 the value of M_d is 219
+07:56.807	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+07:56.807	ID:2	
+07:56.807	ID:2	 the value of R_d is 0
+07:56.807	ID:2	 the value of M_d is 219
+07:56.807	ID:2	 the value of M_d is 219
+07:56.807	ID:2	 the value of R_d is 0
+07:56.807	ID:2	 the value of id_d is 9
+07:56.807	ID:2	 The CPU time and energy at the end of authentication for server 2 are 476.571200 and 29.450783
+07:56.807	ID:2	 Hpayload sent
+07:56.807	ID:2	 The token count and send index is 1 and 1 before if 
+07:56.807	ID:2	 The token count and send index is 1 and 0 in the if
+07:56.808	ID:2	 The token count and send index is 1 and 0
+07:56.808	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+07:56.838	ID:1	
+07:56.838	ID:1	Received auth tokenAuthentication token for Node 9
+07:56.838	ID:1	
+07:56.838	ID:1	 Obtained auth_token is 9
+07:56.911	ID:9	 Sending auth_request
+07:56.911	ID:9	 The timestamp is 1
+07:56.911	ID:9	 the value of M_d is 219
+07:56.911	ID:9	 the value of R_d is 0
+07:56.911	ID:9	 the value of id_as is 2
+07:56.911	ID:9	 the value of id_d is 9
+07:56.911	ID:9	 the value of ts_2 is 1
+07:56.911	ID:9	 The value of R_d is 0
+08:00.556	ID:10	
+08:00.556	ID:10	 the value of R_d is 1
+08:00.556	ID:10	 the value of M_d is 219
+08:00.662	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+08:00.662	ID:3	
+08:00.662	ID:3	 the value of R_d is 1
+08:00.662	ID:3	 the value of M_d is 219
+08:00.662	ID:3	 the value of M_d is 219
+08:00.662	ID:3	 the value of R_d is 1
+08:00.662	ID:3	 the value of id_d is 10
+08:00.662	ID:3	 The CPU time and energy at the end of authentication for server 3 are 479.763200 and 29.648198
+08:00.662	ID:3	 Hpayload sent
+08:00.662	ID:3	 The token count and send index is 1 and 1 before if 
+08:00.662	ID:3	 The token count and send index is 1 and 0 in the if
+08:00.663	ID:3	 The token count and send index is 1 and 0
+08:00.663	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+08:00.708	ID:10	 Sending auth_request
+08:00.708	ID:10	 The timestamp is 1
+08:00.708	ID:10	 the value of M_d is 219
+08:00.708	ID:10	 the value of R_d is 1
+08:00.708	ID:10	 the value of id_as is 3
+08:00.708	ID:10	 the value of id_d is 10
+08:00.708	ID:10	 the value of ts_2 is 1
+08:00.708	ID:10	 The value of R_d is 1
+08:00.775	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+08:00.775	ID:1	Received auth tokenAuthentication token for Node 10
+08:00.775	ID:1	
+08:00.775	ID:1	 Obtained auth_token is 10
+08:10.708	ID:9	 The CPU time and energy at the end of authentication 17 for client 9 are 0.203136 and 0.012528Authentication success, sending data request
+08:10.787	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+08:10.787	ID:1	Authentication failed or stale packet for Node 9
+08:10.843	ID:9	Data length: 1
+08:10.843	ID:9	Data payload: 0
+08:15.556	ID:10	 The CPU time and energy at the end of authentication 16 for client 10 are 0.152592 and 0.009378Authentication success, sending data request
+08:15.586	ID:1	
+08:15.586	ID:1	Authentication failed or stale packet for Node 10
+08:15.630	ID:10	Data length: 1
+08:15.630	ID:10	Data payload: 0
+08:24.708	ID:9	
+08:24.708	ID:9	 the value of R_d is 0
+08:24.708	ID:9	 the value of M_d is 219
+08:24.823	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+08:24.823	ID:2	
+08:24.823	ID:2	 the value of R_d is 0
+08:24.823	ID:2	 the value of M_d is 219
+08:24.823	ID:2	 the value of M_d is 219
+08:24.823	ID:2	 the value of R_d is 0
+08:24.823	ID:2	 the value of id_d is 9
+08:24.823	ID:2	 The CPU time and energy at the end of authentication for server 2 are 504.587200 and 31.182098
+08:24.823	ID:2	 Hpayload sent
+08:24.823	ID:2	 The token count and send index is 1 and 1 before if 
+08:24.823	ID:2	 The token count and send index is 1 and 0 in the if
+08:24.824	ID:2	 The token count and send index is 1 and 0
+08:24.824	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+08:24.876	ID:1	
+08:24.876	ID:1	Received auth tokenAuthentication token for Node 9
+08:24.876	ID:1	
+08:24.876	ID:1	 Obtained auth_token is 9
+08:24.896	ID:9	 Sending auth_request
+08:24.896	ID:9	 The timestamp is 1
+08:24.896	ID:9	 the value of M_d is 219
+08:24.896	ID:9	 the value of R_d is 0
+08:24.896	ID:9	 the value of id_as is 2
+08:24.896	ID:9	 the value of id_d is 9
+08:24.896	ID:9	 the value of ts_2 is 1
+08:24.896	ID:9	 The value of R_d is 0
+08:30.556	ID:10	
+08:30.556	ID:10	 the value of R_d is 1
+08:30.556	ID:10	 the value of M_d is 219
+08:30.626	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+08:30.626	ID:3	
+08:30.626	ID:3	 the value of R_d is 1
+08:30.626	ID:3	 the value of M_d is 219
+08:30.626	ID:3	 the value of M_d is 219
+08:30.626	ID:3	 the value of R_d is 1
+08:30.626	ID:3	 the value of id_d is 10
+08:30.626	ID:3	 The CPU time and energy at the end of authentication for server 3 are 509.727200 and 31.499900
+08:30.626	ID:3	 Hpayload sent
+08:30.626	ID:3	 The token count and send index is 1 and 1 before if 
+08:30.626	ID:3	 The token count and send index is 1 and 0 in the if
+08:30.627	ID:3	 The token count and send index is 1 and 0
+08:30.627	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+08:30.634	ID:10	 Sending auth_request
+08:30.634	ID:10	 The timestamp is 1
+08:30.634	ID:10	 the value of M_d is 219
+08:30.634	ID:10	 the value of R_d is 1
+08:30.634	ID:10	 the value of id_as is 3
+08:30.634	ID:10	 the value of id_d is 10
+08:30.634	ID:10	 the value of ts_2 is 1
+08:30.634	ID:10	 The value of R_d is 1
+08:30.684	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+08:30.684	ID:1	Received auth tokenAuthentication token for Node 10
+08:30.684	ID:1	
+08:30.684	ID:1	 Obtained auth_token is 10
+08:38.708	ID:9	 The CPU time and energy at the end of authentication 18 for client 9 are 0.188136 and 0.011601Authentication success, sending data request
+08:38.770	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+08:38.770	ID:1	Authentication successful for Node 9
+08:38.770	ID:1	
+08:38.805	ID:9	Data length: 1
+08:38.805	ID:9	Data payload: 0
+08:45.556	ID:10	 The CPU time and energy at the end of authentication 17 for client 10 are 0.078792 and 0.004817Authentication success, sending data request
+08:45.562	ID:1	 The message obtained for node 9 is 9
+08:45.562	ID:1	Authentication successful for Node 10
+08:45.562	ID:1	
+08:45.602	ID:10	Data length: 1
+08:45.602	ID:10	Data payload: 0
+08:52.708	ID:9	
+08:52.708	ID:9	 the value of R_d is 0
+08:52.708	ID:9	 the value of M_d is 219
+08:52.807	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+08:52.807	ID:2	
+08:52.807	ID:2	 the value of R_d is 0
+08:52.807	ID:2	 the value of M_d is 219
+08:52.807	ID:2	 the value of M_d is 219
+08:52.807	ID:2	 the value of R_d is 0
+08:52.807	ID:2	 the value of id_d is 9
+08:52.807	ID:2	 The CPU time and energy at the end of authentication for server 2 are 532.571200 and 32.911453
+08:52.807	ID:2	 Hpayload sent
+08:52.807	ID:2	 The token count and send index is 1 and 1 before if 
+08:52.807	ID:2	 The token count and send index is 1 and 0 in the if
+08:52.808	ID:2	 The token count and send index is 1 and 0
+08:52.808	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+08:52.864	ID:9	 Sending auth_request
+08:52.864	ID:9	 The timestamp is 1
+08:52.864	ID:9	 the value of M_d is 219
+08:52.864	ID:9	 the value of R_d is 0
+08:52.864	ID:9	 the value of id_as is 2
+08:52.864	ID:9	 the value of id_d is 9
+08:52.864	ID:9	 the value of ts_2 is 1
+08:52.864	ID:9	 The value of R_d is 0
+08:52.874	ID:1	 The message obtained for node 10 is 9
+08:52.874	ID:1	Received auth tokenAuthentication token for Node 9
+08:52.874	ID:1	
+08:52.874	ID:1	 Obtained auth_token is 9
+09:00.556	ID:10	
+09:00.556	ID:10	 the value of R_d is 1
+09:00.556	ID:10	 the value of M_d is 219
+09:00.654	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+09:00.654	ID:3	
+09:00.654	ID:3	 the value of R_d is 1
+09:00.654	ID:3	 the value of M_d is 219
+09:00.654	ID:3	 the value of M_d is 219
+09:00.654	ID:3	 the value of R_d is 1
+09:00.654	ID:3	 the value of id_d is 10
+09:00.654	ID:3	 The CPU time and energy at the end of authentication for server 3 are 539.755200 and 33.355578
+09:00.654	ID:3	 Hpayload sent
+09:00.654	ID:3	 The token count and send index is 1 and 1 before if 
+09:00.654	ID:3	 The token count and send index is 1 and 0 in the if
+09:00.655	ID:3	 The token count and send index is 1 and 0
+09:00.655	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+09:00.676	ID:10	 Sending auth_request
+09:00.676	ID:10	 The timestamp is 1
+09:00.676	ID:10	 the value of M_d is 219
+09:00.676	ID:10	 the value of R_d is 1
+09:00.676	ID:10	 the value of id_as is 3
+09:00.676	ID:10	 the value of id_d is 10
+09:00.676	ID:10	 the value of ts_2 is 1
+09:00.676	ID:10	 The value of R_d is 1
+09:00.694	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+09:00.694	ID:1	Received auth tokenAuthentication token for Node 10
+09:00.694	ID:1	
+09:00.694	ID:1	 Obtained auth_token is 10
+09:06.708	ID:9	 The CPU time and energy at the end of authentication 19 for client 9 are 0.156136 and 0.009623Authentication success, sending data request
+09:06.759	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+09:06.759	ID:1	Authentication failed or stale packet for Node 9
+09:06.805	ID:9	Data length: 1
+09:06.805	ID:9	Data payload: 0
+09:15.556	ID:10	 The CPU time and energy at the end of authentication 18 for client 10 are 0.120592 and 0.007401Authentication success, sending data request
+09:15.589	ID:1	
+09:15.589	ID:1	Authentication failed or stale packet for Node 10
+09:15.596	ID:10	Data length: 1
+09:15.596	ID:10	Data payload: 0
+09:20.708	ID:9	
+09:20.708	ID:9	 the value of R_d is 0
+09:20.708	ID:9	 the value of M_d is 219
+09:20.819	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+09:20.819	ID:2	
+09:20.819	ID:2	 the value of R_d is 0
+09:20.819	ID:2	 the value of M_d is 219
+09:20.819	ID:2	 the value of M_d is 219
+09:20.819	ID:2	 the value of R_d is 0
+09:20.819	ID:2	 the value of id_d is 9
+09:20.819	ID:2	 The CPU time and energy at the end of authentication for server 2 are 560.583200 and 34.642521
+09:20.819	ID:2	 Hpayload sent
+09:20.819	ID:2	 The token count and send index is 1 and 1 before if 
+09:20.819	ID:2	 The token count and send index is 1 and 0 in the if
+09:20.820	ID:2	 The token count and send index is 1 and 0
+09:20.820	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+09:20.837	ID:1	
+09:20.837	ID:1	Received auth tokenAuthentication token for Node 9
+09:20.837	ID:1	
+09:20.837	ID:1	 Obtained auth_token is 9
+09:20.898	ID:9	 Sending auth_request
+09:20.898	ID:9	 The timestamp is 1
+09:20.898	ID:9	 the value of M_d is 219
+09:20.898	ID:9	 the value of R_d is 0
+09:20.898	ID:9	 the value of id_as is 2
+09:20.898	ID:9	 the value of id_d is 9
+09:20.898	ID:9	 the value of ts_2 is 1
+09:20.898	ID:9	 The value of R_d is 0
+09:30.556	ID:10	
+09:30.556	ID:10	 the value of R_d is 1
+09:30.556	ID:10	 the value of M_d is 219
+09:30.654	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+09:30.654	ID:3	
+09:30.654	ID:3	 the value of R_d is 1
+09:30.654	ID:3	 the value of M_d is 219
+09:30.654	ID:3	 the value of M_d is 219
+09:30.654	ID:3	 the value of R_d is 1
+09:30.654	ID:3	 the value of id_d is 10
+09:30.654	ID:3	 The CPU time and energy at the end of authentication for server 3 are 569.755200 and 35.209521
+09:30.654	ID:3	 Hpayload sent
+09:30.654	ID:3	 The token count and send index is 1 and 1 before if 
+09:30.654	ID:3	 The token count and send index is 1 and 0 in the if
+09:30.655	ID:3	 The token count and send index is 1 and 0
+09:30.655	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+09:30.678	ID:10	 Sending auth_request
+09:30.678	ID:10	 The timestamp is 1
+09:30.678	ID:10	 the value of M_d is 219
+09:30.678	ID:10	 the value of R_d is 1
+09:30.678	ID:10	 the value of id_as is 3
+09:30.678	ID:10	 the value of id_d is 10
+09:30.678	ID:10	 the value of ts_2 is 1
+09:30.678	ID:10	 The value of R_d is 1
+09:30.733	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+09:30.733	ID:1	Received auth tokenAuthentication token for Node 10
+09:30.733	ID:1	
+09:30.733	ID:1	 Obtained auth_token is 10
+09:34.708	ID:9	 The CPU time and energy at the end of authentication 20 for client 9 are 0.190136 and 0.011724Authentication success, sending data request
+09:34.798	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+09:34.798	ID:1	Authentication failed or stale packet for Node 9
+09:34.834	ID:9	Data length: 1
+09:34.834	ID:9	Data payload: 0
+09:45.556	ID:10	 The CPU time and energy at the end of authentication 19 for client 10 are 0.122592 and 0.007524Authentication success, sending data request
+09:45.580	ID:1	
+09:45.580	ID:1	Authentication failed or stale packet for Node 10
+09:45.589	ID:10	Data length: 1
+09:45.589	ID:10	Data payload: 0
+09:48.708	ID:9	
+09:48.708	ID:9	 the value of R_d is 0
+09:48.708	ID:9	 the value of M_d is 219
+09:48.820	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+09:48.820	ID:2	
+09:48.820	ID:2	 the value of R_d is 0
+09:48.820	ID:2	 the value of M_d is 219
+09:48.820	ID:2	 the value of M_d is 219
+09:48.820	ID:2	 the value of R_d is 0
+09:48.820	ID:2	 the value of id_d is 9
+09:48.820	ID:2	 The CPU time and energy at the end of authentication for server 2 are 588.584200 and 36.372930
+09:48.820	ID:2	 Hpayload sent
+09:48.820	ID:2	 The token count and send index is 1 and 1 before if 
+09:48.820	ID:2	 The token count and send index is 1 and 0 in the if
+09:48.821	ID:2	 The token count and send index is 1 and 0
+09:48.821	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+09:48.886	ID:1	
+09:48.886	ID:1	Received auth tokenAuthentication token for Node 9
+09:48.886	ID:1	
+09:48.886	ID:1	 Obtained auth_token is 9
+09:48.959	ID:9	 Sending auth_request
+09:48.959	ID:9	 The timestamp is 1
+09:48.959	ID:9	 the value of M_d is 219
+09:48.959	ID:9	 the value of R_d is 0
+09:48.959	ID:9	 the value of id_as is 2
+09:48.959	ID:9	 the value of id_d is 9
+09:48.959	ID:9	 the value of ts_2 is 1
+09:48.959	ID:9	 The value of R_d is 0
+10:00.556	ID:10	
+10:00.556	ID:10	 the value of R_d is 1
+10:00.556	ID:10	 the value of M_d is 219
+10:00.620	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+10:00.620	ID:3	
+10:00.620	ID:3	 the value of R_d is 1
+10:00.620	ID:3	 the value of M_d is 219
+10:00.620	ID:3	 the value of M_d is 219
+10:00.620	ID:3	 the value of R_d is 1
+10:00.620	ID:3	 the value of id_d is 10
+10:00.620	ID:3	 The CPU time and energy at the end of authentication for server 3 are 599.721200 and 37.061368
+10:00.620	ID:3	 Hpayload sent
+10:00.620	ID:3	 The token count and send index is 1 and 1 before if 
+10:00.620	ID:3	 The token count and send index is 1 and 0 in the if
+10:00.621	ID:3	 The token count and send index is 1 and 0
+10:00.621	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+10:00.652	ID:10	 Sending auth_request
+10:00.652	ID:10	 The timestamp is 1
+10:00.652	ID:10	 the value of M_d is 219
+10:00.652	ID:10	 the value of R_d is 1
+10:00.652	ID:10	 the value of id_as is 3
+10:00.652	ID:10	 the value of id_d is 10
+10:00.652	ID:10	 the value of ts_2 is 1
+10:00.652	ID:10	 The value of R_d is 1
+10:00.669	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+10:00.669	ID:1	Received auth tokenAuthentication token for Node 10
+10:00.669	ID:1	
+10:00.669	ID:1	 Obtained auth_token is 10
+10:02.708	ID:9	 The CPU time and energy at the end of authentication 21 for client 9 are 0.251136 and 0.015494Authentication success, sending data request
+10:02.780	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+10:02.780	ID:1	Authentication failed or stale packet for Node 9
+10:02.826	ID:9	Data length: 1
+10:02.826	ID:9	Data payload: 0
+10:15.556	ID:10	 The CPU time and energy at the end of authentication 20 for client 10 are 0.096592 and 0.005917Authentication success, sending data request
+10:15.596	ID:1	
+10:15.596	ID:1	Authentication failed or stale packet for Node 10
+10:15.605	ID:10	Data length: 1
+10:15.605	ID:10	Data payload: 0
+10:16.708	ID:9	
+10:16.708	ID:9	 the value of R_d is 0
+10:16.708	ID:9	 the value of M_d is 219
+10:16.770	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+10:16.770	ID:2	
+10:16.770	ID:2	 the value of R_d is 0
+10:16.770	ID:2	 the value of M_d is 219
+10:16.770	ID:2	 the value of M_d is 219
+10:16.770	ID:2	 the value of R_d is 0
+10:16.770	ID:2	 the value of id_d is 9
+10:16.770	ID:2	 The CPU time and energy at the end of authentication for server 2 are 616.534200 and 38.100188
+10:16.770	ID:2	 Hpayload sent
+10:16.770	ID:2	 The token count and send index is 1 and 1 before if 
+10:16.770	ID:2	 The token count and send index is 1 and 0 in the if
+10:16.771	ID:2	 The token count and send index is 1 and 0
+10:16.771	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+10:16.852	ID:1	
+10:16.852	ID:1	Received auth tokenAuthentication token for Node 9
+10:16.852	ID:1	
+10:16.852	ID:1	 Obtained auth_token is 9
+10:16.922	ID:9	 Sending auth_request
+10:16.922	ID:9	 The timestamp is 1
+10:16.922	ID:9	 the value of M_d is 219
+10:16.922	ID:9	 the value of R_d is 0
+10:16.922	ID:9	 the value of id_as is 2
+10:16.922	ID:9	 the value of id_d is 9
+10:16.922	ID:9	 the value of ts_2 is 1
+10:16.922	ID:9	 The value of R_d is 0
+10:30.556	ID:10	
+10:30.556	ID:10	 the value of R_d is 1
+10:30.556	ID:10	 the value of M_d is 219
+10:30.608	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+10:30.608	ID:3	
+10:30.608	ID:3	 the value of R_d is 1
+10:30.608	ID:3	 the value of M_d is 219
+10:30.608	ID:3	 the value of M_d is 219
+10:30.608	ID:3	 the value of R_d is 1
+10:30.608	ID:3	 the value of id_d is 10
+10:30.608	ID:3	 The CPU time and energy at the end of authentication for server 3 are 629.709200 and 38.914574
+10:30.608	ID:3	 Hpayload sent
+10:30.608	ID:3	 The token count and send index is 1 and 1 before if 
+10:30.608	ID:3	 The token count and send index is 1 and 0 in the if
+10:30.609	ID:3	 The token count and send index is 1 and 0
+10:30.609	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+10:30.619	ID:10	 Sending auth_request
+10:30.619	ID:10	 The timestamp is 1
+10:30.619	ID:10	 the value of M_d is 219
+10:30.619	ID:10	 the value of R_d is 1
+10:30.619	ID:10	 the value of id_as is 3
+10:30.619	ID:10	 the value of id_d is 10
+10:30.619	ID:10	 the value of ts_2 is 1
+10:30.619	ID:10	 The value of R_d is 1
+10:30.678	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+10:30.678	ID:1	Received auth tokenAuthentication token for Node 10
+10:30.678	ID:1	
+10:30.678	ID:1	 Obtained auth_token is 10
+10:30.708	ID:9	 The CPU time and energy at the end of authentication 22 for client 9 are 0.214136 and 0.013208Authentication success, sending data request
+10:30.737	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+10:30.737	ID:1	Authentication failed or stale packet for Node 9
+10:30.790	ID:9	Data length: 1
+10:30.790	ID:9	Data payload: 0
+10:44.708	ID:9	
+10:44.708	ID:9	 the value of R_d is 0
+10:44.708	ID:9	 the value of M_d is 219
+10:44.769	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+10:44.769	ID:2	
+10:44.769	ID:2	 the value of R_d is 0
+10:44.769	ID:2	 the value of M_d is 219
+10:44.769	ID:2	 the value of M_d is 219
+10:44.769	ID:2	 the value of R_d is 0
+10:44.769	ID:2	 the value of id_d is 9
+10:44.769	ID:2	 The CPU time and energy at the end of authentication for server 2 are 644.533656 and 39.830481
+10:44.769	ID:2	 Hpayload sent
+10:44.769	ID:2	 The token count and send index is 1 and 1 before if 
+10:44.769	ID:2	 The token count and send index is 1 and 0 in the if
+10:44.770	ID:2	 The token count and send index is 1 and 0
+10:44.770	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+10:44.793	ID:1	
+10:44.793	ID:1	Received auth tokenAuthentication token for Node 9
+10:44.793	ID:1	
+10:44.793	ID:1	 Obtained auth_token is 9
+10:44.831	ID:9	 Sending auth_request
+10:44.831	ID:9	 The timestamp is 1
+10:44.831	ID:9	 the value of M_d is 219
+10:44.831	ID:9	 the value of R_d is 0
+10:44.831	ID:9	 the value of id_as is 2
+10:44.831	ID:9	 the value of id_d is 9
+10:44.831	ID:9	 the value of ts_2 is 1
+10:44.831	ID:9	 The value of R_d is 0
+10:45.556	ID:10	 The CPU time and energy at the end of authentication 21 for client 10 are 0.063592 and 0.003878Authentication success, sending data request
+10:45.579	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+10:45.579	ID:1	Authentication failed or stale packet for Node 10
+10:45.595	ID:10	Data length: 1
+10:45.595	ID:10	Data payload: 0
+10:58.708	ID:9	 The CPU time and energy at the end of authentication 23 for client 9 are 0.123032 and 0.007577Authentication success, sending data request
+10:58.776	ID:1	
+10:58.776	ID:1	Authentication failed or stale packet for Node 9
+10:58.797	ID:9	Data length: 1
+10:58.797	ID:9	Data payload: 0
+11:00.556	ID:10	
+11:00.556	ID:10	 the value of R_d is 1
+11:00.556	ID:10	 the value of M_d is 219
+11:00.602	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+11:00.602	ID:3	
+11:00.602	ID:3	 the value of R_d is 1
+11:00.602	ID:3	 the value of M_d is 219
+11:00.602	ID:3	 the value of M_d is 219
+11:00.602	ID:3	 the value of R_d is 1
+11:00.602	ID:3	 the value of id_d is 10
+11:00.602	ID:3	 The CPU time and energy at the end of authentication for server 3 are 659.703200 and 40.768152
+11:00.602	ID:3	 Hpayload sent
+11:00.602	ID:3	 The token count and send index is 1 and 1 before if 
+11:00.602	ID:3	 The token count and send index is 1 and 0 in the if
+11:00.603	ID:3	 The token count and send index is 1 and 0
+11:00.603	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+11:00.609	ID:10	 Sending auth_request
+11:00.609	ID:10	 The timestamp is 1
+11:00.609	ID:10	 the value of M_d is 219
+11:00.609	ID:10	 the value of R_d is 1
+11:00.609	ID:10	 the value of id_as is 3
+11:00.609	ID:10	 the value of id_d is 10
+11:00.609	ID:10	 the value of ts_2 is 1
+11:00.609	ID:10	 The value of R_d is 1
+11:00.675	ID:1	
+11:00.675	ID:1	Received auth tokenAuthentication token for Node 10
+11:00.675	ID:1	
+11:00.675	ID:1	 Obtained auth_token is 10
+11:12.708	ID:9	
+11:12.708	ID:9	 the value of R_d is 0
+11:12.708	ID:9	 the value of M_d is 219
+11:12.818	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+11:12.818	ID:2	
+11:12.818	ID:2	 the value of R_d is 0
+11:12.818	ID:2	 the value of M_d is 219
+11:12.818	ID:2	 the value of M_d is 219
+11:12.818	ID:2	 the value of R_d is 0
+11:12.818	ID:2	 the value of id_d is 9
+11:12.818	ID:2	 The CPU time and energy at the end of authentication for server 2 are 672.582200 and 41.563829
+11:12.818	ID:2	 Hpayload sent
+11:12.818	ID:2	 The token count and send index is 1 and 1 before if 
+11:12.818	ID:2	 The token count and send index is 1 and 0 in the if
+11:12.819	ID:2	 The token count and send index is 1 and 0
+11:12.819	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+11:12.858	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+11:12.858	ID:1	Received auth tokenAuthentication token for Node 9
+11:12.858	ID:1	
+11:12.858	ID:1	 Obtained auth_token is 9
+11:12.947	ID:9	 Sending auth_request
+11:12.947	ID:9	 The timestamp is 1
+11:12.947	ID:9	 the value of M_d is 219
+11:12.947	ID:9	 the value of R_d is 0
+11:12.947	ID:9	 the value of id_as is 2
+11:12.947	ID:9	 the value of id_d is 9
+11:12.947	ID:9	 the value of ts_2 is 1
+11:12.947	ID:9	 The value of R_d is 0
+11:15.556	ID:10	 The CPU time and energy at the end of authentication 22 for client 10 are 0.053792 and 0.003272Authentication success, sending data request
+11:15.575	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+11:15.575	ID:1	Authentication failed or stale packet for Node 10
+11:15.598	ID:10	Data length: 1
+11:15.598	ID:10	Data payload: 0
+11:26.708	ID:9	 The CPU time and energy at the end of authentication 24 for client 9 are 0.239136 and 0.014753Authentication success, sending data request
+11:26.769	ID:1	
+11:26.769	ID:1	Authentication failed or stale packet for Node 9
+11:26.816	ID:9	Data length: 1
+11:26.816	ID:9	Data payload: 0
+11:30.556	ID:10	
+11:30.556	ID:10	 the value of R_d is 1
+11:30.556	ID:10	 the value of M_d is 219
+11:30.621	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+11:30.621	ID:3	
+11:30.621	ID:3	 the value of R_d is 1
+11:30.621	ID:3	 the value of M_d is 219
+11:30.621	ID:3	 the value of M_d is 219
+11:30.621	ID:3	 the value of R_d is 1
+11:30.621	ID:3	 the value of id_d is 10
+11:30.621	ID:3	 The CPU time and energy at the end of authentication for server 3 are 689.722200 and 42.623274
+11:30.621	ID:3	 Hpayload sent
+11:30.621	ID:3	 The token count and send index is 1 and 1 before if 
+11:30.621	ID:3	 The token count and send index is 1 and 0 in the if
+11:30.622	ID:3	 The token count and send index is 1 and 0
+11:30.622	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+11:30.636	ID:10	 Sending auth_request
+11:30.636	ID:10	 The timestamp is 1
+11:30.636	ID:10	 the value of M_d is 219
+11:30.636	ID:10	 the value of R_d is 1
+11:30.636	ID:10	 the value of id_as is 3
+11:30.636	ID:10	 the value of id_d is 10
+11:30.636	ID:10	 the value of ts_2 is 1
+11:30.636	ID:10	 The value of R_d is 1
+11:30.721	ID:1	
+11:30.721	ID:1	Received auth tokenAuthentication token for Node 10
+11:30.721	ID:1	
+11:30.721	ID:1	 Obtained auth_token is 10
+11:40.708	ID:9	
+11:40.708	ID:9	 the value of R_d is 0
+11:40.708	ID:9	 the value of M_d is 219
+11:40.762	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+11:40.762	ID:2	
+11:40.762	ID:2	 the value of R_d is 0
+11:40.762	ID:2	 the value of M_d is 219
+11:40.762	ID:2	 the value of M_d is 219
+11:40.762	ID:2	 the value of R_d is 0
+11:40.762	ID:2	 the value of id_d is 9
+11:40.762	ID:2	 The CPU time and energy at the end of authentication for server 2 are 700.526656 and 43.290744
+11:40.762	ID:2	 Hpayload sent
+11:40.762	ID:2	 The token count and send index is 1 and 1 before if 
+11:40.762	ID:2	 The token count and send index is 1 and 0 in the if
+11:40.763	ID:2	 The token count and send index is 1 and 0
+11:40.763	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+11:40.796	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+11:40.796	ID:1	Received auth tokenAuthentication token for Node 9
+11:40.796	ID:1	
+11:40.796	ID:1	 Obtained auth_token is 9
+11:40.834	ID:9	 Sending auth_request
+11:40.834	ID:9	 The timestamp is 1
+11:40.834	ID:9	 the value of M_d is 219
+11:40.834	ID:9	 the value of R_d is 0
+11:40.834	ID:9	 the value of id_as is 2
+11:40.834	ID:9	 the value of id_d is 9
+11:40.834	ID:9	 the value of ts_2 is 1
+11:40.834	ID:9	 The value of R_d is 0
+11:45.556	ID:10	 The CPU time and energy at the end of authentication 23 for client 10 are 0.080592 and 0.004929Authentication success, sending data request
+11:45.572	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+11:45.572	ID:1	Authentication failed or stale packet for Node 10
+11:45.591	ID:10	Data length: 1
+11:45.591	ID:10	Data payload: 0
+11:54.708	ID:9	 The CPU time and energy at the end of authentication 25 for client 9 are 0.126136 and 0.007769Authentication success, sending data request
+11:54.754	ID:1	
+11:54.754	ID:1	Authentication failed or stale packet for Node 9
+11:54.774	ID:9	Data length: 1
+11:54.774	ID:9	Data payload: 0
+12:00.556	ID:10	
+12:00.556	ID:10	 the value of R_d is 1
+12:00.556	ID:10	 the value of M_d is 219
+12:00.629	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+12:00.629	ID:3	
+12:00.629	ID:3	 the value of R_d is 1
+12:00.629	ID:3	 the value of M_d is 219
+12:00.629	ID:3	 the value of M_d is 219
+12:00.629	ID:3	 the value of R_d is 1
+12:00.629	ID:3	 the value of id_d is 10
+12:00.629	ID:3	 The CPU time and energy at the end of authentication for server 3 are 719.730200 and 44.477716
+12:00.629	ID:3	 Hpayload sent
+12:00.629	ID:3	 The token count and send index is 1 and 1 before if 
+12:00.629	ID:3	 The token count and send index is 1 and 0 in the if
+12:00.630	ID:3	 The token count and send index is 1 and 0
+12:00.630	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+12:00.658	ID:10	 Sending auth_request
+12:00.658	ID:10	 The timestamp is 1
+12:00.658	ID:10	 the value of M_d is 219
+12:00.658	ID:10	 the value of R_d is 1
+12:00.658	ID:10	 the value of id_as is 3
+12:00.658	ID:10	 the value of id_d is 10
+12:00.658	ID:10	 the value of ts_2 is 1
+12:00.658	ID:10	 The value of R_d is 1
+12:00.710	ID:1	
+12:00.710	ID:1	Received auth tokenAuthentication token for Node 10
+12:00.710	ID:1	
+12:00.710	ID:1	 Obtained auth_token is 10
+12:15.556	ID:10	 The CPU time and energy at the end of authentication 24 for client 10 are 0.102592 and 0.006288Authentication success, sending data request
+12:15.587	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+12:15.587	ID:1	Authentication failed or stale packet for Node 10
+12:15.613	ID:10	Data length: 1
+12:15.613	ID:10	Data payload: 0
+12:30.556	ID:10	
+12:30.556	ID:10	 the value of R_d is 1
+12:30.556	ID:10	 the value of M_d is 219
+12:30.632	ID:3	Received[INFO: coap-bt-server] Handler auth called!
+12:30.632	ID:3	
+12:30.632	ID:3	 the value of R_d is 1
+12:30.632	ID:3	 the value of M_d is 219
+12:30.632	ID:3	 the value of M_d is 219
+12:30.632	ID:3	 the value of R_d is 1
+12:30.632	ID:3	 the value of id_d is 10
+12:30.632	ID:3	 The CPU time and energy at the end of authentication for server 3 are 749.733200 and 46.331849
+12:30.632	ID:3	 Hpayload sent
+12:30.632	ID:3	 The token count and send index is 1 and 1 before if 
+12:30.632	ID:3	 The token count and send index is 1 and 0 in the if
+12:30.633	ID:3	 The token count and send index is 1 and 0
+12:30.633	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+12:30.674	ID:10	 Sending auth_request
+12:30.674	ID:10	 The timestamp is 1
+12:30.674	ID:10	 the value of M_d is 219
+12:30.674	ID:10	 the value of R_d is 1
+12:30.674	ID:10	 the value of id_as is 3
+12:30.674	ID:10	 the value of id_d is 10
+12:30.674	ID:10	 the value of ts_2 is 1
+12:30.674	ID:10	 The value of R_d is 1
+12:30.719	ID:1	
+12:30.719	ID:1	Received auth tokenAuthentication token for Node 10
+12:30.719	ID:1	
+12:30.719	ID:1	 Obtained auth_token is 10
+12:45.556	ID:10	 The CPU time and energy at the end of authentication 25 for client 10 are 0.118592 and 0.007277Authentication success, sending data request
+12:45.583	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+12:45.583	ID:1	Authentication failed or stale packet for Node 10
+12:45.615	ID:10	Data length: 1
+12:45.615	ID:10	Data payload: 0

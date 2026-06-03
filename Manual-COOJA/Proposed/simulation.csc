@@ -17,10 +17,10 @@
     <motetype>
       org.contikios.cooja.contikimote.ContikiMoteType
       <description>GW Node (RPL root + RA)</description>
-      <source>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/gw-node.c</source>
+      <source>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/gw-node/gw-node.c</source>
       <commands>$(MAKE) TARGET=cooja clean
 $(MAKE) -j$(CPUS) gw-node.cooja TARGET=cooja</commands>
-      <firmware>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/build/cooja/gw-node.cooja</firmware>
+      <firmware>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/gw-node/build/cooja/gw-node.cooja</firmware>
       <moteinterface>org.contikios.cooja.interfaces.Position</moteinterface>
       <moteinterface>org.contikios.cooja.interfaces.Battery</moteinterface>
       <moteinterface>org.contikios.cooja.contikimote.interfaces.ContikiVib</moteinterface>
@@ -51,10 +51,10 @@ $(MAKE) -j$(CPUS) gw-node.cooja TARGET=cooja</commands>
     <motetype>
       org.contikios.cooja.contikimote.ContikiMoteType
       <description>Fog AS Node</description>
-      <source>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/as-node.c</source>
+      <source>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/as-node/as-node.c</source>
       <commands>$(MAKE) TARGET=cooja clean
 $(MAKE) -j$(CPUS) as-node.cooja TARGET=cooja</commands>
-      <firmware>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/build/cooja/as-node.cooja</firmware>
+      <firmware>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/as-node/build/cooja/as-node.cooja</firmware>
       <moteinterface>org.contikios.cooja.interfaces.Position</moteinterface>
       <moteinterface>org.contikios.cooja.interfaces.Battery</moteinterface>
       <moteinterface>org.contikios.cooja.contikimote.interfaces.ContikiVib</moteinterface>
@@ -865,10 +865,10 @@ $(MAKE) -j$(CPUS) as-node.cooja TARGET=cooja</commands>
     <motetype>
       org.contikios.cooja.contikimote.ContikiMoteType
       <description>Device Node (IoT Device)</description>
-      <source>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/device-node.c</source>
+      <source>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/device-node/device-node.c</source>
       <commands>$(MAKE) TARGET=cooja clean
 $(MAKE) -j$(CPUS) device-node.cooja TARGET=cooja</commands>
-      <firmware>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/build/cooja/device-node.cooja</firmware>
+      <firmware>/home/apex/contiki-ng/examples/Codes-For-COOJA/Manual-COOJA/Proposed/device-node/build/cooja/device-node.cooja</firmware>
       <moteinterface>org.contikios.cooja.interfaces.Position</moteinterface>
       <moteinterface>org.contikios.cooja.interfaces.Battery</moteinterface>
       <moteinterface>org.contikios.cooja.contikimote.interfaces.ContikiVib</moteinterface>

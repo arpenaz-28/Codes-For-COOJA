@@ -1,0 +1,789 @@
+00:00.029	ID:17	[INFO: Main      ] Starting Contiki-NG
+00:00.029	ID:17	[INFO: Main      ] - Routing: RPL Lite
+00:00.029	ID:17	[INFO: Main      ] - Net: sicslowpan
+00:00.029	ID:17	[INFO: Main      ] - MAC: CSMA
+00:00.029	ID:17	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.029	ID:17	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.029	ID:17	[INFO: Main      ] Node ID: 17
+00:00.029	ID:17	[INFO: Main      ] Link-layer address: 0011.0011.0011.0011
+00:00.029	ID:17	[INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
+00:00.029	ID:17	[INFO: coap-bt-server] Starting CoAP server
+00:00.076	ID:2	[INFO: Main      ] Starting Contiki-NG
+00:00.076	ID:2	[INFO: Main      ] - Routing: RPL Lite
+00:00.076	ID:2	[INFO: Main      ] - Net: sicslowpan
+00:00.076	ID:2	[INFO: Main      ] - MAC: CSMA
+00:00.076	ID:2	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.076	ID:2	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.076	ID:2	[INFO: Main      ] Node ID: 2
+00:00.076	ID:2	[INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+00:00.076	ID:2	[INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+00:00.076	ID:2	[INFO: coap-bt-server] Starting CoAP server
+00:00.127	ID:18	[INFO: Main      ] Starting Contiki-NG
+00:00.127	ID:18	[INFO: Main      ] - Routing: RPL Lite
+00:00.127	ID:18	[INFO: Main      ] - Net: sicslowpan
+00:00.127	ID:18	[INFO: Main      ] - MAC: CSMA
+00:00.127	ID:18	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.127	ID:18	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.127	ID:18	[INFO: Main      ] Node ID: 18
+00:00.127	ID:18	[INFO: Main      ] Link-layer address: 0012.0012.0012.0012
+00:00.127	ID:18	[INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
+00:00.127	ID:18	[INFO: coap-bt-server] Starting CoAP server
+00:00.162	ID:26	[INFO: Main      ] Starting Contiki-NG
+00:00.162	ID:26	[INFO: Main      ] - Routing: RPL Lite
+00:00.162	ID:26	[INFO: Main      ] - Net: sicslowpan
+00:00.162	ID:26	[INFO: Main      ] - MAC: CSMA
+00:00.162	ID:26	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.162	ID:26	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.162	ID:26	[INFO: Main      ] Node ID: 26
+00:00.162	ID:26	[INFO: Main      ] Link-layer address: 001a.001a.001a.001a
+00:00.162	ID:26	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21a:1a:1a:1a
+00:00.162	ID:26	[INFO: coap-bt-server] Starting CoAP server
+00:00.171	ID:37	[INFO: Main      ] Starting Contiki-NG
+00:00.171	ID:37	[INFO: Main      ] - Routing: RPL Lite
+00:00.171	ID:37	[INFO: Main      ] - Net: sicslowpan
+00:00.171	ID:37	[INFO: Main      ] - MAC: CSMA
+00:00.171	ID:37	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.171	ID:37	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.171	ID:37	[INFO: Main      ] Node ID: 37
+00:00.171	ID:37	[INFO: Main      ] Link-layer address: 0025.0025.0025.0025
+00:00.171	ID:37	[INFO: Main      ] Tentative link-local IPv6 address: fe80::225:25:25:25
+00:00.268	ID:12	[INFO: Main      ] Starting Contiki-NG
+00:00.268	ID:12	[INFO: Main      ] - Routing: RPL Lite
+00:00.268	ID:12	[INFO: Main      ] - Net: sicslowpan
+00:00.268	ID:12	[INFO: Main      ] - MAC: CSMA
+00:00.268	ID:12	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.268	ID:12	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.268	ID:12	[INFO: Main      ] Node ID: 12
+00:00.268	ID:12	[INFO: Main      ] Link-layer address: 000c.000c.000c.000c
+00:00.268	ID:12	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
+00:00.268	ID:12	[INFO: coap-bt-server] Starting CoAP server
+00:00.290	ID:40	[INFO: Main      ] Starting Contiki-NG
+00:00.290	ID:40	[INFO: Main      ] - Routing: RPL Lite
+00:00.290	ID:40	[INFO: Main      ] - Net: sicslowpan
+00:00.290	ID:40	[INFO: Main      ] - MAC: CSMA
+00:00.290	ID:40	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.290	ID:40	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.290	ID:40	[INFO: Main      ] Node ID: 40
+00:00.290	ID:40	[INFO: Main      ] Link-layer address: 0028.0028.0028.0028
+00:00.290	ID:40	[INFO: Main      ] Tentative link-local IPv6 address: fe80::228:28:28:28
+00:00.293	ID:11	[INFO: Main      ] Starting Contiki-NG
+00:00.293	ID:11	[INFO: Main      ] - Routing: RPL Lite
+00:00.293	ID:11	[INFO: Main      ] - Net: sicslowpan
+00:00.293	ID:11	[INFO: Main      ] - MAC: CSMA
+00:00.293	ID:11	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.293	ID:11	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.293	ID:11	[INFO: Main      ] Node ID: 11
+00:00.293	ID:11	[INFO: Main      ] Link-layer address: 000b.000b.000b.000b
+00:00.293	ID:11	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20b:b:b:b
+00:00.293	ID:11	[INFO: coap-bt-server] Starting CoAP server
+00:00.295	ID:25	[INFO: Main      ] Starting Contiki-NG
+00:00.295	ID:25	[INFO: Main      ] - Routing: RPL Lite
+00:00.295	ID:25	[INFO: Main      ] - Net: sicslowpan
+00:00.295	ID:25	[INFO: Main      ] - MAC: CSMA
+00:00.295	ID:25	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.295	ID:25	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.295	ID:25	[INFO: Main      ] Node ID: 25
+00:00.295	ID:25	[INFO: Main      ] Link-layer address: 0019.0019.0019.0019
+00:00.295	ID:25	[INFO: Main      ] Tentative link-local IPv6 address: fe80::219:19:19:19
+00:00.295	ID:25	[INFO: coap-bt-server] Starting CoAP server
+00:00.320	ID:24	[INFO: Main      ] Starting Contiki-NG
+00:00.320	ID:24	[INFO: Main      ] - Routing: RPL Lite
+00:00.320	ID:24	[INFO: Main      ] - Net: sicslowpan
+00:00.320	ID:24	[INFO: Main      ] - MAC: CSMA
+00:00.320	ID:24	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.320	ID:24	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.320	ID:24	[INFO: Main      ] Node ID: 24
+00:00.320	ID:24	[INFO: Main      ] Link-layer address: 0018.0018.0018.0018
+00:00.320	ID:24	[INFO: Main      ] Tentative link-local IPv6 address: fe80::218:18:18:18
+00:00.320	ID:24	[INFO: coap-bt-server] Starting CoAP server
+00:00.342	ID:33	[INFO: Main      ] Starting Contiki-NG
+00:00.342	ID:33	[INFO: Main      ] - Routing: RPL Lite
+00:00.342	ID:33	[INFO: Main      ] - Net: sicslowpan
+00:00.342	ID:33	[INFO: Main      ] - MAC: CSMA
+00:00.342	ID:33	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.342	ID:33	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.342	ID:33	[INFO: Main      ] Node ID: 33
+00:00.342	ID:33	[INFO: Main      ] Link-layer address: 0021.0021.0021.0021
+00:00.342	ID:33	[INFO: Main      ] Tentative link-local IPv6 address: fe80::221:21:21:21
+00:00.360	ID:1	[INFO: Main      ] Starting Contiki-NG
+00:00.360	ID:1	[INFO: Main      ] - Routing: RPL Lite
+00:00.360	ID:1	[INFO: Main      ] - Net: sicslowpan
+00:00.360	ID:1	[INFO: Main      ] - MAC: CSMA
+00:00.360	ID:1	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.360	ID:1	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.360	ID:1	[INFO: Main      ] Node ID: 1
+00:00.360	ID:1	[INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+00:00.360	ID:1	[INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+00:00.360	ID:1	[INFO: coap-hello-gateway] Starting Erbium Example Server
+00:00.360	ID:1	[INFO: coap-hello-gateway] Server is listening for requests
+00:00.377	ID:28	[INFO: Main      ] Starting Contiki-NG
+00:00.377	ID:28	[INFO: Main      ] - Routing: RPL Lite
+00:00.377	ID:28	[INFO: Main      ] - Net: sicslowpan
+00:00.377	ID:28	[INFO: Main      ] - MAC: CSMA
+00:00.377	ID:28	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.377	ID:28	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.377	ID:28	[INFO: Main      ] Node ID: 28
+00:00.377	ID:28	[INFO: Main      ] Link-layer address: 001c.001c.001c.001c
+00:00.377	ID:28	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21c:1c:1c:1c
+00:00.377	ID:28	[INFO: coap-bt-server] Starting CoAP server
+00:00.395	ID:13	[INFO: Main      ] Starting Contiki-NG
+00:00.395	ID:13	[INFO: Main      ] - Routing: RPL Lite
+00:00.395	ID:13	[INFO: Main      ] - Net: sicslowpan
+00:00.395	ID:13	[INFO: Main      ] - MAC: CSMA
+00:00.395	ID:13	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.395	ID:13	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.395	ID:13	[INFO: Main      ] Node ID: 13
+00:00.395	ID:13	[INFO: Main      ] Link-layer address: 000d.000d.000d.000d
+00:00.395	ID:13	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
+00:00.395	ID:13	[INFO: coap-bt-server] Starting CoAP server
+00:00.444	ID:3	[INFO: Main      ] Starting Contiki-NG
+00:00.444	ID:3	[INFO: Main      ] - Routing: RPL Lite
+00:00.444	ID:3	[INFO: Main      ] - Net: sicslowpan
+00:00.444	ID:3	[INFO: Main      ] - MAC: CSMA
+00:00.444	ID:3	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.444	ID:3	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.444	ID:3	[INFO: Main      ] Node ID: 3
+00:00.444	ID:3	[INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+00:00.444	ID:3	[INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+00:00.444	ID:3	[INFO: coap-bt-server] Starting CoAP server
+00:00.453	ID:14	[INFO: Main      ] Starting Contiki-NG
+00:00.453	ID:14	[INFO: Main      ] - Routing: RPL Lite
+00:00.453	ID:14	[INFO: Main      ] - Net: sicslowpan
+00:00.453	ID:14	[INFO: Main      ] - MAC: CSMA
+00:00.453	ID:14	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.453	ID:14	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.453	ID:14	[INFO: Main      ] Node ID: 14
+00:00.453	ID:14	[INFO: Main      ] Link-layer address: 000e.000e.000e.000e
+00:00.453	ID:14	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
+00:00.453	ID:14	[INFO: coap-bt-server] Starting CoAP server
+00:00.477	ID:6	[INFO: Main      ] Starting Contiki-NG
+00:00.477	ID:6	[INFO: Main      ] - Routing: RPL Lite
+00:00.477	ID:6	[INFO: Main      ] - Net: sicslowpan
+00:00.477	ID:6	[INFO: Main      ] - MAC: CSMA
+00:00.477	ID:6	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.477	ID:6	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.477	ID:6	[INFO: Main      ] Node ID: 6
+00:00.477	ID:6	[INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+00:00.477	ID:6	[INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+00:00.477	ID:6	[INFO: coap-bt-server] Starting CoAP server
+00:00.477	ID:7	[INFO: Main      ] Starting Contiki-NG
+00:00.477	ID:7	[INFO: Main      ] - Routing: RPL Lite
+00:00.477	ID:7	[INFO: Main      ] - Net: sicslowpan
+00:00.477	ID:7	[INFO: Main      ] - MAC: CSMA
+00:00.477	ID:7	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.477	ID:7	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.477	ID:7	[INFO: Main      ] Node ID: 7
+00:00.477	ID:7	[INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+00:00.477	ID:7	[INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+00:00.477	ID:7	[INFO: coap-bt-server] Starting CoAP server
+00:00.484	ID:39	[INFO: Main      ] Starting Contiki-NG
+00:00.484	ID:39	[INFO: Main      ] - Routing: RPL Lite
+00:00.484	ID:39	[INFO: Main      ] - Net: sicslowpan
+00:00.484	ID:39	[INFO: Main      ] - MAC: CSMA
+00:00.484	ID:39	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.484	ID:39	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.484	ID:39	[INFO: Main      ] Node ID: 39
+00:00.484	ID:39	[INFO: Main      ] Link-layer address: 0027.0027.0027.0027
+00:00.484	ID:39	[INFO: Main      ] Tentative link-local IPv6 address: fe80::227:27:27:27
+00:00.544	ID:19	[INFO: Main      ] Starting Contiki-NG
+00:00.544	ID:19	[INFO: Main      ] - Routing: RPL Lite
+00:00.544	ID:19	[INFO: Main      ] - Net: sicslowpan
+00:00.544	ID:19	[INFO: Main      ] - MAC: CSMA
+00:00.544	ID:19	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.544	ID:19	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.544	ID:19	[INFO: Main      ] Node ID: 19
+00:00.544	ID:19	[INFO: Main      ] Link-layer address: 0013.0013.0013.0013
+00:00.544	ID:19	[INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
+00:00.544	ID:19	[INFO: coap-bt-server] Starting CoAP server
+00:00.548	ID:27	[INFO: Main      ] Starting Contiki-NG
+00:00.548	ID:27	[INFO: Main      ] - Routing: RPL Lite
+00:00.548	ID:27	[INFO: Main      ] - Net: sicslowpan
+00:00.548	ID:27	[INFO: Main      ] - MAC: CSMA
+00:00.548	ID:27	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.548	ID:27	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.548	ID:27	[INFO: Main      ] Node ID: 27
+00:00.548	ID:27	[INFO: Main      ] Link-layer address: 001b.001b.001b.001b
+00:00.548	ID:27	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21b:1b:1b:1b
+00:00.548	ID:27	[INFO: coap-bt-server] Starting CoAP server
+00:00.620	ID:8	[INFO: Main      ] Starting Contiki-NG
+00:00.620	ID:8	[INFO: Main      ] - Routing: RPL Lite
+00:00.620	ID:8	[INFO: Main      ] - Net: sicslowpan
+00:00.620	ID:8	[INFO: Main      ] - MAC: CSMA
+00:00.620	ID:8	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.620	ID:8	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.620	ID:8	[INFO: Main      ] Node ID: 8
+00:00.620	ID:8	[INFO: Main      ] Link-layer address: 0008.0008.0008.0008
+00:00.620	ID:8	[INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
+00:00.620	ID:8	[INFO: coap-bt-server] Starting CoAP server
+00:00.644	ID:22	[INFO: Main      ] Starting Contiki-NG
+00:00.644	ID:22	[INFO: Main      ] - Routing: RPL Lite
+00:00.644	ID:22	[INFO: Main      ] - Net: sicslowpan
+00:00.644	ID:22	[INFO: Main      ] - MAC: CSMA
+00:00.644	ID:22	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.644	ID:22	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.644	ID:22	[INFO: Main      ] Node ID: 22
+00:00.644	ID:22	[INFO: Main      ] Link-layer address: 0016.0016.0016.0016
+00:00.644	ID:22	[INFO: Main      ] Tentative link-local IPv6 address: fe80::216:16:16:16
+00:00.644	ID:22	[INFO: coap-bt-server] Starting CoAP server
+00:00.650	ID:9	[INFO: Main      ] Starting Contiki-NG
+00:00.650	ID:9	[INFO: Main      ] - Routing: RPL Lite
+00:00.650	ID:9	[INFO: Main      ] - Net: sicslowpan
+00:00.650	ID:9	[INFO: Main      ] - MAC: CSMA
+00:00.650	ID:9	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.650	ID:9	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.650	ID:9	[INFO: Main      ] Node ID: 9
+00:00.650	ID:9	[INFO: Main      ] Link-layer address: 0009.0009.0009.0009
+00:00.650	ID:9	[INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
+00:00.650	ID:9	[INFO: coap-bt-server] Starting CoAP server
+00:00.654	ID:32	[INFO: Main      ] Starting Contiki-NG
+00:00.654	ID:32	[INFO: Main      ] - Routing: RPL Lite
+00:00.654	ID:32	[INFO: Main      ] - Net: sicslowpan
+00:00.654	ID:32	[INFO: Main      ] - MAC: CSMA
+00:00.654	ID:32	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.654	ID:32	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.654	ID:32	[INFO: Main      ] Node ID: 32
+00:00.654	ID:32	[INFO: Main      ] Link-layer address: 0020.0020.0020.0020
+00:00.654	ID:32	[INFO: Main      ] Tentative link-local IPv6 address: fe80::220:20:20:20
+00:00.654	ID:32	[INFO: coap-bt-server] Starting CoAP server
+00:00.659	ID:15	[INFO: Main      ] Starting Contiki-NG
+00:00.659	ID:15	[INFO: Main      ] - Routing: RPL Lite
+00:00.659	ID:15	[INFO: Main      ] - Net: sicslowpan
+00:00.659	ID:15	[INFO: Main      ] - MAC: CSMA
+00:00.659	ID:15	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.659	ID:15	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.659	ID:15	[INFO: Main      ] Node ID: 15
+00:00.659	ID:15	[INFO: Main      ] Link-layer address: 000f.000f.000f.000f
+00:00.659	ID:15	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
+00:00.659	ID:15	[INFO: coap-bt-server] Starting CoAP server
+00:00.671	ID:4	[INFO: Main      ] Starting Contiki-NG
+00:00.671	ID:4	[INFO: Main      ] - Routing: RPL Lite
+00:00.671	ID:4	[INFO: Main      ] - Net: sicslowpan
+00:00.671	ID:4	[INFO: Main      ] - MAC: CSMA
+00:00.671	ID:4	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.671	ID:4	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.671	ID:4	[INFO: Main      ] Node ID: 4
+00:00.671	ID:4	[INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+00:00.671	ID:4	[INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+00:00.671	ID:4	[INFO: coap-bt-server] Starting CoAP server
+00:00.735	ID:10	[INFO: Main      ] Starting Contiki-NG
+00:00.735	ID:10	[INFO: Main      ] - Routing: RPL Lite
+00:00.735	ID:10	[INFO: Main      ] - Net: sicslowpan
+00:00.735	ID:10	[INFO: Main      ] - MAC: CSMA
+00:00.735	ID:10	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.735	ID:10	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.735	ID:10	[INFO: Main      ] Node ID: 10
+00:00.735	ID:10	[INFO: Main      ] Link-layer address: 000a.000a.000a.000a
+00:00.735	ID:10	[INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
+00:00.735	ID:10	[INFO: coap-bt-server] Starting CoAP server
+00:00.767	ID:20	[INFO: Main      ] Starting Contiki-NG
+00:00.767	ID:20	[INFO: Main      ] - Routing: RPL Lite
+00:00.767	ID:20	[INFO: Main      ] - Net: sicslowpan
+00:00.767	ID:20	[INFO: Main      ] - MAC: CSMA
+00:00.767	ID:20	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.767	ID:20	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.767	ID:20	[INFO: Main      ] Node ID: 20
+00:00.767	ID:20	[INFO: Main      ] Link-layer address: 0014.0014.0014.0014
+00:00.767	ID:20	[INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
+00:00.767	ID:20	[INFO: coap-bt-server] Starting CoAP server
+00:00.774	ID:5	[INFO: Main      ] Starting Contiki-NG
+00:00.774	ID:5	[INFO: Main      ] - Routing: RPL Lite
+00:00.774	ID:5	[INFO: Main      ] - Net: sicslowpan
+00:00.774	ID:5	[INFO: Main      ] - MAC: CSMA
+00:00.774	ID:5	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.774	ID:5	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.774	ID:5	[INFO: Main      ] Node ID: 5
+00:00.774	ID:5	[INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+00:00.774	ID:5	[INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+00:00.774	ID:5	[INFO: coap-bt-server] Starting CoAP server
+00:00.847	ID:38	[INFO: Main      ] Starting Contiki-NG
+00:00.847	ID:38	[INFO: Main      ] - Routing: RPL Lite
+00:00.847	ID:38	[INFO: Main      ] - Net: sicslowpan
+00:00.847	ID:38	[INFO: Main      ] - MAC: CSMA
+00:00.847	ID:38	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.847	ID:38	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.847	ID:38	[INFO: Main      ] Node ID: 38
+00:00.847	ID:38	[INFO: Main      ] Link-layer address: 0026.0026.0026.0026
+00:00.847	ID:38	[INFO: Main      ] Tentative link-local IPv6 address: fe80::226:26:26:26
+00:00.852	ID:35	[INFO: Main      ] Starting Contiki-NG
+00:00.852	ID:35	[INFO: Main      ] - Routing: RPL Lite
+00:00.852	ID:35	[INFO: Main      ] - Net: sicslowpan
+00:00.852	ID:35	[INFO: Main      ] - MAC: CSMA
+00:00.852	ID:35	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.852	ID:35	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.852	ID:35	[INFO: Main      ] Node ID: 35
+00:00.852	ID:35	[INFO: Main      ] Link-layer address: 0023.0023.0023.0023
+00:00.852	ID:35	[INFO: Main      ] Tentative link-local IPv6 address: fe80::223:23:23:23
+00:00.883	ID:31	[INFO: Main      ] Starting Contiki-NG
+00:00.883	ID:31	[INFO: Main      ] - Routing: RPL Lite
+00:00.883	ID:31	[INFO: Main      ] - Net: sicslowpan
+00:00.883	ID:31	[INFO: Main      ] - MAC: CSMA
+00:00.883	ID:31	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.883	ID:31	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.883	ID:31	[INFO: Main      ] Node ID: 31
+00:00.883	ID:31	[INFO: Main      ] Link-layer address: 001f.001f.001f.001f
+00:00.883	ID:31	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21f:1f:1f:1f
+00:00.883	ID:31	[INFO: coap-bt-server] Starting CoAP server
+00:00.888	ID:30	[INFO: Main      ] Starting Contiki-NG
+00:00.888	ID:30	[INFO: Main      ] - Routing: RPL Lite
+00:00.888	ID:30	[INFO: Main      ] - Net: sicslowpan
+00:00.888	ID:30	[INFO: Main      ] - MAC: CSMA
+00:00.888	ID:30	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.888	ID:30	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.888	ID:30	[INFO: Main      ] Node ID: 30
+00:00.888	ID:30	[INFO: Main      ] Link-layer address: 001e.001e.001e.001e
+00:00.888	ID:30	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21e:1e:1e:1e
+00:00.888	ID:30	[INFO: coap-bt-server] Starting CoAP server
+00:00.901	ID:36	[INFO: Main      ] Starting Contiki-NG
+00:00.901	ID:36	[INFO: Main      ] - Routing: RPL Lite
+00:00.901	ID:36	[INFO: Main      ] - Net: sicslowpan
+00:00.901	ID:36	[INFO: Main      ] - MAC: CSMA
+00:00.901	ID:36	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.901	ID:36	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.901	ID:36	[INFO: Main      ] Node ID: 36
+00:00.901	ID:36	[INFO: Main      ] Link-layer address: 0024.0024.0024.0024
+00:00.901	ID:36	[INFO: Main      ] Tentative link-local IPv6 address: fe80::224:24:24:24
+00:00.902	ID:29	[INFO: Main      ] Starting Contiki-NG
+00:00.902	ID:29	[INFO: Main      ] - Routing: RPL Lite
+00:00.902	ID:29	[INFO: Main      ] - Net: sicslowpan
+00:00.902	ID:29	[INFO: Main      ] - MAC: CSMA
+00:00.902	ID:29	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.902	ID:29	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.902	ID:29	[INFO: Main      ] Node ID: 29
+00:00.902	ID:29	[INFO: Main      ] Link-layer address: 001d.001d.001d.001d
+00:00.902	ID:29	[INFO: Main      ] Tentative link-local IPv6 address: fe80::21d:1d:1d:1d
+00:00.902	ID:29	[INFO: coap-bt-server] Starting CoAP server
+00:00.909	ID:34	[INFO: Main      ] Starting Contiki-NG
+00:00.909	ID:34	[INFO: Main      ] - Routing: RPL Lite
+00:00.909	ID:34	[INFO: Main      ] - Net: sicslowpan
+00:00.909	ID:34	[INFO: Main      ] - MAC: CSMA
+00:00.909	ID:34	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.909	ID:34	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.909	ID:34	[INFO: Main      ] Node ID: 34
+00:00.909	ID:34	[INFO: Main      ] Link-layer address: 0022.0022.0022.0022
+00:00.909	ID:34	[INFO: Main      ] Tentative link-local IPv6 address: fe80::222:22:22:22
+00:00.912	ID:21	[INFO: Main      ] Starting Contiki-NG
+00:00.912	ID:21	[INFO: Main      ] - Routing: RPL Lite
+00:00.912	ID:21	[INFO: Main      ] - Net: sicslowpan
+00:00.912	ID:21	[INFO: Main      ] - MAC: CSMA
+00:00.912	ID:21	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.912	ID:21	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.912	ID:21	[INFO: Main      ] Node ID: 21
+00:00.912	ID:21	[INFO: Main      ] Link-layer address: 0015.0015.0015.0015
+00:00.912	ID:21	[INFO: Main      ] Tentative link-local IPv6 address: fe80::215:15:15:15
+00:00.912	ID:21	[INFO: coap-bt-server] Starting CoAP server
+00:00.926	ID:16	[INFO: Main      ] Starting Contiki-NG
+00:00.926	ID:16	[INFO: Main      ] - Routing: RPL Lite
+00:00.926	ID:16	[INFO: Main      ] - Net: sicslowpan
+00:00.926	ID:16	[INFO: Main      ] - MAC: CSMA
+00:00.926	ID:16	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.926	ID:16	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.926	ID:16	[INFO: Main      ] Node ID: 16
+00:00.926	ID:16	[INFO: Main      ] Link-layer address: 0010.0010.0010.0010
+00:00.926	ID:16	[INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
+00:00.926	ID:16	[INFO: coap-bt-server] Starting CoAP server
+00:00.996	ID:23	[INFO: Main      ] Starting Contiki-NG
+00:00.996	ID:23	[INFO: Main      ] - Routing: RPL Lite
+00:00.996	ID:23	[INFO: Main      ] - Net: sicslowpan
+00:00.996	ID:23	[INFO: Main      ] - MAC: CSMA
+00:00.996	ID:23	[INFO: Main      ] - 802.15.4 PANID: 0xabcd
+00:00.996	ID:23	[INFO: Main      ] - 802.15.4 Default channel: 26
+00:00.996	ID:23	[INFO: Main      ] Node ID: 23
+00:00.996	ID:23	[INFO: Main      ] Link-layer address: 0017.0017.0017.0017
+00:00.996	ID:23	[INFO: Main      ] Tentative link-local IPv6 address: fe80::217:17:17:17
+00:00.996	ID:23	[INFO: coap-bt-server] Starting CoAP server
+00:05.171	ID:37	Sending registration request to server...
+00:05.290	ID:40	Sending registration request to server...
+00:05.342	ID:33	Sending registration request to server...
+00:05.484	ID:39	Sending registration request to server...
+00:05.847	ID:38	Sending registration request to server...
+00:05.852	ID:35	Sending registration request to server...
+00:05.901	ID:36	Sending registration request to server...
+00:05.909	ID:34	Sending registration request to server...
+00:32.157	ID:2	[INFO: coap-bt-server] Handler reg called!
+00:32.268	ID:35	Received reg payload
+00:32.268	ID:35	Simulate PUF response: challenge=6 response=1
+00:32.268	ID:35	Sending reg1 request
+00:32.367	ID:2	[INFO: coap-bt-server] Handler reg1 called!
+00:32.367	ID:2	
+00:32.486	ID:35	Registered
+00:32.486	ID:35	 The CPU time and energy at the end of registration for client 35 are 31.634368 and 1.954781
+00:32.486	ID:35	 the value of R_d is 1
+00:32.486	ID:35	 the value of M_d is 5
+00:32.575	ID:2	 during reg R_d is 1[INFO: coap-bt-server] Handler auth called!
+00:32.575	ID:2	
+00:32.575	ID:2	 the value of R_d is 1
+00:32.575	ID:2	 the value of M_d is 5
+00:32.575	ID:2	 the value of M_d is 5
+00:32.575	ID:2	 the value of R_d is 1
+00:32.575	ID:2	 the value of id_d is 35
+00:32.575	ID:2	 Hpayload sent
+00:32.575	ID:2	 The token count and send index is 0 and 0 before if 
+00:32.575	ID:2	 The token count and send index is 1 and 0 in the if
+00:32.576	ID:2	 The token count and send index is 1 and 0
+00:32.576	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:32.668	ID:1	
+00:32.668	ID:1	Received auth tokenAuthentication token for Node 35
+00:32.668	ID:1	
+00:32.668	ID:1	 Obtained auth_token is 35
+00:32.702	ID:35	 Sending auth_request
+00:32.702	ID:35	 The CPU time and energy at the end of authentication 1 for client 35 are 0.215768 and 0.013309
+00:32.702	ID:35	 The timestamp is 1
+00:32.702	ID:35	 the value of M_d is 5
+00:32.702	ID:35	 the value of R_d is 1
+00:32.702	ID:35	 the value of id_as is 2
+00:32.702	ID:35	 the value of id_d is 35
+00:32.702	ID:35	 the value of ts_2 is 1
+00:32.702	ID:35	 The value of R_d is 1
+00:32.702	ID:35	 The CPU time and energy at the end of session key sharing 1 for client 35 are 0.000000 and 0.000000
+00:32.702	ID:35	 the value of alpha in client side is 0Sending request to gateway server endpoint
+00:32.774	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:32.774	ID:1	 the value of alpha is 0
+00:32.802	ID:35	
+00:32.802	ID:35	 the value of beta in client side is 3
+00:32.802	ID:35	 The value of k_gw_d is 6Authentication success, sending key update request
+00:32.802	ID:35	
+00:32.802	ID:35	 K_GW_D is being updated
+00:32.802	ID:35	 The CPU time and energy at the end of session key update 1 for client 35 are 0.100424 and 0.006182Key Update success, sending data request
+00:32.837	ID:1	 the value of beta is 3
+00:32.890	ID:35	Data length: 1
+00:32.890	ID:35	Data payload: 0
+00:34.627	ID:2	Received[INFO: coap-bt-server] Handler reg called!
+00:34.699	ID:2	[INFO: coap-bt-server] Handler reg called!
+00:34.873	ID:2	[INFO: coap-bt-server] Handler reg called!
+00:34.880	ID:33	Received reg payload
+00:34.880	ID:33	Simulate PUF response: challenge=6 response=0
+00:34.880	ID:33	Sending reg1 request
+00:34.891	ID:36	Received reg payload
+00:34.891	ID:36	Simulate PUF response: challenge=6 response=1
+00:34.891	ID:36	Sending reg1 request
+00:34.922	ID:34	Received reg payload
+00:34.922	ID:34	Simulate PUF response: challenge=6 response=1
+00:34.922	ID:34	Sending reg1 request
+00:35.034	ID:2	[INFO: coap-bt-server] Handler reg1 called!
+00:35.034	ID:2	
+00:35.056	ID:2	 during reg R_d is 1[INFO: coap-bt-server] Handler reg1 called!
+00:35.056	ID:2	
+00:35.066	ID:36	Registered
+00:35.066	ID:36	 The CPU time and energy at the end of registration for client 36 are 34.165824 and 2.109968
+00:35.066	ID:36	 the value of R_d is 1
+00:35.066	ID:36	 the value of M_d is 5
+00:35.090	ID:2	 during reg R_d is 1[INFO: coap-bt-server] Handler reg1 called!
+00:35.090	ID:2	
+00:35.171	ID:2	 during reg R_d is 0[INFO: coap-bt-server] Handler auth called!
+00:35.171	ID:2	
+00:35.171	ID:2	 the value of R_d is 1
+00:35.171	ID:2	 the value of M_d is 5
+00:35.171	ID:2	 the value of M_d is 5
+00:35.171	ID:2	 the value of R_d is 1
+00:35.171	ID:2	 the value of id_d is 36
+00:35.171	ID:2	 Hpayload sent
+00:35.171	ID:2	 The token count and send index is 1 and 1 before if 
+00:35.171	ID:2	 The token count and send index is 1 and 0 in the if
+00:35.172	ID:2	 The token count and send index is 1 and 0
+00:35.172	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:35.302	ID:36	 Sending auth_request
+00:35.302	ID:36	 The CPU time and energy at the end of authentication 1 for client 36 are 0.235768 and 0.014421
+00:35.302	ID:36	 The timestamp is 1
+00:35.302	ID:36	 the value of M_d is 5
+00:35.302	ID:36	 the value of R_d is 1
+00:35.302	ID:36	 the value of id_as is 2
+00:35.302	ID:36	 the value of id_d is 36
+00:35.302	ID:36	 the value of ts_2 is 1
+00:35.302	ID:36	 The value of R_d is 1
+00:35.302	ID:36	 The CPU time and energy at the end of session key sharing 1 for client 36 are 0.000000 and 0.000000
+00:35.302	ID:36	 the value of alpha in client side is 0Sending request to gateway server endpoint
+00:35.310	ID:1	 The message obtained for node 35 is 9
+00:35.310	ID:1	 the value of alpha is 27
+00:35.370	ID:34	Registered
+00:35.370	ID:34	 The CPU time and energy at the end of registration for client 34 are 34.461368 and 2.129513
+00:35.370	ID:34	 the value of R_d is 1
+00:35.370	ID:34	 the value of M_d is 5
+00:35.387	ID:1	 the value of beta is 3
+00:35.387	ID:1	Received auth tokenAuthentication token for Node 36
+00:35.387	ID:1	
+00:35.387	ID:1	 Obtained auth_token is 36
+00:35.395	ID:36	
+00:35.395	ID:36	 the value of beta in client side is 178
+00:35.395	ID:36	 The value of k_gw_d is 22Authentication success, sending key update request
+00:35.395	ID:36	
+00:35.395	ID:36	 K_GW_D is being updated
+00:35.395	ID:36	 The CPU time and energy at the end of session key update 1 for client 36 are 0.092424 and 0.005633Key Update success, sending data request
+00:35.414	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:35.423	ID:33	Registered
+00:35.423	ID:33	 The CPU time and energy at the end of registration for client 33 are 35.081368 and 2.167842
+00:35.423	ID:33	 the value of R_d is 0
+00:35.423	ID:33	 the value of M_d is 5
+00:35.503	ID:36	Data length: 1
+00:35.503	ID:36	Data payload: 0
+00:35.649	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+00:35.649	ID:2	
+00:35.649	ID:2	 the value of R_d is 1
+00:35.649	ID:2	 the value of M_d is 5
+00:35.649	ID:2	 the value of M_d is 5
+00:35.649	ID:2	 the value of R_d is 1
+00:35.649	ID:2	 the value of id_d is 34
+00:35.649	ID:2	 Hpayload sent
+00:35.649	ID:2	 The token count and send index is 1 and 1 before if 
+00:35.649	ID:2	 The token count and send index is 1 and 0 in the if
+00:35.650	ID:2	 The token count and send index is 1 and 0
+00:35.650	ID:2	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:35.731	ID:2	[INFO: coap-bt-server] Handler auth called!
+00:35.731	ID:2	
+00:35.731	ID:2	 the value of R_d is 0
+00:35.731	ID:2	 the value of M_d is 5
+00:35.731	ID:2	 the value of M_d is 5
+00:35.731	ID:2	 the value of R_d is 0
+00:35.731	ID:2	 the value of id_d is 33
+00:35.731	ID:2	 Hpayload sent
+00:35.731	ID:2	 The token count and send index is 1 and 0 before if 
+00:35.731	ID:2	 The token count and send index is 2 and 0 in the if
+00:35.756	ID:1	 The message obtained for node 36 is 58
+00:35.756	ID:1	Received auth tokenAuthentication token for Node 34
+00:35.756	ID:1	
+00:35.756	ID:1	 Obtained auth_token is 34
+00:35.896	ID:2	 The token count and send index is 2 and 0Received
+00:35.896	ID:2	 The token count and send index is 2 and 1 before while[INFO: coap-bt-server] Token count = 2, Sent index = 1
+00:35.950	ID:33	 Sending auth_request
+00:35.950	ID:33	 The CPU time and energy at the end of authentication 1 for client 33 are 0.526768 and 0.032502
+00:35.950	ID:33	 The timestamp is 1
+00:35.950	ID:33	 the value of M_d is 5
+00:35.950	ID:33	 the value of R_d is 0
+00:35.950	ID:33	 the value of id_as is 2
+00:35.950	ID:33	 the value of id_d is 33
+00:35.950	ID:33	 the value of ts_2 is 1
+00:35.950	ID:33	 The value of R_d is 0
+00:35.950	ID:33	 The CPU time and energy at the end of session key sharing 1 for client 33 are 0.000000 and 0.000000
+00:35.950	ID:33	 the value of alpha in client side is 0Sending request to gateway server endpoint
+00:35.960	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:35.960	ID:1	Received auth tokenAuthentication token for Node 33
+00:35.960	ID:1	
+00:35.960	ID:1	 Obtained auth_token is 33
+00:36.080	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:36.080	ID:1	 the value of alpha is 0
+00:36.142	ID:33	
+00:36.142	ID:33	 the value of beta in client side is 3
+00:36.142	ID:33	 The value of k_gw_d is 6Authentication success, sending key update request
+00:36.142	ID:33	
+00:36.142	ID:33	 K_GW_D is being updated
+00:36.142	ID:33	 The CPU time and energy at the end of session key update 1 for client 33 are 0.192424 and 0.011859Key Update success, sending data request
+00:36.181	ID:1	 the value of beta is 3
+00:36.233	ID:33	Data length: 1
+00:36.233	ID:33	Data payload: 0
+00:38.497	ID:2	Received[INFO: coap-bt-server] Handler auth called!
+00:38.497	ID:2	
+00:38.497	ID:2	 the value of R_d is 1
+00:38.497	ID:2	 the value of M_d is 219
+00:38.549	ID:34	 Sending auth_requestNo auth payload
+00:38.549	ID:34	 The CPU time and energy at the end of authentication 1 for client 34 are 3.178648 and 0.196393
+00:38.549	ID:34	 The timestamp is 0
+00:38.549	ID:34	 the value of M_d is 5
+00:38.549	ID:34	 the value of R_d is 1
+00:38.549	ID:34	 the value of id_as is 2
+00:38.549	ID:34	 the value of id_d is 34
+00:38.549	ID:34	 the value of ts_2 is 0
+00:38.549	ID:34	 The value of R_d is 1
+00:38.549	ID:34	 The CPU time and energy at the end of session key sharing 1 for client 34 are 0.000000 and 0.000000
+00:38.549	ID:34	 the value of alpha in client side is 0Sending request to gateway server endpoint
+00:38.614	ID:1	 The message obtained for node 33 is 9
+00:38.614	ID:1	 the value of alpha is 217
+00:38.652	ID:34	
+00:38.652	ID:34	 the value of beta in client side is 23
+00:38.652	ID:34	 The value of k_gw_d is 18Authentication success, sending key update request
+00:38.652	ID:34	
+00:38.652	ID:34	 K_GW_D is being updated
+00:38.652	ID:34	 The CPU time and energy at the end of session key update 1 for client 34 are 0.103544 and 0.006375Key Update success, sending data request
+00:38.693	ID:1	 the value of beta is 3
+00:38.751	ID:34	Data length: 1
+00:38.751	ID:34	Data payload: 0
+00:52.607	ID:3	[INFO: coap-bt-server] Handler reg called!
+00:52.766	ID:37	Received reg payload
+00:52.766	ID:37	Simulate PUF response: challenge=6 response=0
+00:52.766	ID:37	Sending reg1 request
+00:52.839	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+00:52.839	ID:3	
+00:52.994	ID:37	Registered
+00:52.994	ID:37	 The CPU time and energy at the end of registration for client 37 are 52.823368 and 3.264282
+00:52.994	ID:37	 the value of R_d is 0
+00:52.994	ID:37	 the value of M_d is 5
+00:53.156	ID:3	 during reg R_d is 0[INFO: coap-bt-server] Handler auth called!
+00:53.156	ID:3	
+00:53.156	ID:3	 the value of R_d is 0
+00:53.156	ID:3	 the value of M_d is 5
+00:53.156	ID:3	 the value of M_d is 5
+00:53.156	ID:3	 the value of R_d is 0
+00:53.156	ID:3	 the value of id_d is 37
+00:53.156	ID:3	 Hpayload sent
+00:53.156	ID:3	 The token count and send index is 0 and 0 before if 
+00:53.156	ID:3	 The token count and send index is 1 and 0 in the if
+00:53.157	ID:3	 The token count and send index is 1 and 0
+00:53.157	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:53.274	ID:1	 The message obtained for node 34 is 115
+00:53.274	ID:1	Received auth tokenAuthentication token for Node 37
+00:53.274	ID:1	
+00:53.274	ID:1	 Obtained auth_token is 37
+00:53.292	ID:37	 Sending auth_request
+00:53.292	ID:37	 The CPU time and energy at the end of authentication 1 for client 37 are 0.297768 and 0.018376
+00:53.292	ID:37	 The timestamp is 1
+00:53.292	ID:37	 the value of M_d is 5
+00:53.292	ID:37	 the value of R_d is 0
+00:53.292	ID:37	 the value of id_as is 3
+00:53.292	ID:37	 the value of id_d is 37
+00:53.292	ID:37	 the value of ts_2 is 1
+00:53.292	ID:37	 The value of R_d is 0
+00:53.292	ID:37	 The CPU time and energy at the end of session key sharing 1 for client 37 are 0.000000 and 0.000000
+00:53.292	ID:37	 the value of alpha in client side is 0Sending request to gateway server endpoint
+00:53.396	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+00:53.396	ID:1	 the value of alpha is 0
+00:53.453	ID:37	
+00:53.453	ID:37	 the value of beta in client side is 3
+00:53.453	ID:37	 The value of k_gw_d is 6Authentication success, sending key update request
+00:53.453	ID:37	
+00:53.453	ID:37	 K_GW_D is being updated
+00:53.453	ID:37	 The CPU time and energy at the end of session key update 1 for client 37 are 0.161424 and 0.009952Key Update success, sending data request
+00:53.473	ID:1	 the value of beta is 3
+00:53.488	ID:37	Data length: 1
+00:53.488	ID:37	Data payload: 0
+00:56.546	ID:3	Received[INFO: coap-bt-server] Handler reg called!
+00:56.669	ID:40	Received reg payload
+00:56.669	ID:40	Simulate PUF response: challenge=6 response=1
+00:56.669	ID:40	Sending reg1 request
+00:56.768	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+00:56.768	ID:3	
+00:56.860	ID:40	Registered
+00:56.860	ID:40	 The CPU time and energy at the end of registration for client 40 are 56.570368 and 3.495826
+00:56.860	ID:40	 the value of R_d is 1
+00:56.860	ID:40	 the value of M_d is 5
+00:56.986	ID:3	 during reg R_d is 1[INFO: coap-bt-server] Handler auth called!
+00:56.986	ID:3	
+00:56.986	ID:3	 the value of R_d is 1
+00:56.986	ID:3	 the value of M_d is 5
+00:56.986	ID:3	 the value of M_d is 5
+00:56.986	ID:3	 the value of R_d is 1
+00:56.986	ID:3	 the value of id_d is 40
+00:56.986	ID:3	 Hpayload sent
+00:56.986	ID:3	 The token count and send index is 1 and 1 before if 
+00:56.986	ID:3	 The token count and send index is 1 and 0 in the if
+00:56.987	ID:3	 The token count and send index is 1 and 0
+00:56.987	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+00:57.085	ID:40	 Sending auth_request
+00:57.085	ID:40	 The CPU time and energy at the end of authentication 1 for client 40 are 0.224768 and 0.013865
+00:57.085	ID:40	 The timestamp is 1
+00:57.085	ID:40	 the value of M_d is 5
+00:57.085	ID:40	 the value of R_d is 1
+00:57.085	ID:40	 the value of id_as is 3
+00:57.085	ID:40	 the value of id_d is 40
+00:57.085	ID:40	 the value of ts_2 is 1
+00:57.085	ID:40	 The value of R_d is 1
+00:57.085	ID:40	 The CPU time and energy at the end of session key sharing 1 for client 40 are 0.000000 and 0.000000
+00:57.085	ID:40	 the value of alpha in client side is 0Sending request to gateway server endpoint
+00:57.144	ID:1	 The message obtained for node 37 is 9
+00:57.144	ID:1	Received auth tokenAuthentication token for Node 40
+00:57.144	ID:1	
+00:57.144	ID:1	 Obtained auth_token is 40
+00:57.237	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+00:57.237	ID:1	 the value of alpha is 0
+00:57.283	ID:40	
+00:57.283	ID:40	 the value of beta in client side is 3
+00:57.283	ID:40	 The value of k_gw_d is 6Authentication success, sending key update request
+00:57.283	ID:40	
+00:57.283	ID:40	 K_GW_D is being updated
+00:57.283	ID:40	 The CPU time and energy at the end of session key update 1 for client 40 are 0.198696 and 0.012255Key Update success, sending data request
+00:57.337	ID:1	 the value of beta is 3
+00:57.386	ID:40	Data length: 1
+00:57.386	ID:40	Data payload: 0
+01:10.747	ID:3	Received[INFO: coap-bt-server] Handler reg called!
+01:10.930	ID:39	Received reg payload
+01:10.930	ID:39	Simulate PUF response: challenge=6 response=0
+01:10.930	ID:39	Sending reg1 request
+01:11.108	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+01:11.108	ID:3	
+01:11.229	ID:39	Registered
+01:11.229	ID:39	 The CPU time and energy at the end of registration for client 39 are 70.745624 and 4.371789
+01:11.229	ID:39	 the value of R_d is 0
+01:11.229	ID:39	 the value of M_d is 5
+01:11.387	ID:3	 during reg R_d is 0[INFO: coap-bt-server] Handler reg called!
+01:11.420	ID:3	[INFO: coap-bt-server] Handler auth called!
+01:11.420	ID:3	
+01:11.420	ID:3	 the value of R_d is 0
+01:11.420	ID:3	 the value of M_d is 5
+01:11.420	ID:3	 the value of M_d is 5
+01:11.420	ID:3	 the value of R_d is 0
+01:11.420	ID:3	 the value of id_d is 39
+01:11.420	ID:3	 Hpayload sent
+01:11.420	ID:3	 The token count and send index is 1 and 1 before if 
+01:11.420	ID:3	 The token count and send index is 1 and 0 in the if
+01:11.421	ID:3	 The token count and send index is 1 and 0
+01:11.421	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+01:11.483	ID:38	Received reg payload
+01:11.483	ID:38	Simulate PUF response: challenge=6 response=1
+01:11.483	ID:38	Sending reg1 request
+01:11.577	ID:1	 The message obtained for node 40 is 9
+01:11.577	ID:1	Received auth tokenAuthentication token for Node 39
+01:11.577	ID:1	
+01:11.577	ID:1	 Obtained auth_token is 39
+01:11.647	ID:3	[INFO: coap-bt-server] Handler reg1 called!
+01:11.647	ID:3	
+01:11.764	ID:39	 Sending auth_request
+01:11.764	ID:39	 The CPU time and energy at the end of authentication 1 for client 39 are 0.534768 and 0.033005
+01:11.764	ID:39	 The timestamp is 1
+01:11.764	ID:39	 the value of M_d is 5
+01:11.764	ID:39	 the value of R_d is 0
+01:11.764	ID:39	 the value of id_as is 3
+01:11.764	ID:39	 the value of id_d is 39
+01:11.764	ID:39	 the value of ts_2 is 1
+01:11.764	ID:39	 The value of R_d is 0
+01:11.764	ID:39	 The CPU time and energy at the end of session key sharing 1 for client 39 are 0.000000 and 0.000000
+01:11.764	ID:39	 the value of alpha in client side is 0Sending request to gateway server endpoint
+01:11.834	ID:38	Registered
+01:11.834	ID:38	 The CPU time and energy at the end of registration for client 38 are 70.987368 and 4.386778
+01:11.834	ID:38	 the value of R_d is 1
+01:11.834	ID:38	 the value of M_d is 5
+01:11.894	ID:1	 The value of session key is k_gw_d392084414311360144234125514417412191341723241102264231111192181032301811882383268
+01:11.894	ID:1	 the value of alpha is 0
+01:11.976	ID:3	 during reg R_d is 1Received[INFO: coap-bt-server] Handler auth called!
+01:11.976	ID:3	
+01:11.976	ID:3	 the value of R_d is 1
+01:11.976	ID:3	 the value of M_d is 5
+01:11.976	ID:3	 the value of M_d is 5
+01:11.976	ID:3	 the value of R_d is 1
+01:11.976	ID:3	 the value of id_d is 38
+01:11.976	ID:3	 Hpayload sent
+01:11.976	ID:3	 The token count and send index is 1 and 1 before if 
+01:11.976	ID:3	 The token count and send index is 1 and 0 in the if
+01:11.977	ID:3	 The token count and send index is 1 and 0
+01:11.977	ID:3	 The token count and send index is 1 and 0 before while[INFO: coap-bt-server] Token count = 1, Sent index = 0
+01:12.077	ID:39	
+01:12.077	ID:39	 the value of beta in client side is 3
+01:12.077	ID:39	 The value of k_gw_d is 6Authentication success, sending key update request
+01:12.077	ID:39	
+01:12.077	ID:39	 K_GW_D is being updated
+01:12.077	ID:39	 The CPU time and energy at the end of session key update 1 for client 39 are 0.313424 and 0.019345Key Update success, sending data request
+01:12.141	ID:38	 Sending auth_request
+01:12.141	ID:38	 The CPU time and energy at the end of authentication 1 for client 38 are 0.307576 and 0.018982
+01:12.141	ID:38	 The timestamp is 1
+01:12.141	ID:38	 the value of M_d is 5
+01:12.141	ID:38	 the value of R_d is 1
+01:12.141	ID:38	 the value of id_as is 3
+01:12.141	ID:38	 the value of id_d is 38
+01:12.141	ID:38	 the value of ts_2 is 1
+01:12.141	ID:38	 The value of R_d is 1
+01:12.141	ID:38	 The CPU time and energy at the end of session key sharing 1 for client 38 are 0.000000 and 0.000000
+01:12.141	ID:38	 the value of alpha in client side is 0Sending request to gateway server endpoint
+01:12.173	ID:1	 the value of beta is 3
+01:12.173	ID:1	Received auth tokenAuthentication token for Node 38
+01:12.173	ID:1	
+01:12.173	ID:1	 Obtained auth_token is 38
+01:12.184	ID:1	 The value of session key is k_gw_d16365103241206412326324310716142317823752172302231211392286420076161803322020898100
+01:12.184	ID:1	 the value of alpha is 0
+01:12.232	ID:38	
+01:12.232	ID:38	 the value of beta in client side is 3
+01:12.232	ID:38	 The value of k_gw_d is 6Authentication success, sending key update request
+01:12.232	ID:38	
+01:12.232	ID:38	 K_GW_D is being updated
+01:12.232	ID:38	 The CPU time and energy at the end of session key update 1 for client 38 are 0.090616 and 0.005576Key Update success, sending data request
+01:12.280	ID:1	 the value of beta is 3
+01:12.328	ID:38	Data length: 1
+01:12.328	ID:38	Data payload: 0
+01:12.401	ID:1	 The message obtained for node 38 is 9
+01:12.495	ID:39	Data length: 1
+01:12.495	ID:39	Data payload: 0
