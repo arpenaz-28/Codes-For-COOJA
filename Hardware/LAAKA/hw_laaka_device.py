@@ -118,23 +118,25 @@ def do_enrollment() -> None:
 
 
 def do_round(round_num: int) -> bool:
-    """Run one full LAAKA authentication round: Auth → Ack → Data.
+    """Run one full LAAKA round: (Auth + Ack) + Data.
 
-    Timer for each phase starts BEFORE the crypto that prepares the message
-    so that hash/XOR operations are fully included in the measurement.
+    Auth+Ack is ONE protocol round (key establishment). Data is separate.
+    Outer timer wraps Auth+Ack; sub-timers give breakdown.
     """
 
-    # ── Auth phase: timer covers pre-auth crypto + network round-trip ─────────
+    # ══ AUTH + ACK — single outer timer (one complete key establishment round) ══
+    t_aa_wall = time.perf_counter();  t_aa_cpu = time.process_time()
+
+    # ── Auth sub-phase ────────────────────────────────────────────────────────
     t0_wall = time.perf_counter();  t0_cpu = time.process_time()
 
     rd = rand_bytes(RAND_LEN)
     Td = int(time.time()) & 0xFF
-    Cd       = h20(bytes([Td]) + rd)           # H20(Td||rd)
-    Ed       = xor20(rd, h20(Bk + Af))        # rd XOR H20(Bk||Af)
-    TIDd_new = xor20(TIDd, rd)                 # TIDd XOR rd
-    Gd       = h20(Ad + TIDd_new + Bk + rd)   # H20(Ad||TIDd_new||Bk||rd)
+    Cd       = h20(bytes([Td]) + rd)
+    Ed       = xor20(rd, h20(Bk + Af))
+    TIDd_new = xor20(TIDd, rd)
+    Gd       = h20(Ad + TIDd_new + Bk + rd)
     auth_req = TIDd + bytes([Td]) + Cd + Ed + Gd
-
     auth_rep = tcp_send_recv(FOG_IP, PORT_LAAKA_FOG_AUTH, auth_req)
 
     auth_wall = time.perf_counter() - t0_wall
@@ -144,38 +146,37 @@ def do_round(round_num: int) -> bool:
         print(f"[DEV] R{round_num} auth failed: bad reply len={len(auth_rep)}")
         return False
 
-    # ── Ack phase: timer covers reply verification + SK derivation + network ──
+    # ── Ack sub-phase ─────────────────────────────────────────────────────────
     t1_wall = time.perf_counter();  t1_cpu = time.process_time()
 
     recv_TIDf = bytes(auth_rep[0:20])
-    Tf        = auth_rep[20]
-    Ts        = auth_rep[21]
+    Tf        = auth_rep[20];  Ts = auth_rep[21]
     recv_Cf   = bytes(auth_rep[22:42])
     recv_Ef   = bytes(auth_rep[42:62])
     recv_Gf   = bytes(auth_rep[62:82])
 
     if recv_TIDf != TIDf_const:
-        print(f"[DEV] R{round_num} auth failed: TIDf mismatch")
-        return False
+        print(f"[DEV] R{round_num} auth failed: TIDf mismatch");  return False
 
-    rf_star       = xor20(recv_Ef, h20(TIDd_new))          # rf* = Ef XOR H20(TIDd_new)
-    if h20(bytes([Tf]) + rf_star) != recv_Cf:               # verify Cf*
-        print(f"[DEV] R{round_num} auth failed: Cf mismatch")
-        return False
-    SK            = h20(rd + rf_star + bytes([Ts]))          # SK = H20(rd||rf*||Ts)
+    rf_star = xor20(recv_Ef, h20(TIDd_new))
+    if h20(bytes([Tf]) + rf_star) != recv_Cf:
+        print(f"[DEV] R{round_num} auth failed: Cf mismatch");  return False
+    SK = h20(rd + rf_star + bytes([Ts]))
     TIDf_new_star = xor20(TIDf_const, rf_star)
-    if h20(TIDf_new_star + Bk + rf_star + SK + bytes([Ts])) != recv_Gf:  # verify Gf*
-        print(f"[DEV] R{round_num} auth failed: Gf mismatch")
-        return False
+    if h20(TIDf_new_star + Bk + rf_star + SK + bytes([Ts])) != recv_Gf:
+        print(f"[DEV] R{round_num} auth failed: Gf mismatch");  return False
 
-    ack_val = h20(rf_star + Bk + SK)                         # Ack = H20(rf*||Bk||SK)
-    ack_msg = TIDd_new + ack_val
-    tcp_send_recv(FOG_IP, PORT_LAAKA_FOG_ACK, ack_msg)
+    ack_val = h20(rf_star + Bk + SK)
+    tcp_send_recv(FOG_IP, PORT_LAAKA_FOG_ACK, TIDd_new + ack_val)
 
     ack_wall = time.perf_counter() - t1_wall
     ack_cpu  = time.process_time()  - t1_cpu
 
-    # ── Data phase: timer covers AES encrypt + network ────────────────────────
+    # End outer Auth+Ack timer
+    aa_wall = time.perf_counter() - t_aa_wall
+    aa_cpu  = time.process_time()  - t_aa_cpu
+
+    # ── Data phase (separate) ─────────────────────────────────────────────────
     t2_wall = time.perf_counter();  t2_cpu = time.process_time()
 
     sensor   = bytearray(16);  sensor[0] = 42
@@ -185,24 +186,22 @@ def do_round(round_num: int) -> bool:
     data_wall = time.perf_counter() - t2_wall
     data_cpu  = time.process_time()  - t2_cpu
 
-    total_wall = auth_wall + ack_wall + data_wall
-    total_cpu  = auth_cpu  + ack_cpu  + data_cpu
+    total_wall = aa_wall + data_wall
+    total_cpu  = aa_cpu  + data_cpu
 
-    print(f"[DEV] R{round_num} Auth  wall={auth_wall:.4f} s  cpu={auth_cpu:.4f} s  "
-          f"energy={energy(auth_wall):.6f} J")
-    print(f"[DEV] R{round_num} Ack   wall={ack_wall:.4f} s  cpu={ack_cpu:.4f} s  "
-          f"energy={energy(ack_wall):.6f} J")
-    print(f"[DEV] R{round_num} Data  wall={data_wall:.4f} s  cpu={data_cpu:.4f} s  "
-          f"energy={energy(data_wall):.6f} J")
-    print(f"[DEV] R{round_num} TOTAL wall={total_wall:.4f} s  cpu={total_cpu:.4f} s  "
-          f"energy={energy(total_wall):.6f} J  SK={SK.hex()[:8]}")
+    print(f"[DEV] R{round_num} Auth+Ack    wall={aa_wall:.4f} s  cpu={aa_cpu:.4f} s  energy={energy(aa_wall):.6f} J  SK={SK.hex()[:8]}")
+    print(f"[DEV] R{round_num}   +- Auth    wall={auth_wall:.4f} s  cpu={auth_cpu:.4f} s  energy={energy(auth_wall):.6f} J")
+    print(f"[DEV] R{round_num}   +- Ack     wall={ack_wall:.4f} s  cpu={ack_cpu:.4f} s  energy={energy(ack_wall):.6f} J")
+    print(f"[DEV] R{round_num} Data        wall={data_wall:.4f} s  cpu={data_cpu:.4f} s  energy={energy(data_wall):.6f} J")
+    print(f"[DEV] R{round_num} TOTAL       wall={total_wall:.4f} s  cpu={total_cpu:.4f} s  energy={energy(total_wall):.6f} J")
 
     results.append({
         'phase': f'Round{round_num}',
-        'auth_s':   round(auth_wall, 4), 'auth_energy_j':  energy(auth_wall),
-        'ack_s':    round(ack_wall,  4), 'ack_energy_j':   energy(ack_wall),
-        'data_s':   round(data_wall, 4), 'data_energy_j':  energy(data_wall),
-        'total_s':  round(total_wall,4), 'total_energy_j': energy(total_wall),
+        'aa_s':    round(aa_wall,   4), 'aa_energy_j':   energy(aa_wall),
+        'auth_s':  round(auth_wall,  4), 'auth_energy_j': energy(auth_wall),
+        'ack_s':   round(ack_wall,   4), 'ack_energy_j':  energy(ack_wall),
+        'data_s':  round(data_wall,  4), 'data_energy_j': energy(data_wall),
+        'total_s': round(total_wall, 4), 'total_energy_j': energy(total_wall),
     })
     return True
 
@@ -237,23 +236,26 @@ if __name__ == '__main__':
     total_energy_j = 0.0
     for r in results:
         if r['phase'] == 'Enrollment':
-            print(f"{'Enrollment':<22} {r['wall_s']:>10.4f} {r['cpu_s']:>10.4f} {r['energy_j']:>12.6f}")
+            print(f"{'Enrollment':<24} {r['wall_s']:>10.4f} {r['cpu_s']:>10.4f} {r['energy_j']:>12.6f}")
             total_time_s   += r['wall_s']
             total_energy_j += r['energy_j']
         else:
-            print(f"{r['phase']+' Auth':<22} {r['auth_s']:>10.4f} {'':>10} {r['auth_energy_j']:>12.6f}")
-            print(f"{r['phase']+' Ack':<22} {r['ack_s']:>10.4f} {'':>10} {r['ack_energy_j']:>12.6f}")
-            print(f"{r['phase']+' Data':<22} {r['data_s']:>10.4f} {'':>10} {r['data_energy_j']:>12.6f}")
-            print(f"{r['phase']+' TOTAL':<22} {r['total_s']:>10.4f} {'':>10} {r['total_energy_j']:>12.6f}")
+            print(f"{r['phase']+' Auth+Ack':<24} {r['aa_s']:>10.4f} {'':>10} {r['aa_energy_j']:>12.6f}")
+            print(f"{'  +- Auth':<24} {r['auth_s']:>10.4f} {'':>10} {r['auth_energy_j']:>12.6f}")
+            print(f"{'  +- Ack':<24} {r['ack_s']:>10.4f} {'':>10} {r['ack_energy_j']:>12.6f}")
+            print(f"{r['phase']+' Data':<24} {r['data_s']:>10.4f} {'':>10} {r['data_energy_j']:>12.6f}")
+            print(f"{r['phase']+' TOTAL':<24} {r['total_s']:>10.4f} {'':>10} {r['total_energy_j']:>12.6f}")
             total_time_s   += r['total_s']
             total_energy_j += r['total_energy_j']
         print()
 
-    print("=" * 56)
-    print(f"{'GRAND TOTAL':<22} {total_time_s:>10.4f} {'':>10} {total_energy_j:>12.6f}")
-    if len(results) > 1:
-        num_r = len(results) - 1
-        print(f"\nAvg per round (auth+ack+data): "
-              f"{(total_time_s - results[0]['wall_s']) / num_r:.4f} s  "
-              f"{(total_energy_j - results[0]['energy_j']) / num_r:.6f} J")
+    print("=" * 58)
+    print(f"{'GRAND TOTAL':<24} {total_time_s:>10.4f} {'':>10} {total_energy_j:>12.6f}")
+    num_r = len(results) - 1
+    avg_aa  = sum(r['aa_s']        for r in results if r['phase'] != 'Enrollment') / num_r
+    avg_aae = sum(r['aa_energy_j'] for r in results if r['phase'] != 'Enrollment') / num_r
+    avg_tot = (total_time_s - results[0]['wall_s']) / num_r
+    avg_tote= (total_energy_j - results[0]['energy_j']) / num_r
+    print(f"\nAvg Auth+Ack  per round : {avg_aa:.4f} s  {avg_aae:.6f} J")
+    print(f"Avg total     per round : {avg_tot:.4f} s  {avg_tote:.6f} J")
     print("=" * 70)
