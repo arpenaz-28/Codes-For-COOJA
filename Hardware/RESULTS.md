@@ -134,6 +134,92 @@
 
 ---
 
+---
+
+## Zhou Scheme Results
+
+**Date:** 2026-06-04
+**Raw output:** `Hardware/Zhou/zhou_output.txt`
+
+### Phase definitions
+- **Registration:** User reg (send [IDi|ki] → receive DIDi) + SIDn fetch — one-time setup (2 exchanges to GW)
+- **Auth (M1→M4):** User builds M1, sends to GW; GW does M2/M3 with SN internally, replies M4; User verifies λ, extracts SK — single round-trip from User perspective
+- **Data:** AES-encrypted sensor data sent to GW using session key SK
+
+### Raw results
+
+| Phase | Wall (s) | CPU (s) | Energy (J) |
+|---|---|---|---|
+| Registration | 0.1235 | 0.0849 | 0.172883 |
+| Round 1 Auth | 0.0827 | 0.0143 | 0.115842 |
+| Round 1 Data | 0.0247 | 0.0120 | 0.034632 |
+| **Round 1 TOTAL** | **0.1075** | **0.0264** | **0.150474** |
+| Round 2 Auth | 0.0383 | 0.0094 | 0.053577 |
+| Round 2 Data | 0.0238 | 0.0100 | 0.033258 |
+| **Round 2 TOTAL** | **0.0620** | **0.0194** | **0.086835** |
+| Round 3 Auth | 0.0635 | 0.0209 | 0.088885 |
+| Round 3 Data | 0.0303 | 0.0178 | 0.042356 |
+| **Round 3 TOTAL** | **0.0937** | **0.0387** | **0.131240** |
+| **GRAND TOTAL** | **0.3867** | — | **0.541432** |
+
+### Averages
+
+| Metric | Value |
+|---|---|
+| Avg Auth (M1→M4) per round | 0.0615 s / 0.086101 J |
+| Avg Data per round | 0.0263 s / 0.036749 J |
+| Avg total per round | 0.0877 s / 0.122850 J |
+
+---
+
+## Three-Way Comparison (Proposed vs LAAKA vs Zhou)
+
+### Setup
+| Role | Device | IP | Note |
+|---|---|---|---|
+| GW / RA | Laptop | 192.168.1.201 | All three schemes |
+| AS / Fog / SN | RPi (Pi or Apex) | 192.168.1.113 / .132 | Server role |
+| Device / User | RPi (Pi or Apex) | 192.168.1.113 / .132 | **Measurement target** |
+
+> Note on role mapping: Proposed and LAAKA measure on Pi (192.168.1.113); Zhou measures on Apex (192.168.1.132) because Zhou's User runs on Apex and SN on Pi.
+
+### Per-phase averages over 3 rounds
+
+| Phase | Proposed | LAAKA | Zhou |
+|---|---|---|---|
+| Registration / Enrollment | 0.2286 s / 0.3200 J | 0.0147 s / 0.0205 J | 0.1235 s / 0.1729 J |
+| **Auth + Key Establish** | **0.0753 s / 0.1054 J** | **0.0995 s / 0.1393 J** | **0.0615 s / 0.0861 J** |
+| Data | 0.0089 s / 0.0124 J | 0.0590 s / 0.0825 J | 0.0263 s / 0.0367 J |
+| **Total per round** | **0.0842 s / 0.1178 J** | **0.1585 s / 0.2219 J** | **0.0877 s / 0.1229 J** |
+| **Grand Total** | **0.4811 s / 0.6734 J** | **0.4902 s / 0.6862 J** | **0.3867 s / 0.5414 J** |
+
+### Key observations
+
+1. **Auth+Key: Zhou is fastest (0.0615 s)** — Zhou's M1→M4 is a single User round-trip (GW handles M2/M3 internally). Proposed needs 2 trips (D→AS + D→GW). LAAKA needs 2 trips (Auth + Ack to Fog).
+
+2. **Auth+Key reduction vs LAAKA: 38.2%** — Zhou's single-trip auth vs LAAKA's double-trip auth+ack.
+
+3. **Auth+Key reduction vs Proposed: 18.3%** — Zhou's GW-mediated single round-trip vs Proposed's two-hop (AS then GW).
+
+4. **Data: Proposed cheapest (0.0089 s)** — Proposed sends to GW (Laptop, ~8 ms RTT); LAAKA and Zhou both go through additional hops.
+
+5. **Grand Total: Zhou is 11.3% cheaper than Proposed, 21.2% cheaper than LAAKA** — fewer round-trips in auth phase, moderate enrollment cost.
+
+6. **Enrollment: Proposed heaviest (0.2286 s)** — 2 PUF+hash exchanges to remote AS. Zhou is middle (0.1235 s, 2 exchanges but no PUF). LAAKA lightest (0.0147 s, 1 exchange to local RA).
+
+---
+
+## Measurement Methodology
+
+- **Tool:** `time.perf_counter()` (wall clock) and `time.process_time()` (CPU only)
+- **What is timed:** Each phase timer covers all crypto operations (hash, AES, XOR, PUF) that prepare the message AND the full TCP round-trip for that phase
+- **What is NOT timed:** TCP connection setup overhead (included in phase time since socket.connect is inside the timer), constant pre-computed values (e.g., Af = H(fog_id || r1_fog) is a protocol constant)
+- **Power model:** 1400 mW constant active power — RPi 3B+ single-core Python workload (conservative; idle ~700 mW, peak ~3000 mW). Wall time used (not CPU time) because RPi draws power during network wait
+- **Software PUF:** Deterministic multiplicative hash matching the COOJA C implementation — consistent with simulation results. Real hardware PUF would be faster (~ns), so current model slightly overestimates PUF cost
+- **Rounds:** 3 rounds per run; Round 1 may include first-call TCP/crypto library init overhead
+
+---
+
 ## Scripts
 
 | Script | Role | Location |
@@ -146,3 +232,7 @@
 | `Hardware/LAAKA/hw_laaka_device.py` | Device measurements | Pi |
 | `Hardware/LAAKA/hw_laaka_ra.py` | RA server | Laptop |
 | `Hardware/LAAKA/hw_laaka_fog.py` | Fog server | Apex |
+| `Hardware/Zhou/run_simulation.py` | Orchestrates Zhou run | Laptop |
+| `Hardware/Zhou/hw_zhou_user.py` | User measurements | Apex |
+| `Hardware/Zhou/hw_zhou_gw.py` | GW server | Laptop |
+| `Hardware/Zhou/hw_zhou_sn.py` | SN server | Pi |

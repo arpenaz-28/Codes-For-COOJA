@@ -38,3 +38,4 @@ PORT_ZHOU_AUTH     = 5013   # User → GW: M1 (GW replies with M4 after M2/M3)
 PORT_ZHOU_M2       = 5014   # GW → SN: M2 delivery (SN replies with M3)
 
 NODE_SN  = NODE_AS   # RPi 1 is SN in Zhou scheme
+PORT_ZHOU_DATA = 5015  # User → GW: encrypted sensor data (post-auth)
