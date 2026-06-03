@@ -56,7 +56,7 @@ def xor20(a: bytes, b: bytes) -> bytes:
     return bytes(x ^ y for x, y in zip(a, b))
 
 def energy(wall_s: float) -> float:
-    return round(wall_s * RPI_POWER_MW, 3)
+    return round(wall_s * (RPI_POWER_MW / 1000), 6)   # Watts × seconds = Joules
 
 def tcp_send_recv(ip, port, payload: bytes) -> bytes:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -104,11 +104,11 @@ def do_enrollment() -> None:
     wall_s = time.perf_counter() - t_wall
     cpu_s  = time.process_time()  - t_cpu
     results.append({'phase': 'Enrollment',
-                    'wall_ms': round(wall_s*1000, 2),
-                    'cpu_ms':  round(cpu_s*1000, 2),
-                    'energy_mj': energy(wall_s)})
-    print(f"[DEV] Enrollment  wall={wall_s*1000:.2f} ms  cpu={cpu_s*1000:.2f} ms  "
-          f"energy={energy(wall_s):.2f} mJ  TIDd={TIDd.hex()[:8]}")
+                    'wall_s': round(wall_s, 4),
+                    'cpu_s':  round(cpu_s, 4),
+                    'energy_j': energy(wall_s)})
+    print(f"[DEV] Enrollment  wall={wall_s:.4f} s  cpu={cpu_s:.4f} s  "
+          f"energy={energy(wall_s):.6f} J  TIDd={TIDd.hex()[:8]}")
 
 
 def do_round(round_num: int) -> bool:
@@ -190,21 +190,21 @@ def do_round(round_num: int) -> bool:
     total_wall = auth_wall + ack_wall + data_wall
     total_cpu  = auth_cpu  + ack_cpu  + data_cpu
 
-    print(f"[DEV] R{round_num} Auth  wall={auth_wall*1000:.2f} ms  cpu={auth_cpu*1000:.2f} ms  "
-          f"energy={energy(auth_wall):.2f} mJ")
-    print(f"[DEV] R{round_num} Ack   wall={ack_wall*1000:.2f} ms  cpu={ack_cpu*1000:.2f} ms  "
-          f"energy={energy(ack_wall):.2f} mJ")
-    print(f"[DEV] R{round_num} Data  wall={data_wall*1000:.2f} ms  cpu={data_cpu*1000:.2f} ms  "
-          f"energy={energy(data_wall):.2f} mJ")
-    print(f"[DEV] R{round_num} TOTAL wall={total_wall*1000:.2f} ms  cpu={total_cpu*1000:.2f} ms  "
-          f"energy={energy(total_wall):.2f} mJ  SK={SK.hex()[:8]}")
+    print(f"[DEV] R{round_num} Auth  wall={auth_wall:.4f} s  cpu={auth_cpu:.4f} s  "
+          f"energy={energy(auth_wall):.6f} J")
+    print(f"[DEV] R{round_num} Ack   wall={ack_wall:.4f} s  cpu={ack_cpu:.4f} s  "
+          f"energy={energy(ack_wall):.6f} J")
+    print(f"[DEV] R{round_num} Data  wall={data_wall:.4f} s  cpu={data_cpu:.4f} s  "
+          f"energy={energy(data_wall):.6f} J")
+    print(f"[DEV] R{round_num} TOTAL wall={total_wall:.4f} s  cpu={total_cpu:.4f} s  "
+          f"energy={energy(total_wall):.6f} J  SK={SK.hex()[:8]}")
 
     results.append({
         'phase': f'Round{round_num}',
-        'auth_ms':   round(auth_wall*1000, 2), 'auth_energy_mj':  energy(auth_wall),
-        'ack_ms':    round(ack_wall*1000,  2), 'ack_energy_mj':   energy(ack_wall),
-        'data_ms':   round(data_wall*1000, 2), 'data_energy_mj':  energy(data_wall),
-        'total_ms':  round(total_wall*1000,2), 'total_energy_mj': energy(total_wall),
+        'auth_s':   round(auth_wall, 4), 'auth_energy_j':  energy(auth_wall),
+        'ack_s':    round(ack_wall,  4), 'ack_energy_j':   energy(ack_wall),
+        'data_s':   round(data_wall, 4), 'data_energy_j':  energy(data_wall),
+        'total_s':  round(total_wall,4), 'total_energy_j': energy(total_wall),
     })
     return True
 
@@ -232,30 +232,30 @@ if __name__ == '__main__':
     # ── Summary ──────────────────────────────────────────────────────────────
     print("\n" + "=" * 70)
     print("[DEV] ===== RESULTS SUMMARY =====")
-    print(f"{'Phase':<22} {'Wall(ms)':>10} {'CPU(ms)':>10} {'Energy(mJ)':>12}")
+    print(f"{'Phase':<22} {'Wall(s)':>10} {'CPU(s)':>10} {'Energy(J)':>12}")
     print("-" * 56)
 
-    total_time_ms   = 0
-    total_energy_mj = 0
+    total_time_s   = 0.0
+    total_energy_j = 0.0
     for r in results:
         if r['phase'] == 'Enrollment':
-            print(f"{'Enrollment':<22} {r['wall_ms']:>10.2f} {r['cpu_ms']:>10.2f} {r['energy_mj']:>12.2f}")
-            total_time_ms   += r['wall_ms']
-            total_energy_mj += r['energy_mj']
+            print(f"{'Enrollment':<22} {r['wall_s']:>10.4f} {r['cpu_s']:>10.4f} {r['energy_j']:>12.6f}")
+            total_time_s   += r['wall_s']
+            total_energy_j += r['energy_j']
         else:
-            print(f"{r['phase']+' Auth':<22} {r['auth_ms']:>10.2f} {'':>10} {r['auth_energy_mj']:>12.2f}")
-            print(f"{r['phase']+' Ack':<22} {r['ack_ms']:>10.2f} {'':>10} {r['ack_energy_mj']:>12.2f}")
-            print(f"{r['phase']+' Data':<22} {r['data_ms']:>10.2f} {'':>10} {r['data_energy_mj']:>12.2f}")
-            print(f"{r['phase']+' TOTAL':<22} {r['total_ms']:>10.2f} {'':>10} {r['total_energy_mj']:>12.2f}")
-            total_time_ms   += r['total_ms']
-            total_energy_mj += r['total_energy_mj']
+            print(f"{r['phase']+' Auth':<22} {r['auth_s']:>10.4f} {'':>10} {r['auth_energy_j']:>12.6f}")
+            print(f"{r['phase']+' Ack':<22} {r['ack_s']:>10.4f} {'':>10} {r['ack_energy_j']:>12.6f}")
+            print(f"{r['phase']+' Data':<22} {r['data_s']:>10.4f} {'':>10} {r['data_energy_j']:>12.6f}")
+            print(f"{r['phase']+' TOTAL':<22} {r['total_s']:>10.4f} {'':>10} {r['total_energy_j']:>12.6f}")
+            total_time_s   += r['total_s']
+            total_energy_j += r['total_energy_j']
         print()
 
     print("=" * 56)
-    print(f"{'GRAND TOTAL':<22} {total_time_ms:>10.2f} {'':>10} {total_energy_mj:>12.2f}")
+    print(f"{'GRAND TOTAL':<22} {total_time_s:>10.4f} {'':>10} {total_energy_j:>12.6f}")
     if len(results) > 1:
         num_r = len(results) - 1
         print(f"\nAvg per round (auth+ack+data): "
-              f"{(total_time_ms - results[0]['wall_ms']) / num_r:.2f} ms  "
-              f"{(total_energy_mj - results[0]['energy_mj']) / num_r:.2f} mJ")
+              f"{(total_time_s - results[0]['wall_s']) / num_r:.4f} s  "
+              f"{(total_energy_j - results[0]['energy_j']) / num_r:.6f} J")
     print("=" * 70)
