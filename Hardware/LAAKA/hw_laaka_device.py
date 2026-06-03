@@ -66,9 +66,11 @@ def tcp_send_recv(ip, port, payload: bytes) -> bytes:
 
 
 # ── Device state ──────────────────────────────────────────────────────────────
-r2   = rand_bytes(RAND_LEN)
-Ad   = h20(bytes([IDd]) + r2)
-Af   = h20(bytes([FOG_IDENTITY_ID]) + r1_fog)  # pre-computed, matches Fog
+Af   = h20(bytes([FOG_IDENTITY_ID]) + r1_fog)  # constant, not part of protocol runtime
+
+# r2 and Ad are generated inside do_enrollment() so they are fully timed
+r2   = b'\x00' * RAND_LEN
+Ad   = b'\x00' * HASH_LEN
 
 TIDd = b'\x00' * HASH_LEN   # set during enrollment
 TIDf = b'\x00' * HASH_LEN   # set during enrollment
@@ -78,9 +80,13 @@ results = []
 
 
 def do_enrollment() -> None:
-    global TIDd, TIDf, Bk
+    global r2, Ad, TIDd, TIDf, Bk
     t_wall = time.perf_counter()
     t_cpu  = time.process_time()
+
+    # r2 and Ad computed inside timer — enrollment cost includes key derivation
+    r2 = rand_bytes(RAND_LEN)
+    Ad = h20(bytes([IDd]) + r2)   # H20(IDd || r2)
 
     # Build: AES(K_RA_D, [IDd(1)|Ad(20)|pad(11)]) = 32 B
     req = bytearray(32)
@@ -112,22 +118,25 @@ def do_enrollment() -> None:
 
 
 def do_round(round_num: int) -> bool:
-    """Run one full LAAKA authentication round: Auth → Ack → Data."""
+    """Run one full LAAKA authentication round: Auth → Ack → Data.
 
-    # ── Auth ─────────────────────────────────────────────────────────────────
+    Timer for each phase starts BEFORE the crypto that prepares the message
+    so that hash/XOR operations are fully included in the measurement.
+    """
+
+    # ── Auth phase: timer covers pre-auth crypto + network round-trip ─────────
+    t0_wall = time.perf_counter();  t0_cpu = time.process_time()
+
     rd = rand_bytes(RAND_LEN)
     Td = int(time.time()) & 0xFF
-
-    Cd = h20(bytes([Td]) + rd)
-    Ed = xor20(rd, h20(Bk + Af))
-    TIDd_new = xor20(TIDd, rd)
-    Gd = h20(Ad + TIDd_new + Bk + rd)
-
-    # AuthReq: TIDd(20)+Td(1)+Cd(20)+Ed(20)+Gd(20) = 81 B
+    Cd       = h20(bytes([Td]) + rd)           # H20(Td||rd)
+    Ed       = xor20(rd, h20(Bk + Af))        # rd XOR H20(Bk||Af)
+    TIDd_new = xor20(TIDd, rd)                 # TIDd XOR rd
+    Gd       = h20(Ad + TIDd_new + Bk + rd)   # H20(Ad||TIDd_new||Bk||rd)
     auth_req = TIDd + bytes([Td]) + Cd + Ed + Gd
 
-    t0_wall = time.perf_counter();  t0_cpu = time.process_time()
     auth_rep = tcp_send_recv(FOG_IP, PORT_LAAKA_FOG_AUTH, auth_req)
+
     auth_wall = time.perf_counter() - t0_wall
     auth_cpu  = time.process_time()  - t0_cpu
 
@@ -135,7 +144,9 @@ def do_round(round_num: int) -> bool:
         print(f"[DEV] R{round_num} auth failed: bad reply len={len(auth_rep)}")
         return False
 
-    # Parse AuthRep: TIDf(20)+Tf(1)+Ts(1)+Cf(20)+Ef(20)+Gf(20)
+    # ── Ack phase: timer covers reply verification + SK derivation + network ──
+    t1_wall = time.perf_counter();  t1_cpu = time.process_time()
+
     recv_TIDf = bytes(auth_rep[0:20])
     Tf        = auth_rep[20]
     Ts        = auth_rep[21]
@@ -143,47 +154,34 @@ def do_round(round_num: int) -> bool:
     recv_Ef   = bytes(auth_rep[42:62])
     recv_Gf   = bytes(auth_rep[62:82])
 
-    # Step 6: Verify TIDf matches registration value
     if recv_TIDf != TIDf_const:
         print(f"[DEV] R{round_num} auth failed: TIDf mismatch")
         return False
 
-    # Extract rf* = Ef XOR H20(TIDd_new)
-    rf_star = xor20(recv_Ef, h20(TIDd_new))
-
-    # Verify Cf* = H20(Tf || rf*)
-    if h20(bytes([Tf]) + rf_star) != recv_Cf:
+    rf_star       = xor20(recv_Ef, h20(TIDd_new))          # rf* = Ef XOR H20(TIDd_new)
+    if h20(bytes([Tf]) + rf_star) != recv_Cf:               # verify Cf*
         print(f"[DEV] R{round_num} auth failed: Cf mismatch")
         return False
-
-    # Compute SK* = H20(rd || rf* || Ts)
-    SK = h20(rd + rf_star + bytes([Ts]))
-
-    # Compute TIDf_new* = TIDf XOR rf*
+    SK            = h20(rd + rf_star + bytes([Ts]))          # SK = H20(rd||rf*||Ts)
     TIDf_new_star = xor20(TIDf_const, rf_star)
-
-    # Verify Gf* = H20(TIDf_new* || Bk || rf* || SK || Ts)
-    if h20(TIDf_new_star + Bk + rf_star + SK + bytes([Ts])) != recv_Gf:
+    if h20(TIDf_new_star + Bk + rf_star + SK + bytes([Ts])) != recv_Gf:  # verify Gf*
         print(f"[DEV] R{round_num} auth failed: Gf mismatch")
         return False
 
-    # ── Ack ──────────────────────────────────────────────────────────────────
-    # Ack = H20(rf* || Bk || SK);  send TIDd_new(20) + Ack(20) = 40 B
-    ack_val = h20(rf_star + Bk + SK)
+    ack_val = h20(rf_star + Bk + SK)                         # Ack = H20(rf*||Bk||SK)
     ack_msg = TIDd_new + ack_val
-
-    t1_wall = time.perf_counter();  t1_cpu = time.process_time()
     tcp_send_recv(FOG_IP, PORT_LAAKA_FOG_ACK, ack_msg)
+
     ack_wall = time.perf_counter() - t1_wall
     ack_cpu  = time.process_time()  - t1_cpu
 
-    # ── Data ─────────────────────────────────────────────────────────────────
-    # TIDd_new(20) + AES(SK[0:16], sensor_data(16)) = 36 B
-    sensor = bytearray(16);  sensor[0] = 42
-    data_pkt = TIDd_new + aes_enc_blocks(SK[:16], bytes(sensor))
-
+    # ── Data phase: timer covers AES encrypt + network ────────────────────────
     t2_wall = time.perf_counter();  t2_cpu = time.process_time()
+
+    sensor   = bytearray(16);  sensor[0] = 42
+    data_pkt = TIDd_new + aes_enc_blocks(SK[:16], bytes(sensor))
     tcp_send_recv(FOG_IP, PORT_LAAKA_FOG_DATA, data_pkt)
+
     data_wall = time.perf_counter() - t2_wall
     data_cpu  = time.process_time()  - t2_cpu
 

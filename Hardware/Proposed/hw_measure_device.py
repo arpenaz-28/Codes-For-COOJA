@@ -86,23 +86,28 @@ def do_enrollment():
 def do_auth(round_num):
     global m_d, PID, k_gw_d, ts_1, last_ts2
 
+    # ── Auth phase: timer covers pre-auth crypto + network round-trip ─────────
+    t0_wall = time.perf_counter();  t0_cpu = time.process_time()
+
     R_d      = h_d
-    Y_dH     = sha256(bytes([y_d]))
+    Y_dH     = sha256(bytes([y_d]))                          # SHA256(y_d)
     mask_in  = bytes([R_d]) + m_d + PID + bytes([ts_1])
-    mask     = sha256(mask_in)
+    mask     = sha256(mask_in)                               # SHA256(R_d||m_d||PID||ts_1)
     y_asd    = xor32(Y_dH, mask)
-    auth_PID = sha256(bytes([ID_D]) + m_d)
+    auth_PID = sha256(bytes([ID_D]) + m_d)                  # SHA256(ID_D||m_d)
     payload  = auth_PID + y_asd + bytes([ts_1])
 
-    # ── Auth ─────────────────────────────────────────────────────────────
-    t0_wall = time.perf_counter();  t0_cpu = time.process_time()
     rep = tcp_send_recv(AS_IP, PORT_AS_AUTH, payload)
+
     auth_wall = time.perf_counter() - t0_wall
     auth_cpu  = time.process_time()  - t0_cpu
 
     if len(rep) != 34 or rep[0] != 0xAC:
         print(f"[DEV] R{round_num} auth NACK")
         return False
+
+    # ── Key Exchange: timer covers m_new derivation + PID rotation + network ──
+    t1_wall = time.perf_counter();  t1_cpu = time.process_time()
 
     m_H  = bytes(rep[1:33])
     ts_2 = rep[33]
@@ -112,27 +117,28 @@ def do_auth(round_num):
         return False
 
     mh_in   = Y_dH + m_d + bytes([R_d, NODE_AS]) + auth_PID + bytes([ts_2])
-    mh_mask = sha256(mh_in)
+    mh_mask = sha256(mh_in)                                  # SHA256(Y_dH||m_d||R_d||ID_AS||PID||ts_2)
     m_new   = xor32(m_H, mh_mask)
-    k_gw_d  = sha256(bytes([R_d]) + m_new)
+    k_gw_d  = sha256(bytes([R_d]) + m_new)                  # SHA256(R_d||m_new)
     m_d     = m_new
-    PID     = sha256(bytes([ID_D]) + m_new)
+    PID     = sha256(bytes([ID_D]) + m_new)                 # SHA256(ID_D||m_new) — PID rotation
     last_ts2 = ts_2
     ts_1    = (ts_1 + 1) & 0xFF
+    ke_blk  = bytearray(16);  ke_blk[0] = ts_1
+    ke_pay  = PID + aes_enc_blocks(k_gw_d[:16], bytes(ke_blk))  # AES encrypt
 
-    # ── Key Exchange ──────────────────────────────────────────────────────
-    ke_blk = bytearray(16);  ke_blk[0] = ts_1
-    ke_pay = PID + aes_enc_blocks(k_gw_d[:16], bytes(ke_blk))
-    t1_wall = time.perf_counter();  t1_cpu = time.process_time()
     tcp_send_recv(GW_IP, PORT_GW_KEYEX, ke_pay)
+
     ke_wall = time.perf_counter() - t1_wall
     ke_cpu  = time.process_time()  - t1_cpu
 
-    # ── Data ─────────────────────────────────────────────────────────────
-    sensor = bytearray(16);  sensor[0] = 42
-    data_pay = PID + aes_enc_blocks(k_gw_d[:16], bytes(sensor))
+    # ── Data phase: timer covers AES encrypt + network ────────────────────────
     t2_wall = time.perf_counter();  t2_cpu = time.process_time()
+
+    sensor   = bytearray(16);  sensor[0] = 42
+    data_pay = PID + aes_enc_blocks(k_gw_d[:16], bytes(sensor))  # AES encrypt
     tcp_send_recv(GW_IP, PORT_GW_DATA, data_pay)
+
     data_wall = time.perf_counter() - t2_wall
     data_cpu  = time.process_time()  - t2_cpu
 
