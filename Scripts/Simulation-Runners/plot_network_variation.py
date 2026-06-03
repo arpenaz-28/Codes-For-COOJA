@@ -448,17 +448,17 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
                     ax.text(offset, val + global_max * 0.015,
                             f"{val:.0f}" if metric == "avg_energy" else f"{val:.1f}",
                             ha="center", va="bottom",
-                            fontsize=15, color="#333333", fontweight="bold")
+                            fontsize=17, color="#333333", fontweight="bold")
 
         ax.set_xticks(x)
-        ax.set_xticklabels([f"N = {n}" for n in SIZES], fontsize=17)
-        ax.set_xlabel("Total Network Nodes", labelpad=8, fontsize=20, fontweight="bold")
-        ax.set_ylabel(ylabel, labelpad=8, fontsize=20, fontweight="bold")
-        ax.set_title(title, pad=14, color="#222222", fontsize=21, fontweight="bold")
+        ax.set_xticklabels([f"N = {n}" for n in SIZES], fontsize=19)
+        ax.set_xlabel("Total Network Nodes", labelpad=8, fontsize=21, fontweight="bold")
+        ax.set_ylabel(ylabel, labelpad=8, fontsize=21, fontweight="bold")
+        ax.set_title(title, pad=14, color="#222222", fontsize=22, fontweight="bold")
 
         ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
         ax.set_axisbelow(True)
-        ax.tick_params(axis="y", length=0, labelsize=16)
+        ax.tick_params(axis="y", length=0, labelsize=18)
         ax.spines["left"].set_color("#cccccc")
         ax.spines["bottom"].set_color("#cccccc")
 
@@ -466,7 +466,7 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
                   frameon=True, framealpha=0.92,
                   edgecolor="#dddddd",
                   handlelength=1.4, handleheight=1.0,
-                  borderpad=0.7, fontsize=16)
+                  borderpad=0.7, fontsize=17)
 
         fig.tight_layout()
         fig.savefig(out_path, dpi=180, bbox_inches="tight", facecolor="white")
@@ -482,7 +482,7 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
 def total_energy_grouped_bar(out_path, paper_path=None, show=False):
     _grouped_bar(
         "avg_energy",
-        "Total Energy — All Devices (mJ)",
+        "Total Energy (mJ)",
         "Total Energy Consumption vs Network Size",
         out_path, paper_path, show,
     )
@@ -491,7 +491,7 @@ def total_energy_grouped_bar(out_path, paper_path=None, show=False):
 def total_cpu_grouped_bar(out_path, paper_path=None, show=False):
     _grouped_bar(
         "avg_cpu",
-        "Total CPU Time — All Devices (s)",
+        "Total CPU Time (s)",
         "Total CPU Time vs Network Size",
         out_path, paper_path, show,
     )
