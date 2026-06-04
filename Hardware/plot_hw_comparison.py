@@ -24,13 +24,15 @@ os.makedirs(OUT_DIR, exist_ok=True)
 # Grand Total = Enrollment/Registration + Round1 + Round2 + Round3
 SCHEMES = ["Proposed", "LAAKA", "Zhou"]
 
-ENERGY_J = {          # Grand Total energy (J)
-    "Proposed": 1.8282,
+ENERGY_J = {
+    # Proposed: Enrollment + 3x Auth+KeyEx  (data exchange excluded)
+    # LAAKA / Zhou: full grand total (Enrollment + 3x Auth + 3x Data)
+    "Proposed": 1.7267,
     "LAAKA":    1.8628,
     "Zhou":     1.4695,
 }
-TIME_S = {            # Grand Total wall-clock time (s)
-    "Proposed": 0.4811,
+TIME_S = {
+    "Proposed": 0.4544,
     "LAAKA":    0.4902,
     "Zhou":     0.3867,
 }
@@ -133,8 +135,9 @@ with plt.rc_context(_STYLE):
     )
 
     fig.suptitle(
-        "Hardware Measurement — Grand Total (Enrollment + 3 Auth Rounds)",
-        fontsize=15, fontweight="bold", y=1.08, color="#222222",
+        "Hardware Measurement — Total (Enrollment + 3 Auth Rounds)\n"
+        "Proposed: Auth+KeyEx only  |  LAAKA & Zhou: Auth + Data",
+        fontsize=13, fontweight="bold", y=1.10, color="#222222",
     )
 
     fig.tight_layout()
