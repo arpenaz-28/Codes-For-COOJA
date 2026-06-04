@@ -137,9 +137,8 @@ with plt.rc_context(_STYLE):
     )
 
     fig.suptitle(
-        "Hardware Measurement — 3 Operational Rounds (Enrollment excluded)\n"
-        "Proposed: Auth+KeyEx  |  LAAKA & Zhou: Auth+KeyEx + Data",
-        fontsize=13, fontweight="bold", y=1.10, color="#222222",
+        "Hardware Simulation",
+        fontsize=16, fontweight="bold", y=1.04, color="#222222",
     )
 
     fig.tight_layout()
