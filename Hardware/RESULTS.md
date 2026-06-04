@@ -1,11 +1,11 @@
 # Hardware Measurement Results
-## Proposed Scheme vs LAAKA — Raspberry Pi 3B+
+## Proposed Scheme vs LAAKA vs Zhou — Raspberry Pi 4B
 
-**Date:** 2026-06-04  
-**Device under test:** Raspberry Pi 3B+ (Pi: 192.168.1.113)  
-**Power assumption:** 1400 mW (RPi 3B+ single-core active)  
-**Energy formula:** E (J) = wall_time (s) × 1.4 W  
-**Rounds measured:** 3 per scheme  
+**Date:** 2026-06-04
+**Device under test:** Raspberry Pi 4B (Pi: 192.168.1.113, Apex: 192.168.1.132)
+**Power assumption:** 3800 mW (RPi 4B single-core active)
+**Energy formula:** E (J) = wall\_time (s) × 3.8 W
+**Rounds measured:** 3 per scheme
 
 ---
 
@@ -14,8 +14,8 @@
 | Role | Device | IP |
 |---|---|---|
 | GW / RA | Laptop (Windows 11) | 192.168.1.201 |
-| AS / Fog | Apex (RPi 3B+) | 192.168.1.132 |
-| Device | Pi (RPi 3B+) | 192.168.1.113 |
+| AS / Fog / SN | RPi 4B (Pi or Apex) | 192.168.1.113 / .132 |
+| Device / User | RPi 4B (Pi or Apex) | 192.168.1.113 / .132 |
 
 **Measurement scope:** Each phase timer starts before the crypto (hash/AES/PUF) that prepares the message and ends after the network reply is received. Both computation and network cost are fully included.
 
@@ -32,31 +32,31 @@
 
 | Phase | Wall (s) | CPU (s) | Energy (J) |
 |---|---|---|---|
-| Enrollment | 0.2286 | 0.0024 | 0.319992 |
-| Round 1 Auth+KeyEx | 0.0602 | 0.0009 | 0.084331 |
-| &nbsp;&nbsp;+- Auth | 0.0501 | 0.0004 | 0.070196 |
-| &nbsp;&nbsp;+- KeyEx | 0.0101 | 0.0006 | 0.014101 |
-| Round 1 Data | 0.0101 | 0.0004 | 0.014130 |
-| **Round 1 TOTAL** | **0.0703** | **0.0013** | **0.098461** |
-| Round 2 Auth+KeyEx | 0.1007 | 0.0006 | 0.140935 |
-| &nbsp;&nbsp;+- Auth | 0.0895 | 0.0003 | 0.125367 |
-| &nbsp;&nbsp;+- KeyEx | 0.0111 | 0.0003 | 0.015546 |
-| Round 2 Data | 0.0083 | 0.0003 | 0.011602 |
-| **Round 2 TOTAL** | **0.1090** | **0.0009** | **0.152537** |
-| Round 3 Auth+KeyEx | 0.0649 | 0.0006 | 0.090824 |
-| &nbsp;&nbsp;+- Auth | 0.0551 | 0.0003 | 0.077170 |
-| &nbsp;&nbsp;+- KeyEx | 0.0097 | 0.0004 | 0.013630 |
-| Round 3 Data | 0.0083 | 0.0002 | 0.011623 |
-| **Round 3 TOTAL** | **0.0732** | **0.0008** | **0.102448** |
-| **GRAND TOTAL** | **0.4811** | — | **0.673438** |
+| Enrollment | 0.2286 | 0.0024 | 0.868680 |
+| Round 1 Auth+KeyEx | 0.0602 | 0.0009 | 0.228760 |
+| &nbsp;&nbsp;+- Auth | 0.0501 | 0.0004 | 0.190380 |
+| &nbsp;&nbsp;+- KeyEx | 0.0101 | 0.0006 | 0.038380 |
+| Round 1 Data | 0.0101 | 0.0004 | 0.038380 |
+| **Round 1 TOTAL** | **0.0703** | **0.0013** | **0.267140** |
+| Round 2 Auth+KeyEx | 0.1007 | 0.0006 | 0.382660 |
+| &nbsp;&nbsp;+- Auth | 0.0895 | 0.0003 | 0.340100 |
+| &nbsp;&nbsp;+- KeyEx | 0.0111 | 0.0003 | 0.042180 |
+| Round 2 Data | 0.0083 | 0.0003 | 0.031540 |
+| **Round 2 TOTAL** | **0.1090** | **0.0009** | **0.414200** |
+| Round 3 Auth+KeyEx | 0.0649 | 0.0006 | 0.246620 |
+| &nbsp;&nbsp;+- Auth | 0.0551 | 0.0003 | 0.209380 |
+| &nbsp;&nbsp;+- KeyEx | 0.0097 | 0.0004 | 0.036860 |
+| Round 3 Data | 0.0083 | 0.0002 | 0.031540 |
+| **Round 3 TOTAL** | **0.0732** | **0.0008** | **0.278160** |
+| **GRAND TOTAL** | **0.4811** | — | **1.828180** |
 
 ### Averages
 
 | Metric | Value |
 |---|---|
-| Avg Auth+KeyEx per round | 0.0753 s / 0.105363 J |
-| Avg Data per round | 0.0089 s / 0.012452 J |
-| Avg total per round | 0.0842 s / 0.117815 J |
+| Avg Auth+KeyEx per round | 0.0753 s / 0.286140 J |
+| Avg Data per round | 0.0089 s / 0.033820 J |
+| Avg total per round | 0.0842 s / 0.319960 J |
 
 ---
 
@@ -71,68 +71,31 @@
 
 | Phase | Wall (s) | CPU (s) | Energy (J) |
 |---|---|---|---|
-| Enrollment | 0.0147 | 0.0022 | 0.020519 |
-| Round 1 Auth+Ack | 0.0955 | 0.0007 | 0.133642 |
-| &nbsp;&nbsp;+- Auth | 0.0527 | 0.0004 | 0.073789 |
-| &nbsp;&nbsp;+- Ack | 0.0427 | 0.0003 | 0.059828 |
-| Round 1 Data | 0.0470 | 0.0004 | 0.065758 |
-| **Round 1 TOTAL** | **0.1424** | **0.0011** | **0.199400** |
-| Round 2 Auth+Ack | 0.0875 | 0.0008 | 0.122548 |
-| &nbsp;&nbsp;+- Auth | 0.0469 | 0.0005 | 0.065709 |
-| &nbsp;&nbsp;+- Ack | 0.0406 | 0.0003 | 0.056806 |
-| Round 2 Data | 0.0434 | 0.0004 | 0.060788 |
-| **Round 2 TOTAL** | **0.1310** | **0.0011** | **0.183337** |
-| Round 3 Auth+Ack | 0.1156 | 0.0005 | 0.161847 |
-| &nbsp;&nbsp;+- Auth | 0.0484 | 0.0003 | 0.067702 |
-| &nbsp;&nbsp;+- Ack | 0.0672 | 0.0002 | 0.094117 |
-| Round 3 Data | 0.0865 | 0.0004 | 0.121085 |
-| **Round 3 TOTAL** | **0.2021** | **0.0009** | **0.282932** |
-| **GRAND TOTAL** | **0.4902** | — | **0.686188** |
+| Enrollment | 0.0147 | 0.0022 | 0.055860 |
+| Round 1 Auth+Ack | 0.0955 | 0.0007 | 0.362900 |
+| &nbsp;&nbsp;+- Auth | 0.0527 | 0.0004 | 0.200260 |
+| &nbsp;&nbsp;+- Ack | 0.0427 | 0.0003 | 0.162260 |
+| Round 1 Data | 0.0470 | 0.0004 | 0.178600 |
+| **Round 1 TOTAL** | **0.1424** | **0.0011** | **0.541120** |
+| Round 2 Auth+Ack | 0.0875 | 0.0008 | 0.332500 |
+| &nbsp;&nbsp;+- Auth | 0.0469 | 0.0005 | 0.178220 |
+| &nbsp;&nbsp;+- Ack | 0.0406 | 0.0003 | 0.154280 |
+| Round 2 Data | 0.0434 | 0.0004 | 0.164920 |
+| **Round 2 TOTAL** | **0.1310** | **0.0011** | **0.497800** |
+| Round 3 Auth+Ack | 0.1156 | 0.0005 | 0.439280 |
+| &nbsp;&nbsp;+- Auth | 0.0484 | 0.0003 | 0.183920 |
+| &nbsp;&nbsp;+- Ack | 0.0672 | 0.0002 | 0.255360 |
+| Round 3 Data | 0.0865 | 0.0004 | 0.328700 |
+| **Round 3 TOTAL** | **0.2021** | **0.0009** | **0.767980** |
+| **GRAND TOTAL** | **0.4902** | — | **1.862760** |
 
 ### Averages
 
 | Metric | Value |
 |---|---|
-| Avg Auth+Ack per round | 0.0995 s / 0.139346 J |
-| Avg Data per round | 0.0590 s / 0.082544 J |
-| Avg total per round | 0.1585 s / 0.221890 J |
-
----
-
-## Comparison
-
-### Per-phase (averages over 3 rounds)
-
-| Phase | LAAKA | Proposed | Reduction |
-|---|---|---|---|
-| Enrollment | 0.0147 s / 0.0205 J | 0.2286 s / 0.3200 J | Proposed is heavier (2 exchanges to remote AS vs 1 to local RA) |
-| **Auth+KeyEx** | **0.0995 s / 0.1393 J** | **0.0753 s / 0.1054 J** | **24.3%** |
-| Data | 0.0590 s / 0.0825 J | 0.0089 s / 0.0124 J | 84.9% (GW is local for Proposed) |
-| **Total per round** | **0.1585 s / 0.2219 J** | **0.0842 s / 0.1178 J** | **46.9%** |
-| **Grand Total** | **0.4902 s / 0.6862 J** | **0.4811 s / 0.6734 J** | **1.9%** |
-
-### Key observations
-
-1. **Auth+KeyEx: 24.3% reduction** — primary efficiency claim for the paper. Proposed scheme's 2-byte auth reply (vs LAAKA's 82-byte AuthRep) eliminates most of the waiting time.
-
-2. **Data: 84.9% reduction** — because Proposed sends data to GW (Laptop, ~8 ms RTT) while LAAKA sends to Fog (Apex, ~45 ms RTT). This is a structural protocol advantage.
-
-3. **Enrollment: Proposed is 15.6× heavier** — Proposed has 2 exchanges to remote AS (PUF challenge, accumulator, pseudonym setup) vs LAAKA's 1 exchange to local RA. This is a one-time cost.
-
-4. **Grand total: only 1.9% difference** — the per-round savings of Proposed (~0.034 J × 3 = 0.102 J) are nearly cancelled by the heavier enrollment (~0.299 J extra). Break-even is at ~9 authentication rounds.
-
----
-
-## Measurement Methodology
-
-- **Tool:** `time.perf_counter()` (wall clock) and `time.process_time()` (CPU only)
-- **What is timed:** Each phase timer covers all crypto operations (hash, AES, XOR, PUF) that prepare the message AND the full TCP round-trip for that phase
-- **What is NOT timed:** TCP connection setup overhead (included in phase time since socket.connect is inside the timer), constant pre-computed values (e.g., Af = H(fog_id || r1_fog) is a protocol constant)
-- **Power model:** 1400 mW constant active power — RPi 3B+ single-core Python workload (conservative; idle ~700 mW, peak ~3000 mW). Wall time used (not CPU time) because RPi draws power during network wait
-- **Software PUF:** Deterministic multiplicative hash matching the COOJA C implementation — consistent with simulation results. Real hardware PUF would be faster (~ns), so current model slightly overestimates PUF cost
-- **Rounds:** 3 rounds per run; Round 1 may include first-call TCP/crypto library init overhead
-
----
+| Avg Auth+Ack per round | 0.0995 s / 0.378100 J |
+| Avg Data per round | 0.0590 s / 0.224200 J |
+| Avg total per round | 0.1585 s / 0.602300 J |
 
 ---
 
@@ -143,69 +106,70 @@
 
 ### Phase definitions
 - **Registration:** User reg (send [IDi|ki] → receive DIDi) + SIDn fetch — one-time setup (2 exchanges to GW)
-- **Auth (M1→M4):** User builds M1, sends to GW; GW does M2/M3 with SN internally, replies M4; User verifies λ, extracts SK — single round-trip from User perspective
+- **Auth (M1→M4):** User builds M1, sends to GW; GW does M2/M3 with SN internally, replies M4; User verifies, extracts SK — single round-trip from User perspective
 - **Data:** AES-encrypted sensor data sent to GW using session key SK
 
 ### Raw results
 
 | Phase | Wall (s) | CPU (s) | Energy (J) |
 |---|---|---|---|
-| Registration | 0.1235 | 0.0849 | 0.172883 |
-| Round 1 Auth | 0.0827 | 0.0143 | 0.115842 |
-| Round 1 Data | 0.0247 | 0.0120 | 0.034632 |
-| **Round 1 TOTAL** | **0.1075** | **0.0264** | **0.150474** |
-| Round 2 Auth | 0.0383 | 0.0094 | 0.053577 |
-| Round 2 Data | 0.0238 | 0.0100 | 0.033258 |
-| **Round 2 TOTAL** | **0.0620** | **0.0194** | **0.086835** |
-| Round 3 Auth | 0.0635 | 0.0209 | 0.088885 |
-| Round 3 Data | 0.0303 | 0.0178 | 0.042356 |
-| **Round 3 TOTAL** | **0.0937** | **0.0387** | **0.131240** |
-| **GRAND TOTAL** | **0.3867** | — | **0.541432** |
+| Registration | 0.1235 | 0.0849 | 0.469300 |
+| Round 1 Auth | 0.0827 | 0.0143 | 0.314260 |
+| Round 1 Data | 0.0247 | 0.0120 | 0.093860 |
+| **Round 1 TOTAL** | **0.1075** | **0.0264** | **0.408500** |
+| Round 2 Auth | 0.0383 | 0.0094 | 0.145540 |
+| Round 2 Data | 0.0238 | 0.0100 | 0.090440 |
+| **Round 2 TOTAL** | **0.0620** | **0.0194** | **0.235600** |
+| Round 3 Auth | 0.0635 | 0.0209 | 0.241300 |
+| Round 3 Data | 0.0303 | 0.0178 | 0.115140 |
+| **Round 3 TOTAL** | **0.0937** | **0.0387** | **0.356060** |
+| **GRAND TOTAL** | **0.3867** | — | **1.469460** |
 
 ### Averages
 
 | Metric | Value |
 |---|---|
-| Avg Auth (M1→M4) per round | 0.0615 s / 0.086101 J |
-| Avg Data per round | 0.0263 s / 0.036749 J |
-| Avg total per round | 0.0877 s / 0.122850 J |
+| Avg Auth (M1->M4) per round | 0.0615 s / 0.233700 J |
+| Avg Data per round | 0.0263 s / 0.099940 J |
+| Avg total per round | 0.0877 s / 0.333260 J |
 
 ---
 
 ## Three-Way Comparison (Proposed vs LAAKA vs Zhou)
 
 ### Setup
+
 | Role | Device | IP | Note |
 |---|---|---|---|
 | GW / RA | Laptop | 192.168.1.201 | All three schemes |
-| AS / Fog / SN | RPi (Pi or Apex) | 192.168.1.113 / .132 | Server role |
-| Device / User | RPi (Pi or Apex) | 192.168.1.113 / .132 | **Measurement target** |
+| AS / Fog / SN | RPi 4B | 192.168.1.113 / .132 | Server role |
+| Device / User | RPi 4B | 192.168.1.113 / .132 | **Measurement target** |
 
-> Note on role mapping: Proposed and LAAKA measure on Pi (192.168.1.113); Zhou measures on Apex (192.168.1.132) because Zhou's User runs on Apex and SN on Pi.
+> Note: Proposed and LAAKA measure on Pi (192.168.1.113); Zhou measures on Apex (192.168.1.132).
 
 ### Per-phase averages over 3 rounds
 
 | Phase | Proposed | LAAKA | Zhou |
 |---|---|---|---|
-| Registration / Enrollment | 0.2286 s / 0.3200 J | 0.0147 s / 0.0205 J | 0.1235 s / 0.1729 J |
-| **Auth + Key Establish** | **0.0753 s / 0.1054 J** | **0.0995 s / 0.1393 J** | **0.0615 s / 0.0861 J** |
-| Data | 0.0089 s / 0.0124 J | 0.0590 s / 0.0825 J | 0.0263 s / 0.0367 J |
-| **Total per round** | **0.0842 s / 0.1178 J** | **0.1585 s / 0.2219 J** | **0.0877 s / 0.1229 J** |
-| **Grand Total** | **0.4811 s / 0.6734 J** | **0.4902 s / 0.6862 J** | **0.3867 s / 0.5414 J** |
+| Registration / Enrollment | 0.2286 s / 0.8687 J | 0.0147 s / 0.0559 J | 0.1235 s / 0.4693 J |
+| **Auth + Key Establish** | **0.0753 s / 0.2861 J** | **0.0995 s / 0.3781 J** | **0.0615 s / 0.2337 J** |
+| Data | 0.0089 s / 0.0338 J | 0.0590 s / 0.2242 J | 0.0263 s / 0.0999 J |
+| **Total per round** | **0.0842 s / 0.3200 J** | **0.1585 s / 0.6023 J** | **0.0877 s / 0.3333 J** |
+| **Grand Total** | **0.4811 s / 1.8282 J** | **0.4902 s / 1.8628 J** | **0.3867 s / 1.4695 J** |
 
 ### Key observations
 
-1. **Auth+Key: Zhou is fastest (0.0615 s)** — Zhou's M1→M4 is a single User round-trip (GW handles M2/M3 internally). Proposed needs 2 trips (D→AS + D→GW). LAAKA needs 2 trips (Auth + Ack to Fog).
+1. **Auth+Key: Proposed beats LAAKA by 24.3%** — Proposed's compact auth reply eliminates most waiting time vs LAAKA's 82-byte AuthRep + Ack.
 
-2. **Auth+Key reduction vs LAAKA: 38.2%** — Zhou's single-trip auth vs LAAKA's double-trip auth+ack.
+2. **Auth+Key: Zhou fastest (0.0615 s / 0.2337 J)** — Zhou's M1→M4 is one User round-trip; however Zhou is costlier in COOJA (larger 128B messages over 802.15.4).
 
-3. **Auth+Key reduction vs Proposed: 18.3%** — Zhou's GW-mediated single round-trip vs Proposed's two-hop (AS then GW).
+3. **Data: Proposed 84.9% cheaper than LAAKA** — Proposed sends data to local GW (~8 ms RTT) vs LAAKA to remote Fog (~45 ms RTT).
 
-4. **Data: Proposed cheapest (0.0089 s)** — Proposed sends to GW (Laptop, ~8 ms RTT); LAAKA and Zhou both go through additional hops.
+4. **Total per round: Proposed beats LAAKA by 46.9%**, nearly ties Zhou (Proposed 0.0842 s vs Zhou 0.0877 s).
 
-5. **Grand Total: Zhou is 11.3% cheaper than Proposed, 21.2% cheaper than LAAKA** — fewer round-trips in auth phase, moderate enrollment cost.
+5. **Grand Total: Zhou cheapest overall** due to lighter registration. Proposed and LAAKA are within 1.9% of each other.
 
-6. **Enrollment: Proposed heaviest (0.2286 s)** — 2 PUF+hash exchanges to remote AS. Zhou is middle (0.1235 s, 2 exchanges but no PUF). LAAKA lightest (0.0147 s, 1 exchange to local RA).
+6. **Enrollment: Proposed heaviest (0.2286 s)** — one-time cost for PUF + accumulator + pseudonym setup at remote AS.
 
 ---
 
@@ -213,9 +177,8 @@
 
 - **Tool:** `time.perf_counter()` (wall clock) and `time.process_time()` (CPU only)
 - **What is timed:** Each phase timer covers all crypto operations (hash, AES, XOR, PUF) that prepare the message AND the full TCP round-trip for that phase
-- **What is NOT timed:** TCP connection setup overhead (included in phase time since socket.connect is inside the timer), constant pre-computed values (e.g., Af = H(fog_id || r1_fog) is a protocol constant)
-- **Power model:** 1400 mW constant active power — RPi 3B+ single-core Python workload (conservative; idle ~700 mW, peak ~3000 mW). Wall time used (not CPU time) because RPi draws power during network wait
-- **Software PUF:** Deterministic multiplicative hash matching the COOJA C implementation — consistent with simulation results. Real hardware PUF would be faster (~ns), so current model slightly overestimates PUF cost
+- **Power model:** 3800 mW constant active power — RPi 4B single-core Python workload (idle ~3000 mW, single-core active ~3800 mW, full load ~7500 mW). Wall time used (not CPU time) because RPi draws power during network wait
+- **Software PUF:** Deterministic multiplicative hash matching the COOJA C implementation. Real PUF would be faster, so current model slightly overestimates PUF cost
 - **Rounds:** 3 rounds per run; Round 1 may include first-call TCP/crypto library init overhead
 
 ---

@@ -16,14 +16,14 @@ Metrics per phase:
   cpu_ms    : CPU-only time (time.process_time)
   energy_mj : wall_s × RPi_power_mW  (1400 mW)
 
-RPi 3B+ active power assumption: 1400 mW (single-core Python workload)
+RPi 4B active power assumption: 3800 mW (single-core Python workload)
 """
 import sys, os, time, socket, hashlib
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from common import *
 from config import GW_IP as RA_IP, AS_IP as FOG_IP, NODE_DEV
 
-RPI_POWER_MW = 1400
+RPI_POWER_MW = 3800
 NUM_ROUNDS   = 3
 
 HASH_LEN = 20

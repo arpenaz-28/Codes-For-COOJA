@@ -26,7 +26,7 @@ Metrics per phase:
   cpu_s   : CPU-only time (time.process_time)
   energy_j: wall_s × 1.4 W  (1400 mW RPi 3B+ single-core active)
 
-RPi 3B+ active power assumption: 1400 mW
+RPi 4B active power assumption: 3800 mW
 """
 import sys, os, time, socket
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
@@ -34,7 +34,7 @@ from common import *
 from config import (GW_IP, PORT_ZHOU_USER_REG, PORT_ZHOU_AUTH,
                     PORT_ZHOU_DATA, NODE_DEV, NODE_SN)
 
-RPI_POWER_MW = 1400
+RPI_POWER_MW = 3800
 NUM_ROUNDS   = 3
 
 # User state

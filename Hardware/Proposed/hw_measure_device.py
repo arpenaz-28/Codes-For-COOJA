@@ -9,7 +9,7 @@ Metrics per phase:
   - cpu_ms   : CPU time (time.process_time)
   - energy_mj: estimated energy = wall_s × RPi_power_mW
 
-RPi 3B+ active power assumption: 1400 mW (single-core Python workload)
+RPi 4B active power assumption: 3800 mW (single-core Python workload)
 """
 import sys, os, time, socket
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
@@ -17,7 +17,7 @@ from common import *
 from config import (AS_IP, GW_IP, PORT_AS_ENROLL, PORT_AS_AUTH,
                     PORT_GW_KEYEX, PORT_GW_DATA, NODE_DEV, NODE_AS)
 
-RPI_POWER_MW = 1400   # mW — RPi 3B+ typical single-core active
+RPI_POWER_MW = 3800   # mW — RPi 4B typical single-core active
 NUM_ROUNDS   = 3
 
 # Device state

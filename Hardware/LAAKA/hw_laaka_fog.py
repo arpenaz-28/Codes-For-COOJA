@@ -16,13 +16,13 @@ LAAKA Auth Steps 2-5 (handled here):
   - Generate Tf, rf, Ts, compute SK = H20(rd||rf||Ts)
   - Reply with TIDf(20)+Tf(1)+Ts(1)+Cf(20)+Ef(20)+Gf(20) = 82 B
 
-RPi 3B+ active power assumption: 1400 mW
+RPi 4B active power assumption: 3800 mW
 """
 import sys, os, threading, time, socket, atexit, signal, hashlib
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from common import *
 
-RPI_POWER_MW = 1400
+RPI_POWER_MW = 3800
 
 HASH_LEN = 20
 RAND_LEN = 20

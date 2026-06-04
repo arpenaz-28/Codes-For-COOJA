@@ -10,7 +10,7 @@ Ports served:
   5014 → SN:   M2 delivery (GW connects as client, SN replies M3)
   5015 ← User: encrypted sensor data (DIDi_new + AES(SK, data)) → ACK
 
-RPi 3B+ active power assumption: 1400 mW (same across all three scheme GW roles).
+RPi 4B active power assumption: 3800 mW (same across all three scheme GW roles).
 """
 import sys, os, threading, time, socket, atexit, signal
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
@@ -18,7 +18,7 @@ from common import *
 from config import (AS_IP as SN_IP, PORT_ZHOU_USER_REG, PORT_ZHOU_SN_REG,
                     PORT_ZHOU_AUTH, PORT_ZHOU_M2, PORT_ZHOU_DATA, NODE_GW)
 
-RPI_POWER_MW = 1400
+RPI_POWER_MW = 3800
 
 users        = {}   # id_i → {ki, bi, DIDi_curr, DIDi_old, IDi_padded, SK, ...}
 sensors      = {}   # sn_id → {Cn, Rn, bn, SIDn_curr, SIDn_old, SNn_padded, ...}

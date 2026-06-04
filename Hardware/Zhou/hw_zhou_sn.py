@@ -14,14 +14,14 @@ Metrics:
   cpu_s   : CPU-only time (time.process_time)
   energy_j: wall_s × RPi_power_W
 
-RPi 3B+ active power assumption: 1400 mW
+RPi 4B active power assumption: 3800 mW
 """
 import sys, os, threading, time, socket, atexit, signal
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from common import *
 from config import (GW_IP, PORT_ZHOU_SN_REG, PORT_ZHOU_M2, NODE_SN)
 
-RPI_POWER_MW = 1400
+RPI_POWER_MW = 3800
 
 # SN state — mutable dict so threads can update SIDn without global reassignment
 sn_state      = {'SIDn': b'\x00' * 32, 'Cn': 0, 'Rn': 0}

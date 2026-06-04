@@ -12,7 +12,7 @@ from common import *
 from config import (GW_IP, PORT_GW_TOKEN, PORT_AS_ENROLL, PORT_AS_AUTH,
                     NODE_AS, NODE_GW)
 
-RPI_POWER_MW = 1400   # mW — RPi 3B+ typical single-core active
+RPI_POWER_MW = 3800   # mW — RPi 4B typical single-core active
 
 T_acc        = bytearray([0xFF] * 32)
 clients      = {}

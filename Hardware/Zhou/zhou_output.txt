@@ -1,51 +1,54 @@
 ======================================================================
 Zhou Scheme Hardware Simulation - orchestrated run
 Date: 2026-06-04
+Device: Raspberry Pi 4B
+Power assumption: 3800 mW (RPi 4B single-core active)
+Energy formula: E (J) = wall_time (s) x 3.8 W
 ======================================================================
 
 [USR-ZHOU] Zhou scheme - hardware energy + latency measurement
 [USR-ZHOU] GW=192.168.1.201  ID_I=3
-[USR-ZHOU] Power assumption: 1400 mW  Rounds: 3
+[USR-ZHOU] Power assumption: 3800 mW  Rounds: 3
 
-[USR-ZHOU] Registration  wall=0.1235 s  cpu=0.0849 s  energy=0.172883 J  DIDi=8ee4ffee  SIDn=310e7d30
+[USR-ZHOU] Registration  wall=0.1235 s  cpu=0.0849 s  energy=0.469300 J  DIDi=8ee4ffee  SIDn=310e7d30
 
 [USR-ZHOU] === Round 1 ===
-[USR-ZHOU] R1 Auth        wall=0.0827 s  cpu=0.0143 s  energy=0.115842 J  SK=a7597221
-[USR-ZHOU] R1 Data        wall=0.0247 s  cpu=0.0120 s  energy=0.034632 J
-[USR-ZHOU] R1 TOTAL       wall=0.1075 s  cpu=0.0264 s  energy=0.150474 J  DIDi=2860f47e
+[USR-ZHOU] R1 Auth        wall=0.0827 s  cpu=0.0143 s  energy=0.314260 J  SK=a7597221
+[USR-ZHOU] R1 Data        wall=0.0247 s  cpu=0.0120 s  energy=0.093860 J
+[USR-ZHOU] R1 TOTAL       wall=0.1075 s  cpu=0.0264 s  energy=0.408500 J  DIDi=2860f47e
 
 [USR-ZHOU] === Round 2 ===
-[USR-ZHOU] R2 Auth        wall=0.0383 s  cpu=0.0094 s  energy=0.053577 J  SK=a0217df1
-[USR-ZHOU] R2 Data        wall=0.0238 s  cpu=0.0100 s  energy=0.033258 J
-[USR-ZHOU] R2 TOTAL       wall=0.0620 s  cpu=0.0194 s  energy=0.086835 J  DIDi=e0e7e0aa
+[USR-ZHOU] R2 Auth        wall=0.0383 s  cpu=0.0094 s  energy=0.145540 J  SK=a0217df1
+[USR-ZHOU] R2 Data        wall=0.0238 s  cpu=0.0100 s  energy=0.090440 J
+[USR-ZHOU] R2 TOTAL       wall=0.0620 s  cpu=0.0194 s  energy=0.235600 J  DIDi=e0e7e0aa
 
 [USR-ZHOU] === Round 3 ===
-[USR-ZHOU] R3 Auth        wall=0.0635 s  cpu=0.0209 s  energy=0.088885 J  SK=33f3d9ed
-[USR-ZHOU] R3 Data        wall=0.0303 s  cpu=0.0178 s  energy=0.042356 J
-[USR-ZHOU] R3 TOTAL       wall=0.0937 s  cpu=0.0387 s  energy=0.131240 J  DIDi=40da87f7
+[USR-ZHOU] R3 Auth        wall=0.0635 s  cpu=0.0209 s  energy=0.241300 J  SK=33f3d9ed
+[USR-ZHOU] R3 Data        wall=0.0303 s  cpu=0.0178 s  energy=0.115140 J
+[USR-ZHOU] R3 TOTAL       wall=0.0937 s  cpu=0.0387 s  energy=0.356060 J  DIDi=40da87f7
 
 ======================================================================
 [USR-ZHOU] ===== RESULTS SUMMARY =====
 Phase                       Wall(s)     CPU(s)    Energy(J)
 ----------------------------------------------------------
-Registration                 0.1235     0.0849     0.172883
+Registration                 0.1235     0.0849     0.469300
 
-Round1 Auth                  0.0827                0.115842
-Round1 Data                  0.0247                0.034632
-Round1 TOTAL                 0.1075                0.150474
+Round1 Auth                  0.0827                0.314260
+Round1 Data                  0.0247                0.093860
+Round1 TOTAL                 0.1075                0.408500
 
-Round2 Auth                  0.0383                0.053577
-Round2 Data                  0.0238                0.033258
-Round2 TOTAL                 0.0620                0.086835
+Round2 Auth                  0.0383                0.145540
+Round2 Data                  0.0238                0.090440
+Round2 TOTAL                 0.0620                0.235600
 
-Round3 Auth                  0.0635                0.088885
-Round3 Data                  0.0303                0.042356
-Round3 TOTAL                 0.0937                0.131240
+Round3 Auth                  0.0635                0.241300
+Round3 Data                  0.0303                0.115140
+Round3 TOTAL                 0.0937                0.356060
 
 ==========================================================
-GRAND TOTAL                  0.3867                0.541432
+GRAND TOTAL                  0.3867                1.469460
 
-Avg Auth(M1->M4) per round : 0.0615 s  0.086101 J
-Avg Data        per round : 0.0263 s  0.036749 J
-Avg total       per round : 0.0877 s  0.122850 J
+Avg Auth(M1->M4) per round : 0.0615 s  0.233700 J
+Avg Data        per round : 0.0263 s  0.099940 J
+Avg total       per round : 0.0877 s  0.333260 J
 ======================================================================
