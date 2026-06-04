@@ -25,16 +25,18 @@ os.makedirs(OUT_DIR, exist_ok=True)
 SCHEMES = ["Proposed", "LAAKA", "Zhou"]
 
 ENERGY_J = {
-    # Proposed: Enrollment + 3x Auth+KeyEx  (data exchange excluded)
-    # LAAKA / Zhou: full grand total (Enrollment + 3x Auth + 3x Data)
-    "Proposed": 1.7267,
-    "LAAKA":    1.8628,
-    "Zhou":     1.4695,
+    # Enrollment / Registration excluded from all schemes.
+    # Proposed : 3x Auth+KeyEx only
+    # LAAKA    : 3x (Auth+Ack + Data)
+    # Zhou     : 3x (Auth M1->M4 + Data)
+    "Proposed": 0.8580,
+    "LAAKA":    1.8069,
+    "Zhou":     1.0002,
 }
 TIME_S = {
-    "Proposed": 0.4544,
-    "LAAKA":    0.4902,
-    "Zhou":     0.3867,
+    "Proposed": 0.2258,
+    "LAAKA":    0.4755,
+    "Zhou":     0.2632,
 }
 
 # ── Style (matches existing COOJA simulation charts) ──────────────────────────
@@ -135,8 +137,8 @@ with plt.rc_context(_STYLE):
     )
 
     fig.suptitle(
-        "Hardware Measurement — Total (Enrollment + 3 Auth Rounds)\n"
-        "Proposed: Auth+KeyEx only  |  LAAKA & Zhou: Auth + Data",
+        "Hardware Measurement — 3 Operational Rounds (Enrollment excluded)\n"
+        "Proposed: Auth+KeyEx  |  LAAKA & Zhou: Auth+KeyEx + Data",
         fontsize=13, fontweight="bold", y=1.10, color="#222222",
     )
 
