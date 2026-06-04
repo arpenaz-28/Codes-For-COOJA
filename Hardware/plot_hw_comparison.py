@@ -113,29 +113,6 @@ with plt.rc_context(_STYLE):
     _draw_panel(ax_e, ENERGY_J, "Energy (J)",  "Total Energy",  "{:.3f} J")
     _draw_panel(ax_t, TIME_S,   "Time (s)",    "Total Time",    "{:.3f} s")
 
-    # Shared legend above both panels
-    handles = [
-        plt.Rectangle(
-            (0, 0), 1, 1,
-            facecolor="none",
-            edgecolor=COLORS[s],
-            hatch=HATCHES[s],
-            linewidth=1.5,
-        )
-        for s in SCHEMES
-    ]
-    fig.legend(
-        handles, SCHEMES,
-        loc="upper center",
-        ncol=3,
-        bbox_to_anchor=(0.5, 1.01),
-        fontsize=15,
-        framealpha=0.9,
-        edgecolor="#cccccc",
-        handlelength=2.0,
-        handleheight=1.4,
-    )
-
     fig.suptitle(
         "Hardware Simulation",
         fontsize=16, fontweight="bold", y=1.04, color="#222222",
