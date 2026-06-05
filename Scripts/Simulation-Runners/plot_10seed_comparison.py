@@ -112,10 +112,6 @@ def draw_panel(ax, stats, ylabel, fmt):
         hatch  = HATCHES[name]
         ax.bar(pos[i], mu, w,
                facecolor="none", edgecolor=color, hatch=hatch, linewidth=1.5)
-        ax.text(pos[i], mu + max_val * 0.03,
-                f"{mu:{fmt}}",
-                ha="center", va="bottom",
-                fontsize=21, fontweight="bold", color="#222222")
 
     ax.set_xticks(pos)
     ax.set_xticklabels([SCHEME_LABEL[s] for s, _, _ in stats],
@@ -126,7 +122,7 @@ def draw_panel(ax, stats, ylabel, fmt):
     ax.tick_params(axis="y", length=0)
     ax.spines["left"].set_color("#cccccc")
     ax.spines["bottom"].set_color("#cccccc")
-    ax.set_ylim(0, max_val * 1.30)
+    ax.set_ylim(0, max_val * 1.15)
 
 
 def legend_patches(metric_unit, stats):

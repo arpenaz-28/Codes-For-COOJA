@@ -183,20 +183,6 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
             zorder=3,
         )
 
-        # Value labels on bars
-        all_vals = [v for v in vals if v > 0]
-        top_ref  = max(all_vals) if all_vals else 1
-        for bar, v in zip(bars, vals):
-            if v > 0:
-                lbl = f"{v:.1f}" if abs(v) < 1000 else f"{v:.0f}"
-                ax.text(
-                    bar.get_x() + bar.get_width() / 2,
-                    bar.get_height() + 0.01 * top_ref,
-                    lbl,
-                    ha="center", va="bottom",
-                    fontsize=16, color="#222",
-                )
-
     # Centre ticks on each group
     ax.set_xticks(x + offsets[n_schemes // 2] / 2)
     ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=16)
@@ -210,9 +196,13 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
         data[s][n][metric_key] * unit_scale
         for s in schemes for n in AS_COUNTS if n in data[s]
     )
-    ax.set_ylim(0, y_max * 1.45)
-    ax.legend(fontsize=15, framealpha=0.85, loc="upper right")
-    fig.tight_layout()
+    ax.set_ylim(0, y_max * 1.20)
+    handles, labels = ax.get_legend_handles_labels()
+    fig.legend(handles, labels,
+               loc="lower center", bbox_to_anchor=(0.5, 0.01),
+               ncol=3, fontsize=15, framealpha=0.9,
+               edgecolor="#dddddd", handlelength=2.0, handleheight=1.4)
+    fig.tight_layout(rect=[0, 0.10, 1, 1])
     save_fig(fig, out_path)
 
 

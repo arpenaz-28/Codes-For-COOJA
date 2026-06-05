@@ -44,6 +44,7 @@
 | `fig_sim_as_cpu.png` | `Results/COOJA-Simulation/Charts/Authenticator_variation/02_as_variation_total_time.png` | Sim — total CPU time vs active AS count |
 | `fig_sim_net_energy.png` | `Results/COOJA-Simulation/Charts/Network_variation/12_total_energy_grouped_bar.png` | Sim — total energy vs network size (N=30,50,80,100) |
 | `fig_sim_net_cpu.png` | `Results/COOJA-Simulation/Charts/Network_variation/13_total_cpu_grouped_bar.png` | Sim — total CPU time vs network size (N=30,50,80,100) |
+| `fig_hw_comparison.png` | `Hardware/Charts/hw_total_comparison.png` | Hardware — per-round energy and CPU time on RPi 4B (Proposed vs LAAKA vs Zhou) |
 
 All phase figures are referenced with `\includegraphics[width=\columnwidth]{fig_*}` (single column).
 Simulation subfigure pairs use `\minipage[b]{0.48\columnwidth}` side-by-side layout.

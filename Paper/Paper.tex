@@ -731,7 +731,7 @@ As shown in Table~\ref{tab:comp_enroll}, the proposed scheme achieves an enrolme
 additionally providing PUF-based secret binding and pseudonym initialisation, both of
 which are absent from those schemes.
 
-\begin{table}[H]
+\begin{table}[!t]
   \centering
   \caption{Computational Cost Comparison: Enrolment Phase.}
   \label{tab:comp_enroll}
@@ -780,7 +780,7 @@ over LAAKA~\cite{ali2024laaka} (0.56\,ms) and Zhou~\cite{zhou2024auth} (0.53\,ms
 neither employ PUF-based authentication, a decoupled distributed AS, nor dual-state
 desynchronisation recovery.
 
-\begin{table}[H]
+\begin{table}[!t]
   \centering
   \caption{Computational Cost Comparison: Authentication \& Key Exchange Phase.}
   \label{tab:comp_auth}
@@ -825,7 +825,7 @@ competitive with Zhou~\cite{zhou2024auth} (1344\,bits) and He~et~al.~\cite{he202
 Unlike those schemes, the proposed scheme binds device enrolment to a PUF-derived secret and initialises
 the pseudonym at registration, adding security guarantees at a modest communication cost.
 
-\begin{table}[H]
+\begin{table}[!t]
   \centering
   \caption{Communication Cost Comparison: Enrolment Phase.}
   \label{tab:comm_enroll}
@@ -845,7 +845,7 @@ the pseudonym at registration, adding security guarantees at a modest communicat
   \scriptsize
   IDs/timestamps = 32\,b; hashes/nonces/challenges/ciphertexts = 256\,b.
 \end{table}
-\begin{table}[H]
+\begin{table}[!t]
   \centering
   \caption{Communication Cost Comparison: Auth.\ \& Key Exchange Phase.}
   \label{tab:comm_auth}
@@ -990,7 +990,7 @@ compared schemes across all measured network sizes. These consistent reductions 
 sizes demonstrate the scalability and computational efficiency of the proposed scheme in
 comparison to the benchmark schemes.
 
-\begin{figure}[!b]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=0.78\columnwidth]{fig_sim_net_energy}\\[2pt]
   \small (a)\\[5pt]
@@ -1062,7 +1062,6 @@ round against 1.413\,s for the proposed scheme, yielding a
 \end{figure}
 
 
-\FloatBarrier
 \subsection{Hardware-Based Performance Analysis}
 
 Hardware-based performance analysis plays a crucial role as it validates the feasibility

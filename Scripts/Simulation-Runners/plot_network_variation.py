@@ -431,7 +431,7 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
             bar_data.append((offsets, bar_totals, scheme))
 
         global_max = max(all_totals) if all_totals else 1
-        ax.set_ylim(0, global_max * 1.32)
+        ax.set_ylim(0, global_max * 1.20)
         ax.set_xlim(-spacing * 0.6, x[-1] + spacing * 0.6)
 
         for offsets, bar_totals, scheme in bar_data:
@@ -442,13 +442,6 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
                    edgecolor=color,
                    hatch=SCHEME_HATCHES[scheme],
                    linewidth=1.5)
-
-            for offset, val in zip(offsets, bar_totals):
-                if val > 0:
-                    ax.text(offset, val + global_max * 0.015,
-                            f"{val:.0f}" if metric == "avg_energy" else f"{val:.1f}",
-                            ha="center", va="bottom",
-                            fontsize=17, color="#333333", fontweight="bold")
 
         ax.set_xticks(x)
         ax.set_xticklabels([f"N = {n}" for n in SIZES], fontsize=19)

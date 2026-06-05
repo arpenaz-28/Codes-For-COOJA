@@ -91,15 +91,6 @@ def _draw_panel(ax, values, ylabel, title, unit_fmt):
             label=scheme,
             zorder=3,
         )
-        # Value label above bar
-        ax.text(
-            i, v + max_v * 0.025,
-            unit_fmt.format(v),
-            ha="center", va="bottom",
-            fontsize=14, fontweight="bold",
-            color="#222222",
-        )
-
     ax.set_xticks(X)
     ax.set_xticklabels(SCHEMES, fontsize=15)
     ax.set_ylabel(ylabel, fontsize=17, fontweight="bold", labelpad=10)
@@ -109,7 +100,7 @@ def _draw_panel(ax, values, ylabel, title, unit_fmt):
     ax.tick_params(axis="y", length=0)
     ax.spines["left"].set_color("#cccccc")
     ax.spines["bottom"].set_color("#cccccc")
-    ax.set_ylim(0, max_v * 1.20)
+    ax.set_ylim(0, max_v * 1.15)
 
 
 with plt.rc_context(_STYLE):
