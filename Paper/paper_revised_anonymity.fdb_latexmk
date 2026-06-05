@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex paper_revised_anonymity"] 1780343356.56734 "paper_revised_anonymity.aux" "paper_revised_anonymity.bbl" "paper_revised_anonymity" 1780343356.67555 2
+["bibtex paper_revised_anonymity"] 1780514925.18689 "paper_revised_anonymity.aux" "paper_revised_anonymity.bbl" "paper_revised_anonymity" 1780517730.79633 0
   "./ref.bib" 1779078574.4734 7584 224cb07221598b5cb55b84c25cd0636e ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "paper_revised_anonymity.aux" 1780343356.56442 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "paper_revised_anonymity.aux" 1780517730.52809 10836 75362ff0112343ff5efffe2acf6187ff "pdflatex"
   (generated)
   "paper_revised_anonymity.bbl"
   "paper_revised_anonymity.blg"
   (rewritten before read)
-["pdflatex"] 1780343354.55947 "/home/apex/contiki-ng/examples/Codes-For-COOJA/Paper/paper_revised_anonymity.tex" "paper_revised_anonymity.pdf" "paper_revised_anonymity" 1780343356.44995 2
+["pdflatex"] 1780517728.95482 "/home/apex/contiki-ng/examples/Codes-For-COOJA/Paper/paper_revised_anonymity.tex" "paper_revised_anonymity.pdf" "paper_revised_anonymity" 1780517730.79648 0
   "/etc/texmf/web2c/texmf.cnf" 1780053828.43472 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/apex/contiki-ng/examples/Codes-For-COOJA/Paper/paper_revised_anonymity.tex" 1780343354.36369 58389 7c3736662f88f99b0e7d39bf78e6a9ab ""
+  "/home/apex/contiki-ng/examples/Codes-For-COOJA/Paper/paper_revised_anonymity.tex" 1780517728.71482 61253 1beccdca860d6b12d30e24f0ca7c4c47 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -48,7 +48,6 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1248133631 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
-  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1248133631 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb" 1248133631 24420 52dbb8e8aa0069a1b987309557f8d303 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -201,19 +200,19 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1780053977.6674 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1780054067 8214649 81df09333acf372521e1c36906d5044e ""
-  "fig_auth.png" 1780052331.57731 48237 95599e26473cf8765c27c664e1bdb229 ""
-  "fig_enrollment.jpg" 1780052331.56731 65809 868e756f89a3496e34a2151d5790ca48 ""
-  "fig_keyex.jpg" 1780052331.58931 89896 77cd316f75cf0b76cc93b6e8b43153e6 ""
+  "fig_auth.jpg" 1780324226 72085 9c06a7add6492e5721aa539b2a7b8834 ""
+  "fig_enrollment.jpg" 1780324226 61462 ddbb124835a659782972c572f8a3036c ""
+  "fig_keyex.jpg" 1780324226 87610 b36b5d8a27b1a002d84cab08266788cb ""
   "fig_proverif.png" 1780317280.79461 144672 c972e4796b3c84e0048b5e7b709c255b ""
-  "fig_sim_as_cpu.png" 1779615686.10877 127834 48b317a291552bad8e05c8be8b376692 ""
-  "fig_sim_as_energy.png" 1779615686.10742 128583 8ceb216e3db8fcdfed10eb8ace525a1a ""
-  "fig_sim_net_cpu.png" 1780058022.30946 157768 c590bb9948c9aeee40ef245308542b97 ""
-  "fig_sim_net_energy.png" 1780058021.93946 164691 8bbef52b683866b4c9e0fa44f7f2e9ac ""
+  "fig_sim_as_cpu.png" 1780510885.24068 131630 70bebd6dad1c50ad32276f07ac2e9b60 ""
+  "fig_sim_as_energy.png" 1780510885.23936 132247 afc4e85e3c3284b278b809abcb294961 ""
+  "fig_sim_net_cpu.png" 1780517703.81939 155691 7f5196470b81f3d775ca69da2c0b3c6c ""
+  "fig_sim_net_energy.png" 1780517703.38601 159990 ea3d41613ab54dbc60e1e86728a42bc7 ""
   "fig_sim_total.png" 1779901715.25051 179240 202809f5ee4d105ee593ee3155624e6d ""
-  "paper_revised_anonymity.aux" 1780343356.56442 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "paper_revised_anonymity.bbl" 1780343356.67266 0 d41d8cd98f00b204e9800998ecf8427e "bibtex paper_revised_anonymity"
-  "paper_revised_anonymity.out" 0 -1 0 "pdflatex"
-  "paper_revised_anonymity.tex" 1780343354.36369 58389 7c3736662f88f99b0e7d39bf78e6a9ab ""
+  "paper_revised_anonymity.aux" 1780517730.52809 10836 75362ff0112343ff5efffe2acf6187ff "pdflatex"
+  "paper_revised_anonymity.bbl" 1780514925.29003 5373 656c91006d9557363366ff76d49b1375 "bibtex paper_revised_anonymity"
+  "paper_revised_anonymity.out" 1780517730.52909 5649 40dc21844d3560def8ea14805759b08e "pdflatex"
+  "paper_revised_anonymity.tex" 1780517728.71482 61253 1beccdca860d6b12d30e24f0ca7c4c47 ""
   (generated)
   "paper_revised_anonymity.aux"
   "paper_revised_anonymity.log"
