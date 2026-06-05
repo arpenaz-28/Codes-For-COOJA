@@ -1,11 +1,12 @@
 """
 plot_hw_comparison.py
-Hardware simulation total comparison bar chart — Proposed vs LAAKA vs Zhou.
+Hardware simulation per-round comparison bar chart — Proposed vs LAAKA vs Zhou.
 
 Produces a 2-panel figure:
-  Left  : Grand Total Energy (J)   — enrollment + 3 auth rounds + 3 data rounds
-  Right : Grand Total Time  (s)
+  Left  : Avg Energy per Auth round (J)
+  Right : Avg Time   per Auth round (s)
 
+Values = (3-round sum) / 3.  Enrollment excluded from all schemes.
 Output: Hardware/Charts/hw_total_comparison.png
 """
 
@@ -21,23 +22,27 @@ OUT_FILE = os.path.join(OUT_DIR, "hw_total_comparison.png")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # ── Measured data (RPi 4B, 3800 mW, wall_time × 3.8 W) ────────────────────────
-# Grand Total = Enrollment/Registration + Round1 + Round2 + Round3
+# Per-round averages = (3-round sum) / 3.  Enrollment excluded from all schemes.
+# Proposed : Auth+KeyEx only (per round avg)
+# LAAKA    : Auth+Ack + Data (per round avg)
+# Zhou     : Auth M1->M4 + Data (per round avg)
 SCHEMES = ["Proposed", "LAAKA", "Zhou"]
 
-ENERGY_J = {
-    # Enrollment / Registration excluded from all schemes.
-    # Proposed : 3x Auth+KeyEx only
-    # LAAKA    : 3x (Auth+Ack + Data)
-    # Zhou     : 3x (Auth M1->M4 + Data)
+_NUM_ROUNDS = 3
+
+_ENERGY_SUM_J = {
     "Proposed": 0.8580,
     "LAAKA":    1.8069,
     "Zhou":     1.0002,
 }
-TIME_S = {
+_TIME_SUM_S = {
     "Proposed": 0.2258,
     "LAAKA":    0.4755,
     "Zhou":     0.2632,
 }
+
+ENERGY_J = {k: round(v / _NUM_ROUNDS, 4) for k, v in _ENERGY_SUM_J.items()}
+TIME_S   = {k: round(v / _NUM_ROUNDS, 4) for k, v in _TIME_SUM_S.items()}
 
 # ── Style (matches existing COOJA simulation charts) ──────────────────────────
 COLORS = {
@@ -110,8 +115,8 @@ def _draw_panel(ax, values, ylabel, title, unit_fmt):
 with plt.rc_context(_STYLE):
     fig, (ax_e, ax_t) = plt.subplots(1, 2, figsize=(11, 5))
 
-    _draw_panel(ax_e, ENERGY_J, "Energy (J)",  "Total Energy",  "{:.3f} J")
-    _draw_panel(ax_t, TIME_S,   "Time (s)",    "Total Time",    "{:.3f} s")
+    _draw_panel(ax_e, ENERGY_J, "Energy (J)",  "Energy",  "{:.4f} J")
+    _draw_panel(ax_t, TIME_S,   "Time (s)",    "Time",    "{:.4f} s")
 
     fig.suptitle(
         "Hardware Simulation",
