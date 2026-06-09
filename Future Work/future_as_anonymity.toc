@@ -1,0 +1,43 @@
+\contentsline {section}{\numberline {1}Introduction and Motivation}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Background}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Contribution of This Document}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Scope}{4}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Related Work}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Infrastructure Pseudonymity in Vehicular Networks}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Subscriber Identity Concealment in 5G}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Anonymity Taxonomy}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Anonymity in IoT Authentication Schemes}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Problem Statement: Where $\mathit {ID}_{AS}$ Leaks}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Original Scheme Message Flows}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Identified Leakage Points}{5}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Extended Scheme: AS Pseudonym Rotation}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Design Principles}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}New Notation}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Modified State Tables}{8}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}GW: AS Pseudonym Initialisation and Epoch Rotation}{9}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Modified Phase 1: Enrollment}{10}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Modified Phase 2: Authentication}{12}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Modified Phase 3: Key Exchange}{14}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Dual-State AS Pseudonym Desynchronisation Recovery}{16}{subsection.4.8}%
+\contentsline {section}{\numberline {5}Complete Modified Protocol Summary}{17}{section.5}%
+\contentsline {section}{\numberline {6}Security Analysis}{18}{section.6}%
+\contentsline {subsection}{\numberline {6.1}AS Anonymity Against External Adversary}{18}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Epoch-Unlinkability of AS Sessions}{18}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}AS Identity Secrecy (One-Way Pseudonym)}{19}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Accountability: GW Can De-anonymise}{19}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Forward Secrecy of AS Pseudonym}{19}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Correctness Under Desynchronisation}{20}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Preservation of Original Security Properties}{20}{subsection.6.7}%
+\contentsline {section}{\numberline {7}Overhead Analysis}{21}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Communication Overhead}{21}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Computation Overhead}{21}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Storage Overhead}{22}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Epoch Management Policy}{22}{section.8}%
+\contentsline {paragraph}{Short epochs ($T \approx 1$ hour).}{22}{section*.43}%
+\contentsline {paragraph}{Long epochs ($T \approx 1$ week).}{22}{section*.44}%
+\contentsline {paragraph}{Recommended policy.}{22}{section*.45}%
+\contentsline {section}{\numberline {9}Discussion}{23}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Comparison with Device Pseudonym Mechanism}{23}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Complete Anonymity: Who Knows Whom}{23}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Open Questions for Future Formalisation}{24}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Conclusion}{24}{section.10}%

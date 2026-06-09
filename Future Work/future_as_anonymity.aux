@@ -1,0 +1,108 @@
+\relax 
+\providecommand\zref@newlabel[2]{}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{das2026comsnets}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction and Motivation}{3}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Background}{3}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Contribution of This Document}{3}{subsection.1.2}\protected@file@percent }
+\citation{ieee16092}
+\citation{khodaei2018scaling}
+\citation{3gpp33501}
+\citation{pfitzmann2010terminology}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Scope}{4}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{4}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Infrastructure Pseudonymity in Vehicular Networks}{4}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Subscriber Identity Concealment in 5G}{4}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Anonymity Taxonomy}{4}{subsection.2.3}\protected@file@percent }
+\citation{ali2024laaka}
+\citation{zhou2024auth}
+\citation{he2023lightweight}
+\citation{alruwaili2025raaf}
+\citation{das2026comsnets}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Anonymity in IoT Authentication Schemes}{5}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Problem Statement: Where $\mathit  {ID}_{AS}$ Leaks}{5}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Original Scheme Message Flows}{5}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Identified Leakage Points}{5}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Extended Scheme: AS Pseudonym Rotation}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Design Principles}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}New Notation}{6}{subsection.4.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces New symbols introduced by the AS pseudonym extension.}}{7}{table.caption.2}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:notation}{{1}{7}{New symbols introduced by the AS pseudonym extension}{table.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Plain-language notation for the AS-anonymity scheme. Shaded rows mark the symbols added by this extension.}}{8}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:notation}{{1}{8}{Plain-language notation for the AS-anonymity scheme. Shaded rows mark the symbols added by this extension}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Modified State Tables}{8}{subsection.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Extended GW state (additions highlighted).}}{8}{table.caption.4}\protected@file@percent }
+\newlabel{tab:state-gw}{{2}{8}{Extended GW state (additions highlighted)}{table.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Extended AS state (additions highlighted).}}{9}{table.caption.5}\protected@file@percent }
+\newlabel{tab:state-as}{{3}{9}{Extended AS state (additions highlighted)}{table.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Extended Device state (additions highlighted).}}{9}{table.caption.6}\protected@file@percent }
+\newlabel{tab:state-d}{{4}{9}{Extended Device state (additions highlighted)}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}GW: AS Pseudonym Initialisation and Epoch Rotation}{9}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:epoch-rotation}{{4.4}{9}{GW: AS Pseudonym Initialisation and Epoch Rotation}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Modified Phase 1: Enrollment}{10}{subsection.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Modified enrollment phase. The GW generates the epoch-bound AS pseudonym $\mathit  {PID}_{AS}^{\mathrm  {curr}}$ and delivers it to both AS and D; D stores $\mathit  {PID}_{AS}^{\mathrm  {curr}}$ in place of $\mathit  {ID}_{AS}$ (shaded steps are new).}}{11}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:enroll}{{2}{11}{Modified enrollment phase. The GW generates the epoch-bound AS pseudonym $\PIDascurr $ and delivers it to both AS and D; D stores $\PIDascurr $ in place of $\IDas $ (shaded steps are new)}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Modified Phase 2: Authentication}{12}{subsection.4.6}\protected@file@percent }
+\newlabel{sec:phase2-modified}{{4.6}{12}{Modified Phase 2: Authentication}{subsection.4.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Modified authentication phase. The device folds $\mathit  {PID}_{AS}^{\mathrm  {curr}}$ into the verification mask, and the AS searches the four dual-state $(m, \mathit  {PID}_{AS})$ pairs until the accumulator check passes (shaded steps are new).}}{13}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:auth}{{3}{13}{Modified authentication phase. The device folds $\PIDascurr $ into the verification mask, and the AS searches the four dual-state $(m, \PIDas )$ pairs until the accumulator check passes (shaded steps are new)}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Modified Phase 3: Key Exchange}{14}{subsection.4.7}\protected@file@percent }
+\newlabel{sec:phase3-modified}{{4.7}{14}{Modified Phase 3: Key Exchange}{subsection.4.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Modified key exchange phase (detailed). AS adds the masked field $\Psi $ to refresh the device's stored AS pseudonym, and sends $\mathit  {PID}_{AS}^{\mathrm  {curr}}$ (not $\mathit  {ID}_{AS}$) to the GW; the GW resolves the AS via a dual-state pseudonym lookup (shaded steps are new).}}{14}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:keyex-detail}{{4}{14}{Modified key exchange phase (detailed). AS adds the masked field $\Psi $ to refresh the device's stored AS pseudonym, and sends $\PIDascurr $ (not $\IDas $) to the GW; the GW resolves the AS via a dual-state pseudonym lookup (shaded steps are new)}{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Modified Phase~3 key exchange. Boldface items are changed from the original scheme. GW lookup is now on~$\mathit  {PID}_{AS}^{\mathrm  {curr}}$ (not~$\mathit  {ID}_{AS}$); D receives $\Psi $ to refresh its stored AS pseudonym.}}{16}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:keyex-modified}{{5}{16}{Modified Phase~3 key exchange. Boldface items are changed from the original scheme. GW lookup is now on~$\PIDascurr $ (not~$\IDas $); D receives $\Psi $ to refresh its stored AS pseudonym}{figure.caption.38}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Dual-State AS Pseudonym Desynchronisation Recovery}{16}{subsection.4.8}\protected@file@percent }
+\newlabel{sec:desync}{{4.8}{16}{Dual-State AS Pseudonym Desynchronisation Recovery}{subsection.4.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Desynchronisation scenarios and recovery paths.}}{17}{table.caption.39}\protected@file@percent }
+\newlabel{tab:desync-cases}{{5}{17}{Desynchronisation scenarios and recovery paths}{table.caption.39}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Complete Modified Protocol Summary}{17}{section.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Per-message diff between original and extended scheme.}}{18}{table.caption.40}\protected@file@percent }
+\newlabel{tab:protocol-diff}{{6}{18}{Per-message diff between original and extended scheme}{table.caption.40}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Security Analysis}{18}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}AS Anonymity Against External Adversary}{18}{subsection.6.1}\protected@file@percent }
+\newlabel{prop:as-anon}{{6.1}{18}{AS Anonymity}{property.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Epoch-Unlinkability of AS Sessions}{18}{subsection.6.2}\protected@file@percent }
+\newlabel{prop:unlinkability}{{6.2}{18}{AS Epoch Unlinkability}{property.6.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}AS Identity Secrecy (One-Way Pseudonym)}{19}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Accountability: GW Can De-anonymise}{19}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Forward Secrecy of AS Pseudonym}{19}{subsection.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Correctness Under Desynchronisation}{20}{subsection.6.6}\protected@file@percent }
+\newlabel{thm:desync}{{6.1}{20}{Recovery Completeness}{theorem.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Preservation of Original Security Properties}{20}{subsection.6.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Overhead Analysis}{21}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Communication Overhead}{21}{subsection.7.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Communication overhead per authentication round (hash output = 256~bits; SE block = 256~bits).}}{21}{table.caption.41}\protected@file@percent }
+\newlabel{tab:comm-overhead}{{7}{21}{Communication overhead per authentication round (hash output = 256~bits; SE block = 256~bits)}{table.caption.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Computation Overhead}{21}{subsection.7.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Hash (SHA-256 equivalent) and XOR operations added per round.}}{21}{table.caption.42}\protected@file@percent }
+\newlabel{tab:comp-overhead}{{8}{21}{Hash (SHA-256 equivalent) and XOR operations added per round}{table.caption.42}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Storage Overhead}{22}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Epoch Management Policy}{22}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Short epochs ($T \approx 1$ hour).}{22}{section*.43}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Long epochs ($T \approx 1$ week).}{22}{section*.44}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Recommended policy.}{22}{section*.45}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Discussion}{23}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Comparison with Device Pseudonym Mechanism}{23}{subsection.9.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Comparison of device and AS pseudonym mechanisms.}}{23}{table.caption.46}\protected@file@percent }
+\newlabel{tab:comparison}{{9}{23}{Comparison of device and AS pseudonym mechanisms}{table.caption.46}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Complete Anonymity: Who Knows Whom}{23}{subsection.9.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Identity knowledge matrix after full extension.}}{24}{table.caption.47}\protected@file@percent }
+\newlabel{tab:anon-summary}{{10}{24}{Identity knowledge matrix after full extension}{table.caption.47}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Open Questions for Future Formalisation}{24}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Conclusion}{24}{section.10}\protected@file@percent }
+\bibstyle{IEEEtran}
+\bibdata{ref}
+\bibcite{das2026comsnets}{1}
+\bibcite{ieee16092}{2}
+\bibcite{khodaei2018scaling}{3}
+\bibcite{3gpp33501}{4}
+\bibcite{pfitzmann2010terminology}{5}
+\bibcite{ali2024laaka}{6}
+\bibcite{zhou2024auth}{7}
+\bibcite{he2023lightweight}{8}
+\bibcite{alruwaili2025raaf}{9}
+\gdef \@abspage@last{26}
