@@ -375,19 +375,23 @@ PROCESS_THREAD(device_node, ev, data)
                        energy_enroll_after - energy_enroll_before);
                 enroll_pending = 0;
             }
-            if (keyex_pending) {
-                printf("KEYEX_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
-                       IDd,
-                       cpu_keyex_after - cpu_keyex_before,
-                       energy_keyex_after - energy_keyex_before);
-                keyex_pending = 0;
-            }
+            /* AUTH printed BEFORE KEYEX: the COOJA early-exit fires on the
+             * KEYEX_ENERGY marker, so KEYEX must be the last line of this
+             * deferred block — otherwise the last device's auth line is lost
+             * when the simulation halts on its (exit-triggering) keyex. */
             if (auth_pending) {
                 printf("AUTH_ENERGY|%u|cpu_ticks=0|energy_ticks=0|cpu_s=%f|energy_j=%f\n",
                        IDd,
                        cpu_auth_snap - cpu_reg_snap,
                        energy_auth_snap - energy_reg_snap);
                 auth_pending = 0;
+            }
+            if (keyex_pending) {
+                printf("KEYEX_ENERGY|%u|cpu_s=%f|energy_j=%f\n",
+                       IDd,
+                       cpu_keyex_after - cpu_keyex_before,
+                       energy_keyex_after - energy_keyex_before);
+                keyex_pending = 0;
             }
 
             /* ============================================================

@@ -66,9 +66,11 @@ _RAW_CSV_DIRS = {
     ("LAAKA",    80):  os.path.join(REPO, "LAAKA", "Simulation results", "network-variation", "N80",  "csv"),
     ("LAAKA",    100): os.path.join(REPO, "LAAKA", "Simulation results", "network-variation", "N100", "csv"),
     ("Zhou",     30):  os.path.join(_SMALL_RAW, "Zhou",  "N30"),
-    ("Zhou",     50):  os.path.join(REPO, "Results", "COOJA-Simulation", "Zhou-Simulation", "network-variation", "N50",  "csv"),
-    ("Zhou",     80):  os.path.join(REPO, "Results", "COOJA-Simulation", "Zhou-Simulation", "network-variation", "N80",  "csv"),
-    ("Zhou",     100): os.path.join(REPO, "Results", "COOJA-Simulation", "Zhou-Simulation", "network-variation", "N100", "csv"),
+    # N=50/80/100 point at the runner's output (complete: all 10/16/20 users);
+    # the old Results/Zhou-Simulation path held a stale half-user export.
+    ("Zhou",     50):  os.path.join(REPO, "Zhou-Scheme", "Simulation results", "network-variation", "N50",  "csv"),
+    ("Zhou",     80):  os.path.join(REPO, "Zhou-Scheme", "Simulation results", "network-variation", "N80",  "csv"),
+    ("Zhou",     100): os.path.join(REPO, "Zhou-Scheme", "Simulation results", "network-variation", "N100", "csv"),
     ("DAuth",    30):  os.path.join(REPO, "Results", "COOJA-Simulation", "DAuth-Sweep", "network-variation", "N30",  "csv"),
     ("DAuth",    50):  os.path.join(REPO, "Results", "COOJA-Simulation", "DAuth-Sweep", "network-variation", "N50",  "csv"),
     ("DAuth",    80):  os.path.join(REPO, "Results", "COOJA-Simulation", "DAuth-Sweep", "network-variation", "N80",  "csv"),

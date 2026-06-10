@@ -1,0 +1,210 @@
+Network Variation Simulation Runner
+  Schemes : ['LAAKA']
+  Sizes   : [50, 80, 100, 120]
+  Seeds   : [123456, 234567, 345678, 456789, 567890, 678901, 789012, 890123, 901234, 112345]
+  COOJA   : /home/apex/contiki-ng/tools/cooja
+  Build   : /home/apex/contiki-ng/examples/myproject
+
+======================================================================
+  LAAKA  N=50  (10 devices, 2 active AS)
+======================================================================
+  Prepared source: LAAKA N=50
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['device-node.cooja', 'as-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (24s)
+  Devices parsed: E=10  A=10  K=10
+
+  --- Seed 234567
+  Result : TEST OK  (7s)
+  Devices parsed: E=10  A=10  K=10
+
+  --- Seed 345678
+  Result : TEST OK  (7s)
+  Devices parsed: E=10  A=10  K=10
+
+  --- Seed 456789
+  Result : TEST OK  (7s)
+  Devices parsed: E=10  A=10  K=10
+
+  --- Seed 567890
+  Result : TEST OK  (10s)
+  Devices parsed: E=10  A=10  K=10
+
+  --- Seed 678901
+  Result : TEST OK  (7s)
+  Devices parsed: E=10  A=10  K=10
+
+  --- Seed 789012
+  Result : TEST OK  (7s)
+  Devices parsed: E=10  A=10  K=10
+
+  --- Seed 890123
+  Result : TEST OK  (7s)
+  Devices parsed: E=10  A=10  K=10
+
+  --- Seed 901234
+  Result : TEST OK  (9s)
+  Devices parsed: E=10  A=10  K=10
+
+  --- Seed 112345
+  Result : TEST OK  (7s)
+  Devices parsed: E=10  A=10  K=10
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N50/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N50/logs
+
+======================================================================
+  LAAKA  N=80  (16 devices, 2 active AS)
+======================================================================
+  Prepared source: LAAKA N=80
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['device-node.cooja', 'as-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (13s)
+  Devices parsed: E=16  A=16  K=16
+
+  --- Seed 234567
+  Result : TEST OK  (13s)
+  Devices parsed: E=16  A=16  K=16
+
+  --- Seed 345678
+  Result : TEST OK  (13s)
+  Devices parsed: E=16  A=16  K=16
+
+  --- Seed 456789
+  Result : TEST OK  (13s)
+  Devices parsed: E=16  A=16  K=16
+
+  --- Seed 567890
+  Result : TEST OK  (14s)
+  Devices parsed: E=16  A=16  K=16
+
+  --- Seed 678901
+  Result : TEST OK  (13s)
+  Devices parsed: E=16  A=16  K=16
+
+  --- Seed 789012
+  Result : TEST OK  (14s)
+  Devices parsed: E=16  A=16  K=16
+
+  --- Seed 890123
+  Result : TEST OK  (14s)
+  Devices parsed: E=16  A=16  K=16
+
+  --- Seed 901234
+  Result : TEST OK  (13s)
+  Devices parsed: E=16  A=16  K=16
+
+  --- Seed 112345
+  Result : TEST OK  (12s)
+  Devices parsed: E=16  A=16  K=16
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N80/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N80/logs
+
+======================================================================
+  LAAKA  N=100  (20 devices, 2 active AS)
+======================================================================
+  Prepared source: LAAKA N=100
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['device-node.cooja', 'as-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (19s)
+  Devices parsed: E=20  A=20  K=20
+
+  --- Seed 234567
+  Result : TEST OK  (19s)
+  Devices parsed: E=20  A=20  K=20
+
+  --- Seed 345678
+  Result : TEST OK  (19s)
+  Devices parsed: E=20  A=20  K=20
+
+  --- Seed 456789
+  Result : TEST OK  (21s)
+  Devices parsed: E=20  A=20  K=20
+
+  --- Seed 567890
+  Result : TEST OK  (20s)
+  Devices parsed: E=20  A=20  K=20
+
+  --- Seed 678901
+  Result : TEST OK  (20s)
+  Devices parsed: E=20  A=20  K=20
+
+  --- Seed 789012
+  Result : TEST OK  (20s)
+  Devices parsed: E=20  A=20  K=20
+
+  --- Seed 890123
+  Result : TEST OK  (20s)
+  Devices parsed: E=20  A=20  K=20
+
+  --- Seed 901234
+  Result : TEST OK  (19s)
+  Devices parsed: E=20  A=20  K=20
+
+  --- Seed 112345
+  Result : TEST OK  (20s)
+  Devices parsed: E=20  A=20  K=20
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N100/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N100/logs
+
+======================================================================
+  LAAKA  N=120  (24 devices, 2 active AS)
+======================================================================
+  Prepared source: LAAKA N=120
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['device-node.cooja', 'as-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (24s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 234567
+  Result : TEST OK  (25s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 345678
+  Result : TEST OK  (24s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 456789
+  Result : TEST OK  (25s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 567890
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 678901
+  Result : TEST OK  (25s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 789012
+  Result : TEST OK  (25s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 890123
+  Result : TEST OK  (25s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 901234
+  Result : TEST OK  (25s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 112345
+  Result : TEST OK  (25s)
+  Devices parsed: E=24  A=24  K=24
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N120/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N120/logs
+
+======================================================================
+All done.  Run plot_network_variation.py to generate charts.
+======================================================================
