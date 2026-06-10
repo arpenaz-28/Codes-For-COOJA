@@ -1077,9 +1077,10 @@ round against 1.413\,s for the proposed scheme, yielding a
 Hardware-based performance analysis plays a crucial role as it validates the feasibility
 of the proposed authentication scheme by implementing it on physical IoT devices,
 incorporating real hardware environment conditions.
-The proposed scheme and the baseline authentication schemes LAAKA~\cite{ali2024laaka}
-and Zhou~\cite{zhou2024auth} are implemented on a Raspberry Pi~4B platform, equipped
-with a quad-core 64-bit ARM Cortex-A72 processor operating at 1.5\,GHz.
+The proposed scheme and the three comparison schemes---DAuth~\cite{das2026comsnets},
+LAAKA~\cite{ali2024laaka}, and Zhou~\cite{zhou2024auth}---are implemented on a
+Raspberry Pi~4B platform, equipped with a quad-core 64-bit ARM Cortex-A72
+processor operating at 1.5\,GHz.
 A uniform hardware setup is maintained across all compared authentication schemes,
 ensuring a fair and consistent comparison of energy consumption and CPU time.
 The implementation considers two Raspberry Pi~4B platforms as IoT nodes.
@@ -1092,15 +1093,23 @@ direct TCP communication with the others. Energy consumption is estimated using
 the active power profile of the Raspberry Pi~4B ($3.8\,\text{W}$) multiplied by
 the measured wall-clock time per authentication round, capturing both
 cryptographic computation and network round-trip latency.
-As illustrated in Figure~\ref{fig:hw_comparison}(a), the proposed scheme achieves
-the lowest energy consumption of 0.286\,J per authentication round, reducing
-energy by 52.5\,\% and 14.2\,\% compared to LAAKA (0.602\,J) and Zhou (0.333\,J),
-respectively.
 
-The CPU time results, as shown in Figure~\ref{fig:hw_comparison}(b), further
-confirm this efficiency: the proposed scheme achieves 0.0753\,s per round,
-reducing CPU time by 52.5\,\% and 14.1\,\% over LAAKA (0.1585\,s) and Zhou
-(0.0877\,s), respectively.
+As illustrated in Figure~\ref{fig:hw_comparison}(a), DAuth achieves the lowest
+per-round energy of $0.152\,\text{J}$, as it performs no pseudonym operations.
+The proposed scheme consumes $0.286\,\text{J}$ per round---an overhead of
+approximately $88\,\%$ over DAuth attributable to the additional SHA-256
+evaluations for PID rotation and dual-state verification.
+Despite this overhead, the proposed scheme remains $14.2\,\%$ and $52.5\,\%$
+more energy-efficient than Zhou ($0.333\,\text{J}$) and LAAKA ($0.602\,\text{J}$),
+respectively, confirming that the anonymity guarantee is achieved at a cost
+well within the range of existing non-anonymous schemes.
+
+The CPU time results in Figure~\ref{fig:hw_comparison}(b) follow the same ordering:
+DAuth ($0.040\,\text{s}$), Proposed ($0.075\,\text{s}$), Zhou ($0.088\,\text{s}$),
+and LAAKA ($0.159\,\text{s}$).
+The proposed scheme reduces CPU time by $14.8\,\%$ and $52.8\,\%$ relative to
+Zhou and LAAKA, respectively, while incurring an $87.5\,\%$ overhead compared
+to DAuth---consistent with the energy results.
 These reductions are consistent with the lightweight XOR-hash operations and
 decoupled AS design of the proposed scheme, which translate directly to
 measurable gains in physical energy and execution time on real hardware.
@@ -1111,8 +1120,12 @@ the hardware setup involves only two Raspberry Pi platforms.
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{fig_hw_comparison}
-  \caption{Hardware-based performance: energy consumption~(a) and CPU time~(b)
-           per authentication round on Raspberry Pi~4B.}
+  \caption{Hardware-based performance: per-round energy~(a) and CPU time~(b)
+           on Raspberry Pi~4B (Proposed, DAuth, LAAKA, Zhou).
+           DAuth is the base scheme with no pseudonym operations;
+           the proposed scheme adds ${\approx}88\,\%$ overhead over DAuth
+           for anonymity while remaining $52.5\,\%$ and $14.2\,\%$ cheaper
+           than LAAKA and Zhou, respectively.}
   \label{fig:hw_comparison}
 \end{figure}
 
