@@ -31,17 +31,17 @@ SCHEMES = ["Proposed", "DAuth", "LAAKA", "Zhou"]
 _NUM_ROUNDS = 3
 
 # Auth+KeyEx only (Enrollment and Data excluded), 3-round sums.
-# DAuth values: average of 2 hardware runs on RPi 4B (Apex=device, Pi=AS, Laptop=GW)
-#   with 1 warm-up round discarded to eliminate TCP cold-start.
+# DAuth values: mean of 3 hardware runs on RPi 4B (Apex=device, Pi=AS, Laptop=GW)
+#   with 1 warm-up round discarded per run. See Hardware/DAuth/results/dauth_hw_aggregate.json.
 _ENERGY_SUM_J = {
     "Proposed": 0.8580,
-    "DAuth":    0.5319,
+    "DAuth":    0.4559,
     "LAAKA":    1.8069,
     "Zhou":     1.0002,
 }
 _TIME_SUM_S = {
     "Proposed": 0.2258,
-    "DAuth":    0.1400,
+    "DAuth":    0.1200,
     "LAAKA":    0.4755,
     "Zhou":     0.2632,
 }
@@ -98,6 +98,9 @@ def _draw_panel(ax, values, ylabel, title, unit_fmt):
             label=scheme,
             zorder=3,
         )
+        ax.text(i, v + max_v * 0.02, unit_fmt.format(v),
+                ha="center", va="bottom", fontsize=11,
+                color=COLORS[scheme], fontweight="bold")
     ax.set_xticks(X)
     ax.set_xticklabels(SCHEMES, fontsize=15)
     ax.set_ylabel(ylabel, fontsize=17, fontweight="bold", labelpad=10)
@@ -107,14 +110,14 @@ def _draw_panel(ax, values, ylabel, title, unit_fmt):
     ax.tick_params(axis="y", length=0)
     ax.spines["left"].set_color("#cccccc")
     ax.spines["bottom"].set_color("#cccccc")
-    ax.set_ylim(0, max_v * 1.15)
+    ax.set_ylim(0, max_v * 1.25)
 
 
 with plt.rc_context(_STYLE):
     fig, (ax_e, ax_t) = plt.subplots(1, 2, figsize=(11, 5))
 
-    _draw_panel(ax_e, ENERGY_J, "Energy (J)",  "Energy",  "{:.4f} J")
-    _draw_panel(ax_t, TIME_S,   "Time (s)",    "Time",    "{:.4f} s")
+    _draw_panel(ax_e, ENERGY_J, "Energy (J)",  "Energy",  "{:.3f} J")
+    _draw_panel(ax_t, TIME_S,   "Time (s)",    "Time",    "{:.3f} s")
 
     fig.suptitle(
         "Hardware Simulation",

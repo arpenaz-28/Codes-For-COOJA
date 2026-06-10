@@ -20,14 +20,13 @@ os.makedirs(OUT_DIR, exist_ok=True)
 # ── Measured values (RPi 4B, 3800 mW, wall_time × 3.8 W) ──────────────────────
 SCHEMES = ["Proposed", "DAuth", "LAAKA", "Zhou"]
 
-# DAuth enrollment: avg of 2 RPi 4B runs (0.4576 J + 0.3748 J) / 2
-ENROLL_ENERGY_J = {"Proposed": 0.5231, "DAuth": 0.4162, "LAAKA": 0.0398, "Zhou": 0.4693}
-ENROLL_TIME_S   = {"Proposed": 0.1377, "DAuth": 0.1095, "LAAKA": 0.0285, "Zhou": 0.1235}
+# DAuth values: mean of 3 RPi 4B runs, 1 warm-up discarded. See Hardware/DAuth/results/dauth_hw_aggregate.json.
+ENROLL_ENERGY_J = {"Proposed": 0.5231, "DAuth": 0.2549, "LAAKA": 0.0398, "Zhou": 0.4693}
+ENROLL_TIME_S   = {"Proposed": 0.1377, "DAuth": 0.0671, "LAAKA": 0.0285, "Zhou": 0.1235}
 
 # Per-round avg = (3-round sum) / 3, enrollment excluded
-# DAuth auth: avg of 2 RPi 4B runs (0.5211 J + 0.5426 J) / 2 / 3 rounds
-AUTH_ENERGY_J   = {"Proposed": 0.2860, "DAuth": 0.1773, "LAAKA": 0.6023, "Zhou": 0.3334}
-AUTH_TIME_S     = {"Proposed": 0.0753, "DAuth": 0.0467, "LAAKA": 0.1585, "Zhou": 0.0877}
+AUTH_ENERGY_J   = {"Proposed": 0.2860, "DAuth": 0.1520, "LAAKA": 0.6023, "Zhou": 0.3334}
+AUTH_TIME_S     = {"Proposed": 0.0753, "DAuth": 0.0400, "LAAKA": 0.1585, "Zhou": 0.0877}
 
 # ── Style ──────────────────────────────────────────────────────────────────────
 COLORS = {

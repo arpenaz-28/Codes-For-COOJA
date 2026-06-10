@@ -286,3 +286,20 @@ if __name__ == '__main__':
         print(f"\nAvg Auth+KeyEx per round : {avg_ak:.4f} s  {avg_ake:.6f} J")
         print(f"Avg total    per round   : {avg_tot:.4f} s  {avg_tote:.6f} J")
     print("=" * 70)
+
+    # ── Save results to JSON for collection by orchestrator ───────────────────
+    out = {
+        'enrollment': results[0],
+        'rounds':     [r for r in results if r['phase'] != 'Enrollment'],
+        'summary': {
+            'ak_energy_sum_j':   round(sum(r['ak_energy_j']   for r in results if r['phase'] != 'Enrollment'), 6),
+            'ak_time_sum_s':     round(sum(r['ak_s']           for r in results if r['phase'] != 'Enrollment'), 6),
+            'total_energy_sum_j':round(sum(r['total_energy_j'] for r in results if r['phase'] != 'Enrollment'), 6),
+            'total_time_sum_s':  round(sum(r['total_s']        for r in results if r['phase'] != 'Enrollment'), 6),
+            'avg_ak_energy_j':   round(avg_ake, 6),
+            'avg_ak_time_s':     round(avg_ak,  6),
+        } if num_r > 0 else {}
+    }
+    with open('dauth_hw_run.json', 'w') as f:
+        json.dump(out, f, indent=2)
+    print("[DEV] Results saved to dauth_hw_run.json")
