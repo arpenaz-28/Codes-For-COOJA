@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.5.29)  4 JUN 2026 01:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.5.29)  10 JUN 2026 19:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -646,116 +646,133 @@ File: omsptm.fd
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--65
-[]\OT1/ptm/b/it/9 Index Terms\OT1/ptm/b/n/9 ---Lightweight, Au-then-ti-ca-tion, Anonymity,
- []
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 97.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 97.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2]
-<fig_enrollment.jpg, id=206, 530.73282pt x 610.53094pt>
+LaTeX Font Info:    Trying to load font information for U+msa on input line 170.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 170.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [2]
+<fig_enrollment.jpg, id=205, 530.73282pt x 610.53094pt>
 File: fig_enrollment.jpg Graphic file (type jpg)
 <use fig_enrollment.jpg>
-Package pdftex.def Info: fig_enrollment.jpg  used on input line 285.
+Package pdftex.def Info: fig_enrollment.jpg  used on input line 295.
 (pdftex.def)             Requested size: 226.79846pt x 260.9022pt.
 
-Underfull \vbox (badness 2134) has occurred while \output is active []
-
-
-Underfull \hbox (badness 2435) in paragraph at lines 324--343
+Underfull \hbox (badness 2435) in paragraph at lines 334--353
 \OT1/ptm/m/n/10 from all fu-ture open-channel mes-sages. Since $\OML/cmm/m/it/10 ID[]$ \OT1/ptm/m/n/10 is
  []
 
 
-Underfull \hbox (badness 2521) in paragraph at lines 324--343
+Underfull \hbox (badness 2521) in paragraph at lines 334--353
 \OT1/ptm/m/n/10 by its pre-vi-ous pseudonym and re-store syn-chro-ni-sa-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--343
+Underfull \hbox (badness 10000) in paragraph at lines 334--353
 \OT1/ptm/m/n/10 with-out re-quir-ing re-enrolment. $\OML/cmm/m/it/10 AS$ \OT1/ptm/m/n/10 there-fore stores
  []
 
 
-Overfull \hbox (2.83371pt too wide) in paragraph at lines 324--343
+Overfull \hbox (2.83371pt too wide) in paragraph at lines 334--353
 \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 T[];  ID[];  \OT1/cmr/m/n/10 ^^H[]\OML/cmm/m/it/10 ;  c[];  m[];  m[];  [][];  [][]\OMS/cmsy/m/n/10 g$\OT1/ptm/m/n/10 . 
  []
 
-<fig_auth.jpg, id=209, 539.01375pt x 650.43pt>
+[3 <./fig_enrollment.jpg>]
+<fig_auth.jpg, id=220, 539.01375pt x 650.43pt>
 File: fig_auth.jpg Graphic file (type jpg)
 <use fig_auth.jpg>
-Package pdftex.def Info: fig_auth.jpg  used on input line 357.
+Package pdftex.def Info: fig_auth.jpg  used on input line 367.
 (pdftex.def)             Requested size: 226.79846pt x 273.68489pt.
 
-Underfull \hbox (badness 1424) in paragraph at lines 362--378
+Underfull \hbox (badness 1424) in paragraph at lines 372--387
 []\OT1/ptm/m/n/10 The phase is ini-ti-ated by $\OML/cmm/m/it/10 D$\OT1/ptm/m/n/10 . $\OML/cmm/m/it/10 D$ \OT1/ptm/m/n/10 re-gen-er-ates $\OML/cmm/m/it/10 R[] \OT1/cmr/m/n/10 =
  []
 
-[3 <./fig_enrollment.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-<fig_keyex.jpg, id=223, 580.41844pt x 658.71094pt>
+<fig_keyex.jpg, id=225, 580.41844pt x 658.71094pt>
 File: fig_keyex.jpg Graphic file (type jpg)
 <use fig_keyex.jpg>
-Package pdftex.def Info: fig_keyex.jpg  used on input line 415.
+Package pdftex.def Info: fig_keyex.jpg  used on input line 424.
 (pdftex.def)             Requested size: 226.79846pt x 257.38873pt.
- [4 <./fig_auth.jpg> <./fig_keyex.jpg>]
-Underfull \hbox (badness 4967) in paragraph at lines 485--498
+[4 <./fig_auth.jpg> <./fig_keyex.jpg>]
+Underfull \hbox (badness 4967) in paragraph at lines 510--523
 []\OT1/ptm/m/n/10 The pro-posed dual-state mech-a-nism avoids this re-
  []
 
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 500.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 525.
 
-Underfull \hbox (badness 6691) in paragraph at lines 532--535
+Underfull \hbox (badness 6691) in paragraph at lines 558--561
 []$\OML/cmm/m/it/10 m[] \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 m[]$\OT1/ptm/m/n/10 ; $\OML/cmm/m/it/10 m[] \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 m[]$\OT1/ptm/m/n/10 ; $[] \OMS/cmsy/m/n/10  
  []
 
-<fig_proverif.png, id=234, 1926.19624pt x 792.9625pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+<fig_proverif.png, id=243, 1926.19624pt x 792.9625pt>
 File: fig_proverif.png Graphic file (type png)
 <use fig_proverif.png>
-Package pdftex.def Info: fig_proverif.png  used on input line 553.
+Package pdftex.def Info: fig_proverif.png  used on input line 579.
 (pdftex.def)             Requested size: 516.0pt x 212.42088pt.
-[5] [6 <./fig_proverif.png>] [7]
-<fig_sim_total.png, id=301, 984.0765pt x 500.6705pt>
+ [6] [7 <./fig_proverif.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
+<fig_sim_total.png, id=314, 972.8345pt x 478.588pt>
 File: fig_sim_total.png Graphic file (type png)
 <use fig_sim_total.png>
-Package pdftex.def Info: fig_sim_total.png  used on input line 924.
-(pdftex.def)             Requested size: 252.0pt x 128.20787pt.
- [8]
-<fig_sim_as_energy.png, id=314, 643.6045pt x 353.7215pt>
+Package pdftex.def Info: fig_sim_total.png  used on input line 950.
+(pdftex.def)             Requested size: 252.0pt x 123.96986pt.
+<fig_sim_as_energy.png, id=317, 631.961pt x 342.078pt>
 File: fig_sim_as_energy.png Graphic file (type png)
 <use fig_sim_as_energy.png>
-Package pdftex.def Info: fig_sim_as_energy.png  used on input line 949.
-(pdftex.def)             Requested size: 196.5597pt x 108.02792pt.
-<fig_sim_as_cpu.png, id=315, 643.6045pt x 353.7215pt>
+Package pdftex.def Info: fig_sim_as_energy.png  used on input line 975.
+(pdftex.def)             Requested size: 196.5597pt x 106.39801pt.
+<fig_sim_as_cpu.png, id=318, 631.961pt x 342.078pt>
 File: fig_sim_as_cpu.png Graphic file (type png)
 <use fig_sim_as_cpu.png>
-Package pdftex.def Info: fig_sim_as_cpu.png  used on input line 951.
-(pdftex.def)             Requested size: 196.5597pt x 108.02792pt.
-<fig_sim_net_energy.png, id=318, 848.771pt x 451.6875pt>
+Package pdftex.def Info: fig_sim_as_cpu.png  used on input line 977.
+(pdftex.def)             Requested size: 196.5597pt x 106.39801pt.
+
+Underfull \vbox (badness 5302) has occurred while \output is active []
+
+<fig_sim_net_energy.png, id=321, 837.1275pt x 440.4455pt>
 File: fig_sim_net_energy.png Graphic file (type png)
 <use fig_sim_net_energy.png>
-Package pdftex.def Info: fig_sim_net_energy.png  used on input line 978.
-(pdftex.def)             Requested size: 196.5597pt x 104.60272pt.
-<fig_sim_net_cpu.png, id=319, 848.771pt x 451.6875pt>
+Package pdftex.def Info: fig_sim_net_energy.png  used on input line 1004.
+(pdftex.def)             Requested size: 196.5597pt x 103.41733pt.
+<fig_sim_net_cpu.png, id=322, 837.1275pt x 440.4455pt>
 File: fig_sim_net_cpu.png Graphic file (type png)
 <use fig_sim_net_cpu.png>
-Package pdftex.def Info: fig_sim_net_cpu.png  used on input line 980.
-(pdftex.def)             Requested size: 196.5597pt x 104.60272pt.
- [9 <./fig_sim_total.png> <./fig_sim_as_energy.png> <./fig_sim_as_cpu.png> <./fig_sim_net_energy.png> <./fig_sim_net_cpu.png>] (./paper_revised_anonymity.bbl
-Underfull \hbox (badness 1377) in paragraph at lines 69--70
+Package pdftex.def Info: fig_sim_net_cpu.png  used on input line 1006.
+(pdftex.def)             Requested size: 196.5597pt x 103.41733pt.
+
+Underfull \hbox (badness 1590) in paragraph at lines 1017--1026
+ \OT1/ptm/m/it/10 4) Per-for-mance Anal-y-sis for Desyn-chro-ni-sa-tion Re-cov-
+ []
+
+[9 <./fig_sim_total.png> <./fig_sim_as_energy.png> <./fig_sim_as_cpu.png>]
+<fig_desync_bar.png, id=340, 984.0765pt x 500.6705pt>
+File: fig_desync_bar.png Graphic file (type png)
+<use fig_desync_bar.png>
+Package pdftex.def Info: fig_desync_bar.png  used on input line 1065.
+(pdftex.def)             Requested size: 252.0pt x 128.20787pt.
+
+Underfull \vbox (badness 3792) has occurred while \output is active []
+
+ [10 <./fig_sim_net_energy.png> <./fig_sim_net_cpu.png> <./fig_desync_bar.png>]
+<fig_hw_comparison.png, id=355, 776.0995pt x 374.5995pt>
+File: fig_hw_comparison.png Graphic file (type png)
+<use fig_hw_comparison.png>
+Package pdftex.def Info: fig_hw_comparison.png  used on input line 1113.
+(pdftex.def)             Requested size: 252.0pt x 121.62907pt.
+ (./paper_revised_anonymity.bbl
+Underfull \hbox (badness 1377) in paragraph at lines 63--64
 []\OT1/ptm/m/n/8 M. T. Al Ahmed, F. Hashim, S. J. Hashim, and A. Ab-dul-lah,
  []
 
@@ -771,27 +788,27 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[10] (./paper_revised_anonymity.aux)
+[11 <./fig_hw_comparison.png>] (./paper_revised_anonymity.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `paper_revised_anonymity.out' has not changed.
-(rerunfilecheck)             Checksum: 40DC21844D3560DEF8EA14805759B08E;5649.
+(rerunfilecheck)             Checksum: D3F97209D33CAAB847515D9A0C9A3791;6223.
  ) 
 Here is how much of TeX's memory you used:
- 22535 strings out of 474222
- 418648 string characters out of 5748733
+ 22567 strings out of 474222
+ 419350 string characters out of 5748733
  1953975 words of memory out of 5000000
- 44316 multiletter control sequences out of 15000+600000
+ 44343 multiletter control sequences out of 15000+600000
  604929 words of font info for 123 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,87p,487b,446s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,87p,487b,542s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper_revised_anonymity.pdf (10 pages, 1158332 bytes).
+Output written on paper_revised_anonymity.pdf (11 pages, 1293196 bytes).
 PDF statistics:
- 445 PDF objects out of 1000 (max. 8388607)
- 372 compressed objects within 4 object streams
- 78 named destinations out of 1000 (max. 500000)
- 298 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 472 PDF objects out of 1000 (max. 8388607)
+ 394 compressed objects within 4 object streams
+ 83 named destinations out of 1000 (max. 500000)
+ 324 words of extra memory for PDF output out of 10000 (max. 10000000)
 

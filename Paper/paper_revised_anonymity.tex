@@ -37,31 +37,29 @@
 \begin{abstract}
 The Internet of Things (IoT) demands lightweight and secure authentication
 for resource constrained multihop networks, while also protecting the
-privacy of individual devices.  Based on our analysis of the lightweight decoupled distributed
-authentication scheme of Das~\cite{das2026comsnets}, we identify
-two critical gaps. First, the real device identity is exposed on the open
+privacy of individual devices.  Many distributed authentication schemes have
+been proposed in the past for IoT networks. Among those schemes, the decoupled
+distributed authentication scheme (DAuth) has been
+proposed recently for multihop IoT networks. However, we have identified
+two critical gaps in that scheme. First, the real device identity is exposed on the open
 channel in every authentication session, enabling adversarial cross-session
 tracking. Second, packet loss in the session key establishment phase desynchronises
-the device and server states, forcing full re-enrolment.  We propose a security improved and anonymity preserving enhanced version of Das~\cite{das2026comsnets},
-addressing both identified gaps while preserving the core features of the
-original scheme, including PUF-based secret derivation, hash-based accumulator
-authentication, decoupled authentication server selection, and the
-lightweight hash-XOR computational structure.  Device anonymity is preserved through per-session
+the device and server states, forcing full re-enrolment. Therefore, this paper proposes a security improved and anonymity preserving decoupled distributed authentication scheme,
+addressing both the identified gaps. Device anonymity is preserved through per-session
 pseudonym rotation, where a rotating pseudonym replaces the real device identity
 in all open-channel communications, preventing long-term tracking.  A
 dual-state synchronisation mechanism maintained at both the authentication
-server and the gateway enables seamless recovery from single packet-loss
-events without re-enrolment.  Security is validated formally (ProVerif) and informally.
-COOJA/Contiki-NG simulations confirm that the proposed scheme achieves a
-per-device energy of 52.21\,mJ and a communication cost of 1376\,bits,
-reducing total energy by 42.8\,\% over LAAKA~\cite{ali2024laaka} and 34.6\,\% over Zhou~\cite{zhou2024auth}, while
-maintaining the lowest overhead among all compared schemes.
+server and the gateway/root enables seamless recovery from single packet-loss
+events without re-enrolment.  The proposed scheme is evaluated via ProVerif-based
+formal security analysis, and theoretical and simulation-based performance analysis confirm that the proposed scheme reduces energy by
+42.8\,\% and 34.6\,\%, and CPU time by 42.7\,\% and 35.3\,\%, over the state-of-the-art
+LAAKA and Zhou schemes, respectively, while maintaining the lowest overhead among all
+compared schemes.
 \end{abstract}
 
 
 \begin{IEEEkeywords}
-Lightweight, Authentication, Anonymity, Pseudonym, Physically
-Unclonable Function (PUF), Dual-State Storage, Proverif, COOJA.
+IoT Authentication, Distributed Authentication, Anonymity, Desynchronization in Authentication, Dual-State Storage.
 \end{IEEEkeywords}
 
 % -------------------------------------------------------
@@ -73,49 +71,58 @@ such as gateways, often through multihop paths~\cite{lajnef2022wsn}.
 Industrial and outdoor deployments expose devices to a range of adversarial
 threats, making authentication a prerequisite for any communication session.
 Because IoT nodes are battery-powered and resource-constrained,
-authentication schemes must be \emph{lightweight} as well as
+authentication schemes must be lightweight as well as
 secure~\cite{khatua2024puf}.
 
 Centralized schemes route all authentication traffic through a gateway,
 imposing excessive relay load on intermediate nodes in a multihop
 topology~\cite{sheik2023auth}\cite{he2023lightweight}\cite{roy2025design}.  Distributed
-schemes distribute this responsibility. However, a plain parent-node scheme
-overloads whichever node a set of new devices happened to join under, while
+schemes distribute this responsibility~\cite{rosa2023lightsae}. However, a plain parent centric distributed authentication schemes
+overload whichever node a set of new devices happened to join under, while
 all other capable nodes remain idle~\cite{rosa2023lightsae}.
 
-Das~\cite{das2026comsnets} addressed this skewed-load problem by proposing a
-lightweight decoupled distributed authentication scheme in which the gateway
+DAuth~\cite{das2026comsnets} addressed this skewed-load problem by proposing a
+lightweight decoupled distributed authentication scheme in which the gateway or root node
 pre-assigns any capable IoT node (parent or non-parent) as the
 authentication server for newly joined devices.  By decoupling authentication
-from network topology, the scheme distributes the authentication load evenly
-across the network.  Authentication relies on PUF-based secret derivation, a
-hash-based one-way accumulator for authentication, and
-XOR-masked message exchanges, resulting in an efficient and lightweight
+from network joining process, the scheme distributes the authentication load evenly
+across the network.  Authentication process relies on Physically Unclonable Function (PUF)-based secret derivation, a
+hash-based one-way accumulator and
+XOR-masked message exchanges, resulting in an efficient and lightweight authentication
 protocol.
 
-Despite its efficiency, Das~\cite{das2026comsnets} leaves two security gaps
-unaddressed.  First, the real device identity $ID_D$ is transmitted in
-plaintext on the open channel in every authentication session, enabling an
-adversary with radio access to track a device across sessions — a direct
+Despite its efficiency, DAuth~\cite{das2026comsnets} leaves two security gaps
+unaddressed.  First, the real device identity is transmitted in
+plaintext over the open channel in every authentication session, enabling an
+adversary with radio access to track a device across sessions, a direct
 violation of modern privacy requirements.  Second, both the authentication
-server and the device maintain only a single session state; a packet loss
+server and the device maintain only a single session state and so a packet loss
 during session key delivery desynchronises their states, causing all
 subsequent authentication attempts to fail until the device undergoes full
 re-enrolment, which is an energy-costly operation for battery-powered
 constrained nodes.
 
+This paper addresses both gaps with two lightweight extensions to DAuth.  To close the anonymity gap, the
+real identity is never placed on the open channel after enrolment, it is
+replaced by a rotating pseudonym
+that is refreshed after every key exchange, so successive sessions become
+unlinkable to an observer.  To eliminate the re-enrolment penalty caused by
+desynchronisation, both the authentication server and the gateway maintain a
+dual state, if the session-key update is lost in transit, the
+device still arrives under its previous pseudonym, which the server recognises
+and uses to re-synchronise without repeating enrolment.
+
 This paper makes the following key contributions.
 \begin{enumerate}
-  \item An improved scheme over Das~\cite{das2026comsnets} is proposed,
-    adding per-session pseudonym rotation for device anonymity and a
-    dual-state desynchronisation recovery mechanism.
+  \item A anonymity preserving scheme is proposed that
+    introduces per-session pseudonym rotation to preserve device anonymity and
+    a dual-state mechanism to recover from desynchronisation without
+    re-enrolment.
   \item The security of the proposed scheme is validated through both
     informal analysis and formal verification using
     ProVerif.
   \item The efficiency of the proposed scheme is evaluated using both
-    theoretical and simulation-based (COOJA/Contiki-NG) frameworks,
-    emphasizing communication overhead, energy consumption, and CPU
-    utilization in a multihop constrained setting.
+    theoretical and simulation-based (COOJA/Contiki-NG) frameworks.
 \end{enumerate}
 
 Section~II elaborates on related literature.  Section~III presents the
@@ -135,13 +142,16 @@ authorise parent nodes as authentication servers, yet a popular parent is
 overwhelmed by simultaneous join requests from many children.
 Zheng~et~al.~\cite{zheng2022puf} designed a peer-to-peer PUF-based scheme
 that lacks a multihop decoupled design. RAAF-MEC~\cite{alruwaili2025raaf}
-deploy multiple PUF-equipped edge servers, but the absence of a genuine
+deploy multiple PUF-equipped edge servers, but the absence of a 
 multihop topology means certain servers still receive disproportionate load.
 PUF-based schemes avoid long-term secret storage but trade in overhead.
 Li~et~al.~\cite{li2020puf} and SAKMS~\cite{yang2024sakms} combine PUF
 with session key exchange at the cost of ECC operations, while
 He~et~al.~\cite{he2023lightweight} achieve lightweight anonymous authentication
 using hash-and-XOR primitives for CoAP/OSCORE but rely on a centralized server.
+DAuth~\cite{das2026comsnets} removes this topology coupling by letting the
+gateway or root node assign any capable node, parent or not, as the authentication server,
+distributing the authentication load evenly across a genuine multihop network.
 
 Identity-hiding approaches introduce anonymity at prohibitive cost.
 Al-Riyami and Paterson~\cite{alriyami2003cert} propose ECC-based certificateless
@@ -180,7 +190,7 @@ the first to satisfy all six simultaneously with low computational and communica
     SAKMS~\cite{yang2024sakms}     & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & H & L \\
     Li et al.~\cite{li2020puf}         & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & H & L \\
     Zheng et al.~\cite{zheng2022puf}      & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & M & L \\
-    Das et al.~\cite{das2026comsnets}  & \checkmark & \checkmark & \checkmark & \checkmark & $\times$ & $\times$ & L & L \\
+    DAuth~\cite{das2026comsnets}  & \checkmark & \checkmark & \checkmark & \checkmark & $\times$ & $\times$ & L & L \\
     Proposed                 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & L & L \\
     \bottomrule
   \end{tabular}\\[4pt]
@@ -301,7 +311,7 @@ critically depends on maintaining the confidentiality of $y_D$.  $D$ also picks
 a reverse challenge $c_{AS\text{-}D}$ from the predefined challenge set
 $\mathbb{C}_{AS\text{-}D}$ and sends $(y_D,\, R_D,\, c_{AS\text{-}D})$ back to
 $AS$ through the secure channel, maintaining the confidentiality of $y_D$.
-$D$ then stores $\{y_D,\, c_D,\, m_D\}$.  Unlike Das~\cite{das2026comsnets},
+$D$ then stores $\{y_D,\, c_D,\, m_D\}$.  Unlike DAuth~\cite{das2026comsnets},
 which stores $m_D$ as a plain session random, the proposed scheme retains it as
 the initial \emph{current} session random $m_{\mathrm{curr}}$, seeding the
 pseudonym mechanism described below.
@@ -362,8 +372,7 @@ only to $D$ and $AS$.  Figure~\ref{fig:auth} illustrates the phase.
 The phase is initiated by $D$.  $D$ regenerates $R_D = \mathsf{PUF}_D(c_D)$
 from the stored challenge $c_D$ obtained during enrolment.  $D$ then computes
 its current pseudonym $\mathit{PID} = H(ID_D \| m_{\mathrm{curr}})$, which is
-used in place of the real identity $ID_D$ in the outgoing message, unlike the
-Das~\cite{das2026comsnets}, which sends $ID_D$ directly, enabling
+used in place of the real identity $ID_D$ in the outgoing message, unlike DAuth~\cite{das2026comsnets}, which sends $ID_D$ directly, enabling
 cross-session tracking.  $D$ produces the hashed secret $Y_D^H = H(y_D)$ in
 XORed form as
 $Y_{AS\text{-}D}^H = H(y_D) \oplus H(R_D \| m_{\mathrm{curr}} \| \mathit{PID} \| ts_1)$.
@@ -377,7 +386,7 @@ knowing $R_D$ (which can only be generated by $D$'s PUF) and $m_{\mathrm{curr}}$
 (known only to $D$ and $AS$ through enrolment).
 
 After receiving the message, $AS$ checks for the existence of an entry matching
-the received $\mathit{PID}$.  In a departure from Das~\cite{das2026comsnets}, $AS$ performs
+the received $\mathit{PID}$.  In a departure from DAuth~\cite{das2026comsnets}, $AS$ performs
 a dual-state lookup: it checks whether the received $\mathit{PID}$ matches
 $\mathit{PID}_{\mathrm{curr}}$ or $\mathit{PID}_{\mathrm{old}}$ in its records.
 A match on $\mathit{PID}_{\mathrm{old}}$ indicates that $D$ missed the Key
@@ -404,7 +413,7 @@ This phase is executed by $AS$ to inform $GW$ about the authentication of the
 newly joined node $D$ at the end of the node authentication phase.  $AS$ uses
 an $\mathsf{auth\_token}_D$ to deliver the session key $K_{GW\text{-}D}$ to
 $GW$, facilitating session key generation between $GW$ and $D$.  The proposed
-scheme extends Das~\cite{das2026comsnets} by additionally deriving
+scheme extends DAuth~\cite{das2026comsnets} by additionally deriving
 a fresh pseudonym $\mathit{PID}_{\mathrm{new}} = H(ID_D \| m_{\mathrm{new}})$
 at the end of each session and carrying it within $\mathsf{auth\_token}_D$, so
 that $GW$ can update its pseudonym mapping for $D$ and successive sessions
@@ -876,7 +885,7 @@ He~et~al.~\cite{he2023lightweight} achieves a lower figure (1120\,bits) for a si
 two-party IoT-to-server protocol, whereas the proposed scheme supports multihop mesh
 networks with a decoupled distributed AS, desynchronisation recovery, and PUF-based
 authentication — features that account for the additional overhead.
-Das~\cite{das2026comsnets} requires 928\,bits, with the 448-bit increase in the proposed
+DAuth~\cite{das2026comsnets} requires 928\,bits, with the 448-bit increase in the proposed
 scheme directly reflecting the widening of the device identifier from a 32-bit $ID_D$ to
 a 256-bit pseudonym $\mathit{PID}$, the direct cost of adding device anonymity to all
 open-channel communications.
@@ -1015,7 +1024,7 @@ After such a loss, the device retains its old state $m_{\mathrm{curr}}$
 while the AS has already rotated to a new state, causing subsequent
 authentication attempts to fail.
 
-Das~\cite{das2026comsnets} stores only a single nonce state at the AS.
+DAuth~\cite{das2026comsnets} stores only a single nonce state at the AS.
 When the device re-authenticates using the old $m_{\mathrm{curr}}$,
 the AS has no means to recognise it and rejects the request outright.
 The device must therefore undergo a full re-enrolment
@@ -1036,7 +1045,7 @@ comparison of a single authentication round under two conditions:
 normal operation (before any packet loss) and recovery (the round
 immediately following a desynchronisation event), evaluated over a
 100-node multi-hop RPL network, 20 devices, and 5 independent seeds.
-As shown in Figure~\ref{fig:desync_bar}(a), Das~\cite{das2026comsnets}
+As shown in Figure~\ref{fig:desync_bar}(a), DAuth~\cite{das2026comsnets}
 incurs 134.8\,mJ per recovery round, a 118.3\,\% increase over its
 normal round cost of 61.8\,mJ, reflecting the overhead of a failed
 authentication attempt followed by full re-enrolment.
@@ -1045,9 +1054,9 @@ indistinguishable from its normal round (98.6\,mJ), confirming that
 the dual-state mechanism incurs zero additional overhead during
 recovery.
 Compared directly, the proposed scheme reduces per-device recovery
-energy by \textbf{47.6\,mJ (35.3\,\%)} over Das~\cite{das2026comsnets}.
+energy by \textbf{47.6\,mJ (35.3\,\%)} over DAuth~\cite{das2026comsnets}.
 The CPU time results in Figure~\ref{fig:desync_bar}(b) exhibit the
-same pattern: Das~\cite{das2026comsnets} incurs 2.185\,s per recovery
+same pattern: DAuth~\cite{das2026comsnets} incurs 2.185\,s per recovery
 round against 1.413\,s for the proposed scheme, yielding a
 \textbf{35.3\,\% reduction} in execution time.
 

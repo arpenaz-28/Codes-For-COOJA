@@ -37,9 +37,11 @@
 \begin{abstract}
 The Internet of Things (IoT) demands lightweight and secure authentication
 for resource constrained multihop networks, while also protecting the
-privacy of individual devices.  Based on our analysis of the lightweight decoupled distributed
-authentication scheme of Das~\cite{das2026comsnets}, we identify
-two critical gaps. First, the real device identity is exposed on the open
+privacy of individual devices.  Many distributed authentication schemes have
+been proposed in the past for IoT networks. Among those schemes, the decoupled
+distributed authentication scheme (DAuth)~\cite{das2026comsnets} has been
+proposed recently for multihop IoT networks. However, we have identified
+two critical gaps in that scheme. First, the real device identity is exposed on the open
 channel in every authentication session, enabling adversarial cross-session
 tracking. Second, packet loss in the session key establishment phase desynchronises
 the device and server states, forcing full re-enrolment.  We propose a security improved and anonymity preserving enhanced version of Das~\cite{das2026comsnets},

@@ -29,8 +29,8 @@ SCHEMES = {
     "Base": {
         "summary": os.path.join(REPO, "Base-Scheme",
                                 "Simulation-Results", "Desync", "csv", "summary.csv"),
-        "label":  "Base Scheme",
-        "color":  "#d62728",   # red
+        "label":  "DAuth",
+        "color":  "#7E5BA6",   # muted purple (consistent with other DAuth charts)
         "hatch":  "",
     },
     "Proposed": {
@@ -154,11 +154,7 @@ def main():
 
     ax.set_xlabel("Protocol Round", fontsize=11)
     ax.set_ylabel("Per-Device Energy (mJ)", fontsize=11)
-    ax.set_title(
-        "Desync Recovery Energy Overhead: Base Scheme vs Proposed\n"
-        "(3 devices × 5 seeds, COOJA/UDGM, Contiki-NG)",
-        fontsize=10,
-    )
+    # chart title removed (figure caption describes it)
     ax.set_xticks(x)
     ax.set_xticklabels(ROUND_XLABELS, fontsize=9)
     ax.legend(fontsize=10, loc="upper right")
@@ -168,7 +164,7 @@ def main():
     plt.tight_layout()
 
     out_path = os.path.join(OUT_DIR, "desync_comparison.png")
-    plt.savefig(out_path, dpi=150, bbox_inches="tight")
+    plt.savefig(out_path, dpi=150, bbox_inches="tight", pad_inches=0.02)
     print(f"  Saved: {out_path}")
 
     paper_path = os.path.join(PAPER_DIR, "fig_sim_desync.png")

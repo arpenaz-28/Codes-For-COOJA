@@ -57,7 +57,7 @@ static const uint8_t K_GW_RT[16] = {
 /* --------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-#define MAX_CLIENTS      110
+#define MAX_CLIENTS      130
 #define MAX_SENSORS      30
 #define GW_TOKEN_LEN     81    /* PID(32) + id_gw(1) + enc(48) */
 

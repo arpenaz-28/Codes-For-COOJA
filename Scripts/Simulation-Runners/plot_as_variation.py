@@ -30,6 +30,7 @@ REPO = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 
 SCHEMES = {
     "Proposed": os.path.join(REPO, "Revised-Anonymity", "Simulation results", "as-variation"),
+    "DAuth":    os.path.join(REPO, "Results", "COOJA-Simulation", "DAuth-Sweep", "as-variation"),
     "LAAKA":    os.path.join(REPO, "LAAKA",             "Simulation results", "as-variation"),
     "Zhou":     os.path.join(REPO, "Zhou-Scheme",        "Simulation results", "as-variation"),
 }
@@ -41,11 +42,13 @@ PHASES     = ["Enrollment", "Authentication", "Key Exchange"]
 # Colour palette consistent with compare_revised_laaka_zhou.py / plot_network_variation.py
 COLORS = {
     "Proposed": "#2C6FAC",   # deep steel blue
+    "DAuth":    "#7E5BA6",   # muted purple
     "LAAKA":    "#B85C2C",   # muted terracotta
     "Zhou":     "#3A7D44",   # muted forest green
 }
 HATCH = {
     "Proposed": "///",
+    "DAuth":    "...",
     "LAAKA":    "\\\\",
     "Zhou":     "xxx",
 }
@@ -141,7 +144,7 @@ def collect_data():
 # Chart helpers
 # ─────────────────────────────────────────────────────────────────────────────
 def save_fig(fig, path):
-    fig.savefig(path, dpi=180, bbox_inches="tight")
+    fig.savefig(path, dpi=180, bbox_inches="tight", pad_inches=0.02)
     plt.close(fig)
     print(f"  Saved → {path}")
 
@@ -152,8 +155,8 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
     schemes     = [s for s in SCHEMES if any(n in data[s] for n in AS_COUNTS)]
     n_schemes   = len(schemes)
     n_groups    = len(AS_COUNTS)
-    bar_width   = 0.28
-    group_gap   = 0.12
+    bar_width   = 0.20                       # narrower bars → visible gaps
+    group_gap   = 0.35
     total_width = n_schemes * bar_width + group_gap
 
     x = np.arange(n_groups) * total_width
@@ -188,7 +191,7 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
     ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=16)
     ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="bold")
     ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
-    ax.set_title(title, fontsize=18, fontweight="bold", pad=10)
+    # chart title removed (figure caption describes it)
     ax.yaxis.grid(True, linestyle="--", alpha=0.45, zorder=0)
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
@@ -200,7 +203,7 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
     handles, labels = ax.get_legend_handles_labels()
     fig.legend(handles, labels,
                loc="lower center", bbox_to_anchor=(0.5, 0.01),
-               ncol=3, fontsize=15, framealpha=0.9,
+               ncol=4, fontsize=15, framealpha=0.9,
                edgecolor="#dddddd", handlelength=2.0, handleheight=1.4)
     fig.tight_layout(rect=[0, 0.10, 1, 1])
     save_fig(fig, out_path)
@@ -219,6 +222,7 @@ def stacked_bar_chart(data, metric_key_prefix, ci_key_prefix, ylabel, title, out
     }
     phase_hatch = {
         "Proposed": {"Enrollment": "",    "Authentication": "",   "Key Exchange": ""},
+        "DAuth":    {"Enrollment": "...", "Authentication": "...","Key Exchange": "..."},
         "LAAKA":    {"Enrollment": "///", "Authentication": "///","Key Exchange": "///"},
         "Zhou":     {"Enrollment": "xxx", "Authentication": "xxx","Key Exchange": "xxx"},
     }
@@ -267,7 +271,7 @@ def stacked_bar_chart(data, metric_key_prefix, ci_key_prefix, ylabel, title, out
     ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=16)
     ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="bold")
     ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
-    ax.set_title(title, fontsize=18, fontweight="bold", pad=10)
+    # chart title removed (figure caption describes it)
     ax.yaxis.grid(True, linestyle="--", alpha=0.45, zorder=0)
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
@@ -405,8 +409,7 @@ def _plot_per_device_line(data, out_dir):
         ax.spines[["top", "right"]].set_visible(False)
         ax.legend(fontsize=14)
 
-    axes[0].set_title("Per-Device Energy vs. Active AS Count", fontsize=18, fontweight="bold")
-    axes[1].set_title("Per-Device CPU Time vs. Active AS Count", fontsize=18, fontweight="bold")
+    # subplot titles removed (figure caption describes them)
     fig.tight_layout()
     save_fig(fig, os.path.join(out_dir, "05_as_variation_per_device_line.png"))
 

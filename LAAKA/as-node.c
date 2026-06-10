@@ -42,7 +42,7 @@
 #define AUTH_REP_LEN  82
 #define ACK_MSG_LEN   40
 #define DATA_MSG_LEN  36
-#define MAX_DEVICES   110
+#define MAX_DEVICES   130
 
 /* --------------------------------------------------------------------------
  * Key for secure channel with RA

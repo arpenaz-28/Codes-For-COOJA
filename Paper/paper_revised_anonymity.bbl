@@ -20,15 +20,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{das2026comsnets}
-S.~Das and M.~Khatua, ``Lightweight and decoupled distributed authentication for multihop {IoT} networks,'' in \emph{Proc.\ IEEE COMSNETS}, 2026.
-
-\bibitem{ali2024laaka}
-H.~Ali and I.~Ahmed, ``{LAAKA}: A lightweight anonymous authentication and key agreement scheme for {IoT}-fog environment,'' \emph{Computers \& Security}, vol. 140, p. 103770, 2024.
-
-\bibitem{zhou2024auth}
-X.~Zhou, S.~Wang, K.~Wen, B.~Hu, X.~Tan, and Q.~Xie, ``Security-enhanced lightweight and anonymity-preserving user authentication scheme for {IoT}-based healthcare,'' \emph{IEEE Internet of Things Journal}, vol.~11, no.~6, pp. 9718--9731, 2024.
-
 \bibitem{zhou2021iot}
 I.~Zhou, I.~Makhdoom, N.~Shariati, M.~A. Raza, R.~Keshavarz, J.~Lipman, M.~Abolhasan, and A.~Jamalipour, ``Internet of things 2.0: Concepts, applications, and future directions,'' \emph{IEEE Access}, vol.~9, pp. 70\,961--71\,012, 2021.
 
@@ -49,6 +40,9 @@ S.~Roy, M.~H. Mahalat, and B.~Sen, ``Design and implementation of cost-effective
 
 \bibitem{rosa2023lightsae}
 P.~Rosa, A.~Souto, and J.~Cec{\'i}lio, ``Light-{SAE}: A lightweight authentication protocol for large-scale {IoT} environments made with constrained devices,'' \emph{IEEE Trans.\ Network and Service Management}, vol.~20, no.~3, pp. 2428--2441, 2023.
+
+\bibitem{das2026comsnets}
+S.~Das and M.~Khatua, ``Lightweight and decoupled distributed authentication for multihop {IoT} networks,'' in \emph{Proc.\ IEEE COMSNETS}, 2026.
 
 \bibitem{zheng2022puf}
 Y.~Zheng, W.~Liu, C.~Gu, and C.-H. Chang, ``{PUF}-based mutual authentication and key exchange protocol for peer-to-peer {IoT} applications,'' \emph{IEEE Trans.\ Dependable and Secure Computing}, vol.~20, no.~4, pp. 3299--3316, 2022.
@@ -76,5 +70,11 @@ B.~Blanchet, B.~Smyth, V.~Cheval, and M.~Sylvestre, ``{ProVerif} 2.00: Automatic
 
 \bibitem{dolev1983security}
 D.~Dolev and A.~Yao, ``On the security of public key protocols,'' \emph{IEEE Trans.\ Information Theory}, vol.~29, no.~2, pp. 198--208, 1983.
+
+\bibitem{zhou2024auth}
+X.~Zhou, S.~Wang, K.~Wen, B.~Hu, X.~Tan, and Q.~Xie, ``Security-enhanced lightweight and anonymity-preserving user authentication scheme for {IoT}-based healthcare,'' \emph{IEEE Internet of Things Journal}, vol.~11, no.~6, pp. 9718--9731, 2024.
+
+\bibitem{ali2024laaka}
+H.~Ali and I.~Ahmed, ``{LAAKA}: A lightweight anonymous authentication and key agreement scheme for {IoT}-fog environment,'' \emph{Computers \& Security}, vol. 140, p. 103770, 2024.
 
 \end{thebibliography}

@@ -52,7 +52,7 @@ static const uint8_t K_GW_AS[16] = {
 /* --------------------------------------------------------------------------
  * Session table (indexed by slot, looked up by PID)
  * -------------------------------------------------------------------------- */
-#define MAX_SESSIONS  110
+#define MAX_SESSIONS  130
 
 typedef struct {
     uint8_t  PID[32];      /* pseudonym — external lookup key             */

@@ -1,0 +1,359 @@
+Random seed: 112345
+46000 8 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+46000 8 [INFO: Main      ] - Routing: RPL Lite
+46000 8 [INFO: Main      ] - Net: sicslowpan
+46000 8 [INFO: Main      ] - MAC: CSMA
+46000 8 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+46000 8 [INFO: Main      ] - 802.15.4 Default channel: 26
+46000 8 [INFO: Main      ] Node ID: 8
+46000 8 [INFO: Main      ] Link-layer address: 0008.0008.0008.0008
+46000 8 [INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
+46000 8 AS 8 (DAuth Base ﾀﾔ Two-Round): Started.
+94000 3 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+94000 3 [INFO: Main      ] - Routing: RPL Lite
+94000 3 [INFO: Main      ] - Net: sicslowpan
+94000 3 [INFO: Main      ] - MAC: CSMA
+94000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+94000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+94000 3 [INFO: Main      ] Node ID: 3
+94000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+94000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+94000 3 AS 3 (DAuth Base ﾀﾔ Two-Round): Started.
+107000 9 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+107000 9 [INFO: Main      ] - Routing: RPL Lite
+107000 9 [INFO: Main      ] - Net: sicslowpan
+107000 9 [INFO: Main      ] - MAC: CSMA
+107000 9 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+107000 9 [INFO: Main      ] - 802.15.4 Default channel: 26
+107000 9 [INFO: Main      ] Node ID: 9
+107000 9 [INFO: Main      ] Link-layer address: 0009.0009.0009.0009
+107000 9 [INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
+107000 9 AS 9 (DAuth Base ﾀﾔ Two-Round): Started.
+123000 28 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+123000 28 [INFO: Main      ] - Routing: RPL Lite
+123000 28 [INFO: Main      ] - Net: sicslowpan
+123000 28 [INFO: Main      ] - MAC: CSMA
+123000 28 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+123000 28 [INFO: Main      ] - 802.15.4 Default channel: 26
+123000 28 [INFO: Main      ] Node ID: 28
+123000 28 [INFO: Main      ] Link-layer address: 001c.001c.001c.001c
+123000 28 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21c:1c:1c:1c
+149000 10 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+149000 10 [INFO: Main      ] - Routing: RPL Lite
+149000 10 [INFO: Main      ] - Net: sicslowpan
+149000 10 [INFO: Main      ] - MAC: CSMA
+149000 10 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+149000 10 [INFO: Main      ] - 802.15.4 Default channel: 26
+149000 10 [INFO: Main      ] Node ID: 10
+149000 10 [INFO: Main      ] Link-layer address: 000a.000a.000a.000a
+149000 10 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
+149000 10 AS 10 (DAuth Base ﾀﾔ Two-Round): Started.
+163000 18 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+163000 18 [INFO: Main      ] - Routing: RPL Lite
+163000 18 [INFO: Main      ] - Net: sicslowpan
+163000 18 [INFO: Main      ] - MAC: CSMA
+163000 18 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+163000 18 [INFO: Main      ] - 802.15.4 Default channel: 26
+163000 18 [INFO: Main      ] Node ID: 18
+163000 18 [INFO: Main      ] Link-layer address: 0012.0012.0012.0012
+163000 18 [INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
+163000 18 AS 18 (DAuth Base ﾀﾔ Two-Round): Started.
+223000 1 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+223000 1 [INFO: Main      ] - Routing: RPL Lite
+223000 1 [INFO: Main      ] - Net: sicslowpan
+223000 1 [INFO: Main      ] - MAC: CSMA
+223000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+223000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+223000 1 [INFO: Main      ] Node ID: 1
+223000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+223000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+223000 1 GW 1: Started (RPL root + CoAP server).
+328000 7 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+328000 7 [INFO: Main      ] - Routing: RPL Lite
+328000 7 [INFO: Main      ] - Net: sicslowpan
+328000 7 [INFO: Main      ] - MAC: CSMA
+328000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+328000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
+328000 7 [INFO: Main      ] Node ID: 7
+328000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+328000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+328000 7 AS 7 (DAuth Base ﾀﾔ Two-Round): Started.
+338000 11 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+338000 11 [INFO: Main      ] - Routing: RPL Lite
+338000 11 [INFO: Main      ] - Net: sicslowpan
+338000 11 [INFO: Main      ] - MAC: CSMA
+338000 11 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+338000 11 [INFO: Main      ] - 802.15.4 Default channel: 26
+338000 11 [INFO: Main      ] Node ID: 11
+338000 11 [INFO: Main      ] Link-layer address: 000b.000b.000b.000b
+338000 11 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20b:b:b:b
+338000 11 AS 11 (DAuth Base ﾀﾔ Two-Round): Started.
+357000 6 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+357000 6 [INFO: Main      ] - Routing: RPL Lite
+357000 6 [INFO: Main      ] - Net: sicslowpan
+357000 6 [INFO: Main      ] - MAC: CSMA
+357000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+357000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
+357000 6 [INFO: Main      ] Node ID: 6
+357000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+357000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+357000 6 AS 6 (DAuth Base ﾀﾔ Two-Round): Started.
+368000 26 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+368000 26 [INFO: Main      ] - Routing: RPL Lite
+368000 26 [INFO: Main      ] - Net: sicslowpan
+368000 26 [INFO: Main      ] - MAC: CSMA
+368000 26 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+368000 26 [INFO: Main      ] - 802.15.4 Default channel: 26
+368000 26 [INFO: Main      ] Node ID: 26
+368000 26 [INFO: Main      ] Link-layer address: 001a.001a.001a.001a
+368000 26 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21a:1a:1a:1a
+368000 26 AS 26 (DAuth Base ﾀﾔ Two-Round): Started.
+420000 25 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+420000 25 [INFO: Main      ] - Routing: RPL Lite
+420000 25 [INFO: Main      ] - Net: sicslowpan
+420000 25 [INFO: Main      ] - MAC: CSMA
+420000 25 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+420000 25 [INFO: Main      ] - 802.15.4 Default channel: 26
+420000 25 [INFO: Main      ] Node ID: 25
+420000 25 [INFO: Main      ] Link-layer address: 0019.0019.0019.0019
+420000 25 [INFO: Main      ] Tentative link-local IPv6 address: fe80::219:19:19:19
+420000 25 AS 25 (DAuth Base ﾀﾔ Two-Round): Started.
+476000 30 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+476000 30 [INFO: Main      ] - Routing: RPL Lite
+476000 30 [INFO: Main      ] - Net: sicslowpan
+476000 30 [INFO: Main      ] - MAC: CSMA
+476000 30 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+476000 30 [INFO: Main      ] - 802.15.4 Default channel: 26
+476000 30 [INFO: Main      ] Node ID: 30
+476000 30 [INFO: Main      ] Link-layer address: 001e.001e.001e.001e
+476000 30 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21e:1e:1e:1e
+487000 4 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+487000 4 [INFO: Main      ] - Routing: RPL Lite
+487000 4 [INFO: Main      ] - Net: sicslowpan
+487000 4 [INFO: Main      ] - MAC: CSMA
+487000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+487000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+487000 4 [INFO: Main      ] Node ID: 4
+487000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+487000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+487000 4 AS 4 (DAuth Base ﾀﾔ Two-Round): Started.
+543000 12 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+543000 12 [INFO: Main      ] - Routing: RPL Lite
+543000 12 [INFO: Main      ] - Net: sicslowpan
+543000 12 [INFO: Main      ] - MAC: CSMA
+543000 12 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+543000 12 [INFO: Main      ] - 802.15.4 Default channel: 26
+543000 12 [INFO: Main      ] Node ID: 12
+543000 12 [INFO: Main      ] Link-layer address: 000c.000c.000c.000c
+543000 12 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
+543000 12 AS 12 (DAuth Base ﾀﾔ Two-Round): Started.
+552000 15 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+552000 15 [INFO: Main      ] - Routing: RPL Lite
+552000 15 [INFO: Main      ] - Net: sicslowpan
+552000 15 [INFO: Main      ] - MAC: CSMA
+552000 15 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+552000 15 [INFO: Main      ] - 802.15.4 Default channel: 26
+552000 15 [INFO: Main      ] Node ID: 15
+552000 15 [INFO: Main      ] Link-layer address: 000f.000f.000f.000f
+552000 15 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
+552000 15 AS 15 (DAuth Base ﾀﾔ Two-Round): Started.
+564000 17 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+564000 17 [INFO: Main      ] - Routing: RPL Lite
+564000 17 [INFO: Main      ] - Net: sicslowpan
+564000 17 [INFO: Main      ] - MAC: CSMA
+564000 17 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+564000 17 [INFO: Main      ] - 802.15.4 Default channel: 26
+564000 17 [INFO: Main      ] Node ID: 17
+564000 17 [INFO: Main      ] Link-layer address: 0011.0011.0011.0011
+564000 17 [INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
+564000 17 AS 17 (DAuth Base ﾀﾔ Two-Round): Started.
+625000 29 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+625000 29 [INFO: Main      ] - Routing: RPL Lite
+625000 29 [INFO: Main      ] - Net: sicslowpan
+625000 29 [INFO: Main      ] - MAC: CSMA
+625000 29 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+625000 29 [INFO: Main      ] - 802.15.4 Default channel: 26
+625000 29 [INFO: Main      ] Node ID: 29
+625000 29 [INFO: Main      ] Link-layer address: 001d.001d.001d.001d
+625000 29 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21d:1d:1d:1d
+687000 22 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+687000 22 [INFO: Main      ] - Routing: RPL Lite
+687000 22 [INFO: Main      ] - Net: sicslowpan
+687000 22 [INFO: Main      ] - MAC: CSMA
+687000 22 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+687000 22 [INFO: Main      ] - 802.15.4 Default channel: 26
+687000 22 [INFO: Main      ] Node ID: 22
+687000 22 [INFO: Main      ] Link-layer address: 0016.0016.0016.0016
+687000 22 [INFO: Main      ] Tentative link-local IPv6 address: fe80::216:16:16:16
+687000 22 AS 22 (DAuth Base ﾀﾔ Two-Round): Started.
+765000 27 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+765000 27 [INFO: Main      ] - Routing: RPL Lite
+765000 27 [INFO: Main      ] - Net: sicslowpan
+765000 27 [INFO: Main      ] - MAC: CSMA
+765000 27 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+765000 27 [INFO: Main      ] - 802.15.4 Default channel: 26
+765000 27 [INFO: Main      ] Node ID: 27
+765000 27 [INFO: Main      ] Link-layer address: 001b.001b.001b.001b
+765000 27 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21b:1b:1b:1b
+765000 27 AS 27 (DAuth Base ﾀﾔ Two-Round): Started.
+792000 21 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+792000 21 [INFO: Main      ] - Routing: RPL Lite
+792000 21 [INFO: Main      ] - Net: sicslowpan
+792000 21 [INFO: Main      ] - MAC: CSMA
+792000 21 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+792000 21 [INFO: Main      ] - 802.15.4 Default channel: 26
+792000 21 [INFO: Main      ] Node ID: 21
+792000 21 [INFO: Main      ] Link-layer address: 0015.0015.0015.0015
+792000 21 [INFO: Main      ] Tentative link-local IPv6 address: fe80::215:15:15:15
+792000 21 AS 21 (DAuth Base ﾀﾔ Two-Round): Started.
+797000 24 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+797000 24 [INFO: Main      ] - Routing: RPL Lite
+797000 24 [INFO: Main      ] - Net: sicslowpan
+797000 24 [INFO: Main      ] - MAC: CSMA
+797000 24 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+797000 24 [INFO: Main      ] - 802.15.4 Default channel: 26
+797000 24 [INFO: Main      ] Node ID: 24
+797000 24 [INFO: Main      ] Link-layer address: 0018.0018.0018.0018
+797000 24 [INFO: Main      ] Tentative link-local IPv6 address: fe80::218:18:18:18
+797000 24 AS 24 (DAuth Base ﾀﾔ Two-Round): Started.
+821000 20 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+821000 20 [INFO: Main      ] - Routing: RPL Lite
+821000 20 [INFO: Main      ] - Net: sicslowpan
+821000 20 [INFO: Main      ] - MAC: CSMA
+821000 20 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+821000 20 [INFO: Main      ] - 802.15.4 Default channel: 26
+821000 20 [INFO: Main      ] Node ID: 20
+821000 20 [INFO: Main      ] Link-layer address: 0014.0014.0014.0014
+821000 20 [INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
+821000 20 AS 20 (DAuth Base ﾀﾔ Two-Round): Started.
+861000 14 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+861000 14 [INFO: Main      ] - Routing: RPL Lite
+861000 14 [INFO: Main      ] - Net: sicslowpan
+861000 14 [INFO: Main      ] - MAC: CSMA
+861000 14 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+861000 14 [INFO: Main      ] - 802.15.4 Default channel: 26
+861000 14 [INFO: Main      ] Node ID: 14
+861000 14 [INFO: Main      ] Link-layer address: 000e.000e.000e.000e
+861000 14 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
+861000 14 AS 14 (DAuth Base ﾀﾔ Two-Round): Started.
+866000 5 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+866000 5 [INFO: Main      ] - Routing: RPL Lite
+866000 5 [INFO: Main      ] - Net: sicslowpan
+866000 5 [INFO: Main      ] - MAC: CSMA
+866000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+866000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+866000 5 [INFO: Main      ] Node ID: 5
+866000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+866000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+866000 5 AS 5 (DAuth Base ﾀﾔ Two-Round): Started.
+897000 2 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+897000 2 [INFO: Main      ] - Routing: RPL Lite
+897000 2 [INFO: Main      ] - Net: sicslowpan
+897000 2 [INFO: Main      ] - MAC: CSMA
+897000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+897000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+897000 2 [INFO: Main      ] Node ID: 2
+897000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+897000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+897000 2 AS 2 (DAuth Base ﾀﾔ Two-Round): Started.
+921000 16 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+921000 16 [INFO: Main      ] - Routing: RPL Lite
+921000 16 [INFO: Main      ] - Net: sicslowpan
+921000 16 [INFO: Main      ] - MAC: CSMA
+921000 16 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+921000 16 [INFO: Main      ] - 802.15.4 Default channel: 26
+921000 16 [INFO: Main      ] Node ID: 16
+921000 16 [INFO: Main      ] Link-layer address: 0010.0010.0010.0010
+921000 16 [INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
+921000 16 AS 16 (DAuth Base ﾀﾔ Two-Round): Started.
+957000 23 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+957000 23 [INFO: Main      ] - Routing: RPL Lite
+957000 23 [INFO: Main      ] - Net: sicslowpan
+957000 23 [INFO: Main      ] - MAC: CSMA
+957000 23 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+957000 23 [INFO: Main      ] - 802.15.4 Default channel: 26
+957000 23 [INFO: Main      ] Node ID: 23
+957000 23 [INFO: Main      ] Link-layer address: 0017.0017.0017.0017
+957000 23 [INFO: Main      ] Tentative link-local IPv6 address: fe80::217:17:17:17
+957000 23 AS 23 (DAuth Base ﾀﾔ Two-Round): Started.
+958000 19 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+958000 19 [INFO: Main      ] - Routing: RPL Lite
+958000 19 [INFO: Main      ] - Net: sicslowpan
+958000 19 [INFO: Main      ] - MAC: CSMA
+958000 19 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+958000 19 [INFO: Main      ] - 802.15.4 Default channel: 26
+958000 19 [INFO: Main      ] Node ID: 19
+958000 19 [INFO: Main      ] Link-layer address: 0013.0013.0013.0013
+958000 19 [INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
+958000 19 AS 19 (DAuth Base ﾀﾔ Two-Round): Started.
+990000 13 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+990000 13 [INFO: Main      ] - Routing: RPL Lite
+990000 13 [INFO: Main      ] - Net: sicslowpan
+990000 13 [INFO: Main      ] - MAC: CSMA
+990000 13 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+990000 13 [INFO: Main      ] - 802.15.4 Default channel: 26
+990000 13 [INFO: Main      ] Node ID: 13
+990000 13 [INFO: Main      ] Link-layer address: 000d.000d.000d.000d
+990000 13 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
+990000 13 AS 13 (DAuth Base ﾀﾔ Two-Round): Started.
+33123000 28 Node 28: Sending Reg-0
+33210848 2 AS 2: Reg-0 for device 28 (c_d=57)
+33316584 28 Node 28: Reg-0 OK. c_d=57
+33316584 28 Node 28: Sending Reg-1
+33403904 2 AS 2: Reg-1 complete for device 28
+33485368 28 Node 28: Enrolled
+33485368 28 
+34625000 29 Node 29: Sending Reg-0
+34672592 3 AS 3: Reg-0 for device 29 (c_d=198)
+34722328 29 Node 29: Reg-0 OK. c_d=198
+34722328 29 Node 29: Sending Reg-1
+34776648 3 AS 3: Reg-1 complete for device 29
+34807112 29 Node 29: Enrolled
+34807112 29 
+35476000 30 Node 30: Sending Reg-0
+35544848 2 AS 2: Reg-0 for device 30 (c_d=89)
+35644232 30 Node 30: Reg-0 OK. c_d=89
+35644232 30 Node 30: Sending Reg-1
+35745904 2 AS 2: Reg-1 complete for device 30
+35833112 30 Node 30: Enrolled
+35833112 30 
+66123000 28 ENROLL_ENERGY|28|cpu_s=0.362368|energy_j=0.022343Node 28: Round 1 ﾀﾔ Sending auth. ts_1=1
+66220456 2 AS 2: Device 28 authenticated
+66220456 2 AS 2: Round 1 reply to device 28 (ts_2=1). Pending keyex.
+66220456 2 
+66334112 28 Node 28: Round 1 Auth OK. ts_2=1
+66334112 28 
+68625000 29 ENROLL_ENERGY|29|cpu_s=0.182112|energy_j=0.011203Node 29: Round 1 ﾀﾔ Sending auth. ts_1=1
+68669200 3 AS 3: Device 29 authenticated
+68669200 3 AS 3: Round 1 reply to device 29 (ts_2=1). Pending keyex.
+68669200 3 
+68698856 29 Node 29: Round 1 Auth OK. ts_2=1
+68698856 29 
+70476000 30 ENROLL_ENERGY|30|cpu_s=0.357112|energy_j=0.022018Node 30: Round 1 ﾀﾔ Sending auth. ts_1=1
+70555456 2  The CPU time and energy at end of authentication for server 2 are 65.323456 and 4.036705AS 2: Device 30 authenticated
+70555456 2 AS 2: Round 1 reply to device 30 (ts_2=2). Pending keyex.
+70555456 2 
+70639856 30 Node 30: Round 1 Auth OK. ts_2=2
+70639856 30 
+99123000 28 AUTH_ENERGY|28|cpu_s=0.211112|energy_j=0.013021Node 28: Round 2 ﾀﾔ Sending keyex. ts_2=1
+99191464 2  The CPU time and energy at end of authentication for server 2 are 69.658456 and 4.304588AS 2: Round 2 KeyEx reply to device 28. Forwarding token to GW.
+99300072 28 Node 28: Round 2 KeyEx OK. K_GW_D=849455
+99300072 28 
+99300072 28 KEYEX_ENERGY|28|cpu_s=0.177072|energy_j=0.010921
+99404904 1 GW: Auth token for device 28 (via AS 2) stored.
+99404904 1 GW: Token processing time: 0 ms
+102625000 29 AUTH_ENERGY|29|cpu_s=0.073856|energy_j=0.004538Node 29: Round 2 ﾀﾔ Sending keyex. ts_2=1
+102672208 3  The CPU time and energy at end of authentication for server 3 are 68.575200 and 4.237663AS 3: Round 2 KeyEx reply to device 29. Forwarding token to GW.
+102715616 1 GW: Auth token for device 29 (via AS 3) stored.
+102715616 1 GW: Token processing time: 0 ms
+102726816 29 Node 29: Round 2 KeyEx OK. K_GW_D=24d5e8
+102726816 29 
+102726816 29 KEYEX_ENERGY|29|cpu_s=0.101816|energy_j=0.006270
+105476000 30 AUTH_ENERGY|30|cpu_s=0.163856|energy_j=0.010100Node 30: Round 2 ﾀﾔ Sending keyex. ts_2=2
+105544464 2 AS 2: Round 2 KeyEx reply to device 30. Forwarding token to GW.
+105633816 30 Node 30: Round 2 KeyEx OK. K_GW_D=2d36b8
+105633816 30 
+105633816 30 KEYEX_ENERGY|30|cpu_s=0.157816|energy_j=0.009731
+EARLY EXIT: all 3 nodes done
+TEST OK
+Test ended at simulation time: 105633816

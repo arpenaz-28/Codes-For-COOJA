@@ -35,7 +35,7 @@
 #define REG_REQ_LEN   32
 #define REG_REP_LEN   80
 #define DEV_INFO_LEN  64
-#define MAX_CLIENTS   110
+#define MAX_CLIENTS   130
 
 /* --------------------------------------------------------------------------
  * Shared keys

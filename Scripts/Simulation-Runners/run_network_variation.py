@@ -46,6 +46,7 @@ SIZES = {
     50:  (39, 10, 41),
     80:  (63, 16, 65),
     100: (79, 20, 81),
+    120: (95, 24, 97),   # 24 newly-joined devices (20% of 120), 95 AS, 1 GW
 }
 
 # Zhou topology: 1 GW + 2 GW-servers + N_SN sensor nodes + N_users user nodes
@@ -55,6 +56,7 @@ ZHOU_SIZES = {
     50:  (37, 40, 10, 41),
     80:  (61, 64, 16, 65),
     100: (77, 80, 20, 81),
+    120: (93, 96, 24, 97),   # 24 users (20%), 93 SN (ids 4-96), users 97-120
 }
 
 SCHEME_CFG = {
@@ -65,6 +67,7 @@ SCHEME_CFG = {
             50:  os.path.join(REPO, "Revised-Anonymity", "NetVar-N50"),
             80:  os.path.join(REPO, "Revised-Anonymity", "NetVar-N80"),
             100: os.path.join(REPO, "Revised-Anonymity", "NetVar-N100"),
+            120: os.path.join(REPO, "Revised-Anonymity", "NetVar-N120"),
         },
         "results_base": os.path.join(REPO, "Revised-Anonymity", "Simulation results", "network-variation"),
         "node_files":   ["gw-node.c", "as-node.c", "device-node.c"],
@@ -77,6 +80,7 @@ SCHEME_CFG = {
             50:  os.path.join(REPO, "LAAKA", "Network-Variation", "N50"),
             80:  os.path.join(REPO, "LAAKA", "Network-Variation", "N80"),
             100: os.path.join(REPO, "LAAKA", "Network-Variation", "N100"),
+            120: os.path.join(REPO, "LAAKA", "Network-Variation", "N120"),
         },
         "results_base": os.path.join(REPO, "LAAKA", "Simulation results", "network-variation"),
         "node_files":   ["gw-node.c", "as-node.c", "device-node.c"],
@@ -89,6 +93,7 @@ SCHEME_CFG = {
             50:  os.path.join(REPO, "Zhou-Scheme", "Network-Variation", "N50"),
             80:  os.path.join(REPO, "Zhou-Scheme", "Network-Variation", "N80"),
             100: os.path.join(REPO, "Zhou-Scheme", "Network-Variation", "N100"),
+            120: os.path.join(REPO, "Zhou-Scheme", "Network-Variation", "N120"),
         },
         "results_base": os.path.join(REPO, "Zhou-Scheme", "Simulation results", "network-variation"),
         "node_files":   ["gw-node.c", "gw-server.c", "sn-node.c", "user-node.c"],
@@ -569,7 +574,7 @@ def main():
     parser.add_argument("--scheme", nargs="+", choices=["RA", "LAAKA", "Zhou"],
                         default=["RA", "LAAKA", "Zhou"],
                         help="Which schemes to run (default: all three)")
-    parser.add_argument("--size", nargs="+", type=int, choices=[30, 50, 80, 100],
+    parser.add_argument("--size", nargs="+", type=int, choices=[30, 50, 80, 100, 120],
                         default=[30, 50, 80, 100],
                         help="Network sizes to simulate (default: all four)")
     parser.add_argument("--seeds", type=int, default=10,

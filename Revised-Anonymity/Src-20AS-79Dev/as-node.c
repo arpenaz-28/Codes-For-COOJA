@@ -67,7 +67,7 @@ static const uint8_t K_GW_AS[16] = {
 #define GW_TOKEN_LEN    81   /* new_PID(32) | ID_AS(1) | enc_tok(48) */
 #define ACK_BYTE        0xAC
 
-#define MAX_CLIENTS     110
+#define MAX_CLIENTS     130
 
 /* --------------------------------------------------------------------------
  * Energest

@@ -28,10 +28,10 @@ DATA_DIR = os.path.join(REPO, "Results", "COOJA-Simulation", "10-Seed-Comparison
 OUT_DIR  = os.path.join(DATA_DIR, "Charts")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-SCHEMES      = ["Proposed", "LAAKA", "Zhou"]
-SCHEME_LABEL = {"Proposed": "Proposed", "LAAKA": "LAAKA", "Zhou": "Zhou"}
-COLORS       = {"Proposed": "#2C6FAC", "LAAKA": "#B85C2C", "Zhou": "#2E8B57"}
-HATCHES      = {"Proposed": "///",     "LAAKA": "\\\\\\", "Zhou": "xxx"}
+SCHEMES      = ["Proposed", "DAuth", "LAAKA", "Zhou"]
+SCHEME_LABEL = {"Proposed": "Proposed", "DAuth": "DAuth", "LAAKA": "LAAKA", "Zhou": "Zhou"}
+COLORS       = {"Proposed": "#2C6FAC", "DAuth": "#7E5BA6", "LAAKA": "#B85C2C", "Zhou": "#2E8B57"}
+HATCHES      = {"Proposed": "///",     "DAuth": "...",     "LAAKA": "\\\\\\", "Zhou": "xxx"}
 
 _STYLE = {
     "font.family":       "Liberation Sans",
@@ -104,7 +104,7 @@ def draw_panel(ax, stats, ylabel, fmt):
     stats: list of (scheme_name, mean, ci) in order Proposed / LAAKA / Zhou
     """
     pos = np.arange(len(stats))
-    w   = 0.55
+    w   = 0.42
     max_val = max(mu + ci for _, mu, ci in stats)
 
     for i, (name, mu, ci) in enumerate(stats):
@@ -152,17 +152,9 @@ def make_total_chart(scheme_records):
     with plt.rc_context(_STYLE):
         fig, (ax_e, ax_c) = plt.subplots(1, 2, figsize=(14, 7))
         fig.patch.set_facecolor("white")
-        fig.suptitle(
-            "Total Cost — All 20 Devices (Enroll + Auth + Key Exchange)\n"
-            "COOJA Simulation · 10 Seeds · 100-Mote Network",
-            fontsize=16, fontweight="bold", color="#222222", y=1.01
-        )
 
         draw_panel(ax_e, e_stats, "Total Energy — All Devices (mJ)", ".1f")
         draw_panel(ax_c, c_stats, "Total CPU Time — All Devices (s)", ".2f")
-
-        ax_e.set_title("Energy", fontsize=15, fontweight="bold", pad=10)
-        ax_c.set_title("CPU Time", fontsize=15, fontweight="bold", pad=10)
 
         ax_e.legend(handles=legend_patches("mJ", e_stats),
                     loc="upper right", fontsize=10, framealpha=0.9,
@@ -173,7 +165,7 @@ def make_total_chart(scheme_records):
 
         fig.tight_layout()
         out = os.path.join(OUT_DIR, "cooja_01_total_energy_cpu.png")
-        fig.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
+        fig.savefig(out, dpi=180, bbox_inches="tight", pad_inches=0.02, facecolor="white")
         plt.close(fig)
     print(f"  Saved: cooja_01_total_energy_cpu.png")
 
@@ -193,16 +185,9 @@ def make_perdev_chart(scheme_records):
     with plt.rc_context(_STYLE):
         fig, (ax_e, ax_c) = plt.subplots(1, 2, figsize=(14, 7))
         fig.patch.set_facecolor("white")
-        fig.suptitle(
-            "Per-Device Mean Total Cost",
-            fontsize=30, fontweight="bold", color="#222222",
-        )
 
         draw_panel(ax_e, e_stats, "Mean Energy (mJ)", ".2f")
         draw_panel(ax_c, c_stats, "Mean CPU Time (s)", ".3f")
-
-        ax_e.set_title("Energy", fontsize=23, fontweight="bold", pad=12)
-        ax_c.set_title("CPU Time", fontsize=23, fontweight="bold", pad=12)
 
         scheme_patches = [
             mpatches.Patch(facecolor="none", edgecolor=COLORS[s],
@@ -212,12 +197,12 @@ def make_perdev_chart(scheme_records):
         ]
         fig.legend(handles=scheme_patches,
                    loc="lower center", bbox_to_anchor=(0.5, 0.0),
-                   ncol=3, fontsize=19, framealpha=0.9,
+                   ncol=4, fontsize=19, framealpha=0.9,
                    edgecolor="#dddddd", handlelength=2.2, handleheight=1.6)
 
-        fig.tight_layout(rect=[0, 0.09, 1, 0.92])
+        fig.tight_layout(rect=[0, 0.09, 1, 1])
         out = os.path.join(OUT_DIR, "cooja_02_perdev_energy_cpu.png")
-        fig.savefig(out, dpi=180, bbox_inches="tight", facecolor="white")
+        fig.savefig(out, dpi=180, bbox_inches="tight", pad_inches=0.02, facecolor="white")
         plt.close(fig)
     print(f"  Saved: cooja_02_perdev_energy_cpu.png")
 

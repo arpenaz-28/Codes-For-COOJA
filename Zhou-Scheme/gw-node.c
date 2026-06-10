@@ -30,7 +30,7 @@ static const uint8_t K_GW_RT[16] = {
 };
 
 /* Session table (indexed by slot, looked up by DIDi) */
-#define MAX_SESSIONS  110
+#define MAX_SESSIONS  130
 
 typedef struct {
     uint8_t  DIDi[32];     /* User pseudonym — external lookup key      */

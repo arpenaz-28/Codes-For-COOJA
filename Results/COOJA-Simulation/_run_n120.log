@@ -1,0 +1,186 @@
+===== [1/2] DAuth N=120 (10 seeds) =====
+
+=== net-var N=120  (NUM_AS=2, AS_nodes=95, devices=24@97) ===
+    seed 123456: OK (23s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+    seed 234567: OK (23s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+    seed 345678: OK (23s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+    seed 456789: OK (23s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+    seed 567890: OK (22s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+    seed 678901: OK (23s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+    seed 789012: OK (23s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+    seed 890123: OK (23s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+    seed 901234: OK (22s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+    seed 112345: OK (24s)
+      parsed enroll=24 auth=24 keyex=24 / 24
+DAuth N=120 done, seeds= 10
+===== [2/2] Proposed/LAAKA/Zhou N=120 (10 seeds each) =====
+Network Variation Simulation Runner
+  Schemes : ['RA', 'LAAKA', 'Zhou']
+  Sizes   : [120]
+  Seeds   : [123456, 234567, 345678, 456789, 567890, 678901, 789012, 890123, 901234, 112345]
+  COOJA   : /home/apex/contiki-ng/tools/cooja
+  Build   : /home/apex/contiki-ng/examples/myproject
+
+======================================================================
+  RA  N=120  (24 devices, 2 active AS)
+======================================================================
+  Prepared source: RA N=120
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['device-node.cooja', 'as-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (30s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 234567
+  Result : TEST OK  (30s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 345678
+  Result : TEST OK  (29s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 456789
+  Result : TEST OK  (29s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 567890
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 678901
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 789012
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 890123
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 901234
+  Result : TEST OK  (27s)
+  Devices parsed: E=24  A=24  K=24
+
+  --- Seed 112345
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=24
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/Revised-Anonymity/Simulation results/network-variation/N120/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/Revised-Anonymity/Simulation results/network-variation/N120/logs
+
+======================================================================
+  LAAKA  N=120  (24 devices, 2 active AS)
+======================================================================
+  Prepared source: LAAKA N=120
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['device-node.cooja', 'as-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=23  K=24
+
+  --- Seed 234567
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=23  K=24
+
+  --- Seed 345678
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=23  K=24
+
+  --- Seed 456789
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=23  K=24
+
+  --- Seed 567890
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=23  K=24
+
+  --- Seed 678901
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=23  K=24
+
+  --- Seed 789012
+  Result : TEST OK  (27s)
+  Devices parsed: E=24  A=23  K=24
+
+  --- Seed 890123
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=23  K=24
+
+  --- Seed 901234
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=23  K=24
+
+  --- Seed 112345
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=23  K=24
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N120/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/LAAKA/Simulation results/network-variation/N120/logs
+
+======================================================================
+  Zhou  N=120  (24 devices, 2 active AS)
+======================================================================
+  Prepared source: Zhou N=120
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['gw-server.cooja', 'user-node.cooja', 'sn-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (29s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 234567
+  Result : TEST OK  (27s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 345678
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 456789
+  Result : TEST OK  (29s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 567890
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 678901
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 789012
+  Result : TEST OK  (27s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 890123
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 901234
+  Result : TEST OK  (25s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 112345
+  Result : TEST OK  (29s)
+  Devices parsed: E=24  A=24  K=0
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N120/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N120/logs
+
+======================================================================
+All done.  Run plot_network_variation.py to generate charts.
+======================================================================
+===== ALL N=120 RUNS DONE =====

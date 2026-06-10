@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex paper_revised_anonymity"] 1780514925.18689 "paper_revised_anonymity.aux" "paper_revised_anonymity.bbl" "paper_revised_anonymity" 1780517730.79633 0
+["bibtex paper_revised_anonymity"] 1781101040.77961 "paper_revised_anonymity.aux" "paper_revised_anonymity.bbl" "paper_revised_anonymity" 1781101087.08661 0
   "./ref.bib" 1779078574.4734 7584 224cb07221598b5cb55b84c25cd0636e ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1440712899 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "paper_revised_anonymity.aux" 1780517730.52809 10836 75362ff0112343ff5efffe2acf6187ff "pdflatex"
+  "paper_revised_anonymity.aux" 1781101086.73942 12267 1354c0dee27f26c51bc1ed01a3ae5b54 "pdflatex"
   (generated)
   "paper_revised_anonymity.bbl"
   "paper_revised_anonymity.blg"
   (rewritten before read)
-["pdflatex"] 1780517728.95482 "/home/apex/contiki-ng/examples/Codes-For-COOJA/Paper/paper_revised_anonymity.tex" "paper_revised_anonymity.pdf" "paper_revised_anonymity" 1780517730.79648 0
+["pdflatex"] 1781101084.54282 "/home/apex/contiki-ng/examples/Codes-For-COOJA/Paper/paper_revised_anonymity.tex" "paper_revised_anonymity.pdf" "paper_revised_anonymity" 1781101087.08679 0
   "/etc/texmf/web2c/texmf.cnf" 1780053828.43472 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/apex/contiki-ng/examples/Codes-For-COOJA/Paper/paper_revised_anonymity.tex" 1780517728.71482 61253 1beccdca860d6b12d30e24f0ca7c4c47 ""
+  "/home/apex/contiki-ng/examples/Codes-For-COOJA/Paper/paper_revised_anonymity.tex" 1781101084.30424 68707 7432218322d8f31ca2e48147d3447ccf ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1136768653 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -201,18 +201,20 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1780053977.6674 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1780054067 8214649 81df09333acf372521e1c36906d5044e ""
   "fig_auth.jpg" 1780324226 72085 9c06a7add6492e5721aa539b2a7b8834 ""
+  "fig_desync_bar.png" 1780660604.6575 173683 c522da085ea691dea90fae28e2fc9ccd ""
   "fig_enrollment.jpg" 1780324226 61462 ddbb124835a659782972c572f8a3036c ""
+  "fig_hw_comparison.png" 1780658855.51315 107656 02b3fe013a333b5167863471f7fe94fd ""
   "fig_keyex.jpg" 1780324226 87610 b36b5d8a27b1a002d84cab08266788cb ""
   "fig_proverif.png" 1780317280.79461 144672 c972e4796b3c84e0048b5e7b709c255b ""
-  "fig_sim_as_cpu.png" 1780510885.24068 131630 70bebd6dad1c50ad32276f07ac2e9b60 ""
-  "fig_sim_as_energy.png" 1780510885.23936 132247 afc4e85e3c3284b278b809abcb294961 ""
-  "fig_sim_net_cpu.png" 1780517703.81939 155691 7f5196470b81f3d775ca69da2c0b3c6c ""
-  "fig_sim_net_energy.png" 1780517703.38601 159990 ea3d41613ab54dbc60e1e86728a42bc7 ""
-  "fig_sim_total.png" 1779901715.25051 179240 202809f5ee4d105ee593ee3155624e6d ""
-  "paper_revised_anonymity.aux" 1780517730.52809 10836 75362ff0112343ff5efffe2acf6187ff "pdflatex"
-  "paper_revised_anonymity.bbl" 1780514925.29003 5373 656c91006d9557363366ff76d49b1375 "bibtex paper_revised_anonymity"
-  "paper_revised_anonymity.out" 1780517730.52909 5649 40dc21844d3560def8ea14805759b08e "pdflatex"
-  "paper_revised_anonymity.tex" 1780517728.71482 61253 1beccdca860d6b12d30e24f0ca7c4c47 ""
+  "fig_sim_as_cpu.png" 1781098985.42514 107179 f5766852d0748cc4aceddcd94d0ecdd7 ""
+  "fig_sim_as_energy.png" 1781098985.42384 113926 949c5bc7a841d99d76d2019d51c1cfaa ""
+  "fig_sim_net_cpu.png" 1781098981.86457 132315 ef7bb9ab7654f1c3acec76babfc56af0 ""
+  "fig_sim_net_energy.png" 1781098981.467 138487 a9cf14a3c5e024ed7ea8cca6dd3f8972 ""
+  "fig_sim_total.png" 1781098985.42253 185037 ea01aea6eb9919f590dab1a78cae9fd3 ""
+  "paper_revised_anonymity.aux" 1781101086.73942 12267 1354c0dee27f26c51bc1ed01a3ae5b54 "pdflatex"
+  "paper_revised_anonymity.bbl" 1781101040.90361 5373 c3c41b7270e25d667266e42507b1745d "bibtex paper_revised_anonymity"
+  "paper_revised_anonymity.out" 1781101086.74042 6223 d3f97209d33caab847515d9a0c9a3791 "pdflatex"
+  "paper_revised_anonymity.tex" 1781101084.30424 68707 7432218322d8f31ca2e48147d3447ccf ""
   (generated)
   "paper_revised_anonymity.aux"
   "paper_revised_anonymity.log"

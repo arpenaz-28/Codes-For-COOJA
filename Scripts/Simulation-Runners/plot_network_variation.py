@@ -33,7 +33,7 @@ import numpy as np
 REPO     = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 OUT_DIR  = os.path.join(REPO, "Results", "COOJA-Simulation", "Charts", "Network_variation")
 PAPER_DIR = os.path.join(REPO, "Paper")
-SIZES    = [30, 50, 80, 100]
+SIZES    = [30, 50, 80, 100, 120]
 
 # Path to the consolidated small-network summary (contains N=30 data)
 _SMALL_NET_CSV = os.path.join(
@@ -44,6 +44,8 @@ _SMALL_NET_CSV = os.path.join(
 RESULTS = {
     "Proposed": os.path.join(REPO, "Revised-Anonymity",
                              "Simulation results", "network-variation"),
+    "DAuth":    os.path.join(REPO, "Results", "COOJA-Simulation",
+                             "DAuth-Sweep", "network-variation"),
     "LAAKA":    os.path.join(REPO, "LAAKA",
                              "Simulation results", "network-variation"),
     "Zhou":     os.path.join(REPO, "Results", "COOJA-Simulation",
@@ -67,20 +69,31 @@ _RAW_CSV_DIRS = {
     ("Zhou",     50):  os.path.join(REPO, "Results", "COOJA-Simulation", "Zhou-Simulation", "network-variation", "N50",  "csv"),
     ("Zhou",     80):  os.path.join(REPO, "Results", "COOJA-Simulation", "Zhou-Simulation", "network-variation", "N80",  "csv"),
     ("Zhou",     100): os.path.join(REPO, "Results", "COOJA-Simulation", "Zhou-Simulation", "network-variation", "N100", "csv"),
+    ("DAuth",    30):  os.path.join(REPO, "Results", "COOJA-Simulation", "DAuth-Sweep", "network-variation", "N30",  "csv"),
+    ("DAuth",    50):  os.path.join(REPO, "Results", "COOJA-Simulation", "DAuth-Sweep", "network-variation", "N50",  "csv"),
+    ("DAuth",    80):  os.path.join(REPO, "Results", "COOJA-Simulation", "DAuth-Sweep", "network-variation", "N80",  "csv"),
+    ("DAuth",    100): os.path.join(REPO, "Results", "COOJA-Simulation", "DAuth-Sweep", "network-variation", "N100", "csv"),
+    ("Proposed", 120): os.path.join(REPO, "Revised-Anonymity", "Simulation results", "network-variation", "N120", "csv"),
+    ("LAAKA",    120): os.path.join(REPO, "LAAKA", "Simulation results", "network-variation", "N120", "csv"),
+    ("Zhou",     120): os.path.join(REPO, "Zhou-Scheme", "Simulation results", "network-variation", "N120", "csv"),
+    ("DAuth",    120): os.path.join(REPO, "Results", "COOJA-Simulation", "DAuth-Sweep", "network-variation", "N120", "csv"),
 }
 
 SCHEME_COLORS = {
     "Proposed": "#2C6FAC",   # deep steel blue
+    "DAuth":    "#7E5BA6",   # muted purple
     "LAAKA":    "#B85C2C",   # muted terracotta
     "Zhou":     "#3A7D44",   # muted forest green
 }
 SCHEME_MARKERS = {
     "Proposed": "o",
+    "DAuth":    "D",
     "LAAKA":    "s",
     "Zhou":     "^",
 }
 SCHEME_HATCHES = {
     "Proposed": "///",
+    "DAuth":    "...",
     "LAAKA":    "\\\\",
     "Zhou":     "xxx",
 }
@@ -252,7 +265,7 @@ def build_series(phase_name, metric):
 def _apply_style(ax, xlabel, ylabel, title):
     ax.set_xlabel(xlabel, fontsize=19, fontweight="bold")
     ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
-    ax.set_title(title, fontsize=18, fontweight="bold")
+    # chart title removed (figure caption describes it)
     ax.yaxis.grid(True, linestyle="--", alpha=0.5)
     ax.set_axisbelow(True)
     ax.legend(fontsize=15)
@@ -310,7 +323,7 @@ def grouped_bar_chart(phases, metric, ylabel, title, out_path, show=False):
     ax.set_xticklabels([f"N={n}" for n in SIZES])
     ax.set_xlabel("Total Network Nodes", fontsize=14)
     ax.set_ylabel(ylabel, fontsize=14)
-    ax.set_title(title, fontsize=15, fontweight="bold")
+    # chart title removed (figure caption describes it)
     ax.yaxis.grid(True, linestyle="--", alpha=0.5)
     ax.set_axisbelow(True)
     ax.legend(fontsize=10, ncol=3)
@@ -367,8 +380,7 @@ def combined_energy_line_chart(out_path, show=False):
 
     ax.set_xlabel("Total Network Nodes", fontsize=14)
     ax.set_ylabel("Average Energy per Device (mJ)", fontsize=14)
-    ax.set_title("Energy Consumption vs Network Size\nAll Schemes · All Phases",
-                 fontsize=15, fontweight="bold")
+    # chart title removed (figure caption describes it)
     ax.set_xticks(SIZES)
     ax.yaxis.grid(True, linestyle="--", alpha=0.5)
     ax.set_axisbelow(True)
@@ -409,9 +421,9 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
     """
     schemes = list(RESULTS.keys())
     n_s     = len(schemes)
-    spacing = 0.80                          # reduce inter-group gap
+    spacing = 0.90                          # inter-group spacing
     x       = np.arange(len(SIZES)) * spacing
-    width   = 0.20
+    width   = 0.15                          # narrower bars → visible gaps
 
     with plt.rc_context(_CHART_STYLE):
         fig, ax = plt.subplots(figsize=(12, 6.5))
@@ -444,10 +456,10 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
                    linewidth=1.5)
 
         ax.set_xticks(x)
-        ax.set_xticklabels([f"N = {n}" for n in SIZES], fontsize=19)
+        ax.set_xticklabels([str(n) for n in SIZES], fontsize=19)
         ax.set_xlabel("Total Network Nodes", labelpad=8, fontsize=21, fontweight="bold")
         ax.set_ylabel(ylabel, labelpad=8, fontsize=21, fontweight="bold")
-        ax.set_title(title, pad=14, color="#222222", fontsize=22, fontweight="bold")
+        # chart title removed (figure caption describes it)
 
         ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
         ax.set_axisbelow(True)
@@ -462,9 +474,9 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
                   borderpad=0.7, fontsize=17)
 
         fig.tight_layout()
-        fig.savefig(out_path, dpi=180, bbox_inches="tight", facecolor="white")
+        fig.savefig(out_path, dpi=180, bbox_inches="tight", pad_inches=0.02, facecolor="white")
         if paper_path:
-            fig.savefig(paper_path, dpi=180, bbox_inches="tight", facecolor="white")
+            fig.savefig(paper_path, dpi=180, bbox_inches="tight", pad_inches=0.02, facecolor="white")
             print(f"  Saved: {os.path.basename(paper_path)}  (Paper/)")
         if show:
             plt.show()

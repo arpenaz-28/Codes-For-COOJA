@@ -1,0 +1,158 @@
+DAuth sweep — studies=['10seed', 'as', 'net']  seeds=[123456, 234567, 345678, 456789, 567890, 678901, 789012, 890123, 901234, 112345]
+
+=== 10seed N=100  (NUM_AS=2, AS_nodes=79, devices=20@81) ===
+    seed 123456: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 234567: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 345678: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 456789: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 567890: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 678901: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 789012: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 890123: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 901234: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 112345: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+  10seed enroll mean = 24.55 mJ over 10 seeds
+  → /home/apex/contiki-ng/examples/Codes-For-COOJA/Results/COOJA-Simulation/10-Seed-Comparison/DAuth
+
+=== as-var NUM_AS=2  (NUM_AS=2, AS_nodes=79, devices=20@81) ===
+    seed 123456: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 234567: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 345678: OK (19s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 456789: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 567890: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+  → /home/apex/contiki-ng/examples/Codes-For-COOJA/Results/COOJA-Simulation/DAuth-Sweep/as-variation/N2/csv/summary.csv
+
+=== as-var NUM_AS=5  (NUM_AS=5, AS_nodes=79, devices=20@81) ===
+    seed 123456: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 234567: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 345678: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 456789: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 567890: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+  → /home/apex/contiki-ng/examples/Codes-For-COOJA/Results/COOJA-Simulation/DAuth-Sweep/as-variation/N5/csv/summary.csv
+
+=== as-var NUM_AS=10  (NUM_AS=10, AS_nodes=79, devices=20@81) ===
+    seed 123456: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 234567: OK (16s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 345678: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 456789: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 567890: OK (18s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+  → /home/apex/contiki-ng/examples/Codes-For-COOJA/Results/COOJA-Simulation/DAuth-Sweep/as-variation/N10/csv/summary.csv
+
+=== net-var N=30  (NUM_AS=2, AS_nodes=23, devices=6@25) ===
+    [cached] testlog_s123456.txt
+      parsed enroll=6 auth=6 keyex=6 / 6
+    seed 234567: OK (3s)
+      parsed enroll=6 auth=6 keyex=6 / 6
+    seed 345678: OK (3s)
+      parsed enroll=6 auth=6 keyex=6 / 6
+    seed 456789: OK (3s)
+      parsed enroll=6 auth=6 keyex=6 / 6
+    seed 567890: OK (3s)
+      parsed enroll=6 auth=6 keyex=6 / 6
+    seed 678901: OK (3s)
+      parsed enroll=6 auth=6 keyex=6 / 6
+    seed 789012: OK (3s)
+      parsed enroll=6 auth=6 keyex=6 / 6
+    seed 890123: OK (3s)
+      parsed enroll=6 auth=6 keyex=6 / 6
+    seed 901234: OK (3s)
+      parsed enroll=6 auth=6 keyex=6 / 6
+    seed 112345: OK (3s)
+      parsed enroll=6 auth=6 keyex=6 / 6
+  → /home/apex/contiki-ng/examples/Codes-For-COOJA/Results/COOJA-Simulation/DAuth-Sweep/network-variation/N30/csv/summary.csv
+
+=== net-var N=50  (NUM_AS=2, AS_nodes=39, devices=10@41) ===
+    seed 123456: OK (6s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+    seed 234567: OK (5s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+    seed 345678: OK (5s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+    seed 456789: OK (5s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+    seed 567890: OK (5s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+    seed 678901: OK (5s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+    seed 789012: OK (6s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+    seed 890123: OK (5s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+    seed 901234: OK (5s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+    seed 112345: OK (5s)
+      parsed enroll=10 auth=10 keyex=10 / 10
+  → /home/apex/contiki-ng/examples/Codes-For-COOJA/Results/COOJA-Simulation/DAuth-Sweep/network-variation/N50/csv/summary.csv
+
+=== net-var N=80  (NUM_AS=2, AS_nodes=63, devices=16@65) ===
+    seed 123456: OK (11s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+    seed 234567: OK (12s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+    seed 345678: OK (11s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+    seed 456789: OK (11s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+    seed 567890: OK (13s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+    seed 678901: OK (11s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+    seed 789012: OK (12s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+    seed 890123: OK (12s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+    seed 901234: OK (11s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+    seed 112345: OK (11s)
+      parsed enroll=16 auth=16 keyex=16 / 16
+  → /home/apex/contiki-ng/examples/Codes-For-COOJA/Results/COOJA-Simulation/DAuth-Sweep/network-variation/N80/csv/summary.csv
+
+=== net-var N=100  (NUM_AS=2, AS_nodes=79, devices=20@81) ===
+    seed 123456: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 234567: OK (19s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 345678: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 456789: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 567890: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 678901: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 789012: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 890123: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 901234: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+    seed 112345: OK (17s)
+      parsed enroll=20 auth=20 keyex=20 / 20
+  → /home/apex/contiki-ng/examples/Codes-For-COOJA/Results/COOJA-Simulation/DAuth-Sweep/network-variation/N100/csv/summary.csv
+
+DAuth sweep done.
