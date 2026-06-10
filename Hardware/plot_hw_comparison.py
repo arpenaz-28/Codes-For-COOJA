@@ -26,17 +26,22 @@ os.makedirs(OUT_DIR, exist_ok=True)
 # Proposed : Auth+KeyEx only (per round avg)
 # LAAKA    : Auth+Ack + Data (per round avg)
 # Zhou     : Auth M1->M4 + Data (per round avg)
-SCHEMES = ["Proposed", "LAAKA", "Zhou"]
+SCHEMES = ["Proposed", "DAuth", "LAAKA", "Zhou"]
 
 _NUM_ROUNDS = 3
 
+# Auth+KeyEx only (Enrollment and Data excluded), 3-round sums.
+# DAuth values: average of 2 hardware runs on RPi 4B (Apex=device, Pi=AS, Laptop=GW)
+#   with 1 warm-up round discarded to eliminate TCP cold-start.
 _ENERGY_SUM_J = {
     "Proposed": 0.8580,
+    "DAuth":    0.5319,
     "LAAKA":    1.8069,
     "Zhou":     1.0002,
 }
 _TIME_SUM_S = {
     "Proposed": 0.2258,
+    "DAuth":    0.1400,
     "LAAKA":    0.4755,
     "Zhou":     0.2632,
 }
@@ -47,11 +52,13 @@ TIME_S   = {k: round(v / _NUM_ROUNDS, 4) for k, v in _TIME_SUM_S.items()}
 # ── Style (matches existing COOJA simulation charts) ──────────────────────────
 COLORS = {
     "Proposed": "#2C6FAC",
+    "DAuth":    "#7E5BA6",
     "LAAKA":    "#B85C2C",
     "Zhou":     "#3A7D44",
 }
 HATCHES = {
     "Proposed": "///",
+    "DAuth":    "...",
     "LAAKA":    "\\\\",
     "Zhou":     "xxx",
 }
@@ -71,7 +78,7 @@ _STYLE = {
     "grid.linewidth":    0.6,
 }
 
-BAR_W = 0.50
+BAR_W = 0.45
 X     = np.arange(len(SCHEMES))
 
 

@@ -16,6 +16,7 @@ STORAGE_FILE = "device_storage.json"
 
 RPI_POWER_MW = 3800   # mW — RPi 4B typical single-core active
 NUM_ROUNDS   = 3
+NUM_WARMUP   = 1    # warm-up rounds before measurement (discarded)
 
 APUF_MASTER_D = b"dev_apuf_master_32b_long_!!!"
 
@@ -230,6 +231,18 @@ if __name__ == '__main__':
     if not do_enrollment():
         raise SystemExit("Enrollment failed — aborting")
     time.sleep(0.3)
+
+    enroll_rec = results[0]   # save before warm-up pollutes list
+
+    print(f"\n[DEV] === Warm-up (1 round, discarded) ===")
+    for _ in range(NUM_WARMUP):
+        ok = do_round(0)
+        if not ok:
+            raise SystemExit("Warm-up failed — aborting")
+        time.sleep(0.3)
+
+    results.clear()
+    results.append(enroll_rec)   # restore enrollment
 
     for r in range(1, NUM_ROUNDS + 1):
         print(f"\n[DEV] === Round {r} ===")

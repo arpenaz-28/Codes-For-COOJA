@@ -18,23 +18,26 @@ OUT_FILE = os.path.join(OUT_DIR, "hw_enrollment_comparison.png")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # ── Measured values (RPi 4B, 3800 mW, wall_time × 3.8 W) ──────────────────────
-SCHEMES = ["Proposed", "LAAKA", "Zhou"]
+SCHEMES = ["Proposed", "DAuth", "LAAKA", "Zhou"]
 
-ENROLL_ENERGY_J = {"Proposed": 0.5231, "LAAKA": 0.0398, "Zhou": 0.4693}
-ENROLL_TIME_S   = {"Proposed": 0.1377, "LAAKA": 0.0285, "Zhou": 0.1235}
+# DAuth enrollment: avg of 2 RPi 4B runs (0.4576 J + 0.3748 J) / 2
+ENROLL_ENERGY_J = {"Proposed": 0.5231, "DAuth": 0.4162, "LAAKA": 0.0398, "Zhou": 0.4693}
+ENROLL_TIME_S   = {"Proposed": 0.1377, "DAuth": 0.1095, "LAAKA": 0.0285, "Zhou": 0.1235}
 
 # Per-round avg = (3-round sum) / 3, enrollment excluded
-AUTH_ENERGY_J   = {"Proposed": 0.2860, "LAAKA": 0.6023, "Zhou": 0.3334}
-AUTH_TIME_S     = {"Proposed": 0.0753, "LAAKA": 0.1585, "Zhou": 0.0877}
+# DAuth auth: avg of 2 RPi 4B runs (0.5211 J + 0.5426 J) / 2 / 3 rounds
+AUTH_ENERGY_J   = {"Proposed": 0.2860, "DAuth": 0.1773, "LAAKA": 0.6023, "Zhou": 0.3334}
+AUTH_TIME_S     = {"Proposed": 0.0753, "DAuth": 0.0467, "LAAKA": 0.1585, "Zhou": 0.0877}
 
 # ── Style ──────────────────────────────────────────────────────────────────────
 COLORS = {
     "Proposed": "#2C6FAC",
+    "DAuth":    "#7E5BA6",
     "LAAKA":    "#B85C2C",
     "Zhou":     "#3A7D44",
 }
 HATCH_ENROLL = "..."
-HATCH_AUTH   = {"Proposed": "///", "LAAKA": "\\\\", "Zhou": "xxx"}
+HATCH_AUTH   = {"Proposed": "///", "DAuth": "///", "LAAKA": "\\\\", "Zhou": "xxx"}
 
 _STYLE = {
     "font.size":         13,
@@ -51,7 +54,7 @@ _STYLE = {
     "grid.linewidth":    0.6,
 }
 
-BAR_W = 0.50
+BAR_W = 0.45
 X     = np.arange(len(SCHEMES))
 
 
