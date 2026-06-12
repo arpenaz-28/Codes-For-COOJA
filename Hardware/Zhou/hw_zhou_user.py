@@ -28,14 +28,16 @@ Metrics per phase:
 
 RPi 4B active power assumption: 3800 mW
 """
-import sys, os, time, socket
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+import json, sys, os, time, socket
+_d = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_d, '..')); sys.path.insert(0, _d)
 from common import *
 from config import (GW_IP, PORT_ZHOU_USER_REG, PORT_ZHOU_AUTH,
                     PORT_ZHOU_DATA, NODE_DEV, NODE_SN)
 
 RPI_POWER_MW = 3800
 NUM_ROUNDS   = 3
+NUM_WARMUP   = 1    # warm-up rounds before measurement (discarded)
 
 # User state
 ID_I    = NODE_DEV
@@ -174,13 +176,25 @@ if __name__ == '__main__':
     print("=" * 70)
     print("[USR-ZHOU] Zhou scheme — hardware energy + latency measurement")
     print(f"[USR-ZHOU] GW={GW_IP}  ID_I={ID_I}")
-    print(f"[USR-ZHOU] Power assumption: {RPI_POWER_MW} mW  Rounds: {NUM_ROUNDS}")
+    print(f"[USR-ZHOU] Power assumption: {RPI_POWER_MW} mW  Rounds: {NUM_ROUNDS}  Warmup: {NUM_WARMUP}")
     print("=" * 70)
 
     time.sleep(2.0)   # allow GW + SN to start and SN to register
 
     do_registration()
     time.sleep(0.5)
+
+    enroll_rec = results[0]   # save before warm-up pollutes list
+
+    print(f"\n[USR-ZHOU] === Warm-up ({NUM_WARMUP} round, discarded) ===")
+    for _ in range(NUM_WARMUP):
+        ok = do_round(0)
+        if not ok:
+            raise SystemExit("Warm-up failed — aborting")
+        time.sleep(0.3)
+
+    results.clear()
+    results.append(enroll_rec)   # restore registration record
 
     for r in range(1, NUM_ROUNDS + 1):
         print(f"\n[USR-ZHOU] === Round {r} ===")
@@ -225,3 +239,21 @@ if __name__ == '__main__':
         print(f"Avg Data        per round : {avg_data:.4f} s  {avg_datae:.6f} J")
         print(f"Avg total       per round : {avg_tot:.4f} s  {avg_tote:.6f} J")
     print("=" * 70)
+
+    # ── Save results to JSON for collection by orchestrator ───────────────
+    if num_r > 0:
+        out = {
+            'enrollment': results[0],
+            'rounds':     [r for r in results if r['phase'] != 'Registration'],
+            'summary': {
+                'auth_energy_sum_j':  round(sum(r['auth_energy_j'] for r in results if r['phase'] != 'Registration'), 6),
+                'auth_time_sum_s':    round(sum(r['auth_s']         for r in results if r['phase'] != 'Registration'), 6),
+                'total_energy_sum_j': round(sum(r['total_energy_j'] for r in results if r['phase'] != 'Registration'), 6),
+                'total_time_sum_s':   round(sum(r['total_s']        for r in results if r['phase'] != 'Registration'), 6),
+                'avg_auth_energy_j':  round(avg_authe, 6),
+                'avg_auth_time_s':    round(avg_auth,  6),
+            }
+        }
+        with open('zhou_hw_run.json', 'w') as f:
+            json.dump(out, f, indent=2)
+        print("[USR-ZHOU] Results saved to zhou_hw_run.json")

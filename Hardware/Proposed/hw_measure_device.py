@@ -11,14 +11,16 @@ Metrics per phase:
 
 RPi 4B active power assumption: 3800 mW (single-core Python workload)
 """
-import sys, os, time, socket
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+import json, sys, os, time, socket
+_d = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_d, '..')); sys.path.insert(0, _d)
 from common import *
 from config import (AS_IP, GW_IP, PORT_AS_ENROLL, PORT_AS_AUTH,
                     PORT_GW_KEYEX, PORT_GW_DATA, NODE_DEV, NODE_AS)
 
 RPI_POWER_MW = 3800   # mW — RPi 4B typical single-core active
 NUM_ROUNDS   = 3
+NUM_WARMUP   = 1    # warm-up rounds before measurement (discarded)
 
 # Device state
 ID_D     = NODE_DEV
@@ -169,12 +171,24 @@ if __name__ == '__main__':
     print("=" * 70)
     print("[DEV] Proposed scheme — hardware energy + latency measurement")
     print(f"[DEV] AS={AS_IP}  GW={GW_IP}")
-    print(f"[DEV] Power assumption: {RPI_POWER_MW} mW  Rounds: {NUM_ROUNDS}")
+    print(f"[DEV] Power assumption: {RPI_POWER_MW} mW  Rounds: {NUM_ROUNDS}  Warmup: {NUM_WARMUP}")
     print("=" * 70)
     time.sleep(1.5)   # allow GW + AS time to start
 
     do_enrollment()
     time.sleep(0.3)
+
+    enroll_rec = results[0]   # save before warm-up pollutes list
+
+    print(f"\n[DEV] === Warm-up ({NUM_WARMUP} round, discarded) ===")
+    for _ in range(NUM_WARMUP):
+        ok = do_auth(0)
+        if not ok:
+            raise SystemExit("Warm-up failed — aborting")
+        time.sleep(0.3)
+
+    results.clear()
+    results.append(enroll_rec)   # restore enrollment
 
     for r in range(1, NUM_ROUNDS + 1):
         print(f"\n[DEV] === Round {r} ===")
@@ -210,10 +224,29 @@ if __name__ == '__main__':
     print("=" * 58)
     print(f"{'GRAND TOTAL':<24} {total_time_s:>10.4f} {'':>10} {total_energy_j:>12.6f}")
     num_r = len(results) - 1
-    avg_ak  = sum(r['ak_s']   for r in results if r['phase'] != 'Enrollment') / num_r
-    avg_ake = sum(r['ak_energy_j'] for r in results if r['phase'] != 'Enrollment') / num_r
-    avg_tot = (total_time_s - results[0]['wall_s']) / num_r
-    avg_tote= (total_energy_j - results[0]['energy_j']) / num_r
-    print(f"\nAvg Auth+KeyEx per round : {avg_ak:.4f} s  {avg_ake:.6f} J")
-    print(f"Avg total    per round   : {avg_tot:.4f} s  {avg_tote:.6f} J")
+    if num_r > 0:
+        avg_ak  = sum(r['ak_s']        for r in results if r['phase'] != 'Enrollment') / num_r
+        avg_ake = sum(r['ak_energy_j'] for r in results if r['phase'] != 'Enrollment') / num_r
+        avg_tot = (total_time_s - results[0]['wall_s']) / num_r
+        avg_tote= (total_energy_j - results[0]['energy_j']) / num_r
+        print(f"\nAvg Auth+KeyEx per round : {avg_ak:.4f} s  {avg_ake:.6f} J")
+        print(f"Avg total    per round   : {avg_tot:.4f} s  {avg_tote:.6f} J")
     print("=" * 70)
+
+    # ── Save results to JSON for collection by orchestrator ───────────────
+    if num_r > 0:
+        out = {
+            'enrollment': results[0],
+            'rounds':     [r for r in results if r['phase'] != 'Enrollment'],
+            'summary': {
+                'ak_energy_sum_j':    round(sum(r['ak_energy_j']   for r in results if r['phase'] != 'Enrollment'), 6),
+                'ak_time_sum_s':      round(sum(r['ak_s']           for r in results if r['phase'] != 'Enrollment'), 6),
+                'total_energy_sum_j': round(sum(r['total_energy_j'] for r in results if r['phase'] != 'Enrollment'), 6),
+                'total_time_sum_s':   round(sum(r['total_s']        for r in results if r['phase'] != 'Enrollment'), 6),
+                'avg_ak_energy_j':    round(avg_ake, 6),
+                'avg_ak_time_s':      round(avg_ak,  6),
+            }
+        }
+        with open('proposed_hw_run.json', 'w') as f:
+            json.dump(out, f, indent=2)
+        print("[DEV] Results saved to proposed_hw_run.json")

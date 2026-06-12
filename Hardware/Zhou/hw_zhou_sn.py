@@ -17,7 +17,8 @@ Metrics:
 RPi 4B active power assumption: 3800 mW
 """
 import sys, os, threading, time, socket, atexit, signal
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+_d = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_d, '..')); sys.path.insert(0, _d)
 from common import *
 from config import (GW_IP, PORT_ZHOU_SN_REG, PORT_ZHOU_M2, NODE_SN)
 

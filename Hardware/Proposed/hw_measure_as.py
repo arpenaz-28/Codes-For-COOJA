@@ -7,7 +7,8 @@ Same logic as as_node.py but with per-request CPU time + energy logging.
 Prints a summary on exit (Ctrl+C or SIGTERM).
 """
 import sys, os, threading, time, socket, atexit, signal
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+_d = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_d, '..')); sys.path.insert(0, _d)
 from common import *
 from config import (GW_IP, PORT_GW_TOKEN, PORT_AS_ENROLL, PORT_AS_AUTH,
                     NODE_AS, NODE_GW)

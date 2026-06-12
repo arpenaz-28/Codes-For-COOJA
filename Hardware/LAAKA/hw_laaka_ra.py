@@ -13,7 +13,8 @@ LAAKA Registration (§4.2.2):
   Fwd→Fog: AES(K_RA_GW,[IDd(1)|TIDd(20)|Ad(20)|Bk(20)|pad(3)]) = 64 B
 """
 import sys, os, threading, time, socket, atexit, signal, hashlib
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+_d = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_d, '..')); sys.path.insert(0, _d)
 from common import *
 from config import AS_IP as FOG_IP
 

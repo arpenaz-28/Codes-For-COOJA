@@ -18,13 +18,15 @@ Metrics per phase:
 
 RPi 4B active power assumption: 3800 mW (single-core Python workload)
 """
-import sys, os, time, socket, hashlib
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+import json, sys, os, time, socket, hashlib
+_d = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_d, '..')); sys.path.insert(0, _d)
 from common import *
 from config import GW_IP as RA_IP, AS_IP as FOG_IP, NODE_DEV
 
 RPI_POWER_MW = 3800
 NUM_ROUNDS   = 3
+NUM_WARMUP   = 1    # warm-up rounds before measurement (discarded)
 
 HASH_LEN = 20
 RAND_LEN = 20
@@ -210,13 +212,25 @@ if __name__ == '__main__':
     print("=" * 70)
     print("[DEV] LAAKA scheme — hardware energy + latency measurement")
     print(f"[DEV] RA={RA_IP}  FOG={FOG_IP}  IDd={IDd}")
-    print(f"[DEV] Power assumption: {RPI_POWER_MW} mW  Rounds: {NUM_ROUNDS}")
+    print(f"[DEV] Power assumption: {RPI_POWER_MW} mW  Rounds: {NUM_ROUNDS}  Warmup: {NUM_WARMUP}")
     print("=" * 70)
 
     time.sleep(1.5)   # allow RA and Fog time to start
 
     do_enrollment()
     time.sleep(1.0)   # wait for RA→Fog forwarding to complete before first auth
+
+    enroll_rec = results[0]   # save before warm-up pollutes list
+
+    print(f"\n[DEV] === Warm-up ({NUM_WARMUP} round, discarded) ===")
+    for _ in range(NUM_WARMUP):
+        ok = do_round(0)
+        if not ok:
+            raise SystemExit("Warm-up failed — aborting")
+        time.sleep(0.3)
+
+    results.clear()
+    results.append(enroll_rec)   # restore enrollment
 
     for r in range(1, NUM_ROUNDS + 1):
         print(f"\n[DEV] === Round {r} ===")
@@ -252,10 +266,29 @@ if __name__ == '__main__':
     print("=" * 58)
     print(f"{'GRAND TOTAL':<24} {total_time_s:>10.4f} {'':>10} {total_energy_j:>12.6f}")
     num_r = len(results) - 1
-    avg_aa  = sum(r['aa_s']        for r in results if r['phase'] != 'Enrollment') / num_r
-    avg_aae = sum(r['aa_energy_j'] for r in results if r['phase'] != 'Enrollment') / num_r
-    avg_tot = (total_time_s - results[0]['wall_s']) / num_r
-    avg_tote= (total_energy_j - results[0]['energy_j']) / num_r
-    print(f"\nAvg Auth+Ack  per round : {avg_aa:.4f} s  {avg_aae:.6f} J")
-    print(f"Avg total     per round : {avg_tot:.4f} s  {avg_tote:.6f} J")
+    if num_r > 0:
+        avg_aa  = sum(r['aa_s']        for r in results if r['phase'] != 'Enrollment') / num_r
+        avg_aae = sum(r['aa_energy_j'] for r in results if r['phase'] != 'Enrollment') / num_r
+        avg_tot = (total_time_s - results[0]['wall_s']) / num_r
+        avg_tote= (total_energy_j - results[0]['energy_j']) / num_r
+        print(f"\nAvg Auth+Ack  per round : {avg_aa:.4f} s  {avg_aae:.6f} J")
+        print(f"Avg total     per round : {avg_tot:.4f} s  {avg_tote:.6f} J")
     print("=" * 70)
+
+    # ── Save results to JSON for collection by orchestrator ───────────────
+    if num_r > 0:
+        out = {
+            'enrollment': results[0],
+            'rounds':     [r for r in results if r['phase'] != 'Enrollment'],
+            'summary': {
+                'aa_energy_sum_j':    round(sum(r['aa_energy_j']   for r in results if r['phase'] != 'Enrollment'), 6),
+                'aa_time_sum_s':      round(sum(r['aa_s']           for r in results if r['phase'] != 'Enrollment'), 6),
+                'total_energy_sum_j': round(sum(r['total_energy_j'] for r in results if r['phase'] != 'Enrollment'), 6),
+                'total_time_sum_s':   round(sum(r['total_s']        for r in results if r['phase'] != 'Enrollment'), 6),
+                'avg_aa_energy_j':    round(avg_aae, 6),
+                'avg_aa_time_s':      round(avg_aa,  6),
+            }
+        }
+        with open('laaka_hw_run.json', 'w') as f:
+            json.dump(out, f, indent=2)
+        print("[DEV] Results saved to laaka_hw_run.json")

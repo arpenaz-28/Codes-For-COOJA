@@ -1,0 +1,57 @@
+{
+  "enrollment": {
+    "phase": "Enrollment",
+    "wall_s": 0.1343,
+    "cpu_s": 0.0023,
+    "energy_j": 0.51018
+  },
+  "rounds": [
+    {
+      "phase": "Round1",
+      "ak_s": 0.0706,
+      "ak_energy_j": 0.268238,
+      "auth_s": 0.0595,
+      "auth_energy_j": 0.226072,
+      "ke_s": 0.0111,
+      "ke_energy_j": 0.042096,
+      "data_s": 0.0125,
+      "data_energy_j": 0.047472,
+      "total_s": 0.0831,
+      "total_energy_j": 0.31571
+    },
+    {
+      "phase": "Round2",
+      "ak_s": 0.0639,
+      "ak_energy_j": 0.242709,
+      "auth_s": 0.0474,
+      "auth_energy_j": 0.179952,
+      "ke_s": 0.0165,
+      "ke_energy_j": 0.0627,
+      "data_s": 0.0127,
+      "data_energy_j": 0.048235,
+      "total_s": 0.0766,
+      "total_energy_j": 0.290944
+    },
+    {
+      "phase": "Round3",
+      "ak_s": 0.055,
+      "ak_energy_j": 0.209053,
+      "auth_s": 0.0445,
+      "auth_energy_j": 0.168998,
+      "ke_s": 0.0105,
+      "ke_energy_j": 0.039981,
+      "data_s": 0.0096,
+      "data_energy_j": 0.036499,
+      "total_s": 0.0646,
+      "total_energy_j": 0.245552
+    }
+  ],
+  "summary": {
+    "ak_energy_sum_j": 0.72,
+    "ak_time_sum_s": 0.1895,
+    "total_energy_sum_j": 0.852206,
+    "total_time_sum_s": 0.2243,
+    "avg_ak_energy_j": 0.24,
+    "avg_ak_time_s": 0.063167
+  }
+}

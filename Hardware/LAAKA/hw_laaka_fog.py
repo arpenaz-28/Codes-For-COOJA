@@ -19,7 +19,8 @@ LAAKA Auth Steps 2-5 (handled here):
 RPi 4B active power assumption: 3800 mW
 """
 import sys, os, threading, time, socket, atexit, signal, hashlib
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+_d = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_d, '..')); sys.path.insert(0, _d)
 from common import *
 
 RPI_POWER_MW = 3800
