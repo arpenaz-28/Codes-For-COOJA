@@ -508,7 +508,7 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
 def total_energy_grouped_bar(out_path, paper_path=None, show=False):
     _grouped_bar(
         "avg_energy",
-        "Total Energy (mJ)",
+        "Avg. Energy (mJ)",
         "Total Energy Consumption vs Network Size",
         out_path, paper_path, show,
     )
@@ -517,7 +517,7 @@ def total_energy_grouped_bar(out_path, paper_path=None, show=False):
 def total_cpu_grouped_bar(out_path, paper_path=None, show=False):
     _grouped_bar(
         "avg_cpu",
-        "Total CPU Time (s)",
+        "Avg. CPU Time (s)",
         "Total CPU Time vs Network Size",
         out_path, paper_path, show,
     )

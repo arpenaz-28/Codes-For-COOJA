@@ -172,14 +172,9 @@ def main():
     with plt.rc_context(_STYLE):
         fig, (ax_e, ax_c) = plt.subplots(1, 2, figsize=(14, 7))
         fig.patch.set_facecolor("white")
-        fig.suptitle("Desynchronization Recovery Cost", fontsize=30,
-                     fontweight="bold", color="#222222")
 
-        draw_panel(ax_e, e_stats, "Mean Energy (mJ)")
-        draw_panel(ax_c, c_stats, "Mean CPU Time (s)")
-
-        ax_e.set_title("Energy", fontsize=23, fontweight="bold", pad=12)
-        ax_c.set_title("CPU Time", fontsize=23, fontweight="bold", pad=12)
+        draw_panel(ax_e, e_stats, "Avg. Energy (mJ)")
+        draw_panel(ax_c, c_stats, "Avg. CPU Time (s)")
 
         # Horizontal legend at bottom — bar types, not schemes
         legend_patches = [
@@ -192,7 +187,7 @@ def main():
                    ncol=2, fontsize=19, framealpha=0.9,
                    edgecolor="#dddddd", handlelength=2.2, handleheight=1.6)
 
-        fig.tight_layout(rect=[0, 0.09, 1, 0.92])
+        fig.tight_layout(rect=[0, 0.09, 1, 1.0])
         fig.savefig(OUT_FILE, dpi=180, bbox_inches="tight", facecolor="white")
         plt.close(fig)
 
