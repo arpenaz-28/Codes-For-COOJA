@@ -52,7 +52,7 @@ dual-state synchronisation mechanism maintained at both the authentication
 server and the gateway/root enables seamless recovery from single packet-loss
 events without re-enrolment.  The proposed scheme is evaluated via ProVerif-based
 formal security analysis, and theoretical and simulation-based performance analysis confirm that the proposed scheme reduces energy by
-42.8\,\% and 34.6\,\%, and CPU time by 42.7\,\% and 35.3\,\%, over the state-of-the-art
+42.8\,\% and 32.4\,\%, and CPU time by 42.7\,\% and 32.4\,\%, over the state-of-the-art
 LAAKA and Zhou schemes, respectively, while maintaining the lowest overhead among all
 compared schemes.
 \end{abstract}
@@ -935,20 +935,24 @@ complete authentication cycle (enrolment, authentication, and key exchange) per 
 For 20 newly joined nodes in a fixed 100-node network (1 gateway, 79 AS nodes with 2 active,
 and 20 newly joined devices), the proposed scheme demonstrated a
 consistent advantage over LAAKA~\cite{ali2024laaka} and Zhou~\cite{zhou2024auth} by
-achieving a reduction of 42.8\,\% and 34.6\,\% with respect to total per-device energy
+achieving a reduction of 42.8\,\% and 32.4\,\% with respect to total per-device energy
 consumption (Figure~\ref{fig:sim_total}a), respectively. Similarly, a reduction of
-42.7\,\% and 35.3\,\% is demonstrated with respect to total per-device CPU time
+42.7\,\% and 32.4\,\% is demonstrated with respect to total per-device CPU time
 (Figure~\ref{fig:sim_total}b) over LAAKA and Zhou, respectively. The dominant savings
 arise in the authentication and key exchange phase, where the proposed scheme consumes
-28.87\,mJ against 77.97\,mJ for LAAKA and 57.06\,mJ for Zhou. Due to the incorporation
+29.04\,mJ against 78.42\,mJ for LAAKA and 53.94\,mJ for Zhou. Due to the incorporation
 of fewer message exchanges and computationally lightweight hash-XOR operations, the
 proposed scheme has minimised radio activity and computational load compared to the
-message-intensive and cryptographically heavier LAAKA and Zhou schemes.
+message-intensive and cryptographically heavier LAAKA and Zhou schemes. For Zhou, the
+reported totals comprise the enrolment and authentication phases only, as that scheme
+folds session-key agreement into its authentication exchange instead of executing a
+separate key-exchange round; the remaining three schemes include all three phases.
 
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{fig_sim_total}
-  \caption{Per-device mean total cost, all phases:
+  \caption{Per-device mean total cost, all phases (for Zhou, enrolment and
+           authentication only, as it has no separate key-exchange phase):
            (a)~energy and (b)~CPU time.}
   \label{fig:sim_total}
 \end{figure}
@@ -965,7 +969,7 @@ from AS\,=\,2 to AS\,=\,10, with the proposed scheme dropping from 1065\,mJ to
 936\,mJ and LAAKA from 1827\,mJ to 1631\,mJ, suggesting that a pool of 10 AS nodes is near-optimal
 for a 20-device network. Similarly, as shown in Figure~\ref{fig:sim_as}(b), a reduction
 of approximately 42\,\% in total CPU time is demonstrated over LAAKA across all AS
-counts. Zhou's total cost remains flat at approximately 1503\,mJ in energy and 24.4\,s in
+counts. Zhou's total cost remains flat at approximately 1545\,mJ in energy and 25.0\,s in
 CPU time regardless of AS pool size, confirming that its gateway-coupled design is
 insensitive to AS selection diversity. These consistent reductions demonstrate the energy
 and computational efficiency of the decoupled AS design in the proposed scheme.
@@ -984,12 +988,13 @@ and computational efficiency of the decoupled AS design in the proposed scheme.
 \subsubsection{Performance Analysis for Network Scalability}
 
 The performance of authentication schemes is also analysed by considering their
-scalability with respect to total network size $N$, varied from 50 to 100 nodes.
+scalability with respect to total network size $N$, varied from 30 to 120 nodes,
+where 20\,\% of the nodes in each network are newly joined devices.
 Considering the total energy consumption (Figure~\ref{fig:sim_network}a), a reduction of
-42.2\,\% and 50.6\,\% is demonstrated by the proposed scheme at $N = 100$ over LAAKA
-(898\,mJ) and Zhou (1051\,mJ), respectively. Similarly, as shown in
-Figure~\ref{fig:sim_network}(b), a reduction of 42.5\,\% and 50.6\,\% is demonstrated
-with respect to total CPU time over LAAKA (14.6\,s) and Zhou (17.0\,s), respectively.
+40.2\,\% and 58.5\,\% is demonstrated by the proposed scheme at $N = 100$ over LAAKA
+(1818\,mJ) and Zhou (2617\,mJ), respectively. Similarly, as shown in
+Figure~\ref{fig:sim_network}(b), a reduction of 40.2\,\% and 58.4\,\% is demonstrated
+with respect to total CPU time over LAAKA (29.5\,s) and Zhou (42.4\,s), respectively.
 LAAKA and Zhou exhibit steeper energy and CPU growth with increasing $N$ because their
 heavier per-device cryptographic load — AES-intensive authentication in LAAKA and a
 combined heavy authentication and key exchange in Zhou — accumulates faster as the device count grows.
@@ -1148,8 +1153,8 @@ Formal verification in ProVerif confirms authentication correspondence,
 session key secrecy, resistance to offline guessing attacks, and
 observational-equivalence-based anonymity.  COOJA/Contiki-NG simulations confirm practical
 suitability. The proposed scheme achieves a per-device three-phase energy of
-52.21\,mJ, reducing total energy by 42.8\,\% over LAAKA~\cite{ali2024laaka}
-and 34.6\,\% over Zhou~\cite{zhou2024auth}, with consistent gains across
+52.19\,mJ, reducing total energy by 42.8\,\% over LAAKA~\cite{ali2024laaka}
+and 32.4\,\% over Zhou~\cite{zhou2024auth}, with consistent gains across
 varying network sizes (up to $N=100$ nodes) and AS pool sizes.
 
 % -------------------------------------------------------

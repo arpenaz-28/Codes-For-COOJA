@@ -12,7 +12,7 @@
 
 1. **Pseudonym rotation (anonymity):** Real device identity `ID_D` is never sent on the open channel. Instead, a rotating pseudonym `PID = H(ID_D || m_curr)` is used, refreshed after each successful key exchange (Phase 3). GW never learns `ID_D`.
 2. **Dual-state desynchronization recovery:** Both AS and GW store `(m_curr, m_old, PID_curr, PID_old)`. If D misses a Phase 3 update packet, it still arrives with `PID_old`; AS recognizes it via the dual-state lookup and re-synchronizes — no re-enrollment needed.
-3. **Performance claim:** 26.8% reduction in authentication-and-key-exchange byte overhead vs the base scheme (measured on Raspberry Pi 4B hardware; energy = wall_time × 3800 mW everywhere).
+3. **Performance claim (current paper):** COOJA per-device total energy reduced **42.8% vs LAAKA and 32.4% vs Zhou** (CPU time 42.7% / 32.4%); the proposed scheme is the lowest-overhead among Proposed/DAuth/LAAKA/Zhou. (Earlier drafts also cited a 26.8% authentication-and-key-exchange byte-overhead reduction vs the base scheme on RPi 4B hardware; that phrasing is no longer in the paper text. Hardware energy = wall_time × 3800 mW everywhere.)
 
 ## What was NOT changed from the base scheme
 

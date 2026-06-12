@@ -97,5 +97,26 @@
 |--------|-------------------------------|--------|
 | Fig 5 — 10-seed per-device | DAuth < Proposed < Zhou < LAAKA | OK |
 | Fig 6 — AS variation | DAuth < Proposed < Zhou < LAAKA | OK |
-| Fig 7 — Network variation N=100 | Mixed-basis — **invalid until C3 fixed** | BROKEN |
+| Fig 7 — Network variation N=100 | DAuth < Proposed < LAAKA < Zhou (all 20 devices) | FIXED |
 | Fig 9 — Hardware | DAuth < Proposed < Zhou < LAAKA | OK |
+
+---
+
+## RESOLUTION LOG — 2026-06-12
+
+| ID | Status | What was done |
+|----|--------|---------------|
+| C1 | ✅ FIXED | Zhou reductions corrected to **32.4 %** (energy) and **32.4 %** (CPU) in abstract (l.55), results (l.938–940), conclusion (l.1152). LAAKA values (42.8 % / 42.7 %) verified correct, kept. |
+| C2 | ✅ FIXED | Auth+KeyEx line updated to **29.04 / 78.42 / 53.94 mJ** (Proposed / LAAKA / Zhou) from current `seed_results.csv`. |
+| C3 | ✅ FIXED | Bar charts already used complete data via `_RAW_CSV_DIRS`; also repointed `RESULTS["Zhou"]` → `Zhou-Scheme/Simulation results/network-variation`. Zhou now 20 devices at N=100 in `network_variation_summary.csv` and Fig 7. |
+| C4 | ✅ FIXED | Disclosure added to results text and `fig_sim_total` caption: Zhou totals are enrolment+auth only (no separate key-exchange phase). |
+| C5 | ✅ FIXED | Network-variation paragraph rewritten with complete-data N=100 values: −40.2 % vs LAAKA (1818 mJ) and −58.5 % vs Zhou (2617 mJ) energy; −40.2 % / −58.4 % CPU vs LAAKA (29.5 s) / Zhou (42.4 s). |
+| S1 | ✅ FIXED | "varied from 50 to 100" → "varied from 30 to 120 nodes, where 20 % of nodes are newly joined". |
+| S2 | ✅ FIXED | `plot_desync_bar.py`: `"Base"` → `"DAuth"`, color `#B85C2C` → `#7E5BA6`; `fig_desync_bar.png` regenerated and copied to `Paper/`. |
+| S3 | ✅ FIXED | Documented outlier guard in `plot_10seed_comparison.py` excludes enrolment-stall artifacts (>100 mJ); drops the single DAuth seed 678901 / device 97 row (237.8 mJ, 3.85 s — a transient RPL-convergence stall). `fig_sim_total` regenerated. |
+| S5 | ✅ FIXED | Zhou AS-variation value corrected to **~1545 mJ / 25.0 s** (was 1503 mJ / 24.4 s). |
+| S6 | ✅ FIXED | DAuth bar present at N=30 in Fig 7 (3 devices, matching the established N=30 topology used by all schemes). (Derived `network_variation_summary.csv` still omits the N=30 line-chart row — cosmetic only; bar chart is correct.) |
+| M1 | ✅ FIXED | `CLAUDE.md` performance-claim line updated to current COOJA reductions; noted 26.8 % byte-overhead phrasing is no longer in the paper. |
+| M2 | ✅ FIXED | `plot_10seed_comparison.py` docstring now lists {Proposed, DAuth, LAAKA, Zhou}. |
+| M3 | ✅ VERIFIED (correct) | Proposed and DAuth N=100 enrolment are identical by design: enrolment traffic is byte-identical (no PID in enrolment) and both use the same COOJA seeds, so the energest deltas coincide. Not a bug. |
+| S4 | ⚠️ OPEN (needs decision) | Fig 5 Proposed = 52.19 mJ/device vs Fig 7 N=100 = 54.34 mJ/device (4.1 %). Same scheme/N/AS-count(2)/seeds — difference is the independent node-placement layout between the two `.csc` files (different hop counts → different radio energy). Options: add a one-line note, or regenerate one experiment with the other's layout to unify. Awaiting decision. |

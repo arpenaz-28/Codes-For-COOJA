@@ -48,8 +48,8 @@ RESULTS = {
                              "DAuth-Sweep", "network-variation"),
     "LAAKA":    os.path.join(REPO, "LAAKA",
                              "Simulation results", "network-variation"),
-    "Zhou":     os.path.join(REPO, "Results", "COOJA-Simulation",
-                             "Zhou-Simulation", "network-variation"),
+    "Zhou":     os.path.join(REPO, "Zhou-Scheme", "Simulation results",
+                             "network-variation"),
 }
 
 # Raw per-device CSV directories: direct source of truth for the bar charts.

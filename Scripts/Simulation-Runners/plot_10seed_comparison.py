@@ -10,7 +10,7 @@ Chart 2 — Per-device MEAN cost           (mean over 20 devices per seed, then
 
 Each chart has two side-by-side panels: Energy (mJ) and CPU Time (s).
 
-Reads:  Results/COOJA-Simulation/10-Seed-Comparison/{Proposed,LAAKA,Zhou}/seed_results.csv
+Reads:  Results/COOJA-Simulation/10-Seed-Comparison/{Proposed,DAuth,LAAKA,Zhou}/seed_results.csv
 Writes: Results/COOJA-Simulation/10-Seed-Comparison/Charts/
   cooja_01_total_energy_cpu.png
   cooja_02_perdev_energy_cpu.png
@@ -66,13 +66,27 @@ def load_seed_results(scheme):
         print(f"  WARNING: {path} not found — skipping {scheme}")
         return []
 
+    # Transient RPL-convergence stalls occasionally inflate a single device's
+    # enrollment delta (the energest window catches seconds of LISTEN/LPM wait
+    # rather than crypto). Such a sample is a simulator artifact, not protocol
+    # cost, so device-rows with enrollment energy above ENROLL_ARTIFACT_MJ are
+    # excluded. Normal enrollment is 14-43 mJ; the guard only drops gross
+    # outliers (e.g. DAuth seed 678901 device 97 at 237.8 mJ).
+    ENROLL_ARTIFACT_MJ = 100.0
     seed_data = {}   # seed → list of (total_energy_mJ, total_cpu_s) per device
+    dropped = 0
     with open(path, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
+            if float(row.get("Enroll_Energy_mJ", 0)) > ENROLL_ARTIFACT_MJ:
+                dropped += 1
+                continue
             seed = int(row["Seed"])
             seed_data.setdefault(seed, []).append(
                 (float(row["Total_Energy_mJ"]), float(row["Total_CPU_s"]))
             )
+    if dropped:
+        print(f"  {scheme}: excluded {dropped} enrollment-stall artifact row(s) "
+              f"(>{ENROLL_ARTIFACT_MJ:.0f} mJ)")
 
     results = []
     for seed in sorted(seed_data):

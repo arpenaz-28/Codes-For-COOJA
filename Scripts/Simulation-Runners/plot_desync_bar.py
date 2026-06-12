@@ -24,7 +24,7 @@ import numpy as np
 REPO = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 
 DATA = {
-    "Base":     os.path.join(REPO, "Base-Scheme",       "Simulation-Results", "Desync-100", "csv", "summary.csv"),
+    "DAuth":    os.path.join(REPO, "Base-Scheme",       "Simulation-Results", "Desync-100", "csv", "summary.csv"),
     "Proposed": os.path.join(REPO, "Revised-Anonymity", "Simulation-Results", "Desync-100", "csv", "summary.csv"),
 }
 
@@ -33,7 +33,7 @@ OUT_FILE = os.path.join(OUT_DIR, "desync_bar.png")
 
 # ── Style (matches existing comparison charts) ────────────────────────────────
 SCHEME_COLORS = {
-    "Base":     "#B85C2C",   # muted terracotta — same as LAAKA
+    "DAuth":    "#7E5BA6",   # muted purple (consistent with all other figures)
     "Proposed": "#2C6FAC",   # deep steel blue
 }
 BAR_HATCHES = {
@@ -56,7 +56,7 @@ _STYLE = {
     "grid.linewidth":    0.6,
 }
 
-SCHEMES   = ["Base", "Proposed"]
+SCHEMES   = ["DAuth", "Proposed"]
 BAR_TYPES = ["Before Packet Loss", "Recovery"]
 
 # Bar 1: Round 1 — normal auth+keyex (before any desync)
@@ -128,7 +128,7 @@ def draw_panel(ax, stats, ylabel):
     # x-ticks centred on each scheme group
     x_ticks  = [s * group_w for s in range(n_schemes)]
     ax.set_xticks(x_ticks)
-    ax.set_xticklabels(["Base (Das)", "Proposed"], fontsize=20, ha="center")
+    ax.set_xticklabels(["DAuth", "Proposed"], fontsize=20, ha="center")
     ax.set_ylabel(ylabel, labelpad=20, fontsize=22, fontweight="bold")
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
