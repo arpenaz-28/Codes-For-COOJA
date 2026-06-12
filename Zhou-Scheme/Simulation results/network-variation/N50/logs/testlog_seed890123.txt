@@ -1,14 +1,14 @@
 Random seed: 890123
-15000 36 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-15000 36 [INFO: Main      ] - Routing: RPL Lite
-15000 36 [INFO: Main      ] - Net: sicslowpan
-15000 36 [INFO: Main      ] - MAC: CSMA
-15000 36 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-15000 36 [INFO: Main      ] - 802.15.4 Default channel: 26
-15000 36 [INFO: Main      ] Node ID: 36
-15000 36 [INFO: Main      ] Link-layer address: 0024.0024.0024.0024
-15000 36 [INFO: Main      ] Tentative link-local IPv6 address: fe80::224:24:24:24
-49000 46 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+15000 9 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+15000 9 [INFO: Main      ] - Routing: RPL Lite
+15000 9 [INFO: Main      ] - Net: sicslowpan
+15000 9 [INFO: Main      ] - MAC: CSMA
+15000 9 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+15000 9 [INFO: Main      ] - 802.15.4 Default channel: 26
+15000 9 [INFO: Main      ] Node ID: 9
+15000 9 [INFO: Main      ] Link-layer address: 0009.0009.0009.0009
+15000 9 [INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
+49000 46 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 49000 46 [INFO: Main      ] - Routing: RPL Lite
 49000 46 [INFO: Main      ] - Net: sicslowpan
 49000 46 [INFO: Main      ] - MAC: CSMA
@@ -17,7 +17,7 @@ Random seed: 890123
 49000 46 [INFO: Main      ] Node ID: 46
 49000 46 [INFO: Main      ] Link-layer address: 002e.002e.002e.002e
 49000 46 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22e:2e:2e:2e
-51000 43 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+51000 43 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 51000 43 [INFO: Main      ] - Routing: RPL Lite
 51000 43 [INFO: Main      ] - Net: sicslowpan
 51000 43 [INFO: Main      ] - MAC: CSMA
@@ -26,25 +26,27 @@ Random seed: 890123
 51000 43 [INFO: Main      ] Node ID: 43
 51000 43 [INFO: Main      ] Link-layer address: 002b.002b.002b.002b
 51000 43 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22b:2b:2b:2b
-74000 22 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-74000 22 [INFO: Main      ] - Routing: RPL Lite
-74000 22 [INFO: Main      ] - Net: sicslowpan
-74000 22 [INFO: Main      ] - MAC: CSMA
-74000 22 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-74000 22 [INFO: Main      ] - 802.15.4 Default channel: 26
-74000 22 [INFO: Main      ] Node ID: 22
-74000 22 [INFO: Main      ] Link-layer address: 0016.0016.0016.0016
-74000 22 [INFO: Main      ] Tentative link-local IPv6 address: fe80::216:16:16:16
-113000 21 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-113000 21 [INFO: Main      ] - Routing: RPL Lite
-113000 21 [INFO: Main      ] - Net: sicslowpan
-113000 21 [INFO: Main      ] - MAC: CSMA
-113000 21 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-113000 21 [INFO: Main      ] - 802.15.4 Default channel: 26
-113000 21 [INFO: Main      ] Node ID: 21
-113000 21 [INFO: Main      ] Link-layer address: 0015.0015.0015.0015
-113000 21 [INFO: Main      ] Tentative link-local IPv6 address: fe80::215:15:15:15
-133000 49 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+74000 32 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+74000 32 [INFO: Main      ] - Routing: RPL Lite
+74000 32 [INFO: Main      ] - Net: sicslowpan
+74000 32 [INFO: Main      ] - MAC: CSMA
+74000 32 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+74000 32 [INFO: Main      ] - 802.15.4 Default channel: 26
+74000 32 [INFO: Main      ] Node ID: 32
+74000 32 [INFO: Main      ] Link-layer address: 0020.0020.0020.0020
+74000 32 [INFO: Main      ] Tentative link-local IPv6 address: fe80::220:20:20:20
+74000 32 GW-S 32: Started.
+113000 31 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+113000 31 [INFO: Main      ] - Routing: RPL Lite
+113000 31 [INFO: Main      ] - Net: sicslowpan
+113000 31 [INFO: Main      ] - MAC: CSMA
+113000 31 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+113000 31 [INFO: Main      ] - 802.15.4 Default channel: 26
+113000 31 [INFO: Main      ] Node ID: 31
+113000 31 [INFO: Main      ] Link-layer address: 001f.001f.001f.001f
+113000 31 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21f:1f:1f:1f
+113000 31 GW-S 31: Started.
+133000 49 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 133000 49 [INFO: Main      ] - Routing: RPL Lite
 133000 49 [INFO: Main      ] - Net: sicslowpan
 133000 49 [INFO: Main      ] - MAC: CSMA
@@ -53,61 +55,66 @@ Random seed: 890123
 133000 49 [INFO: Main      ] Node ID: 49
 133000 49 [INFO: Main      ] Link-layer address: 0031.0031.0031.0031
 133000 49 [INFO: Main      ] Tentative link-local IPv6 address: fe80::231:31:31:31
-135000 6 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-135000 6 [INFO: Main      ] - Routing: RPL Lite
-135000 6 [INFO: Main      ] - Net: sicslowpan
-135000 6 [INFO: Main      ] - MAC: CSMA
-135000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-135000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
-135000 6 [INFO: Main      ] Node ID: 6
-135000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
-135000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
-145000 25 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-145000 25 [INFO: Main      ] - Routing: RPL Lite
-145000 25 [INFO: Main      ] - Net: sicslowpan
-145000 25 [INFO: Main      ] - MAC: CSMA
-145000 25 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-145000 25 [INFO: Main      ] - 802.15.4 Default channel: 26
-145000 25 [INFO: Main      ] Node ID: 25
-145000 25 [INFO: Main      ] Link-layer address: 0019.0019.0019.0019
-145000 25 [INFO: Main      ] Tentative link-local IPv6 address: fe80::219:19:19:19
-171000 30 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-171000 30 [INFO: Main      ] - Routing: RPL Lite
-171000 30 [INFO: Main      ] - Net: sicslowpan
-171000 30 [INFO: Main      ] - MAC: CSMA
-171000 30 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-171000 30 [INFO: Main      ] - 802.15.4 Default channel: 26
-171000 30 [INFO: Main      ] Node ID: 30
-171000 30 [INFO: Main      ] Link-layer address: 001e.001e.001e.001e
-171000 30 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21e:1e:1e:1e
-197000 33 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-197000 33 [INFO: Main      ] - Routing: RPL Lite
-197000 33 [INFO: Main      ] - Net: sicslowpan
-197000 33 [INFO: Main      ] - MAC: CSMA
-197000 33 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-197000 33 [INFO: Main      ] - 802.15.4 Default channel: 26
-197000 33 [INFO: Main      ] Node ID: 33
-197000 33 [INFO: Main      ] Link-layer address: 0021.0021.0021.0021
-197000 33 [INFO: Main      ] Tentative link-local IPv6 address: fe80::221:21:21:21
-201000 9 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-201000 9 [INFO: Main      ] - Routing: RPL Lite
-201000 9 [INFO: Main      ] - Net: sicslowpan
-201000 9 [INFO: Main      ] - MAC: CSMA
-201000 9 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-201000 9 [INFO: Main      ] - 802.15.4 Default channel: 26
-201000 9 [INFO: Main      ] Node ID: 9
-201000 9 [INFO: Main      ] Link-layer address: 0009.0009.0009.0009
-201000 9 [INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
-221000 20 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-221000 20 [INFO: Main      ] - Routing: RPL Lite
-221000 20 [INFO: Main      ] - Net: sicslowpan
-221000 20 [INFO: Main      ] - MAC: CSMA
-221000 20 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-221000 20 [INFO: Main      ] - 802.15.4 Default channel: 26
-221000 20 [INFO: Main      ] Node ID: 20
-221000 20 [INFO: Main      ] Link-layer address: 0014.0014.0014.0014
-221000 20 [INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
-232000 44 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+135000 16 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+135000 16 [INFO: Main      ] - Routing: RPL Lite
+135000 16 [INFO: Main      ] - Net: sicslowpan
+135000 16 [INFO: Main      ] - MAC: CSMA
+135000 16 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+135000 16 [INFO: Main      ] - 802.15.4 Default channel: 26
+135000 16 [INFO: Main      ] Node ID: 16
+135000 16 [INFO: Main      ] Link-layer address: 0010.0010.0010.0010
+135000 16 [INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
+135000 16 GW-S 16: Started.
+145000 35 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+145000 35 [INFO: Main      ] - Routing: RPL Lite
+145000 35 [INFO: Main      ] - Net: sicslowpan
+145000 35 [INFO: Main      ] - MAC: CSMA
+145000 35 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+145000 35 [INFO: Main      ] - 802.15.4 Default channel: 26
+145000 35 [INFO: Main      ] Node ID: 35
+145000 35 [INFO: Main      ] Link-layer address: 0023.0023.0023.0023
+145000 35 [INFO: Main      ] Tentative link-local IPv6 address: fe80::223:23:23:23
+145000 35 GW-S 35: Started.
+171000 40 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+171000 40 [INFO: Main      ] - Routing: RPL Lite
+171000 40 [INFO: Main      ] - Net: sicslowpan
+171000 40 [INFO: Main      ] - MAC: CSMA
+171000 40 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+171000 40 [INFO: Main      ] - 802.15.4 Default channel: 26
+171000 40 [INFO: Main      ] Node ID: 40
+171000 40 [INFO: Main      ] Link-layer address: 0028.0028.0028.0028
+171000 40 [INFO: Main      ] Tentative link-local IPv6 address: fe80::228:28:28:28
+171000 40 GW-S 40: Started.
+197000 6 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+197000 6 [INFO: Main      ] - Routing: RPL Lite
+197000 6 [INFO: Main      ] - Net: sicslowpan
+197000 6 [INFO: Main      ] - MAC: CSMA
+197000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+197000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
+197000 6 [INFO: Main      ] Node ID: 6
+197000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+197000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+201000 19 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+201000 19 [INFO: Main      ] - Routing: RPL Lite
+201000 19 [INFO: Main      ] - Net: sicslowpan
+201000 19 [INFO: Main      ] - MAC: CSMA
+201000 19 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+201000 19 [INFO: Main      ] - 802.15.4 Default channel: 26
+201000 19 [INFO: Main      ] Node ID: 19
+201000 19 [INFO: Main      ] Link-layer address: 0013.0013.0013.0013
+201000 19 [INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
+201000 19 GW-S 19: Started.
+221000 30 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+221000 30 [INFO: Main      ] - Routing: RPL Lite
+221000 30 [INFO: Main      ] - Net: sicslowpan
+221000 30 [INFO: Main      ] - MAC: CSMA
+221000 30 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+221000 30 [INFO: Main      ] - 802.15.4 Default channel: 26
+221000 30 [INFO: Main      ] Node ID: 30
+221000 30 [INFO: Main      ] Link-layer address: 001e.001e.001e.001e
+221000 30 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21e:1e:1e:1e
+221000 30 GW-S 30: Started.
+232000 44 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 232000 44 [INFO: Main      ] - Routing: RPL Lite
 232000 44 [INFO: Main      ] - Net: sicslowpan
 232000 44 [INFO: Main      ] - MAC: CSMA
@@ -116,16 +123,17 @@ Random seed: 890123
 232000 44 [INFO: Main      ] Node ID: 44
 232000 44 [INFO: Main      ] Link-layer address: 002c.002c.002c.002c
 232000 44 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22c:2c:2c:2c
-263000 24 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-263000 24 [INFO: Main      ] - Routing: RPL Lite
-263000 24 [INFO: Main      ] - Net: sicslowpan
-263000 24 [INFO: Main      ] - MAC: CSMA
-263000 24 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-263000 24 [INFO: Main      ] - 802.15.4 Default channel: 26
-263000 24 [INFO: Main      ] Node ID: 24
-263000 24 [INFO: Main      ] Link-layer address: 0018.0018.0018.0018
-263000 24 [INFO: Main      ] Tentative link-local IPv6 address: fe80::218:18:18:18
-301000 48 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+263000 34 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+263000 34 [INFO: Main      ] - Routing: RPL Lite
+263000 34 [INFO: Main      ] - Net: sicslowpan
+263000 34 [INFO: Main      ] - MAC: CSMA
+263000 34 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+263000 34 [INFO: Main      ] - 802.15.4 Default channel: 26
+263000 34 [INFO: Main      ] Node ID: 34
+263000 34 [INFO: Main      ] Link-layer address: 0022.0022.0022.0022
+263000 34 [INFO: Main      ] Tentative link-local IPv6 address: fe80::222:22:22:22
+263000 34 GW-S 34: Started.
+301000 48 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 301000 48 [INFO: Main      ] - Routing: RPL Lite
 301000 48 [INFO: Main      ] - Net: sicslowpan
 301000 48 [INFO: Main      ] - MAC: CSMA
@@ -134,34 +142,37 @@ Random seed: 890123
 301000 48 [INFO: Main      ] Node ID: 48
 301000 48 [INFO: Main      ] Link-layer address: 0030.0030.0030.0030
 301000 48 [INFO: Main      ] Tentative link-local IPv6 address: fe80::230:30:30:30
-302000 17 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-302000 17 [INFO: Main      ] - Routing: RPL Lite
-302000 17 [INFO: Main      ] - Net: sicslowpan
-302000 17 [INFO: Main      ] - MAC: CSMA
-302000 17 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-302000 17 [INFO: Main      ] - 802.15.4 Default channel: 26
-302000 17 [INFO: Main      ] Node ID: 17
-302000 17 [INFO: Main      ] Link-layer address: 0011.0011.0011.0011
-302000 17 [INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
-307000 19 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-307000 19 [INFO: Main      ] - Routing: RPL Lite
-307000 19 [INFO: Main      ] - Net: sicslowpan
-307000 19 [INFO: Main      ] - MAC: CSMA
-307000 19 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-307000 19 [INFO: Main      ] - 802.15.4 Default channel: 26
-307000 19 [INFO: Main      ] Node ID: 19
-307000 19 [INFO: Main      ] Link-layer address: 0013.0013.0013.0013
-307000 19 [INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
-315000 28 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-315000 28 [INFO: Main      ] - Routing: RPL Lite
-315000 28 [INFO: Main      ] - Net: sicslowpan
-315000 28 [INFO: Main      ] - MAC: CSMA
-315000 28 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-315000 28 [INFO: Main      ] - 802.15.4 Default channel: 26
-315000 28 [INFO: Main      ] Node ID: 28
-315000 28 [INFO: Main      ] Link-layer address: 001c.001c.001c.001c
-315000 28 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21c:1c:1c:1c
-324000 1 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+302000 27 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+302000 27 [INFO: Main      ] - Routing: RPL Lite
+302000 27 [INFO: Main      ] - Net: sicslowpan
+302000 27 [INFO: Main      ] - MAC: CSMA
+302000 27 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+302000 27 [INFO: Main      ] - 802.15.4 Default channel: 26
+302000 27 [INFO: Main      ] Node ID: 27
+302000 27 [INFO: Main      ] Link-layer address: 001b.001b.001b.001b
+302000 27 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21b:1b:1b:1b
+302000 27 GW-S 27: Started.
+307000 29 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+307000 29 [INFO: Main      ] - Routing: RPL Lite
+307000 29 [INFO: Main      ] - Net: sicslowpan
+307000 29 [INFO: Main      ] - MAC: CSMA
+307000 29 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+307000 29 [INFO: Main      ] - 802.15.4 Default channel: 26
+307000 29 [INFO: Main      ] Node ID: 29
+307000 29 [INFO: Main      ] Link-layer address: 001d.001d.001d.001d
+307000 29 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21d:1d:1d:1d
+307000 29 GW-S 29: Started.
+315000 38 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+315000 38 [INFO: Main      ] - Routing: RPL Lite
+315000 38 [INFO: Main      ] - Net: sicslowpan
+315000 38 [INFO: Main      ] - MAC: CSMA
+315000 38 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+315000 38 [INFO: Main      ] - 802.15.4 Default channel: 26
+315000 38 [INFO: Main      ] Node ID: 38
+315000 38 [INFO: Main      ] Link-layer address: 0026.0026.0026.0026
+315000 38 [INFO: Main      ] Tentative link-local IPv6 address: fe80::226:26:26:26
+315000 38 GW-S 38: Started.
+324000 1 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 324000 1 [INFO: Main      ] - Routing: RPL Lite
 324000 1 [INFO: Main      ] - Net: sicslowpan
 324000 1 [INFO: Main      ] - MAC: CSMA
@@ -171,16 +182,17 @@ Random seed: 890123
 324000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
 324000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
 324000 1 GW 1: Started (RPL root + CoAP server).
-335000 23 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-335000 23 [INFO: Main      ] - Routing: RPL Lite
-335000 23 [INFO: Main      ] - Net: sicslowpan
-335000 23 [INFO: Main      ] - MAC: CSMA
-335000 23 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-335000 23 [INFO: Main      ] - 802.15.4 Default channel: 26
-335000 23 [INFO: Main      ] Node ID: 23
-335000 23 [INFO: Main      ] Link-layer address: 0017.0017.0017.0017
-335000 23 [INFO: Main      ] Tentative link-local IPv6 address: fe80::217:17:17:17
-356000 42 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+335000 33 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+335000 33 [INFO: Main      ] - Routing: RPL Lite
+335000 33 [INFO: Main      ] - Net: sicslowpan
+335000 33 [INFO: Main      ] - MAC: CSMA
+335000 33 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+335000 33 [INFO: Main      ] - 802.15.4 Default channel: 26
+335000 33 [INFO: Main      ] Node ID: 33
+335000 33 [INFO: Main      ] Link-layer address: 0021.0021.0021.0021
+335000 33 [INFO: Main      ] Tentative link-local IPv6 address: fe80::221:21:21:21
+335000 33 GW-S 33: Started.
+356000 42 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 356000 42 [INFO: Main      ] - Routing: RPL Lite
 356000 42 [INFO: Main      ] - Net: sicslowpan
 356000 42 [INFO: Main      ] - MAC: CSMA
@@ -189,16 +201,27 @@ Random seed: 890123
 356000 42 [INFO: Main      ] Node ID: 42
 356000 42 [INFO: Main      ] Link-layer address: 002a.002a.002a.002a
 356000 42 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22a:2a:2a:2a
-367000 4 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-367000 4 [INFO: Main      ] - Routing: RPL Lite
-367000 4 [INFO: Main      ] - Net: sicslowpan
-367000 4 [INFO: Main      ] - MAC: CSMA
-367000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-367000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
-367000 4 [INFO: Main      ] Node ID: 4
-367000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
-367000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
-422000 11 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+367000 14 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+367000 14 [INFO: Main      ] - Routing: RPL Lite
+367000 14 [INFO: Main      ] - Net: sicslowpan
+367000 14 [INFO: Main      ] - MAC: CSMA
+367000 14 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+367000 14 [INFO: Main      ] - 802.15.4 Default channel: 26
+367000 14 [INFO: Main      ] Node ID: 14
+367000 14 [INFO: Main      ] Link-layer address: 000e.000e.000e.000e
+367000 14 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
+367000 14 GW-S 14: Started.
+422000 21 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+422000 21 [INFO: Main      ] - Routing: RPL Lite
+422000 21 [INFO: Main      ] - Net: sicslowpan
+422000 21 [INFO: Main      ] - MAC: CSMA
+422000 21 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+422000 21 [INFO: Main      ] - 802.15.4 Default channel: 26
+422000 21 [INFO: Main      ] Node ID: 21
+422000 21 [INFO: Main      ] Link-layer address: 0015.0015.0015.0015
+422000 21 [INFO: Main      ] Tentative link-local IPv6 address: fe80::215:15:15:15
+422000 21 GW-S 21: Started.
+422000 11 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 422000 11 [INFO: Main      ] - Routing: RPL Lite
 422000 11 [INFO: Main      ] - Net: sicslowpan
 422000 11 [INFO: Main      ] - MAC: CSMA
@@ -207,25 +230,17 @@ Random seed: 890123
 422000 11 [INFO: Main      ] Node ID: 11
 422000 11 [INFO: Main      ] Link-layer address: 000b.000b.000b.000b
 422000 11 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20b:b:b:b
-422000 38 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-422000 38 [INFO: Main      ] - Routing: RPL Lite
-422000 38 [INFO: Main      ] - Net: sicslowpan
-422000 38 [INFO: Main      ] - MAC: CSMA
-422000 38 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-422000 38 [INFO: Main      ] - 802.15.4 Default channel: 26
-422000 38 [INFO: Main      ] Node ID: 38
-422000 38 [INFO: Main      ] Link-layer address: 0026.0026.0026.0026
-422000 38 [INFO: Main      ] Tentative link-local IPv6 address: fe80::226:26:26:26
-433000 12 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-433000 12 [INFO: Main      ] - Routing: RPL Lite
-433000 12 [INFO: Main      ] - Net: sicslowpan
-433000 12 [INFO: Main      ] - MAC: CSMA
-433000 12 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-433000 12 [INFO: Main      ] - 802.15.4 Default channel: 26
-433000 12 [INFO: Main      ] Node ID: 12
-433000 12 [INFO: Main      ] Link-layer address: 000c.000c.000c.000c
-433000 12 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
-453000 47 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+433000 22 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+433000 22 [INFO: Main      ] - Routing: RPL Lite
+433000 22 [INFO: Main      ] - Net: sicslowpan
+433000 22 [INFO: Main      ] - MAC: CSMA
+433000 22 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+433000 22 [INFO: Main      ] - 802.15.4 Default channel: 26
+433000 22 [INFO: Main      ] Node ID: 22
+433000 22 [INFO: Main      ] Link-layer address: 0016.0016.0016.0016
+433000 22 [INFO: Main      ] Tentative link-local IPv6 address: fe80::216:16:16:16
+433000 22 GW-S 22: Started.
+453000 47 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 453000 47 [INFO: Main      ] - Routing: RPL Lite
 453000 47 [INFO: Main      ] - Net: sicslowpan
 453000 47 [INFO: Main      ] - MAC: CSMA
@@ -234,52 +249,56 @@ Random seed: 890123
 453000 47 [INFO: Main      ] Node ID: 47
 453000 47 [INFO: Main      ] Link-layer address: 002f.002f.002f.002f
 453000 47 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22f:2f:2f:2f
-460000 37 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-460000 37 [INFO: Main      ] - Routing: RPL Lite
-460000 37 [INFO: Main      ] - Net: sicslowpan
-460000 37 [INFO: Main      ] - MAC: CSMA
-460000 37 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-460000 37 [INFO: Main      ] - 802.15.4 Default channel: 26
-460000 37 [INFO: Main      ] Node ID: 37
-460000 37 [INFO: Main      ] Link-layer address: 0025.0025.0025.0025
-460000 37 [INFO: Main      ] Tentative link-local IPv6 address: fe80::225:25:25:25
-463000 16 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-463000 16 [INFO: Main      ] - Routing: RPL Lite
-463000 16 [INFO: Main      ] - Net: sicslowpan
-463000 16 [INFO: Main      ] - MAC: CSMA
-463000 16 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-463000 16 [INFO: Main      ] - 802.15.4 Default channel: 26
-463000 16 [INFO: Main      ] Node ID: 16
-463000 16 [INFO: Main      ] Link-layer address: 0010.0010.0010.0010
-463000 16 [INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
-472000 18 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-472000 18 [INFO: Main      ] - Routing: RPL Lite
-472000 18 [INFO: Main      ] - Net: sicslowpan
-472000 18 [INFO: Main      ] - MAC: CSMA
-472000 18 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-472000 18 [INFO: Main      ] - 802.15.4 Default channel: 26
-472000 18 [INFO: Main      ] Node ID: 18
-472000 18 [INFO: Main      ] Link-layer address: 0012.0012.0012.0012
-472000 18 [INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
-495000 14 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-495000 14 [INFO: Main      ] - Routing: RPL Lite
-495000 14 [INFO: Main      ] - Net: sicslowpan
-495000 14 [INFO: Main      ] - MAC: CSMA
-495000 14 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-495000 14 [INFO: Main      ] - 802.15.4 Default channel: 26
-495000 14 [INFO: Main      ] Node ID: 14
-495000 14 [INFO: Main      ] Link-layer address: 000e.000e.000e.000e
-495000 14 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
-513000 8 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-513000 8 [INFO: Main      ] - Routing: RPL Lite
-513000 8 [INFO: Main      ] - Net: sicslowpan
-513000 8 [INFO: Main      ] - MAC: CSMA
-513000 8 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-513000 8 [INFO: Main      ] - 802.15.4 Default channel: 26
-513000 8 [INFO: Main      ] Node ID: 8
-513000 8 [INFO: Main      ] Link-layer address: 0008.0008.0008.0008
-513000 8 [INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
-525000 2 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+460000 10 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+460000 10 [INFO: Main      ] - Routing: RPL Lite
+460000 10 [INFO: Main      ] - Net: sicslowpan
+460000 10 [INFO: Main      ] - MAC: CSMA
+460000 10 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+460000 10 [INFO: Main      ] - 802.15.4 Default channel: 26
+460000 10 [INFO: Main      ] Node ID: 10
+460000 10 [INFO: Main      ] Link-layer address: 000a.000a.000a.000a
+460000 10 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
+463000 26 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+463000 26 [INFO: Main      ] - Routing: RPL Lite
+463000 26 [INFO: Main      ] - Net: sicslowpan
+463000 26 [INFO: Main      ] - MAC: CSMA
+463000 26 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+463000 26 [INFO: Main      ] - 802.15.4 Default channel: 26
+463000 26 [INFO: Main      ] Node ID: 26
+463000 26 [INFO: Main      ] Link-layer address: 001a.001a.001a.001a
+463000 26 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21a:1a:1a:1a
+463000 26 GW-S 26: Started.
+472000 28 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+472000 28 [INFO: Main      ] - Routing: RPL Lite
+472000 28 [INFO: Main      ] - Net: sicslowpan
+472000 28 [INFO: Main      ] - MAC: CSMA
+472000 28 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+472000 28 [INFO: Main      ] - 802.15.4 Default channel: 26
+472000 28 [INFO: Main      ] Node ID: 28
+472000 28 [INFO: Main      ] Link-layer address: 001c.001c.001c.001c
+472000 28 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21c:1c:1c:1c
+472000 28 GW-S 28: Started.
+495000 24 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+495000 24 [INFO: Main      ] - Routing: RPL Lite
+495000 24 [INFO: Main      ] - Net: sicslowpan
+495000 24 [INFO: Main      ] - MAC: CSMA
+495000 24 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+495000 24 [INFO: Main      ] - 802.15.4 Default channel: 26
+495000 24 [INFO: Main      ] Node ID: 24
+495000 24 [INFO: Main      ] Link-layer address: 0018.0018.0018.0018
+495000 24 [INFO: Main      ] Tentative link-local IPv6 address: fe80::218:18:18:18
+495000 24 GW-S 24: Started.
+513000 18 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+513000 18 [INFO: Main      ] - Routing: RPL Lite
+513000 18 [INFO: Main      ] - Net: sicslowpan
+513000 18 [INFO: Main      ] - MAC: CSMA
+513000 18 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+513000 18 [INFO: Main      ] - 802.15.4 Default channel: 26
+513000 18 [INFO: Main      ] Node ID: 18
+513000 18 [INFO: Main      ] Link-layer address: 0012.0012.0012.0012
+513000 18 [INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
+513000 18 GW-S 18: Started.
+525000 2 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 525000 2 [INFO: Main      ] - Routing: RPL Lite
 525000 2 [INFO: Main      ] - Net: sicslowpan
 525000 2 [INFO: Main      ] - MAC: CSMA
@@ -289,7 +308,7 @@ Random seed: 890123
 525000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
 525000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
 525000 2 GW-S 2: Started.
-564000 50 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+564000 50 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 564000 50 [INFO: Main      ] - Routing: RPL Lite
 564000 50 [INFO: Main      ] - Net: sicslowpan
 564000 50 [INFO: Main      ] - MAC: CSMA
@@ -298,88 +317,95 @@ Random seed: 890123
 564000 50 [INFO: Main      ] Node ID: 50
 564000 50 [INFO: Main      ] Link-layer address: 0032.0032.0032.0032
 564000 50 [INFO: Main      ] Tentative link-local IPv6 address: fe80::232:32:32:32
-621000 13 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-621000 13 [INFO: Main      ] - Routing: RPL Lite
-621000 13 [INFO: Main      ] - Net: sicslowpan
-621000 13 [INFO: Main      ] - MAC: CSMA
-621000 13 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-621000 13 [INFO: Main      ] - 802.15.4 Default channel: 26
-621000 13 [INFO: Main      ] Node ID: 13
-621000 13 [INFO: Main      ] Link-layer address: 000d.000d.000d.000d
-621000 13 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
-624000 5 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-624000 5 [INFO: Main      ] - Routing: RPL Lite
-624000 5 [INFO: Main      ] - Net: sicslowpan
-624000 5 [INFO: Main      ] - MAC: CSMA
-624000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-624000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
-624000 5 [INFO: Main      ] Node ID: 5
-624000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
-624000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
-663000 31 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-663000 31 [INFO: Main      ] - Routing: RPL Lite
-663000 31 [INFO: Main      ] - Net: sicslowpan
-663000 31 [INFO: Main      ] - MAC: CSMA
-663000 31 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-663000 31 [INFO: Main      ] - 802.15.4 Default channel: 26
-663000 31 [INFO: Main      ] Node ID: 31
-663000 31 [INFO: Main      ] Link-layer address: 001f.001f.001f.001f
-663000 31 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21f:1f:1f:1f
-704000 7 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-704000 7 [INFO: Main      ] - Routing: RPL Lite
-704000 7 [INFO: Main      ] - Net: sicslowpan
-704000 7 [INFO: Main      ] - MAC: CSMA
-704000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-704000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
-704000 7 [INFO: Main      ] Node ID: 7
-704000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
-704000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
-745000 15 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-745000 15 [INFO: Main      ] - Routing: RPL Lite
-745000 15 [INFO: Main      ] - Net: sicslowpan
-745000 15 [INFO: Main      ] - MAC: CSMA
-745000 15 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-745000 15 [INFO: Main      ] - 802.15.4 Default channel: 26
-745000 15 [INFO: Main      ] Node ID: 15
-745000 15 [INFO: Main      ] Link-layer address: 000f.000f.000f.000f
-745000 15 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
-775000 26 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-775000 26 [INFO: Main      ] - Routing: RPL Lite
-775000 26 [INFO: Main      ] - Net: sicslowpan
-775000 26 [INFO: Main      ] - MAC: CSMA
-775000 26 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-775000 26 [INFO: Main      ] - 802.15.4 Default channel: 26
-775000 26 [INFO: Main      ] Node ID: 26
-775000 26 [INFO: Main      ] Link-layer address: 001a.001a.001a.001a
-775000 26 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21a:1a:1a:1a
-785000 27 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-785000 27 [INFO: Main      ] - Routing: RPL Lite
-785000 27 [INFO: Main      ] - Net: sicslowpan
-785000 27 [INFO: Main      ] - MAC: CSMA
-785000 27 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-785000 27 [INFO: Main      ] - 802.15.4 Default channel: 26
-785000 27 [INFO: Main      ] Node ID: 27
-785000 27 [INFO: Main      ] Link-layer address: 001b.001b.001b.001b
-785000 27 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21b:1b:1b:1b
-793000 29 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-793000 29 [INFO: Main      ] - Routing: RPL Lite
-793000 29 [INFO: Main      ] - Net: sicslowpan
-793000 29 [INFO: Main      ] - MAC: CSMA
-793000 29 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-793000 29 [INFO: Main      ] - 802.15.4 Default channel: 26
-793000 29 [INFO: Main      ] Node ID: 29
-793000 29 [INFO: Main      ] Link-layer address: 001d.001d.001d.001d
-793000 29 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21d:1d:1d:1d
-810000 32 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-810000 32 [INFO: Main      ] - Routing: RPL Lite
-810000 32 [INFO: Main      ] - Net: sicslowpan
-810000 32 [INFO: Main      ] - MAC: CSMA
-810000 32 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-810000 32 [INFO: Main      ] - 802.15.4 Default channel: 26
-810000 32 [INFO: Main      ] Node ID: 32
-810000 32 [INFO: Main      ] Link-layer address: 0020.0020.0020.0020
-810000 32 [INFO: Main      ] Tentative link-local IPv6 address: fe80::220:20:20:20
-824000 45 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+621000 23 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+621000 23 [INFO: Main      ] - Routing: RPL Lite
+621000 23 [INFO: Main      ] - Net: sicslowpan
+621000 23 [INFO: Main      ] - MAC: CSMA
+621000 23 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+621000 23 [INFO: Main      ] - 802.15.4 Default channel: 26
+621000 23 [INFO: Main      ] Node ID: 23
+621000 23 [INFO: Main      ] Link-layer address: 0017.0017.0017.0017
+621000 23 [INFO: Main      ] Tentative link-local IPv6 address: fe80::217:17:17:17
+621000 23 GW-S 23: Started.
+624000 15 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+624000 15 [INFO: Main      ] - Routing: RPL Lite
+624000 15 [INFO: Main      ] - Net: sicslowpan
+624000 15 [INFO: Main      ] - MAC: CSMA
+624000 15 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+624000 15 [INFO: Main      ] - 802.15.4 Default channel: 26
+624000 15 [INFO: Main      ] Node ID: 15
+624000 15 [INFO: Main      ] Link-layer address: 000f.000f.000f.000f
+624000 15 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
+624000 15 GW-S 15: Started.
+663000 4 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+663000 4 [INFO: Main      ] - Routing: RPL Lite
+663000 4 [INFO: Main      ] - Net: sicslowpan
+663000 4 [INFO: Main      ] - MAC: CSMA
+663000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+663000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+663000 4 [INFO: Main      ] Node ID: 4
+663000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+663000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+704000 17 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+704000 17 [INFO: Main      ] - Routing: RPL Lite
+704000 17 [INFO: Main      ] - Net: sicslowpan
+704000 17 [INFO: Main      ] - MAC: CSMA
+704000 17 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+704000 17 [INFO: Main      ] - 802.15.4 Default channel: 26
+704000 17 [INFO: Main      ] Node ID: 17
+704000 17 [INFO: Main      ] Link-layer address: 0011.0011.0011.0011
+704000 17 [INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
+704000 17 GW-S 17: Started.
+745000 25 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+745000 25 [INFO: Main      ] - Routing: RPL Lite
+745000 25 [INFO: Main      ] - Net: sicslowpan
+745000 25 [INFO: Main      ] - MAC: CSMA
+745000 25 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+745000 25 [INFO: Main      ] - 802.15.4 Default channel: 26
+745000 25 [INFO: Main      ] Node ID: 25
+745000 25 [INFO: Main      ] Link-layer address: 0019.0019.0019.0019
+745000 25 [INFO: Main      ] Tentative link-local IPv6 address: fe80::219:19:19:19
+745000 25 GW-S 25: Started.
+775000 36 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+775000 36 [INFO: Main      ] - Routing: RPL Lite
+775000 36 [INFO: Main      ] - Net: sicslowpan
+775000 36 [INFO: Main      ] - MAC: CSMA
+775000 36 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+775000 36 [INFO: Main      ] - 802.15.4 Default channel: 26
+775000 36 [INFO: Main      ] Node ID: 36
+775000 36 [INFO: Main      ] Link-layer address: 0024.0024.0024.0024
+775000 36 [INFO: Main      ] Tentative link-local IPv6 address: fe80::224:24:24:24
+775000 36 GW-S 36: Started.
+785000 37 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+785000 37 [INFO: Main      ] - Routing: RPL Lite
+785000 37 [INFO: Main      ] - Net: sicslowpan
+785000 37 [INFO: Main      ] - MAC: CSMA
+785000 37 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+785000 37 [INFO: Main      ] - 802.15.4 Default channel: 26
+785000 37 [INFO: Main      ] Node ID: 37
+785000 37 [INFO: Main      ] Link-layer address: 0025.0025.0025.0025
+785000 37 [INFO: Main      ] Tentative link-local IPv6 address: fe80::225:25:25:25
+785000 37 GW-S 37: Started.
+793000 39 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+793000 39 [INFO: Main      ] - Routing: RPL Lite
+793000 39 [INFO: Main      ] - Net: sicslowpan
+793000 39 [INFO: Main      ] - MAC: CSMA
+793000 39 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+793000 39 [INFO: Main      ] - 802.15.4 Default channel: 26
+793000 39 [INFO: Main      ] Node ID: 39
+793000 39 [INFO: Main      ] Link-layer address: 0027.0027.0027.0027
+793000 39 [INFO: Main      ] Tentative link-local IPv6 address: fe80::227:27:27:27
+793000 39 GW-S 39: Started.
+810000 5 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+810000 5 [INFO: Main      ] - Routing: RPL Lite
+810000 5 [INFO: Main      ] - Net: sicslowpan
+810000 5 [INFO: Main      ] - MAC: CSMA
+810000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+810000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+810000 5 [INFO: Main      ] Node ID: 5
+810000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+810000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+824000 45 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 824000 45 [INFO: Main      ] - Routing: RPL Lite
 824000 45 [INFO: Main      ] - Net: sicslowpan
 824000 45 [INFO: Main      ] - MAC: CSMA
@@ -388,34 +414,34 @@ Random seed: 890123
 824000 45 [INFO: Main      ] Node ID: 45
 824000 45 [INFO: Main      ] Link-layer address: 002d.002d.002d.002d
 824000 45 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22d:2d:2d:2d
-857000 34 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-857000 34 [INFO: Main      ] - Routing: RPL Lite
-857000 34 [INFO: Main      ] - Net: sicslowpan
-857000 34 [INFO: Main      ] - MAC: CSMA
-857000 34 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-857000 34 [INFO: Main      ] - 802.15.4 Default channel: 26
-857000 34 [INFO: Main      ] Node ID: 34
-857000 34 [INFO: Main      ] Link-layer address: 0022.0022.0022.0022
-857000 34 [INFO: Main      ] Tentative link-local IPv6 address: fe80::222:22:22:22
-896000 39 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-896000 39 [INFO: Main      ] - Routing: RPL Lite
-896000 39 [INFO: Main      ] - Net: sicslowpan
-896000 39 [INFO: Main      ] - MAC: CSMA
-896000 39 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-896000 39 [INFO: Main      ] - 802.15.4 Default channel: 26
-896000 39 [INFO: Main      ] Node ID: 39
-896000 39 [INFO: Main      ] Link-layer address: 0027.0027.0027.0027
-896000 39 [INFO: Main      ] Tentative link-local IPv6 address: fe80::227:27:27:27
-898000 35 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-898000 35 [INFO: Main      ] - Routing: RPL Lite
-898000 35 [INFO: Main      ] - Net: sicslowpan
-898000 35 [INFO: Main      ] - MAC: CSMA
-898000 35 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-898000 35 [INFO: Main      ] - 802.15.4 Default channel: 26
-898000 35 [INFO: Main      ] Node ID: 35
-898000 35 [INFO: Main      ] Link-layer address: 0023.0023.0023.0023
-898000 35 [INFO: Main      ] Tentative link-local IPv6 address: fe80::223:23:23:23
-926000 3 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+857000 7 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+857000 7 [INFO: Main      ] - Routing: RPL Lite
+857000 7 [INFO: Main      ] - Net: sicslowpan
+857000 7 [INFO: Main      ] - MAC: CSMA
+857000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+857000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
+857000 7 [INFO: Main      ] Node ID: 7
+857000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+857000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+896000 12 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+896000 12 [INFO: Main      ] - Routing: RPL Lite
+896000 12 [INFO: Main      ] - Net: sicslowpan
+896000 12 [INFO: Main      ] - MAC: CSMA
+896000 12 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+896000 12 [INFO: Main      ] - 802.15.4 Default channel: 26
+896000 12 [INFO: Main      ] Node ID: 12
+896000 12 [INFO: Main      ] Link-layer address: 000c.000c.000c.000c
+896000 12 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
+898000 8 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+898000 8 [INFO: Main      ] - Routing: RPL Lite
+898000 8 [INFO: Main      ] - Net: sicslowpan
+898000 8 [INFO: Main      ] - MAC: CSMA
+898000 8 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+898000 8 [INFO: Main      ] - 802.15.4 Default channel: 26
+898000 8 [INFO: Main      ] Node ID: 8
+898000 8 [INFO: Main      ] Link-layer address: 0008.0008.0008.0008
+898000 8 [INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
+926000 3 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 926000 3 [INFO: Main      ] - Routing: RPL Lite
 926000 3 [INFO: Main      ] - Net: sicslowpan
 926000 3 [INFO: Main      ] - MAC: CSMA
@@ -425,16 +451,16 @@ Random seed: 890123
 926000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
 926000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
 926000 3 GW-S 3: Started.
-927000 40 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-927000 40 [INFO: Main      ] - Routing: RPL Lite
-927000 40 [INFO: Main      ] - Net: sicslowpan
-927000 40 [INFO: Main      ] - MAC: CSMA
-927000 40 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-927000 40 [INFO: Main      ] - 802.15.4 Default channel: 26
-927000 40 [INFO: Main      ] Node ID: 40
-927000 40 [INFO: Main      ] Link-layer address: 0028.0028.0028.0028
-927000 40 [INFO: Main      ] Tentative link-local IPv6 address: fe80::228:28:28:28
-961000 41 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+927000 13 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+927000 13 [INFO: Main      ] - Routing: RPL Lite
+927000 13 [INFO: Main      ] - Net: sicslowpan
+927000 13 [INFO: Main      ] - MAC: CSMA
+927000 13 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+927000 13 [INFO: Main      ] - 802.15.4 Default channel: 26
+927000 13 [INFO: Main      ] Node ID: 13
+927000 13 [INFO: Main      ] Link-layer address: 000d.000d.000d.000d
+927000 13 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
+961000 41 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 961000 41 [INFO: Main      ] - Routing: RPL Lite
 961000 41 [INFO: Main      ] - Net: sicslowpan
 961000 41 [INFO: Main      ] - MAC: CSMA
@@ -443,549 +469,357 @@ Random seed: 890123
 961000 41 [INFO: Main      ] Node ID: 41
 961000 41 [INFO: Main      ] Link-layer address: 0029.0029.0029.0029
 961000 41 [INFO: Main      ] Tentative link-local IPv6 address: fe80::229:29:29:29
-962000 10 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-962000 10 [INFO: Main      ] - Routing: RPL Lite
-962000 10 [INFO: Main      ] - Net: sicslowpan
-962000 10 [INFO: Main      ] - MAC: CSMA
-962000 10 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-962000 10 [INFO: Main      ] - 802.15.4 Default channel: 26
-962000 10 [INFO: Main      ] Node ID: 10
-962000 10 [INFO: Main      ] Link-layer address: 000a.000a.000a.000a
-962000 10 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
-9367000 4 SN 4: Sending registration
-10624000 5 SN 5: Sending registration
-11135000 6 SN 6: Sending registration
-12704000 7 SN 7: Sending registration
-13513000 8 SN 8: Sending registration
-14201000 9 SN 9: Sending registration
-14280688 3 GW-S 3: Sensor 9 reg step 1. SIDn=2329ec, Cn=4
-14307328 9 SN 9: Reg-0 OK. SIDn=2329ec, Cn=4
-14307328 9 SN 9: Sending PUF response Rn=240
-14324720 3 GW-S 3: Sensor 9 registration complete. (Cn=4, Rn=240)
-14394856 9 SN 9: Registration complete
-14394856 9 
-15962000 10 SN 10: Sending registration
-16079688 3 GW-S 3: Sensor 10 reg step 1. SIDn=ea0a1f, Cn=162
-16131328 10 SN 10: Reg-0 OK. SIDn=ea0a1f, Cn=162
-16131328 10 SN 10: Sending PUF response Rn=147
-16159720 3 GW-S 3: Sensor 10 registration complete. (Cn=162, Rn=147)
-16213856 10 SN 10: Registration complete
-16213856 10 
+962000 20 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+962000 20 [INFO: Main      ] - Routing: RPL Lite
+962000 20 [INFO: Main      ] - Net: sicslowpan
+962000 20 [INFO: Main      ] - MAC: CSMA
+962000 20 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+962000 20 [INFO: Main      ] - 802.15.4 Default channel: 26
+962000 20 [INFO: Main      ] Node ID: 20
+962000 20 [INFO: Main      ] Link-layer address: 0014.0014.0014.0014
+962000 20 [INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
+962000 20 GW-S 20: Started.
+9663000 4 SN 4: Sending registration
+10810000 5 SN 5: Sending registration
+11197000 6 SN 6: Sending registration
+12857000 7 SN 7: Sending registration
+13898000 8 SN 8: Sending registration
+14015000 9 SN 9: Sending registration
+15460000 10 SN 10: Sending registration
 16422000 11 SN 11: Sending registration
-16492688 3 GW-S 3: Sensor 11 reg step 1. SIDn=bf7a8c, Cn=255
-16540328 11 SN 11: Reg-0 OK. SIDn=bf7a8c, Cn=255
-16540328 11 SN 11: Sending PUF response Rn=175
-16590720 3 GW-S 3: Sensor 11 registration complete. (Cn=255, Rn=175)
-16605856 11 SN 11: Registration complete
-16605856 11 
-17433000 12 SN 12: Sending registration
-17467688 3 GW-S 3: Sensor 12 reg step 1. SIDn=6c33ed, Cn=155
-17535328 12 SN 12: Reg-0 OK. SIDn=6c33ed, Cn=155
-17535328 12 SN 12: Sending PUF response Rn=63
-17589720 3 GW-S 3: Sensor 12 registration complete. (Cn=155, Rn=63)
-17626856 12 SN 12: Registration complete
-17626856 12 
-18621000 13 SN 13: Sending registration
-19495000 14 SN 14: Sending registration
-20745000 15 SN 15: Sending registration
-20808688 3 GW-S 3: Sensor 15 reg step 1. SIDn=01dd67, Cn=208
-20863328 15 SN 15: Reg-0 OK. SIDn=01dd67, Cn=208
-20863328 15 SN 15: Sending PUF response Rn=1
-20889408 3 GW-S 3: Sensor 15 registration complete. (Cn=208, Rn=1)
-20939856 15 SN 15: Registration complete
-20939856 15 
-21463000 16 SN 16: Sending registration
-21488688 3 GW-S 3: Sensor 16 reg step 1. SIDn=99ef75, Cn=26
-21518624 16 SN 16: Reg-0 OK. SIDn=99ef75, Cn=26
-21518624 16 SN 16: Sending PUF response Rn=42
-21556720 3 GW-S 3: Sensor 16 registration complete. (Cn=26, Rn=42)
-21599856 16 SN 16: Registration complete
-21599856 16 
-22302000 17 SN 17: Sending registration
-22361688 3 GW-S 3: Sensor 17 reg step 1. SIDn=af9971, Cn=246
-22397328 17 SN 17: Reg-0 OK. SIDn=af9971, Cn=246
-22397328 17 SN 17: Sending PUF response Rn=70
-22442720 3 GW-S 3: Sensor 17 registration complete. (Cn=246, Rn=70)
-22504856 17 SN 17: Registration complete
-22504856 17 
-23161688 3 GW-S 3: Sensor 13 reg step 1. SIDn=c087e0, Cn=124
-23215328 13 SN 13: Reg-0 OK. SIDn=c087e0, Cn=124
-23215328 13 SN 13: Sending PUF response Rn=212
-23435720 3 GW-S 3: Sensor 13 registration complete. (Cn=124, Rn=212)
-23472000 18 SN 18: Sending registration
-23485856 13 SN 13: Registration complete
-23485856 13 
-23513688 3 GW-S 3: Sensor 18 reg step 1. SIDn=9d7ad8, Cn=163
-23556328 18 SN 18: Reg-0 OK. SIDn=9d7ad8, Cn=163
-23556328 18 SN 18: Sending PUF response Rn=33
-23612720 3 GW-S 3: Sensor 18 registration complete. (Cn=163, Rn=33)
-23656856 18 SN 18: Registration complete
-23656856 18 
-23869688 3 GW-S 3: Sensor 14 reg step 1. SIDn=a393b8, Cn=240
-23972584 14 SN 14: Reg-0 OK. SIDn=a393b8, Cn=240
-23972584 14 SN 14: Sending PUF response Rn=248
-24061720 3 GW-S 3: Sensor 14 registration complete. (Cn=240, Rn=248)
-24183112 14 SN 14: Registration complete
-24183112 14 
-24307000 19 SN 19: Sending registration
-24374688 3 GW-S 3: Sensor 19 reg step 1. SIDn=5df28d, Cn=133
-24442328 19 SN 19: Reg-0 OK. SIDn=5df28d, Cn=133
-24442328 19 SN 19: Sending PUF response Rn=192
-24482720 3 GW-S 3: Sensor 19 registration complete. (Cn=133, Rn=192)
-24536856 19 SN 19: Registration complete
-24536856 19 
-25221000 20 SN 20: Sending registration
-25284688 3 GW-S 3: Sensor 20 reg step 1. SIDn=a50b54, Cn=101
-25342328 20 SN 20: Reg-0 OK. SIDn=a50b54, Cn=101
-25342328 20 SN 20: Sending PUF response Rn=34
-25410720 3 GW-S 3: Sensor 20 registration complete. (Cn=101, Rn=34)
-25445856 20 SN 20: Registration complete
-25445856 20 
-26113000 21 SN 21: Sending registration
-26145344 3 GW-S 3: Sensor 21 reg step 1. SIDn=c63323, Cn=169
-26206368 21 SN 21: Reg-0 OK. SIDn=c63323, Cn=169
-26206368 21 SN 21: Sending PUF response Rn=243
-26331720 3 GW-S 3: Sensor 21 registration complete. (Cn=169, Rn=243)
-26374680 21 SN 21: Registration complete
-26374680 21 
-27074000 22 SN 22: Sending registration
-27149688 3 GW-S 3: Sensor 22 reg step 1. SIDn=146eff, Cn=79
-27198328 22 SN 22: Reg-0 OK. SIDn=146eff, Cn=79
-27198328 22 SN 22: Sending PUF response Rn=210
-27219720 3 GW-S 3: Sensor 22 registration complete. (Cn=79, Rn=210)
-27250856 22 SN 22: Registration complete
-27250856 22 
-28335000 23 SN 23: Sending registration
-28367688 3 GW-S 3: Sensor 23 reg step 1. SIDn=cb9a21, Cn=202
-28419328 23 SN 23: Reg-0 OK. SIDn=cb9a21, Cn=202
-28419328 23 SN 23: Sending PUF response Rn=242
-28471720 3 GW-S 3: Sensor 23 registration complete. (Cn=202, Rn=242)
-28520856 23 SN 23: Registration complete
-28520856 23 
-29263000 24 SN 24: Sending registration
-29379688 3 GW-S 3: Sensor 24 reg step 1. SIDn=05c506, Cn=146
-29478584 24 SN 24: Reg-0 OK. SIDn=05c506, Cn=146
-29478584 24 SN 24: Sending PUF response Rn=224
-29569720 3 GW-S 3: Sensor 24 registration complete. (Cn=146, Rn=224)
-29630112 24 SN 24: Registration complete
-29630112 24 
-30145000 25 SN 25: Sending registration
-30188688 3 GW-S 3: Sensor 25 reg step 1. SIDn=d26ad1, Cn=47
-30274328 25 SN 25: Reg-0 OK. SIDn=d26ad1, Cn=47
-30274328 25 SN 25: Sending PUF response Rn=131
-30336720 3 GW-S 3: Sensor 25 registration complete. (Cn=47, Rn=131)
-30362856 25 SN 25: Registration complete
-30362856 25 
-31775000 26 SN 26: Sending registration
-31822688 3 GW-S 3: Sensor 26 reg step 1. SIDn=76395a, Cn=217
-31900328 26 SN 26: Reg-0 OK. SIDn=76395a, Cn=217
-31900328 26 SN 26: Sending PUF response Rn=225
-31939720 3 GW-S 3: Sensor 26 registration complete. (Cn=217, Rn=225)
-31974856 26 SN 26: Registration complete
-31974856 26 
-32785000 27 SN 27: Sending registration
-32829688 3 GW-S 3: Sensor 27 reg step 1. SIDn=e18243, Cn=44
-32871328 27 SN 27: Reg-0 OK. SIDn=e18243, Cn=44
-32871328 27 SN 27: Sending PUF response Rn=22
-32897720 3 GW-S 3: Sensor 27 registration complete. (Cn=44, Rn=22)
-32938856 27 SN 27: Registration complete
-32938856 27 
-33315000 28 SN 28: Sending registration
-33329688 3 GW-S 3: Sensor 28 reg step 1. SIDn=600952, Cn=250
-33369328 28 SN 28: Reg-0 OK. SIDn=600952, Cn=250
-33369328 28 SN 28: Sending PUF response Rn=10
-33412720 3 GW-S 3: Sensor 28 registration complete. (Cn=250, Rn=10)
-33434856 28 SN 28: Registration complete
-33434856 28 
-34793000 29 SN 29: Sending registration
-34843688 3 GW-S 3: Sensor 29 reg step 1. SIDn=b4230e, Cn=241
-34892328 29 SN 29: Reg-0 OK. SIDn=b4230e, Cn=241
-34892328 29 SN 29: Sending PUF response Rn=59
-34920720 3 GW-S 3: Sensor 29 registration complete. (Cn=241, Rn=59)
-34956856 29 SN 29: Registration complete
-34956856 29 
-35171000 30 SN 30: Sending registration
-35228688 3 GW-S 3: Sensor 30 reg step 1. SIDn=6da6f1, Cn=108
-35265624 30 SN 30: Reg-0 OK. SIDn=6da6f1, Cn=108
-35265624 30 SN 30: Sending PUF response Rn=2
-35298720 3 GW-S 3: Sensor 30 registration complete. (Cn=108, Rn=2)
-35313856 30 SN 30: Registration complete
-35313856 30 
-35964888 2 GW-S 2: Sensor 7 reg step 1. SIDn=12746d, Cn=26
-35995912 7 SN 7: Reg-0 OK. SIDn=12746d, Cn=26
-35995912 7 SN 7: Sending PUF response Rn=71
-36118976 2 GW-S 2: Sensor 7 registration complete. (Cn=26, Rn=71)
-36195856 7 SN 7: Registration complete
-36195856 7 
-36663000 31 SN 31: Sending registration
-36710688 3 GW-S 3: Sensor 31 reg step 1. SIDn=78d08c, Cn=20
-36790328 31 SN 31: Reg-0 OK. SIDn=78d08c, Cn=20
-36790328 31 SN 31: Sending PUF response Rn=45
-36842720 3 GW-S 3: Sensor 31 registration complete. (Cn=20, Rn=45)
-36895856 31 SN 31: Registration complete
-36895856 31 
-37069944 2 GW-S 2: Sensor 5 reg step 1. SIDn=50d16f, Cn=17
-37152328 5 SN 5: Reg-0 OK. SIDn=50d16f, Cn=17
-37152328 5 SN 5: Sending PUF response Rn=62
-37226976 2 GW-S 2: Sensor 5 registration complete. (Cn=17, Rn=62)
-37301856 5 SN 5: Registration complete
-37301856 5 
-37810000 32 SN 32: Sending registration
-37857688 3 GW-S 3: Sensor 32 reg step 1. SIDn=76e182, Cn=199
-37932328 32 SN 32: Reg-0 OK. SIDn=76e182, Cn=199
-37932328 32 SN 32: Sending PUF response Rn=99
-37981720 3 GW-S 3: Sensor 32 registration complete. (Cn=199, Rn=99)
-37991944 2 GW-S 2: Sensor 8 reg step 1. SIDn=d2362b, Cn=168
-38055328 8 SN 8: Reg-0 OK. SIDn=d2362b, Cn=168
-38055328 8 SN 8: Sending PUF response Rn=127
-38165856 32 SN 32: Registration complete
-38165856 32 
-38176976 2 GW-S 2: Sensor 8 registration complete. (Cn=168, Rn=127)
-38197000 33 SN 33: Sending registration
-38251688 3 GW-S 3: Sensor 33 reg step 1. SIDn=e5d925, Cn=181
-38272328 33 SN 33: Reg-0 OK. SIDn=e5d925, Cn=181
-38272328 33 SN 33: Sending PUF response Rn=141
-38316720 3 GW-S 3: Sensor 33 registration complete. (Cn=181, Rn=141)
-38359856 8 SN 8: Registration complete
-38359856 8 
-38417856 33 SN 33: Registration complete
-38417856 33 
-39857000 34 SN 34: Sending registration
-39916688 3 GW-S 3: Sensor 34 reg step 1. SIDn=5a0392, Cn=189
-39981328 34 SN 34: Reg-0 OK. SIDn=5a0392, Cn=189
-39981328 34 SN 34: Sending PUF response Rn=48
-40045720 3 GW-S 3: Sensor 34 registration complete. (Cn=189, Rn=48)
-40099856 34 SN 34: Registration complete
-40099856 34 
-40449944 2 GW-S 2: Sensor 6 reg step 1. SIDn=4d9716, Cn=143
-40506328 6 SN 6: Reg-0 OK. SIDn=4d9716, Cn=143
-40506328 6 SN 6: Sending PUF response Rn=230
-40575944 2 GW-S 2: Sensor 4 reg step 1. SIDn=2f5a3c, Cn=156
-40617976 2 GW-S 2: Sensor 6 registration complete. (Cn=143, Rn=230)
-40732856 6 SN 6: Registration complete
-40732856 6 
-40764584 4 SN 4: Reg-0 OK. SIDn=2f5a3c, Cn=156
-40764584 4 SN 4: Sending PUF response Rn=208
-40855976 2 GW-S 2: Sensor 4 registration complete. (Cn=156, Rn=208)
-40898000 35 SN 35: Sending registration
-40937344 3 GW-S 3: Sensor 35 reg step 1. SIDn=ff4df6, Cn=42
-40967440 35 SN 35: Reg-0 OK. SIDn=ff4df6, Cn=42
-40967440 35 SN 35: Sending PUF response Rn=21
-41008112 4 SN 4: Registration complete
-41008112 4 
-41015000 36 SN 36: Sending registration
-41040720 3 GW-S 3: Sensor 35 registration complete. (Cn=42, Rn=21)
-41086856 35 SN 35: Registration complete
-41086856 35 
-41093544 3 GW-S 3: Sensor 36 reg step 1. SIDn=ea96d9, Cn=222
-41132328 36 SN 36: Reg-0 OK. SIDn=ea96d9, Cn=222
-41132328 36 SN 36: Sending PUF response Rn=77
-41164720 3 GW-S 3: Sensor 36 registration complete. (Cn=222, Rn=77)
-41196856 36 SN 36: Registration complete
-41196856 36 
-42460000 37 SN 37: Sending registration
-42505688 3 GW-S 3: Sensor 37 reg step 1. SIDn=c9b17b, Cn=249
-42528328 37 SN 37: Reg-0 OK. SIDn=c9b17b, Cn=249
-42528328 37 SN 37: Sending PUF response Rn=130
-42663720 3 GW-S 3: Sensor 37 registration complete. (Cn=249, Rn=130)
-42738856 37 SN 37: Registration complete
-42738856 37 
-43422000 38 SN 38: Sending registration
-43492688 3 GW-S 3: Sensor 38 reg step 1. SIDn=87e1df, Cn=225
-43536328 38 SN 38: Reg-0 OK. SIDn=87e1df, Cn=225
-43536328 38 SN 38: Sending PUF response Rn=176
-43569720 3 GW-S 3: Sensor 38 registration complete. (Cn=225, Rn=176)
-43655856 38 SN 38: Registration complete
-43655856 38 
-44896000 39 SN 39: Sending registration
-44947688 3 GW-S 3: Sensor 39 reg step 1. SIDn=2fa68f, Cn=137
-44998328 39 SN 39: Reg-0 OK. SIDn=2fa68f, Cn=137
-44998328 39 SN 39: Sending PUF response Rn=41
-45044720 3 GW-S 3: Sensor 39 registration complete. (Cn=137, Rn=41)
-45119856 39 SN 39: Registration complete
-45119856 39 
-45927000 40 SN 40: Sending registration
-45979688 3 GW-S 3: Sensor 40 reg step 1. SIDn=ff48fc, Cn=230
-46030328 40 SN 40: Reg-0 OK. SIDn=ff48fc, Cn=230
-46030328 40 SN 40: Sending PUF response Rn=32
-46063720 3 GW-S 3: Sensor 40 registration complete. (Cn=230, Rn=32)
-46138856 40 SN 40: Registration complete
-46138856 40 
+16485688 3 GW-S 3: Sensor 11 reg step 1. SIDn=ff823e, Cn=92
+16536328 11 SN 11: Reg-0 OK. SIDn=ff823e, Cn=92
+16536328 11 SN 11: Sending PUF response Rn=63
+16593720 3 GW-S 3: Sensor 11 registration complete. (Cn=92, Rn=63)
+16616856 11 SN 11: Registration complete
+16616856 11 
+17896000 12 SN 12: Sending registration
+18927000 13 SN 13: Sending registration
+19000688 3 GW-S 3: Sensor 13 reg step 1. SIDn=059ecc, Cn=56
+19056328 13 SN 13: Reg-0 OK. SIDn=059ecc, Cn=56
+19056328 13 SN 13: Sending PUF response Rn=217
+19128720 3 GW-S 3: Sensor 13 registration complete. (Cn=56, Rn=217)
+19155856 13 SN 13: Registration complete
+19155856 13 
+21065688 3 GW-S 3: Sensor 12 reg step 1. SIDn=e82ce1, Cn=254
+21139328 12 SN 12: Reg-0 OK. SIDn=e82ce1, Cn=254
+21139328 12 SN 12: Sending PUF response Rn=93
+21194720 3 GW-S 3: Sensor 12 registration complete. (Cn=254, Rn=93)
+21254856 12 SN 12: Registration complete
+21254856 12 
+21518688 2 GW-S 2: Sensor 4 reg step 1. SIDn=2c57c1, Cn=148
+21618328 4 SN 4: Reg-0 OK. SIDn=2c57c1, Cn=148
+21618328 4 SN 4: Sending PUF response Rn=118
+21660720 2 GW-S 2: Sensor 4 registration complete. (Cn=148, Rn=118)
+21692856 4 SN 4: Registration complete
+21692856 4 
+22178688 2 GW-S 2: Sensor 5 reg step 1. SIDn=284aab, Cn=129
+22233328 5 SN 5: Reg-0 OK. SIDn=284aab, Cn=129
+22233328 5 SN 5: Sending PUF response Rn=119
+22304720 2 GW-S 2: Sensor 5 registration complete. (Cn=129, Rn=119)
+22354856 5 SN 5: Registration complete
+22354856 5 
+23773688 2 GW-S 2: Sensor 6 reg step 1. SIDn=b3a668, Cn=118
+23816328 6 SN 6: Reg-0 OK. SIDn=b3a668, Cn=118
+23816328 6 SN 6: Sending PUF response Rn=109
+23846720 2 GW-S 2: Sensor 6 registration complete. (Cn=118, Rn=109)
+23891680 6 SN 6: Registration complete
+23891680 6 
+25610688 3 GW-S 3: Sensor 9 reg step 1. SIDn=83c38a, Cn=31
+25717584 9 SN 9: Reg-0 OK. SIDn=83c38a, Cn=31
+25717584 9 SN 9: Sending PUF response Rn=68
+25794720 3 GW-S 3: Sensor 9 registration complete. (Cn=31, Rn=68)
+25872112 9 SN 9: Registration complete
+25872112 9 
+38970688 3 GW-S 3: Sensor 10 reg step 1. SIDn=925139, Cn=158
+39028584 10 SN 10: Reg-0 OK. SIDn=925139, Cn=158
+39028584 10 SN 10: Sending PUF response Rn=32
+39071720 3 GW-S 3: Sensor 10 registration complete. (Cn=158, Rn=32)
+39140112 10 SN 10: Registration complete
+39140112 10 
+39271688 2 GW-S 2: Sensor 7 reg step 1. SIDn=2b9e39, Cn=100
+39305272 2 GW-S 2: Sensor 8 reg step 1. SIDn=aa2d62, Cn=1
+39312584 7 SN 7: Reg-0 OK. SIDn=2b9e39, Cn=100
+39312584 7 SN 7: Sending PUF response Rn=230
+39431584 8 SN 8: Reg-0 OK. SIDn=aa2d62, Cn=1
+39431584 8 SN 8: Sending PUF response Rn=251
+39459720 2 GW-S 2: Sensor 7 registration complete. (Cn=100, Rn=230)
+39493112 7 SN 7: Registration complete
+39493112 7 
+39602720 2 GW-S 2: Sensor 8 registration complete. (Cn=1, Rn=251)
+39673112 8 SN 8: Registration complete
+39673112 8 
 46961000 41 User 41: Sending user registration
-47062064 2 GW-S 2: User 41 registered. DIDi=6b0173
-47194584 41 User 41: User reg OK. DIDi=6b0173
-47194584 41 User 41: Querying SIDn for sensor 4
-47331976 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 4
+47029776 2 GW-S 2: User 41 registered. DIDi=a04fed
+47064328 41 User 41: User reg OK. DIDi=a04fed
+47064328 41 User 41: Querying SIDn for sensor 4
+47138720 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 4
+47196328 41 User 41: Got SIDn=2c57c1
+47196328 41 User 41: Bound to sensor 4, SIDn=2c57c1
+47196328 41 
 47356000 42 User 42: Sending user registration
-47462584 41 User 41: Got SIDn=2f5a3c
-47462584 41 User 41: Bound to sensor 4, SIDn=2f5a3c
-47462584 41 
-47478032 2 GW-S 2: User 42 registered. DIDi=24ebc9
-47577328 42 User 42: User reg OK. DIDi=24ebc9
-47577328 42 User 42: Querying SIDn for sensor 5
-47628976 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 5
-47703328 42 User 42: Got SIDn=50d16f
-47703328 42 User 42: Bound to sensor 5, SIDn=50d16f
-47703328 42 
+47386776 2 GW-S 2: User 42 registered. DIDi=29142d
+47460328 42 User 42: User reg OK. DIDi=29142d
+47460328 42 User 42: Querying SIDn for sensor 5
+47506408 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 5
+47585328 42 User 42: Got SIDn=284aab
+47585328 42 User 42: Bound to sensor 5, SIDn=284aab
+47585328 42 
 48051000 43 User 43: Sending user registration
-48130032 2 GW-S 2: User 43 registered. DIDi=2b8131
-48165912 43 User 43: User reg OK. DIDi=2b8131
-48165912 43 User 43: Querying SIDn for sensor 6
-48218976 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 6
-48343328 43 User 43: Got SIDn=4d9716
-48343328 43 User 43: Bound to sensor 6, SIDn=4d9716
-48343328 43 
+48101776 2 GW-S 2: User 43 registered. DIDi=0b9651
+48140328 43 User 43: User reg OK. DIDi=0b9651
+48140328 43 User 43: Querying SIDn for sensor 6
+48187720 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 6
+48230624 43 User 43: Got SIDn=b3a668
+48230624 43 User 43: Bound to sensor 6, SIDn=b3a668
+48230624 43 
 49232000 44 User 44: Sending user registration
-49260032 2 GW-S 2: User 44 registered. DIDi=230bf1
-49330328 44 User 44: User reg OK. DIDi=230bf1
-49330328 44 User 44: Querying SIDn for sensor 7
-49410976 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 7
-49479328 44 User 44: Got SIDn=12746d
-49479328 44 User 44: Bound to sensor 7, SIDn=12746d
-49479328 44 
+49288776 2 GW-S 2: User 44 registered. DIDi=c447fc
+49348328 44 User 44: User reg OK. DIDi=c447fc
+49348328 44 User 44: Querying SIDn for sensor 7
+49388720 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 7
+49516328 44 User 44: Got SIDn=2b9e39
+49516328 44 User 44: Bound to sensor 7, SIDn=2b9e39
+49516328 44 
 50824000 45 User 45: Sending user registration
-50913032 2 GW-S 2: User 45 registered. DIDi=023a2b
-50968328 45 User 45: User reg OK. DIDi=023a2b
-50968328 45 User 45: Querying SIDn for sensor 8
+50880776 2 GW-S 2: User 45 registered. DIDi=4ad765
+50996584 45 User 45: User reg OK. DIDi=4ad765
+50996584 45 User 45: Querying SIDn for sensor 8
 51049000 46 User 46: Sending user registration
-51070976 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 8
-51097776 3 GW-S 3: User 46 registered. DIDi=b14b67
-51131328 46 User 46: User reg OK. DIDi=b14b67
-51131328 46 User 46: Querying SIDn for sensor 9
-51166720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 9
-51229328 45 User 45: Got SIDn=d2362b
-51229328 45 User 45: Bound to sensor 8, SIDn=d2362b
-51229328 45 
-51282328 46 User 46: Got SIDn=2329ec
-51282328 46 User 46: Bound to sensor 9, SIDn=2329ec
-51282328 46 
+51076720 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 8
+51105776 3 GW-S 3: User 46 registered. DIDi=e4cda2
+51180584 45 User 45: Got SIDn=aa2d62
+51180584 45 User 45: Bound to sensor 8, SIDn=aa2d62
+51180584 45 
+51286584 46 User 46: User reg OK. DIDi=e4cda2
+51286584 46 User 46: Querying SIDn for sensor 9
+51348720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 9
+51447584 46 User 46: Got SIDn=83c38a
+51447584 46 User 46: Bound to sensor 9, SIDn=83c38a
+51447584 46 
 52453000 47 User 47: Sending user registration
-52505776 3 GW-S 3: User 47 registered. DIDi=f17113
-52591328 47 User 47: User reg OK. DIDi=f17113
-52591328 47 User 47: Querying SIDn for sensor 10
-52656720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 10
-52699328 47 User 47: Got SIDn=ea0a1f
-52699328 47 User 47: Bound to sensor 10, SIDn=ea0a1f
-52699328 47 
+52508776 3 GW-S 3: User 47 registered. DIDi=cb82a4
+52597584 47 User 47: User reg OK. DIDi=cb82a4
+52597584 47 User 47: Querying SIDn for sensor 10
+52698720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 10
+52769584 47 User 47: Got SIDn=925139
+52769584 47 User 47: Bound to sensor 10, SIDn=925139
+52769584 47 
 53301000 48 User 48: Sending user registration
-53319776 3 GW-S 3: User 48 registered. DIDi=6e8ad2
-53377328 48 User 48: User reg OK. DIDi=6e8ad2
-53377328 48 User 48: Querying SIDn for sensor 11
-53407720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 11
-53450328 48 User 48: Got SIDn=bf7a8c
-53450328 48 User 48: Bound to sensor 11, SIDn=bf7a8c
-53450328 48 
+53428776 3 GW-S 3: User 48 registered. DIDi=1047d2
+53513584 48 User 48: User reg OK. DIDi=1047d2
+53513584 48 User 48: Querying SIDn for sensor 11
+53614720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 11
+53723584 48 User 48: Got SIDn=ff823e
+53723584 48 User 48: Bound to sensor 11, SIDn=ff823e
+53723584 48 
 54133000 49 User 49: Sending user registration
-54187776 3 GW-S 3: User 49 registered. DIDi=d5af6c
-54241328 49 User 49: User reg OK. DIDi=d5af6c
-54241328 49 User 49: Querying SIDn for sensor 12
-54278720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 12
-54354328 49 User 49: Got SIDn=6c33ed
-54354328 49 User 49: Bound to sensor 12, SIDn=6c33ed
-54354328 49 
+54203776 3 GW-S 3: User 49 registered. DIDi=5028be
+54265584 49 User 49: User reg OK. DIDi=5028be
+54265584 49 User 49: Querying SIDn for sensor 12
+54319720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 12
+54423584 49 User 49: Got SIDn=e82ce1
+54423584 49 User 49: Bound to sensor 12, SIDn=e82ce1
+54423584 49 
 55564000 50 User 50: Sending user registration
-55634776 3 GW-S 3: User 50 registered. DIDi=de02dd
-55705328 50 User 50: User reg OK. DIDi=de02dd
-55705328 50 User 50: Querying SIDn for sensor 13
-55768720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 13
-55804328 50 User 50: Got SIDn=c087e0
-55804328 50 User 50: Bound to sensor 13, SIDn=c087e0
-55804328 50 
-77462000 41 ENROLL_ENERGY|41|cpu_s=0.501584|energy_j=0.030946User 41: Sending M1. DIDi=6b0173
-77676456 2 GW-S 2: User 41 M1 verified
-77677456 2 GW-S 2: Sending M2 to sensor 4
-77703000 42 ENROLL_ENERGY|42|cpu_s=0.347328|energy_j=0.021389User 42: Sending M1. DIDi=24ebc9
-77775080 41 User 41: M1 ACK received
-77775080 41 User 41: Waiting for M4...
-77952456 2 GW-S 2: User 42 M1 verified
-78053824 42 User 42: M1 ACK received
-78053824 42 User 42: Waiting for M4...
-78070560 4 ENROLL_ENERGY_SN|4|cpu_s=31.641112|energy_j=1.955209SN 4: M2 verified OK. New SIDn=421a32
-78070560 4 SN 4: Sent M3 (ￎﾳ)
-78070560 4 
-78153072 2 GW-S 2: M3 received from sensor
-78153072 2 GW-S 2: M3 verified from sensor 4
-78153072 2 GW-S 2: Sending M4 to user 41
-78343000 43 ENROLL_ENERGY|43|cpu_s=0.292328|energy_j=0.018014User 43: Sending M1. DIDi=2b8131
-78404776 41 User 41: M4 received
-78405776 41 User 41: Auth OK. New DIDi=d58683 SK=02c7
-78405776 41 
-78405776 41 AUTH_ENERGY|41|cpu_s=0.943776|energy_j=0.058244User 41: Sending data
-78585648 1 GW: Rejected data ﾀﾔ DIDi d58683 not found
-78601456 2 GW-S 2: User 43 M1 verified
-78616080 2 GW-S 2: M4 delivered to user
-78616080 2 
-78616080 2 AUTH_ENERGY_GW|2|cpu_s=0.938624|energy_j=0.057785GW-S 2: Sending M2 to sensor 5
-78660824 43 User 43: M1 ACK received
-78660824 43 User 43: Waiting for M4...
-78724016 41 User 41: Data confirmed
-78909304 5 ENROLL_ENERGY_SN|5|cpu_s=26.677856|energy_j=1.648536SN 5: M2 verified OK. New SIDn=2b6fd3
-78909304 5 SN 5: Sent M3 (ￎﾳ)
-78909304 5 
-78987072 2 GW-S 2: M3 received from sensor
-78987072 2 GW-S 2: M3 verified from sensor 5
-78987072 2 GW-S 2: Sending M4 to user 42
-79080520 42 User 42: M4 received
-79081520 42 User 42: Auth OK. New DIDi=dded48 SK=e68b
-79081520 42 
-79081520 42 AUTH_ENERGY|42|cpu_s=1.378520|energy_j=0.085111User 42: Sending data
-79109360 1 GW: Rejected data ﾀﾔ DIDi dded48 not found
-79139472 42 User 42: Data confirmed
-79163080 2 GW-S 2: M4 delivered to user
-79163080 2 
-79163080 2 AUTH_ENERGY_GW|2|cpu_s=0.547000|energy_j=0.033680GW-S 2: Sending M2 to sensor 6
-79318304 6 ENROLL_ENERGY_SN|6|cpu_s=29.597856|energy_j=1.828985SN 6: M2 verified OK. New SIDn=4c87b3
-79318304 6 SN 6: Sent M3 (ￎﾳ)
-79318304 6 
-79367072 2 GW-S 2: M3 received from sensor
-79367072 2 GW-S 2: M3 verified from sensor 6
-79367072 2 GW-S 2: Sending M4 to user 43
-79479000 44 ENROLL_ENERGY|44|cpu_s=0.247328|energy_j=0.015233User 44: Sending M1. DIDi=230bf1
-79540520 43 User 43: M4 received
-79541520 43 User 43: Auth OK. New DIDi=fe5cfc SK=3e04
-79541520 43 
-79541520 43 AUTH_ENERGY|43|cpu_s=1.198520|energy_j=0.074008User 43: Sending data
-79568360 1 GW: Rejected data ﾀﾔ DIDi fe5cfc not found
-79574472 43 User 43: Data confirmed
-79713456 2 GW-S 2: User 44 M1 verified
-79721080 2 GW-S 2: M4 delivered to user
-79721080 2 
-79721080 2 AUTH_ENERGY_GW|2|cpu_s=0.558000|energy_j=0.034354GW-S 2: Sending M2 to sensor 7
-79854824 44 User 44: M1 ACK received
-79854824 44 User 44: Waiting for M4...
-79978304 7 ENROLL_ENERGY_SN|7|cpu_s=23.491856|energy_j=1.451623SN 7: M2 verified OK. New SIDn=241d39
-79978304 7 SN 7: Sent M3 (ￎﾳ)
-79978304 7 
-80047144 2 GW-S 2: M3 received from sensor
-80047144 2 GW-S 2: M3 verified from sensor 7
-80047144 2 GW-S 2: Sending M4 to user 44
-80176520 44 User 44: M4 received
-80177520 44 User 44: Auth OK. New DIDi=fa2a26 SK=5618
-80177520 44 
-80177520 44 AUTH_ENERGY|44|cpu_s=0.698520|energy_j=0.043108User 44: Sending data
-80190672 1 GW: Rejected data ﾀﾔ DIDi fa2a26 not found
-80220472 44 User 44: Data confirmed
-80226080 2 GW-S 2: M4 delivered to user
-80226080 2 
-80352888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: d58683
-80498888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: dded48
-80664888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: fe5cfc
-80798888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: fa2a26
-81229000 45 ENROLL_ENERGY|45|cpu_s=0.405328|energy_j=0.024997User 45: Sending M1. DIDi=023a2b
-81282000 46 ENROLL_ENERGY|46|cpu_s=0.233328|energy_j=0.014367User 46: Sending M1. DIDi=b14b67
-81401456 2 AUTH_ENERGY_GW|2|cpu_s=0.505000|energy_j=0.031069GW-S 2: User 45 M1 verified
-81402456 2 GW-S 2: Sending M2 to sensor 8
-81470200 3 GW-S 3: User 46 M1 verified
-81471200 3 GW-S 3: Sending M2 to sensor 9
-81498824 45 User 45: M1 ACK received
-81498824 45 User 45: Waiting for M4...
-81509824 46 User 46: M1 ACK received
-81509824 46 User 46: Waiting for M4...
-81630304 8 ENROLL_ENERGY_SN|8|cpu_s=24.846856|energy_j=1.535362SN 8: M2 verified OK. New SIDn=946d3e
-81630304 8 SN 8: Sent M3 (ￎﾳ)
-81630304 8 
-81701304 9 ENROLL_ENERGY_SN|9|cpu_s=0.193856|energy_j=0.011933SN 9: M2 verified OK. New SIDn=535764
-81701304 9 SN 9: Sent M3 (ￎﾳ)
-81701304 9 
-81734072 2 GW-S 2: M3 received from sensor
-81734072 2 GW-S 2: M3 verified from sensor 8
-81734072 2 GW-S 2: Sending M4 to user 45
-81746824 3 GW-S 3: M3 received from sensor
-81746824 3 GW-S 3: M3 verified from sensor 9
-81746824 3 GW-S 3: Sending M4 to user 46
-81895520 45 User 45: M4 received
-81896520 45 User 45: Auth OK. New DIDi=a52f08 SK=296f
-81896520 45 
-81896520 45 AUTH_ENERGY|45|cpu_s=0.667520|energy_j=0.041193User 45: Sending data
-81932312 46 User 46: M4 received
-81933312 46 User 46: Auth OK. New DIDi=4cb37f SK=4a33
-81933312 46 
-81933312 46 AUTH_ENERGY|46|cpu_s=0.651312|energy_j=0.040191User 46: Sending data
-81958824 3 GW-S 3: M4 delivered to user
-81958824 3 
-81974360 1 GW: Rejected data ﾀﾔ DIDi 4cb37f not found
-81981360 1 GW: Rejected data ﾀﾔ DIDi a52f08 not found
-81992080 2 GW-S 2: M4 delivered to user
-81992080 2 
-81994552 46 User 46: Data confirmed
-82024472 45 User 45: Data confirmed
-82059632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 4cb37f
-82181888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: a52f08
-82699000 47 ENROLL_ENERGY|47|cpu_s=0.246328|energy_j=0.015171User 47: Sending M1. DIDi=f17113
-82792200 3 AUTH_ENERGY_GW|3|cpu_s=0.487624|energy_j=0.029987GW-S 3: User 47 M1 verified
-82793200 3 GW-S 3: Sending M2 to sensor 10
-82844824 47 User 47: M1 ACK received
-82844824 47 User 47: Waiting for M4...
-82950304 10 ENROLL_ENERGY_SN|10|cpu_s=0.251856|energy_j=0.015517SN 10: M2 verified OK. New SIDn=526607
-82950304 10 SN 10: Sent M3 (ￎﾳ)
-82950304 10 
-82995816 3 GW-S 3: M3 received from sensor
-82995816 3 GW-S 3: M3 verified from sensor 10
-82995816 3 GW-S 3: Sending M4 to user 47
-83123520 47 User 47: M4 received
-83124520 47 User 47: Auth OK. New DIDi=e96fe2 SK=e71c
-83124520 47 
-83124520 47 AUTH_ENERGY|47|cpu_s=0.425520|energy_j=0.026232User 47: Sending data
-83160824 3 GW-S 3: M4 delivered to user
-83160824 3 
-83168360 1 GW: Rejected data ﾀﾔ DIDi e96fe2 not found
-83187472 47 User 47: Data confirmed
-83227632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: e96fe2
-83450000 48 ENROLL_ENERGY|48|cpu_s=0.149328|energy_j=0.009176User 48: Sending M1. DIDi=6e8ad2
-83567200 3 AUTH_ENERGY_GW|3|cpu_s=0.367624|energy_j=0.022579GW-S 3: User 48 M1 verified
-83568200 3 GW-S 3: Sending M2 to sensor 11
-83582824 48 User 48: M1 ACK received
-83582824 48 User 48: Waiting for M4...
-83674304 11 ENROLL_ENERGY_SN|11|cpu_s=0.183856|energy_j=0.011315SN 11: M2 verified OK. New SIDn=5c22bb
-83674304 11 SN 11: Sent M3 (ￎﾳ)
-83674304 11 
-83746816 3 GW-S 3: M3 received from sensor
-83746816 3 GW-S 3: M3 verified from sensor 11
-83746816 3 GW-S 3: Sending M4 to user 48
-83872520 48 User 48: M4 received
-83873520 48 User 48: Auth OK. New DIDi=d4300d SK=0283
-83873520 48 
-83873520 48 AUTH_ENERGY|48|cpu_s=0.423520|energy_j=0.026113User 48: Sending data
-83937824 3 GW-S 3: M4 delivered to user
-83937824 3 
-83952360 1 GW: Rejected data ﾀﾔ DIDi d4300d not found
-83976472 48 User 48: Data confirmed
-84029632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: d4300d
-84354000 49 ENROLL_ENERGY|49|cpu_s=0.221328|energy_j=0.013626User 49: Sending M1. DIDi=d5af6c
-84429200 3 AUTH_ENERGY_GW|3|cpu_s=0.369624|energy_j=0.022728GW-S 3: User 49 M1 verified
-84430200 3 GW-S 3: Sending M2 to sensor 12
-84454824 49 User 49: M1 ACK received
-84454824 49 User 49: Waiting for M4...
-84534304 12 ENROLL_ENERGY_SN|12|cpu_s=0.193856|energy_j=0.011933SN 12: M2 verified OK. New SIDn=aba18c
-84534304 12 SN 12: Sent M3 (ￎﾳ)
-84534304 12 
-84573600 3 GW-S 3: M3 received from sensor
-84573600 3 GW-S 3: M3 verified from sensor 12
-84573600 3 GW-S 3: Sending M4 to user 49
-84668520 49 User 49: M4 received
-84669520 49 User 49: Auth OK. New DIDi=3c3d6b SK=e5d0
-84669520 49 
-84669520 49 AUTH_ENERGY|49|cpu_s=0.315520|energy_j=0.019434User 49: Sending data
-84726360 1 GW: Rejected data ﾀﾔ DIDi 3c3d6b not found
-84754472 49 User 49: Data confirmed
-84805824 3 GW-S 3: M4 delivered to user
-84805824 3 
-84838632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 3c3d6b
-85804000 50 ENROLL_ENERGY|50|cpu_s=0.240328|energy_j=0.014800User 50: Sending M1. DIDi=de02dd
-85915200 3 AUTH_ENERGY_GW|3|cpu_s=0.375624|energy_j=0.023078GW-S 3: User 50 M1 verified
-85916200 3 GW-S 3: Sending M2 to sensor 13
-85947824 50 User 50: M1 ACK received
-85947824 50 User 50: Waiting for M4...
-86030304 13 ENROLL_ENERGY_SN|13|cpu_s=4.864856|energy_j=0.300576SN 13: M2 verified OK. New SIDn=21dc33
-86030304 13 SN 13: Sent M3 (ￎﾳ)
-86030304 13 
-86063816 3 GW-S 3: M3 received from sensor
-86063816 3 GW-S 3: M3 verified from sensor 13
-86063816 3 GW-S 3: Sending M4 to user 50
-86164520 50 User 50: M4 received
-86165520 50 User 50: Auth OK. New DIDi=924d03 SK=0853
-86165520 50 
-86165520 50 AUTH_ENERGY|50|cpu_s=0.361520|energy_j=0.022282User 50: Sending data
+55636776 3 GW-S 3: User 50 registered. DIDi=91233e
+55751840 50 User 50: User reg OK. DIDi=91233e
+55751840 50 User 50: Querying SIDn for sensor 13
+55850720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 13
+55956840 50 User 50: Got SIDn=059ecc
+55956840 50 User 50: Bound to sensor 13, SIDn=059ecc
+55956840 50 
+77196000 41 ENROLL_ENERGY|41|cpu_s=0.235328|energy_j=0.014491User 41: Sending M1. DIDi=a04fed
+77301200 2 GW-S 2: User 41 M1 verified
+77302200 2 GW-S 2: Sending M2 to sensor 4
+77369824 41 User 41: M1 ACK received
+77369824 41 User 41: Waiting for M4...
+77445304 4 ENROLL_ENERGY_SN|4|cpu_s=12.029856|energy_j=0.743305SN 4: M2 verified OK. New SIDn=8b05c5
+77445304 4 SN 4: Sent M3 (ￎﾳ)
+77445304 4 
+77498816 2 GW-S 2: M3 received from sensor
+77498816 2 GW-S 2: M3 verified from sensor 4
+77498816 2 GW-S 2: Sending M4 to user 41
+77533520 41 User 41: M4 received
+77534520 41 User 41: Auth OK. New DIDi=e50b7f SK=4bd9
+77534520 41 
+77534520 41 AUTH_ENERGY|41|cpu_s=0.338520|energy_j=0.020860User 41: Sending data
+77576824 2 GW-S 2: M4 delivered to user
+77576824 2 
+77585000 42 ENROLL_ENERGY|42|cpu_s=0.229328|energy_j=0.014120User 42: Sending M1. DIDi=29142d
+77590360 1 GW: Rejected data ﾀﾔ DIDi e50b7f not found
+77604472 41 User 41: Data confirmed
+77689200 2 AUTH_ENERGY_GW|2|cpu_s=0.274624|energy_j=0.016857GW-S 2: User 42 M1 verified
+77738632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: e50b7f
+77800824 42 User 42: M1 ACK received
+77800824 42 User 42: Waiting for M4...
+78230000 43 ENROLL_ENERGY|43|cpu_s=0.179624|energy_j=0.011049User 43: Sending M1. DIDi=0b9651
+78352200 2 GW-S 2: User 43 M1 verified
+78353200 2 GW-S 2: Sending M2 to sensor 5
+78506824 43 User 43: M1 ACK received
+78506824 43 User 43: Waiting for M4...
+78540304 5 ENROLL_ENERGY_SN|5|cpu_s=11.544856|energy_j=0.713374SN 5: M2 verified OK. New SIDn=c2ded0
+78540304 5 SN 5: Sent M3 (ￎﾳ)
+78540304 5 
+78600816 2 GW-S 2: M3 received from sensor
+78600816 2 GW-S 2: M3 verified from sensor 5
+78600816 2 GW-S 2: Sending M4 to user 42
+78705520 42 User 42: M4 received
+78706520 42 User 42: Auth OK. New DIDi=32aea1 SK=0fef
+78706520 42 
+78706520 42 AUTH_ENERGY|42|cpu_s=1.121520|energy_j=0.069250User 42: Sending data
+78746824 2 GW-S 2: M4 delivered to user
+78746824 2 
+78746824 2 AUTH_ENERGY_GW|2|cpu_s=0.393624|energy_j=0.024211GW-S 2: Sending M2 to sensor 6
+78850304 6 ENROLL_ENERGY_SN|6|cpu_s=12.694680|energy_j=0.784416SN 6: M2 verified OK. New SIDn=e7fed5
+78850304 6 SN 6: Sent M3 (ￎﾳ)
+78850304 6 
+78888816 2 GW-S 2: M3 received from sensor
+78888816 2 GW-S 2: M3 verified from sensor 6
+78888816 2 GW-S 2: Sending M4 to user 43
+78905360 1 GW: Rejected data ﾀﾔ DIDi 32aea1 not found
+78911472 42 User 42: Data confirmed
+78972520 43 User 43: M4 received
+78973520 43 User 43: Auth OK. New DIDi=1722dc SK=fbbc
+78973520 43 
+78973520 43 AUTH_ENERGY|43|cpu_s=0.743520|energy_j=0.045889User 43: Sending data
+79009824 2 GW-S 2: M4 delivered to user
+79009824 2 
+79027360 1 GW: Rejected data ﾀﾔ DIDi 1722dc not found
+79065472 43 User 43: Data confirmed
+79097632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 32aea1
+79184632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 1722dc
+79516000 44 ENROLL_ENERGY|44|cpu_s=0.284328|energy_j=0.017519User 44: Sending M1. DIDi=c447fc
+79610200 2 AUTH_ENERGY_GW|2|cpu_s=0.263000|energy_j=0.016154GW-S 2: User 44 M1 verified
+79611200 2 GW-S 2: Sending M2 to sensor 7
+79658824 44 User 44: M1 ACK received
+79658824 44 User 44: Waiting for M4...
+79868560 7 ENROLL_ENERGY_SN|7|cpu_s=26.636112|energy_j=1.645868SN 7: M2 verified OK. New SIDn=0ebc7b
+79868560 7 SN 7: Sent M3 (ￎﾳ)
+79868560 7 
+79949816 2 GW-S 2: M3 received from sensor
+79949816 2 GW-S 2: M3 verified from sensor 7
+79949816 2 GW-S 2: Sending M4 to user 44
+80080520 44 User 44: M4 received
+80081520 44 User 44: Auth OK. New DIDi=173aea SK=c035
+80081520 44 
+80081520 44 AUTH_ENERGY|44|cpu_s=0.565520|energy_j=0.034810User 44: Sending data
+80121616 2 GW-S 2: M4 delivered to user
+80121616 2 
+80153360 1 GW: Rejected data ﾀﾔ DIDi 173aea not found
+80179632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 173aea
+80255472 44 User 44: Data confirmed
+81180000 45 ENROLL_ENERGY|45|cpu_s=0.356584|energy_j=0.021985User 45: Sending M1. DIDi=4ad765
+81367200 2 AUTH_ENERGY_GW|2|cpu_s=0.510416|energy_j=0.031429GW-S 2: User 45 M1 verified
+81368200 2 GW-S 2: Sending M2 to sensor 8
+81447000 46 ENROLL_ENERGY|46|cpu_s=0.398584|energy_j=0.024580User 46: Sending M1. DIDi=e4cda2
+81533560 8 ENROLL_ENERGY_SN|8|cpu_s=25.775112|energy_j=1.592678SN 8: M2 verified OK. New SIDn=ef0e7a
+81533560 8 SN 8: Sent M3 (ￎﾳ)
+81533560 8 
+81590080 45 User 45: M1 ACK received
+81590080 45 User 45: Waiting for M4...
+81718200 3 GW-S 3: User 46 M1 verified
+81719200 3 GW-S 3: Sending M2 to sensor 9
+81738816 2 GW-S 2: M3 received from sensor
+81738816 2 GW-S 2: M3 verified from sensor 8
+81738816 2 GW-S 2: Sending M4 to user 45
+81908080 46 User 46: M1 ACK received
+81908080 46 User 46: Waiting for M4...
+81912856 45 User 45: M4 received
+81913856 45 User 45: Auth OK. New DIDi=56d6f4 SK=a03f
+81913856 45 
+81913856 45 AUTH_ENERGY|45|cpu_s=0.733856|energy_j=0.045292User 45: Sending data
+81965824 2 GW-S 2: M4 delivered to user
+81965824 2 
+82026648 1 GW: Rejected data ﾀﾔ DIDi 56d6f4 not found
+82049632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 56d6f4
+82114016 45 User 45: Data confirmed
+82769000 47 ENROLL_ENERGY|47|cpu_s=0.316584|energy_j=0.019513User 47: Sending M1. DIDi=cb82a4
+82932200 3 GW-S 3: User 47 M1 verified
+83009160 47 User 47: M1 ACK received
+83009160 47 User 47: Waiting for M4...
+83723000 48 ENROLL_ENERGY|48|cpu_s=0.422584|energy_j=0.026063User 48: Sending M1. DIDi=1047d2
+83853200 3 GW-S 3: User 48 M1 verified
+83924080 48 User 48: M1 ACK received
+83924080 48 User 48: Waiting for M4...
+84423000 49 ENROLL_ENERGY|49|cpu_s=0.290584|energy_j=0.017906User 49: Sending M1. DIDi=5028be
+84572200 3 GW-S 3: User 49 M1 verified
+84657080 49 User 49: M1 ACK received
+84657080 49 User 49: Waiting for M4...
+85656560 9 ENROLL_ENERGY_SN|9|cpu_s=11.857112|energy_j=0.732543SN 9: M2 verified OK. New SIDn=151448
+85656560 9 SN 9: Sent M3 (ￎﾳ)
+85656560 9 
+85794816 3 GW-S 3: M3 received from sensor
+85794816 3 GW-S 3: M3 verified from sensor 9
+85794816 3 GW-S 3: Sending M4 to user 46
+85954776 46 User 46: M4 received
+85955776 46 User 46: Auth OK. New DIDi=e9e156 SK=0151
+85955776 46 
+85955776 46 AUTH_ENERGY|46|cpu_s=4.508776|energy_j=0.278561User 46: Sending data
+85956000 50 ENROLL_ENERGY|50|cpu_s=0.392840|energy_j=0.024225User 50: Sending M1. DIDi=91233e
+85991824 3 GW-S 3: M4 delivered to user
+85991824 3 
+85991824 3 AUTH_ENERGY_GW|3|cpu_s=4.272624|energy_j=0.263816GW-S 3: Sending M2 to sensor 10
+86068648 1 GW: Rejected data ﾀﾔ DIDi e9e156 not found
+86145472 46 User 46: Data confirmed
+86222560 10 ENROLL_ENERGY_SN|10|cpu_s=23.680112|energy_j=1.463271SN 10: M2 verified OK. New SIDn=faca22
+86222560 10 SN 10: Sent M3 (ￎﾳ)
+86222560 10 
+86294200 3 GW-S 3: User 50 M1 verified
+86329608 3 GW-S 3: M3 received from sensor
+86329608 3 GW-S 3: M3 verified from sensor 10
+86329608 3 GW-S 3: Sending M4 to user 47
+86501776 47 User 47: M4 received
+86502776 47 User 47: Auth OK. New DIDi=7d4745 SK=0148
+86502776 47 
+86502776 47 AUTH_ENERGY|47|cpu_s=3.733776|energy_j=0.230687User 47: Sending data
+86586648 1 GW: Rejected data ﾀﾔ DIDi 7d4745 not found
+86602336 50 User 50: M1 ACK received
+86602336 50 User 50: Waiting for M4...
+86623824 3 GW-S 3: M4 delivered to user
+86623824 3 
+86623824 3 AUTH_ENERGY_GW|3|cpu_s=0.632000|energy_j=0.038924GW-S 3: Sending M2 to sensor 11
+86701304 11 ENROLL_ENERGY_SN|11|cpu_s=0.194856|energy_j=0.011994SN 11: M2 verified OK. New SIDn=5116ff
+86701304 11 SN 11: Sent M3 (ￎﾳ)
+86701304 11 
+86777816 3 GW-S 3: M3 received from sensor
+86777816 3 GW-S 3: M3 verified from sensor 11
+86777816 3 GW-S 3: Sending M4 to user 48
+86910840 48 User 48: M4 received
+86911840 48 User 48: Auth OK. New DIDi=b1c520 SK=1332
+86911840 48 
+86911840 48 AUTH_ENERGY|48|cpu_s=3.188840|energy_j=0.197010User 48: Sending data
+86946016 47 User 47: Data confirmed
+87016824 3 GW-S 3: M4 delivered to user
+87016824 3 
+87016824 3 AUTH_ENERGY_GW|3|cpu_s=0.393000|energy_j=0.024183GW-S 3: Sending M2 to sensor 12
+87032648 1 GW: Rejected data ﾀﾔ DIDi b1c520 not found
+87064016 48 User 48: Data confirmed
+87138304 12 ENROLL_ENERGY_SN|12|cpu_s=3.358856|energy_j=0.207505SN 12: M2 verified OK. New SIDn=02a542
+87138304 12 SN 12: Sent M3 (ￎﾳ)
+87138304 12 
+87171816 3 GW-S 3: M3 received from sensor
+87171816 3 GW-S 3: M3 verified from sensor 12
+87171816 3 GW-S 3: Sending M4 to user 49
+87357776 49 User 49: M4 received
+87358776 49 User 49: Auth OK. New DIDi=03eaa3 SK=f8cf
+87358776 49 
+87358776 49 AUTH_ENERGY|49|cpu_s=2.935776|energy_j=0.181371User 49: Sending data
+87414824 3 GW-S 3: M4 delivered to user
+87414824 3 
+87414824 3 AUTH_ENERGY_GW|3|cpu_s=0.398000|energy_j=0.024497GW-S 3: Sending M2 to sensor 13
+87523648 1 GW: Rejected data ﾀﾔ DIDi 03eaa3 not found
+87541304 13 ENROLL_ENERGY_SN|13|cpu_s=0.228856|energy_j=0.014091SN 13: M2 verified OK. New SIDn=50b504
+87541304 13 SN 13: Sent M3 (ￎﾳ)
+87541304 13 
+87569016 49 User 49: Data confirmed
+87600816 3 GW-S 3: M3 received from sensor
+87600816 3 GW-S 3: M3 verified from sensor 13
+87600816 3 GW-S 3: Sending M4 to user 50
+87843032 50 User 50: M4 received
+87844032 50 User 50: Auth OK. New DIDi=efb2ea SK=4569
+87844032 50 
+87844032 50 AUTH_ENERGY|50|cpu_s=1.888032|energy_j=0.116584User 50: Sending data
 EARLY EXIT: all 10 nodes done
 TEST OK
-Test ended at simulation time: 86165520
+Test ended at simulation time: 87844032

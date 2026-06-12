@@ -1,0 +1,60 @@
+Network Variation Simulation Runner
+  Schemes : ['Zhou']
+  Sizes   : [100]
+  Seeds   : [123456, 234567, 345678, 456789, 567890, 678901, 789012, 890123, 901234, 112345]
+  COOJA   : /home/apex/contiki-ng/tools/cooja
+  Build   : /home/apex/contiki-ng/examples/myproject
+
+======================================================================
+  Zhou  N=100  (20 devices, 2 active AS)
+======================================================================
+  Prepared source: Zhou N=100
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['gw-server.cooja', 'user-node.cooja', 'sn-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (21s)
+  Devices parsed: E=20  A=20  K=0
+
+  --- Seed 234567
+  Result : TEST OK  (22s)
+  Devices parsed: E=20  A=20  K=0
+
+  --- Seed 345678
+  Result : TEST OK  (22s)
+  Devices parsed: E=20  A=20  K=0
+
+  --- Seed 456789
+  Result : TEST OK  (21s)
+  Devices parsed: E=20  A=20  K=0
+
+  --- Seed 567890
+  Result : TEST OK  (20s)
+  Devices parsed: E=20  A=20  K=0
+
+  --- Seed 678901
+  Result : TEST OK  (21s)
+  Devices parsed: E=20  A=20  K=0
+
+  --- Seed 789012
+  Result : TEST OK  (22s)
+  Devices parsed: E=20  A=20  K=0
+
+  --- Seed 890123
+  Result : TEST OK  (24s)
+  Devices parsed: E=20  A=20  K=0
+
+  --- Seed 901234
+  Result : TEST OK  (20s)
+  Devices parsed: E=20  A=20  K=0
+
+  --- Seed 112345
+  Result : TEST OK  (19s)
+  Devices parsed: E=20  A=20  K=0
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N100/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N100/logs
+
+======================================================================
+All done.  Run plot_network_variation.py to generate charts.
+======================================================================

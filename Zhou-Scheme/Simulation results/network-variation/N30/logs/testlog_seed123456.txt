@@ -1,23 +1,24 @@
 Random seed: 123456
-35000 24 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-35000 24 [INFO: Main      ] - Routing: RPL Lite
-35000 24 [INFO: Main      ] - Net: sicslowpan
-35000 24 [INFO: Main      ] - MAC: CSMA
-35000 24 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-35000 24 [INFO: Main      ] - 802.15.4 Default channel: 26
-35000 24 [INFO: Main      ] Node ID: 24
-35000 24 [INFO: Main      ] Link-layer address: 0018.0018.0018.0018
-35000 24 [INFO: Main      ] Tentative link-local IPv6 address: fe80::218:18:18:18
-73000 8 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-73000 8 [INFO: Main      ] - Routing: RPL Lite
-73000 8 [INFO: Main      ] - Net: sicslowpan
-73000 8 [INFO: Main      ] - MAC: CSMA
-73000 8 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-73000 8 [INFO: Main      ] - 802.15.4 Default channel: 26
-73000 8 [INFO: Main      ] Node ID: 8
-73000 8 [INFO: Main      ] Link-layer address: 0008.0008.0008.0008
-73000 8 [INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
-142000 28 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+35000 9 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+35000 9 [INFO: Main      ] - Routing: RPL Lite
+35000 9 [INFO: Main      ] - Net: sicslowpan
+35000 9 [INFO: Main      ] - MAC: CSMA
+35000 9 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+35000 9 [INFO: Main      ] - 802.15.4 Default channel: 26
+35000 9 [INFO: Main      ] Node ID: 9
+35000 9 [INFO: Main      ] Link-layer address: 0009.0009.0009.0009
+35000 9 [INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
+73000 14 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+73000 14 [INFO: Main      ] - Routing: RPL Lite
+73000 14 [INFO: Main      ] - Net: sicslowpan
+73000 14 [INFO: Main      ] - MAC: CSMA
+73000 14 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+73000 14 [INFO: Main      ] - 802.15.4 Default channel: 26
+73000 14 [INFO: Main      ] Node ID: 14
+73000 14 [INFO: Main      ] Link-layer address: 000e.000e.000e.000e
+73000 14 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
+73000 14 GW-S 14: Started.
+142000 28 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 142000 28 [INFO: Main      ] - Routing: RPL Lite
 142000 28 [INFO: Main      ] - Net: sicslowpan
 142000 28 [INFO: Main      ] - MAC: CSMA
@@ -26,16 +27,17 @@ Random seed: 123456
 142000 28 [INFO: Main      ] Node ID: 28
 142000 28 [INFO: Main      ] Link-layer address: 001c.001c.001c.001c
 142000 28 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21c:1c:1c:1c
-190000 11 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-190000 11 [INFO: Main      ] - Routing: RPL Lite
-190000 11 [INFO: Main      ] - Net: sicslowpan
-190000 11 [INFO: Main      ] - MAC: CSMA
-190000 11 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-190000 11 [INFO: Main      ] - 802.15.4 Default channel: 26
-190000 11 [INFO: Main      ] Node ID: 11
-190000 11 [INFO: Main      ] Link-layer address: 000b.000b.000b.000b
-190000 11 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20b:b:b:b
-236000 2 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+190000 17 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+190000 17 [INFO: Main      ] - Routing: RPL Lite
+190000 17 [INFO: Main      ] - Net: sicslowpan
+190000 17 [INFO: Main      ] - MAC: CSMA
+190000 17 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+190000 17 [INFO: Main      ] - 802.15.4 Default channel: 26
+190000 17 [INFO: Main      ] Node ID: 17
+190000 17 [INFO: Main      ] Link-layer address: 0011.0011.0011.0011
+190000 17 [INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
+190000 17 GW-S 17: Started.
+236000 2 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 236000 2 [INFO: Main      ] - Routing: RPL Lite
 236000 2 [INFO: Main      ] - Net: sicslowpan
 236000 2 [INFO: Main      ] - MAC: CSMA
@@ -45,7 +47,7 @@ Random seed: 123456
 236000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
 236000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
 236000 2 GW-S 2: Started.
-244000 30 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+244000 30 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 244000 30 [INFO: Main      ] - Routing: RPL Lite
 244000 30 [INFO: Main      ] - Net: sicslowpan
 244000 30 [INFO: Main      ] - MAC: CSMA
@@ -54,34 +56,37 @@ Random seed: 123456
 244000 30 [INFO: Main      ] Node ID: 30
 244000 30 [INFO: Main      ] Link-layer address: 001e.001e.001e.001e
 244000 30 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21e:1e:1e:1e
-250000 6 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-250000 6 [INFO: Main      ] - Routing: RPL Lite
-250000 6 [INFO: Main      ] - Net: sicslowpan
-250000 6 [INFO: Main      ] - MAC: CSMA
-250000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-250000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
-250000 6 [INFO: Main      ] Node ID: 6
-250000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
-250000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
-326000 18 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-326000 18 [INFO: Main      ] - Routing: RPL Lite
-326000 18 [INFO: Main      ] - Net: sicslowpan
-326000 18 [INFO: Main      ] - MAC: CSMA
-326000 18 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-326000 18 [INFO: Main      ] - 802.15.4 Default channel: 26
-326000 18 [INFO: Main      ] Node ID: 18
-326000 18 [INFO: Main      ] Link-layer address: 0012.0012.0012.0012
-326000 18 [INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
-348000 4 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-348000 4 [INFO: Main      ] - Routing: RPL Lite
-348000 4 [INFO: Main      ] - Net: sicslowpan
-348000 4 [INFO: Main      ] - MAC: CSMA
-348000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-348000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
-348000 4 [INFO: Main      ] Node ID: 4
-348000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
-348000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
-382000 1 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+250000 12 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+250000 12 [INFO: Main      ] - Routing: RPL Lite
+250000 12 [INFO: Main      ] - Net: sicslowpan
+250000 12 [INFO: Main      ] - MAC: CSMA
+250000 12 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+250000 12 [INFO: Main      ] - 802.15.4 Default channel: 26
+250000 12 [INFO: Main      ] Node ID: 12
+250000 12 [INFO: Main      ] Link-layer address: 000c.000c.000c.000c
+250000 12 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
+250000 12 GW-S 12: Started.
+326000 24 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+326000 24 [INFO: Main      ] - Routing: RPL Lite
+326000 24 [INFO: Main      ] - Net: sicslowpan
+326000 24 [INFO: Main      ] - MAC: CSMA
+326000 24 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+326000 24 [INFO: Main      ] - 802.15.4 Default channel: 26
+326000 24 [INFO: Main      ] Node ID: 24
+326000 24 [INFO: Main      ] Link-layer address: 0018.0018.0018.0018
+326000 24 [INFO: Main      ] Tentative link-local IPv6 address: fe80::218:18:18:18
+326000 24 GW-S 24: Started.
+348000 10 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+348000 10 [INFO: Main      ] - Routing: RPL Lite
+348000 10 [INFO: Main      ] - Net: sicslowpan
+348000 10 [INFO: Main      ] - MAC: CSMA
+348000 10 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+348000 10 [INFO: Main      ] - 802.15.4 Default channel: 26
+348000 10 [INFO: Main      ] Node ID: 10
+348000 10 [INFO: Main      ] Link-layer address: 000a.000a.000a.000a
+348000 10 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
+348000 10 GW-S 10: Started.
+382000 1 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 382000 1 [INFO: Main      ] - Routing: RPL Lite
 382000 1 [INFO: Main      ] - Net: sicslowpan
 382000 1 [INFO: Main      ] - MAC: CSMA
@@ -91,7 +96,7 @@ Random seed: 123456
 382000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
 382000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
 382000 1 GW 1: Started (RPL root + CoAP server).
-385000 27 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+385000 27 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 385000 27 [INFO: Main      ] - Routing: RPL Lite
 385000 27 [INFO: Main      ] - Net: sicslowpan
 385000 27 [INFO: Main      ] - MAC: CSMA
@@ -100,34 +105,37 @@ Random seed: 123456
 385000 27 [INFO: Main      ] Node ID: 27
 385000 27 [INFO: Main      ] Link-layer address: 001b.001b.001b.001b
 385000 27 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21b:1b:1b:1b
-402000 7 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-402000 7 [INFO: Main      ] - Routing: RPL Lite
-402000 7 [INFO: Main      ] - Net: sicslowpan
-402000 7 [INFO: Main      ] - MAC: CSMA
-402000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-402000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
-402000 7 [INFO: Main      ] Node ID: 7
-402000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
-402000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
-450000 14 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-450000 14 [INFO: Main      ] - Routing: RPL Lite
-450000 14 [INFO: Main      ] - Net: sicslowpan
-450000 14 [INFO: Main      ] - MAC: CSMA
-450000 14 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-450000 14 [INFO: Main      ] - 802.15.4 Default channel: 26
-450000 14 [INFO: Main      ] Node ID: 14
-450000 14 [INFO: Main      ] Link-layer address: 000e.000e.000e.000e
-450000 14 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
-462000 15 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-462000 15 [INFO: Main      ] - Routing: RPL Lite
-462000 15 [INFO: Main      ] - Net: sicslowpan
-462000 15 [INFO: Main      ] - MAC: CSMA
-462000 15 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-462000 15 [INFO: Main      ] - 802.15.4 Default channel: 26
-462000 15 [INFO: Main      ] Node ID: 15
-462000 15 [INFO: Main      ] Link-layer address: 000f.000f.000f.000f
-462000 15 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
-467000 25 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+402000 13 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+402000 13 [INFO: Main      ] - Routing: RPL Lite
+402000 13 [INFO: Main      ] - Net: sicslowpan
+402000 13 [INFO: Main      ] - MAC: CSMA
+402000 13 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+402000 13 [INFO: Main      ] - 802.15.4 Default channel: 26
+402000 13 [INFO: Main      ] Node ID: 13
+402000 13 [INFO: Main      ] Link-layer address: 000d.000d.000d.000d
+402000 13 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
+402000 13 GW-S 13: Started.
+450000 20 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+450000 20 [INFO: Main      ] - Routing: RPL Lite
+450000 20 [INFO: Main      ] - Net: sicslowpan
+450000 20 [INFO: Main      ] - MAC: CSMA
+450000 20 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+450000 20 [INFO: Main      ] - 802.15.4 Default channel: 26
+450000 20 [INFO: Main      ] Node ID: 20
+450000 20 [INFO: Main      ] Link-layer address: 0014.0014.0014.0014
+450000 20 [INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
+450000 20 GW-S 20: Started.
+462000 21 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+462000 21 [INFO: Main      ] - Routing: RPL Lite
+462000 21 [INFO: Main      ] - Net: sicslowpan
+462000 21 [INFO: Main      ] - MAC: CSMA
+462000 21 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+462000 21 [INFO: Main      ] - 802.15.4 Default channel: 26
+462000 21 [INFO: Main      ] Node ID: 21
+462000 21 [INFO: Main      ] Link-layer address: 0015.0015.0015.0015
+462000 21 [INFO: Main      ] Tentative link-local IPv6 address: fe80::215:15:15:15
+462000 21 GW-S 21: Started.
+467000 25 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 467000 25 [INFO: Main      ] - Routing: RPL Lite
 467000 25 [INFO: Main      ] - Net: sicslowpan
 467000 25 [INFO: Main      ] - MAC: CSMA
@@ -136,43 +144,46 @@ Random seed: 123456
 467000 25 [INFO: Main      ] Node ID: 25
 467000 25 [INFO: Main      ] Link-layer address: 0019.0019.0019.0019
 467000 25 [INFO: Main      ] Tentative link-local IPv6 address: fe80::219:19:19:19
-472000 20 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-472000 20 [INFO: Main      ] - Routing: RPL Lite
-472000 20 [INFO: Main      ] - Net: sicslowpan
-472000 20 [INFO: Main      ] - MAC: CSMA
-472000 20 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-472000 20 [INFO: Main      ] - 802.15.4 Default channel: 26
-472000 20 [INFO: Main      ] Node ID: 20
-472000 20 [INFO: Main      ] Link-layer address: 0014.0014.0014.0014
-472000 20 [INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
-473000 16 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-473000 16 [INFO: Main      ] - Routing: RPL Lite
-473000 16 [INFO: Main      ] - Net: sicslowpan
-473000 16 [INFO: Main      ] - MAC: CSMA
-473000 16 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-473000 16 [INFO: Main      ] - 802.15.4 Default channel: 26
-473000 16 [INFO: Main      ] Node ID: 16
-473000 16 [INFO: Main      ] Link-layer address: 0010.0010.0010.0010
-473000 16 [INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
-556000 10 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-556000 10 [INFO: Main      ] - Routing: RPL Lite
-556000 10 [INFO: Main      ] - Net: sicslowpan
-556000 10 [INFO: Main      ] - MAC: CSMA
-556000 10 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-556000 10 [INFO: Main      ] - 802.15.4 Default channel: 26
-556000 10 [INFO: Main      ] Node ID: 10
-556000 10 [INFO: Main      ] Link-layer address: 000a.000a.000a.000a
-556000 10 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
-594000 12 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-594000 12 [INFO: Main      ] - Routing: RPL Lite
-594000 12 [INFO: Main      ] - Net: sicslowpan
-594000 12 [INFO: Main      ] - MAC: CSMA
-594000 12 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-594000 12 [INFO: Main      ] - 802.15.4 Default channel: 26
-594000 12 [INFO: Main      ] Node ID: 12
-594000 12 [INFO: Main      ] Link-layer address: 000c.000c.000c.000c
-594000 12 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
-637000 29 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+472000 5 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+472000 5 [INFO: Main      ] - Routing: RPL Lite
+472000 5 [INFO: Main      ] - Net: sicslowpan
+472000 5 [INFO: Main      ] - MAC: CSMA
+472000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+472000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+472000 5 [INFO: Main      ] Node ID: 5
+472000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+472000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+473000 22 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+473000 22 [INFO: Main      ] - Routing: RPL Lite
+473000 22 [INFO: Main      ] - Net: sicslowpan
+473000 22 [INFO: Main      ] - MAC: CSMA
+473000 22 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+473000 22 [INFO: Main      ] - 802.15.4 Default channel: 26
+473000 22 [INFO: Main      ] Node ID: 22
+473000 22 [INFO: Main      ] Link-layer address: 0016.0016.0016.0016
+473000 22 [INFO: Main      ] Tentative link-local IPv6 address: fe80::216:16:16:16
+473000 22 GW-S 22: Started.
+556000 16 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+556000 16 [INFO: Main      ] - Routing: RPL Lite
+556000 16 [INFO: Main      ] - Net: sicslowpan
+556000 16 [INFO: Main      ] - MAC: CSMA
+556000 16 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+556000 16 [INFO: Main      ] - 802.15.4 Default channel: 26
+556000 16 [INFO: Main      ] Node ID: 16
+556000 16 [INFO: Main      ] Link-layer address: 0010.0010.0010.0010
+556000 16 [INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
+556000 16 GW-S 16: Started.
+594000 18 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+594000 18 [INFO: Main      ] - Routing: RPL Lite
+594000 18 [INFO: Main      ] - Net: sicslowpan
+594000 18 [INFO: Main      ] - MAC: CSMA
+594000 18 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+594000 18 [INFO: Main      ] - 802.15.4 Default channel: 26
+594000 18 [INFO: Main      ] Node ID: 18
+594000 18 [INFO: Main      ] Link-layer address: 0012.0012.0012.0012
+594000 18 [INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
+594000 18 GW-S 18: Started.
+637000 29 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 637000 29 [INFO: Main      ] - Routing: RPL Lite
 637000 29 [INFO: Main      ] - Net: sicslowpan
 637000 29 [INFO: Main      ] - MAC: CSMA
@@ -181,16 +192,16 @@ Random seed: 123456
 637000 29 [INFO: Main      ] Node ID: 29
 637000 29 [INFO: Main      ] Link-layer address: 001d.001d.001d.001d
 637000 29 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21d:1d:1d:1d
-663000 22 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-663000 22 [INFO: Main      ] - Routing: RPL Lite
-663000 22 [INFO: Main      ] - Net: sicslowpan
-663000 22 [INFO: Main      ] - MAC: CSMA
-663000 22 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-663000 22 [INFO: Main      ] - 802.15.4 Default channel: 26
-663000 22 [INFO: Main      ] Node ID: 22
-663000 22 [INFO: Main      ] Link-layer address: 0016.0016.0016.0016
-663000 22 [INFO: Main      ] Tentative link-local IPv6 address: fe80::216:16:16:16
-690000 26 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+663000 7 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+663000 7 [INFO: Main      ] - Routing: RPL Lite
+663000 7 [INFO: Main      ] - Net: sicslowpan
+663000 7 [INFO: Main      ] - MAC: CSMA
+663000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+663000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
+663000 7 [INFO: Main      ] Node ID: 7
+663000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+663000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+690000 26 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 690000 26 [INFO: Main      ] - Routing: RPL Lite
 690000 26 [INFO: Main      ] - Net: sicslowpan
 690000 26 [INFO: Main      ] - MAC: CSMA
@@ -199,52 +210,56 @@ Random seed: 123456
 690000 26 [INFO: Main      ] Node ID: 26
 690000 26 [INFO: Main      ] Link-layer address: 001a.001a.001a.001a
 690000 26 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21a:1a:1a:1a
-708000 9 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-708000 9 [INFO: Main      ] - Routing: RPL Lite
-708000 9 [INFO: Main      ] - Net: sicslowpan
-708000 9 [INFO: Main      ] - MAC: CSMA
-708000 9 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-708000 9 [INFO: Main      ] - 802.15.4 Default channel: 26
-708000 9 [INFO: Main      ] Node ID: 9
-708000 9 [INFO: Main      ] Link-layer address: 0009.0009.0009.0009
-708000 9 [INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
-715000 5 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-715000 5 [INFO: Main      ] - Routing: RPL Lite
-715000 5 [INFO: Main      ] - Net: sicslowpan
-715000 5 [INFO: Main      ] - MAC: CSMA
-715000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-715000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
-715000 5 [INFO: Main      ] Node ID: 5
-715000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
-715000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
-719000 19 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-719000 19 [INFO: Main      ] - Routing: RPL Lite
-719000 19 [INFO: Main      ] - Net: sicslowpan
-719000 19 [INFO: Main      ] - MAC: CSMA
-719000 19 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-719000 19 [INFO: Main      ] - 802.15.4 Default channel: 26
-719000 19 [INFO: Main      ] Node ID: 19
-719000 19 [INFO: Main      ] Link-layer address: 0013.0013.0013.0013
-719000 19 [INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
-809000 17 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-809000 17 [INFO: Main      ] - Routing: RPL Lite
-809000 17 [INFO: Main      ] - Net: sicslowpan
-809000 17 [INFO: Main      ] - MAC: CSMA
-809000 17 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-809000 17 [INFO: Main      ] - 802.15.4 Default channel: 26
-809000 17 [INFO: Main      ] Node ID: 17
-809000 17 [INFO: Main      ] Link-layer address: 0011.0011.0011.0011
-809000 17 [INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
-884000 13 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-884000 13 [INFO: Main      ] - Routing: RPL Lite
-884000 13 [INFO: Main      ] - Net: sicslowpan
-884000 13 [INFO: Main      ] - MAC: CSMA
-884000 13 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-884000 13 [INFO: Main      ] - 802.15.4 Default channel: 26
-884000 13 [INFO: Main      ] Node ID: 13
-884000 13 [INFO: Main      ] Link-layer address: 000d.000d.000d.000d
-884000 13 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
-899000 3 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
+708000 15 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+708000 15 [INFO: Main      ] - Routing: RPL Lite
+708000 15 [INFO: Main      ] - Net: sicslowpan
+708000 15 [INFO: Main      ] - MAC: CSMA
+708000 15 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+708000 15 [INFO: Main      ] - 802.15.4 Default channel: 26
+708000 15 [INFO: Main      ] Node ID: 15
+708000 15 [INFO: Main      ] Link-layer address: 000f.000f.000f.000f
+708000 15 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
+708000 15 GW-S 15: Started.
+715000 11 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+715000 11 [INFO: Main      ] - Routing: RPL Lite
+715000 11 [INFO: Main      ] - Net: sicslowpan
+715000 11 [INFO: Main      ] - MAC: CSMA
+715000 11 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+715000 11 [INFO: Main      ] - 802.15.4 Default channel: 26
+715000 11 [INFO: Main      ] Node ID: 11
+715000 11 [INFO: Main      ] Link-layer address: 000b.000b.000b.000b
+715000 11 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20b:b:b:b
+715000 11 GW-S 11: Started.
+719000 4 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+719000 4 [INFO: Main      ] - Routing: RPL Lite
+719000 4 [INFO: Main      ] - Net: sicslowpan
+719000 4 [INFO: Main      ] - MAC: CSMA
+719000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+719000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+719000 4 [INFO: Main      ] Node ID: 4
+719000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+719000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+809000 23 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+809000 23 [INFO: Main      ] - Routing: RPL Lite
+809000 23 [INFO: Main      ] - Net: sicslowpan
+809000 23 [INFO: Main      ] - MAC: CSMA
+809000 23 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+809000 23 [INFO: Main      ] - 802.15.4 Default channel: 26
+809000 23 [INFO: Main      ] Node ID: 23
+809000 23 [INFO: Main      ] Link-layer address: 0017.0017.0017.0017
+809000 23 [INFO: Main      ] Tentative link-local IPv6 address: fe80::217:17:17:17
+809000 23 GW-S 23: Started.
+884000 19 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+884000 19 [INFO: Main      ] - Routing: RPL Lite
+884000 19 [INFO: Main      ] - Net: sicslowpan
+884000 19 [INFO: Main      ] - MAC: CSMA
+884000 19 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+884000 19 [INFO: Main      ] - 802.15.4 Default channel: 26
+884000 19 [INFO: Main      ] Node ID: 19
+884000 19 [INFO: Main      ] Link-layer address: 0013.0013.0013.0013
+884000 19 [INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
+884000 19 GW-S 19: Started.
+899000 3 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
 899000 3 [INFO: Main      ] - Routing: RPL Lite
 899000 3 [INFO: Main      ] - Net: sicslowpan
 899000 3 [INFO: Main      ] - MAC: CSMA
@@ -254,1564 +269,819 @@ Random seed: 123456
 899000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
 899000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
 899000 3 GW-S 3: Started.
-906000 21 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-906000 21 [INFO: Main      ] - Routing: RPL Lite
-906000 21 [INFO: Main      ] - Net: sicslowpan
-906000 21 [INFO: Main      ] - MAC: CSMA
-906000 21 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-906000 21 [INFO: Main      ] - 802.15.4 Default channel: 26
-906000 21 [INFO: Main      ] Node ID: 21
-906000 21 [INFO: Main      ] Link-layer address: 0015.0015.0015.0015
-906000 21 [INFO: Main      ] Tentative link-local IPv6 address: fe80::215:15:15:15
-945000 23 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546
-945000 23 [INFO: Main      ] - Routing: RPL Lite
-945000 23 [INFO: Main      ] - Net: sicslowpan
-945000 23 [INFO: Main      ] - MAC: CSMA
-945000 23 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
-945000 23 [INFO: Main      ] - 802.15.4 Default channel: 26
-945000 23 [INFO: Main      ] Node ID: 23
-945000 23 [INFO: Main      ] Link-layer address: 0017.0017.0017.0017
-945000 23 [INFO: Main      ] Tentative link-local IPv6 address: fe80::217:17:17:17
-9348000 4 SN 4: Sending registration
-10715000 5 SN 5: Sending registration
-11250000 6 SN 6: Sending registration
-12402000 7 SN 7: Sending registration
-13073000 8 SN 8: Sending registration
-14708000 9 SN 9: Sending registration
-15556000 10 SN 10: Sending registration
-16190000 11 SN 11: Sending registration
-17594000 12 SN 12: Sending registration
-17661688 3 GW-S 3: Sensor 12 reg step 1. SIDn=dbbfb0, Cn=23
-17714328 12 SN 12: Reg-0 OK. SIDn=dbbfb0, Cn=23
-17714328 12 SN 12: Sending PUF response Rn=198
-17778720 3 GW-S 3: Sensor 12 registration complete. (Cn=23, Rn=198)
-17828856 12 SN 12: Registration complete
-17828856 12 
-17898688 3 GW-S 3: Sensor 9 reg step 1. SIDn=fa7c49, Cn=156
-17927624 9 SN 9: Reg-0 OK. SIDn=fa7c49, Cn=156
-17927624 9 SN 9: Sending PUF response Rn=128
-18000720 3 GW-S 3: Sensor 9 registration complete. (Cn=156, Rn=128)
-18024856 9 SN 9: Registration complete
-18024856 9 
-18884000 13 SN 13: Sending registration
-18938688 3 GW-S 3: Sensor 13 reg step 1. SIDn=f6c20e, Cn=137
-18962624 13 SN 13: Reg-0 OK. SIDn=f6c20e, Cn=137
-18962624 13 SN 13: Sending PUF response Rn=232
-19011720 3 GW-S 3: Sensor 13 registration complete. (Cn=137, Rn=232)
-19096856 13 SN 13: Registration complete
-19096856 13 
-19450000 14 SN 14: Sending registration
-19914688 3 GW-S 3: Sensor 11 reg step 1. SIDn=ecc05f, Cn=35
-19936328 11 SN 11: Reg-0 OK. SIDn=ecc05f, Cn=35
-19936328 11 SN 11: Sending PUF response Rn=151
-19977720 3 GW-S 3: Sensor 11 registration complete. (Cn=35, Rn=151)
-20026680 11 SN 11: Registration complete
-20026680 11 
-20115688 3 GW-S 3: Sensor 10 reg step 1. SIDn=5cf2a4, Cn=110
-20189328 10 SN 10: Reg-0 OK. SIDn=5cf2a4, Cn=110
-20189328 10 SN 10: Sending PUF response Rn=52
-20224720 3 GW-S 3: Sensor 10 registration complete. (Cn=110, Rn=52)
-20284856 10 SN 10: Registration complete
-20284856 10 
-20462000 15 SN 15: Sending registration
-20507688 3 GW-S 3: Sensor 15 reg step 1. SIDn=1f15a1, Cn=236
-20531328 15 SN 15: Reg-0 OK. SIDn=1f15a1, Cn=236
-20531328 15 SN 15: Sending PUF response Rn=34
-20565720 3 GW-S 3: Sensor 15 registration complete. (Cn=236, Rn=34)
-20649856 15 SN 15: Registration complete
-20649856 15 
-21473000 16 SN 16: Sending registration
-21545688 3 GW-S 3: Sensor 16 reg step 1. SIDn=a73cc7, Cn=50
-21623328 16 SN 16: Reg-0 OK. SIDn=a73cc7, Cn=50
-21623328 16 SN 16: Sending PUF response Rn=159
-21682720 3 GW-S 3: Sensor 16 registration complete. (Cn=50, Rn=159)
-21714856 16 SN 16: Registration complete
-21714856 16 
-22809000 17 SN 17: Sending registration
-22835688 3 GW-S 3: Sensor 17 reg step 1. SIDn=6e1cc6, Cn=5
-22857328 17 SN 17: Reg-0 OK. SIDn=6e1cc6, Cn=5
-22857328 17 SN 17: Sending PUF response Rn=211
-22893720 3 GW-S 3: Sensor 17 registration complete. (Cn=5, Rn=211)
-22944680 17 SN 17: Registration complete
-22944680 17 
-23001688 3 GW-S 3: Sensor 7 reg step 1. SIDn=7e6a6e, Cn=218
-23058328 7 SN 7: Reg-0 OK. SIDn=7e6a6e, Cn=218
-23058328 7 SN 7: Sending PUF response Rn=254
-23107720 3 GW-S 3: Sensor 7 registration complete. (Cn=218, Rn=254)
-23159856 7 SN 7: Registration complete
-23159856 7 
-23326000 18 SN 18: Sending registration
-23403688 3 GW-S 3: Sensor 18 reg step 1. SIDn=b0a5f7, Cn=34
-23431328 18 SN 18: Reg-0 OK. SIDn=b0a5f7, Cn=34
-23431328 18 SN 18: Sending PUF response Rn=143
-23474720 3 GW-S 3: Sensor 18 registration complete. (Cn=34, Rn=143)
-23585856 18 SN 18: Registration complete
-23585856 18 
-24279688 3 GW-S 3: Sensor 8 reg step 1. SIDn=b5345d, Cn=96
-24316328 8 SN 8: Reg-0 OK. SIDn=b5345d, Cn=96
-24316328 8 SN 8: Sending PUF response Rn=232
-24370720 3 GW-S 3: Sensor 8 registration complete. (Cn=96, Rn=232)
-24407856 8 SN 8: Registration complete
-24407856 8 
-24719000 19 SN 19: Sending registration
-24769688 3 GW-S 3: Sensor 19 reg step 1. SIDn=b5286f, Cn=19
-24825328 19 SN 19: Reg-0 OK. SIDn=b5286f, Cn=19
-24825328 19 SN 19: Sending PUF response Rn=10
-24887720 3 GW-S 3: Sensor 19 registration complete. (Cn=19, Rn=10)
-24952856 19 SN 19: Registration complete
-24952856 19 
-25472000 20 SN 20: Sending registration
-25530688 3 GW-S 3: Sensor 20 reg step 1. SIDn=d63245, Cn=108
-25568328 20 SN 20: Reg-0 OK. SIDn=d63245, Cn=108
-25568328 20 SN 20: Sending PUF response Rn=144
-25627720 3 GW-S 3: Sensor 20 registration complete. (Cn=108, Rn=144)
-25704856 20 SN 20: Registration complete
-25704856 20 
-26906000 21 SN 21: Sending registration
-26956688 3 GW-S 3: Sensor 21 reg step 1. SIDn=8c9a44, Cn=54
-27027328 21 SN 21: Reg-0 OK. SIDn=8c9a44, Cn=54
-27027328 21 SN 21: Sending PUF response Rn=203
-27051720 3 GW-S 3: Sensor 21 registration complete. (Cn=54, Rn=203)
-27074856 21 SN 21: Registration complete
-27074856 21 
-27663000 22 SN 22: Sending registration
-27711344 3 GW-S 3: Sensor 22 reg step 1. SIDn=30d1dc, Cn=75
-27764328 22 SN 22: Reg-0 OK. SIDn=30d1dc, Cn=75
-27764328 22 SN 22: Sending PUF response Rn=208
-27788720 3 GW-S 3: Sensor 22 registration complete. (Cn=75, Rn=208)
-27865856 22 SN 22: Registration complete
-27865856 22 
-28945000 23 SN 23: Sending registration
-28975688 3 GW-S 3: Sensor 23 reg step 1. SIDn=537a5c, Cn=54
-29035000 24 SN 24: Sending registration
-29053328 23 SN 23: Reg-0 OK. SIDn=537a5c, Cn=54
-29053328 23 SN 23: Sending PUF response Rn=104
-29106720 3 GW-S 3: Sensor 23 registration complete. (Cn=54, Rn=104)
-29160856 23 SN 23: Registration complete
-29160856 23 
+906000 6 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+906000 6 [INFO: Main      ] - Routing: RPL Lite
+906000 6 [INFO: Main      ] - Net: sicslowpan
+906000 6 [INFO: Main      ] - MAC: CSMA
+906000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+906000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
+906000 6 [INFO: Main      ] Node ID: 6
+906000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+906000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+945000 8 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+945000 8 [INFO: Main      ] - Routing: RPL Lite
+945000 8 [INFO: Main      ] - Net: sicslowpan
+945000 8 [INFO: Main      ] - MAC: CSMA
+945000 8 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+945000 8 [INFO: Main      ] - 802.15.4 Default channel: 26
+945000 8 [INFO: Main      ] Node ID: 8
+945000 8 [INFO: Main      ] Link-layer address: 0008.0008.0008.0008
+945000 8 [INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
+9719000 4 SN 4: Sending registration
+10472000 5 SN 5: Sending registration
+11906000 6 SN 6: Sending registration
+12663000 7 SN 7: Sending registration
+13945000 8 SN 8: Sending registration
+14035000 9 SN 9: Sending registration
+21171344 2 GW-S 2: Sensor 4 reg step 1. SIDn=a7c2d8, Cn=205
+21197328 4 SN 4: Reg-0 OK. SIDn=a7c2d8, Cn=205
+21197328 4 SN 4: Sending PUF response Rn=93
+21228720 2 GW-S 2: Sensor 4 registration complete. (Cn=205, Rn=93)
+21270760 4 SN 4: Registration complete
+21270760 4 
+24031688 2 GW-S 2: Sensor 5 reg step 1. SIDn=438f24, Cn=132
+24072328 5 SN 5: Reg-0 OK. SIDn=438f24, Cn=132
+24072328 5 SN 5: Sending PUF response Rn=217
+24119720 2 GW-S 2: Sensor 5 registration complete. (Cn=132, Rn=217)
+24181856 5 SN 5: Registration complete
+24181856 5 
 30467000 25 User 25: Sending user registration
+30525776 2 GW-S 2: User 25 registered. DIDi=53cf8b
+30580328 25 User 25: User reg OK. DIDi=53cf8b
+30580328 25 User 25: Querying SIDn for sensor 4
+30639720 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 4
+30682328 25 User 25: Got SIDn=a7c2d8
+30682328 25 User 25: Bound to sensor 4, SIDn=a7c2d8
+30682328 25 
 31690000 26 User 26: Sending user registration
+31797776 2 GW-S 2: User 26 registered. DIDi=83608f
+31898584 26 User 26: User reg OK. DIDi=83608f
+31898584 26 User 26: Querying SIDn for sensor 5
+31963720 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 5
+32052584 26 User 26: Got SIDn=438f24
+32052584 26 User 26: Bound to sensor 5, SIDn=438f24
+32052584 26 
 32385000 27 User 27: Sending user registration
+32430776 2 GW-S 2: User 27 registered. DIDi=3c09f2
+32479584 27 User 27: User reg OK. DIDi=3c09f2
+32479584 27 User 27: Querying SIDn for sensor 6
+32565720 2 GW-S 2: get_sid ﾀﾔ sensor 6 not enrolled yet
+32674080 27 User 27: get_sid reply dropped or sensor not enrolled
+32674080 27 User 27: Bound to sensor 6, SIDn=000000
+32674080 27 
 33142000 28 User 28: Sending user registration
-33187776 3 GW-S 3: User 28 registered. DIDi=7407ae
-33233328 28 User 28: User reg OK. DIDi=7407ae
-33233328 28 User 28: Querying SIDn for sensor 7
-33397720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 7
-33452328 28 User 28: Got SIDn=7e6a6e
-33452328 28 User 28: Bound to sensor 7, SIDn=7e6a6e
-33452328 28 
+33203776 3 GW-S 3: User 28 registered. DIDi=5d2791
+33265584 28 User 28: User reg OK. DIDi=5d2791
+33265584 28 User 28: Querying SIDn for sensor 7
+33350720 3 GW-S 3: get_sid ﾀﾔ sensor 7 not enrolled yet
+33432080 28 User 28: get_sid reply dropped or sensor not enrolled
+33432080 28 User 28: Bound to sensor 7, SIDn=000000
+33432080 28 
 34637000 29 User 29: Sending user registration
-34679776 3 GW-S 3: User 29 registered. DIDi=0e742e
-34736328 29 User 29: User reg OK. DIDi=0e742e
-34736328 29 User 29: Querying SIDn for sensor 8
-34764720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 8
-34810328 29 User 29: Got SIDn=b5345d
-34810328 29 User 29: Bound to sensor 8, SIDn=b5345d
-34810328 29 
+34703776 3 GW-S 3: User 29 registered. DIDi=24f857
+34765584 29 User 29: User reg OK. DIDi=24f857
+34765584 29 User 29: Querying SIDn for sensor 8
+34816696 3 GW-S 3: get_sid ﾀﾔ sensor 8 not enrolled yet
+34890080 29 User 29: get_sid reply dropped or sensor not enrolled
+34890080 29 User 29: Bound to sensor 8, SIDn=000000
+34890080 29 
 35244000 30 User 30: Sending user registration
-35281776 3 GW-S 3: User 30 registered. DIDi=e7ceb3
-35324328 30 User 30: User reg OK. DIDi=e7ceb3
-35324328 30 User 30: Querying SIDn for sensor 9
-35373720 3 GW-S 3: get_sid ﾀﾔ returned SIDn for sensor 9
-35429328 30 User 30: Got SIDn=fa7c49
-35429328 30 User 30: Bound to sensor 9, SIDn=fa7c49
-35429328 30 
-36255944 2 GW-S 2: Sensor 4 reg step 1. SIDn=add53a, Cn=198
-36399584 4 SN 4: Reg-0 OK. SIDn=add53a, Cn=198
-36399584 4 SN 4: Sending PUF response Rn=252
-36475032 2 GW-S 2: User 27 registered. DIDi=f7cc99
-36518976 2 GW-S 2: Sensor 4 registration complete. (Cn=198, Rn=252)
-36602112 4 SN 4: Registration complete
-36602112 4 
-36692328 27 User 27: User reg OK. DIDi=f7cc99
-36692328 27 User 27: Querying SIDn for sensor 6
-36790976 2 GW-S 2: get_sid ﾀﾔ sensor 6 not enrolled yet
-36847824 27 User 27: get_sid reply dropped or sensor not enrolled
-36847824 27 User 27: Bound to sensor 6, SIDn=000000
-36847824 27 
-40557688 3 GW-S 3: Sensor 14 reg step 1. SIDn=2fd203, Cn=193
-40673584 14 SN 14: Reg-0 OK. SIDn=2fd203, Cn=193
-40673584 14 SN 14: Sending PUF response Rn=195
-40758720 3 GW-S 3: Sensor 14 registration complete. (Cn=193, Rn=195)
-40815944 2 GW-S 2: Sensor 6 reg step 1. SIDn=dc5a6a, Cn=109
-40897328 6 SN 6: Reg-0 OK. SIDn=dc5a6a, Cn=109
-40897328 6 SN 6: Sending PUF response Rn=129
-40913112 14 SN 14: Registration complete
-40913112 14 
-40994976 2 GW-S 2: Sensor 6 registration complete. (Cn=109, Rn=129)
-41044600 2 GW-S 2: User 26 registered. DIDi=98a37c
-41065040 26 User 26: User reg OK. DIDi=98a37c
-41065040 26 User 26: Querying SIDn for sensor 5
-41089856 6 SN 6: Registration complete
-41089856 6 
-41133720 2 GW-S 2: get_sid ﾀﾔ sensor 5 not enrolled yet
-41236536 26 User 26: get_sid reply dropped or sensor not enrolled
-41236536 26 User 26: Bound to sensor 5, SIDn=000000
-41236536 26 
-42094688 3 GW-S 3: Sensor 24 reg step 1. SIDn=3ff88d, Cn=138
-42177584 24 SN 24: Reg-0 OK. SIDn=3ff88d, Cn=138
-42177584 24 SN 24: Sending PUF response Rn=43
-42236720 3 GW-S 3: Sensor 24 registration complete. (Cn=138, Rn=43)
-42317112 24 SN 24: Registration complete
-42317112 24 
-42414944 2 GW-S 2: Sensor 5 reg step 1. SIDn=bb43d0, Cn=203
-42511328 5 SN 5: Reg-0 OK. SIDn=bb43d0, Cn=203
-42511328 5 SN 5: Sending PUF response Rn=24
-42588976 2 GW-S 2: Sensor 5 registration complete. (Cn=203, Rn=24)
-42663032 2 GW-S 2: User 25 registered. DIDi=dd2580
-42683856 5 SN 5: Registration complete
-42683856 5 
-42738584 25 User 25: User reg OK. DIDi=dd2580
-42738584 25 User 25: Querying SIDn for sensor 4
-42832976 2 GW-S 2: get_sid ﾀﾔ returned SIDn for sensor 4
-42962584 25 User 25: Got SIDn=add53a
-42962584 25 User 25: Bound to sensor 4, SIDn=add53a
-42962584 25 
-63452000 28 ENROLL_ENERGY|28|cpu_s=0.310328|energy_j=0.019126User 28: Sending M1. DIDi=7407ae
-63520200 3 GW-S 3: User 28 M1 verified
-63521200 3 GW-S 3: Sending M2 to sensor 7
-63611824 28 User 28: M1 ACK received
-63611824 28 User 28: Waiting for M4...
-63686304 7 ENROLL_ENERGY_SN|7|cpu_s=10.757856|energy_j=0.664730SN 7: M2 verified OK. New SIDn=e9d84f
-63686304 7 SN 7: Sent M3 (ￎﾳ)
-63686304 7 
-63756816 3 GW-S 3: M3 received from sensor
-63756816 3 GW-S 3: M3 verified from sensor 7
-63756816 3 GW-S 3: Sending M4 to user 28
-63850520 28 User 28: M4 received
-63851520 28 User 28: Auth OK. New DIDi=2a30b7 SK=1edf
-63851520 28 
-63851520 28 AUTH_ENERGY|28|cpu_s=0.399520|energy_j=0.024630User 28: Sending data
-63878360 1 GW: Rejected data ﾀﾔ DIDi 2a30b7 not found
-63891472 28 User 28: Data confirmed
-63897296 3 GW-S 3: M4 delivered to user
-63897296 3 
-63975632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 2a30b7
-64810000 29 ENROLL_ENERGY|29|cpu_s=0.173328|energy_j=0.010659User 29: Sending M1. DIDi=0e742e
-64939200 3 AUTH_ENERGY_GW|3|cpu_s=0.376096|energy_j=0.023082GW-S 3: User 29 M1 verified
-64940200 3 GW-S 3: Sending M2 to sensor 8
-64979824 29 User 29: M1 ACK received
-64979824 29 User 29: Waiting for M4...
-65099304 8 ENROLL_ENERGY_SN|8|cpu_s=11.334856|energy_j=0.700353SN 8: M2 verified OK. New SIDn=3fda15
-65099304 8 SN 8: Sent M3 (ￎﾳ)
-65099304 8 
-65170816 3 GW-S 3: M3 received from sensor
-65170816 3 GW-S 3: M3 verified from sensor 8
-65170816 3 GW-S 3: Sending M4 to user 29
-65235520 29 User 29: M4 received
-65236520 29 User 29: Auth OK. New DIDi=6d6f5c SK=f374
-65236520 29 
-65236520 29 AUTH_ENERGY|29|cpu_s=0.426520|energy_j=0.026299User 29: Sending data
-65255824 3 GW-S 3: M4 delivered to user
-65255824 3 
-65281360 1 GW: Rejected data ﾀﾔ DIDi 6d6f5c not found
-65286832 29 User 29: Data confirmed
-65317632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 6d6f5c
-65429000 30 ENROLL_ENERGY|30|cpu_s=0.185328|energy_j=0.011401User 30: Sending M1. DIDi=e7ceb3
-65556200 3 AUTH_ENERGY_GW|3|cpu_s=0.315624|energy_j=0.019391GW-S 3: User 30 M1 verified
-65557200 3 GW-S 3: Sending M2 to sensor 9
-65597824 30 User 30: M1 ACK received
-65597824 30 User 30: Waiting for M4...
-65675304 9 ENROLL_ENERGY_SN|9|cpu_s=3.316856|energy_j=0.204910SN 9: M2 verified OK. New SIDn=fb328c
-65675304 9 SN 9: Sent M3 (ￎﾳ)
-65675304 9 
-65742816 3 GW-S 3: M3 received from sensor
-65742816 3 GW-S 3: M3 verified from sensor 9
-65742816 3 GW-S 3: Sending M4 to user 30
-65829520 30 User 30: M4 received
-65830520 30 User 30: Auth OK. New DIDi=13b508 SK=870b
-65830520 30 
-65830520 30 AUTH_ENERGY|30|cpu_s=0.401520|energy_j=0.024754User 30: Sending data
-65854824 3 GW-S 3: M4 delivered to user
-65854824 3 
-65874360 1 GW: Rejected data ﾀﾔ DIDi 13b508 not found
-65904472 30 User 30: Data confirmed
-65926632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 13b508
-66847000 27 ENROLL_ENERGY|27|cpu_s=4.462824|energy_j=0.275683User 27: Sending M1. DIDi=f7cc99
-67000456 2 GW-S 2: User 27 M1 verified
-67000456 2 GW-S 2: Auth failed ﾀﾔ SIDn not found
-67102760 27 User 27: M1 rejected
-67102760 27 User 27: Waiting for M4...
-71236000 26 ENROLL_ENERGY|26|cpu_s=9.546536|energy_j=0.589419User 26: Sending M1. DIDi=98a37c
-71431200 2 GW-S 2: User 26 M1 verified
-71431200 2 GW-S 2: Auth failed ﾀﾔ SIDn not found
-71439472 26 User 26: M1 rejected
-71439472 26 User 26: Waiting for M4...
-72962000 25 ENROLL_ENERGY|25|cpu_s=12.495584|energy_j=0.772085User 25: Sending M1. DIDi=dd2580
-73197456 2 GW-S 2: User 25 M1 verified
-73198456 2 GW-S 2: Sending M2 to sensor 4
-73302080 25 User 25: M1 ACK received
-73302080 25 User 25: Waiting for M4...
-73432560 4 ENROLL_ENERGY_SN|4|cpu_s=27.254112|energy_j=1.684088SN 4: M2 verified OK. New SIDn=8e9931
-73432560 4 SN 4: Sent M3 (ￎﾳ)
-73432560 4 
-73504072 2 GW-S 2: M3 received from sensor
-73504072 2 GW-S 2: M3 verified from sensor 4
-73504072 2 GW-S 2: Sending M4 to user 25
-73833776 25 User 25: M4 received
-73834776 25 User 25: Auth OK. New DIDi=01736b SK=b1f2
-73834776 25 
-73834776 25 AUTH_ENERGY|25|cpu_s=0.872776|energy_j=0.053877User 25: Sending data
-73984080 2 GW-S 2: M4 delivered to user
-73984080 2 
-74042648 1 GW: Rejected data ﾀﾔ DIDi 01736b not found
-74057744 25 User 25: Data confirmed
-74112888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 01736b
-93891000 28 User 28: Sending M1. DIDi=2a30b7
-93981200 3 AUTH_ENERGY_GW|3|cpu_s=0.297624|energy_j=0.018278GW-S 3: User 28 M1 verified
-93982200 3 GW-S 3: Sending M2 to sensor 7
-94021824 28 User 28: M1 ACK received
-94021824 28 User 28: Waiting for M4...
-94128304 7 AUTH_ENERGY_SN|7|cpu_s=0.000000|energy_j=0.000000SN 7: M2 verified OK. New SIDn=750263
-94128304 7 SN 7: Sent M3 (ￎﾳ)
-94205816 3 GW-S 3: M3 received from sensor
-94205816 3 GW-S 3: M3 verified from sensor 7
-94205816 3 GW-S 3: Sending M4 to user 28
-94345520 28 User 28: M4 received
-94346520 28 User 28: Auth OK. New DIDi=892720 SK=15c4
-94346520 28 
-94346520 28 AUTH_ENERGY|28|cpu_s=0.455520|energy_j=0.028091User 28: Sending data
-94365824 3 GW-S 3: M4 delivered to user
-94365824 3 
-94385632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 892720
-94398360 1 GW: Decrypted data [9] from DIDi 892720 (user 0)
-94403896 28 User 28: Data confirmed
-95286000 29 User 29: Sending M1. DIDi=6d6f5c
-95422200 3 AUTH_ENERGY_GW|3|cpu_s=0.383624|energy_j=0.023593GW-S 3: User 29 M1 verified
-95423200 3 GW-S 3: Sending M2 to sensor 8
-95569824 29 User 29: M1 ACK received
-95569824 29 User 29: Waiting for M4...
-95597304 8 AUTH_ENERGY_SN|8|cpu_s=0.000000|energy_j=0.000000SN 8: M2 verified OK. New SIDn=be7536
-95597304 8 SN 8: Sent M3 (ￎﾳ)
-95655816 3 GW-S 3: M3 received from sensor
-95655816 3 GW-S 3: M3 verified from sensor 8
-95655816 3 GW-S 3: Sending M4 to user 29
-95762520 29 User 29: M4 received
-95763520 29 User 29: Auth OK. New DIDi=a08289 SK=b793
-95763520 29 
-95763520 29 AUTH_ENERGY|29|cpu_s=0.477520|energy_j=0.029451User 29: Sending data
-95814360 1 GW: Rejected data ﾀﾔ DIDi a08289 not found
-95822472 29 User 29: Data confirmed
-95872824 3 GW-S 3: M4 delivered to user
-95872824 3 
-95904000 30 User 30: Sending M1. DIDi=13b508
-95923632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: a08289
-96011200 3 AUTH_ENERGY_GW|3|cpu_s=0.449624|energy_j=0.027672GW-S 3: User 30 M1 verified
-96012200 3 GW-S 3: Sending M2 to sensor 9
-96056824 30 User 30: M1 ACK received
-96056824 30 User 30: Waiting for M4...
-96116304 9 AUTH_ENERGY_SN|9|cpu_s=0.000000|energy_j=0.000000SN 9: M2 verified OK. New SIDn=0d827a
-96116304 9 SN 9: Sent M3 (ￎﾳ)
-96159816 3 GW-S 3: M3 received from sensor
-96159816 3 GW-S 3: M3 verified from sensor 9
-96159816 3 GW-S 3: Sending M4 to user 30
-96245520 30 User 30: M4 received
-96246520 30 User 30: Auth OK. New DIDi=519275 SK=525a
-96246520 30 
-96246520 30 AUTH_ENERGY|30|cpu_s=0.342520|energy_j=0.021108User 30: Sending data
-96297360 1 GW: Rejected data ﾀﾔ DIDi 519275 not found
-96305824 3 GW-S 3: M4 delivered to user
-96305824 3 
-96311472 30 User 30: Data confirmed
-96351632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 519275
-104057000 25 User 25: Sending M1. DIDi=01736b
-104297456 2 AUTH_ENERGY_GW|2|cpu_s=0.785624|energy_j=0.048437GW-S 2: User 25 M1 verified
-104298456 2 GW-S 2: Sending M2 to sensor 4
-104480080 25 User 25: M1 ACK received
-104480080 25 User 25: Waiting for M4...
-104546560 4 AUTH_ENERGY_SN|4|cpu_s=0.000000|energy_j=0.000000SN 4: M2 verified OK. New SIDn=db1c79
-104546560 4 SN 4: Sent M3 (ￎﾳ)
-104659072 2 GW-S 2: M3 received from sensor
-104659072 2 GW-S 2: M3 verified from sensor 4
-104659072 2 GW-S 2: Sending M4 to user 25
-104804776 25 User 25: M4 received
-104805776 25 User 25: Auth OK. New DIDi=6991c4 SK=176f
-104805776 25 
-104805776 25 AUTH_ENERGY|25|cpu_s=0.748776|energy_j=0.046214User 25: Sending data
-104947648 1 GW: Rejected data ﾀﾔ DIDi 6991c4 not found
-104990016 25 User 25: Data confirmed
-105008080 2 GW-S 2: M4 delivered to user
-105008080 2 
-105087888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 6991c4
-124403000 28 User 28: Sending M1. DIDi=892720
-124496200 3 AUTH_ENERGY_GW|3|cpu_s=0.293624|energy_j=0.018031GW-S 3: User 28 M1 verified
-124497200 3 GW-S 3: Sending M2 to sensor 7
-124560824 28 User 28: M1 ACK received
-124560824 28 User 28: Waiting for M4...
-124686304 7 SN 7: M2 verified OK. New SIDn=389972
-124686304 7 SN 7: Sent M3 (ￎﾳ)
-124749816 3 GW-S 3: M3 received from sensor
-124749816 3 GW-S 3: M3 verified from sensor 7
-124749816 3 GW-S 3: Sending M4 to user 28
-124894520 28 User 28: M4 received
-124895520 28 User 28: Auth OK. New DIDi=51ebc5 SK=068d
-124895520 28 
-124895520 28 AUTH_ENERGY|28|cpu_s=0.492520|energy_j=0.030378User 28: Sending data
-124921824 3 GW-S 3: M4 delivered to user
-124921824 3 
-124958632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 51ebc5
-124987360 1 GW: Decrypted data [9] from DIDi 51ebc5 (user 0)
-125006536 28 User 28: Data confirmed
-125822000 29 User 29: Sending M1. DIDi=a08289
-125929200 3 AUTH_ENERGY_GW|3|cpu_s=0.424624|energy_j=0.026127GW-S 3: User 29 M1 verified
-125930200 3 GW-S 3: Sending M2 to sensor 8
-125975824 29 User 29: M1 ACK received
-125975824 29 User 29: Waiting for M4...
-126090304 8 SN 8: M2 verified OK. New SIDn=2e070c
-126090304 8 SN 8: Sent M3 (ￎﾳ)
-126138816 3 GW-S 3: M3 received from sensor
-126138816 3 GW-S 3: M3 verified from sensor 8
-126138816 3 GW-S 3: Sending M4 to user 29
-126292520 29 User 29: M4 received
-126293520 29 User 29: Auth OK. New DIDi=399d87 SK=4854
-126293520 29 
-126293520 29 AUTH_ENERGY|29|cpu_s=0.471520|energy_j=0.029080User 29: Sending data
-126311000 30 User 30: Sending M1. DIDi=519275
-126337360 1 GW: Rejected data ﾀﾔ DIDi 399d87 not found
-126354472 29 User 29: Data confirmed
-126399824 3 GW-S 3: M4 delivered to user
-126399824 3 
-126503632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 399d87
-126531200 3 AUTH_ENERGY_GW|3|cpu_s=0.469624|energy_j=0.028885GW-S 3: User 30 M1 verified
-126606824 30 User 30: M1 ACK received
-126606824 30 User 30: Waiting for M4...
-134990000 25 User 25: Sending M1. DIDi=6991c4
-135143456 2 AUTH_ENERGY_GW|2|cpu_s=0.709624|energy_j=0.043726GW-S 2: User 25 M1 verified
-135144456 2 GW-S 2: Sending M2 to sensor 4
-135239080 25 User 25: M1 ACK received
-135239080 25 User 25: Waiting for M4...
-135396560 4 SN 4: M2 verified OK. New SIDn=679f78
-135396560 4 SN 4: Sent M3 (ￎﾳ)
-135478072 2 GW-S 2: M3 received from sensor
-135478072 2 GW-S 2: M3 verified from sensor 4
-135478072 2 GW-S 2: Sending M4 to user 25
-135647776 25 User 25: M4 received
-135648776 25 User 25: Auth OK. New DIDi=997640 SK=9794
-135648776 25 
-135648776 25 AUTH_ENERGY|25|cpu_s=0.658776|energy_j=0.040652User 25: Sending data
-135782648 1 GW: Rejected data ﾀﾔ DIDi 997640 not found
-135815080 2 GW-S 2: M4 delivered to user
-135815080 2 
-135836016 25 User 25: Data confirmed
-135926888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 997640
-155006000 28 User 28: Sending M1. DIDi=51ebc5
-155108200 3 GW-S 3: User 28 M1 verified
-155109200 3 GW-S 3: Sending M2 to sensor 9
-155194824 28 User 28: M1 ACK received
-155194824 28 User 28: Waiting for M4...
-155276304 9 SN 9: M2 verified OK. New SIDn=8f8d70
-155276304 9 SN 9: Sent M3 (ￎﾳ)
-155308816 3 GW-S 3: M3 received from sensor
-155308816 3 GW-S 3: M3 verified from sensor 9
-155308816 3 GW-S 3: Sending M4 to user 30
-155372520 30 User 30: M4 received
-155373520 30 User 30: Auth OK. New DIDi=23df78 SK=8b8b
-155373520 30 
-155373520 30 AUTH_ENERGY|30|cpu_s=29.062520|energy_j=1.795982User 30: Sending data
-155391360 1 GW: Rejected data ﾀﾔ DIDi 23df78 not found
-155402824 3 GW-S 3: M4 delivered to user
-155402824 3 
-155402824 3 AUTH_ENERGY_GW|3|cpu_s=0.293624|energy_j=0.018006GW-S 3: Sending M2 to sensor 7
-155498536 30 User 30: Data confirmed
-155521304 7 SN 7: M2 verified OK. New SIDn=6b1ef9
-155521304 7 SN 7: Sent M3 (ￎﾳ)
-155538600 3 GW-S 3: M3 received from sensor
-155538600 3 GW-S 3: M3 verified from sensor 7
-155538600 3 GW-S 3: Sending M4 to user 28
-155652520 28 User 28: M4 received
-155653520 28 User 28: Auth OK. New DIDi=0b9187 SK=e1e2
-155653520 28 
-155653520 28 AUTH_ENERGY|28|cpu_s=0.647520|energy_j=0.039957User 28: Sending data
-155716360 1 GW: Rejected data ﾀﾔ DIDi 0b9187 not found
-155722184 3 GW-S 3: M4 delivered to user
-155722184 3 
-155738472 28 User 28: Data confirmed
-155770632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 23df78
-155840664 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 0b9187
-156354000 29 User 29: Sending M1. DIDi=399d87
-156449200 3 AUTH_ENERGY_GW|3|cpu_s=0.319360|energy_j=0.019637GW-S 3: User 29 M1 verified
-156450200 3 GW-S 3: Sending M2 to sensor 8
-156490824 29 User 29: M1 ACK received
-156490824 29 User 29: Waiting for M4...
-156557304 8 SN 8: M2 verified OK. New SIDn=18fe60
-156557304 8 SN 8: Sent M3 (ￎﾳ)
-156611816 3 GW-S 3: M3 received from sensor
-156611816 3 GW-S 3: M3 verified from sensor 8
-156611816 3 GW-S 3: Sending M4 to user 29
-156697520 29 User 29: M4 received
-156698520 29 User 29: Auth OK. New DIDi=361d49 SK=2328
-156698520 29 
-156698520 29 AUTH_ENERGY|29|cpu_s=0.344520|energy_j=0.021231User 29: Sending data
-156760824 3 GW-S 3: M4 delivered to user
-156760824 3 
-156799360 1 GW: Rejected data ﾀﾔ DIDi 361d49 not found
-156835472 29 User 29: Data confirmed
-156870632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 361d49
-165836000 25 User 25: Sending M1. DIDi=997640
-166065456 2 AUTH_ENERGY_GW|2|cpu_s=0.670624|energy_j=0.041330GW-S 2: User 25 M1 verified
-166066456 2 GW-S 2: Sending M2 to sensor 4
-166170080 25 User 25: M1 ACK received
-166170080 25 User 25: Waiting for M4...
-166340560 4 SN 4: M2 verified OK. New SIDn=d75c79
-166340560 4 SN 4: Sent M3 (ￎﾳ)
-166473072 2 GW-S 2: M3 received from sensor
-166473072 2 GW-S 2: M3 verified from sensor 4
-166473072 2 GW-S 2: Sending M4 to user 25
-166717776 25 User 25: M4 received
-166718776 25 User 25: Auth OK. New DIDi=d62319 SK=8a2f
-166718776 25 
-166718776 25 AUTH_ENERGY|25|cpu_s=0.882776|energy_j=0.054495User 25: Sending data
-166896080 2 GW-S 2: M4 delivered to user
-166896080 2 
-166936648 1 GW: Rejected data ﾀﾔ DIDi d62319 not found
-166982016 25 User 25: Data confirmed
-167004888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: d62319
-185498000 30 User 30: Sending M1. DIDi=23df78
-185597200 3 AUTH_ENERGY_GW|3|cpu_s=0.310624|energy_j=0.019082GW-S 3: User 30 M1 verified
-185598200 3 GW-S 3: Sending M2 to sensor 9
-185730824 30 User 30: M1 ACK received
-185730824 30 User 30: Waiting for M4...
-185738000 28 User 28: Sending M1. DIDi=0b9187
-185738304 9 SN 9: M2 verified OK. New SIDn=b5d761
-185738304 9 SN 9: Sent M3 (ￎﾳ)
-185785816 3 GW-S 3: M3 received from sensor
-185785816 3 GW-S 3: M3 verified from sensor 9
-185785816 3 GW-S 3: Sending M4 to user 30
-185885720 30 User 30: M4 received
-185886720 30 User 30: Auth OK. New DIDi=d15804 SK=66b0
-185886720 30 
-185886720 30 AUTH_ENERGY|30|cpu_s=0.388720|energy_j=0.023963User 30: Sending data
-185949200 3 GW-S 3: User 28 M1 verified
-185967360 1 GW: Rejected data ﾀﾔ DIDi d15804 not found
-185978824 28 User 28: M1 ACK received
-185978824 28 User 28: Waiting for M4...
-185986824 3 GW-S 3: M4 delivered to user
-185986824 3 
-185986824 3 AUTH_ENERGY_GW|3|cpu_s=0.388624|energy_j=0.023877GW-S 3: Sending M2 to sensor 7
-186098304 7 SN 7: M2 verified OK. New SIDn=eca99c
-186098304 7 SN 7: Sent M3 (ￎﾳ)
-186113816 3 GW-S 3: M3 received from sensor
-186113816 3 GW-S 3: M3 verified from sensor 7
-186113816 3 GW-S 3: Sending M4 to user 28
-186196520 28 User 28: M4 received
-186197520 28 User 28: Auth OK. New DIDi=940acd SK=796a
-186197520 28 
-186197520 28 AUTH_ENERGY|28|cpu_s=0.459520|energy_j=0.028338User 28: Sending data
-186243360 1 GW: Rejected data ﾀﾔ DIDi 940acd not found
-186250824 3 GW-S 3: M4 delivered to user
-186250824 3 
-186278632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: d15804
-186331472 28 User 28: Data confirmed
-186363632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 940acd
-186835000 29 User 29: Sending M1. DIDi=361d49
-186913200 3 AUTH_ENERGY_GW|3|cpu_s=0.264000|energy_j=0.016216GW-S 3: User 29 M1 verified
-186914200 3 GW-S 3: Sending M2 to sensor 8
-186950824 29 User 29: M1 ACK received
-186950824 29 User 29: Waiting for M4...
-187031304 8 SN 8: M2 verified OK. New SIDn=abf0d2
-187031304 8 SN 8: Sent M3 (ￎﾳ)
-187080816 3 GW-S 3: M3 received from sensor
-187080816 3 GW-S 3: M3 verified from sensor 8
-187080816 3 GW-S 3: Sending M4 to user 29
-187167520 29 User 29: M4 received
-187168520 29 User 29: Auth OK. New DIDi=95ad1a SK=04b2
-187168520 29 
-187168520 29 AUTH_ENERGY|29|cpu_s=0.333520|energy_j=0.020551User 29: Sending data
-187195824 3 GW-S 3: M4 delivered to user
-187195824 3 
-187247360 1 GW: Rejected data ﾀﾔ DIDi 95ad1a not found
-187274632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 95ad1a
-187280472 29 User 29: Data confirmed
-189305360 1 GW: Decrypted data [9] from DIDi d15804 (user 0)
-189344536 30 User 30: Data confirmed
-196982000 25 User 25: Sending M1. DIDi=d62319
-197245456 2 AUTH_ENERGY_GW|2|cpu_s=0.829624|energy_j=0.051156GW-S 2: User 25 M1 verified
-197246456 2 GW-S 2: Sending M2 to sensor 4
-197343080 25 User 25: M1 ACK received
-197343080 25 User 25: Waiting for M4...
-197439560 4 SN 4: M2 verified OK. New SIDn=ea3828
-197439560 4 SN 4: Sent M3 (ￎﾳ)
-197581072 2 GW-S 2: M3 received from sensor
-197581072 2 GW-S 2: M3 verified from sensor 4
-197581072 2 GW-S 2: Sending M4 to user 25
-197793776 25 User 25: M4 received
-197794776 25 User 25: Auth OK. New DIDi=7c3aeb SK=e399
-197794776 25 
-197794776 25 AUTH_ENERGY|25|cpu_s=0.812776|energy_j=0.050169User 25: Sending data
-197925648 1 GW: Rejected data ﾀﾔ DIDi 7c3aeb not found
-197960016 25 User 25: Data confirmed
-197974080 2 GW-S 2: M4 delivered to user
-197974080 2 
-198067888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 7c3aeb
-216331000 28 User 28: Sending M1. DIDi=940acd
-216418200 3 AUTH_ENERGY_GW|3|cpu_s=0.281624|energy_j=0.017289GW-S 3: User 28 M1 verified
-216419200 3 GW-S 3: Sending M2 to sensor 7
-216483824 28 User 28: M1 ACK received
-216483824 28 User 28: Waiting for M4...
-216543304 7 SN 7: M2 verified OK. New SIDn=e50dc6
-216543304 7 SN 7: Sent M3 (ￎﾳ)
-216583816 3 GW-S 3: M3 received from sensor
-216583816 3 GW-S 3: M3 verified from sensor 7
-216583816 3 GW-S 3: Sending M4 to user 28
-216686520 28 User 28: M4 received
-216687520 28 User 28: Auth OK. New DIDi=f5d5ef SK=700c
-216687520 28 
-216687520 28 AUTH_ENERGY|28|cpu_s=0.356520|energy_j=0.021973User 28: Sending data
-216719360 1 GW: Rejected data ﾀﾔ DIDi f5d5ef not found
-216732824 3 GW-S 3: M4 delivered to user
-216732824 3 
-216738296 28 User 28: Data confirmed
-216791632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: f5d5ef
-217280000 29 User 29: Sending M1. DIDi=95ad1a
-217376200 3 AUTH_ENERGY_GW|3|cpu_s=0.313624|energy_j=0.019267GW-S 3: User 29 M1 verified
-217377200 3 GW-S 3: Sending M2 to sensor 8
-217442824 29 User 29: M1 ACK received
-217442824 29 User 29: Waiting for M4...
-217493304 8 SN 8: M2 verified OK. New SIDn=103190
-217493304 8 SN 8: Sent M3 (ￎﾳ)
-217513816 3 GW-S 3: M3 received from sensor
-217513816 3 GW-S 3: M3 verified from sensor 8
-217513816 3 GW-S 3: Sending M4 to user 29
-217582520 29 User 29: M4 received
-217583520 29 User 29: Auth OK. New DIDi=6f6d86 SK=6178
-217583520 29 
-217583520 29 AUTH_ENERGY|29|cpu_s=0.303520|energy_j=0.018697User 29: Sending data
-217649360 1 GW: Rejected data ﾀﾔ DIDi 6f6d86 not found
-217656824 3 GW-S 3: M4 delivered to user
-217656824 3 
-217666472 29 User 29: Data confirmed
-217723632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 6f6d86
-219344000 30 User 30: Sending M1. DIDi=d15804
-219453200 3 AUTH_ENERGY_GW|3|cpu_s=0.279624|energy_j=0.017166GW-S 3: User 30 M1 verified
-219454200 3 GW-S 3: Sending M2 to sensor 9
-219543824 30 User 30: M1 ACK received
-219543824 30 User 30: Waiting for M4...
-219586304 9 SN 9: M2 verified OK. New SIDn=225ed4
-219586304 9 SN 9: Sent M3 (ￎﾳ)
-219617816 3 GW-S 3: M3 received from sensor
-219617816 3 GW-S 3: M3 verified from sensor 9
-219617816 3 GW-S 3: Sending M4 to user 30
-219718520 30 User 30: M4 received
-219719520 30 User 30: Auth OK. New DIDi=0fccdc SK=e3c3
-219719520 30 
-219719520 30 AUTH_ENERGY|30|cpu_s=0.375520|energy_j=0.023147User 30: Sending data
-219750824 3 GW-S 3: M4 delivered to user
-219750824 3 
-219760360 1 GW: Rejected data ﾀﾔ DIDi 0fccdc not found
-219791472 30 User 30: Data confirmed
-219829632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 0fccdc
-227960000 25 User 25: Sending M1. DIDi=7c3aeb
-228234456 2 AUTH_ENERGY_GW|2|cpu_s=0.727624|energy_j=0.044852GW-S 2: User 25 M1 verified
-228235456 2 GW-S 2: Sending M2 to sensor 4
-228348080 25 User 25: M1 ACK received
-228348080 25 User 25: Waiting for M4...
-228469560 4 SN 4: M2 verified OK. New SIDn=f0e3bb
-228469560 4 SN 4: Sent M3 (ￎﾳ)
-228557072 2 GW-S 2: M3 received from sensor
-228557072 2 GW-S 2: M3 verified from sensor 4
-228557072 2 GW-S 2: Sending M4 to user 25
-228837776 25 User 25: M4 received
-228838776 25 User 25: Auth OK. New DIDi=a4e5cd SK=163b
-228838776 25 
-228838776 25 AUTH_ENERGY|25|cpu_s=0.878776|energy_j=0.054248User 25: Sending data
-228925648 1 GW: Rejected data ﾀﾔ DIDi a4e5cd not found
-228945016 25 User 25: Data confirmed
-229002080 2 GW-S 2: M4 delivered to user
-229002080 2 
-229097888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: a4e5cd
-246738000 28 User 28: Sending M1. DIDi=f5d5ef
-246849200 3 AUTH_ENERGY_GW|3|cpu_s=0.296624|energy_j=0.018216GW-S 3: User 28 M1 verified
-246850200 3 GW-S 3: Sending M2 to sensor 7
-246879616 28 User 28: M1 ACK received
-246879616 28 User 28: Waiting for M4...
-246978304 7 SN 7: M2 verified OK. New SIDn=0620fc
-246978304 7 SN 7: Sent M3 (ￎﾳ)
-247053816 3 GW-S 3: M3 received from sensor
-247053816 3 GW-S 3: M3 verified from sensor 7
-247053816 3 GW-S 3: Sending M4 to user 28
-247140520 28 User 28: M4 received
-247141520 28 User 28: Auth OK. New DIDi=e6b732 SK=7b5f
-247141520 28 
-247141520 28 AUTH_ENERGY|28|cpu_s=0.403520|energy_j=0.024877User 28: Sending data
-247173360 1 GW: Rejected data ﾀﾔ DIDi e6b732 not found
-247180824 3 GW-S 3: M4 delivered to user
-247180824 3 
-247209632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: e6b732
-247279472 28 User 28: Data confirmed
-247666000 29 User 29: Sending M1. DIDi=6f6d86
-247823200 3 AUTH_ENERGY_GW|3|cpu_s=0.330624|energy_j=0.020318GW-S 3: User 29 M1 verified
-247824200 3 GW-S 3: Sending M2 to sensor 8
-247881824 29 User 29: M1 ACK received
-247881824 29 User 29: Waiting for M4...
-247936304 8 SN 8: M2 verified OK. New SIDn=2fa5d0
-247936304 8 SN 8: Sent M3 (ￎﾳ)
-247980816 3 GW-S 3: M3 received from sensor
-247980816 3 GW-S 3: M3 verified from sensor 8
-247980816 3 GW-S 3: Sending M4 to user 29
-248095520 29 User 29: M4 received
-248096520 29 User 29: Auth OK. New DIDi=8716d0 SK=74d3
-248096520 29 
-248096520 29 AUTH_ENERGY|29|cpu_s=0.430520|energy_j=0.026546User 29: Sending data
-248129360 1 GW: Rejected data ﾀﾔ DIDi 8716d0 not found
-248140824 3 GW-S 3: M4 delivered to user
-248140824 3 
-248175632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 8716d0
-248194472 29 User 29: Data confirmed
-249791000 30 User 30: Sending M1. DIDi=0fccdc
-249887200 3 AUTH_ENERGY_GW|3|cpu_s=0.316624|energy_j=0.019452GW-S 3: User 30 M1 verified
-249888200 3 GW-S 3: Sending M2 to sensor 9
-249905824 30 User 30: M1 ACK received
-249905824 30 User 30: Waiting for M4...
-249996304 9 SN 9: M2 verified OK. New SIDn=248e25
-249996304 9 SN 9: Sent M3 (ￎﾳ)
-250041816 3 GW-S 3: M3 received from sensor
-250041816 3 GW-S 3: M3 verified from sensor 9
-250041816 3 GW-S 3: Sending M4 to user 30
-250140520 30 User 30: M4 received
-250141520 30 User 30: Auth OK. New DIDi=49ebcc SK=dbdc
-250141520 30 
-250141520 30 AUTH_ENERGY|30|cpu_s=0.350520|energy_j=0.021602User 30: Sending data
-250197824 3 GW-S 3: M4 delivered to user
-250197824 3 
-250217296 1 GW: Rejected data ﾀﾔ DIDi 49ebcc not found
-250286632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 49ebcc
-250354472 30 User 30: Data confirmed
-258945000 25 User 25: Sending M1. DIDi=a4e5cd
-259160456 2 AUTH_ENERGY_GW|2|cpu_s=0.766624|energy_j=0.047262GW-S 2: User 25 M1 verified
-259161456 2 GW-S 2: Sending M2 to sensor 4
-259311080 25 User 25: M1 ACK received
-259311080 25 User 25: Waiting for M4...
-259429560 4 SN 4: M2 verified OK. New SIDn=79ebff
-259429560 4 SN 4: Sent M3 (ￎﾳ)
-259573072 2 GW-S 2: M3 received from sensor
-259573072 2 GW-S 2: M3 verified from sensor 4
-259573072 2 GW-S 2: Sending M4 to user 25
-259793776 25 User 25: M4 received
-259794776 25 User 25: Auth OK. New DIDi=a694b5 SK=f8ed
-259794776 25 
-259794776 25 AUTH_ENERGY|25|cpu_s=0.849776|energy_j=0.052456User 25: Sending data
-259837648 1 GW: Rejected data ﾀﾔ DIDi a694b5 not found
-259881080 2 GW-S 2: M4 delivered to user
-259881080 2 
-259901016 25 User 25: Data confirmed
-259986888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: a694b5
-277279000 28 User 28: Sending M1. DIDi=e6b732
-277392200 3 AUTH_ENERGY_GW|3|cpu_s=0.309624|energy_j=0.019020GW-S 3: User 28 M1 verified
-277393200 3 GW-S 3: Sending M2 to sensor 7
-277441824 28 User 28: M1 ACK received
-277441824 28 User 28: Waiting for M4...
-277536304 7 SN 7: M2 verified OK. New SIDn=4e73a9
-277536304 7 SN 7: Sent M3 (ￎﾳ)
-277597816 3 GW-S 3: M3 received from sensor
-277597816 3 GW-S 3: M3 verified from sensor 7
-277597816 3 GW-S 3: Sending M4 to user 28
-277671520 28 User 28: M4 received
-277672520 28 User 28: Auth OK. New DIDi=2bd1b4 SK=8f72
-277672520 28 
-277672520 28 AUTH_ENERGY|28|cpu_s=0.393520|energy_j=0.024259User 28: Sending data
-277700824 3 GW-S 3: M4 delivered to user
-277700824 3 
-277741360 1 GW: Rejected data ﾀﾔ DIDi 2bd1b4 not found
-277747472 28 User 28: Data confirmed
-277784632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 2bd1b4
-278194000 29 User 29: Sending M1. DIDi=8716d0
-278304200 3 AUTH_ENERGY_GW|3|cpu_s=0.307624|energy_j=0.018896GW-S 3: User 29 M1 verified
-278305200 3 GW-S 3: Sending M2 to sensor 8
-278337824 29 User 29: M1 ACK received
-278337824 29 User 29: Waiting for M4...
-278405304 8 SN 8: M2 verified OK. New SIDn=8b73a6
-278405304 8 SN 8: Sent M3 (ￎﾳ)
-278441816 3 GW-S 3: M3 received from sensor
-278441816 3 GW-S 3: M3 verified from sensor 8
-278441816 3 GW-S 3: Sending M4 to user 29
-278520520 29 User 29: M4 received
-278521520 29 User 29: Auth OK. New DIDi=baf1ed SK=3a9b
-278521520 29 
-278521520 29 AUTH_ENERGY|29|cpu_s=0.327520|energy_j=0.020181User 29: Sending data
-278596360 1 GW: Rejected data ﾀﾔ DIDi baf1ed not found
-278602824 3 GW-S 3: M4 delivered to user
-278602824 3 
-278609472 29 User 29: Data confirmed
-278658632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: baf1ed
-280354000 30 User 30: Sending M1. DIDi=49ebcc
-280464200 3 AUTH_ENERGY_GW|3|cpu_s=0.297624|energy_j=0.018278GW-S 3: User 30 M1 verified
-280465200 3 GW-S 3: Sending M2 to sensor 9
-280532824 30 User 30: M1 ACK received
-280532824 30 User 30: Waiting for M4...
-280602304 9 SN 9: M2 verified OK. New SIDn=e44e9e
-280602304 9 SN 9: Sent M3 (ￎﾳ)
-280630816 3 GW-S 3: M3 received from sensor
-280630816 3 GW-S 3: M3 verified from sensor 9
-280630816 3 GW-S 3: Sending M4 to user 30
-280727520 30 User 30: M4 received
-280728520 30 User 30: Auth OK. New DIDi=8eb1cf SK=7958
-280728520 30 
-280728520 30 AUTH_ENERGY|30|cpu_s=0.374520|energy_j=0.023085User 30: Sending data
-280761824 3 GW-S 3: M4 delivered to user
-280761824 3 
-280799360 1 GW: Rejected data ﾀﾔ DIDi 8eb1cf not found
-280812632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 8eb1cf
-280838472 30 User 30: Data confirmed
-289901000 25 User 25: Sending M1. DIDi=a694b5
-290121456 2 AUTH_ENERGY_GW|2|cpu_s=0.719624|energy_j=0.044358GW-S 2: User 25 M1 verified
-290122456 2 GW-S 2: Sending M2 to sensor 4
-290233080 25 User 25: M1 ACK received
-290233080 25 User 25: Waiting for M4...
-290347560 4 SN 4: M2 verified OK. New SIDn=71ab14
-290347560 4 SN 4: Sent M3 (ￎﾳ)
-290470144 2 GW-S 2: M3 received from sensor
-290470144 2 GW-S 2: M3 verified from sensor 4
-290470144 2 GW-S 2: Sending M4 to user 25
-290704776 25 User 25: M4 received
-290705776 25 User 25: Auth OK. New DIDi=d30a0f SK=e5e0
-290705776 25 
-290705776 25 AUTH_ENERGY|25|cpu_s=0.804776|energy_j=0.049675User 25: Sending data
-290766648 1 GW: Rejected data ﾀﾔ DIDi d30a0f not found
-290804016 25 User 25: Data confirmed
-290817080 2 GW-S 2: M4 delivered to user
-290817080 2 
-290924888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: d30a0f
-307747000 28 User 28: Sending M1. DIDi=2bd1b4
-307859200 3 AUTH_ENERGY_GW|3|cpu_s=0.296624|energy_j=0.018216GW-S 3: User 28 M1 verified
-307860200 3 GW-S 3: Sending M2 to sensor 7
-307899824 28 User 28: M1 ACK received
-307899824 28 User 28: Waiting for M4...
-307986304 7 SN 7: M2 verified OK. New SIDn=1249c5
-307986304 7 SN 7: Sent M3 (ￎﾳ)
-308050816 3 GW-S 3: M3 received from sensor
-308050816 3 GW-S 3: M3 verified from sensor 7
-308050816 3 GW-S 3: Sending M4 to user 28
-308155520 28 User 28: M4 received
-308156520 28 User 28: Auth OK. New DIDi=f2bc97 SK=d6fe
-308156520 28 
-308156520 28 AUTH_ENERGY|28|cpu_s=0.409520|energy_j=0.025248User 28: Sending data
-308197360 1 GW: Rejected data ﾀﾔ DIDi f2bc97 not found
-308203184 3 GW-S 3: M4 delivered to user
-308203184 3 
-308228472 28 User 28: Data confirmed
-308273632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: f2bc97
-308609000 29 User 29: Sending M1. DIDi=baf1ed
-308697200 3 AUTH_ENERGY_GW|3|cpu_s=0.342984|energy_j=0.021081GW-S 3: User 29 M1 verified
-308698200 3 GW-S 3: Sending M2 to sensor 8
-308728824 29 User 29: M1 ACK received
-308728824 29 User 29: Waiting for M4...
-308834304 8 SN 8: M2 verified OK. New SIDn=de28b7
-308834304 8 SN 8: Sent M3 (ￎﾳ)
-308883816 3 GW-S 3: M3 received from sensor
-308883816 3 GW-S 3: M3 verified from sensor 8
-308883816 3 GW-S 3: Sending M4 to user 29
-309005520 29 User 29: M4 received
-309006520 29 User 29: Auth OK. New DIDi=542ecc SK=05d1
-309006520 29 
-309006520 29 AUTH_ENERGY|29|cpu_s=0.397520|energy_j=0.024507User 29: Sending data
-309063360 1 GW: Rejected data ﾀﾔ DIDi 542ecc not found
-309091472 29 User 29: Data confirmed
-309097824 3 GW-S 3: M4 delivered to user
-309097824 3 
-309181632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 542ecc
-310838000 30 User 30: Sending M1. DIDi=8eb1cf
-310945200 3 AUTH_ENERGY_GW|3|cpu_s=0.399624|energy_j=0.024582GW-S 3: User 30 M1 verified
-310946200 3 GW-S 3: Sending M2 to sensor 9
-310969824 30 User 30: M1 ACK received
-310969824 30 User 30: Waiting for M4...
-311074304 9 SN 9: M2 verified OK. New SIDn=a418f1
-311074304 9 SN 9: Sent M3 (ￎﾳ)
-311127816 3 GW-S 3: M3 received from sensor
-311127816 3 GW-S 3: M3 verified from sensor 9
-311127816 3 GW-S 3: Sending M4 to user 30
-311215520 30 User 30: M4 received
-311216520 30 User 30: Auth OK. New DIDi=81812c SK=ed2c
-311216520 30 
-311216520 30 AUTH_ENERGY|30|cpu_s=0.378520|energy_j=0.023332User 30: Sending data
-311275360 1 GW: Rejected data ﾀﾔ DIDi 81812c not found
-311285472 30 User 30: Data confirmed
-311291824 3 GW-S 3: M4 delivered to user
-311291824 3 
-311319632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 81812c
-320804000 25 User 25: Sending M1. DIDi=d30a0f
-321059456 2 AUTH_ENERGY_GW|2|cpu_s=0.694624|energy_j=0.042788GW-S 2: User 25 M1 verified
-321060456 2 GW-S 2: Sending M2 to sensor 4
-321168160 25 User 25: M1 ACK received
-321168160 25 User 25: Waiting for M4...
-321312560 4 SN 4: M2 verified OK. New SIDn=a96ba6
-321312560 4 SN 4: Sent M3 (ￎﾳ)
-321422072 2 GW-S 2: M3 received from sensor
-321422072 2 GW-S 2: M3 verified from sensor 4
-321422072 2 GW-S 2: Sending M4 to user 25
-321615776 25 User 25: M4 received
-321616776 25 User 25: Auth OK. New DIDi=0119d0 SK=1b15
-321616776 25 
-321616776 25 AUTH_ENERGY|25|cpu_s=0.812776|energy_j=0.050169User 25: Sending data
-321697648 1 GW: Rejected data ﾀﾔ DIDi 0119d0 not found
-321733016 25 User 25: Data confirmed
-321744080 2 GW-S 2: M4 delivered to user
-321744080 2 
-321817888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 0119d0
-338228000 28 User 28: Sending M1. DIDi=f2bc97
-338342200 3 AUTH_ENERGY_GW|3|cpu_s=0.345624|energy_j=0.021245GW-S 3: User 28 M1 verified
-338343200 3 GW-S 3: Sending M2 to sensor 7
-338397824 28 User 28: M1 ACK received
-338397824 28 User 28: Waiting for M4...
-338490304 7 SN 7: M2 verified OK. New SIDn=48bf21
-338490304 7 SN 7: Sent M3 (ￎﾳ)
-338535816 3 GW-S 3: M3 received from sensor
-338535816 3 GW-S 3: M3 verified from sensor 7
-338535816 3 GW-S 3: Sending M4 to user 28
-338610520 28 User 28: M4 received
-338611520 28 User 28: Auth OK. New DIDi=2e3625 SK=e9d6
-338611520 28 
-338611520 28 AUTH_ENERGY|28|cpu_s=0.383520|energy_j=0.023641User 28: Sending data
-338660824 3 GW-S 3: M4 delivered to user
-338660824 3 
-338673360 1 GW: Rejected data ﾀﾔ DIDi 2e3625 not found
-338714472 28 User 28: Data confirmed
-338753632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 2e3625
-339091000 29 User 29: Sending M1. DIDi=542ecc
-339208200 3 AUTH_ENERGY_GW|3|cpu_s=0.317624|energy_j=0.019514GW-S 3: User 29 M1 verified
-339209200 3 GW-S 3: Sending M2 to sensor 8
-339273824 29 User 29: M1 ACK received
-339273824 29 User 29: Waiting for M4...
-339322368 8 SN 8: M2 verified OK. New SIDn=85b188
-339322368 8 SN 8: Sent M3 (ￎﾳ)
-339375816 3 GW-S 3: M3 received from sensor
-339375816 3 GW-S 3: M3 verified from sensor 8
-339375816 3 GW-S 3: Sending M4 to user 29
-339465520 29 User 29: M4 received
-339466520 29 User 29: Auth OK. New DIDi=c2cf16 SK=7183
-339466520 29 
-339466520 29 AUTH_ENERGY|29|cpu_s=0.375520|energy_j=0.023147User 29: Sending data
-339527824 3 GW-S 3: M4 delivered to user
-339527824 3 
-339536360 1 GW: Rejected data ﾀﾔ DIDi c2cf16 not found
-339548472 29 User 29: Data confirmed
-339587632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: c2cf16
-341285000 30 User 30: Sending M1. DIDi=81812c
-341456200 3 AUTH_ENERGY_GW|3|cpu_s=0.318624|energy_j=0.019576GW-S 3: User 30 M1 verified
-341457200 3 GW-S 3: Sending M2 to sensor 9
-341478616 30 User 30: M1 ACK received
-341478616 30 User 30: Waiting for M4...
-341594304 9 SN 9: M2 verified OK. New SIDn=a65fe5
-341594304 9 SN 9: Sent M3 (ￎﾳ)
-341639816 3 GW-S 3: M3 received from sensor
-341639816 3 GW-S 3: M3 verified from sensor 9
-341639816 3 GW-S 3: Sending M4 to user 30
-341741520 30 User 30: M4 received
-341742520 30 User 30: Auth OK. New DIDi=9aa4c9 SK=a7bb
-341742520 30 
-341742520 30 AUTH_ENERGY|30|cpu_s=0.457520|energy_j=0.028215User 30: Sending data
-341770360 1 GW: Rejected data ﾀﾔ DIDi 9aa4c9 not found
-341780472 30 User 30: Data confirmed
-341791824 3 GW-S 3: M4 delivered to user
-341791824 3 
-341836632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 9aa4c9
-351733000 25 User 25: Sending M1. DIDi=0119d0
-351954456 2 AUTH_ENERGY_GW|2|cpu_s=0.683624|energy_j=0.042133GW-S 2: User 25 M1 verified
-351955456 2 GW-S 2: Sending M2 to sensor 4
-352034080 25 User 25: M1 ACK received
-352034080 25 User 25: Waiting for M4...
-352230560 4 SN 4: M2 verified OK. New SIDn=51f52e
-352230560 4 SN 4: Sent M3 (ￎﾳ)
-352342072 2 GW-S 2: M3 received from sensor
-352342072 2 GW-S 2: M3 verified from sensor 4
-352342072 2 GW-S 2: Sending M4 to user 25
-352551776 25 User 25: M4 received
-352552776 25 User 25: Auth OK. New DIDi=dab329 SK=0243
-352552776 25 
-352552776 25 AUTH_ENERGY|25|cpu_s=0.819776|energy_j=0.050602User 25: Sending data
-352639648 1 GW: Rejected data ﾀﾔ DIDi dab329 not found
-352677016 25 User 25: Data confirmed
-352700080 2 GW-S 2: M4 delivered to user
-352700080 2 
-352796888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: dab329
-368714000 28 User 28: Sending M1. DIDi=2e3625
-368778200 3 AUTH_ENERGY_GW|3|cpu_s=0.334624|energy_j=0.020565GW-S 3: User 28 M1 verified
-368779200 3 GW-S 3: Sending M2 to sensor 7
-368861192 28 User 28: M1 ACK received
-368861192 28 User 28: Waiting for M4...
-368886304 7 SN 7: M2 verified OK. New SIDn=8dc591
-368886304 7 SN 7: Sent M3 (ￎﾳ)
-368949816 3 GW-S 3: M3 received from sensor
-368949816 3 GW-S 3: M3 verified from sensor 7
-368949816 3 GW-S 3: Sending M4 to user 28
-369068520 28 User 28: M4 received
-369069520 28 User 28: Auth OK. New DIDi=34acb7 SK=00b3
-369069520 28 
-369069520 28 AUTH_ENERGY|28|cpu_s=0.355520|energy_j=0.021911User 28: Sending data
-369141360 1 GW: Rejected data ﾀﾔ DIDi 34acb7 not found
-369151824 3 GW-S 3: M4 delivered to user
-369151824 3 
-369260472 28 User 28: Data confirmed
-369315632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 34acb7
-369548000 29 User 29: Sending M1. DIDi=c2cf16
-369666200 3 AUTH_ENERGY_GW|3|cpu_s=0.372624|energy_j=0.022895GW-S 3: User 29 M1 verified
-369667200 3 GW-S 3: Sending M2 to sensor 8
-369685824 29 User 29: M1 ACK received
-369685824 29 User 29: Waiting for M4...
-369803304 8 SN 8: M2 verified OK. New SIDn=1ea81f
-369803304 8 SN 8: Sent M3 (ￎﾳ)
-369862816 3 GW-S 3: M3 received from sensor
-369862816 3 GW-S 3: M3 verified from sensor 8
-369862816 3 GW-S 3: Sending M4 to user 29
-369977520 29 User 29: M4 received
-369978520 29 User 29: Auth OK. New DIDi=acc650 SK=5892
-369978520 29 
-369978520 29 AUTH_ENERGY|29|cpu_s=0.430520|energy_j=0.026546User 29: Sending data
-370028360 1 GW: Rejected data ﾀﾔ DIDi acc650 not found
-370039824 3 GW-S 3: M4 delivered to user
-370039824 3 
-370048472 29 User 29: Data confirmed
-370120632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: acc650
-371780000 30 User 30: Sending M1. DIDi=9aa4c9
-371925200 3 AUTH_ENERGY_GW|3|cpu_s=0.372624|energy_j=0.022913GW-S 3: User 30 M1 verified
-371926200 3 GW-S 3: Sending M2 to sensor 9
-372038824 30 User 30: M1 ACK received
-372038824 30 User 30: Waiting for M4...
-372098304 9 SN 9: M2 verified OK. New SIDn=5ab40d
-372098304 9 SN 9: Sent M3 (ￎﾳ)
-372148816 3 GW-S 3: M3 received from sensor
-372148816 3 GW-S 3: M3 verified from sensor 9
-372148816 3 GW-S 3: Sending M4 to user 30
-372305520 30 User 30: M4 received
-372306520 30 User 30: Auth OK. New DIDi=4f5407 SK=cc76
-372306520 30 
-372306520 30 AUTH_ENERGY|30|cpu_s=0.526520|energy_j=0.032479User 30: Sending data
-372347360 1 GW: Rejected data ﾀﾔ DIDi 4f5407 not found
-372365824 3 GW-S 3: M4 delivered to user
-372365824 3 
-372390472 30 User 30: Data confirmed
-372406632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 4f5407
-382677000 25 User 25: Sending M1. DIDi=dab329
-382895456 2 AUTH_ENERGY_GW|2|cpu_s=0.744624|energy_j=0.045903GW-S 2: User 25 M1 verified
-382896456 2 GW-S 2: Sending M2 to sensor 4
-383021080 25 User 25: M1 ACK received
-383021080 25 User 25: Waiting for M4...
-383236560 4 SN 4: M2 verified OK. New SIDn=04733d
-383236560 4 SN 4: Sent M3 (ￎﾳ)
-383369072 2 GW-S 2: M3 received from sensor
-383369072 2 GW-S 2: M3 verified from sensor 4
-383369072 2 GW-S 2: Sending M4 to user 25
-383661776 25 User 25: M4 received
-383662776 25 User 25: Auth OK. New DIDi=1f32e8 SK=a85b
-383662776 25 
-383662776 25 AUTH_ENERGY|25|cpu_s=0.985776|energy_j=0.060861User 25: Sending data
-383763648 1 GW: Rejected data ﾀﾔ DIDi 1f32e8 not found
-383826016 25 User 25: Data confirmed
-383879080 2 GW-S 2: M4 delivered to user
-383879080 2 
-383956888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 1f32e8
-399260000 28 User 28: Sending M1. DIDi=34acb7
-399388200 3 AUTH_ENERGY_GW|3|cpu_s=0.439624|energy_j=0.027004GW-S 3: User 28 M1 verified
-399389200 3 GW-S 3: Sending M2 to sensor 7
-399463888 28 User 28: M1 ACK received
-399463888 28 User 28: Waiting for M4...
-399475304 7 SN 7: M2 verified OK. New SIDn=9d4df0
-399475304 7 SN 7: Sent M3 (ￎﾳ)
-399549816 3 GW-S 3: M3 received from sensor
-399549816 3 GW-S 3: M3 verified from sensor 7
-399549816 3 GW-S 3: Sending M4 to user 28
-399668520 28 User 28: M4 received
-399669520 28 User 28: Auth OK. New DIDi=a56b65 SK=78e7
-399669520 28 
-399669520 28 AUTH_ENERGY|28|cpu_s=0.409520|energy_j=0.025248User 28: Sending data
-399715824 3 GW-S 3: M4 delivered to user
-399715824 3 
-399725360 1 GW: Rejected data ﾀﾔ DIDi a56b65 not found
-399749632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: a56b65
-399762472 28 User 28: Data confirmed
-400048000 29 User 29: Sending M1. DIDi=acc650
-400155200 3 AUTH_ENERGY_GW|3|cpu_s=0.326624|energy_j=0.020070GW-S 3: User 29 M1 verified
-400156200 3 GW-S 3: Sending M2 to sensor 8
-400251824 29 User 29: M1 ACK received
-400251824 29 User 29: Waiting for M4...
-400321304 8 SN 8: M2 verified OK. New SIDn=2650ed
-400321304 8 SN 8: Sent M3 (ￎﾳ)
-400368816 3 GW-S 3: M3 received from sensor
-400368816 3 GW-S 3: M3 verified from sensor 8
-400368816 3 GW-S 3: Sending M4 to user 29
-400505520 29 User 29: M4 received
-400506520 29 User 29: Auth OK. New DIDi=19679d SK=4698
-400506520 29 
-400506520 29 AUTH_ENERGY|29|cpu_s=0.458520|energy_j=0.028276User 29: Sending data
-400537360 1 GW: Rejected data ﾀﾔ DIDi 19679d not found
-400554824 3 GW-S 3: M4 delivered to user
-400554824 3 
-400560472 29 User 29: Data confirmed
-400595632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 19679d
-402390000 30 User 30: Sending M1. DIDi=4f5407
-402479200 3 AUTH_ENERGY_GW|3|cpu_s=0.398624|energy_j=0.024499GW-S 3: User 30 M1 verified
-402480200 3 GW-S 3: Sending M2 to sensor 9
-402502616 30 User 30: M1 ACK received
-402502616 30 User 30: Waiting for M4...
-402584304 9 SN 9: M2 verified OK. New SIDn=1fd5c3
-402584304 9 SN 9: Sent M3 (ￎﾳ)
-402638816 3 GW-S 3: M3 received from sensor
-402638816 3 GW-S 3: M3 verified from sensor 9
-402638816 3 GW-S 3: Sending M4 to user 30
-402732520 30 User 30: M4 received
-402733520 30 User 30: Auth OK. New DIDi=29f62b SK=e46e
-402733520 30 
-402733520 30 AUTH_ENERGY|30|cpu_s=0.343520|energy_j=0.021169User 30: Sending data
-402780360 1 GW: Rejected data ﾀﾔ DIDi 29f62b not found
-402798472 30 User 30: Data confirmed
-402852824 3 GW-S 3: M4 delivered to user
-402852824 3 
-402867488 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 29f62b
-413826000 25 User 25: Sending M1. DIDi=1f32e8
-414068520 2 AUTH_ENERGY_GW|2|cpu_s=0.982624|energy_j=0.060611GW-S 2: User 25 M1 verified
-414069520 2 GW-S 2: Sending M2 to sensor 4
-414197160 25 User 25: M1 ACK received
-414197160 25 User 25: Waiting for M4...
-414321560 4 SN 4: M2 verified OK. New SIDn=5ac08f
-414321560 4 SN 4: Sent M3 (ￎﾳ)
-414420072 2 GW-S 2: M3 received from sensor
-414420072 2 GW-S 2: M3 verified from sensor 4
-414420072 2 GW-S 2: Sending M4 to user 25
-414683776 25 User 25: M4 received
-414684776 25 User 25: Auth OK. New DIDi=42ccea SK=de29
-414684776 25 
-414684776 25 AUTH_ENERGY|25|cpu_s=0.858776|energy_j=0.053012User 25: Sending data
-414785648 1 GW: Rejected data ﾀﾔ DIDi 42ccea not found
-414810016 25 User 25: Data confirmed
-414858080 2 GW-S 2: M4 delivered to user
-414858080 2 
-415002888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 42ccea
-429762000 28 User 28: Sending M1. DIDi=a56b65
-429833200 3 AUTH_ENERGY_GW|3|cpu_s=0.372624|energy_j=0.022913GW-S 3: User 28 M1 verified
-429834200 3 GW-S 3: Sending M2 to sensor 7
-429863824 28 User 28: M1 ACK received
-429863824 28 User 28: Waiting for M4...
-429952304 7 SN 7: M2 verified OK. New SIDn=e78deb
-429952304 7 SN 7: Sent M3 (ￎﾳ)
-430033816 3 GW-S 3: M3 received from sensor
-430033816 3 GW-S 3: M3 verified from sensor 7
-430033816 3 GW-S 3: Sending M4 to user 28
-430225520 28 User 28: M4 received
-430226520 28 User 28: Auth OK. New DIDi=45a09d SK=7ff7
-430226520 28 
-430226520 28 AUTH_ENERGY|28|cpu_s=0.464520|energy_j=0.028643User 28: Sending data
-430256824 3 GW-S 3: M4 delivered to user
-430256824 3 
-430308632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 45a09d
-430315360 1 GW: Decrypted data [9] from DIDi 45a09d (user 0)
-430323536 28 User 28: Data confirmed
-430560000 29 User 29: Sending M1. DIDi=19679d
-430657200 3 AUTH_ENERGY_GW|3|cpu_s=0.422624|energy_j=0.026004GW-S 3: User 29 M1 verified
-430658200 3 GW-S 3: Sending M2 to sensor 8
-430794304 8 SN 8: M2 verified OK. New SIDn=a31cfb
-430794304 8 SN 8: Sent M3 (ￎﾳ)
-430831824 29 User 29: M1 ACK received
-430831824 29 User 29: Waiting for M4...
-430881816 3 GW-S 3: M3 received from sensor
-430881816 3 GW-S 3: M3 verified from sensor 8
-430881816 3 GW-S 3: Sending M4 to user 29
-430984520 29 User 29: M4 received
-430985520 29 User 29: Auth OK. New DIDi=07d0af SK=2308
-430985520 29 
-430985520 29 AUTH_ENERGY|29|cpu_s=0.425520|energy_j=0.026237User 29: Sending data
-431033824 3 GW-S 3: M4 delivered to user
-431033824 3 
-431039184 1 GW: Rejected data ﾀﾔ DIDi 07d0af not found
-431049472 29 User 29: Data confirmed
-431087632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 07d0af
-432798000 30 User 30: Sending M1. DIDi=29f62b
-432901200 3 AUTH_ENERGY_GW|3|cpu_s=0.375624|energy_j=0.023074GW-S 3: User 30 M1 verified
-432902200 3 GW-S 3: Sending M2 to sensor 9
-432925824 30 User 30: M1 ACK received
-432925824 30 User 30: Waiting for M4...
-433040304 9 SN 9: M2 verified OK. New SIDn=a8a508
-433040304 9 SN 9: Sent M3 (ￎﾳ)
-433110816 3 GW-S 3: M3 received from sensor
-433110816 3 GW-S 3: M3 verified from sensor 9
-433110816 3 GW-S 3: Sending M4 to user 30
-433222520 30 User 30: M4 received
-433223520 30 User 30: Auth OK. New DIDi=96cfb9 SK=4e7d
-433223520 30 
-433223520 30 AUTH_ENERGY|30|cpu_s=0.425520|energy_j=0.026237User 30: Sending data
-433270824 3 GW-S 3: M4 delivered to user
-433270824 3 
-433386632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 96cfb9
-433494360 1 GW: Decrypted data [9] from DIDi 96cfb9 (user 0)
-433533536 30 User 30: Data confirmed
-444810000 25 User 25: Sending M1. DIDi=42ccea
-445026456 2 AUTH_ENERGY_GW|2|cpu_s=0.788560|energy_j=0.048618GW-S 2: User 25 M1 verified
-445027456 2 GW-S 2: Sending M2 to sensor 4
-445122080 25 User 25: M1 ACK received
-445122080 25 User 25: Waiting for M4...
-445337560 4 SN 4: M2 verified OK. New SIDn=8fe483
-445337560 4 SN 4: Sent M3 (ￎﾳ)
-445476072 2 GW-S 2: M3 received from sensor
-445476072 2 GW-S 2: M3 verified from sensor 4
-445476072 2 GW-S 2: Sending M4 to user 25
-445651840 25 User 25: M4 received
-445652840 25 User 25: Auth OK. New DIDi=7ab557 SK=c20d
-445652840 25 
-445652840 25 AUTH_ENERGY|25|cpu_s=0.842840|energy_j=0.052027User 25: Sending data
-445927648 1 GW: Rejected data ﾀﾔ DIDi 7ab557 not found
-445977016 25 User 25: Data confirmed
-446046080 2 GW-S 2: M4 delivered to user
-446046080 2 
-446146888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 7ab557
-460323000 28 User 28: Sending M1. DIDi=45a09d
-460432200 3 AUTH_ENERGY_GW|3|cpu_s=0.368624|energy_j=0.022666GW-S 3: User 28 M1 verified
-460433200 3 GW-S 3: Sending M2 to sensor 7
-460474824 28 User 28: M1 ACK received
-460474824 28 User 28: Waiting for M4...
-460583304 7 SN 7: M2 verified OK. New SIDn=bfb16b
-460583304 7 SN 7: Sent M3 (ￎﾳ)
-460608816 3 GW-S 3: M3 received from sensor
-460608816 3 GW-S 3: M3 verified from sensor 7
-460608816 3 GW-S 3: Sending M4 to user 28
-460742520 28 User 28: M4 received
-460743520 28 User 28: Auth OK. New DIDi=583dff SK=b287
-460743520 28 
-460743520 28 AUTH_ENERGY|28|cpu_s=0.420520|energy_j=0.025928User 28: Sending data
-460770360 1 GW: Rejected data ﾀﾔ DIDi 583dff not found
-460776184 3 GW-S 3: M4 delivered to user
-460776184 3 
-460781656 28 User 28: Data confirmed
-460853632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 583dff
-461049000 29 User 29: Sending M1. DIDi=07d0af
-461144200 3 AUTH_ENERGY_GW|3|cpu_s=0.342984|energy_j=0.021081GW-S 3: User 29 M1 verified
-461145200 3 GW-S 3: Sending M2 to sensor 8
-461223824 29 User 29: M1 ACK received
-461223824 29 User 29: Waiting for M4...
-461293304 8 SN 8: M2 verified OK. New SIDn=ae86d6
-461293304 8 SN 8: Sent M3 (ￎﾳ)
-461349816 3 GW-S 3: M3 received from sensor
-461349816 3 GW-S 3: M3 verified from sensor 8
-461349816 3 GW-S 3: Sending M4 to user 29
-461512520 29 User 29: M4 received
-461513520 29 User 29: Auth OK. New DIDi=5be257 SK=a154
-461513520 29 
-461513520 29 AUTH_ENERGY|29|cpu_s=0.464520|energy_j=0.028647User 29: Sending data
-461541824 3 GW-S 3: M4 delivered to user
-461541824 3 
-461572632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 5be257
-461591360 1 GW: Decrypted data [9] from DIDi 5be257 (user 0)
-461621536 29 User 29: Data confirmed
-463533000 30 User 30: Sending M1. DIDi=96cfb9
-463635200 3 AUTH_ENERGY_GW|3|cpu_s=0.396624|energy_j=0.024396GW-S 3: User 30 M1 verified
-463636200 3 GW-S 3: Sending M2 to sensor 9
-463661824 30 User 30: M1 ACK received
-463661824 30 User 30: Waiting for M4...
-463726304 9 SN 9: M2 verified OK. New SIDn=173a47
-463726304 9 SN 9: Sent M3 (ￎﾳ)
-463773816 3 GW-S 3: M3 received from sensor
-463773816 3 GW-S 3: M3 verified from sensor 9
-463773816 3 GW-S 3: Sending M4 to user 30
-463908520 30 User 30: M4 received
-463909520 30 User 30: Auth OK. New DIDi=62bd48 SK=87b5
-463909520 30 
-463909520 30 AUTH_ENERGY|30|cpu_s=0.376520|energy_j=0.023209User 30: Sending data
-463958824 3 GW-S 3: M4 delivered to user
-463958824 3 
-463974360 1 GW: Rejected data ﾀﾔ DIDi 62bd48 not found
-463997472 30 User 30: Data confirmed
-464032632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 62bd48
-475977000 25 User 25: Sending M1. DIDi=7ab557
-476253456 2 AUTH_ENERGY_GW|2|cpu_s=1.018624|energy_j=0.062814GW-S 2: User 25 M1 verified
-476254456 2 GW-S 2: Sending M2 to sensor 4
-476352080 25 User 25: M1 ACK received
-476352080 25 User 25: Waiting for M4...
-476549560 4 SN 4: M2 verified OK. New SIDn=17a305
-476549560 4 SN 4: Sent M3 (ￎﾳ)
-476605072 2 GW-S 2: M3 received from sensor
-476605072 2 GW-S 2: M3 verified from sensor 4
-476605072 2 GW-S 2: Sending M4 to user 25
-476812776 25 User 25: M4 received
-476813776 25 User 25: Auth OK. New DIDi=30ee24 SK=25b0
-476813776 25 
-476813776 25 AUTH_ENERGY|25|cpu_s=0.836776|energy_j=0.051631User 25: Sending data
-476898648 1 GW: Rejected data ﾀﾔ DIDi 30ee24 not found
-476916536 2 GW-S 2: M4 delivered to user
-476916536 2 
-477041888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 30ee24
-477059016 25 User 25: Data confirmed
-490781000 28 User 28: Sending M1. DIDi=583dff
-490853200 3 AUTH_ENERGY_GW|3|cpu_s=0.322624|energy_j=0.019823GW-S 3: User 28 M1 verified
-490854200 3 GW-S 3: Sending M2 to sensor 7
-490910824 28 User 28: M1 ACK received
-490910824 28 User 28: Waiting for M4...
-490979304 7 SN 7: M2 verified OK. New SIDn=f86d8e
-490979304 7 SN 7: Sent M3 (ￎﾳ)
-491065816 3 GW-S 3: M3 received from sensor
-491065816 3 GW-S 3: M3 verified from sensor 7
-491065816 3 GW-S 3: Sending M4 to user 28
-491156520 28 User 28: M4 received
-491157520 28 User 28: Auth OK. New DIDi=0fece8 SK=fd35
-491157520 28 
-491157520 28 AUTH_ENERGY|28|cpu_s=0.376520|energy_j=0.023209User 28: Sending data
-491186824 3 GW-S 3: M4 delivered to user
-491186824 3 
-491239632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 0fece8
-491256360 1 GW: Decrypted data [9] from DIDi 0fece8 (user 0)
-491300536 28 User 28: Data confirmed
-491621000 29 User 29: Sending M1. DIDi=5be257
-491748200 3 AUTH_ENERGY_GW|3|cpu_s=0.332624|energy_j=0.020441GW-S 3: User 29 M1 verified
-491749200 3 GW-S 3: Sending M2 to sensor 8
-491810824 29 User 29: M1 ACK received
-491810824 29 User 29: Waiting for M4...
-491912304 8 SN 8: M2 verified OK. New SIDn=2a6248
-491912304 8 SN 8: Sent M3 (ￎﾳ)
-491945816 3 GW-S 3: M3 received from sensor
-491945816 3 GW-S 3: M3 verified from sensor 8
-491945816 3 GW-S 3: Sending M4 to user 29
-492053520 29 User 29: M4 received
-492054520 29 User 29: Auth OK. New DIDi=db401c SK=eb33
-492054520 29 
-492054520 29 AUTH_ENERGY|29|cpu_s=0.433520|energy_j=0.026731User 29: Sending data
-492094360 1 GW: Rejected data ﾀﾔ DIDi db401c not found
-492100184 3 GW-S 3: M4 delivered to user
-492100184 3 
-492167472 29 User 29: Data confirmed
-492181632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: db401c
-493997000 30 User 30: Sending M1. DIDi=62bd48
-494094200 3 AUTH_ENERGY_GW|3|cpu_s=0.350984|energy_j=0.021576GW-S 3: User 30 M1 verified
-494095200 3 GW-S 3: Sending M2 to sensor 9
-494147824 30 User 30: M1 ACK received
-494147824 30 User 30: Waiting for M4...
-494250304 9 SN 9: M2 verified OK. New SIDn=6a4533
-494250304 9 SN 9: Sent M3 (ￎﾳ)
-494319816 3 GW-S 3: M3 received from sensor
-494319816 3 GW-S 3: M3 verified from sensor 9
-494319816 3 GW-S 3: Sending M4 to user 30
-494404520 30 User 30: M4 received
-494405520 30 User 30: Auth OK. New DIDi=e274e4 SK=03f2
-494405520 30 
-494405520 30 AUTH_ENERGY|30|cpu_s=0.408520|energy_j=0.025186User 30: Sending data
-494440824 3 GW-S 3: M4 delivered to user
-494440824 3 
-494446184 1 GW: Rejected data ﾀﾔ DIDi e274e4 not found
-494483504 30 User 30: Data confirmed
-494521632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: e274e4
-507059000 25 User 25: Sending M1. DIDi=30ee24
-507283456 2 AUTH_ENERGY_GW|2|cpu_s=0.662080|energy_j=0.040801GW-S 2: User 25 M1 verified
-507284456 2 GW-S 2: Sending M2 to sensor 4
-507402080 25 User 25: M1 ACK received
-507402080 25 User 25: Waiting for M4...
-507522560 4 SN 4: M2 verified OK. New SIDn=54b573
-507522560 4 SN 4: Sent M3 (ￎﾳ)
-507605072 2 GW-S 2: M3 received from sensor
-507605072 2 GW-S 2: M3 verified from sensor 4
-507605072 2 GW-S 2: Sending M4 to user 25
-507781776 25 User 25: M4 received
-507782776 25 User 25: Auth OK. New DIDi=315642 SK=71e3
-507782776 25 
-507782776 25 AUTH_ENERGY|25|cpu_s=0.723776|energy_j=0.044669User 25: Sending data
-507870648 1 GW: Rejected data ﾀﾔ DIDi 315642 not found
-507884080 2 GW-S 2: M4 delivered to user
-507884080 2 
-507891016 25 User 25: Data confirmed
-508006888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 315642
-521300000 28 User 28: Sending M1. DIDi=0fece8
-521430200 3 AUTH_ENERGY_GW|3|cpu_s=0.345624|energy_j=0.021245GW-S 3: User 28 M1 verified
-521431200 3 GW-S 3: Sending M2 to sensor 7
-521462824 28 User 28: M1 ACK received
-521462824 28 User 28: Waiting for M4...
-521552304 7 SN 7: M2 verified OK. New SIDn=561f31
-521552304 7 SN 7: Sent M3 (ￎﾳ)
-521588816 3 GW-S 3: M3 received from sensor
-521588816 3 GW-S 3: M3 verified from sensor 7
-521588816 3 GW-S 3: Sending M4 to user 28
-521645520 28 User 28: M4 received
-521646520 28 User 28: Auth OK. New DIDi=4e08b7 SK=8e82
-521646520 28 
-521646520 28 AUTH_ENERGY|28|cpu_s=0.346520|energy_j=0.021355User 28: Sending data
-521714824 3 GW-S 3: M4 delivered to user
-521714824 3 
-521732360 1 GW: Rejected data ﾀﾔ DIDi 4e08b7 not found
-521765504 28 User 28: Data confirmed
-521775632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 4e08b7
-522167000 29 User 29: Sending M1. DIDi=db401c
-522273200 3 AUTH_ENERGY_GW|3|cpu_s=0.283624|energy_j=0.017413GW-S 3: User 29 M1 verified
-522274200 3 GW-S 3: Sending M2 to sensor 8
-522318824 29 User 29: M1 ACK received
-522318824 29 User 29: Waiting for M4...
-522417304 8 SN 8: M2 verified OK. New SIDn=d9417d
-522417304 8 SN 8: Sent M3 (ￎﾳ)
-522479816 3 GW-S 3: M3 received from sensor
-522479816 3 GW-S 3: M3 verified from sensor 8
-522479816 3 GW-S 3: Sending M4 to user 29
-522594520 29 User 29: M4 received
-522595520 29 User 29: Auth OK. New DIDi=84df37 SK=92f7
-522595520 29 
-522595520 29 AUTH_ENERGY|29|cpu_s=0.428520|energy_j=0.026422User 29: Sending data
-522614824 3 GW-S 3: M4 delivered to user
-522614824 3 
-522638360 1 GW: Rejected data ﾀﾔ DIDi 84df37 not found
-522653632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 84df37
-522677472 29 User 29: Data confirmed
-524483000 30 User 30: Sending M1. DIDi=e274e4
-524597200 3 AUTH_ENERGY_GW|3|cpu_s=0.340624|energy_j=0.020936GW-S 3: User 30 M1 verified
-524598200 3 GW-S 3: Sending M2 to sensor 9
-524666856 30 User 30: M1 ACK received
-524666856 30 User 30: Waiting for M4...
-524759304 9 SN 9: M2 verified OK. New SIDn=1e3651
-524759304 9 SN 9: Sent M3 (ￎﾳ)
-524810816 3 GW-S 3: M3 received from sensor
-524810816 3 GW-S 3: M3 verified from sensor 9
-524810816 3 GW-S 3: Sending M4 to user 30
-524885520 30 User 30: M4 received
-524886520 30 User 30: Auth OK. New DIDi=64b86d SK=5b03
-524886520 30 
-524886520 30 AUTH_ENERGY|30|cpu_s=0.403520|energy_j=0.024877User 30: Sending data
-524928360 1 GW: Rejected data ﾀﾔ DIDi 64b86d not found
-524934184 3 GW-S 3: M4 delivered to user
-524934184 3 
-524941472 30 User 30: Data confirmed
-524994632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 64b86d
-537891000 25 User 25: Sending M1. DIDi=315642
-538113456 2 AUTH_ENERGY_GW|2|cpu_s=0.599624|energy_j=0.036942GW-S 2: User 25 M1 verified
-538114456 2 GW-S 2: Sending M2 to sensor 4
-538214080 25 User 25: M1 ACK received
-538214080 25 User 25: Waiting for M4...
-538343560 4 SN 4: M2 verified OK. New SIDn=4e3745
-538343560 4 SN 4: Sent M3 (ￎﾳ)
-538452072 2 GW-S 2: M3 received from sensor
-538452072 2 GW-S 2: M3 verified from sensor 4
-538452072 2 GW-S 2: Sending M4 to user 25
-538650776 25 User 25: M4 received
-538651776 25 User 25: Auth OK. New DIDi=f367cd SK=371b
-538651776 25 
-538651776 25 AUTH_ENERGY|25|cpu_s=0.760776|energy_j=0.046956User 25: Sending data
-538721080 2 GW-S 2: M4 delivered to user
-538721080 2 
-538788648 1 GW: Rejected data ﾀﾔ DIDi f367cd not found
-538804888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: f367cd
-538902016 25 User 25: Data confirmed
-551765000 28 User 28: Sending M1. DIDi=4e08b7
-551878200 3 AUTH_ENERGY_GW|3|cpu_s=0.335984|energy_j=0.020628GW-S 3: User 28 M1 verified
-551879200 3 GW-S 3: Sending M2 to sensor 7
-551933856 28 User 28: M1 ACK received
-551933856 28 User 28: Waiting for M4...
-552022304 7 SN 7: M2 verified OK. New SIDn=b41fad
-552022304 7 SN 7: Sent M3 (ￎﾳ)
-552078816 3 GW-S 3: M3 received from sensor
-552078816 3 GW-S 3: M3 verified from sensor 7
-552078816 3 GW-S 3: Sending M4 to user 28
-552190520 28 User 28: M4 received
-552191520 28 User 28: Auth OK. New DIDi=ac815e SK=918e
-552191520 28 
-552191520 28 AUTH_ENERGY|28|cpu_s=0.426520|energy_j=0.026299User 28: Sending data
-552208824 3 GW-S 3: M4 delivered to user
-552208824 3 
-552217360 1 GW: Rejected data ﾀﾔ DIDi ac815e not found
-552251472 28 User 28: Data confirmed
-552269632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: ac815e
-552677000 29 User 29: Sending M1. DIDi=84df37
-552760200 3 AUTH_ENERGY_GW|3|cpu_s=0.329624|energy_j=0.020256GW-S 3: User 29 M1 verified
-552761200 3 GW-S 3: Sending M2 to sensor 8
-552799824 29 User 29: M1 ACK received
-552799824 29 User 29: Waiting for M4...
-552875304 8 SN 8: M2 verified OK. New SIDn=ef21a9
-552875304 8 SN 8: Sent M3 (ￎﾳ)
-552911816 3 GW-S 3: M3 received from sensor
-552911816 3 GW-S 3: M3 verified from sensor 8
-552911816 3 GW-S 3: Sending M4 to user 29
-552996520 29 User 29: M4 received
-552997520 29 User 29: Auth OK. New DIDi=90b655 SK=76c2
-552997520 29 
-552997520 29 AUTH_ENERGY|29|cpu_s=0.320520|energy_j=0.019748User 29: Sending data
-553044824 3 GW-S 3: M4 delivered to user
-553044824 3 
-553062360 1 GW: Rejected data ﾀﾔ DIDi 90b655 not found
-553105472 29 User 29: Data confirmed
-553130632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 90b655
-554941000 30 User 30: Sending M1. DIDi=64b86d
-555058200 3 AUTH_ENERGY_GW|3|cpu_s=0.283624|energy_j=0.017413GW-S 3: User 30 M1 verified
-555059200 3 GW-S 3: Sending M2 to sensor 9
-555121824 30 User 30: M1 ACK received
-555121824 30 User 30: Waiting for M4...
-555149304 9 SN 9: M2 verified OK. New SIDn=e3744b
-555149304 9 SN 9: Sent M3 (ￎﾳ)
-555192816 3 GW-S 3: M3 received from sensor
-555192816 3 GW-S 3: M3 verified from sensor 9
-555192816 3 GW-S 3: Sending M4 to user 30
-555335520 30 User 30: M4 received
-555336520 30 User 30: Auth OK. New DIDi=2eb368 SK=6cb4
-555336520 30 
-555336520 30 AUTH_ENERGY|30|cpu_s=0.395520|energy_j=0.024383User 30: Sending data
-555364824 3 GW-S 3: M4 delivered to user
-555364824 3 
-555385360 1 GW: Rejected data ﾀﾔ DIDi 2eb368 not found
-555391472 30 User 30: Data confirmed
-555417632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 2eb368
-568902000 25 User 25: Sending M1. DIDi=f367cd
-569107456 2 AUTH_ENERGY_GW|2|cpu_s=0.606624|energy_j=0.037356GW-S 2: User 25 M1 verified
-569108456 2 GW-S 2: Sending M2 to sensor 4
-569204080 25 User 25: M1 ACK received
-569204080 25 User 25: Waiting for M4...
-569336560 4 SN 4: M2 verified OK. New SIDn=e96917
-569336560 4 SN 4: Sent M3 (ￎﾳ)
-569454072 2 GW-S 2: M3 received from sensor
-569454072 2 GW-S 2: M3 verified from sensor 4
-569454072 2 GW-S 2: Sending M4 to user 25
-569705776 25 User 25: M4 received
-569706776 25 User 25: Auth OK. New DIDi=d64f32 SK=a1a1
-569706776 25 
-569706776 25 AUTH_ENERGY|25|cpu_s=0.804776|energy_j=0.049675User 25: Sending data
-569781080 2 GW-S 2: M4 delivered to user
-569781080 2 
-569788648 1 GW: Rejected data ﾀﾔ DIDi d64f32 not found
-569822016 25 User 25: Data confirmed
-569887888 1 GW: Auth token for user 0 (via GW-S 2). DIDi: d64f32
-582251000 28 User 28: Sending M1. DIDi=ac815e
-582353200 3 AUTH_ENERGY_GW|3|cpu_s=0.305624|energy_j=0.018773GW-S 3: User 28 M1 verified
-582354200 3 GW-S 3: Sending M2 to sensor 7
-582382824 28 User 28: M1 ACK received
-582382824 28 User 28: Waiting for M4...
-582497304 7 SN 7: M2 verified OK. New SIDn=b95d75
-582497304 7 SN 7: Sent M3 (ￎﾳ)
-582562816 3 GW-S 3: M3 received from sensor
-582562816 3 GW-S 3: M3 verified from sensor 7
-582562816 3 GW-S 3: Sending M4 to user 28
-582703520 28 User 28: M4 received
-582704520 28 User 28: Auth OK. New DIDi=bf03b0 SK=24da
-582704520 28 
-582704520 28 AUTH_ENERGY|28|cpu_s=0.453520|energy_j=0.027967User 28: Sending data
-582750360 1 GW: Rejected data ﾀﾔ DIDi bf03b0 not found
-582757824 3 GW-S 3: M4 delivered to user
-582757824 3 
-582763296 28 User 28: Data confirmed
-582829632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: bf03b0
-583105000 29 User 29: Sending M1. DIDi=90b655
-583194200 3 AUTH_ENERGY_GW|3|cpu_s=0.403624|energy_j=0.024829GW-S 3: User 29 M1 verified
-583195200 3 GW-S 3: Sending M2 to sensor 8
-583238824 29 User 29: M1 ACK received
-583238824 29 User 29: Waiting for M4...
-583306304 8 SN 8: M2 verified OK. New SIDn=2503ab
-583306304 8 SN 8: Sent M3 (ￎﾳ)
-583367816 3 GW-S 3: M3 received from sensor
-583367816 3 GW-S 3: M3 verified from sensor 8
-583367816 3 GW-S 3: Sending M4 to user 29
-583492520 29 User 29: M4 received
-583493520 29 User 29: Auth OK. New DIDi=024cd4 SK=83be
-583493520 29 
-583493520 29 AUTH_ENERGY|29|cpu_s=0.388520|energy_j=0.023950User 29: Sending data
-583575360 1 GW: Rejected data ﾀﾔ DIDi 024cd4 not found
-583603824 3 GW-S 3: M4 delivered to user
-583603824 3 
-583609296 29 User 29: Data confirmed
-583653632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: 024cd4
-585391000 30 User 30: Sending M1. DIDi=2eb368
-585492200 3 AUTH_ENERGY_GW|3|cpu_s=0.408624|energy_j=0.025114GW-S 3: User 30 M1 verified
-585493200 3 GW-S 3: Sending M2 to sensor 9
-585510824 30 User 30: M1 ACK received
-585510824 30 User 30: Waiting for M4...
-585625304 9 SN 9: M2 verified OK. New SIDn=66198b
-585625304 9 SN 9: Sent M3 (ￎﾳ)
-585676816 3 GW-S 3: M3 received from sensor
-585676816 3 GW-S 3: M3 verified from sensor 9
-585676816 3 GW-S 3: Sending M4 to user 30
-585737520 30 User 30: M4 received
-585738520 30 User 30: Auth OK. New DIDi=eb5888 SK=84fd
-585738520 30 
-585738520 30 AUTH_ENERGY|30|cpu_s=0.347520|energy_j=0.021417User 30: Sending data
-585795824 3 GW-S 3: M4 delivered to user
-585795824 3 
-585815360 1 GW: Rejected data ﾀﾔ DIDi eb5888 not found
-585823472 30 User 30: Data confirmed
-585848632 1 GW: Auth token for user 0 (via GW-S 3). DIDi: eb5888
-599822000 25 User 25: Sending M1. DIDi=d64f32
+35345776 3 GW-S 3: User 30 registered. DIDi=018fc8
+35459584 30 User 30: User reg OK. DIDi=018fc8
+35459584 30 User 30: Querying SIDn for sensor 9
+35532720 3 GW-S 3: get_sid ﾀﾔ sensor 9 not enrolled yet
+35596080 30 User 30: get_sid reply dropped or sensor not enrolled
+35596080 30 User 30: Bound to sensor 9, SIDn=000000
+35596080 30 
+36149688 2 GW-S 2: Sensor 6 reg step 1. SIDn=c8c103, Cn=166
+36202328 6 SN 6: Reg-0 OK. SIDn=c8c103, Cn=166
+36202328 6 SN 6: Sending PUF response Rn=53
+36260720 2 GW-S 2: Sensor 6 registration complete. (Cn=166, Rn=53)
+36318856 6 SN 6: Registration complete
+36318856 6 
+38296688 3 GW-S 3: Sensor 7 reg step 1. SIDn=beef48, Cn=35
+38342584 7 SN 7: Reg-0 OK. SIDn=beef48, Cn=35
+38342584 7 SN 7: Sending PUF response Rn=243
+38426720 3 GW-S 3: Sensor 7 registration complete. (Cn=35, Rn=243)
+38504112 7 SN 7: Registration complete
+38504112 7 
+42774688 3 GW-S 3: Sensor 8 reg step 1. SIDn=dbb085, Cn=110
+42848584 8 SN 8: Reg-0 OK. SIDn=dbb085, Cn=110
+42848584 8 SN 8: Sending PUF response Rn=46
+42941720 3 GW-S 3: Sensor 8 registration complete. (Cn=110, Rn=46)
+43052112 8 SN 8: Registration complete
+43052112 8 
+43422688 3 GW-S 3: Sensor 9 reg step 1. SIDn=9c5700, Cn=236
+43465584 9 SN 9: Reg-0 OK. SIDn=9c5700, Cn=236
+43465584 9 SN 9: Sending PUF response Rn=55
+43555720 3 GW-S 3: Sensor 9 registration complete. (Cn=236, Rn=55)
+43685112 9 SN 9: Registration complete
+43685112 9 
+60682000 25 ENROLL_ENERGY|25|cpu_s=0.215328|energy_j=0.013255User 25: Sending M1. DIDi=53cf8b
+60809200 2 GW-S 2: User 25 M1 verified
+60810200 2 GW-S 2: Sending M2 to sensor 4
+60837824 25 User 25: M1 ACK received
+60837824 25 User 25: Waiting for M4...
+60906672 4 ENROLL_ENERGY_SN|4|cpu_s=11.551760|energy_j=0.713784SN 4: M2 verified OK. New SIDn=638302
+60906672 4 SN 4: Sent M3 (ￎﾳ)
+60906672 4 
+60940816 2 GW-S 2: M3 received from sensor
+60940816 2 GW-S 2: M3 verified from sensor 4
+60940816 2 GW-S 2: Sending M4 to user 25
+61043520 25 User 25: M4 received
+61044520 25 User 25: Auth OK. New DIDi=2928f6 SK=7dd5
+61044520 25 
+61044520 25 AUTH_ENERGY|25|cpu_s=0.362520|energy_j=0.022344User 25: Sending data
+61057672 1 GW: Rejected data ﾀﾔ DIDi 2928f6 not found
+61073472 25 User 25: Data confirmed
+61079296 2 GW-S 2: M4 delivered to user
+61079296 2 
+61132632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 2928f6
+62052000 26 ENROLL_ENERGY|26|cpu_s=0.362584|energy_j=0.022355User 26: Sending M1. DIDi=83608f
+62217200 2 AUTH_ENERGY_GW|2|cpu_s=0.269096|energy_j=0.016515GW-S 2: User 26 M1 verified
+62218200 2 GW-S 2: Sending M2 to sensor 5
+62298080 26 User 26: M1 ACK received
+62298080 26 User 26: Waiting for M4...
+62442304 5 ENROLL_ENERGY_SN|5|cpu_s=13.709856|energy_j=0.847074SN 5: M2 verified OK. New SIDn=6833b3
+62442304 5 SN 5: Sent M3 (ￎﾳ)
+62442304 5 
+62479816 2 GW-S 2: M3 received from sensor
+62479816 2 GW-S 2: M3 verified from sensor 5
+62479816 2 GW-S 2: Sending M4 to user 26
+62647776 26 User 26: M4 received
+62648776 26 User 26: Auth OK. New DIDi=5c39f4 SK=4318
+62648776 26 
+62648776 26 AUTH_ENERGY|26|cpu_s=0.596776|energy_j=0.036821User 26: Sending data
+62674000 27 ENROLL_ENERGY|27|cpu_s=0.289080|energy_j=0.017813User 27: Sending M1. DIDi=3c09f2
+62788200 2 GW-S 2: User 27 M1 verified
+62788200 2 GW-S 2: Auth failed ﾀﾔ SIDn not found
+62831904 2 GW-S 2: M4 delivered to user
+62831904 2 
+62885016 27 User 27: M1 rejected
+62885016 27 User 27: Waiting for M4...
+62903632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 5c39f4
+62990648 1 GW: Decrypted data [9] from DIDi 5c39f4 (user 0)
+63029080 26 User 26: Data confirmed
+63432000 28 ENROLL_ENERGY|28|cpu_s=0.290080|energy_j=0.017875User 28: Sending M1. DIDi=5d2791
+63593200 3 GW-S 3: User 28 M1 verified
+63593200 3 GW-S 3: Auth failed ﾀﾔ SIDn not found
+63703016 28 User 28: M1 rejected
+63703016 28 User 28: Waiting for M4...
+64890000 29 ENROLL_ENERGY|29|cpu_s=0.253080|energy_j=0.015588User 29: Sending M1. DIDi=24f857
+65035200 3 GW-S 3: User 29 M1 verified
+65035200 3 GW-S 3: Auth failed ﾀﾔ SIDn not found
+65139016 29 User 29: M1 rejected
+65139016 29 User 29: Waiting for M4...
+65596000 30 ENROLL_ENERGY|30|cpu_s=0.352080|energy_j=0.021706User 30: Sending M1. DIDi=018fc8
+65781200 3 GW-S 3: User 30 M1 verified
+65781200 3 GW-S 3: Auth failed ﾀﾔ SIDn not found
+65813016 30 User 30: M1 rejected
+65813016 30 User 30: Waiting for M4...
+91073000 25 User 25: Sending M1. DIDi=2928f6
+91123200 2 AUTH_ENERGY_GW|2|cpu_s=0.613704|energy_j=0.037783GW-S 2: User 25 M1 verified
+91124200 2 GW-S 2: Sending M2 to sensor 4
+91173824 25 User 25: M1 ACK received
+91173824 25 User 25: Waiting for M4...
+91255304 4 AUTH_ENERGY_SN|4|cpu_s=0.000000|energy_j=0.000000SN 4: M2 verified OK. New SIDn=330a23
+91255304 4 SN 4: Sent M3 (ￎﾳ)
+91342816 2 GW-S 2: M3 received from sensor
+91342816 2 GW-S 2: M3 verified from sensor 4
+91342816 2 GW-S 2: Sending M4 to user 25
+91485520 25 User 25: M4 received
+91486520 25 User 25: Auth OK. New DIDi=7c675f SK=88f3
+91486520 25 
+91486520 25 AUTH_ENERGY|25|cpu_s=0.413520|energy_j=0.025495User 25: Sending data
+91559360 1 GW: Rejected data ﾀﾔ DIDi 7c675f not found
+91584472 25 User 25: Data confirmed
+91605824 2 GW-S 2: M4 delivered to user
+91605824 2 
+91678632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 7c675f
+93029000 26 User 26: Sending M1. DIDi=5c39f4
+93191200 2 AUTH_ENERGY_GW|2|cpu_s=0.481624|energy_j=0.029649GW-S 2: User 26 M1 verified
+93192200 2 GW-S 2: Sending M2 to sensor 5
+93284304 5 AUTH_ENERGY_SN|5|cpu_s=0.000000|energy_j=0.000000SN 5: M2 verified OK. New SIDn=9795c7
+93284304 5 SN 5: Sent M3 (ￎﾳ)
+93319816 2 GW-S 2: M3 received from sensor
+93319816 2 GW-S 2: M3 verified from sensor 5
+93319816 2 GW-S 2: Sending M4 to user 26
+93336080 26 User 26: M1 ACK received
+93336080 26 User 26: Waiting for M4...
+93459776 26 User 26: M4 received
+93460776 26 User 26: Auth OK. New DIDi=bac335 SK=2aee
+93460776 26 
+93460776 26 AUTH_ENERGY|26|cpu_s=0.431776|energy_j=0.026624User 26: Sending data
+93523824 2 GW-S 2: M4 delivered to user
+93523824 2 
+93534648 1 GW: Rejected data ﾀﾔ DIDi bac335 not found
+93572016 26 User 26: Data confirmed
+93666632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: bac335
+121584000 25 User 25: Sending M1. DIDi=7c675f
+121706200 2 AUTH_ENERGY_GW|2|cpu_s=0.331624|energy_j=0.020379GW-S 2: User 25 M1 verified
+121707200 2 GW-S 2: Sending M2 to sensor 4
+121739824 25 User 25: M1 ACK received
+121739824 25 User 25: Waiting for M4...
+121820304 4 SN 4: M2 verified OK. New SIDn=3ccb43
+121820304 4 SN 4: Sent M3 (ￎﾳ)
+121874816 2 GW-S 2: M3 received from sensor
+121874816 2 GW-S 2: M3 verified from sensor 4
+121874816 2 GW-S 2: Sending M4 to user 25
+121987520 25 User 25: M4 received
+121988520 25 User 25: Auth OK. New DIDi=9340c7 SK=100e
+121988520 25 
+121988520 25 AUTH_ENERGY|25|cpu_s=0.404520|energy_j=0.024939User 25: Sending data
+122024824 2 GW-S 2: M4 delivered to user
+122024824 2 
+122032360 1 GW: Rejected data ﾀﾔ DIDi 9340c7 not found
+122072472 25 User 25: Data confirmed
+122083632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 9340c7
+123572000 26 User 26: Sending M1. DIDi=bac335
+123717200 2 AUTH_ENERGY_GW|2|cpu_s=0.317624|energy_j=0.019514GW-S 2: User 26 M1 verified
+123718200 2 GW-S 2: Sending M2 to sensor 5
+123791080 26 User 26: M1 ACK received
+123791080 26 User 26: Waiting for M4...
+123876304 5 SN 5: M2 verified OK. New SIDn=3e0d51
+123876304 5 SN 5: Sent M3 (ￎﾳ)
+123917816 2 GW-S 2: M3 received from sensor
+123917816 2 GW-S 2: M3 verified from sensor 5
+123917816 2 GW-S 2: Sending M4 to user 26
+124044776 26 User 26: M4 received
+124045776 26 User 26: Auth OK. New DIDi=8bf390 SK=af5a
+124045776 26 
+124045776 26 AUTH_ENERGY|26|cpu_s=0.473776|energy_j=0.029219User 26: Sending data
+124133648 1 GW: Rejected data ﾀﾔ DIDi 8bf390 not found
+124169016 26 User 26: Data confirmed
+124171840 2 GW-S 2: M4 delivered to user
+124171840 2 
+124221632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 8bf390
+152072000 25 User 25: Sending M1. DIDi=9340c7
+152156200 2 AUTH_ENERGY_GW|2|cpu_s=0.453640|energy_j=0.027920GW-S 2: User 25 M1 verified
+152157200 2 GW-S 2: Sending M2 to sensor 4
+152198824 25 User 25: M1 ACK received
+152198824 25 User 25: Waiting for M4...
+152291304 4 SN 4: M2 verified OK. New SIDn=6a07c9
+152291304 4 SN 4: Sent M3 (ￎﾳ)
+152334600 2 GW-S 2: M3 received from sensor
+152334600 2 GW-S 2: M3 verified from sensor 4
+152334600 2 GW-S 2: Sending M4 to user 25
+152470520 25 User 25: M4 received
+152471520 25 User 25: Auth OK. New DIDi=ef69e6 SK=3f37
+152471520 25 
+152471520 25 AUTH_ENERGY|25|cpu_s=0.399520|energy_j=0.024630User 25: Sending data
+152510360 1 GW: Rejected data ﾀﾔ DIDi ef69e6 not found
+152521472 25 User 25: Data confirmed
+152528824 2 GW-S 2: M4 delivered to user
+152528824 2 
+152577632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: ef69e6
+154169000 26 User 26: Sending M1. DIDi=8bf390
+154344200 2 AUTH_ENERGY_GW|2|cpu_s=0.371624|energy_j=0.022851GW-S 2: User 26 M1 verified
+154345200 2 GW-S 2: Sending M2 to sensor 5
+154412080 26 User 26: M1 ACK received
+154412080 26 User 26: Waiting for M4...
+154475304 5 SN 5: M2 verified OK. New SIDn=b20ce1
+154475304 5 SN 5: Sent M3 (ￎﾳ)
+154558816 2 GW-S 2: M3 received from sensor
+154558816 2 GW-S 2: M3 verified from sensor 5
+154558816 2 GW-S 2: Sending M4 to user 26
+154756776 26 User 26: M4 received
+154757776 26 User 26: Auth OK. New DIDi=d2846f SK=a5f9
+154757776 26 
+154757776 26 AUTH_ENERGY|26|cpu_s=0.588776|energy_j=0.036326User 26: Sending data
+154880824 2 GW-S 2: M4 delivered to user
+154880824 2 
+154954648 1 GW: Rejected data ﾀﾔ DIDi d2846f not found
+154962632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: d2846f
+155011016 26 User 26: Data confirmed
+182521000 25 User 25: Sending M1. DIDi=ef69e6
+182649200 2 AUTH_ENERGY_GW|2|cpu_s=0.535624|energy_j=0.032987GW-S 2: User 25 M1 verified
+182650200 2 GW-S 2: Sending M2 to sensor 4
+182683824 25 User 25: M1 ACK received
+182683824 25 User 25: Waiting for M4...
+182750304 4 SN 4: M2 verified OK. New SIDn=3b1a84
+182750304 4 SN 4: Sent M3 (ￎﾳ)
+182822816 2 GW-S 2: M3 received from sensor
+182822816 2 GW-S 2: M3 verified from sensor 4
+182822816 2 GW-S 2: Sending M4 to user 25
+182935584 25 User 25: M4 received
+182936584 25 User 25: Auth OK. New DIDi=9b8600 SK=aa64
+182936584 25 
+182936584 25 AUTH_ENERGY|25|cpu_s=0.415584|energy_j=0.025623User 25: Sending data
+182987824 2 GW-S 2: M4 delivered to user
+182987824 2 
+183014632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 9b8600
+183058360 1 GW: Decrypted data [9] from DIDi 9b8600 (user 0)
+183076536 25 User 25: Data confirmed
+185011000 26 User 26: Sending M1. DIDi=d2846f
+185104200 2 AUTH_ENERGY_GW|2|cpu_s=0.337624|energy_j=0.020750GW-S 2: User 26 M1 verified
+185105200 2 GW-S 2: Sending M2 to sensor 5
+185177080 26 User 26: M1 ACK received
+185177080 26 User 26: Waiting for M4...
+185236304 5 SN 5: M2 verified OK. New SIDn=93b4d7
+185236304 5 SN 5: Sent M3 (ￎﾳ)
+185296816 2 GW-S 2: M3 received from sensor
+185296816 2 GW-S 2: M3 verified from sensor 5
+185296816 2 GW-S 2: Sending M4 to user 26
+185420776 26 User 26: M4 received
+185421776 26 User 26: Auth OK. New DIDi=6a7ba9 SK=6e87
+185421776 26 
+185421776 26 AUTH_ENERGY|26|cpu_s=0.410776|energy_j=0.025326User 26: Sending data
+185470904 2 GW-S 2: M4 delivered to user
+185470904 2 
+185500648 1 GW: Rejected data ﾀﾔ DIDi 6a7ba9 not found
+185522016 26 User 26: Data confirmed
+185624632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 6a7ba9
+213076000 25 User 25: Sending M1. DIDi=9b8600
+213222200 2 AUTH_ENERGY_GW|2|cpu_s=0.365704|energy_j=0.022485GW-S 2: User 25 M1 verified
+213223200 2 GW-S 2: Sending M2 to sensor 4
+213279824 25 User 25: M1 ACK received
+213279824 25 User 25: Waiting for M4...
+213329304 4 SN 4: M2 verified OK. New SIDn=7de60d
+213329304 4 SN 4: Sent M3 (ￎﾳ)
+213376816 2 GW-S 2: M3 received from sensor
+213376816 2 GW-S 2: M3 verified from sensor 4
+213376816 2 GW-S 2: Sending M4 to user 25
+213511520 25 User 25: M4 received
+213512520 25 User 25: Auth OK. New DIDi=b1988a SK=ab9f
+213512520 25 
+213512520 25 AUTH_ENERGY|25|cpu_s=0.436520|energy_j=0.026917User 25: Sending data
+213552360 1 GW: Rejected data ﾀﾔ DIDi b1988a not found
+213565472 25 User 25: Data confirmed
+213578824 2 GW-S 2: M4 delivered to user
+213578824 2 
+213632632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: b1988a
+215522000 26 User 26: Sending M1. DIDi=6a7ba9
+215699200 2 AUTH_ENERGY_GW|2|cpu_s=0.355624|energy_j=0.021863GW-S 2: User 26 M1 verified
+215700200 2 GW-S 2: Sending M2 to sensor 5
+215765080 26 User 26: M1 ACK received
+215765080 26 User 26: Waiting for M4...
+215855304 5 SN 5: M2 verified OK. New SIDn=78a118
+215855304 5 SN 5: Sent M3 (ￎﾳ)
+215910816 2 GW-S 2: M3 received from sensor
+215910816 2 GW-S 2: M3 verified from sensor 5
+215910816 2 GW-S 2: Sending M4 to user 26
+216047776 26 User 26: M4 received
+216048776 26 User 26: Auth OK. New DIDi=bba9d8 SK=fdda
+216048776 26 
+216048776 26 AUTH_ENERGY|26|cpu_s=0.526776|energy_j=0.032495User 26: Sending data
+216088824 2 GW-S 2: M4 delivered to user
+216088824 2 
+216112648 1 GW: Rejected data ﾀﾔ DIDi bba9d8 not found
+216139632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: bba9d8
+216153016 26 User 26: Data confirmed
+243565000 25 User 25: Sending M1. DIDi=b1988a
+243670200 2 AUTH_ENERGY_GW|2|cpu_s=0.388624|energy_j=0.023902GW-S 2: User 25 M1 verified
+243671200 2 GW-S 2: Sending M2 to sensor 4
+243727824 25 User 25: M1 ACK received
+243727824 25 User 25: Waiting for M4...
+243917304 4 SN 4: M2 verified OK. New SIDn=90cf84
+243917304 4 SN 4: Sent M3 (ￎﾳ)
+243972816 2 GW-S 2: M3 received from sensor
+243972816 2 GW-S 2: M3 verified from sensor 4
+243972816 2 GW-S 2: Sending M4 to user 25
+244044520 25 User 25: M4 received
+244045520 25 User 25: Auth OK. New DIDi=569e66 SK=79c3
+244045520 25 
+244045520 25 AUTH_ENERGY|25|cpu_s=0.480520|energy_j=0.029636User 25: Sending data
+244067360 1 GW: Rejected data ﾀﾔ DIDi 569e66 not found
+244081824 2 GW-S 2: M4 delivered to user
+244081824 2 
+244087296 25 User 25: Data confirmed
+244165632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 569e66
+246153000 26 User 26: Sending M1. DIDi=bba9d8
+246297200 2 AUTH_ENERGY_GW|2|cpu_s=0.410624|energy_j=0.025257GW-S 2: User 26 M1 verified
+246298200 2 GW-S 2: Sending M2 to sensor 5
+246384080 26 User 26: M1 ACK received
+246384080 26 User 26: Waiting for M4...
+246523304 5 SN 5: M2 verified OK. New SIDn=9b9f5f
+246523304 5 SN 5: Sent M3 (ￎﾳ)
+246589816 2 GW-S 2: M3 received from sensor
+246589816 2 GW-S 2: M3 verified from sensor 5
+246589816 2 GW-S 2: Sending M4 to user 26
+246763776 26 User 26: M4 received
+246764776 26 User 26: Auth OK. New DIDi=27e349 SK=dba6
+246764776 26 
+246764776 26 AUTH_ENERGY|26|cpu_s=0.611776|energy_j=0.037748User 26: Sending data
+246863824 2 GW-S 2: M4 delivered to user
+246863824 2 
+246888648 1 GW: Rejected data ﾀﾔ DIDi 27e349 not found
+246897632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 27e349
+246920016 26 User 26: Data confirmed
+274087000 25 User 25: Sending M1. DIDi=569e66
+274171200 2 AUTH_ENERGY_GW|2|cpu_s=0.565624|energy_j=0.034841GW-S 2: User 25 M1 verified
+274172200 2 GW-S 2: Sending M2 to sensor 4
+274248824 25 User 25: M1 ACK received
+274248824 25 User 25: Waiting for M4...
+274382368 4 SN 4: M2 verified OK. New SIDn=0c8ed5
+274382368 4 SN 4: Sent M3 (ￎﾳ)
+274448816 2 GW-S 2: M3 received from sensor
+274448816 2 GW-S 2: M3 verified from sensor 4
+274448816 2 GW-S 2: Sending M4 to user 25
+274569520 25 User 25: M4 received
+274570520 25 User 25: Auth OK. New DIDi=9bab2b SK=256c
+274570520 25 
+274570520 25 AUTH_ENERGY|25|cpu_s=0.483520|energy_j=0.029821User 25: Sending data
+274626824 2 GW-S 2: M4 delivered to user
+274626824 2 
+274653360 1 GW: Rejected data ﾀﾔ DIDi 9bab2b not found
+274690472 25 User 25: Data confirmed
+274703632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 9bab2b
+276920000 26 User 26: Sending M1. DIDi=27e349
+277081200 2 AUTH_ENERGY_GW|2|cpu_s=0.454624|energy_j=0.027981GW-S 2: User 26 M1 verified
+277082200 2 GW-S 2: Sending M2 to sensor 5
+277222304 5 SN 5: M2 verified OK. New SIDn=0eb549
+277222304 5 SN 5: Sent M3 (ￎﾳ)
+277230080 26 User 26: M1 ACK received
+277230080 26 User 26: Waiting for M4...
+277352816 2 GW-S 2: M3 received from sensor
+277352816 2 GW-S 2: M3 verified from sensor 5
+277352816 2 GW-S 2: Sending M4 to user 26
+277497776 26 User 26: M4 received
+277498776 26 User 26: Auth OK. New DIDi=8d9dac SK=c2ec
+277498776 26 
+277498776 26 AUTH_ENERGY|26|cpu_s=0.578776|energy_j=0.035708User 26: Sending data
+277558824 2 GW-S 2: M4 delivered to user
+277558824 2 
+277580632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 8d9dac
+277652648 1 GW: Decrypted data [9] from DIDi 8d9dac (user 0)
+277696080 26 User 26: Data confirmed
+304690000 25 User 25: Sending M1. DIDi=9bab2b
+304800200 2 AUTH_ENERGY_GW|2|cpu_s=0.476624|energy_j=0.029340GW-S 2: User 25 M1 verified
+304801200 2 GW-S 2: Sending M2 to sensor 4
+304913888 25 User 25: M1 ACK received
+304913888 25 User 25: Waiting for M4...
+304926304 4 SN 4: M2 verified OK. New SIDn=819574
+304926304 4 SN 4: Sent M3 (ￎﾳ)
+304997816 2 GW-S 2: M3 received from sensor
+304997816 2 GW-S 2: M3 verified from sensor 4
+304997816 2 GW-S 2: Sending M4 to user 25
+305089520 25 User 25: M4 received
+305090520 25 User 25: Auth OK. New DIDi=f1ed7c SK=2273
+305090520 25 
+305090520 25 AUTH_ENERGY|25|cpu_s=0.400520|energy_j=0.024692User 25: Sending data
+305159360 1 GW: Rejected data ﾀﾔ DIDi f1ed7c not found
+305192472 25 User 25: Data confirmed
+305198296 2 GW-S 2: M4 delivered to user
+305198296 2 
+305245632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: f1ed7c
+307696000 26 User 26: Sending M1. DIDi=8d9dac
+307865200 2 AUTH_ENERGY_GW|2|cpu_s=0.397096|energy_j=0.024425GW-S 2: User 26 M1 verified
+307866200 2 GW-S 2: Sending M2 to sensor 5
+307968304 5 SN 5: M2 verified OK. New SIDn=ea8e01
+307968304 5 SN 5: Sent M3 (ￎﾳ)
+308028080 26 User 26: M1 ACK received
+308028080 26 User 26: Waiting for M4...
+308038816 2 GW-S 2: M3 received from sensor
+308038816 2 GW-S 2: M3 verified from sensor 5
+308038816 2 GW-S 2: Sending M4 to user 26
+308238776 26 User 26: M4 received
+308239776 26 User 26: Auth OK. New DIDi=9ec939 SK=d9d7
+308239776 26 
+308239776 26 AUTH_ENERGY|26|cpu_s=0.543776|energy_j=0.033545User 26: Sending data
+308318824 2 GW-S 2: M4 delivered to user
+308318824 2 
+308343648 1 GW: Rejected data ﾀﾔ DIDi 9ec939 not found
+308421016 26 User 26: Data confirmed
+308441632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 9ec939
+335192000 25 User 25: Sending M1. DIDi=f1ed7c
+335292200 2 AUTH_ENERGY_GW|2|cpu_s=0.452624|energy_j=0.027857GW-S 2: User 25 M1 verified
+335293200 2 GW-S 2: Sending M2 to sensor 4
+335307824 25 User 25: M1 ACK received
+335307824 25 User 25: Waiting for M4...
+335359304 4 SN 4: M2 verified OK. New SIDn=373783
+335359304 4 SN 4: Sent M3 (ￎﾳ)
+335421816 2 GW-S 2: M3 received from sensor
+335421816 2 GW-S 2: M3 verified from sensor 4
+335421816 2 GW-S 2: Sending M4 to user 25
+335535520 25 User 25: M4 received
+335536520 25 User 25: Auth OK. New DIDi=6c54f3 SK=f31d
+335536520 25 
+335536520 25 AUTH_ENERGY|25|cpu_s=0.344520|energy_j=0.021231User 25: Sending data
+335581152 1 GW: Rejected data ﾀﾔ DIDi 6c54f3 not found
+335591824 2 GW-S 2: M4 delivered to user
+335591824 2 
+335617472 25 User 25: Data confirmed
+335655632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 6c54f3
+338421000 26 User 26: Sending M1. DIDi=9ec939
+338547200 2 AUTH_ENERGY_GW|2|cpu_s=0.298624|energy_j=0.018340GW-S 2: User 26 M1 verified
+338548200 2 GW-S 2: Sending M2 to sensor 5
+338623304 5 SN 5: M2 verified OK. New SIDn=f69a76
+338623304 5 SN 5: Sent M3 (ￎﾳ)
+338667080 26 User 26: M1 ACK received
+338667080 26 User 26: Waiting for M4...
+338684816 2 GW-S 2: M3 received from sensor
+338684816 2 GW-S 2: M3 verified from sensor 5
+338684816 2 GW-S 2: Sending M4 to user 26
+338830776 26 User 26: M4 received
+338831776 26 User 26: Auth OK. New DIDi=91fe6e SK=f331
+338831776 26 
+338831776 26 AUTH_ENERGY|26|cpu_s=0.410776|energy_j=0.025326User 26: Sending data
+338955648 1 GW: Rejected data ﾀﾔ DIDi 91fe6e not found
+338986016 26 User 26: Data confirmed
+339165824 2 GW-S 2: M4 delivered to user
+339165824 2 
+339255632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 91fe6e
+365617000 25 User 25: Sending M1. DIDi=6c54f3
+365757200 2 AUTH_ENERGY_GW|2|cpu_s=0.617624|energy_j=0.038054GW-S 2: User 25 M1 verified
+365758200 2 GW-S 2: Sending M2 to sensor 4
+365797824 25 User 25: M1 ACK received
+365797824 25 User 25: Waiting for M4...
+365937304 4 SN 4: M2 verified OK. New SIDn=28a62a
+365937304 4 SN 4: Sent M3 (ￎﾳ)
+365983816 2 GW-S 2: M3 received from sensor
+365983816 2 GW-S 2: M3 verified from sensor 4
+365983816 2 GW-S 2: Sending M4 to user 25
+366135520 25 User 25: M4 received
+366136520 25 User 25: Auth OK. New DIDi=4e91ed SK=20e4
+366136520 25 
+366136520 25 AUTH_ENERGY|25|cpu_s=0.519520|energy_j=0.032046User 25: Sending data
+366194360 1 GW: Rejected data ﾀﾔ DIDi 4e91ed not found
+366214824 2 GW-S 2: M4 delivered to user
+366214824 2 
+366231472 25 User 25: Data confirmed
+366299632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 4e91ed
+368986000 26 User 26: Sending M1. DIDi=91fe6e
+369123200 2 AUTH_ENERGY_GW|2|cpu_s=0.456624|energy_j=0.028104GW-S 2: User 26 M1 verified
+369124200 2 GW-S 2: Sending M2 to sensor 5
+369205080 26 User 26: M1 ACK received
+369205080 26 User 26: Waiting for M4...
+369281304 5 SN 5: M2 verified OK. New SIDn=383e72
+369281304 5 SN 5: Sent M3 (ￎﾳ)
+369299816 2 GW-S 2: M3 received from sensor
+369299816 2 GW-S 2: M3 verified from sensor 5
+369299816 2 GW-S 2: Sending M4 to user 26
+369541776 26 User 26: M4 received
+369542776 26 User 26: Auth OK. New DIDi=c9a72d SK=f5e6
+369542776 26 
+369542776 26 AUTH_ENERGY|26|cpu_s=0.556776|energy_j=0.034349User 26: Sending data
+369592824 2 GW-S 2: M4 delivered to user
+369592824 2 
+369639648 1 GW: Rejected data ﾀﾔ DIDi c9a72d not found
+369679016 26 User 26: Data confirmed
+369689632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: c9a72d
+396231000 25 User 25: Sending M1. DIDi=4e91ed
+396338200 2 AUTH_ENERGY_GW|2|cpu_s=0.468624|energy_j=0.028846GW-S 2: User 25 M1 verified
+396339200 2 GW-S 2: Sending M2 to sensor 4
+396447824 25 User 25: M1 ACK received
+396447824 25 User 25: Waiting for M4...
+396472304 4 SN 4: M2 verified OK. New SIDn=eeed73
+396472304 4 SN 4: Sent M3 (ￎﾳ)
+396544816 2 GW-S 2: M3 received from sensor
+396544816 2 GW-S 2: M3 verified from sensor 4
+396544816 2 GW-S 2: Sending M4 to user 25
+396660520 25 User 25: M4 received
+396661520 25 User 25: Auth OK. New DIDi=ae0b67 SK=3fda
+396661520 25 
+396661520 25 AUTH_ENERGY|25|cpu_s=0.430520|energy_j=0.026546User 25: Sending data
+396690824 2 GW-S 2: M4 delivered to user
+396690824 2 
+396697360 1 GW: Rejected data ﾀﾔ DIDi ae0b67 not found
+396774632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: ae0b67
+396812472 25 User 25: Data confirmed
+399679000 26 User 26: Sending M1. DIDi=c9a72d
+399857200 2 AUTH_ENERGY_GW|2|cpu_s=0.351624|energy_j=0.021615GW-S 2: User 26 M1 verified
+399858200 2 GW-S 2: Sending M2 to sensor 5
+399969080 26 User 26: M1 ACK received
+399969080 26 User 26: Waiting for M4...
+400045304 5 SN 5: M2 verified OK. New SIDn=46749a
+400045304 5 SN 5: Sent M3 (ￎﾳ)
+400118816 2 GW-S 2: M3 received from sensor
+400118816 2 GW-S 2: M3 verified from sensor 5
+400118816 2 GW-S 2: Sending M4 to user 26
+400280776 26 User 26: M4 received
+400281776 26 User 26: Auth OK. New DIDi=c95012 SK=ca7a
+400281776 26 
+400281776 26 AUTH_ENERGY|26|cpu_s=0.602776|energy_j=0.037191User 26: Sending data
+400328824 2 GW-S 2: M4 delivered to user
+400328824 2 
+400372632 1 GW: Token rejected ﾀﾔ stale ts_auth for user 0
+400488648 1 GW: Rejected data ﾀﾔ DIDi c95012 not found
+400532016 26 User 26: Data confirmed
+426812000 25 User 25: Sending M1. DIDi=ae0b67
+426930200 2 AUTH_ENERGY_GW|2|cpu_s=0.470624|energy_j=0.028970GW-S 2: User 25 M1 verified
+426931200 2 GW-S 2: Sending M2 to sensor 4
+426995824 25 User 25: M1 ACK received
+426995824 25 User 25: Waiting for M4...
+427081304 4 SN 4: M2 verified OK. New SIDn=6f763b
+427081304 4 SN 4: Sent M3 (ￎﾳ)
+427113600 2 GW-S 2: M3 received from sensor
+427113600 2 GW-S 2: M3 verified from sensor 4
+427113600 2 GW-S 2: Sending M4 to user 25
+427256520 25 User 25: M4 received
+427257520 25 User 25: Auth OK. New DIDi=239125 SK=62e4
+427257520 25 
+427257520 25 AUTH_ENERGY|25|cpu_s=0.445520|energy_j=0.027473User 25: Sending data
+427307824 2 GW-S 2: M4 delivered to user
+427307824 2 
+427334632 1 GW: Token rejected ﾀﾔ stale ts_auth for user 0
+427379360 1 GW: Rejected data ﾀﾔ DIDi 239125 not found
+427387472 25 User 25: Data confirmed
+430532000 26 User 26: Sending M1. DIDi=c95012
+430727200 2 AUTH_ENERGY_GW|2|cpu_s=0.376624|energy_j=0.023160GW-S 2: User 26 M1 verified
+430728200 2 GW-S 2: Sending M2 to sensor 5
+430817144 26 User 26: M1 ACK received
+430817144 26 User 26: Waiting for M4...
+430909304 5 SN 5: M2 verified OK. New SIDn=ddee34
+430909304 5 SN 5: Sent M3 (ￎﾳ)
+430941816 2 GW-S 2: M3 received from sensor
+430941816 2 GW-S 2: M3 verified from sensor 5
+430941816 2 GW-S 2: Sending M4 to user 26
+431102776 26 User 26: M4 received
+431103776 26 User 26: Auth OK. New DIDi=9dc791 SK=5574
+431103776 26 
+431103776 26 AUTH_ENERGY|26|cpu_s=0.571776|energy_j=0.035271User 26: Sending data
+431266648 1 GW: Rejected data ﾀﾔ DIDi 9dc791 not found
+431276824 2 GW-S 2: M4 delivered to user
+431276824 2 
+431305632 1 GW: Token rejected ﾀﾔ stale ts_auth for user 0
+431360016 26 User 26: Data confirmed
+457387000 25 User 25: Sending M1. DIDi=239125
+457482200 2 AUTH_ENERGY_GW|2|cpu_s=0.548624|energy_j=0.033790GW-S 2: User 25 M1 verified
+457483200 2 GW-S 2: Sending M2 to sensor 4
+457529824 25 User 25: M1 ACK received
+457529824 25 User 25: Waiting for M4...
+457584304 4 SN 4: M2 verified OK. New SIDn=a0db84
+457584304 4 SN 4: Sent M3 (ￎﾳ)
+457623816 2 GW-S 2: M3 received from sensor
+457623816 2 GW-S 2: M3 verified from sensor 4
+457623816 2 GW-S 2: Sending M4 to user 25
+457758520 25 User 25: M4 received
+457759520 25 User 25: Auth OK. New DIDi=8769da SK=2c49
+457759520 25 
+457759520 25 AUTH_ENERGY|25|cpu_s=0.372520|energy_j=0.022962User 25: Sending data
+457830360 1 GW: Rejected data ﾀﾔ DIDi 8769da not found
+457836184 2 GW-S 2: M4 delivered to user
+457836184 2 
+457909472 25 User 25: Data confirmed
+457937632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 8769da
+461360000 26 User 26: Sending M1. DIDi=9dc791
+461470200 2 AUTH_ENERGY_GW|2|cpu_s=0.352984|energy_j=0.021699GW-S 2: User 26 M1 verified
+461471200 2 GW-S 2: Sending M2 to sensor 5
+461574080 26 User 26: M1 ACK received
+461574080 26 User 26: Waiting for M4...
+461632304 5 SN 5: M2 verified OK. New SIDn=ded686
+461632304 5 SN 5: Sent M3 (ￎﾳ)
+461665816 2 GW-S 2: M3 received from sensor
+461665816 2 GW-S 2: M3 verified from sensor 5
+461665816 2 GW-S 2: Sending M4 to user 26
+461817776 26 User 26: M4 received
+461818776 26 User 26: Auth OK. New DIDi=07e55a SK=cc31
+461818776 26 
+461818776 26 AUTH_ENERGY|26|cpu_s=0.458776|energy_j=0.028292User 26: Sending data
+461867904 2 GW-S 2: M4 delivered to user
+461867904 2 
+461916648 1 GW: Rejected data ﾀﾔ DIDi 07e55a not found
+461977016 26 User 26: Data confirmed
+461992632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 07e55a
+487909000 25 User 25: Sending M1. DIDi=8769da
+488012200 2 AUTH_ENERGY_GW|2|cpu_s=0.396704|energy_j=0.024401GW-S 2: User 25 M1 verified
+488013200 2 GW-S 2: Sending M2 to sensor 4
+488063824 25 User 25: M1 ACK received
+488063824 25 User 25: Waiting for M4...
+488157304 4 SN 4: M2 verified OK. New SIDn=dc662c
+488157304 4 SN 4: Sent M3 (ￎﾳ)
+488182816 2 GW-S 2: M3 received from sensor
+488182816 2 GW-S 2: M3 verified from sensor 4
+488182816 2 GW-S 2: Sending M4 to user 25
+488310520 25 User 25: M4 received
+488311520 25 User 25: Auth OK. New DIDi=d354dd SK=d9f5
+488311520 25 
+488311520 25 AUTH_ENERGY|25|cpu_s=0.402520|energy_j=0.024816User 25: Sending data
+488361152 1 GW: Rejected data ﾀﾔ DIDi d354dd not found
+488394472 25 User 25: Data confirmed
+488400296 2 GW-S 2: M4 delivered to user
+488400296 2 
+488422632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: d354dd
+491977000 26 User 26: Sending M1. DIDi=07e55a
+492134200 2 AUTH_ENERGY_GW|2|cpu_s=0.387096|energy_j=0.023807GW-S 2: User 26 M1 verified
+492135200 2 GW-S 2: Sending M2 to sensor 5
+492201080 26 User 26: M1 ACK received
+492201080 26 User 26: Waiting for M4...
+492254304 5 SN 5: M2 verified OK. New SIDn=0ed6ec
+492254304 5 SN 5: Sent M3 (ￎﾳ)
+492296816 2 GW-S 2: M3 received from sensor
+492296816 2 GW-S 2: M3 verified from sensor 5
+492296816 2 GW-S 2: Sending M4 to user 26
+492454776 26 User 26: M4 received
+492455776 26 User 26: Auth OK. New DIDi=ad6ea6 SK=2161
+492455776 26 
+492455776 26 AUTH_ENERGY|26|cpu_s=0.478776|energy_j=0.029528User 26: Sending data
+492516648 1 GW: Rejected data ﾀﾔ DIDi ad6ea6 not found
+492526824 2 GW-S 2: M4 delivered to user
+492526824 2 
+492569632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: ad6ea6
+492582016 26 User 26: Data confirmed
+518394000 25 User 25: Sending M1. DIDi=d354dd
+518505200 2 AUTH_ENERGY_GW|2|cpu_s=0.391624|energy_j=0.024087GW-S 2: User 25 M1 verified
+518506200 2 GW-S 2: Sending M2 to sensor 4
+518542824 25 User 25: M1 ACK received
+518542824 25 User 25: Waiting for M4...
+518625304 4 SN 4: M2 verified OK. New SIDn=08d67c
+518625304 4 SN 4: Sent M3 (ￎﾳ)
+518668816 2 GW-S 2: M3 received from sensor
+518668816 2 GW-S 2: M3 verified from sensor 4
+518668816 2 GW-S 2: Sending M4 to user 25
+518769520 25 User 25: M4 received
+518770520 25 User 25: Auth OK. New DIDi=4b33ac SK=dd79
+518770520 25 
+518770520 25 AUTH_ENERGY|25|cpu_s=0.376520|energy_j=0.023209User 25: Sending data
+518795360 1 GW: Rejected data ﾀﾔ DIDi 4b33ac not found
+518825824 2 GW-S 2: M4 delivered to user
+518825824 2 
+518834472 25 User 25: Data confirmed
+518879632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 4b33ac
+522582000 26 User 26: Sending M1. DIDi=ad6ea6
+522739200 2 AUTH_ENERGY_GW|2|cpu_s=0.319624|energy_j=0.019638GW-S 2: User 26 M1 verified
+522740200 2 GW-S 2: Sending M2 to sensor 5
+522822080 26 User 26: M1 ACK received
+522822080 26 User 26: Waiting for M4...
+522915304 5 SN 5: M2 verified OK. New SIDn=892549
+522915304 5 SN 5: Sent M3 (ￎﾳ)
+522978816 2 GW-S 2: M3 received from sensor
+522978816 2 GW-S 2: M3 verified from sensor 5
+522978816 2 GW-S 2: Sending M4 to user 26
+523206776 26 User 26: M4 received
+523207776 26 User 26: Auth OK. New DIDi=739ad6 SK=3fd8
+523207776 26 
+523207776 26 AUTH_ENERGY|26|cpu_s=0.625776|energy_j=0.038613User 26: Sending data
+523303648 1 GW: Rejected data ﾀﾔ DIDi 739ad6 not found
+523310824 2 GW-S 2: M4 delivered to user
+523310824 2 
+523377632 1 GW: Token rejected ﾀﾔ stale ts_auth for user 0
+523410016 26 User 26: Data confirmed
+548834000 25 User 25: Sending M1. DIDi=4b33ac
+548943200 2 AUTH_ENERGY_GW|2|cpu_s=0.570624|energy_j=0.035141GW-S 2: User 25 M1 verified
+548944200 2 GW-S 2: Sending M2 to sensor 4
+548974824 25 User 25: M1 ACK received
+548974824 25 User 25: Waiting for M4...
+549053304 4 SN 4: M2 verified OK. New SIDn=9c9e2b
+549053304 4 SN 4: Sent M3 (ￎﾳ)
+549068816 2 GW-S 2: M3 received from sensor
+549068816 2 GW-S 2: M3 verified from sensor 4
+549068816 2 GW-S 2: Sending M4 to user 25
+549142520 25 User 25: M4 received
+549143520 25 User 25: Auth OK. New DIDi=192f5d SK=0995
+549143520 25 
+549143520 25 AUTH_ENERGY|25|cpu_s=0.309520|energy_j=0.019068User 25: Sending data
+549179824 2 GW-S 2: M4 delivered to user
+549179824 2 
+549208632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 192f5d
+549216360 1 GW: Decrypted data [9] from DIDi 192f5d (user 0)
+549258104 25 User 25: Data confirmed
+553410000 26 User 26: Sending M1. DIDi=739ad6
+553545200 2 AUTH_ENERGY_GW|2|cpu_s=0.235624|energy_j=0.014447GW-S 2: User 26 M1 verified
+553546200 2 GW-S 2: Sending M2 to sensor 5
+553600080 26 User 26: M1 ACK received
+553600080 26 User 26: Waiting for M4...
+553777304 5 SN 5: M2 verified OK. New SIDn=743a17
+553777304 5 SN 5: Sent M3 (ￎﾳ)
+553801816 2 GW-S 2: M3 received from sensor
+553801816 2 GW-S 2: M3 verified from sensor 5
+553801816 2 GW-S 2: Sending M4 to user 26
+553983776 26 User 26: M4 received
+553984776 26 User 26: Auth OK. New DIDi=90d65c SK=c077
+553984776 26 
+553984776 26 AUTH_ENERGY|26|cpu_s=0.574776|energy_j=0.035461User 26: Sending data
+554044824 2 GW-S 2: M4 delivered to user
+554044824 2 
+554085632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 90d65c
+554108648 1 GW: Decrypted data [9] from DIDi 90d65c (user 0)
+554141080 26 User 26: Data confirmed
+579258000 25 User 25: Sending M1. DIDi=192f5d
+579403200 2 AUTH_ENERGY_GW|2|cpu_s=0.498624|energy_j=0.030696GW-S 2: User 25 M1 verified
+579404200 2 GW-S 2: Sending M2 to sensor 4
+579444824 25 User 25: M1 ACK received
+579444824 25 User 25: Waiting for M4...
+579500304 4 SN 4: M2 verified OK. New SIDn=0d123f
+579500304 4 SN 4: Sent M3 (ￎﾳ)
+579563816 2 GW-S 2: M3 received from sensor
+579563816 2 GW-S 2: M3 verified from sensor 4
+579563816 2 GW-S 2: Sending M4 to user 25
+579681520 25 User 25: M4 received
+579682520 25 User 25: Auth OK. New DIDi=8703bc SK=c0e0
+579682520 25 
+579682520 25 AUTH_ENERGY|25|cpu_s=0.424520|energy_j=0.026175User 25: Sending data
+579726360 1 GW: Rejected data ﾀﾔ DIDi 8703bc not found
+579755824 2 GW-S 2: M4 delivered to user
+579755824 2 
+579761296 25 User 25: Data confirmed
+579795632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 8703bc
+584141000 26 User 26: Sending M1. DIDi=90d65c
+584284200 2 AUTH_ENERGY_GW|2|cpu_s=0.351624|energy_j=0.021615GW-S 2: User 26 M1 verified
+584285200 2 GW-S 2: Sending M2 to sensor 5
+584382080 26 User 26: M1 ACK received
+584382080 26 User 26: Waiting for M4...
+584436304 5 SN 5: M2 verified OK. New SIDn=8434ed
+584436304 5 SN 5: Sent M3 (ￎﾳ)
+584464600 2 GW-S 2: M3 received from sensor
+584464600 2 GW-S 2: M3 verified from sensor 5
+584464600 2 GW-S 2: Sending M4 to user 26
+584651776 26 User 26: M4 received
+584652776 26 User 26: Auth OK. New DIDi=98fed5 SK=f3a1
+584652776 26 
+584652776 26 AUTH_ENERGY|26|cpu_s=0.511776|energy_j=0.031568User 26: Sending data
+584744824 2 GW-S 2: M4 delivered to user
+584744824 2 
+584768648 1 GW: Rejected data ﾀﾔ DIDi 98fed5 not found
+584809632 1 GW: Auth token for user 0 (via GW-S 2). DIDi: 98fed5
+584847016 26 User 26: Data confirmed
 TEST OK
 Test ended at simulation time: 600000000

@@ -228,23 +228,40 @@ def generate_csc(scheme, n_total, seed, project_dir):
         _n_expected  = n_users
         _first_id    = first_user_id
 
-        # GW-server motes: nodes 2 and 3
-        gw_srv_motes = "\n".join(_mote_entry(30.0 * (i + 1), 30.0, 2 + i) for i in range(2))
-        gw_srv_block = _motetype_block("GW Server Node", "gw-server.c", "gw-server.cooja", gw_srv_motes)
+        # One CONTINUOUS uniform grid for all Zhou nodes, in node-ID order, with
+        # the SAME firmware split as the clean 10-seed run: ONLY the n_users
+        # user-bound SNs run the active sn-node.c; the remaining SN slots are
+        # IDLE FILLER running gw-server.c (which does nothing for node_id !=
+        # GW_SERVER_ID/ID2). Previously all n_sn SNs ran sn-node.c, so 77 active
+        # sensors flooded the medium and inflated Zhou's relayed-auth energy
+        # (only Zhou is relay-based, so only Zhou suffered). Clean run = 20
+        # active SN + 57 idle filler; we now reproduce that exactly.
+        all_pos = grid_positions(n_total, cols=10, spacing=30.0, x_off=0.0, y_off=0.0)
+        n_active_sn = n_users            # user-bound SNs (ids 4 .. 3+n_users)
+        n_filler    = n_sn - n_users     # idle filler SN slots → gw-server.c
 
-        # SN motes: nodes 4 to last_sn_id
-        sn_positions = grid_positions(n_sn, cols=10, spacing=30.0, x_off=0.0, y_off=60.0)
-        sn_motes = "\n".join(_mote_entry(px, py, 4 + i)
-                             for i, (px, py) in enumerate(sn_positions))
+        # GW (node 1) takes the first grid cell (override the centre default)
+        gw_motes = _mote_entry(all_pos[0][0], all_pos[0][1], 1)
+
+        # GW-server firmware: the 2 active servers (nodes 2,3) + all idle fillers
+        srv_entries = [_mote_entry(all_pos[1][0], all_pos[1][1], 2),
+                       _mote_entry(all_pos[2][0], all_pos[2][1], 3)]
+        for i in range(n_filler):
+            cell = 3 + n_active_sn + i
+            fid  = 4 + n_active_sn + i
+            srv_entries.append(_mote_entry(all_pos[cell][0], all_pos[cell][1], fid))
+        gw_srv_block = _motetype_block("GW Server Node", "gw-server.c", "gw-server.cooja",
+                                       "\n".join(srv_entries))
+
+        # Active (user-bound) sensor nodes: ids 4 .. 3+n_active_sn (cells 3 ..)
+        sn_motes = "\n".join(_mote_entry(all_pos[3 + i][0], all_pos[3 + i][1], 4 + i)
+                             for i in range(n_active_sn))
         sn_block = _motetype_block("Sensor Node (SN)", "sn-node.c", "sn-node.cooja", sn_motes)
 
-        # User motes: nodes first_user_id to n_total
-        n_rows_sn = math.ceil(n_sn / 10)
-        user_y_off = 60.0 + n_rows_sn * 30.0 + 30.0
-        user_positions = grid_positions(n_users, cols=10, spacing=30.0,
-                                        x_off=0.0, y_off=user_y_off)
-        user_motes = "\n".join(_mote_entry(px, py, first_user_id + i)
-                               for i, (px, py) in enumerate(user_positions))
+        # User motes: nodes first_user_id .. n_total (grid cells 3+n_sn ..)
+        user_motes = "\n".join(_mote_entry(all_pos[3 + n_sn + i][0], all_pos[3 + n_sn + i][1],
+                                           first_user_id + i)
+                               for i in range(n_users))
         dev_block = _motetype_block("User Node", "user-node.c", "user-node.cooja", user_motes)
 
         extra_blocks = f"{gw_srv_block}\n{sn_block}\n{dev_block}"

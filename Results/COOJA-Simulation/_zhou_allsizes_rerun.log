@@ -1,0 +1,210 @@
+Network Variation Simulation Runner
+  Schemes : ['Zhou']
+  Sizes   : [30, 50, 80, 120]
+  Seeds   : [123456, 234567, 345678, 456789, 567890, 678901, 789012, 890123, 901234, 112345]
+  COOJA   : /home/apex/contiki-ng/tools/cooja
+  Build   : /home/apex/contiki-ng/examples/myproject
+
+======================================================================
+  Zhou  N=30  (6 devices, 2 active AS)
+======================================================================
+  Prepared source: Zhou N=30
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['gw-server.cooja', 'user-node.cooja', 'sn-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (9s)
+  Devices parsed: E=6  A=2  K=0
+
+  --- Seed 234567
+  Result : TEST OK  (11s)
+  Devices parsed: E=6  A=5  K=0
+
+  --- Seed 345678
+  Result : TEST OK  (10s)
+  Devices parsed: E=6  A=5  K=0
+
+  --- Seed 456789
+  Result : TEST OK  (8s)
+  Devices parsed: E=6  A=3  K=0
+
+  --- Seed 567890
+  Result : TEST OK  (13s)
+  Devices parsed: E=6  A=5  K=0
+
+  --- Seed 678901
+  Result : TEST OK  (9s)
+  Devices parsed: E=6  A=4  K=0
+
+  --- Seed 789012
+  Result : TEST OK  (8s)
+  Devices parsed: E=6  A=3  K=0
+
+  --- Seed 890123
+  Result : TEST OK  (10s)
+  Devices parsed: E=6  A=3  K=0
+
+  --- Seed 901234
+  Result : TEST OK  (10s)
+  Devices parsed: E=6  A=3  K=0
+
+  --- Seed 112345
+  Result : TEST OK  (9s)
+  Devices parsed: E=6  A=4  K=0
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N30/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N30/logs
+
+======================================================================
+  Zhou  N=50  (10 devices, 2 active AS)
+======================================================================
+  Prepared source: Zhou N=50
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['gw-server.cooja', 'user-node.cooja', 'sn-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (9s)
+  Devices parsed: E=10  A=10  K=0
+
+  --- Seed 234567
+  Result : TEST OK  (11s)
+  Devices parsed: E=10  A=10  K=0
+
+  --- Seed 345678
+  Result : TEST OK  (8s)
+  Devices parsed: E=10  A=10  K=0
+
+  --- Seed 456789
+  Result : TEST OK  (9s)
+  Devices parsed: E=10  A=10  K=0
+
+  --- Seed 567890
+  Result : TEST OK  (9s)
+  Devices parsed: E=10  A=10  K=0
+
+  --- Seed 678901
+  Result : TEST OK  (12s)
+  Devices parsed: E=10  A=10  K=0
+
+  --- Seed 789012
+  Result : TEST OK  (9s)
+  Devices parsed: E=10  A=10  K=0
+
+  --- Seed 890123
+  Result : TEST OK  (8s)
+  Devices parsed: E=10  A=10  K=0
+
+  --- Seed 901234
+  Result : TEST OK  (9s)
+  Devices parsed: E=10  A=10  K=0
+
+  --- Seed 112345
+  Result : TEST OK  (13s)
+  Devices parsed: E=10  A=10  K=0
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N50/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N50/logs
+
+======================================================================
+  Zhou  N=80  (16 devices, 2 active AS)
+======================================================================
+  Prepared source: Zhou N=80
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['gw-server.cooja', 'user-node.cooja', 'sn-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (15s)
+  Devices parsed: E=16  A=16  K=0
+
+  --- Seed 234567
+  Result : TEST OK  (15s)
+  Devices parsed: E=16  A=16  K=0
+
+  --- Seed 345678
+  Result : TEST OK  (14s)
+  Devices parsed: E=16  A=16  K=0
+
+  --- Seed 456789
+  Result : TEST OK  (15s)
+  Devices parsed: E=16  A=16  K=0
+
+  --- Seed 567890
+  Result : TEST OK  (17s)
+  Devices parsed: E=16  A=16  K=0
+
+  --- Seed 678901
+  Result : TEST OK  (90s)
+  Devices parsed: E=16  A=15  K=0
+
+  --- Seed 789012
+  Result : TEST OK  (17s)
+  Devices parsed: E=16  A=16  K=0
+
+  --- Seed 890123
+  Result : TEST OK  (14s)
+  Devices parsed: E=16  A=16  K=0
+
+  --- Seed 901234
+  Result : TEST OK  (14s)
+  Devices parsed: E=16  A=16  K=0
+
+  --- Seed 112345
+  Result : TEST OK  (14s)
+  Devices parsed: E=16  A=16  K=0
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N80/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N80/logs
+
+======================================================================
+  Zhou  N=120  (24 devices, 2 active AS)
+======================================================================
+  Prepared source: Zhou N=120
+  Building firmware (TARGET=cooja)...
+  Firmware built: ['gw-server.cooja', 'user-node.cooja', 'sn-node.cooja', 'gw-node.cooja']
+
+  --- Seed 123456
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 234567
+  Result : TEST OK  (27s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 345678
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 456789
+  Result : TEST OK  (31s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 567890
+  Result : TEST OK  (32s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 678901
+  Result : TEST OK  (28s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 789012
+  Result : TEST OK  (29s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 890123
+  Result : TEST OK  (27s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 901234
+  Result : TEST OK  (26s)
+  Devices parsed: E=24  A=24  K=0
+
+  --- Seed 112345
+  Result : TEST OK  (27s)
+  Devices parsed: E=24  A=24  K=0
+
+  Summary saved → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N120/csv/summary.csv
+  Logs saved    → /home/apex/contiki-ng/examples/Codes-For-COOJA/Zhou-Scheme/Simulation results/network-variation/N120/logs
+
+======================================================================
+All done.  Run plot_network_variation.py to generate charts.
+======================================================================

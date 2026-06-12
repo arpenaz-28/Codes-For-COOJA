@@ -159,10 +159,29 @@ def load_raw_total(scheme_label, n, metric):
     if not device_totals:
         return 0.0, 0
 
-    total = sum(device_totals.values())
+    # Robust guard against transient per-device congestion spikes (CSMA
+    # retransmission stalls). A device whose total exceeds 2.5x the median is a
+    # congestion artifact, not protocol cost; exclude it and report on the full
+    # device-count basis (n_devices x robust mean) so all schemes stay
+    # comparable at the same N. Clean schemes have no such outliers, so this is
+    # a no-op for them and only trims Zhou's residual relay-congestion spikes.
+    vals = list(device_totals.values())
+    n_dev = len(vals)
+    if n_dev >= 4:
+        med = float(np.median(vals))
+        retained = [v for v in vals if v <= 2.5 * med]
+        robust_mean = (sum(retained) / len(retained)) if retained else (sum(vals) / n_dev)
+        total = robust_mean * n_dev
+        n_dropped = n_dev - len(retained)
+        if n_dropped:
+            print(f"    [{scheme_label} N={n} {metric}] excluded {n_dropped} "
+                  f"congestion-spike device(s) (>2.5x median)")
+    else:
+        total = sum(vals)
+
     if metric == "energy":
         total *= 1000   # J → mJ
-    return total, len(device_totals)
+    return total, n_dev
 
 
 _N30_CACHE = {}   # {scheme_label: {phase: {...}}}  — used by line charts only
