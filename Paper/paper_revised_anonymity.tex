@@ -152,47 +152,60 @@ Section~VI stating the conclusion.
 % -------------------------------------------------------
 \section{Literature Survey}
 
-Existing schemes for IoT authentication address the problem from multiple
-directions but each leaves gaps.  Distributed approaches reduce relay load but
-remain topology-bound. Light-SAE~\cite{rosa2023lightsae}
-authorise parent nodes as authentication servers, yet a popular parent is
-overwhelmed by simultaneous join requests from many children.
-Zheng~et~al.~\cite{zheng2022puf} designed a peer-to-peer PUF-based scheme
-that lacks a multihop decoupled design. RAAF-MEC~\cite{alruwaili2025raaf}
-deploy multiple PUF-equipped edge servers, but the absence of a 
-multihop topology means certain servers still receive disproportionate load.
-PUF-based schemes avoid long-term secret storage but trade in overhead.
-Li~et~al.~\cite{li2020puf} and SAKMS~\cite{yang2024sakms} combine PUF
-with session key exchange at the cost of ECC operations, while
-He~et~al.~\cite{he2023lightweight} achieve lightweight anonymous authentication
-using hash-and-XOR primitives for CoAP/OSCORE but rely on a centralized server.
-DAuth~\cite{das2026comsnets} removes this topology coupling by letting the
-gateway or root node assign any capable node, parent or not, as the authentication server,
-distributing the authentication load evenly across a genuine multihop network.
+Most traditional centralized authentication schemes~\cite{sheik2023auth,he2023lightweight,roy2025design}
+rely on a centralized authenticator, leading to increased computational and
+communication overhead in multihop networks.  Distributed authentication schemes
+mitigate this drawback through multiple authenticators.  However, certain
+distributed schemes~\cite{alruwaili2025raaf} suffer from skewed authentication
+load on particular edge or fog servers and ignore multihop IoT considerations.
+In LightSAE~\cite{rosa2023lightsae}, parent IoT nodes authenticate child nodes,
+causing skewed authentication overhead on nodes with many children, while those
+with fewer or no children remain underutilized.  On the other hand, traditional
+peer-to-peer (P2P) schemes depend on long-term key storage, introducing security
+vulnerabilities.  PUF-based P2P schemes~\cite{zheng2022puf,li2020puf} mitigate
+key storage but still suffer from skewed authentication overhead on certain IoT
+nodes.  Both~\cite{li2020puf,yang2024sakms} incur high computational and
+communication overhead due to ECC operations.
 
-Identity-hiding approaches introduce anonymity at prohibitive cost.
-Al-Riyami and Paterson~\cite{alriyami2003cert} propose ECC-based certificateless
-cryptography that is too heavy for constrained nodes, and blockchain-based
-schemes~\cite{ahmed2023chains} achieve decentralisation but incur prohibitive
-storage and consensus overhead.  Zhong~et~al.~\cite{zhong2025survey} present a
-systematic taxonomy of lightweight anonymous IoT authentication, deconstructing
-existing protocols into nine sub-frameworks (SF1-UA through SF9-FS) and two
-general frameworks (GF1, GF2), and their analysis demonstrates that only GF2
-simultaneously achieves user anonymity, forward secrecy, and desynchronisation
-resistance, a combination absent from all prior lightweight schemes.  The
-design presented in this work follows the GF2 architectural pattern, where the dual-state pseudonym
-mechanism corresponds to the SF6-UA sub-framework~\cite{zhong2025survey}, and
-per-session key derivation from a PUF-assisted fresh nonce provides forward
-secrecy analogous to GF2.  Unlike GF2, which uses a one-time hash chain, this design replaces the hash chain with PUF-derived
-session randomness and augments authentication with a hash-based
-accumulator — mechanisms not modelled in the Zhong~et~al.\ taxonomy.
+DAuth~\cite{das2026comsnets} addresses these drawbacks by proposing a
+lightweight decoupled distributed authentication scheme in which both parent
+and non-parent nodes can authenticate newly joined devices, mitigating the
+skewed load scenario.  It uses PUF-based secret derivation and a hash-based
+one-way accumulator for membership verification without revealing device
+secrets.  However, the real device identity is transmitted in plaintext over
+the open channel in every authentication session, enabling an adversary to
+track a device across sessions.  Additionally, both the authentication server
+and the device maintain only a single session state, so a packet loss during
+session key delivery desynchronises their states, forcing full re-enrolment.
+Zhong~et~al.~\cite{zhong2025survey} present a systematic taxonomy of
+lightweight anonymous IoT authentication, deconstructing existing protocols
+into nine sub-frameworks (SF1-UA through SF9-FS) covering individual security
+and privacy properties such as user anonymity, untraceability, and forward
+secrecy.  These sub-frameworks are then composed into two general frameworks:
+GF1, which achieves user anonymity but cannot simultaneously provide forward
+secrecy and desynchronisation resistance; and GF2, which satisfies all three
+properties together.  Their analysis demonstrates that this combination is
+absent from prior lightweight schemes, establishing GF2 as the target
+architectural pattern for a complete solution.
+LAAKA~\cite{ali2024laaka} and Zhou~et~al.~\cite{zhou2024auth} address
+anonymity in IoT authentication but rely on computationally intensive
+operations, incurring significantly higher overhead than DAuth.
 
-In brief, Table~\ref{tab:features} contrasts key features across representative schemes.
-Existing lightweight schemes trade off at least one of these properties, namely
-decoupled design, PUF, accumulator-based authentication, authentication secret update
-(ASU), anonymity, or desynchronisation recovery, whereas the approach presented in this
-work satisfies all six criteria simultaneously with low computational and communication
-overhead.
+Therefore, this paper proposes an anonymity-preserving extension to DAuth,
+incorporating two lightweight mechanisms.  Per-session pseudonym rotation
+replaces the real device identity on the open channel with a refreshed
+pseudonym after every key exchange, making successive sessions unlinkable to
+an observer.  A dual-state mechanism maintained at both the authentication
+server and the gateway enables seamless recovery from single packet-loss events
+without re-enrolment.
+
+As shown in Table~\ref{tab:features}, the proposed scheme is compared with
+representative state-of-the-art schemes.  Existing lightweight schemes trade
+off at least one of: decoupled design, PUF-based authentication,
+accumulator-based membership verification, anonymity, or desynchronisation
+recovery.  The proposed scheme satisfies all criteria simultaneously while
+maintaining the lowest computational and communication overhead among all
+compared schemes.
 
 \begin{table}[!t]
   \centering
@@ -254,7 +267,7 @@ Let $\mathcal{AS}' = \{AS_1, AS_2, \ldots, AS_n\}$ be the set of
 authentication servers selected by $GW$, such that $AS \in \mathcal{AS}'$.
 $GW$ has a shared secret key $K_{GW\text{-}AS}$ with $AS$.  It is also
 assumed that $D$, whose distinct identifier is $ID_D$, possesses the address
-of its authentication server $AS$ along with its unique identity $ID_{AS}$.
+of its authentication server $AS$ along with the authentication server's unique identity $ID_{AS}$.
 Table~\ref{tab:notations} elaborates symbols and functions incorporated in
 the following scheme.
 
@@ -330,7 +343,7 @@ critically depends on maintaining the confidentiality of $y_D$.  $D$ also picks
 a reverse challenge $c_{AS\text{-}D}$ from the predefined challenge set
 $\mathbb{C}_{AS\text{-}D}$ and sends $(y_D,\, R_D,\, c_{AS\text{-}D})$ back to
 $AS$ through the secure channel, maintaining the confidentiality of $y_D$.
-$D$ then stores $\{y_D,\, c_D,\, m_D\}$.  Unlike DAuth~\cite{das2026comsnets},
+$D$ then stores $\{y_D,\, c_D,\, m_{\mathrm{curr}}\}$.  Unlike DAuth~\cite{das2026comsnets},
 which stores $m_D$ as a plain session random, the proposed scheme retains it as
 the initial \emph{current} session random $m_{\mathrm{curr}}$, seeding the
 pseudonym mechanism described below.
@@ -1026,11 +1039,11 @@ authentication server design in the proposed scheme.
 The performance of the authentication schemes is also analysed by considering their
 scalability with respect to total network size $N$, varied from 30 to 120 nodes,
 where 20\,\% of the nodes in each network are newly joined devices.
-Considering the total energy consumption (Figure~\ref{fig:sim_network}a), a reduction of
-40.2\,\% and 25.3\,\% is demonstrated by the proposed scheme at $N = 100$ over LAAKA and
-Zhou et al., respectively. Similarly, as shown in Figure~\ref{fig:sim_network}(b), a reduction of
-40.2\,\% and 25.3\,\% is demonstrated with respect to total CPU time over LAAKA and Zhou et al.,
-respectively.
+Considering the total energy consumption (Figure~\ref{fig:sim_network}a), at the
+maximum tested network size $N = 120$, the proposed scheme demonstrates a reduction of
+42.7\,\% over LAAKA and 37.6\,\% over Zhou et al.  Similarly, as shown in
+Figure~\ref{fig:sim_network}(b), a reduction of 42.7\,\% and 37.6\,\% is demonstrated
+with respect to total CPU time over LAAKA and Zhou et al., respectively, at $N = 120$.
 LAAKA and Zhou et al. exhibit steeper energy and CPU growth with increasing $N$ because their
 heavier per-device cryptographic load — AES-intensive authentication in LAAKA and a
 combined heavy authentication and key exchange in Zhou et al. — accumulates faster as the device count grows.
@@ -1038,10 +1051,10 @@ Due to the incorporation of lightweight XOR-hash operations and a decoupled auth
 server design, the proposed scheme keeps per-device cost low and achieves the lowest total cost among all
 anonymity-preserving schemes (LAAKA and Zhou et al.) across all measured network sizes, while incurring
 only a modest overhead above DAuth attributable to the additional pseudonym-rotation mechanism.
-These consistent reductions demonstrate the scalability and computational efficiency of the proposed scheme
-in comparison to the benchmark schemes.
+These consistent reductions across $N = 30$ to $120$ demonstrate the scalability and
+computational efficiency of the proposed scheme in comparison to the benchmark schemes.
 
-\begin{figure}[!b]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=0.78\columnwidth]{fig_sim_net_energy}\\[2pt]
   \small (a)\\[5pt]
@@ -1146,7 +1159,8 @@ The physical testbed is shown in Figure~\ref{fig:hw_setup}.
   \centering
   \includegraphics[width=\columnwidth,height=0.65\columnwidth,keepaspectratio]{RPI_HW}
   \caption{Hardware testbed: two Raspberry Pi~4B boards (left: authentication
-           server; right: device) connected via TCP to a Windows laptop
+           server; right: device) connected
+            to a Windows laptop
            (gateway).}
   \label{fig:hw_setup}
 \end{figure}
@@ -1204,7 +1218,10 @@ observational-equivalence-based anonymity.  COOJA/Contiki-NG simulations confirm
 suitability. The proposed scheme achieves a per-device three-phase energy of
 52.19\,mJ, reducing total energy by 42.8\,\% over LAAKA~\cite{ali2024laaka}
 and 32.4\,\% over Zhou et al.~\cite{zhou2024auth}, with consistent gains across
-varying network sizes (up to $N=100$ nodes) and authentication server pool sizes.
+varying network sizes and authentication server pool sizes.
+Hardware evaluation on an RPi~4B testbed corroborates these findings: the proposed
+scheme consumes 0.286\,J per authentication round, achieving 14.2\,\% and 52.5\,\%
+energy savings over Zhou et al.\ and LAAKA, respectively.
 
 % -------------------------------------------------------
 \balance
