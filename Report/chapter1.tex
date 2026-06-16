@@ -1,0 +1,83 @@
+\chapter{Introduction}
+\pagenumbering{arabic}
+
+The Internet of Things (IoT) has expanded rapidly and now underpins critical
+applications across smart manufacturing, power grids, remote health monitoring,
+and intelligent transport systems.
+These deployments rely on large numbers of resource-constrained devices communicating
+over shared wireless channels that are inherently exposed to eavesdropping.
+Securing such networks against impersonation, replay, man-in-the-middle, key
+compromise, and device-capture attacks is therefore a fundamental operational
+requirement.
+
+Considerable research has addressed IoT device authentication through mechanisms
+tailored to the severe power and memory constraints of embedded hardware.
+Physical Unclonable Functions (PUFs), hash-based challenge--response protocols, and
+symmetric-key constructions have emerged as dominant lightweight approaches owing to
+their low computational overhead.
+DAuth~\cite{das2026comsnets} follows this direction: it combines PUFs with a
+hash-based accumulator, eliminates long-term key storage, distributes authentication
+across multiple in-network nodes, and supports multihop verification at minimal
+overhead.
+
+Despite these properties, a fundamental privacy gap persists.
+During each authentication session, the device's real identity $ID_D$ is transmitted
+in plaintext over the public channel.
+A passive adversary can capture these transmissions to track the device across
+sessions, correlate repeated authentication attempts, and infer network
+behaviour, which directly violates modern privacy requirements.
+
+Identity privacy has been established as a fundamental property in IoT
+authentication, not merely an optional feature.
+Survey literature confirms that anonymity, untraceability, and forward secrecy are
+essential, particularly when devices operate in open or adversarial
+environments~\cite{zhong2025survey}.
+Existing countermeasures such as session-refreshed pseudonyms and hash-chain-based
+temporary identities partially address this exposure but often introduce new
+challenges such as desynchronisation, excessive storage overhead, slow identity
+lookup, or increased computation.
+The sub-framework taxonomy of~\cite{zhong2025survey}, covering SF3-UA through
+SF9-FS, illustrates how difficult it is to simultaneously satisfy anonymity,
+unlinkability, and resilience to message loss.
+
+This work investigates how anonymity can be integrated into DAuth without
+compromising its lightweight properties.
+All authentication messages of DAuth traverse an open channel, and transmitting
+$ID_D$ in plaintext exposes the device to tracking, session linkage, and targeted
+impersonation.
+Drawing on prior anonymous-authentication literature, this work identifies a
+low-overhead pseudonym mechanism that integrates cleanly into DAuth.
+The objective is identity anonymity, session unlinkability, and non-traceability,
+achieved without relaxing the lightweight and distributed properties of DAuth.
+
+A second gap in DAuth concerns desynchronisation resilience.
+Because DAuth retains only a single session nonce at the authentication server,
+any loss of the key-exchange response packet causes the device and server states to
+diverge, leading to a permanent authentication failure that can only be resolved
+through costly full re-enrolment.
+
+\section{Contributions}
+
+This work makes the following key contributions.
+\begin{enumerate}
+  \item An anonymity-preserving scheme is proposed that introduces per-session
+    pseudonym rotation to preserve device anonymity and a dual-state mechanism
+    to recover from desynchronisation without re-enrolment.
+  \item The security of the proposed scheme is validated through both informal
+    analysis and formal verification using ProVerif.
+  \item The efficiency of the proposed scheme is evaluated using theoretical
+    analysis, COOJA\slash Contiki-NG simulation, and hardware experiments on
+    Raspberry Pi~4B, covering communication overhead, energy consumption, and
+    CPU utilisation.
+\end{enumerate}
+
+\section{Organisation of The Report}
+
+The rest of this report is organised as follows.
+Chapter~2 surveys the related literature.
+Chapter~3 describes the prerequisite concepts.
+Chapter~4 overviews DAuth~\cite{das2026comsnets}.
+Chapter~5 presents the proposed scheme in full detail.
+Chapter~6 contains the security analysis.
+Chapter~7 presents the performance evaluation.
+Chapter~8 concludes the report.

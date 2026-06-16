@@ -1,0 +1,63 @@
+% --- main.tex ---
+\documentclass[11pt]{beamer}
+
+% --- Theme and Colors ---
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+% --- Packages ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{graphicx}
+
+% --- Custom colors ---
+\definecolor{iitblue}{RGB}{0,51,102}
+\definecolor{accentgreen}{RGB}{0,128,96}
+\definecolor{accentred}{RGB}{178,34,34}
+
+% --- Title Page Information ---
+\title[Anonymous Decoupled IoT Authentication]{Anonymity-Preserving, Decoupled Distributed Authentication for Multihop IoT Networks}
+\subtitle{M.Tech.\ Project (MTP) Defence}
+\author[Anup Kulkarni]{Anup Kulkarni \\ \vspace{0.25cm} \small Guide: Prof.\ Manas Khatua}
+
+\institute[IITG]{
+    Department of Computer Science and Engineering \\
+    Indian Institute of Technology Guwahati \\
+    \vspace{0.3cm}
+    \includegraphics[width=2.4cm]{iitglogo.eps}
+}
+\date{June 2026}
+
+% --- Show section navigation at the start of each section ---
+\AtBeginSection[]{
+  \begin{frame}{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Outline of Presentation}
+    \tableofcontents
+\end{frame}
+
+% --- INCLUDED SECTIONS ---
+\input{01_introduction.tex}
+\input{02_literature_review.tex}
+\input{03_proposed_solution.tex}
+\input{04_complexity_analysis.tex}
+\input{05_conclusion.tex}
+\input{06_thankyou}
+
+\end{document}

@@ -1,0 +1,102 @@
+\chapter{Prerequisites for Objective}
+
+\section{Physically Unclonable Function}
+
+A Physically Unclonable Function (PUF) is a one-way physical function that
+generates a unique response $R$ for a given challenge $C$ from the challenge
+space $\mathcal{C}$.
+PUFs exploit manufacturing variations in integrated circuits that are practically
+impossible to replicate.
+Various types of PUFs have been proposed, including SRAM PUFs, Arbiter PUFs, and
+Ring Oscillator (RO) PUFs.
+In this work, a Ring Oscillator PUF is used due to its higher execution speed and
+lower overhead.
+
+A function is considered a valid and secure PUF if it satisfies the following
+properties:
+
+\begin{itemize}
+  \item \textbf{Evaluatable:} A legitimate entity can easily compute a response
+    $R \in \mathcal{R}$ for any given challenge $C \in \mathcal{C}$.
+
+  \item \textbf{Unpredictability:} An adversary cannot predict the response $R$ for
+    any challenge $C$ without physical access to the PUF.
+
+  \item \textbf{Uniqueness:} For two different PUF instances, $\mathsf{PUF}_1$ and
+    $\mathsf{PUF}_2$, the probability that
+    $\mathsf{PUF}_1(C) = \mathsf{PUF}_2(C)$ for the same challenge $C$ is
+    negligible.
+
+  \item \textbf{Reliability:} For a fixed challenge $C$, the PUF response
+    $\mathsf{PUF}(C) = R$ remains stable over time and environmental variations.
+
+  \item \textbf{One-wayness:} Given a response $R$, it is computationally infeasible
+    to determine the corresponding challenge $C$ or invert the PUF.
+\end{itemize}
+
+These properties make PUFs suitable as hardware-bound secrets for key generation,
+device binding, and authentication in resource-constrained IoT devices.
+
+\section{Hash-based One-Way Accumulator}
+
+A one-way hash accumulator, proposed as an efficient alternative to digital
+signatures in authentication protocols, provides a compact, non-invertible
+representation of a set of elements.
+In such an accumulator, items are combined using a quasi-commutative operator,
+so the final accumulated value does not depend on the order of insertion.
+
+Formally, a function
+\[
+  f : A \times B \to A
+\]
+is said to be quasi-commutative if, for all $a \in A$ and for all $b, c \in B$,
+\begin{equation}
+  f(f(a,b),c) = f(f(a,c),b).
+\end{equation}
+
+Nyberg introduced a fast accumulated hashing method suitable for lightweight systems.
+Let $N$ denote the maximum number of accumulable items, and let
+$h : \{0,1\}^* \to \{0,1\}^\ell$ be a cryptographically secure hash function.
+Given a set of items $Y = \{y_1, y_2, \ldots, y_m\}$, $m \le N$, each item is
+first hashed as $Y_i = h(y_i)$, $i = 1, 2, \ldots, m$.
+The accumulated hash is then computed as:
+\begin{equation}
+  T_{\mathsf{Acc}} = H(s, Y) = s \bigodot_{i=1}^{m} h(y_i),
+\end{equation}
+where $s$ is an initialisation seed and $\bigodot$ represents the bitwise AND
+operator.
+Since the AND operator is commutative and the hash function is one-way, the
+accumulator inherits quasi-commutative and one-way properties.
+
+\textbf{Membership Verification:} To verify whether an item $y_i$ belongs to the
+accumulated set, compute $Y_i = h(y_i)$, and check whether
+$Y_i \bigodot T_{\mathsf{Acc}} = T_{\mathsf{Acc}}$.
+
+The security of the accumulator depends on the difficulty of forging a value $Y_i$
+that passes verification.
+For a security parameter $t$, the required length $r$ of the accumulated hash is
+given by $r = N \times e \times t$, where $e$ is Euler's (Napier's) constant.
+
+\section{Core Concept of Anonymity Preserving}
+
+In IoT security, anonymity is defined by two key properties:
+\textbf{Untraceability} (concealing the sender's real identity) and
+\textbf{Unlinkability} (preventing the correlation of multiple sessions to a single
+device).
+While simply encrypting a static ID protects the credential itself, it does not
+prevent traffic analysis; if the encrypted value remains constant, an adversary can
+track the device's activity patterns.
+
+To achieve robust anonymity, modern schemes utilise \textbf{Dynamic Pseudonyms}.
+Instead of a static identifier, the device generates a session-specific alias
+($\mathit{PID}$) using a shared secret or random nonce, e.g.,
+$\mathit{PID}_{i+1} = H(\mathit{ID} \| \mathit{Nonce}_i)$.
+To an external observer, each authentication request appears as a fresh, random
+string of bits, completely uncorrelated with previous sessions.
+
+A critical challenge when using dynamic pseudonyms is \textbf{desynchronisation}.
+If the message carrying the new nonce is lost in transit, the device retains the old
+nonce while the server has already advanced to the new one.
+Their pseudonym computations then diverge, and all subsequent authentications fail.
+To handle this gracefully, a dual-state storage approach retains both the current and
+the immediately previous state at the server, allowing recovery without re-enrolment.

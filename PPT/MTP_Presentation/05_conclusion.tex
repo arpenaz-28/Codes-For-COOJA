@@ -1,0 +1,58 @@
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+    \footnotesize
+    \begin{itemize}
+        \item Proposed a \textbf{lightweight, anonymous, decoupled} distributed authentication
+        scheme for multihop IoT, extending DAuth.
+        \item \textbf{Per-session pseudonym rotation} prevents adversarial cross-session tracking --
+        $ID_D$ never appears on the open channel.
+        \item \textbf{Dual-state synchronisation} gives transparent desynchronisation recovery
+        \emph{without re-enrolment}.
+        \item PUF-based secrets + hash accumulator + XOR masking keep overhead low.
+    \end{itemize}
+
+    \vspace{0.15cm}
+    \begin{block}{Validated results}
+        \begin{itemize}
+            \item \textbf{ProVerif}: all queries satisfied (correspondence, secrecy, forward secrecy, anonymity).
+            \item \textbf{COOJA}: \textbf{42.8\%} / \textbf{32.4\%} lower per-device energy than LAAKA / Zhou.
+            \item \textbf{Hardware (RPi 4B)}: 0.286\,J/round -- \textbf{52.5\%} / \textbf{14.2\%} below LAAKA / Zhou.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+    \scriptsize
+    \begin{thebibliography}{9}
+        \bibitem{dauth}
+        S.\ Das and M.\ Khatua,
+        ``Lightweight and Decoupled Distributed Authentication for Multihop IoT Networks,''
+        in \emph{Proc.\ IEEE COMSNETS}, 2026.
+
+        \bibitem{laaka}
+        H.\ Ali and I.\ Ahmed,
+        ``LAAKA: A Lightweight Anonymous Authentication and Key Agreement Scheme for
+        IoT-Fog Environment,''
+        \emph{Computers \& Security}, vol.\ 140, p.\ 103770, 2024.
+
+        \bibitem{zhou}
+        X.\ Zhou, S.\ Wang, K.\ Wen, B.\ Hu, X.\ Tan, and Q.\ Xie,
+        ``Security-Enhanced Lightweight and Anonymity-Preserving User Authentication Scheme
+        for IoT-Based Healthcare,''
+        \emph{IEEE Internet of Things Journal}, vol.\ 11, no.\ 6, pp.\ 9718--9731, 2024.
+
+        \bibitem{zhong}
+        J.\ Zhong, S.\ He, Z.\ Liu, and L.\ Xiong,
+        ``Lightweight Anonymous Authentication for IoT: A Taxonomy and Survey of
+        Security Frameworks,''
+        \emph{Sensors}, vol.\ 25, no.\ 17, p.\ 5594, 2025.
+
+        \bibitem{lightsae}
+        P.\ Rosa, A.\ Souto, and J.\ Cec\'{\i}lio,
+        ``Light-SAE: A Lightweight Authentication Protocol for Large-Scale IoT
+        Environments Made with Constrained Devices,''
+        \emph{IEEE Trans.\ Network and Service Management}, vol.\ 20, no.\ 3,
+        pp.\ 2428--2441, 2023.
+    \end{thebibliography}
+\end{frame}

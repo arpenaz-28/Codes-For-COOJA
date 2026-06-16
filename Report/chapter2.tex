@@ -1,0 +1,129 @@
+\chapter{Literature Survey}
+
+IoT authentication research has increasingly favoured lightweight and distributed
+designs, driven by the prohibitive load that centralised systems impose on a single
+gateway and the single point of failure they introduce.
+Given the severe power and memory constraints of IoT devices, the research community
+has sought architectures in which multiple network nodes share the authentication
+workload.
+
+\textbf{Light-SAE}~\cite{rosa2023lightsae} exemplifies this trend.
+It enables already-authenticated nodes to assist newcomers through a simple
+challenge-and-response join protocol, using TinyJAMBU for lightweight encryption
+and a modified Diffie--Hellman exchange to establish the session key in multihop
+networks, thereby reducing the load on the gateway.
+However, Light-SAE transmits node identities in plaintext and provides no
+protection for anonymity or session unlinkability, rendering it unsuitable for
+privacy-sensitive deployments.
+
+\textbf{SAKMS}~\cite{yang2024sakms} targets industrial IoT systems operating under
+the 6TiSCH schedule, employing ECC-based mutual authentication with ECQV
+certificates, formalised key management, and strong forward secrecy, with
+correctness confirmed by ProVerif.
+Its reliance on multiple elliptic-curve operations, however, imposes overhead that
+exceeds what severely constrained IoT nodes can sustain.
+SAKMS also embeds fixed device identifiers within messages, leaving devices
+susceptible to tracking across sessions.
+These limitations illustrate that cryptographic strength alone does not imply
+privacy preservation or lightweight execution.
+
+The \textbf{DAuth PUF-based authentication scheme}~\cite{das2026comsnets}
+addresses many of these weaknesses.
+It eliminates long-term secret storage by deriving device secrets from PUFs, uses
+a hash-based accumulator for membership verification, and decouples the
+authentication server from the parent node so that both parent and non-parent nodes
+can serve as authenticators, distributing load in multihop networks.
+Its computational primitives (hash, XOR, and two AES calls) keep the
+per-device footprint minimal.
+Its primary limitation is that the device identity ($ID_D$) is transmitted directly
+in every authentication exchange; since all messages traverse a public channel, a
+passive observer can capture the identity, track the device over time, and mount
+targeted attacks.
+Identity concealment is therefore a necessary extension to this protocol.
+
+Several anonymous authentication schemes have been proposed to address such privacy
+concerns.
+\textbf{He~et~al.}~\cite{he2023lightweight} achieve lightweight anonymous
+authentication using hash-and-XOR primitives for CoAP/OSCORE but rely on a
+centralised server, forfeiting the decoupled-distribution advantage.
+\textbf{LAAKA}~\cite{ali2024laaka} employs ECC to protect device identity during
+mutual authentication; ECC operations, however, incur higher power consumption than
+may be tolerable on severely constrained nodes.
+
+A comprehensive survey on lightweight anonymous
+authentication~\cite{zhong2025survey} catalogues approaches including temporary
+pseudonyms, PUF-assisted anonymous login, hidden membership proofs via accumulators,
+and unlinkable tokens, while documenting common pitfalls such as desynchronisation,
+pseudonym exhaustion, and inadequate replay protection.
+Their taxonomy deconstructs existing protocols into nine sub-frameworks (SF1-UA
+through SF9-FS) and two general frameworks (GF1, GF2), finding that only GF2
+simultaneously achieves user anonymity, forward secrecy, and desynchronisation
+resistance.
+
+Building on this taxonomy, the present work adopts \textbf{GF2} as its target
+architectural pattern and realises a \emph{modified} instantiation of it tailored to
+resource-constrained multihop IoT nodes.
+Concretely, the proposed scheme combines the user-anonymity sub-frameworks
+(SF3-UA, SF5-UA, SF6-UA), which use rotating pseudonyms instead of a static
+identity, with the forward-secrecy sub-frameworks (SF7-FS, SF8-FS, SF9-FS), which
+derive each session key from independently refreshed material.
+Unlike the survey's reference constructions that rely on heavy cryptographic
+primitives, the proposed scheme uses lightweight PUF-based secret derivation and
+hash-XOR masking, and meets GF2's desynchronisation-resistance requirement through
+a dual-state recovery mechanism at both the authentication server and the gateway.
+The result is a GF2-compliant design with the same low overhead as
+DAuth~\cite{das2026comsnets}.
+
+\textbf{Zhou~et~al.}~\cite{zhou2024auth} propose a security-enhanced lightweight
+and anonymity-preserving user authentication scheme for IoT-based healthcare,
+providing hash-based anonymous authentication with nonce masking to protect sensitive
+metadata over open wireless channels.
+
+Other works use \textbf{blockchain}~\cite{ahmed2023chains} and
+\textbf{certificateless cryptography}~\cite{alriyami2003cert} to achieve
+decentralisation and identity hiding, but they incur prohibitive storage and consensus
+overhead.
+\textbf{Li~et~al.}~\cite{li2020puf} and \textbf{Zheng~et~al.}~\cite{zheng2022puf}
+combine PUF with session key exchange but rely on ECC operations too expensive for
+highly constrained nodes.
+
+Despite this body of work, no existing scheme simultaneously satisfies all of the
+following requirements: (i)~decoupled authentication, (ii)~PUF-based secrecy
+without long-term key storage, (iii)~low-overhead hash-XOR computation, and
+(iv)~device anonymity with session unlinkability and desynchronisation recovery.
+This gap motivates the present work, which builds an anonymous and
+desynchronisation-resilient extension of DAuth~\cite{das2026comsnets} while
+preserving its lightweight and distributed properties.
+
+To show the differences between all these methods clearly, Table~\ref{tab:features}
+lists the use of decoupling, PUF, accumulator-based authentication, authentication
+secret update, anonymity, desynchronisation recovery, and the computation and
+communication overhead for all the schemes studied.
+
+\begin{table}[H]
+  \centering
+  \caption{Features Comparison of Authentication Schemes.}
+  \label{tab:features}
+  \small
+  \setlength{\tabcolsep}{5pt}
+  \begin{tabular}{lcccccccc}
+    \toprule
+    Scheme & Dec. & PUF & Acc. & ASU & Anon. & Desync & C.OH & M.OH \\
+    \midrule
+    RAAF-MEC~\cite{alruwaili2025raaf}   & $\times$ & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & H & L \\
+    SAKMS~\cite{yang2024sakms}          & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & H & L \\
+    Li et al.~\cite{li2020puf}          & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & H & L \\
+    Zheng et al.~\cite{zheng2022puf}    & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & M & L \\
+    DAuth~\cite{das2026comsnets}         & \checkmark & \checkmark & \checkmark & \checkmark & $\times$ & $\times$ & L & L \\
+    \textbf{Proposed}                  & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{L} & \textbf{L} \\
+    \bottomrule
+  \end{tabular}\\[5pt]
+  \raggedright\small
+  \textit{Dec.}: Decoupled design.\quad
+  \textit{Acc.}: Hash-based accumulator.\quad
+  \textit{ASU}: Auth.\ secret update.\\
+  \textit{Anon.}: Device anonymity via pseudonym.\quad
+  \textit{Desync}: Desync.\ recovery.\\
+  \textit{C.OH}: Computation: L (Hash/XOR/$\le$2 AES), M ($>$2 AES), H (ECC/Pairings).\\
+  \textit{M.OH}: Message exchanges: L (1--3), M (4--5), H ($>$5).
+\end{table}

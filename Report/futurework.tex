@@ -1,0 +1,30 @@
+\chapter{Conclusion}
+
+\begin{singlespace}
+This report presented a lightweight anonymous authentication scheme for multihop
+IoT networks that extends DAuth~\cite{das2026comsnets} with two additions:
+per-session pseudonym rotation to hide $ID_D$ from the open channel, and a dual-state
+mechanism to recover from desynchronisation without re-enrolment.
+
+Formal verification in ProVerif confirms all 10 security queries under the Dolev--Yao
+model, covering authentication correspondence, session key secrecy, forward secrecy,
+anonymity, and offline guessing resistance.
+
+COOJA\slash Contiki-NG simulations on 100-node networks show per-device energy
+reductions of \textbf{42.8\,\%} over LAAKA and \textbf{32.4\,\%} over Zhou et al.
+The dual-state mechanism is particularly significant in the desynchronised case:
+DAuth incurs a \textbf{118.3\,\%} energy penalty per recovery round
+(134.8\,mJ vs.\ 61.8\,mJ for a normal round) because a single lost packet forces
+full re-enrolment, whereas the proposed scheme's recovery round costs 87.2\,mJ
+(close to its normal round of 98.6\,mJ), saving \textbf{35.3\,\%} in both
+energy and CPU time over DAuth.
+
+Hardware experiments on Raspberry Pi~4B confirm per-round energy reductions of
+\textbf{52.5\,\%} over LAAKA and \textbf{14.2\,\%} over Zhou et al., with an
+88\,\% overhead above DAuth attributable solely to the additional hash operations
+for pseudonym rotation.
+
+Among the four compared schemes, the proposed scheme is the only one to simultaneously
+provide device anonymity, desynchronisation recovery, and decoupled distributed
+authentication at overhead suitable for resource-constrained IoT devices.
+\end{singlespace}

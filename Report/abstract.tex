@@ -1,0 +1,34 @@
+\chapter*{\centering Abstract}
+\begin{singlespace}
+\quad The primary objective of this work is to identify, address, and validate critical
+security and privacy gaps in DAuth, a lightweight decoupled distributed authentication
+scheme for multihop IoT networks.
+Two significant vulnerabilities were identified.
+First, the real device identity is transmitted in plaintext over the public
+channel during every authentication session.
+This exposure enables any passive adversary to track devices across sessions,
+correlate repeated authentication attempts, and infer network behaviour, which
+directly violates modern privacy requirements.
+Second, when a key-exchange packet is lost in transit, the device and authentication
+server hold divergent session states, causing all subsequent authentication attempts
+to fail and forcing the device through a costly full re-enrolment.
+
+To address both vulnerabilities, this work proposes an extension of DAuth that
+preserves device anonymity and tolerates desynchronisation.
+Per-session pseudonym rotation replaces the real device identity in all
+open-channel communications with a rotating pseudonym that is refreshed after each
+successful key exchange, so that successive pseudonyms are computationally unlinkable.
+A dual-state mechanism maintained at the authentication server retains both the
+current and the immediately preceding session state, enabling seamless recovery
+from a single packet-loss event without re-enrolment.
+Formal verification under a standard adversary model confirms authentication
+correspondence, session key secrecy, forward secrecy, anonymity preservation, and
+offline guessing resistance.
+COOJA\slash Contiki-NG simulations on a 100-node RPL network show a 42.8\,\% reduction
+in per-device energy over LAAKA and 32.4\,\% over Zhou et al., with consistent gains
+across all network sizes and authentication server pool configurations.
+Hardware evaluation on Raspberry Pi~4B confirms 52.5\,\% and 14.2\,\% energy
+reductions over LAAKA and Zhou et al., respectively; DAuth achieves the lowest
+hardware overhead as it carries no pseudonym operations, while the proposed scheme
+remains well below both LAAKA and Zhou et al.
+\end{singlespace}

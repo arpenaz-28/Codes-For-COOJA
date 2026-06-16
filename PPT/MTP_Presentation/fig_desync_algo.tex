@@ -1,0 +1,58 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algpseudocode}
+\usepackage{varwidth}
+
+\newcommand{\algheader}[2]{%
+  \par\noindent\rule{\linewidth}{0.9pt}\par\vspace{1pt}%
+  \noindent\textbf{Algorithm #1}\hspace{0.6em}#2\par\vspace{1pt}%
+  \noindent\rule{\linewidth}{0.5pt}\par}
+\newcommand{\algfooter}{\par\noindent\rule{\linewidth}{0.9pt}\par}
+
+\begin{document}
+\begin{varwidth}{12.5cm}
+
+\algheader{1}{Desynchronisation Recovery -- Authentication Phase}
+\begin{algorithmic}[1]
+\Statex \textbf{Precondition:} $D$ holds stale $m_{\mathrm{curr}} = m_{\mathrm{old}}$;\;
+       $AS$ holds $(m_{\mathrm{curr}},\,m_{\mathrm{old}},\,
+       \mathit{PID}_{\mathrm{curr}},\,\mathit{PID}_{\mathrm{old}})$
+\State $\mathit{PID} = H(\mathit{ID}_D \| m_{\mathrm{curr}})$
+       \hfill\Comment{stale $m_{\mathrm{curr}}$ gives $\mathit{PID} = \mathit{PID}_{\mathrm{old}}$}
+\State $D$ sends $(\mathit{PID},\; Y_{AS\text{-}D}^H,\; ts_1)$ to $AS$
+\If{$\mathit{PID} == \mathit{PID}_{\mathrm{curr}}$}
+    \State $AS$ verifies using $m_{\mathrm{curr}}$ \hfill\Comment{normal path}
+\ElsIf{$\mathit{PID} == \mathit{PID}_{\mathrm{old}}$}
+    \State $AS$ verifies using $m_{\mathrm{old}}$ \hfill\Comment{desync detected}
+\Else
+    \State $AS$ rejects $D$
+\EndIf
+\end{algorithmic}
+\algfooter
+
+\vspace{10pt}
+
+\algheader{2}{Desynchronisation Recovery -- Key Exchange Phase}
+\begin{algorithmic}[1]
+\Statex \textbf{Precondition:} desync path from Algorithm~1;\;
+       $AS$ uses $m_{\mathrm{old}}$, $\mathit{PID}_{\mathrm{old}}$
+\State $n_1 = \mathsf{rand}()$
+\State $m_{\mathrm{new}} = H(n_1)$
+\State $m_H = m_{\mathrm{new}} \oplus
+       H\!\left(Y_D^{H'} \| m_{\mathrm{old}} \| R_D' \|
+       \mathit{ID}_{AS} \| \mathit{PID}_{\mathrm{old}} \| ts_2\right)$
+\State $AS$ sends $(m_H,\; ts_2)$ to $D$
+\State $m_{\mathrm{new}} = m_H \oplus
+       H\!\left(Y_D^{H} \| m_{\mathrm{curr}} \| R_D \|
+       \mathit{ID}_{AS} \| \mathit{PID} \| ts_2\right)$
+       \hfill\Comment{$D$ uses $m_{\mathrm{curr}} = m_{\mathrm{old}}$ — recovers correctly}
+\State $m_{\mathrm{old}} = m_{\mathrm{curr}}$;\quad
+       $m_{\mathrm{curr}} = m_{\mathrm{new}}$;\quad
+       $\mathit{PID} = H(\mathit{ID}_D \| m_{\mathrm{curr}})$
+\Statex \textbf{Result:} $D$ and $AS$ re-synchronised; $\mathit{PID}$ rotated
+\end{algorithmic}
+\algfooter
+
+\end{varwidth}
+\end{document}

@@ -1,0 +1,67 @@
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+\vspace{-5mm}
+
+This study focuses on designing an efficient parallel algorithm for the Longest Common Subsequence (LCS) problem, a fundamental challenge in computer science, specifically tailored for the Parallel External Memory (PEM) computational model \cite{sajith-spem-23}. While the LCS problem has been solved sequentially and on theoretical parallel models, processing massive strings that exceed the capacity of a computer's main memory presents unique challenges that require a specialized approach.
+
+\section{Problem Definition: Longest Common Subsequence}
+Before discussing the computational models, it is essential to formally define the core problem we are solving. 
+
+Let a \textit{sequence} (or string) be an ordered list of characters. A \textit{subsequence} of a given sequence is formed by deleting zero or more characters from the original sequence without changing the order of the remaining characters. For example, if we have a string "ABCDEF", then "ACE" and "BDF" are valid subsequences.
+
+The \textbf{Longest Common Subsequence (LCS)} problem asks us to find the longest subsequence that is present in two or more given strings\cite{clrs-ia-09}. 
+For example, given two strings:
+\begin{itemize}
+    \item $X$ = "AGGTAB"
+    \item $Y$ = "GXTXAYB"
+\end{itemize}
+The longest common subsequence is "GTAB", which has a length of 4. Finding this length efficiently becomes computationally demanding as the sizes of the strings grow.
+
+\section{The Parallel External Memory (PEM) Model}
+Traditional algorithms are designed for the standard RAM model, which assumes that every piece of data can be accessed instantly. However, modern computers have a memory hierarchy. Fast internal memory (RAM) is limited in size, while the external memory (Hard Disks or SSDs) is massive but extremely slow. 
+
+When the input strings are so large that they cannot fit into the internal memory, the computer must constantly transfer chunks of data back and forth from the slow disk. This data transfer is called an \textbf{I/O (Input/Output) operation}. I/O operations are the slowest part of any modern computing system.
+
+The \textbf{Parallel External Memory (PEM)} model accurately represents this reality for multi-core systems\cite{sajith-spem-23}. It is characterized by three main parameters:
+\begin{itemize}
+    \item $\mathbf{P}$: The number of synchronous processors available for computation.
+    \item $\mathbf{M}$: The size of the fast, private internal memory available to \textit{each} processor.
+    \item $\mathbf{B}$: The block size. Data is transferred between the external memory and the internal memory in contiguous blocks of size $B$, rather than one element at a time.
+\end{itemize}
+Our goal on the PEM model is not just to divide the computational work among $P$ processors, but to strictly minimize the number of $B$-sized block transfers (I/O rounds).
+
+\section{Motivation}
+The Longest Common Subsequence problem is not just a theoretical exercise; it has critical, large-scale applications in various real-world domains where datasets are massive.
+
+\begin{itemize}
+    \item \textbf{Bioinformatics and Computational Biology}: LCS is the foundational logic behind sequence alignment tools (such as BLAST). Biologists use these algorithms to compare DNA, RNA, and protein sequences to find genetic similarities. Modern whole-genome datasets are often hundreds of gigabytes or even terabytes in size. These datasets far exceed the main memory of any single machine, making I/O bottlenecks a severe issue.
+    \item \textbf{Version Control and Data Synchronization}: File comparison utilities, such as the \textit{diff} command in Unix or the underlying merging logic in version control systems like Git, use LCS-based algorithms to find the exact differences between files. When dealing with massive database dumps or large software repositories, calculating these "patches" efficiently requires minimizing disk access.
+\end{itemize}
+
+As processor speeds approach their inherent physical limits, using multiple processors is essential for achieving speedups. However, for problems involving massive datasets, simply adding more processors is not enough. If multiple processors constantly request small pieces of data from the disk, the I/O bus becomes heavily congested. The goal of this research is to address this specific challenge: leveraging the parallel processing capabilities of the PEM model to create an algorithm that is mathematically optimized to reduce I/O bottlenecks.
+
+\section{Objectives}
+The primary objective of this thesis is to design, analyze, and formalize an I/O-efficient parallel algorithm for the Longest Common Subsequence problem on the PEM model. The specific objectives are:
+\begin{itemize}
+    \item To conduct a detailed literature survey of existing LCS algorithms, highlighting the limitations of standard sequential DP, PRAM (Parallel RAM) algorithms, and sequential blocked DP approaches.
+    \item To design a novel \textbf{Tiled Wavefront Algorithm} optimized for the Concurrent Read Exclusive Write (CREW) PEM model, which groups computational work to fit entirely within the internal memory $M$.
+    \item To formally analyze the algorithm's parallel I/O complexity using the WT Scheduling Principle (Brent's Theorem for the PEM model).
+    \item To theoretically prove that this new algorithm achieves an optimal balance between parallel computation speedup and I/O minimization.
+\end{itemize}
+
+\section{Organization of The Report}
+This chapter introduced the formal definition of the Longest Common Subsequence (LCS) problem and the Parallel External Memory (PEM) model. We also outlined the motivation for this research, driven by applications in bioinformatics and large-scale data synchronization, and stated the specific objectives of this thesis. 
+
+The remainder of this thesis is organized as follows: 
+\begin{itemize}
+    \item \textbf{Chapter 2} provides a detailed literature survey. It reviews the evolution of LCS algorithms across different computational models and establishes the algorithmic novelty of the proposed research by identifying the gap in existing parallel I/O approaches.
+    \item \textbf{Chapter 3} presents the proposed Proposed Solution. It details the Tiled Wavefront Algorithm, explains the logical grid partitioning, and provides a step-by-step trace of how the processors compute the dynamic programming matrix in diagonal waves.
+    \item \textbf{Chapter 4} focuses on the Rigorous Complexity Analysis. It mathematically derives the total I/O work and the critical path latency, applying Brent's Theorem to establish the final upper bounds for the algorithm on the PEM model.
+    \item \textbf{Chapter 5} concludes the thesis, summarizing the contributions and discussing potential avenues for future research and practical implementations.
+\end{itemize}
+
+% \begin{thebibliography}{9}
+% \bibitem{sajith-spem-23} 
+% Sajith, G., Panda, M. K., and Senko, R. (2023). \textit{Sorting on the Parallel Random Access Machine, Parallel Comparison Model and Parallel External Memory Model}.
+% \end{thebibliography}

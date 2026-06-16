@@ -1,0 +1,70 @@
+
+\chapter{Rigorous Complexity Analysis}
+
+Proving the efficiency of an algorithm on the Parallel External Memory (PEM) model requires a different approach than traditional sequential models. In the standard RAM model, complexity is analyzed by counting the number of CPU instructions. However, in the PEM model, CPU operations performed entirely inside the fast internal memory are considered "free" relative to the immense cost of fetching data from the disk. 
+
+Therefore, the performance of the Tiled Wavefront Algorithm is strictly measured by its \textbf{Parallel I/O Complexity}: the total number of parallel block transfers required between the shared external memory and the local internal memories of the processors. This chapter rigorously derives the exact mathematical upper bounds for this metric.
+
+\section{The WT Scheduling Principle (Brent's Theorem)}
+To analyze parallel algorithms where the amount of available work changes over time (such as our wavefront expanding and shrinking), we utilize the WT Scheduling Principle, which is the PEM model's equivalent of Brent's Theorem\cite{jaja-ipa-92,sajith-spem-23}.
+
+Brent's Theorem states that the total parallel time $T_P$ (in our case, parallel I/O rounds) required to execute an algorithm on $P$ processors is bounded by the following inequality:
+$$T_P \le T_\infty + \frac{W}{P}$$
+
+This formula elegantly combines two distinct theoretical bounds:
+\begin{itemize}
+    \item \textbf{Total Work ($W$):} The total number of I/O operations required if the entire algorithm were executed by a \textit{single} processor.
+    \item \textbf{Critical Path Latency ($T_\infty$):} The minimum number of sequential I/O steps required to complete the algorithm if we had an \textit{infinite} number of processors. This represents the longest chain of unavoidable data dependencies.
+\end{itemize}
+
+\subsection{Why Addition?}
+A common question in parallel analysis is why $T_\infty$ and $W/P$ are added together. During execution, the algorithm exists in one of two states. In \textbf{State 1}, there are fewer active tiles than processors (such as the top-left and bottom-right corners of our grid). Processors are forced to sit idle, and the time taken is strictly bound by the critical dependency path $T_\infty$. In \textbf{State 2}, there is a massive bulk of independent work (the wide middle diagonals of the grid). All $P$ processors are active, and the work $W$ is divided perfectly among them ($W/P$). Brent's Theorem safely adds the worst-case time of both states to guarantee a rigorous upper bound.
+
+\section{Derivation of the I/O Bounds}
+We now apply this theorem systematically to the proposed Tiled Wavefront Algorithm. Let $X$ and $Y$ be input strings of length $N$. Let $M$ be the internal memory size, $B$ be the block transfer size, and $S$ be the tile dimension such that $S = \Theta(\sqrt{M})$. The logical grid has dimension $K \times K$, where $K = \lceil N/S \rceil$.
+
+\subsection{Step 1: Calculating Total I/O Work ($W$)}
+To find $W$, we must determine the I/O cost of processing the entire grid sequentially. 
+First, we calculate the cost to process a single $S \times S$ tile. A processor must load:
+\begin{enumerate}
+    \item The corresponding substring chunks of $X$ and $Y$ (size $2S$).
+    \item The computed bottom boundary from the tile above (size $S$).
+    \item The computed right boundary from the tile to the left (size $S$).
+\end{enumerate}
+The total volume of data read and written per tile is proportional to $O(S)$. Because this data is stored continuously in external memory, transferring $O(S)$ elements requires exactly $O(S/B)$ block I/O operations.
+
+The total number of tiles in the grid is $K^2$. Therefore, the total work $W$ across all tiles is:
+$$W = K^2 \cdot O\left(\frac{S}{B}\right)$$
+
+Substituting $K = N/S$, we expand the equation:
+$$W = \left(\frac{N}{S}\right)^2 \cdot O\left(\frac{S}{B}\right) = \frac{N^2}{S^2} \cdot O\left(\frac{S}{B}\right) = O\left(\frac{N^2}{S B}\right)$$
+
+\subsection{Step 2: Calculating the Critical Path ($T_\infty$)}
+The critical path is determined by the maximum depth of the dependency graph. Because tile $T(i,j)$ strictly depends on tiles $T(i-1,j)$ and $T(i, j-1)$, the longest sequence of dependencies stretches from the top-left tile $T(1,1)$ down to the bottom-right tile $T(K,K)$.
+
+This path precisely corresponds to the number of diagonal waves. A $K \times K$ grid has exactly $2K - 1$ diagonal waves. If we had infinite processors, all tiles on a single wave would be processed simultaneously in $O(S/B)$ I/O rounds. Thus, the critical path latency is the number of waves multiplied by the cost per wave:
+$$T_\infty = (2K - 1) \cdot O\left(\frac{S}{B}\right) = O\left(K \cdot \frac{S}{B}\right)$$
+
+Substituting $K = N/S$, we find the critical path bound:
+$$T_\infty = O\left(\frac{N}{S} \cdot \frac{S}{B}\right) = O\left(\frac{N}{B}\right)$$
+
+\subsection{Step 3: Applying the Bounds}
+We now substitute our derived values for total work ($W$) and critical path ($T_\infty$) back into Brent's formula ($T_P \le T_\infty + \frac{W}{P}$):
+
+$$T_P \le O\left(\frac{N}{B}\right) + \frac{O\left(\frac{N^2}{S B}\right)}{P}$$
+
+Rearranging the terms for clarity, we get:
+$$T_P = O\left( \frac{N^2}{P \cdot S \cdot B} + \frac{N}{B} \right)$$
+
+Finally, we substitute our optimal tile sizing parameter $S = \Theta(\sqrt{M})$. This guarantees that each tile perfectly fills the processor's internal memory without overflowing. The substitution yields the final parallel I/O complexity bound:
+
+$$\mathbf{ T_P = O\left( \frac{N^2}{P B \sqrt{M}} + \frac{N}{B} \right) }$$
+
+\section{Interpretation of the Complexity Bound}
+The derived mathematical bound proves the efficiency of the proposed algorithm and perfectly models its physical execution on the hardware. 
+
+The first term, $O\left( \frac{N^2}{P B \sqrt{M}} \right)$, represents the perfectly parallelized "bulk" phase of the algorithm. It shows that our total sequential I/O work is successfully divided by $P$ (the speedup from using multiple processors) and reduced by a factor of $B$ (the speedup from block transfers). Most importantly, it is reduced by a massive factor of $\sqrt{M}$ due to our tiling strategy, proving that grouping computations in internal memory eliminates disk thrashing.
+
+The second term, $O\left( \frac{N}{B} \right)$, represents the inescapable latency constraint. Even with infinite processors, a computer must still physically read the length of the string $N$ from the external disk in blocks of size $B$. This term dominates only when the strings are relatively small or the number of processors $P$ is exceptionally large. 
+
+Together, this rigorous analysis proves that the Tiled Wavefront Algorithm achieves mathematically optimal I/O scaling under the Concurrent Read Exclusive Write (CREW) Parallel External Memory model.

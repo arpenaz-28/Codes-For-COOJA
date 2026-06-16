@@ -1,0 +1,27 @@
+
+\chapter{Conclusion and Future Work}
+
+\section{Conclusion}
+As datasets in fields like bioinformatics and data synchronization grow to massive scales, traditional algorithmic models that assume uniform memory access are no longer sufficient. The Longest Common Subsequence (LCS) problem serves as a perfect example of this challenge. While sequential dynamic programming is computationally optimal, it suffers from severe disk thrashing when the data exceeds the main memory. Conversely, while standard parallel algorithms provide massive speedups, they cause catastrophic I/O bottlenecks when applied to external memory environments.
+
+This thesis successfully addressed this gap by designing a unified approach for the Parallel External Memory (PEM) model. We proposed the \textbf{Tiled Wavefront Algorithm}, which elegantly combines the I/O efficiency of sequential blocked DP with the computational speedup of parallel wavefront scheduling.
+
+By elevating the wavefront schedule from a fine-grained, cell-by-cell level to a coarse-grained, tile-by-tile level, the algorithm ensures that each processor is saturated with $O(M)$ local computation for every $O(\sqrt{M}/B)$ blocks fetched from the disk. Furthermore, by carefully structuring the logical grid and overlapping tile boundaries, the algorithm strictly adheres to the Concurrent Read Exclusive Write (CREW) constraints of the PEM model, ensuring zero write conflicts in shared memory.
+
+Finally, using the WT Scheduling Principle (Brent's Theorem), we rigorously derived the parallel I/O complexity of the proposed algorithm:
+$$ T_P = O\left( \frac{N^2}{P B \sqrt{M}} + \frac{N}{B} \right) $$
+
+This bound theoretically proves that the Tiled Wavefront Algorithm achieves an optimal balance, scaling perfectly with the number of processors ($P$) and the block size ($B$), while successfully using the internal memory limit ($M$) to completely eliminate disk thrashing.
+
+\section{Future Work}
+While this thesis establishes a solid theoretical foundation and mathematically proves the optimality of the Tiled Wavefront Algorithm, several promising avenues remain for future research and practical extension:
+
+\begin{itemize}
+    \item \textbf{Empirical Implementation and Benchmarking:} The most immediate next step is to transition this algorithm from a theoretical model to a practical implementation. Future work should involve implementing the algorithm using parallel programming frameworks (such as OpenMP or MPI) and testing it on a modern multi-core cluster connected to a high-speed SSD array. Benchmarking against standard PRAM implementations will provide concrete empirical evidence of the I/O savings.
+    
+    \item \textbf{Space Optimization (Hirschberg's Algorithm):} The current dynamic programming approach requires $O(N^2)$ space to reconstruct the actual longest common subsequence (rather than just finding its length). Future research can explore adapting Hirschberg's divide-and-conquer strategy\cite{hirschberg-lsa-75} to the PEM model. This would theoretically reduce the external memory space requirement to $O(N)$ while maintaining the parallel I/O efficiency.
+    
+    \item \textbf{Cache-Oblivious Adaptation:} The proposed algorithm is "cache-aware," meaning its performance depends on tuning the tile size $S$ to match the specific hardware parameters $M$ and $B$. Future work could investigate designing a \textit{Cache-Oblivious} version\cite{chowdhury-codp-06} of this parallel algorithm, which achieves optimal I/O block transfers automatically without needing to know the exact sizes of the memory hierarchy levels in advance.
+    
+    \item \textbf{Extension to Similar Sequence Problems:} The mathematical principles and wavefront scheduling techniques developed in this thesis are highly versatile. They can be extended and generalized to solve other massive-scale DP problems, such as the Edit Distance (Levenshtein distance) problem or the Smith-Waterman algorithm for local sequence alignment, providing a broader impact on computational biology.
+\end{itemize}

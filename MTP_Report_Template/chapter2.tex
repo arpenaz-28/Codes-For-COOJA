@@ -1,0 +1,83 @@
+
+\chapter{Literature Review}
+
+The design of any algorithmic solution is deeply influenced by the underlying hardware model it is built for. The Longest Common Subsequence (LCS) problem has been studied extensively over the past few decades. However, existing solutions are highly specialized for specific environments. 
+
+This chapter reviews the evolution of algorithms for the LCS problem across three distinct computational paradigms: the standard RAM model, the External Memory (EM) model, and the Parallel Random Access Machine (PRAM) model. By analyzing the strengths and limitations of these existing methods, we will clearly identify the current gap in the research and establish the algorithmic novelty of the proposed solution on the Parallel External Memory (PEM) model.
+
+\section{Standard Sequential Algorithms (The RAM Model)}
+The classic approach to solving the LCS problem uses Dynamic Programming (DP). For two strings of length $N$, the algorithm creates an $N \times N$ matrix. The value of any cell in this matrix depends on the values of its top, left, and top-left diagonal neighbors\cite{clrs-ia-09,aho-dac-74}. 
+
+\[
+L[i][j] =
+\begin{cases}
+0 & \text{if } i=0 \text{ or } j=0 \\[6pt]
+L[i-1][j-1] + 1 & \text{if } X[i-1] = Y[j-1] \\[6pt]
+\max(L[i-1][j],\; L[i][j-1]) & \text{otherwise}
+\end{cases}
+\]
+
+This sequential algorithm completes the task in $O(N^2)$ time. In the theoretical Random Access Machine (RAM) model, this is considered optimal in terms of computational work. The RAM model operates on a very simple assumption: every single memory access takes exactly $O(1)$ time, regardless of how large the data is.
+
+
+
+\textbf{Limitation:} In the real world, the RAM assumption fails when dealing with massive datasets, such as whole-genome sequences in bioinformatics. When the $N \times N$ DP table becomes too large to fit into the computer's fast internal memory, the operating system is forced to swap data back and forth to the slow external hard disk. Because the standard sequential algorithm computes the table row by row (or cell by cell), it constantly requests data that is not currently in the fast memory. This leads to a severe performance degradation known as "disk thrashing." As a result, the execution time is completely dominated by the slow disk reads and writes, making the standard RAM approach impractical for massive strings.
+
+\section{Sequential External Memory Algorithms (Blocked DP)}
+To address the disk thrashing problem, researchers developed algorithms based on the External Memory (EM) model (proposed by Aggarwal and Vitter)\cite{av-ioc-88}. The EM model explicitly recognizes the memory hierarchy: it accounts for a slow infinite disk and a fast, limited internal memory of size $M$. Crucially, data is transferred between them in contiguous chunks called blocks, of size $B$.
+
+To optimize the LCS problem for the EM model, researchers use a well-known technique called \textbf{Blocked Dynamic Programming} (or Tiled DP). 
+Instead of computing the DP table cell by cell, the EM approach divides the large $N \times N$ grid into smaller square blocks (or tiles) of size $S \times S$. The algorithm is designed so that an entire block, along with its required boundaries, fits perfectly inside the internal memory $M$. 
+
+The processor loads a block, performs all $S^2$ local calculations purely in the fast RAM without any disk interruptions, and then writes only the newly computed boundaries back to the disk. This drastically reduces the number of slow I/O block transfers.
+
+\textbf{Limitation:} While Blocked DP successfully minimizes I/O transfers, it is strictly a sequential approach designed for a single processor ($P=1$). The standard EM model does not account for multiple processors working simultaneously. Therefore, it cannot take advantage of modern multi-core architectures to speed up the massive $O(N^2)$ computational work.
+
+\section{Parallel Algorithms (The PRAM Model)}
+To speed up the actual computation time, researchers use the Parallel Random Access Machine (PRAM) model\cite{jaja-ipa-92}. The PRAM model assumes we have $P$ processors that can all work at the same time. 
+
+The standard parallel solution for the LCS problem uses the \textbf{Wavefront Method}. Because the calculation of a DP cell depends on its top and left neighbors, we cannot compute the entire matrix simultaneously. However, all cells lying on the same anti-diagonal line (a "wavefront") are completely independent of each other. PRAM algorithms assign individual processors to compute individual cells along these diagonal waves concurrently. 
+
+\textbf{Limitation:} The PRAM model assumes a "flat" memory hierarchy. It assumes all $P$ processors can access any piece of shared memory instantly, without any penalties for block transfers. If we try to run a standard PRAM wavefront algorithm on a system where the strings are stored on an external disk, it causes a catastrophe. Every single processor will simultaneously request tiny, scattered fragments of data (individual characters or boundary cells) from the disk. Because the disk must transfer data in blocks of size $B$, this creates extreme I/O congestion. The system becomes completely overwhelmed trying to fetch countless blocks, causing the processors to sit idle.
+
+\section{The Gap in Existing Literature}
+The literature review reveals a clear separation in how the LCS problem is handled:
+\begin{itemize}
+    \item We know how to optimize for slow disk I/O using Blocked DP, but only for a single processor.
+    \item We know how to optimize for computation time using the parallel Wavefront method, but it causes extreme I/O penalties.
+\end{itemize}
+
+What is missing from the existing literature is a unified algorithmic approach that handles both massive parallelism and external memory constraints simultaneously. This is exactly what the \textbf{Parallel External Memory (PEM)} model is designed to address. The PEM model requires us to simultaneously manage the number of processors ($P$), the limited local memory of each processor ($M$), and the block transfer size ($B$).
+
+\section{Statement of Novelty: Our Approach}
+The core novelty of this thesis is not the invention of blocked DP, nor is it the invention of the wavefront method. \textbf{The novelty lies in successfully designing a scheduling algorithm that combines them under the strict constraints of the shared-memory PEM model.} 
+
+Applying Blocked DP in a parallel environment is mathematically non-trivial. Our proposed \textbf{Tiled Wavefront Algorithm} introduces the following novel solutions:
+
+\subsection{Coarse-Grained Wavefront Scheduling}
+We elevate the parallel wavefront concept from the \textit{cell level} to the \textit{block level}. In our algorithm, processors do not compute individual DP cells; they are assigned entire $S \times S$ independent sub-matrices. By mathematically sizing $S$ based on the internal memory limit $M$, we ensure that each processor performs a massive amount of local computational work. This effectively "hides" the latency of fetching blocks from the external memory, explicitly balancing the parallel computation time with the I/O cost.
+
+\subsection{Managing CREW Constraints with Overlapping Dependencies}
+In sequential blocked DP, managing the boundaries between blocks is simple because only one processor accesses the disk. In our parallel approach, multiple processors work on the same diagonal wave simultaneously, sharing the same external memory. 
+Our algorithm is specifically designed to adhere to the \textbf{Concurrent Read Exclusive Write (CREW)} constraints of the PEM model:
+\begin{itemize}
+    \item \textbf{Concurrent Read (CR):} Two adjacent tiles on a diagonal wave often need to read the same boundary data generated by a tile from a previous wave. Our algorithm explicitly leverages the CR property to allow processors to fetch these overlapping boundary blocks concurrently without queuing delays.
+    \item \textbf{Exclusive Write (EW):} If multiple processors attempt to write their results back to the same memory block, it causes a write conflict. Our logical grid partitioning guarantees that every processor writes its newly computed boundary to a strictly distinct block in the shared memory, perfectly satisfying the EW constraint.
+\end{itemize}
+
+\section{Summary}
+While blocked dynamic programming is a known sequential optimization, existing literature does not provide a mechanism to safely and efficiently distribute those blocks across multiple processors sharing a single external disk. Our approach bridges this gap. It provides a conflict-free scheduling mechanism that achieves optimal parallel speedup while strictly minimizing I/O block transfers.
+
+\vspace{1em}
+\begin{table}[h!] \centering 
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|c|p{4.6cm}|} 
+\hline 
+\textbf{Computational Model} & \textbf{Parallel ($P>1$)?} & \textbf{I/O Aware ($B, M$)?} & \textbf{Main Bottleneck} \\ 
+\hline Standard RAM & No & No & Severe Disk Thrashing \\ \hline PRAM (Wavefront) & Yes & No & Extreme I/O Congestion 
+\\ 
+\hline EM Model (Blocked DP) & No & Yes & Slow Computation Time 
+\\ 
+\hline \textbf{PEM (Our Approach)} & \textbf{Yes} & \textbf{Yes} & \textbf{None (Optimal Balance Achieved)} 
+\\ 
+\hline \end{tabular} \caption{Comparison showing the gap in existing LCS algorithms.} \label{tab:novelty_comparison} \end{table}

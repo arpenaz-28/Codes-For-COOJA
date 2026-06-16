@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.6)  13 JUN 2026 20:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.6)  16 JUN 2026 03:03
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **"c:/ANUP/MTP/Proposing/Codes For COOJA/Paper/paper_revised_anonymity.tex"
@@ -638,35 +638,38 @@ File: omsptm.fd
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 52.
+
+Underfull \vbox (badness 1024) has occurred while \output is active []
+
  [1{C:/Users/kulka/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 217.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 216.
  (C:\Users\kulka\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 217.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 216.
  (C:\Users\kulka\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2]
-<fig_enrollment.jpg, id=204, 530.73282pt x 610.53094pt>
+<fig_enrollment.jpg, id=205, 530.73282pt x 610.53094pt>
 File: fig_enrollment.jpg Graphic file (type jpg)
 <use fig_enrollment.jpg>
-Package pdftex.def Info: fig_enrollment.jpg  used on input line 328.
+Package pdftex.def Info: fig_enrollment.jpg  used on input line 330.
 (pdftex.def)             Requested size: 226.79846pt x 260.9022pt.
 
-Underfull \hbox (badness 2521) in paragraph at lines 365--384
+Underfull \hbox (badness 2521) in paragraph at lines 367--386
 \OT1/ptm/m/n/10 by its pre-vi-ous pseudonym and re-store syn-chro-ni-sa-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--384
+Underfull \hbox (badness 10000) in paragraph at lines 367--386
 \OT1/ptm/m/n/10 with-out re-quir-ing re-enrolment. $\OML/cmm/m/it/10 AS$ \OT1/ptm/m/n/10 there-fore stores
  []
 
 
-Overfull \hbox (2.83371pt too wide) in paragraph at lines 365--384
+Overfull \hbox (2.83371pt too wide) in paragraph at lines 367--386
 \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 T[];  ID[];  \OT1/cmr/m/n/10 ^^H[]\OML/cmm/m/it/10 ;  c[];  m[];  m[];  [][];  [][]\OMS/cmsy/m/n/10 g$\OT1/ptm/m/n/10 . 
  []
 
@@ -674,82 +677,82 @@ Overfull \hbox (2.83371pt too wide) in paragraph at lines 365--384
 Underfull \vbox (badness 1038) has occurred while \output is active []
 
  [3 <./fig_enrollment.jpg>]
-<fig_auth.jpg, id=219, 539.01375pt x 650.43pt>
+<fig_auth.jpg, id=221, 539.01375pt x 650.43pt>
 File: fig_auth.jpg Graphic file (type jpg)
 <use fig_auth.jpg>
-Package pdftex.def Info: fig_auth.jpg  used on input line 398.
+Package pdftex.def Info: fig_auth.jpg  used on input line 400.
 (pdftex.def)             Requested size: 226.79846pt x 273.68489pt.
-<fig_keyex.jpg, id=224, 580.41844pt x 621.82312pt>
+ [4 <./fig_auth.jpg>]
+<fig_keyex.jpg, id=233, 580.41844pt x 621.82312pt>
 File: fig_keyex.jpg Graphic file (type jpg)
 <use fig_keyex.jpg>
-Package pdftex.def Info: fig_keyex.jpg  used on input line 456.
+Package pdftex.def Info: fig_keyex.jpg  used on input line 509.
 (pdftex.def)             Requested size: 226.79846pt x 242.97496pt.
- [4 <./fig_auth.jpg>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \hbox (badness 4967) in paragraph at lines 542--555
+Underfull \hbox (badness 4967) in paragraph at lines 544--557
 []\OT1/ptm/m/n/10 The pro-posed dual-state mech-a-nism avoids this re-
  []
 
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 557.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 559.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./fig_keyex.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 592--595
+Underfull \hbox (badness 10000) in paragraph at lines 594--597
 []$\OML/cmm/m/it/10 m[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 m[]$\OT1/ptm/m/n/10 ; $\OML/cmm/m/it/10 m[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 m[]$\OT1/ptm/m/n/10 ; $[] \OT1/cmr/m/n/10 =
  []
 
-<fig_proverif.png, id=244, 1926.19624pt x 792.9625pt>
+<fig_proverif.png, id=240, 1926.19624pt x 792.9625pt>
 File: fig_proverif.png Graphic file (type png)
 <use fig_proverif.png>
-Package pdftex.def Info: fig_proverif.png  used on input line 613.
+Package pdftex.def Info: fig_proverif.png  used on input line 615.
 (pdftex.def)             Requested size: 516.0pt x 212.42088pt.
-[6] [7 <./fig_proverif.png>] [8]
-<fig_sim_total.png, id=305, 972.8345pt x 478.588pt>
+[5 <./fig_keyex.jpg>] [6 <./fig_proverif.png>] [7] [8]
+<fig_sim_total.png, id=307, 972.8345pt x 478.588pt>
 File: fig_sim_total.png Graphic file (type png)
 <use fig_sim_total.png>
-Package pdftex.def Info: fig_sim_total.png  used on input line 1002.
+Package pdftex.def Info: fig_sim_total.png  used on input line 1006.
 (pdftex.def)             Requested size: 252.0pt x 123.96986pt.
-<fig_sim_as_energy.png, id=308, 631.961pt x 342.078pt>
+<fig_sim_as_energy.png, id=310, 631.961pt x 342.078pt>
 File: fig_sim_as_energy.png Graphic file (type png)
 <use fig_sim_as_energy.png>
-Package pdftex.def Info: fig_sim_as_energy.png  used on input line 1028.
+Package pdftex.def Info: fig_sim_as_energy.png  used on input line 1032.
 (pdftex.def)             Requested size: 196.5597pt x 106.39801pt.
-<fig_sim_as_cpu.png, id=309, 631.961pt x 342.078pt>
+<fig_sim_as_cpu.png, id=311, 631.961pt x 342.078pt>
 File: fig_sim_as_cpu.png Graphic file (type png)
 <use fig_sim_as_cpu.png>
-Package pdftex.def Info: fig_sim_as_cpu.png  used on input line 1030.
+Package pdftex.def Info: fig_sim_as_cpu.png  used on input line 1034.
 (pdftex.def)             Requested size: 196.5597pt x 106.39801pt.
- [9 <./fig_sim_total.png>]
-<fig_sim_net_energy.png, id=321, 837.1275pt x 440.4455pt>
+ [9 <./fig_sim_total.png> <./fig_sim_as_energy.png> <./fig_sim_as_cpu.png>]
+<fig_sim_net_energy.png, id=324, 837.1275pt x 440.4455pt>
 File: fig_sim_net_energy.png Graphic file (type png)
 <use fig_sim_net_energy.png>
-Package pdftex.def Info: fig_sim_net_energy.png  used on input line 1059.
+Package pdftex.def Info: fig_sim_net_energy.png  used on input line 1063.
 (pdftex.def)             Requested size: 196.5597pt x 103.41733pt.
-<fig_sim_net_cpu.png, id=322, 837.1275pt x 440.4455pt>
+<fig_sim_net_cpu.png, id=325, 837.1275pt x 440.4455pt>
 File: fig_sim_net_cpu.png Graphic file (type png)
 <use fig_sim_net_cpu.png>
-Package pdftex.def Info: fig_sim_net_cpu.png  used on input line 1061.
+Package pdftex.def Info: fig_sim_net_cpu.png  used on input line 1065.
 (pdftex.def)             Requested size: 196.5597pt x 103.41733pt.
-<fig_desync_bar.png, id=330, 984.0765pt x 490.2315pt>
+<fig_desync_bar.png, id=333, 984.0765pt x 490.2315pt>
 File: fig_desync_bar.png Graphic file (type png)
 <use fig_desync_bar.png>
-Package pdftex.def Info: fig_desync_bar.png  used on input line 1125.
+Package pdftex.def Info: fig_desync_bar.png  used on input line 1129.
 (pdftex.def)             Requested size: 252.0pt x 125.53473pt.
- [10 <./fig_sim_as_energy.png> <./fig_sim_as_cpu.png> <./fig_sim_net_energy.png> <./fig_sim_net_cpu.png>]
-<RPI_HW.jpeg, id=345, 1284.8pt x 1214.5375pt>
+ [10 <./fig_sim_net_energy.png> <./fig_sim_net_cpu.png> <./fig_desync_bar.png>]
+<RPI_HW.jpeg, id=348, 1284.8pt x 1214.5375pt>
 File: RPI_HW.jpeg Graphic file (type jpg)
 <use RPI_HW.jpeg>
-Package pdftex.def Info: RPI_HW.jpeg  used on input line 1160.
+Package pdftex.def Info: RPI_HW.jpeg  used on input line 1164.
 (pdftex.def)             Requested size: 173.26407pt x 163.7887pt.
-<fig_hw_comparison.png, id=348, 776.0995pt x 342.4795pt>
+<fig_hw_comparison.png, id=351, 776.0995pt x 342.4795pt>
 File: fig_hw_comparison.png Graphic file (type png)
 <use fig_hw_comparison.png>
-Package pdftex.def Info: fig_hw_comparison.png  used on input line 1193.
+Package pdftex.def Info: fig_hw_comparison.png  used on input line 1197.
 (pdftex.def)             Requested size: 252.0pt x 111.2pt.
- [11 <./fig_desync_bar.png> <./RPI_HW.jpeg> <./fig_hw_comparison.png>] (paper_revised_anonymity.bbl)
+ (paper_revised_anonymity.bbl
+
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
+
+[11 <./RPI_HW.jpeg> <./fig_hw_comparison.png>])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -770,17 +773,17 @@ Package rerunfilecheck Info: File `paper_revised_anonymity.out' has not changed.
 (rerunfilecheck)             Checksum: 2267B71DDA51922C0AA738D692ED8725;6145.
  ) 
 Here is how much of TeX's memory you used:
- 22690 strings out of 467871
- 425416 string characters out of 5418377
- 825406 words of memory out of 5000000
- 51094 multiletter control sequences out of 15000+600000
+ 22689 strings out of 467871
+ 425407 string characters out of 5418377
+ 824417 words of memory out of 5000000
+ 51093 multiletter control sequences out of 15000+600000
  674581 words of font info for 127 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,94p,480b,544s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,94p,480b,592s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam7.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper_revised_anonymity.pdf (12 pages, 1534761 bytes).
+Output written on paper_revised_anonymity.pdf (12 pages, 1536180 bytes).
 PDF statistics:
- 470 PDF objects out of 1000 (max. 8388607)
+ 472 PDF objects out of 1000 (max. 8388607)
  84 named destinations out of 1000 (max. 500000)
  329 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,97 @@
+\documentclass{CSEThesis}
+
+% ===== Standard packages (from template) =====
+\usepackage{amsmath}        % Extra math definitions
+\usepackage{setspace}       % 1.5 / double spacing
+\usepackage{epsfig,color}
+
+% ===== Additional packages required by this report's content =====
+\usepackage{graphicx}
+\usepackage{amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+
+% ---- Hyperlinks (load last among setup packages) ----
+\usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue]{hyperref}
+
+% ---- Hyphenation exceptions for long technical words ----
+\hyphenation{de-syn-chro-ni-sa-tion de-syn-chro-ni-za-tion
+             au-then-ti-ca-tion un-link-a-bil-i-ty light-weight}
+\emergencystretch=4pt
+
+% ---- Figure search path (all figures live in this folder) ----
+\graphicspath{{./}}
+
+% ============================================================
+%  Title-page metadata (used by title.tex / certificate.tex)
+% ============================================================
+\btptitle = {Anonymity Preserving Decoupled Distributed Authentication for Multihop IoT Networks}
+\name     = {Anup Kulkarni}
+\rollno   = {244101005}
+\email    = {anup.kulkarni@iitg.ac.in}
+\guide    = {Dr. Manas Khatua}
+
+\begin{document}
+
+\include{title}
+\cleardoublepage
+\include{certificate}
+\cleardoublepage
+\include{acknowledgement}
+\cleardoublepage
+\include{abstract}
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\cleardoublepage
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\cleardoublepage
+\def\headrulehook{\color{black}}      % Color the header rule
+
+%========== Chapters
+\typeout{}
+\include{chapter1}
+\cleardoublepage
+\typeout{}
+\include{chapter2}
+\cleardoublepage
+\typeout{}
+\include{chapter3}
+\cleardoublepage
+\typeout{}
+\include{chapter4}
+\cleardoublepage
+\typeout{}
+\include{chapter5}
+\cleardoublepage
+\typeout{}
+\include{chapter6}
+\cleardoublepage
+\typeout{}
+\include{chapter7}
+\cleardoublepage
+\typeout{}
+\include{futurework}
+\typeout{}
+
+\let\cleardoublepage\clearpage
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+
+\end{document}

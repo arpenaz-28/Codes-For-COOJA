@@ -120,9 +120,8 @@ re-enrolment, which is an energy-costly operation for battery-powered
 constrained nodes.
 
 This paper addresses both gaps with two lightweight extensions to DAuth.  To close the anonymity gap, the
-real identity is never placed on the open channel after enrolment, it is
-replaced by a rotating pseudonym
-that is refreshed after every key exchange, so successive sessions become
+real identity is never placed on the open channel after enrolment process conducted via secure channel. The device identity is
+replaced by a rotating pseudonym that is refreshed after every key exchange, so successive sessions become
 unlinkable to an observer.  To eliminate the re-enrolment penalty caused by
 desynchronisation, both the authentication server and the gateway maintain a
 dual state, if the session-key update is lost in transit, the
@@ -222,6 +221,8 @@ compared schemes.
     SAKMS~\cite{yang2024sakms}     & \checkmark & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & H & L \\
     Li et al.~\cite{li2020puf}         & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & H & L \\
     Zheng et al.~\cite{zheng2022puf}      & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & M & L \\
+    LAAKA~\cite{ali2024laaka}     & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ & L & L \\
+    Zhou et al.~\cite{zhou2024auth} & $\times$ & \checkmark & $\times$ & \checkmark & \checkmark & $\times$ & M & M \\
     DAuth~\cite{das2026comsnets}  & \checkmark & \checkmark & \checkmark & \checkmark & $\times$ & $\times$ & L & L \\
     Proposed                 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & L & L \\
     \bottomrule
@@ -289,6 +290,7 @@ session key exchange.  The following sections elaborate on these phases.
     $GW$ & Gateway / root node \\
     $H(\cdot)$ & Collision-resistant hash function (SHA-256) \\
     $\mathsf{SE}(\cdot)$, $\mathsf{SD}(\cdot)$ & Symmetric encryption/decryption (AES-128) \\
+    $\|$ & Concatenation operation \\
     $\oplus$ & Bitwise XOR operation \\
     $\mathbin{\&}$ & Bitwise AND operation \\
     $c_D$, $c_{AS\text{-}D}$ & PUF challenges for $D$ (issued by $AS$) and $AS$ (by $D$) \\
@@ -311,16 +313,16 @@ session key exchange.  The following sections elaborate on these phases.
 The node enrolment phase is the first phase undergone by a newly joined node $D$
 with its authentication server $AS$.  Before entering this phase, it is assumed
 that $D$ has the required information regarding $AS$: the address and unique
-identity ($ID_{AS}$) of $AS$.  $AS$ can lie at a single-hop or multi-hop
+identity ($ID_{AS}$) of $AS$.  $AS$ can be located at a single-hop or multi-hop
 distance from $D$.  This phase is assumed to be executed in a secure environment
-by establishing an end-to-end encrypted channel between $D$ and $AS$.  Every
-newly joined node executes this phase once until it disconnects from the network.
+by establishing an end-to-end secure encrypted channel between $D$ and $AS$.  Every
+newly joined node executes this phase once until it becomes disconnected from the network.
 The main purpose of this phase is to enrol the unique secret of $D$ (i.e.,
 $y_D$) with the accumulated value ($T_\mathsf{Acc}$) of $AS$.  During the node
-authentication phase, $D$ uses $y_D$ again to authenticate with $AS$.
+authentication phase, $D$ uses $y_D$ again to get authenticated by $AS$.
 PUF responses and a session-based random are also communicated between $AS$ and
-$D$ during this phase to establish the secure communication of $y_D$ during
-authentication.  Figure~\ref{fig:enrolment} outlines the methodology of this
+$D$ in this phase to establish the secure communication of $y_D$ during
+authentication process.  Figure~\ref{fig:enrolment} outlines the methodology of this
 phase.
 
 \begin{figure}[!t]
@@ -375,7 +377,7 @@ $\mathit{PID}_{\mathrm{old}} = \varepsilon$, $m_{\mathrm{old}} = \varepsilon$, f
 initial \emph{dual state}.  This dual state
 ($m_{\mathrm{curr}}$, $m_{\mathrm{old}}$, $\mathit{PID}_{\mathrm{curr}}$,
 $\mathit{PID}_{\mathrm{old}}$) is maintained to handle desynchronisation: if the
-updated $m_{\mathrm{new}}$ delivered in the Key Exchange Phase is lost in
+updated $m_{\mathrm{new}}$, delivered in the Key Exchange Phase, is lost in
 transit, $AS$ can still recognise $D$ by its previous pseudonym and restore
 synchronisation without requiring re-enrolment.  $AS$ therefore stores
 $\{T_\mathsf{Acc},\, ID_D,\, \Phi_{AS\text{-}D},\, c_{AS\text{-}D},\,
@@ -451,13 +453,6 @@ at the end of each session and carrying it within $\mathsf{auth\_token}_D$, so
 that $GW$ can update its pseudonym mapping for $D$ and successive sessions
 remain unlinkable.  Figure~\ref{fig:keyex} shows the phase.
 
-\begin{figure}[!t]
-  \centering
-  \includegraphics[width=0.9\columnwidth]{fig_keyex}
-  \caption{Session Key Exchange Phase via open channel.}
-  \label{fig:keyex}
-\end{figure}
-
 $K_{GW\text{-}D}$ is calculated by $AS$ by hashing the concatenation of $R_D'$ and
 $m_{\mathrm{new}}$.
 $R_D'$ is the PUF response of $D$ regenerated by $AS$ during the node
@@ -509,6 +504,13 @@ frames under the prior session key pending re-authentication.
 
 \subsection{Desynchronisation Recovery}
 
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.9\columnwidth]{fig_keyex}
+  \caption{Session Key Exchange Phase via open channel.}
+  \label{fig:keyex}
+\end{figure}
+
 During the Key Exchange Phase, $AS$ simultaneously dispatches two packets:
 $(\mathit{PID}_{\mathrm{new}},\, ID_{AS},\, \mathsf{auth\_token}_D)$ to $GW$
 and $(m_H,\, ts_2)$ to $D$.
@@ -553,7 +555,7 @@ The dual-state mechanism tolerates a single consecutive Key Exchange Phase loss,
 two or more consecutive losses exhaust both slots, requiring re-enrolment, a
 deliberate trade-off between storage overhead and recovery depth.
 
-\begin{algorithm}[H]
+\begin{algorithm}[t]
 \caption{Desynchronisation Recovery -- Authentication Phase}
 \label{alg:desync-auth}
 \begin{algorithmic}[1]
@@ -573,7 +575,7 @@ deliberate trade-off between storage overhead and recovery depth.
 \end{algorithmic}
 \end{algorithm}
 
-\begin{algorithm}[H]
+\begin{algorithm}[t]
 \caption{Desynchronisation Recovery -- Key Exchange Phase}
 \label{alg:desync-keyex}
 \begin{algorithmic}[1]
@@ -597,7 +599,7 @@ deliberate trade-off between storage overhead and recovery depth.
 \end{algorithm}
 
 % -------------------------------------------------------
-\FloatBarrier
+% \FloatBarrier
 \section{Security Analysis}
 
 \subsection{Formal Security Analysis}
@@ -746,6 +748,7 @@ does not reveal previous session keys because $m_{\mathrm{new}}$ is
 independently generated from a fresh nonce and $R_D$ is PUF-derived.
 
 % -------------------------------------------------------
+\FloatBarrier
 \section{Performance Analysis}
 
 \subsection{Theoretical Performance Analysis}
@@ -776,7 +779,7 @@ pseudonym initialisation — a security feature absent from DAuth. The scheme re
 competitive with Zhou et al.~\cite{zhou2024auth} (0.13\,ms), while additionally providing
 PUF-based secret binding and pseudonym initialisation at registration.
 
-\begin{table}[H]
+\begin{table}[!t]
   \centering
   \onelinetablecaption
   \caption{Computational Cost Comparison: Enrolment Phase.}
@@ -824,7 +827,7 @@ overhead over LAAKA~\cite{ali2024laaka} (0.56\,ms) and Zhou et al.~\cite{zhou202
 (0.53\,ms), which neither employ PUF-based authentication nor a decoupled distributed
 authentication server.
 
-\begin{table}[H]
+\begin{table}[!t]
   \centering
   \onelinetablecaption
   \caption{Computational Cost Comparison: Authentication \& Key Exchange Phase.}
@@ -872,7 +875,7 @@ LAAKA and Zhou, the proposed scheme binds device enrolment to a PUF-derived secr
 initialises the pseudonym at registration, adding security guarantees without increasing
 communication cost.
 
-\begin{table}[H]
+\begin{table}[!t]
   \centering
   \onelinetablecaption
   \caption{Communication Cost Comparison: Enrolment Phase.}
@@ -892,7 +895,7 @@ communication cost.
   \scriptsize
   IDs/timestamps = 32\,b; hashes/nonces/challenges/ciphertexts = 256\,b.
 \end{table}
-\begin{table}[H]
+\begin{table}[!t]
   \centering
   \onelinetablecaption
   \caption{Communication Cost Comparison: Auth.\ \& Key Exchange Phase.}
@@ -928,6 +931,7 @@ open-channel communications.
 
 
 
+\FloatBarrier
 \subsection{Simulation-Based Performance Analysis}
 \label{sec:sim}
 
@@ -954,7 +958,7 @@ count across $N \in \{30, 50, 80, 100, 120\}$. All results are averaged over ten
 independent random seeds. Table~\ref{tab:simparams} elaborates the common simulation
 parameters.
 
-\begin{table}[H]
+\begin{table}[!t]
   \centering
   \onelinetablecaption
   \caption{Simulation Parameters.}
@@ -1198,6 +1202,7 @@ the hardware setup involves only two Raspberry Pi platforms.
 \end{figure}
 
 \FloatBarrier
+\balance
 \section{Conclusion}
 
 This paper presented a lightweight, anonymous, and decoupled distributed
@@ -1224,7 +1229,6 @@ scheme consumes 0.286\,J per authentication round, achieving 14.2\,\% and 52.5\,
 energy savings over Zhou et al.\ and LAAKA, respectively.
 
 % -------------------------------------------------------
-\balance
 \bibliographystyle{IEEEtran}
 \bibliography{ref}
 
