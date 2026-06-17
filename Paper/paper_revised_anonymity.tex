@@ -65,8 +65,8 @@ the device and server states, forcing full re-enrolment. Therefore, this paper p
 addressing both the identified gaps. Device anonymity is preserved through per-session
 pseudonym rotation, where a rotating pseudonym replaces the real device identity
 in all open-channel communications, preventing long-term tracking.  A
-dual-state synchronisation mechanism maintained at both the authentication
-server and the gateway/root enables seamless recovery from single packet-loss
+dual-state synchronisation mechanism maintained at the authentication
+server enables seamless recovery from single packet-loss
 events without re-enrolment.  The proposed scheme is evaluated via ProVerif-based
 formal security analysis, and theoretical and simulation-based performance analysis confirm that the proposed scheme reduces energy by
 42.8\,\% and 32.4\,\%, and CPU time by 42.7\,\% and 32.4\,\%, over the state-of-the-art
@@ -123,7 +123,7 @@ This paper addresses both gaps with two lightweight extensions to DAuth.  To clo
 real identity is never placed on the open channel after enrolment process conducted via secure channel. The device identity is
 replaced by a rotating pseudonym that is refreshed after every key exchange, so successive sessions become
 unlinkable to an observer.  To eliminate the re-enrolment penalty caused by
-desynchronisation, both the authentication server and the gateway maintain a
+desynchronisation, the authentication server maintains a
 dual state, if the session-key update is lost in transit, the
 device still arrives under its previous pseudonym, which the server recognises
 and uses to re-synchronise without repeating enrolment.
@@ -187,8 +187,9 @@ properties together.  Their analysis demonstrates that this combination is
 absent from prior lightweight schemes, establishing GF2 as the target
 architectural pattern for a complete solution.
 LAAKA~\cite{ali2024laaka} and Zhou~et~al.~\cite{zhou2024auth} address
-anonymity in IoT authentication but rely on computationally intensive
-operations, incurring significantly higher overhead than DAuth.
+anonymity in IoT authentication but, owing to larger message payloads and
+additional message exchanges, incur significantly higher communication
+overhead than DAuth.
 
 Therefore, this paper proposes an anonymity-preserving extension to DAuth,
 incorporating two lightweight mechanisms.  Per-session pseudonym rotation
@@ -994,9 +995,9 @@ over LAAKA~\cite{ali2024laaka} and Zhou et al.~\cite{zhou2024auth} by achieving 
 Figure~\ref{fig:sim_total}(b), a reduction of 42.8\,\% and 32.4\,\% is demonstrated with
 respect to per-device CPU time over LAAKA and Zhou et al., respectively. The dominant savings
 arise in the authentication and key exchange phase. Due to the incorporation of fewer
-message exchanges and computationally lightweight hash-XOR operations, the proposed
-scheme has minimised radio activity and computational load compared to the
-message-intensive and cryptographically heavier LAAKA and Zhou et al. schemes. For Zhou et al., the
+message exchanges and lightweight hash-XOR operations, the proposed
+scheme minimises radio activity---the dominant energy cost in multihop IoT---compared to the
+more message-intensive LAAKA and Zhou et al. schemes. For Zhou et al., the
 reported costs comprise the enrolment and authentication phases only, as that scheme
 folds session-key agreement into its authentication exchange instead of executing a
 separate key-exchange round, whereas the remaining schemes include all three phases.
@@ -1049,8 +1050,7 @@ maximum tested network size $N = 120$, the proposed scheme demonstrates a reduct
 Figure~\ref{fig:sim_network}(b), a reduction of 42.7\,\% and 37.6\,\% is demonstrated
 with respect to total CPU time over LAAKA and Zhou et al., respectively, at $N = 120$.
 LAAKA and Zhou et al. exhibit steeper energy and CPU growth with increasing $N$ because their
-heavier per-device cryptographic load — AES-intensive authentication in LAAKA and a
-combined heavy authentication and key exchange in Zhou et al. — accumulates faster as the device count grows.
+larger per-device message payloads and additional exchanges accumulate faster as the device count grows.
 Due to the incorporation of lightweight XOR-hash operations and a decoupled authentication
 server design, the proposed scheme keeps per-device cost low and achieves the lowest total cost among all
 anonymity-preserving schemes (LAAKA and Zhou et al.) across all measured network sizes, while incurring

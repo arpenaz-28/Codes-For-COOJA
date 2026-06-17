@@ -241,9 +241,9 @@ DAuth~\cite{das2026comsnets} sits just below the proposed scheme in both metrics
 as it requires no pseudonym operations; the proposed scheme pays a small overhead
 (approximately 8\,\%) for the pseudonym-rotation and dual-state mechanisms that
 deliver anonymity and desynchronisation resilience, both of which are absent from DAuth.
-Due to the incorporation of fewer message exchanges and computationally lightweight
-hash-XOR operations, the proposed scheme has minimised radio activity and
-computational load compared to the message-intensive and cryptographically heavier
+Due to the incorporation of fewer message exchanges and lightweight
+hash-XOR operations, the proposed scheme minimises radio activity---the dominant
+energy cost in multihop IoT---compared to the more message-intensive
 LAAKA and Zhou et al.\ schemes.
 
 \begin{figure}[!ht]
@@ -300,8 +300,8 @@ Similarly, as shown in Figure~\ref{fig:sim_network}(b), a reduction of 42.7\,\% 
 37.6\,\% is demonstrated with respect to total CPU time over LAAKA and Zhou et al.,
 respectively, at $N = 120$.
 LAAKA and Zhou et al.\ exhibit steeper energy and CPU growth with increasing $N$
-because their heavier per-device cryptographic operations accumulate faster as the
-device count grows.
+because their larger per-device message payloads and additional exchanges accumulate
+faster as the device count grows.
 DAuth and the proposed scheme both scale favourably, maintaining the lowest total
 cost across all network sizes; the proposed scheme incurs only a modest overhead
 above DAuth attributable to the additional pseudonym-rotation mechanism.

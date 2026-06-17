@@ -46,9 +46,10 @@ concerns.
 \textbf{He~et~al.}~\cite{he2023lightweight} achieve lightweight anonymous
 authentication using hash-and-XOR primitives for CoAP/OSCORE but rely on a
 centralised server, forfeiting the decoupled-distribution advantage.
-\textbf{LAAKA}~\cite{ali2024laaka} employs ECC to protect device identity during
-mutual authentication; ECC operations, however, incur higher power consumption than
-may be tolerable on severely constrained nodes.
+\textbf{LAAKA}~\cite{ali2024laaka} protects device identity during mutual
+authentication using only lightweight hash and XOR operations; its overhead,
+however, stems from larger message payloads and additional message exchanges
+on severely constrained nodes.
 
 A comprehensive survey on lightweight anonymous
 authentication~\cite{zhong2025survey} catalogues approaches including temporary
@@ -70,7 +71,7 @@ derive each session key from independently refreshed material.
 Unlike the survey's reference constructions that rely on heavy cryptographic
 primitives, the proposed scheme uses lightweight PUF-based secret derivation and
 hash-XOR masking, and meets GF2's desynchronisation-resistance requirement through
-a dual-state recovery mechanism at both the authentication server and the gateway.
+a dual-state recovery mechanism at the authentication server.
 The result is a GF2-compliant design with the same low overhead as
 DAuth~\cite{das2026comsnets}.
 

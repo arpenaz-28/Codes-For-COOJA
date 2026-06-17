@@ -3,16 +3,20 @@
 \begin{frame}{Formal Security Analysis -- ProVerif}
     \begin{columns}
         \begin{column}{0.42\textwidth}
-            \footnotesize
-            Modelled under the \textbf{Dolev--Yao} adversary (full control of the open channel).
+            \scriptsize
+            Modeled under the \textbf{Dolev--Yao} adversary (full control of the open channel).
             \textbf{All queries satisfied:}
             \begin{itemize}
-                \item \textbf{Correspondence:} enrolment, both authentication directions,
-                cross-phase binding, key exchange.
-                \item \textbf{Secrecy:} session key $K_{GW\text{-}D}$ (device \& gateway views).
-                \item \textbf{Forward secrecy:} $m_{\mathrm{new}}$ stays secret.
-                \item \textbf{Anonymity:} $ID_D$ unrecoverable from traffic.
-                \item \textbf{Offline guessing} resistance.
+                \item \textbf{Correspondence:} every step runs in order and cannot be forged
+                $\Rightarrow$ stops \textbf{impersonation} and \textbf{replay}.
+                \item \textbf{Secrecy:} session key $K_{GW\text{-}D}$ never derivable
+                $\Rightarrow$ an eavesdropper \textbf{cannot read data}.
+                \item \textbf{Forward secrecy:} $m_{\mathrm{new}}$ stays secret $\Rightarrow$ a leaked
+                key \textbf{exposes no past/future sessions}.
+                \item \textbf{Anonymity:} $ID_D$ unrecoverable $\Rightarrow$ device
+                \textbf{cannot be tracked}.
+                \item \textbf{Offline guessing:} key not brute-forceable from captured traffic
+                $\Rightarrow$ \textbf{dictionary attacks fail}.
             \end{itemize}
         \end{column}
         \begin{column}{0.58\textwidth}
@@ -215,7 +219,7 @@
             \begin{itemize}
                 \item At $N=120$: Proposed is \textbf{42.7\%} below LAAKA and \textbf{37.6\%} below Zhou
                 in both energy and CPU time.
-                \item LAAKA / Zhou grow steeply (AES-heavy crypto).
+                \item LAAKA / Zhou grow steeply (larger payloads, more message exchanges).
                 \item Proposed stays lowest among anonymity-preserving schemes; only a small overhead above DAuth.
             \end{itemize}
         \end{column}
@@ -254,8 +258,7 @@
     \begin{columns}
         \begin{column}{0.4\textwidth}
             \footnotesize
-            \textbf{Setup:} 2$\times$ RPi 4B (device + AS), Windows laptop (GW), TCP links;
-            energy $=$ wall-time $\times$ 3.8\,W.
+            \textbf{Setup:} 2$\times$ RPi 4B (device + AS), Windows laptop (GW), TCP links.
             \vspace{0.25cm}
             \begin{block}{Per-round result}
                 \begin{itemize}

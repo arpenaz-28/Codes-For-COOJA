@@ -1,34 +1,82 @@
-\section{Proposed Scheme}
+\section{Pre-Requisites}
 
 \begin{frame}{System Model \& Assumptions}
-    \begin{columns}
+    \scriptsize
+    \setlength{\itemsep}{0pt}
+    \begin{columns}[T]
         \begin{column}{0.55\textwidth}
             \textbf{Entities}
-            \begin{itemize}
-                \item \textbf{$D$} -- newly joined device (has a PUF, identity $ID_D$).
-                \item \textbf{$AS$} -- authentication server: \emph{any} capable node pre-selected by the gateway (parent or non-parent).
-                \item \textbf{$GW$} -- gateway / root node.
+            \begin{itemize}\setlength{\itemsep}{1pt}
+                \item \textbf{$D$} -- newly joined device (PUF, identity $ID_D$).
+                \item \textbf{$AS$} -- \emph{any} capable node pre-selected by the gateway (parent or non-parent).
+                \item \textbf{$GW$} -- trusted gateway / root (registration authority).
             \end{itemize}
-            \vspace{0.25cm}
+            \vspace{0.1cm}
             \textbf{Assumptions}
-            \begin{itemize}
+            \begin{itemize}\setlength{\itemsep}{1pt}
                 \item $GW$ shares a long-term key $K_{GW\text{-}AS}$ with each AS.
                 \item $D$ knows the address and identity $ID_{AS}$ of its AS.
-                \item Nodes can do hash, AES, XOR, AND, concat, and PUF eval.
+                \item Nodes can do hash, AES, XOR, AND, concat, PUF eval.
             \end{itemize}
         \end{column}
         \begin{column}{0.45\textwidth}
             \begin{block}{Three protocol phases}
-                \begin{enumerate}
-                    \item \textbf{Enrolment} \\ {\footnotesize (once, secure channel)}
-                    \item \textbf{Authentication} \\ {\footnotesize (open channel)}
-                    \item \textbf{Key Exchange} \\ {\footnotesize (open channel)}
+                \begin{enumerate}\setlength{\itemsep}{1pt}
+                    \item \textbf{Enrolment} {\scriptsize (once, secure channel)}
+                    \item \textbf{Authentication} {\scriptsize (open channel)}
+                    \item \textbf{Key Exchange} {\scriptsize (open channel)}
                 \end{enumerate}
             \end{block}
             \begin{exampleblock}{Decoupling}
-                \footnotesize Authentication is \emph{decoupled} from network joining --
-                no parent is overwhelmed by its children.
+                Authentication is \emph{decoupled} from network joining -- no parent is overwhelmed by its children.
             \end{exampleblock}
+        \end{column}
+    \end{columns}
+    \vspace{0.15cm}
+    \begin{block}{Threat Model (Dolev--Yao)}
+        \begin{itemize}\setlength{\itemsep}{1pt}
+            \item \textbf{Channels:} enrolment \textbf{secure \& encrypted}; public channels \textbf{insecure}, fully adversary-controlled.
+            \item \textbf{Adversary \emph{can}} intercept, replay, modify, inject public messages; \textbf{\emph{cannot}} break hashes, read/clone the PUF, or access device secrets ($y_D,\, m_{\mathrm{curr}}$).
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Building Blocks -- PUF \& Hash Accumulator}
+    \vspace{0.4cm}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Physically Unclonable Function (PUF)}
+                \footnotesize
+                A hardware ``fingerprint'': manufacturing variations map a
+                challenge $c$ to a unique, unclonable response $R=\mathsf{PUF}(c)$.
+            \end{block}
+            \vspace{0.4cm}
+            \textbf{Significance}
+            \begin{itemize}\footnotesize
+                \item \textbf{No stored secret:} $R_D$ is \emph{regenerated} on demand,
+                never kept in memory $\Rightarrow$ nothing to steal if a node is captured.
+                \item \textbf{Unclonable:} cannot be copied even with the chip design
+                $\Rightarrow$ device cannot be impersonated.
+            \end{itemize}
+        \end{column}
+        \hfill
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Hash-based One-Way Accumulator}
+                \footnotesize
+                A single value $T_{\mathsf{Acc}}$ that compactly represents the whole
+                membership set: $T_{\mathsf{Acc}} \mathrel{\&}{=} H(y_D)$ on each enrolment.
+            \end{block}
+            \vspace{0.4cm}
+            \textbf{Significance}
+            \begin{itemize}\footnotesize
+                \item \textbf{Compact membership:} one fixed-size value stands in for
+                \emph{all} enrolled devices' secrets.
+                \item \textbf{One-way:} individual secrets $y_D$ cannot be recovered
+                from $T_{\mathsf{Acc}}$.
+                \item \textbf{Cheap test:} a legitimate device passes
+                $T_{\mathsf{Acc}} \mathrel{\&} H(y_D) = T_{\mathsf{Acc}}$ -- verification
+                is a single bitwise AND.
+            \end{itemize}
         \end{column}
     \end{columns}
 \end{frame}
@@ -87,6 +135,111 @@
     GW may pick any capable node, so no single parent is overloaded.}
 \end{frame}
 
+\begin{frame}{Notation}
+    \centering
+    \scriptsize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{@{}l@{\ }p{0.30\textwidth}l@{\ }p{0.28\textwidth}@{}}
+        \toprule
+        \textbf{Symbol} & \textbf{Description} & \textbf{Symbol} & \textbf{Description} \\
+        \midrule
+        $D,\,AS$ & Newly joined device \& its authentication server
+            & $y_D,\,R_D$ & Unique secret \& PUF response of $D$ \\
+        $GW$ & Gateway / root node
+            & $Y_D^{H}$ & Hashed unique secret $H(y_D)$ \\
+        $H(\cdot)$ & Collision-resistant hash (SHA-256)
+            & $T_{\mathrm{Acc}}$ & Accumulated authentication value at $AS$ \\
+        $SE(\cdot),SD(\cdot)$ & Symmetric enc./dec.\ (AES-128)
+            & $\Phi_{AS\text{-}D}$ & PUF binding $\mathrm{PUF}_{AS}(c_{AS\text{-}D})\oplus R_D$ \\
+        $\oplus$ & Bitwise XOR operation
+            & $\mathit{PID}_{\mathrm{curr}},\mathit{PID}_{\mathrm{old}}$ & Current \& previous pseudonyms of $D$ \\
+        \texttt{\&} & Bitwise AND operation
+            & $K_{GW\text{-}D}$ & Session key between $GW$ and $D$ \\
+        $c_D,\,c_{AS\text{-}D}$ & PUF challenges for $D$ (by $AS$) and $AS$ (by $D$)
+            & $K_{GW\text{-}AS}$ & Long-term shared key between $GW$ and $AS$ \\
+        $m_D$ & Session random issued by $AS$ at enrolment
+            & $ts_1,ts_2,ts_{\mathrm{auth}}$ & Timestamps for freshness verification \\
+        $m_{\mathrm{curr}},m_{\mathrm{old}}$ & Current \& previous session randoms at $D$ and $AS$
+            & & \\
+        \bottomrule
+    \end{tabular}
+\end{frame}
+
+\begin{frame}{DAuth -- Protocol Phases}
+    \begin{columns}[T,onlytextwidth]
+        \begin{column}{0.335\textwidth}
+            \centering
+            \textbf{\footnotesize Phase 1: Enrolment}\\
+            {\scriptsize (once, secure channel)}\\[2pt]
+            \includegraphics[width=\columnwidth,height=0.85\textheight,keepaspectratio]{dauth_enrol.png}
+        \end{column}
+        \begin{column}{0.335\textwidth}
+            \centering
+            \textbf{\footnotesize Phase 2: Authentication}\\
+            {\scriptsize (open channel)}\\[2pt]
+            \includegraphics[width=\columnwidth,height=0.85\textheight,keepaspectratio]{dauth_auth.png}
+        \end{column}
+        \begin{column}{0.335\textwidth}
+            \centering
+            \textbf{\footnotesize Phase 3: Key Exchange}\\
+            {\scriptsize (open channel)}\\[2pt]
+            \includegraphics[width=\columnwidth,height=0.85\textheight,keepaspectratio]{dauth_keyex.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Motivation \& Contributions}
+
+\begin{frame}{Motivation: Two Gaps in DAuth}
+    DAuth leaves \textbf{two critical security gaps} unaddressed:
+
+    \vspace{0.3cm}
+    \begin{enumerate}
+        \item \textbf{No anonymity.} The real device identity $ID_D$ is sent in
+        \textbf{plaintext on the open channel in every session}.
+        \begin{itemize}
+            \item An adversary with radio access can \textbf{track a device across sessions}.
+            \item Direct violation of modern privacy requirements.
+        \end{itemize}
+
+        \vspace{0.25cm}
+        \item \textbf{No desynchronisation recovery.} AS and device keep only a
+        \textbf{single session state}.
+        \begin{itemize}
+            \item A single lost packet during key delivery \textbf{desynchronises} their states.
+            \item All future authentications fail until \textbf{full re-enrolment} --
+            an energy-costly operation for a battery-powered node.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Our Contributions}
+    We extend DAuth with \textbf{two lightweight mechanisms} that close both gaps:
+
+    \vspace{0.3cm}
+    \begin{block}{1. Per-session Pseudonym Rotation (Anonymity)}
+        Real identity $ID_D$ never leaves the secure enrolment channel.
+        Open-channel messages carry a rotating pseudonym
+        $\mathit{PID} = H(ID_D \,\|\, m_{\mathrm{curr}})$, refreshed after every key exchange
+        $\Rightarrow$ successive sessions are \textbf{unlinkable}.
+    \end{block}
+
+    \begin{block}{2. Dual-State Synchronisation (Desync Recovery)}
+        The AS stores \emph{both} $(m_{\mathrm{curr}}, \mathit{PID}_{\mathrm{curr}})$
+        and $(m_{\mathrm{old}}, \mathit{PID}_{\mathrm{old}})$ $\Rightarrow$ recover from a single
+        packet loss \textbf{without re-enrolment}.
+    \end{block}
+
+    \vspace{0.15cm}
+    \begin{itemize}
+        \item Formally verified in \textbf{ProVerif} (Dolev--Yao model).
+        \item Evaluated via \textbf{theoretical}, \textbf{COOJA/Contiki-NG simulation}, and \textbf{hardware (RPi 4B)} analysis.
+    \end{itemize}
+\end{frame}
+
+\section{Proposed Scheme}
+
 \begin{frame}{Key Idea 1 -- Per-Session Pseudonym Rotation}
     \begin{columns}
         \begin{column}{0.55\textwidth}
@@ -119,7 +272,7 @@
         \begin{column}{0.46\textwidth}
             \footnotesize
             \begin{itemize}
-                \item $D \to AS$: request + $ID_D$.
+                \item $D \to AS$: $\langle \mathsf{Reg\_Req},\, ID_D\rangle$ -- registration request.
                 \item $AS$ issues challenge $c_D$ and session random $m_D$.
                 \item $D$ computes PUF response $R_D=\mathsf{PUF}_D(c_D)$, picks secret $y_D$,
                 returns $(y_D, R_D, c_{AS\text{-}D})$.
@@ -169,7 +322,7 @@
                 \item $AS \to GW$: $\mathsf{auth\_token}_D$ (encrypted under $K_{GW\text{-}AS}$, carries $K_{GW\text{-}D}$ + $\mathit{PID}_{\mathrm{new}}$).
                 \item $AS \to D$: masked $m_H = m_{\mathrm{new}}\oplus H(\cdots)$ + $ts_2$.
                 \item $D$ recovers $m_{\mathrm{new}}$, derives the \textbf{same} $K_{GW\text{-}D}$, rotates $\mathit{PID}$.
-                \item $AS$ \& $GW$ advance state: old $\leftarrow$ curr, curr $\leftarrow$ new.
+                \item $AS$ advances dual state (old $\leftarrow$ curr, curr $\leftarrow$ new); $GW$ just updates the session to $\mathit{PID}_{\mathrm{new}}$.
             \end{itemize}
         \end{column}
         \begin{column}{0.54\textwidth}
@@ -194,7 +347,7 @@
         \end{column}
         \begin{column}{0.5\textwidth}
             \begin{block}{Our fix: dual state}
-                $AS$ \& $GW$ keep \emph{both}
+                Only $AS$ keeps \emph{both}
                 $(m_{\mathrm{curr}},\mathit{PID}_{\mathrm{curr}})$ and
                 $(m_{\mathrm{old}},\mathit{PID}_{\mathrm{old}})$.
             \end{block}

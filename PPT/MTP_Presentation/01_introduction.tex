@@ -22,9 +22,13 @@
             \end{itemize}
         \end{column}
         \begin{column}{0.42\textwidth}
+            \centering
+            \includegraphics[width=0.88\columnwidth,height=0.42\textheight,keepaspectratio]{images.jpg}
+
+            \vspace{0.4cm}
             \begin{block}{Core tension}
                 \centering
-                \textbf{Strong security} \\ vs. \\ \textbf{Low energy / CPU cost} \\[0.3cm]
+                \textbf{Strong security} \quad vs. \quad \textbf{Low energy / CPU cost}\\[0.2cm]
                 \footnotesize on devices that cannot afford heavy cryptography.
             \end{block}
         \end{column}
@@ -37,14 +41,14 @@
         \textbf{excessive relay load} on intermediate nodes in a multihop topology.
     \end{block}
 
-    \begin{block}{Plain (parent-centric) distributed schemes}
+    \begin{block}{Distributed schemes}
         Each parent authenticates its own children $\Rightarrow$ whichever node a burst of
         new devices joins under is \textbf{overloaded}, while other capable nodes stay \textbf{idle}.
         This is the \textbf{skewed-load} problem.
     \end{block}
 
     \vspace{0.2cm}
-    \begin{alertblock}{DAuth (base scheme, Das \& Khatua, COMSNETS 2026)}
+    \begin{alertblock}{DAuth -- base scheme~\cite{dauth}}
         A \textbf{decoupled} distributed scheme: the gateway pre-assigns \emph{any} capable node
         (parent \emph{or} non-parent) as the Authentication Server (AS), spreading the load evenly.
         Uses \textbf{PUF}-based secrets, a \textbf{hash-based accumulator}, and \textbf{XOR}-masked messages.

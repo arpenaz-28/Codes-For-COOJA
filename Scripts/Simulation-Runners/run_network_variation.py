@@ -99,12 +99,29 @@ SCHEME_CFG = {
         "node_files":   ["gw-node.c", "gw-server.c", "sn-node.c", "user-node.c"],
         "device_pattern_prefix": "",
     },
+    "Li": {
+        "source_dir":  os.path.join(REPO, "Li-Scheme"),
+        "conf_dirs": {
+            30:  os.path.join(REPO, "Li-Scheme"),
+            50:  os.path.join(REPO, "Li-Scheme"),
+            80:  os.path.join(REPO, "Li-Scheme"),
+            100: os.path.join(REPO, "Li-Scheme"),
+            120: os.path.join(REPO, "Li-Scheme"),
+        },
+        "results_base": os.path.join(REPO, "Li-Scheme", "Simulation results", "network-variation"),
+        "node_files":   ["gw-node.c", "as-node.c", "device-node.c"],
+        "device_pattern_prefix": "",
+    },
 }
 
 # Zhou uses "user" nodes; RA & LAAKA use "device" nodes
 ZHOU_SOURCES = ["gw-node.c", "gw-server.c", "sn-node.c", "user-node.c",
                 "aes.c", "aes.h", "sha256.c", "sha256.h", "project-conf.h"]
 RA_SOURCES   = ["gw-node.c", "as-node.c", "device-node.c",
+                "aes.c", "aes.h", "sha256.c", "sha256.h", "project-conf.h"]
+# Li adds real ECC (micro-ecc) + the ecc-util wrapper to the RA file set.
+LI_SOURCES   = ["gw-node.c", "as-node.c", "device-node.c",
+                "ecc-util.h", "uECC.c", "uECC.h", "types.h",
                 "aes.c", "aes.h", "sha256.c", "sha256.h", "project-conf.h"]
 
 # Makefile templates with absolute CONTIKI path (relative paths break inside myproject)
@@ -130,6 +147,24 @@ CONTIKI = {CONTIKI}
 PROJECT_SOURCEFILES += aes.c sha256.c
 MODULES += os/net/app-layer/coap
 
+CFLAGS += -Wno-error=unused-function
+CFLAGS += -Wno-error=unused-variable
+CFLAGS += -Wno-error=unused-result
+CFLAGS += -Wno-error=unused-but-set-variable
+
+include $(CONTIKI)/Makefile.include
+"""
+
+MAKEFILE_LI = f"""CONTIKI_PROJECT = device-node as-node gw-node
+all: $(CONTIKI_PROJECT)
+
+CONTIKI = {CONTIKI}
+PROJECT_SOURCEFILES += aes.c sha256.c uECC.c
+MODULES += os/net/app-layer/coap
+
+CFLAGS += -DuECC_SUPPORTS_secp256r1=1
+CFLAGS += -DuECC_SUPPORT_COMPRESSED_POINT=0
+CFLAGS += -DuECC_OPTIMIZATION_LEVEL=2
 CFLAGS += -Wno-error=unused-function
 CFLAGS += -Wno-error=unused-variable
 CFLAGS += -Wno-error=unused-result
@@ -266,8 +301,8 @@ def generate_csc(scheme, n_total, seed, project_dir):
 
         extra_blocks = f"{gw_srv_block}\n{sn_block}\n{dev_block}"
     else:
-        if scheme == "RA":
-            as_block  = _motetype_block("AS Node", "as-node.c", "as-node.cooja", as_motes)
+        if scheme in ("RA", "Li"):
+            as_block  = _motetype_block("AS/SN Node", "as-node.c", "as-node.cooja", as_motes)
             dev_block = _motetype_block("Device Node", "device-node.c", "device-node.cooja", dev_motes)
         else:  # LAAKA
             as_block  = _motetype_block("Fog AS Node", "as-node.c", "as-node.cooja", as_motes)
@@ -357,14 +392,16 @@ def prepare_build(scheme, n_total):
     if os.path.isdir(build_cooja):
         shutil.rmtree(build_cooja)
 
-    file_list = ZHOU_SOURCES if scheme == "Zhou" else RA_SOURCES
+    file_list = (LI_SOURCES if scheme == "Li"
+                 else ZHOU_SOURCES if scheme == "Zhou" else RA_SOURCES)
     for fname in file_list:
         src_path = os.path.join(src, fname)
         if os.path.exists(src_path):
             shutil.copy2(src_path, os.path.join(MYPROJECT, fname))
 
     # Write Makefile with absolute CONTIKI path (relative paths break in myproject)
-    makefile_content = MAKEFILE_ZHOU if scheme == "Zhou" else MAKEFILE_RA
+    makefile_content = (MAKEFILE_LI if scheme == "Li"
+                        else MAKEFILE_ZHOU if scheme == "Zhou" else MAKEFILE_RA)
     with open(os.path.join(MYPROJECT, "Makefile"), "w") as f:
         f.write(makefile_content)
 
@@ -588,9 +625,9 @@ def run_variant(scheme, n_total, seeds):
 
 def main():
     parser = argparse.ArgumentParser(description="Network variation simulations")
-    parser.add_argument("--scheme", nargs="+", choices=["RA", "LAAKA", "Zhou"],
+    parser.add_argument("--scheme", nargs="+", choices=["RA", "LAAKA", "Zhou", "Li"],
                         default=["RA", "LAAKA", "Zhou"],
-                        help="Which schemes to run (default: all three)")
+                        help="Which schemes to run (default: all three; add 'Li' explicitly)")
     parser.add_argument("--size", nargs="+", type=int, choices=[30, 50, 80, 100, 120],
                         default=[30, 50, 80, 100],
                         help="Network sizes to simulate (default: all four)")

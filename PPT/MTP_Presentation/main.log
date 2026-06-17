@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.6)  16 JUN 2026 04:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.6)  17 JUN 2026 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1097,13 +1097,13 @@ Package epstopdf Info: Source file: <iitglogo.eps>
 ed-to.pdf iitglogo.eps>
 (epstopdf)             \includegraphics on input line 49.
 Package epstopdf Info: Output file is already uptodate.
-<iitglogo-eps-converted-to.pdf, id=54, 578.16pt x 434.62375pt>
+<iitglogo-eps-converted-to.pdf, id=58, 578.16pt x 434.62375pt>
 File: iitglogo-eps-converted-to.pdf Graphic file (type pdf)
 <use iitglogo-eps-converted-to.pdf>
 Package pdftex.def Info: iitglogo-eps-converted-to.pdf  used on input line 49.
 (pdftex.def)             Requested size: 68.28644pt x 51.33025pt.
 
-Overfull \vbox (8.23622pt too high) detected at line 49
+Overfull \vbox (10.18066pt too high) detected at line 49
  []
 
 [1
@@ -1114,190 +1114,246 @@ ps-converted-to.pdf>] (main.toc) [2
 ] (01_introduction.tex (main.toc) [3
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
 
 
 (C:\Users\kulka\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 
 
 (C:\Users\kulka\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 32.
+ut line 36.
 
 (C:\Users\kulka\AppData\Local\Programs\MiKTeX\tex/latex/sansmathaccent\ot1mathk
 erncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-) [4
+)
+<images.jpg, id=114, 559.08875pt x 360.34625pt>
+File: images.jpg Graphic file (type jpg)
+<use images.jpg>
+Package pdftex.def Info: images.jpg  used on input line 36.
+(pdftex.def)             Requested size: 126.50613pt x 81.53627pt.
+ [4
 
-] [5
+ <./images.jpg>] [5
 
-]) (02_literature_review.tex (main.toc) [6
+]) (02_literature_review.tex (main.toc)
+[6
 
 ]
-<survey_arch.png, id=189, 1112.155pt x 680.5425pt>
-File: survey_arch.png Graphic file (type png)
-<use survey_arch.png>
-Package pdftex.def Info: survey_arch.png  used on input line 24.
-(pdftex.def)             Requested size: 184.83716pt x 113.10501pt.
- [7
-
- <./survey_arch.png (PNG copy)>]
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 41.
+(Font)              using `OT1/cmss/bx/n' instead on input line 29.
 
-[8
+[7
 
-] [9
+] [8
 
-] (main.toc) [10
+]) (03_proposed_solution.tex (main.toc) [9
+
+] [10
 
 ] [11
 
-] [12
-
-]) (03_proposed_solution.tex (main.toc)
-[13
-
-] [14
-
 ]
 LaTeX Font Info:    Trying to load font information for OMS+cmss on input line 
-88.
-LaTeX Font Info:    No file OMScmss.fd. on input line 88.
+136.
+LaTeX Font Info:    No file OMScmss.fd. on input line 136.
 
 
 LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbar' on input line 88.
+(Font)              for symbol `textbar' on input line 136.
 
+[12
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
+[]\OT1/cmss/m/n/8 Hashed unique se-cret
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
+[]\OT1/cmss/m/n/8 Collision-resistant hash
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
+[]\OT1/cmss/m/n/8 Accumulated au-then-ti-ca-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
+[]\OT1/cmss/m/n/8 PUF bind-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
+[]\OT1/cmss/m/n/8 Current & pre-vi-ous
+ []
+
+[13
+
+]
+<dauth_enrol.png, id=383, 399.74344pt x 384.6872pt>
+File: dauth_enrol.png Graphic file (type png)
+<use dauth_enrol.png>
+Package pdftex.def Info: dauth_enrol.png  used on input line 190.
+(pdftex.def)             Requested size: 114.6661pt x 110.34723pt.
+<dauth_auth.png, id=385, 392.21532pt x 385.44pt>
+File: dauth_auth.png Graphic file (type png)
+<use dauth_auth.png>
+Package pdftex.def Info: dauth_auth.png  used on input line 190.
+(pdftex.def)             Requested size: 114.66716pt x 112.68634pt.
+<dauth_keyex.png, id=386, 394.47375pt x 384.6872pt>
+File: dauth_keyex.png Graphic file (type png)
+<use dauth_keyex.png>
+Package pdftex.def Info: dauth_keyex.png  used on input line 190.
+(pdftex.def)             Requested size: 114.67133pt x 111.82643pt.
+
+Overfull \hbox (1.71835pt too wide) detected at line 190
+[][][][][][][][][][][] [][][][][][][][][] [][][][][][][]
+ []
+
+[14
+
+ <./dauth_enrol.png> <./dauth_auth.png> <./dauth_keyex.png>] (main.toc)
 [15
 
 ] [16
 
+] [17
+
+] (main.toc) [18
+
+] [19
+
 ]
-<fig_enrollment.jpg, id=347, 530.73282pt x 610.53094pt>
+<fig_enrollment.jpg, id=486, 530.73282pt x 610.53094pt>
 File: fig_enrollment.jpg Graphic file (type jpg)
 <use fig_enrollment.jpg>
-Package pdftex.def Info: fig_enrollment.jpg  used on input line 137.
+Package pdftex.def Info: fig_enrollment.jpg  used on input line 290.
 (pdftex.def)             Requested size: 184.83716pt x 212.62701pt.
- [17
+ [20
 
  <./fig_enrollment.jpg>]
-<fig_auth.jpg, id=356, 539.01375pt x 650.43pt>
+<fig_auth.jpg, id=494, 539.01375pt x 650.43pt>
 File: fig_auth.jpg Graphic file (type jpg)
 <use fig_auth.jpg>
-Package pdftex.def Info: fig_auth.jpg  used on input line 159.
+Package pdftex.def Info: fig_auth.jpg  used on input line 312.
 (pdftex.def)             Requested size: 184.83716pt x 223.04881pt.
- [18
-
- <./fig_auth.jpg>]
-<fig_keyex.jpg, id=366, 580.41844pt x 621.82312pt>
-File: fig_keyex.jpg Graphic file (type jpg)
-<use fig_keyex.jpg>
-Package pdftex.def Info: fig_keyex.jpg  used on input line 180.
-(pdftex.def)             Requested size: 184.83716pt x 198.01965pt.
- [19
-
- <./fig_keyex.jpg>] [20
-
-]
-<fig_desync_algo.pdf, id=406, 363.65962pt x 360.90031pt>
-File: fig_desync_algo.pdf Graphic file (type pdf)
-<use fig_desync_algo.pdf>
-Package pdftex.def Info: fig_desync_algo.pdf  used on input line 218.
-(pdftex.def)             Requested size: 212.22118pt x 210.61093pt.
  [21
 
- <./fig_desync_algo.pdf>]) (04_complexity_analysis.tex (main.toc)
-[22
+ <./fig_auth.jpg>]
+<fig_keyex.jpg, id=504, 580.41844pt x 621.82312pt>
+File: fig_keyex.jpg Graphic file (type jpg)
+<use fig_keyex.jpg>
+Package pdftex.def Info: fig_keyex.jpg  used on input line 333.
+(pdftex.def)             Requested size: 184.83716pt x 198.01965pt.
+ [22
+
+ <./fig_keyex.jpg>] [23
 
 ]
-<fig_proverif.png, id=499, 1926.19624pt x 792.9625pt>
+<fig_desync_algo.pdf, id=543, 363.65962pt x 360.90031pt>
+File: fig_desync_algo.pdf Graphic file (type pdf)
+<use fig_desync_algo.pdf>
+Package pdftex.def Info: fig_desync_algo.pdf  used on input line 371.
+(pdftex.def)             Requested size: 212.22118pt x 210.61093pt.
+ [24
+
+ <./fig_desync_algo.pdf>])
+(04_complexity_analysis.tex (main.toc) [25
+
+]
+<fig_proverif.png, id=638, 1926.19624pt x 792.9625pt>
 File: fig_proverif.png Graphic file (type png)
 <use fig_proverif.png>
-Package pdftex.def Info: fig_proverif.png  used on input line 24.
+Package pdftex.def Info: fig_proverif.png  used on input line 28.
 (pdftex.def)             Requested size: 198.53189pt x 81.72081pt.
- [23
+ [26
 
- <./fig_proverif.png>] [24
-
-] [25
-
-] [26
+ <./fig_proverif.png>] [27
 
 ]
-<fig_sim_total.png, id=592, 972.8345pt x 478.588pt>
-File: fig_sim_total.png Graphic file (type png)
-<use fig_sim_total.png>
-Package pdftex.def Info: fig_sim_total.png  used on input line 185.
-(pdftex.def)             Requested size: 205.37926pt x 101.03223pt.
- [27
-
- <./fig_sim_total.png>]
-<fig_sim_as_energy.png, id=601, 631.961pt x 342.078pt>
-File: fig_sim_as_energy.png Graphic file (type png)
-<use fig_sim_as_energy.png>
-Package pdftex.def Info: fig_sim_as_energy.png  used on input line 208.
-(pdftex.def)             Requested size: 154.85463pt x 83.82288pt.
-<fig_sim_as_cpu.png, id=602, 631.961pt x 342.078pt>
-File: fig_sim_as_cpu.png Graphic file (type png)
-<use fig_sim_as_cpu.png>
-Package pdftex.def Info: fig_sim_as_cpu.png  used on input line 208.
-(pdftex.def)             Requested size: 154.85463pt x 83.82288pt.
-
 [28
 
- <./fig_sim_as_energy.png> <./fig_sim_as_cpu.png>]
-<fig_sim_net_energy.png, id=612, 837.1275pt x 440.4455pt>
-File: fig_sim_net_energy.png Graphic file (type png)
-<use fig_sim_net_energy.png>
-Package pdftex.def Info: fig_sim_net_energy.png  used on input line 230.
-(pdftex.def)             Requested size: 154.85463pt x 81.47441pt.
-<fig_sim_net_cpu.png, id=613, 837.1275pt x 440.4455pt>
-File: fig_sim_net_cpu.png Graphic file (type png)
-<use fig_sim_net_cpu.png>
-Package pdftex.def Info: fig_sim_net_cpu.png  used on input line 230.
-(pdftex.def)             Requested size: 154.85463pt x 81.47441pt.
- [29
-
- <./fig_sim_net_energy.png> <./fig_sim_net_cpu.png>]
-<fig_desync_bar.png, id=623, 984.0765pt x 490.2315pt>
-File: fig_desync_bar.png Graphic file (type png)
-<use fig_desync_bar.png>
-Package pdftex.def Info: fig_desync_bar.png  used on input line 251.
-(pdftex.def)             Requested size: 198.53189pt x 98.89731pt.
- [30
-
- <./fig_desync_bar.png>]
-<fig_rpi_hw.jpeg, id=644, 1284.8pt x 1214.5375pt>
-File: fig_rpi_hw.jpeg Graphic file (type jpg)
-<use fig_rpi_hw.jpeg>
-Package pdftex.def Info: fig_rpi_hw.jpeg  used on input line 274.
-(pdftex.def)             Requested size: 119.12033pt x 112.6024pt.
-<fig_hw_comparison.png, id=645, 776.0995pt x 342.4795pt>
-File: fig_hw_comparison.png Graphic file (type png)
-<use fig_hw_comparison.png>
-Package pdftex.def Info: fig_hw_comparison.png  used on input line 274.
-(pdftex.def)             Requested size: 188.94853pt x 83.37779pt.
- [31
-
- <./fig_rpi_hw.jpeg> <./fig_hw_comparison.png>]) (05_conclusion.tex (main.toc) 
-[32
-
-] [33
+] [29
 
 ]
-[34
+<fig_sim_total.png, id=728, 972.8345pt x 478.588pt>
+File: fig_sim_total.png Graphic file (type png)
+<use fig_sim_total.png>
+Package pdftex.def Info: fig_sim_total.png  used on input line 189.
+(pdftex.def)             Requested size: 205.37926pt x 101.03223pt.
+ [30
+
+ <./fig_sim_total.png>]
+<fig_sim_as_energy.png, id=737, 631.961pt x 342.078pt>
+File: fig_sim_as_energy.png Graphic file (type png)
+<use fig_sim_as_energy.png>
+Package pdftex.def Info: fig_sim_as_energy.png  used on input line 212.
+(pdftex.def)             Requested size: 154.85463pt x 83.82288pt.
+<fig_sim_as_cpu.png, id=738, 631.961pt x 342.078pt>
+File: fig_sim_as_cpu.png Graphic file (type png)
+<use fig_sim_as_cpu.png>
+Package pdftex.def Info: fig_sim_as_cpu.png  used on input line 212.
+(pdftex.def)             Requested size: 154.85463pt x 83.82288pt.
+ [31
+
+ <./fig_sim_as_energy.png> <./fig_sim_as_cpu.png>]
+<fig_sim_net_energy.png, id=749, 837.1275pt x 440.4455pt>
+File: fig_sim_net_energy.png Graphic file (type png)
+<use fig_sim_net_energy.png>
+Package pdftex.def Info: fig_sim_net_energy.png  used on input line 234.
+(pdftex.def)             Requested size: 154.85463pt x 81.47441pt.
+<fig_sim_net_cpu.png, id=750, 837.1275pt x 440.4455pt>
+File: fig_sim_net_cpu.png Graphic file (type png)
+<use fig_sim_net_cpu.png>
+Package pdftex.def Info: fig_sim_net_cpu.png  used on input line 234.
+(pdftex.def)             Requested size: 154.85463pt x 81.47441pt.
+ [32
+
+ <./fig_sim_net_energy.png> <./fig_sim_net_cpu.png>]
+<fig_desync_bar.png, id=760, 984.0765pt x 490.2315pt>
+File: fig_desync_bar.png Graphic file (type png)
+<use fig_desync_bar.png>
+Package pdftex.def Info: fig_desync_bar.png  used on input line 255.
+(pdftex.def)             Requested size: 198.53189pt x 98.89731pt.
+ [33
+
+ <./fig_desync_bar.png>]
+<fig_rpi_hw.jpeg, id=781, 1284.8pt x 1214.5375pt>
+File: fig_rpi_hw.jpeg Graphic file (type jpg)
+<use fig_rpi_hw.jpeg>
+Package pdftex.def Info: fig_rpi_hw.jpeg  used on input line 277.
+(pdftex.def)             Requested size: 119.12033pt x 112.6024pt.
+<fig_hw_comparison.png, id=782, 776.0995pt x 342.4795pt>
+File: fig_hw_comparison.png Graphic file (type png)
+<use fig_hw_comparison.png>
+Package pdftex.def Info: fig_hw_comparison.png  used on input line 277.
+(pdftex.def)             Requested size: 188.94853pt x 83.37779pt.
+ [34
+
+ <./fig_rpi_hw.jpeg> <./fig_hw_comparison.png>])
+(05_conclusion.tex (main.toc) [35
+
+] [36
+
+] [37
 
  <C:/Users/kulka/AppData/Local/Programs/MiKTeX/tex/latex/beamer/beamericonartic
-le.pdf>]) (06_thankyou.tex [35
+le.pdf>] [38
+
+
+]) (06_thankyou.tex
+[39
 
 ])
 \tf@nav=\write6
@@ -1319,16 +1375,16 @@ L3 programming layer <2025-12-24>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: ECEA8FFC15EF7D8A3321645D0402EAD4;959.
+(rerunfilecheck)             Checksum: 16BF934CDFDEB54ECADB4CF376B60445;1072.
  ) 
 Here is how much of TeX's memory you used:
- 26670 strings out of 467871
- 539633 string characters out of 5418377
- 903822 words of memory out of 5000000
- 54906 multiletter control sequences out of 15000+600000
+ 26774 strings out of 467871
+ 542258 string characters out of 5418377
+ 906995 words of memory out of 5000000
+ 54992 multiletter control sequences out of 15000+600000
  642985 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,15n,123p,381b,1140s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,15n,123p,381b,1090s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmex10.pfb><C:/Users/kulka/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -1359,9 +1415,9 @@ KTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/kulka/AppData/Local/Pro
 grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/kulka/AppData/
 Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/kulka/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on main.pdf (35 pages, 1761591 bytes).
+Output written on main.pdf (39 pages, 1894747 bytes).
 PDF statistics:
- 820 PDF objects out of 1000 (max. 8388607)
- 83 named destinations out of 1000 (max. 500000)
- 900 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 965 PDF objects out of 1000 (max. 8388607)
+ 99 named destinations out of 1000 (max. 500000)
+ 1109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

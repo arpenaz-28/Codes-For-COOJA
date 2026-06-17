@@ -934,9 +934,9 @@ consumption (Figure~\ref{fig:sim_total}a), respectively. Similarly, a reduction 
 (Figure~\ref{fig:sim_total}b) over LAAKA and Zhou, respectively. The dominant savings
 arise in the authentication and key exchange phase, where the proposed scheme consumes
 28.87\,mJ against 77.97\,mJ for LAAKA and 57.06\,mJ for Zhou. Due to the incorporation
-of fewer message exchanges and computationally lightweight hash-XOR operations, the
-proposed scheme has minimised radio activity and computational load compared to the
-message-intensive and cryptographically heavier LAAKA and Zhou schemes.
+of fewer message exchanges and lightweight hash-XOR operations, the
+proposed scheme minimises radio activity---the dominant energy cost in multihop IoT---compared to the
+more message-intensive LAAKA and Zhou schemes.
 
 \begin{figure}[!t]
   \centering
@@ -984,8 +984,7 @@ Considering the total energy consumption (Figure~\ref{fig:sim_network}a), a redu
 Figure~\ref{fig:sim_network}(b), a reduction of 42.5\,\% and 50.6\,\% is demonstrated
 with respect to total CPU time over LAAKA (14.6\,s) and Zhou (17.0\,s), respectively.
 LAAKA and Zhou exhibit steeper energy and CPU growth with increasing $N$ because their
-heavier per-device cryptographic load — AES-intensive authentication in LAAKA and a
-combined heavy authentication and key exchange in Zhou — accumulates faster as the device count grows.
+larger per-device message payloads and additional exchanges accumulate faster as the device count grows.
 Due to the incorporation of lightweight XOR-hash operations and a decoupled AS design, the
 proposed scheme keeps per-device cost low and achieves the lowest total cost among all
 compared schemes across all measured network sizes. These consistent reductions across all network

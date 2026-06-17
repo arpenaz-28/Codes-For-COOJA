@@ -1,43 +1,31 @@
 \section{Background \& Literature Survey}
 
-\begin{frame}{IoT Authentication Architectures}
-    \begin{columns}
-        \begin{column}{0.46\textwidth}
-            Authentication in IoT typically involves three entities:
-            \begin{itemize}
-                \item User / device $U_i$
-                \item Sensor / peer node $S_j$
-                \item Gateway node (GWN)
-            \end{itemize}
-            \vspace{0.3cm}
-            Four prevalent communication architectures (a)--(d) differ in how the
-            gateway mediates the exchange. Our work targets the \textbf{multihop}
-            device--gateway path with a \textbf{distributed} authenticator.
-        \end{column}
-        \begin{column}{0.54\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{survey_arch.png}
-            \vspace{0.1cm}
-            {\scriptsize Source: Zhong \emph{et al.}, ``Lightweight Anonymous Authentication for IoT,'' \emph{Sensors} 2025.}
-        \end{column}
-    \end{columns}
-\end{frame}
-
 \begin{frame}{Related Work}
-    \begin{itemize}
-        \item \textbf{Centralized} schemes (Sheik'23, He'23, Roy'25): high computation/communication
-        overhead in multihop networks.
-        \item \textbf{Distributed} schemes (RAAF-MEC'25): skewed load on particular fog/edge servers;
-        ignore multihop IoT.
-        \item \textbf{LightSAE'23}: parents authenticate children $\Rightarrow$ skewed overhead.
-        \item \textbf{PUF-based P2P} (Li'20, Zheng'22): avoid long-term key storage, but still skewed;
-        ECC operations make them heavy.
-        \item \textbf{LAAKA'24}, \textbf{Zhou \emph{et al.}'24}: provide anonymity, but rely on
-        \textbf{computationally intensive} operations $\Rightarrow$ far higher overhead than DAuth.
-        \item \textbf{DAuth'26 (base scheme, Das \& Khatua)}: \textbf{decoupled} distributed PUF-based
-        scheme with a hash accumulator $\Rightarrow$ lightweight, but
-        \textbf{no anonymity} and \textbf{no desync recovery}.
-    \end{itemize}
+    \scriptsize
+    \begin{block}{Centralized Authentication}
+        \begin{itemize}
+            \item \textbf{Sheik}~\cite{sheik}, \textbf{Roy}~\cite{roy}: single authenticator
+            $\Rightarrow$ bottleneck and high computation/communication overhead in multihop networks.
+            \item \textbf{He}~\cite{he}: lightweight hash/XOR, but tied to a \textbf{centralized server}
+            $\Rightarrow$ forfeits load distribution.
+            \item \textbf{LAAKA}~\cite{laaka}: anonymous (hash/XOR), but \textbf{gateway/fog-coupled},
+            \textbf{no PUF}, larger message payloads.
+            \item \textbf{Zhou \emph{et al.}}~\cite{zhou}: anonymous PUF-based, but \textbf{gateway-coupled}
+            and \textbf{no forward secrecy} (no DH key exchange).
+        \end{itemize}
+    \end{block}
+    \begin{block}{Distributed Authentication}
+        \begin{itemize}
+            \item \textbf{RAAF-MEC}~\cite{raaf}: \textbf{skewed load} on particular fog/edge servers;
+            ignores multihop IoT.
+            \item \textbf{LightSAE}~\cite{lightsae}: parents authenticate children $\Rightarrow$
+            \textbf{overloaded parents}, idle leaves (skewed load).
+            \item \textbf{Li}~\cite{li}, \textbf{Zheng}~\cite{zheng} (PUF P2P): no long-term key
+            storage, but still \textbf{skewed} and \textbf{ECC-heavy}.
+            \item \textbf{DAuth}~\cite{dauth}: \textbf{decoupled} PUF + hash accumulator $\Rightarrow$
+            lightweight, but \textbf{no anonymity} and \textbf{no desync recovery}.
+        \end{itemize}
+    \end{block}
 \end{frame}
 
 \begin{frame}{Feature Comparison of Authentication Schemes}
@@ -50,13 +38,13 @@
             \toprule
             \textbf{Scheme} & \textbf{Dec.} & \textbf{PUF} & \textbf{Acc.} & \textbf{Anon.} & \textbf{Desync} & \textbf{C.OH} & \textbf{M.OH} \\
             \midrule
-            RAAF-MEC '25       & $\times$    & \checkmark & $\times$    & $\times$    & $\times$    & H & L \\
-            SAKMS '24          & \checkmark & $\times$    & $\times$    & $\times$    & $\times$    & H & L \\
-            Li et al.\ '20     & \checkmark & \checkmark & $\times$    & $\times$    & $\times$    & H & L \\
-            Zheng et al.\ '22  & \checkmark & \checkmark & $\times$    & $\times$    & $\times$    & M & L \\
-            LAAKA '24          & $\times$    & $\times$    & $\times$    & \checkmark & $\times$    & L & L \\
-            Zhou et al.\ '24   & $\times$    & \checkmark & $\times$    & \checkmark & $\times$    & M & M \\
-            DAuth '26 (base)   & \checkmark & \checkmark & \checkmark & $\times$    & $\times$    & L & L \\
+            RAAF-MEC~\cite{raaf}        & $\times$    & \checkmark & $\times$    & $\times$    & $\times$    & H & L \\
+            SAKMS~\cite{sakms}          & \checkmark & $\times$    & $\times$    & $\times$    & $\times$    & H & L \\
+            Li et al.~\cite{li}         & \checkmark & \checkmark & $\times$    & $\times$    & $\times$    & H & L \\
+            Zheng et al.~\cite{zheng}   & \checkmark & \checkmark & $\times$    & $\times$    & $\times$    & M & L \\
+            LAAKA~\cite{laaka}          & $\times$    & $\times$    & $\times$    & \checkmark & $\times$    & L & L \\
+            Zhou et al.~\cite{zhou}     & $\times$    & \checkmark & $\times$    & \checkmark & $\times$    & M & M \\
+            DAuth~\cite{dauth}          & \checkmark & \checkmark & \checkmark & $\times$    & $\times$    & L & L \\
             \midrule
             \textbf{Proposed}  & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{L} & \textbf{L} \\
             \bottomrule
@@ -74,52 +62,3 @@
     \end{center}
 \end{frame}
 
-\section{Motivation \& Contributions}
-
-\begin{frame}{Motivation: Two Gaps in DAuth}
-    DAuth is the closest match in the comparison, yet it leaves \textbf{two critical
-    security gaps} unaddressed:
-
-    \vspace{0.3cm}
-    \begin{enumerate}
-        \item \textbf{No anonymity.} The real device identity $ID_D$ is sent in
-        \textbf{plaintext on the open channel in every session}.
-        \begin{itemize}
-            \item An adversary with radio access can \textbf{track a device across sessions}.
-            \item Direct violation of modern privacy requirements.
-        \end{itemize}
-
-        \vspace{0.25cm}
-        \item \textbf{No desynchronisation recovery.} AS and device keep only a
-        \textbf{single session state}.
-        \begin{itemize}
-            \item A single lost packet during key delivery \textbf{desynchronises} their states.
-            \item All future authentications fail until \textbf{full re-enrolment} --
-            an energy-costly operation for a battery-powered node.
-        \end{itemize}
-    \end{enumerate}
-\end{frame}
-
-\begin{frame}{Our Contributions}
-    We extend DAuth with \textbf{two lightweight mechanisms} that close both gaps:
-
-    \vspace{0.3cm}
-    \begin{block}{1. Per-session Pseudonym Rotation (Anonymity)}
-        Real identity $ID_D$ never leaves the secure enrolment channel.
-        Open-channel messages carry a rotating pseudonym
-        $\mathit{PID} = H(ID_D \,\|\, m_{\mathrm{curr}})$, refreshed after every key exchange
-        $\Rightarrow$ successive sessions are \textbf{unlinkable}.
-    \end{block}
-
-    \begin{block}{2. Dual-State Synchronisation (Desync Recovery)}
-        AS and gateway store \emph{both} $(m_{\mathrm{curr}}, \mathit{PID}_{\mathrm{curr}})$
-        and $(m_{\mathrm{old}}, \mathit{PID}_{\mathrm{old}})$ $\Rightarrow$ recover from a single
-        packet loss \textbf{without re-enrolment}.
-    \end{block}
-
-    \vspace{0.15cm}
-    \begin{itemize}
-        \item Formally verified in \textbf{ProVerif} (Dolev--Yao model).
-        \item Evaluated via \textbf{theoretical}, \textbf{COOJA/Contiki-NG simulation}, and \textbf{hardware (RPi 4B)} analysis.
-    \end{itemize}
-\end{frame}
