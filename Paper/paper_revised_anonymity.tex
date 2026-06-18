@@ -38,7 +38,7 @@
 
 \begin{document}
 
-\title{Anonymity Preserving, Decoupled Distributed\\Authentication for Multihop IoT Networks}
+\title{Anonymity Preserving, Recoverable Distributed\\Authentication for Multihop IoT Networks}
 
 \author{
   \IEEEauthorblockN{Sreeparna Das, Anup Kulkarni,  Manas Khatua}
@@ -53,7 +53,7 @@
 % -------------------------------------------------------
 \begin{abstract}
 The Internet of Things (IoT) demands lightweight and secure authentication
-for resource constrained multihop networks, while also protecting the
+for resource constrained devices in multihop networks, and protecting the
 privacy of individual devices.  Many distributed authentication schemes have
 been proposed in the past for IoT networks. Among those schemes, the decoupled
 distributed authentication scheme (DAuth) has been
@@ -61,14 +61,14 @@ proposed recently for multihop IoT networks. However, we have identified
 two critical gaps in that scheme. First, the real device identity is exposed on the open
 channel in every authentication session, enabling adversarial cross-session
 tracking. Second, packet loss in the session key establishment phase desynchronises
-the device and server states, forcing full re-enrolment. Therefore, this paper proposes a security improved and anonymity preserving decoupled distributed authentication scheme,
+the device and server states, forcing full re-enrolment of the device. Therefore, this paper proposes a security improved and anonymity preserving decoupled distributed authentication scheme,
 addressing both the identified gaps. Device anonymity is preserved through per-session
 pseudonym rotation, where a rotating pseudonym replaces the real device identity
 in all open-channel communications, preventing long-term tracking.  A
 dual-state synchronisation mechanism maintained at the authentication
 server enables seamless recovery from single packet-loss
-events without re-enrolment.  The proposed scheme is evaluated via ProVerif-based
-formal security analysis, and theoretical and simulation-based performance analysis confirm that the proposed scheme reduces energy by
+events without re-enrolment of the device. The proposed scheme is evaluated via ProVerif-based
+formal security analysis. Further theoretical and simulation-based performance analysis confirm that the proposed scheme reduces energy by
 42.8\,\% and 32.4\,\%, and CPU time by 42.7\,\% and 32.4\,\%, over the state-of-the-art
 LAAKA and Zhou et al. schemes, respectively, while maintaining the lowest overhead among all
 compared schemes.
@@ -94,16 +94,16 @@ secure~\cite{khatua2024puf}.
 Centralized schemes route all authentication traffic through a gateway,
 imposing excessive relay load on intermediate nodes in a multihop
 topology~\cite{sheik2023auth}\cite{he2023lightweight}\cite{roy2025design}.  Distributed
-schemes distribute this responsibility~\cite{rosa2023lightsae}. However, a plain parent centric distributed authentication schemes
-overload whichever node a set of new devices happened to join under, while
-all other capable nodes remain idle~\cite{rosa2023lightsae}.
+schemes distribute this responsibility into the parent nodes of respective child nodes or newly joined nodes~\cite{rosa2023lightsae}. However, a plain parent centric distributed authentication schemes
+overload whichever parent node a set of new devices happened to join under, while
+all other capable parent nodes remain idle~\cite{rosa2023lightsae}.
 
-DAuth~\cite{das2026comsnets} addressed this skewed-load problem by proposing a
+DAuth~\cite{das2026comsnets} addressed this skewed-load authentication problem by proposing a
 lightweight decoupled distributed authentication scheme in which the gateway or root node
 pre-assigns any capable IoT node (parent or non-parent) as the
-authentication server for newly joined devices.  By decoupling authentication
-from network joining process, the scheme distributes the authentication load evenly
-across the network.  Authentication process relies on Physically Unclonable Function (PUF)-based secret derivation, a
+authentication server for the newly joined devices.  By decoupling authentication
+from network joining process, the scheme distributes the authentication load more evenly
+across the network.  Authentication process in DAuth~\cite{das2026comsnets} relies on Physically Unclonable Function (PUF)-based secret derivation, a
 hash-based one-way accumulator and
 XOR-masked message exchanges, resulting in an efficient and lightweight authentication
 protocol.
@@ -113,10 +113,10 @@ unaddressed.  First, the real device identity is transmitted in
 plaintext over the open channel in every authentication session, enabling an
 adversary with radio access to track a device across sessions, a direct
 violation of modern privacy requirements.  Second, both the authentication
-server and the device maintain only a single session state and so a packet loss
+server and the device maintain only a single session state, and thus a packet loss
 during session key delivery desynchronises their states, causing all
 subsequent authentication attempts to fail until the device undergoes full
-re-enrolment, which is an energy-costly operation for battery-powered
+re-enrolment, which is an energy-costly operation for resource
 constrained nodes.
 
 This paper addresses both gaps with two lightweight extensions to DAuth.  To close the anonymity gap, the
@@ -130,7 +130,7 @@ and uses to re-synchronise without repeating enrolment.
 
 This paper makes the following key contributions.
 \begin{enumerate}
-  \item A anonymity preserving scheme is proposed that
+  \item A anonymity preserving and recoverable distributed authentication scheme is proposed that
     introduces per-session pseudonym rotation to preserve device anonymity and
     a dual-state mechanism to recover from desynchronisation without
     re-enrolment.
@@ -230,13 +230,13 @@ compared schemes.
   \end{tabular}\\[4pt]
   \raggedright
   \scriptsize
-  \textit{Dec.}: Decoupled design.\ \
-  \textit{Acc.}: Hash-based accumulator.\ \
-  \textit{ASU}: Auth.\ secret update.\\
-  \textit{Anon.}: Device anonymity via pseudonym.\ \
-  \textit{Desync}: Desync.\ recovery.\\
-  \textit{C.OH}: Computation — L (Hash/XOR/$\le2$ AES), M ($>2$ AES), H (ECC/Pairings).\\
-  \textit{M.OH}: Message exchanges — L (1--3), M (4--5), H ($>5$).
+  \textit{Dec.}: Decoupled design\
+  \textit{Acc.}: Hash-based accumulator\ 
+  \textit{ASU}: Authentication secret update\
+  \textit{Anon.}: Device anonymity\
+  \textit{Desync}: Desynchronisation recovery\\
+  \textit{C.OH}: Computation Overhead — L (Hash/XOR/$\le2$ AES), M ($>2$ AES), H (ECC).\
+  \textit{M.OH}: Message Overhead — L (1--3), M (4--5), H ($>5$).
 \end{table}
 
 % -------------------------------------------------------
@@ -273,7 +273,7 @@ of its authentication server $AS$ along with the authentication server's unique 
 Table~\ref{tab:notations} elaborates symbols and functions incorporated in
 the following scheme.
 
-There are mainly three phases: node enrolment, node authentication, and node
+There are mainly three phases in the proposed authentication scheme: node enrolment, node authentication, and node
 session key exchange.  The following sections elaborate on these phases.
 
 \begin{table}[!t]
@@ -329,7 +329,7 @@ phase.
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.9\columnwidth]{fig_enrollment}
-  \caption{Enrolment Phase via secure channel.}
+  \caption{Node Enrolment Phase (via secure channel.)}
   \label{fig:enrolment}
 \end{figure}
 
@@ -399,7 +399,7 @@ only to $D$ and $AS$.  Figure~\ref{fig:auth} illustrates the phase.
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.9\columnwidth]{fig_auth.jpg}
-  \caption{Authentication Phase via open channel.}
+  \caption{Node Authentication Phase}
   \label{fig:auth}
 \end{figure}
 
@@ -425,19 +425,18 @@ a dual-state lookup: it checks whether the received $\mathit{PID}$ matches
 $\mathit{PID}_{\mathrm{curr}}$ or $\mathit{PID}_{\mathrm{old}}$ in its records.
 A match on $\mathit{PID}_{\mathrm{old}}$ indicates that $D$ missed the Key
 Exchange Phase delivery in the previous session and still holds the prior
-$m_{\mathrm{curr}}$; in this case, $AS$ uses the stored $m_{\mathrm{old}}$ for
+$m_{\mathrm{curr}}$. In this case, $AS$ uses the stored $m_{\mathrm{old}}$ for
 the subsequent verification, recovering from the desynchronisation without
-requiring re-enrolment.  $AS$ verifies the freshness of $ts_1$.  $R_D'$ is
+requiring re-enrolment.  $AS$ verifies the freshness of the message using $ts_1$.  $R_D'$ is
 calculated as $\Phi_{AS\text{-}D} \oplus \mathsf{PUF}_{AS}(c_{AS\text{-}D})$,
 where both $\Phi_{AS\text{-}D}$ and $c_{AS\text{-}D}$ are retrieved from $D$'s
 enrolment record.  $AS$ regenerates the same XOR mask and unmasks $Y_D^{H'}$,
-then performs the bitwise AND check by computing a fresh accumulator value
-$T_\mathsf{Acc}^\mathsf{new}$ as the bitwise AND of the existing $T_\mathsf{Acc}$
-and the recovered $Y_D^{H'}$, and verifies that it equals $T_\mathsf{Acc}$.
+then performs the bitwise AND check by computing
+$T_\mathsf{Acc} \mathbin{\&} Y_D^{H'}$ and verifying that it equals $T_\mathsf{Acc}$.
 From the properties of the hash-based one-way accumulator, if an element is
 combined into an accumulated value using bitwise AND and the same operation is
 again performed between them, it gives back the same accumulated value.  If
-$T_\mathsf{Acc}^\mathsf{new}$ equals $T_\mathsf{Acc}$, it proves that the unique
+$T_\mathsf{Acc} \mathbin{\&} Y_D^{H'} = T_\mathsf{Acc}$, it proves that the unique
 secret of $D$ is already a legitimate member of $AS$.  With the successful
 operation, the authentication of $D$ is completed by $AS$, and $AS$ proceeds
 to the Key Exchange Phase.
