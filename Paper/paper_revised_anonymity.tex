@@ -764,7 +764,7 @@ SHA-256 hash $T_{\mathsf{hash}}=0.009$\,ms, AES-128 encryption/decryption
 $T_{\mathsf{aes}}=0.004$\,ms, PUF evaluation $T_{\mathsf{puf}}=0.12$\,ms, and fuzzy
 extractor $T_{\mathsf{fe}}=2.353$\,ms. Following the standard code-offset
 construction~\cite{dodis2004fuzzy}, the dominant cost of the fuzzy extractor is one
-elliptic-curve scalar multiplication, hence $T_{\mathsf{fe}}=T_M$. The cost of
+elliptic-curve scalar multiplication, hence $T_{\mathsf{fe}}=T_{\mathsf{ecc}}$. The cost of
 random-number generation and bitwise operations (XOR, concatenation) is negligible
 relative to these primitives and is therefore omitted, consistent with prior
 analyses~\cite{zhou2024auth}.
@@ -779,7 +779,7 @@ Table~\ref{tab:comp_enroll}, this is marginally above DAuth~\cite{das2026comsnet
 ($0.249$\,ms), the difference being exactly one additional hash for pseudonym
 initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cost
 ($2.491$\,ms), dominated by the biometric fuzzy-extractor Gen step
-($T_{\mathsf{fe}}=T_M=2.353$\,ms).
+($T_{\mathsf{fe}}=T_{\mathsf{ecc}}=2.353$\,ms).
 
 \begin{table}[!t]
   \centering
@@ -801,7 +801,7 @@ initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cos
   \scriptsize
   RPi~4B unit costs~\cite{lee2025plakamd}: $T_\mathsf{hash}$=0.009\,ms,
   $T_\mathsf{aes}$=0.004\,ms, $T_\mathsf{puf}$=0.12\,ms,
-  $T_\mathsf{fe}$=$T_M$=2.353\,ms. Random generation excluded as negligible.
+  $T_\mathsf{fe}$=$T_{\mathsf{ecc}}$=2.353\,ms. Random generation excluded as negligible.
 \end{table}
 
 In the authentication and key exchange phases (Figures~\ref{fig:auth}
@@ -839,7 +839,7 @@ the heaviest due to the biometric Rep step ($T_{\mathsf{fe}}=2.353$\,ms).
   \scriptsize
   RPi~4B unit costs~\cite{lee2025plakamd}: $T_\mathsf{hash}$=0.009\,ms,
   $T_\mathsf{aes}$=0.004\,ms, $T_\mathsf{puf}$=0.12\,ms,
-  $T_\mathsf{fe}$=$T_M$=2.353\,ms. Random generation excluded as negligible.
+  $T_\mathsf{fe}$=$T_{\mathsf{ecc}}$=2.353\,ms. Random generation excluded as negligible.
 \end{table}
 
 Combining both phases, the proposed scheme completes the full cycle in $0.605$\,ms,
