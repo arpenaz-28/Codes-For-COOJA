@@ -757,9 +757,10 @@ independently generated from a fresh nonce and $R_D$ is PUF-derived.
 
 The computational cost is a crucial deterministic factor for the efficiency of an
 authentication scheme. To obtain platform-native unit costs consistent with our hardware
-evaluation, we adopt the per-primitive execution times reported by Kim et
-al.~\cite{kim2025puf}, measured on a Raspberry Pi~4B (quad-core 64-bit ARM Cortex-A72
-@ 1.5\,GHz) using the MIRACL Core cryptographic library. The reference unit costs are:
+evaluation, we adopt the per-primitive execution times reported by Lee et
+al.~\cite{lee2025plakamd} and confirmed by Kim et al.~\cite{kim2025puf}, both measured on
+a Raspberry Pi~4B (quad-core 64-bit ARM Cortex-A72 @ 1.5\,GHz) using the MIRACL Core
+cryptographic library. The reference unit costs are:
 SHA-256 hash $T_{\mathsf{hash}}=0.009$\,ms, AES-128 encryption/decryption
 $T_{\mathsf{aes}}=0.004$\,ms, PUF evaluation $T_{\mathsf{puf}}=0.0063$\,ms, and fuzzy
 extractor $T_{\mathsf{fe}}=2.353$\,ms. Following the standard code-offset
@@ -814,7 +815,7 @@ and dual-state lookup.
   \end{tabular}\\[3pt]
   \scriptsize
   Operation counts aggregate the enrolment and authentication/key-exchange phases.
-  RPi~4B unit costs~\cite{kim2025puf}: $T_\mathsf{hash}$=0.009, $T_\mathsf{aes}$=0.004,
+  RPi~4B unit costs~\cite{lee2025plakamd,kim2025puf}: $T_\mathsf{hash}$=0.009, $T_\mathsf{aes}$=0.004,
   $T_\mathsf{puf}$=0.0063, $T_\mathsf{fe}$=$T_{M}$=2.353\,ms (one ECC P-256 scalar
   multiplication). Random generation is excluded as negligible.
 \end{table}
@@ -1239,6 +1240,13 @@ C.~Kim, S.~Son, and Y.~Park,
 ``A Privacy-Preserving Authentication Scheme Using PUF and Biometrics for
 IoT-Enabled Smart Cities,''
 \emph{Electronics}, vol.~14, no.~10, Art.\ no.\ 1953, 2025.
+
+\bibitem{lee2025plakamd}
+C.~Lee, M.~Oh, D.~Kwon, Y.~Park, and Y.~Park,
+``{PLAKA-MD}: {PUF}-Based Lightweight Authentication and Key Agreement Scheme
+for Medical Devices in {IoHT},''
+\emph{IEEE Internet Things J.}, vol.~12, no.~12, pp.~19338--19353, Jun.~2025,
+doi:~10.1109/JIOT.2025.3543488.
 
 \bibitem{dodis2004fuzzy}
 Y.~Dodis, L.~Reyzin, and A.~Smith,
