@@ -756,27 +756,30 @@ independently generated from a fresh nonce and $R_D$ is PUF-derived.
 \subsubsection{Computational Cost}
 
 The computational cost is a crucial deterministic factor for the efficiency of an
-authentication scheme. Following the notation of Lee et al.~\cite{lee2025plakamd},
-$T_h$, $T_f$, $T_p$, $T_s$, and $T_{mp}$ denote the execution time of a hash function,
-fuzzy extractor, PUF evaluation, symmetric encryption/decryption, and elliptic-curve point
-multiplication, respectively. The unit costs are adopted from~\cite{lee2025plakamd},
-measured on a Raspberry Pi~4B (quad-core 64-bit ARM Cortex-A72 @ 1.5\,GHz) using the
-MIRACL Core cryptographic library: $T_h=0.009$\,ms, $T_s=0.004$\,ms, $T_p=0.12$\,ms,
-and $T_f=T_{mp}=2.353$\,ms~\cite{dodis2004fuzzy}. The cost of random-number generation
-and bitwise operations (XOR, concatenation) is negligible and is therefore omitted,
-consistent with prior analyses~\cite{zhou2024auth}.
+authentication scheme. To obtain platform-native unit costs consistent with our hardware
+evaluation, we adopt the per-primitive execution times reported by Lee et
+al.~\cite{lee2025plakamd}, measured on a Raspberry Pi~4B (quad-core 64-bit ARM Cortex-A72
+@ 1.5\,GHz) using the MIRACL Core cryptographic library. The reference unit costs are:
+SHA-256 hash $T_{\mathsf{hash}}=0.009$\,ms, AES-128 encryption/decryption
+$T_{\mathsf{aes}}=0.004$\,ms, PUF evaluation $T_{\mathsf{puf}}=0.12$\,ms, and fuzzy
+extractor $T_{\mathsf{fe}}=2.353$\,ms. Following the standard code-offset
+construction~\cite{dodis2004fuzzy}, the dominant cost of the fuzzy extractor is one
+elliptic-curve scalar multiplication, hence $T_{\mathsf{fe}}=T_M$. The cost of
+random-number generation and bitwise operations (XOR, concatenation) is negligible
+relative to these primitives and is therefore omitted, consistent with prior
+analyses~\cite{zhou2024auth}.
 
-The proposed scheme relies exclusively on PUF, hash, and symmetric-key operations, and
-employs no public-key or fuzzy-extractor primitive.
+The proposed scheme relies exclusively on PUF, hash, and AES operations, and employs no
+public-key or fuzzy-extractor primitive.
 
 During node enrolment (Figure~\ref{fig:enrolment}), $D$ and $AS$ each evaluate the PUF
 once to derive the shared secret, and execute two hash operations for pseudonym
-initialisation, giving $2T_p+2T_h=0.258$\,ms. As shown in
+initialisation, giving $2T_{\mathsf{puf}}+2T_{\mathsf{hash}}=0.258$\,ms. As shown in
 Table~\ref{tab:comp_enroll}, this is marginally above DAuth~\cite{das2026comsnets}
 ($0.249$\,ms), the difference being exactly one additional hash for pseudonym
 initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cost
 ($2.491$\,ms), dominated by the biometric fuzzy-extractor Gen step
-($T_f=T_{mp}=2.353$\,ms).
+($T_{\mathsf{fe}}=T_M=2.353$\,ms).
 
 \begin{table}[!t]
   \centering
@@ -789,30 +792,32 @@ initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cos
     \toprule
     Scheme & Operations & Cost (ms) \\
     \midrule
-    LAAKA~\cite{ali2024laaka}       & $3T_h$ & 0.027 \\
-    Zhou et al.~\cite{zhou2024auth} & $T_p+2T_h+T_f$ & 2.491 \\
-    DAuth~\cite{das2026comsnets}    & $2T_p+T_h$ & 0.249 \\
-    \textbf{Proposed}               & $2T_p+2T_h$ & \textbf{0.258} \\
+    LAAKA~\cite{ali2024laaka}       & $3T_\mathsf{hash}$ & 0.027 \\
+    Zhou et al.~\cite{zhou2024auth} & $T_\mathsf{puf}+2T_\mathsf{hash}+T_\mathsf{fe}$ & 2.491 \\
+    DAuth~\cite{das2026comsnets}    & $2T_\mathsf{puf}+T_\mathsf{hash}$ & 0.249 \\
+    \textbf{Proposed}               & $2T_\mathsf{puf}+2T_\mathsf{hash}$ & \textbf{0.258} \\
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
-  RPi~4B unit costs~\cite{lee2025plakamd}: $T_h$=0.009\,ms, $T_s$=0.004\,ms,
-  $T_p$=0.12\,ms, $T_f$=$T_{mp}$=2.353\,ms. Random generation excluded as negligible.
+  RPi~4B unit costs~\cite{lee2025plakamd}: $T_\mathsf{hash}$=0.009\,ms,
+  $T_\mathsf{aes}$=0.004\,ms, $T_\mathsf{puf}$=0.12\,ms,
+  $T_\mathsf{fe}$=$T_M$=2.353\,ms. Random generation excluded as negligible.
 \end{table}
 
 In the authentication and key exchange phases (Figures~\ref{fig:auth}
 and~\ref{fig:keyex}), $D$ and $AS$ evaluate the PUF once more; $D$ performs six hash
 operations (pseudonym computation, unique-secret hash, and XOR mask in the Authentication
 Phase, followed by mask recovery, session-key derivation, and pseudonym rotation in the Key
-Exchange Phase); $AS$ performs five hash operations and one symmetric encryption ($T_s$)
-for the gateway token; and $GW$ performs one symmetric decryption to recover the session
-key and updated pseudonym. This yields $2T_p+11T_h+2T_s=0.347$\,ms, as shown in
+Exchange Phase); $AS$ performs five hash operations and one AES encryption
+($T_{\mathsf{aes}}$) for the gateway token; and $GW$ performs one AES decryption to
+recover the session key and updated pseudonym. This yields
+$2T_{\mathsf{puf}}+11T_{\mathsf{hash}}+2T_{\mathsf{aes}}=0.347$\,ms, as shown in
 Table~\ref{tab:comp_auth}. The proposed scheme is second only to
 DAuth~\cite{das2026comsnets} ($0.320$\,ms), the $0.027$\,ms overhead attributable to
 three additional hash operations for pseudonym computation, dual-state lookup, and
 pseudonym rotation. LAAKA~\cite{ali2024laaka} ($0.144$\,ms) achieves lower cost by
 performing only hash operations without any PUF evaluation. Zhou et al.\ ($2.608$\,ms) is
-the heaviest due to the biometric Rep step ($T_f=2.353$\,ms).
+the heaviest due to the biometric Rep step ($T_{\mathsf{fe}}=2.353$\,ms).
 
 \begin{table}[!t]
   \centering
@@ -825,26 +830,28 @@ the heaviest due to the biometric Rep step ($T_f=2.353$\,ms).
     \toprule
     Scheme & Operations & Cost (ms) \\
     \midrule
-    LAAKA~\cite{ali2024laaka}       & $16T_h$ & 0.144 \\
-    Zhou et al.~\cite{zhou2024auth} & $T_p+15T_h+T_f$ & 2.608 \\
-    DAuth~\cite{das2026comsnets}    & $2T_p+8T_h+2T_s$ & 0.320 \\
-    \textbf{Proposed}               & $2T_p+11T_h+2T_s$ & \textbf{0.347} \\
+    LAAKA~\cite{ali2024laaka}       & $16T_\mathsf{hash}$ & 0.144 \\
+    Zhou et al.~\cite{zhou2024auth} & $T_\mathsf{puf}+15T_\mathsf{hash}+T_\mathsf{fe}$ & 2.608 \\
+    DAuth~\cite{das2026comsnets}    & $2T_\mathsf{puf}+8T_\mathsf{hash}+2T_\mathsf{aes}$ & 0.320 \\
+    \textbf{Proposed}               & $2T_\mathsf{puf}+11T_\mathsf{hash}+2T_\mathsf{aes}$ & \textbf{0.347} \\
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
-  RPi~4B unit costs~\cite{lee2025plakamd}: $T_h$=0.009\,ms, $T_s$=0.004\,ms,
-  $T_p$=0.12\,ms, $T_f$=$T_{mp}$=2.353\,ms. Random generation excluded as negligible.
+  RPi~4B unit costs~\cite{lee2025plakamd}: $T_\mathsf{hash}$=0.009\,ms,
+  $T_\mathsf{aes}$=0.004\,ms, $T_\mathsf{puf}$=0.12\,ms,
+  $T_\mathsf{fe}$=$T_M$=2.353\,ms. Random generation excluded as negligible.
 \end{table}
 
 Combining both phases, the proposed scheme completes the full cycle in $0.605$\,ms,
 second only to DAuth~\cite{das2026comsnets} ($0.569$\,ms) among PUF-based schemes. Both
-PUF-based schemes (Proposed and DAuth) rely on four PUF evaluations ($4T_p=0.480$\,ms),
-which dominate their total costs. LAAKA~\cite{ali2024laaka} ($0.171$\,ms) achieves lower
-cost by forgoing PUF-based device authentication. Zhou et al.~\cite{zhou2024auth}
-($5.099$\,ms) is the heaviest, with two ECC-based fuzzy-extractor operations
-($2T_f=4.706$\,ms) accounting for over $92\%$ of its total cost. The proposed scheme
-incurs only a $0.036$\,ms premium over DAuth for pseudonym rotation and dual-state
-lookup---the direct cost of anonymity and desynchronisation resilience.
+PUF-based schemes (Proposed and DAuth) rely on four PUF evaluations
+($4T_{\mathsf{puf}}=0.480$\,ms), which dominate their total costs.
+LAAKA~\cite{ali2024laaka} ($0.171$\,ms) achieves lower cost by forgoing PUF-based device
+authentication. Zhou et al.~\cite{zhou2024auth} ($5.099$\,ms) is the heaviest, with two
+ECC-based fuzzy-extractor operations ($2T_{\mathsf{fe}}=4.706$\,ms) accounting for over
+$92\%$ of its total cost. The proposed scheme incurs only a $0.036$\,ms premium over DAuth
+for pseudonym rotation and dual-state lookup---the direct cost of anonymity and
+desynchronisation resilience.
 
 \subsubsection{Communication Cost}
 
