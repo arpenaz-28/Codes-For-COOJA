@@ -468,7 +468,7 @@ The session key $K_{GW\text{-}D}$, the identities $ID_{AS}$ and $ID_D$, the
 next pseudonym $\mathit{PID}_{\mathrm{new}}$, and the authentication completion
 timestamp $ts_{\mathrm{auth}}$ are encrypted under the shared key $K_{GW\text{-}AS}$
 (retrieved from storage) to form $\mathsf{auth\_token}_D$.  $AS$ simultaneously
-sends $(m_H,\, ts_2)$ to $D$ and $(\mathit{PID}_{\mathrm{new}},\, ID_{AS},\, \mathsf{auth\_token}_D)$ to $GW$.
+sends $(m^H,\, ts_2)$ to $D$ and $(\mathit{PID}_{\mathrm{new}},\, ID_{AS},\, \mathsf{auth\_token}_D)$ to $GW$.
 It then saves the current nonce and pseudonym as the previous values and advances
 its records by setting $m_{\mathrm{curr}}$ to $m_{\mathrm{new}}$
 and $\mathit{PID}_{\mathrm{curr}}$ to $\mathit{PID}_{\mathrm{new}}$, while
@@ -478,16 +478,16 @@ On the other hand, $AS$ also informs $D$ of $m_{\mathrm{new}}$ so that $D$
 can independently compute the session key $K_{GW\text{-}D}$ and its next
 pseudonym.  Since $m_{\mathrm{new}}$ must be protected from adversaries (its
 capture would allow prediction of future session key material), $AS$ masks it as
-$m_H = m_{\mathrm{new}} \oplus H(Y_D^{H'} \| m_{\mathrm{curr}} \| R_D' \| ID_{AS} \| \mathit{PID}_{\mathrm{curr}} \| ts_2)$.
+$m^H = m_{\mathrm{new}} \oplus H(Y_D^{H'} \| m_{\mathrm{curr}} \| R_D' \| ID_{AS} \| \mathit{PID}_{\mathrm{curr}} \| ts_2)$.
 Here, $Y_D^{H'}$ is the hashed form of the unique secret of $D$, known to $AS$
 from the authentication phase.  Both $m_{\mathrm{curr}}$ and $R_D'$ are likewise
 known to $AS$ from the authentication phase.  The current timestamp $ts_2$ is
-used to prevent replay of $m_H$ in a future session.
+used to prevent replay of $m^H$ in a future session.
 
-Obtaining $(m_H,\, ts_2)$, $D$ first verifies the freshness of $ts_2$.  $D$
+Obtaining $(m^H,\, ts_2)$, $D$ first verifies the freshness of $ts_2$.  $D$
 then recovers $m_{\mathrm{new}}$ by regenerating the hash mask using its locally
 held $Y_D^H$, $R_D$, $m_{\mathrm{curr}}$, $ID_{AS}$, $\mathit{PID}_{\mathrm{curr}}$, and the
-received $ts_2$, and XORing with $m_H$.  The input of the regenerated hash is
+received $ts_2$, and XORing with $m^H$.  The input of the regenerated hash is
 already known by $D$.  In this way, $D$ and $AS$ update their shared
 session-based random $m_{\mathrm{curr}}$ with $m_{\mathrm{new}}$.  Alongside,
 $D$ establishes the session key $K_{GW\text{-}D}$ as the hash of the concatenation of $R_D$ and $m_{\mathrm{new}}$,
@@ -499,7 +499,7 @@ and extracts $K_{GW\text{-}D}$ and $\mathit{PID}_{\mathrm{new}}$.  $GW$ saves
 $\mathit{PID}_{\mathrm{curr}}$ as the previous pseudonym, sets
 $\mathit{PID}_{\mathrm{new}}$ as the current one, and stores the session key
 against both.  Retaining $\mathit{PID}_{\mathrm{old}}$ ensures that if the
-delivery $(m_H,\, ts_2)$ to $D$ was lost, $GW$ can still service $D$'s data
+delivery $(m^H,\, ts_2)$ to $D$ was lost, $GW$ can still service $D$'s data
 frames under the prior session key pending re-authentication.
 
 \subsection{Desynchronisation Recovery}
@@ -513,11 +513,11 @@ frames under the prior session key pending re-authentication.
 
 During the Key Exchange Phase, $AS$ simultaneously dispatches two packets:
 $(\mathit{PID}_{\mathrm{new}},\, ID_{AS},\, \mathsf{auth\_token}_D)$ to $GW$
-and $(m_H,\, ts_2)$ to $D$.
+and $(m^H,\, ts_2)$ to $D$.
 Loss of either packet leads to a different desynchronisation scenario, each
 handled without re-enrolment.
 
-If the packet from $AS$ to $GW$ is lost, $D$ has already received $(m_H,\, ts_2)$
+If the packet from $AS$ to $GW$ is lost, $D$ has already received $(m^H,\, ts_2)$
 and updated its state to $\mathit{PID}_{\mathrm{new}}$ and $K_{GW\text{-}D}$.
 $GW$, however, never received $\mathit{PID}_{\mathrm{new}}$ or the session key,
 so it rejects $D$'s subsequent data frames.
@@ -528,7 +528,7 @@ on the normal path, completes authentication, and forwards a fresh
 $\mathsf{auth\_token}_D$ to $GW$, restoring normal operation in one additional round.
 
 The primary desynchronisation scenario arises when the packet from $AS$ to $D$
-$(m_H,\, ts_2)$ is lost in transit.  $AS$ has already advanced its internal
+$(m^H,\, ts_2)$ is lost in transit.  $AS$ has already advanced its internal
 state by updating $m_{\mathrm{curr}}$ to $m_{\mathrm{new}}$ and rotating
 $\mathit{PID}_{\mathrm{curr}}$ to $\mathit{PID}_{\mathrm{new}}$, while $D$
 retains the stale $m_{\mathrm{curr}}$.  On the next authentication attempt,
@@ -542,13 +542,13 @@ operation for a battery-powered node that re-exposes $ID_D$ on the secure
 channel and resets all session state.
 
 The proposed dual-state mechanism avoids this re-enrolment cost.  If the Key
-Exchange Phase delivery $(m_H,\,ts_2)$ is lost, $D$ retains its stale
+Exchange Phase delivery $(m^H,\,ts_2)$ is lost, $D$ retains its stale
 $m_{\mathrm{curr}}$, so the pseudonym it computes in the next session equals
 $\mathit{PID}_{\mathrm{old}}$ from $AS$'s perspective.  Algorithms~\ref{alg:desync-auth} and~\ref{alg:desync-keyex}
 show how the scheme adapts the Authentication and Key Exchange Phases to recover without re-enrolment.
 $D$'s behaviour is \emph{identical} in both paths: it always uses its own
 $m_{\mathrm{curr}}$ and $\mathit{PID}$.  Only $AS$ adapts: the dual-state
-lookup detects which nonce $D$ is on, then constructs $m_H$ with the matching
+lookup detects which nonce $D$ is on, then constructs $m^H$ with the matching
 $(m_{\mathrm{old}},\,\mathit{PID}_{\mathrm{old}})$ so that $D$'s symmetric
 decryption succeeds and the states converge.
 The dual-state mechanism tolerates a single consecutive Key Exchange Phase loss, but
@@ -583,11 +583,11 @@ deliberate trade-off between storage overhead and recovery depth.
        $AS$ uses $m_{\mathrm{old}}$, $\mathit{PID}_{\mathrm{old}}$
 \State $n_1 = \mathsf{rand}()$
 \State $m_{\mathrm{new}} = H(n_1)$
-\State $m_H = m_{\mathrm{new}} \oplus
+\State $m^H = m_{\mathrm{new}} \oplus
        H\!\left(Y_D^{H'} \| m_{\mathrm{old}} \| R_D' \|
        \mathit{ID}_{AS} \| \mathit{PID}_{\mathrm{old}} \| ts_2\right)$
-\State $AS$ sends $(m_H,\; ts_2)$ to $D$
-\State $m_{\mathrm{new}} = m_H \oplus
+\State $AS$ sends $(m^H,\; ts_2)$ to $D$
+\State $m_{\mathrm{new}} = m^H \oplus
        H\!\left(Y_D^{H} \| m_{\mathrm{curr}} \| R_D \|
        \mathit{ID}_{AS} \| \mathit{PID} \| ts_2\right)$
        \hfill\Comment{$D$ uses $m_{\mathrm{curr}} = m_{\mathrm{old}}$ — recovers correctly}
@@ -701,7 +701,7 @@ The Enrolment Phase is conducted over an encrypted channel, which precludes
 MITM.  In the Authentication and Key Exchange Phases, the PUF response $R_D$ (device-specific, unreproducible) and
 session random $m_{\mathrm{curr}}$ (private to $D$ and $AS$) are embedded in
 every XOR mask.  Without $R_D$ and the current $m_{\mathrm{curr}}$, no
-adversary can forge a valid masked tag $Y_{AS\text{-}D}^H$ or unmask $m_H$.
+adversary can forge a valid masked tag $Y_{AS\text{-}D}^H$ or unmask $m^H$.
 
 \subsubsection{Device Anonymity}
 $ID_D$ is transmitted only once, over the secure enrolment channel, and is
@@ -724,7 +724,7 @@ with the same $\mathit{PID}$ and $ts_1$, and the exchange proceeds
 normally.
 
 The primary desynchronisation scenario arises when the Key Exchange Phase response
-carrying the masked session seed $m_H$, sent from $AS$ to $D$, is lost.  In this
+carrying the masked session seed $m^H$, sent from $AS$ to $D$, is lost.  In this
 case, $AS$ has already advanced its state to $m_{\mathrm{new}}$ and rotated
 the pseudonym to $\mathit{PID}_{\mathrm{new}}$, while $D$ retains the
 previous $m_{\mathrm{curr}}$.  On the subsequent authentication attempt, $D$
@@ -923,7 +923,7 @@ The authentication and key exchange phase is executed using three message commun
 The first message takes place from $D$ to $AS$, where $D$ communicates its current
 pseudonym $\mathit{PID}$ (256\,bits), a masked authentication tag $Y_{AS\text{-}D}^H$
 (256\,bits), and a timestamp $ts_1$ (32\,bits). In the second message, $AS$ transmits the
-masked session seed $m_H$ (256\,bits) and a timestamp $ts_2$ (32\,bits) to $D$. The
+masked session seed $m^H$ (256\,bits) and a timestamp $ts_2$ (32\,bits) to $D$. The
 third communication takes place from $AS$ to $GW$, consisting of the updated pseudonym
 $\mathit{PID}_{\mathrm{new}}$ (256\,bits), the identity $ID_{AS}$ (32\,bits), and the
 encrypted gateway token $\mathsf{auth\_token}_D$ (256\,bits). Thus, the total
@@ -1080,7 +1080,7 @@ computational efficiency of the proposed scheme in comparison to the benchmark s
 During the Key Exchange Phase, the authentication server simultaneously dispatches two
 packets: one to the gateway/root carrying
 $(\mathit{PID}_{\mathrm{new}},\, ID_{AS},\, \mathsf{auth\_token}_D)$, and one to the
-device carrying $(m_H,\, ts_2)$.
+device carrying $(m^H,\, ts_2)$.
 Desynchronisation arises when the packet destined for the device is
 lost in transit, for any reason.
 After such a loss, the device retains its old state $m_{\mathrm{curr}}$
