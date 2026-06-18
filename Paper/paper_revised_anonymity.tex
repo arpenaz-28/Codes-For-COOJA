@@ -799,9 +799,9 @@ initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cos
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
-  RPi~4B unit costs~\cite{lee2025plakamd}: $T_\mathsf{hash}$=0.009\,ms,
+  $T_\mathsf{hash}$=0.009\,ms,
   $T_\mathsf{aes}$=0.004\,ms, $T_\mathsf{puf}$=0.12\,ms,
-  $T_\mathsf{fe}$=$T_{\mathsf{ecc}}$=2.353\,ms. Random generation excluded as negligible.
+  $T_\mathsf{fe}$=$T_{\mathsf{ecc}}$=2.353\,ms. 
 \end{table}
 
 In the authentication and key exchange phases (Figures~\ref{fig:auth}
@@ -837,9 +837,9 @@ the heaviest due to the biometric Rep step ($T_{\mathsf{fe}}=2.353$\,ms).
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
-  RPi~4B unit costs~\cite{lee2025plakamd}: $T_\mathsf{hash}$=0.009\,ms,
+  $T_\mathsf{hash}$=0.009\,ms,
   $T_\mathsf{aes}$=0.004\,ms, $T_\mathsf{puf}$=0.12\,ms,
-  $T_\mathsf{fe}$=$T_{\mathsf{ecc}}$=2.353\,ms. Random generation excluded as negligible.
+  $T_\mathsf{fe}$=$T_{\mathsf{ecc}}$=2.353\,ms. 
 \end{table}
 
 Combining both phases, the proposed scheme completes the full cycle in $0.605$\,ms,
@@ -897,7 +897,7 @@ communication cost.
     \bottomrule
 \end{tabular}\\[3pt]
   \scriptsize
-  IDs/timestamps = 32\,b; hashes/nonces/challenges/ciphertexts = 256\,b.
+  IDs/timestamps = 32\,bits; hashes/nonces/challenges/ciphertexts = 256\,bits.
 \end{table}
 \begin{table}[!t]
   \centering
@@ -915,7 +915,9 @@ communication cost.
     DAuth~\cite{das2026comsnets}           & 3 & 928 \\
     \textbf{Proposed}        & 3 & \textbf{1376} \\
     \bottomrule
-\end{tabular}
+\end{tabular}\\[3pt]
+  \scriptsize
+  IDs/timestamps = 32\,bits; hashes/nonces/challenges/ciphertexts = 256\,bits.
 \end{table}
 
 The authentication and key exchange phase is executed using three message communications.
