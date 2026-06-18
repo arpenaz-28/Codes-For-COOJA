@@ -1,0 +1,653 @@
+Random seed: 456789
+31000 18 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+31000 18 [INFO: Main      ] - Routing: RPL Lite
+31000 18 [INFO: Main      ] - Net: sicslowpan
+31000 18 [INFO: Main      ] - MAC: CSMA
+31000 18 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+31000 18 [INFO: Main      ] - 802.15.4 Default channel: 26
+31000 18 [INFO: Main      ] Node ID: 18
+31000 18 [INFO: Main      ] Link-layer address: 0012.0012.0012.0012
+31000 18 [INFO: Main      ] Tentative link-local IPv6 address: fe80::212:12:12:12
+31000 18 SD 18: Started (Sensing Device, Banerjee 2019).
+98000 35 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+98000 35 [INFO: Main      ] - Routing: RPL Lite
+98000 35 [INFO: Main      ] - Net: sicslowpan
+98000 35 [INFO: Main      ] - MAC: CSMA
+98000 35 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+98000 35 [INFO: Main      ] - 802.15.4 Default channel: 26
+98000 35 [INFO: Main      ] Node ID: 35
+98000 35 [INFO: Main      ] Link-layer address: 0023.0023.0023.0023
+98000 35 [INFO: Main      ] Tentative link-local IPv6 address: fe80::223:23:23:23
+98000 35 SD 35: Started (Sensing Device, Banerjee 2019).
+103000 44 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+103000 44 [INFO: Main      ] - Routing: RPL Lite
+103000 44 [INFO: Main      ] - Net: sicslowpan
+103000 44 [INFO: Main      ] - MAC: CSMA
+103000 44 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+103000 44 [INFO: Main      ] - 802.15.4 Default channel: 26
+103000 44 [INFO: Main      ] Node ID: 44
+103000 44 [INFO: Main      ] Link-layer address: 002c.002c.002c.002c
+103000 44 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22c:2c:2c:2c
+123000 43 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+123000 43 [INFO: Main      ] - Routing: RPL Lite
+123000 43 [INFO: Main      ] - Net: sicslowpan
+123000 43 [INFO: Main      ] - MAC: CSMA
+123000 43 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+123000 43 [INFO: Main      ] - 802.15.4 Default channel: 26
+123000 43 [INFO: Main      ] Node ID: 43
+123000 43 [INFO: Main      ] Link-layer address: 002b.002b.002b.002b
+123000 43 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22b:2b:2b:2b
+158000 20 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+158000 20 [INFO: Main      ] - Routing: RPL Lite
+158000 20 [INFO: Main      ] - Net: sicslowpan
+158000 20 [INFO: Main      ] - MAC: CSMA
+158000 20 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+158000 20 [INFO: Main      ] - 802.15.4 Default channel: 26
+158000 20 [INFO: Main      ] Node ID: 20
+158000 20 [INFO: Main      ] Link-layer address: 0014.0014.0014.0014
+158000 20 [INFO: Main      ] Tentative link-local IPv6 address: fe80::214:14:14:14
+158000 20 SD 20: Started (Sensing Device, Banerjee 2019).
+186000 13 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+186000 13 [INFO: Main      ] - Routing: RPL Lite
+186000 13 [INFO: Main      ] - Net: sicslowpan
+186000 13 [INFO: Main      ] - MAC: CSMA
+186000 13 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+186000 13 [INFO: Main      ] - 802.15.4 Default channel: 26
+186000 13 [INFO: Main      ] Node ID: 13
+186000 13 [INFO: Main      ] Link-layer address: 000d.000d.000d.000d
+186000 13 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20d:d:d:d
+186000 13 SD 13: Started (Sensing Device, Banerjee 2019).
+232000 6 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+232000 6 [INFO: Main      ] - Routing: RPL Lite
+232000 6 [INFO: Main      ] - Net: sicslowpan
+232000 6 [INFO: Main      ] - MAC: CSMA
+232000 6 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+232000 6 [INFO: Main      ] - 802.15.4 Default channel: 26
+232000 6 [INFO: Main      ] Node ID: 6
+232000 6 [INFO: Main      ] Link-layer address: 0006.0006.0006.0006
+232000 6 [INFO: Main      ] Tentative link-local IPv6 address: fe80::206:6:6:6
+232000 6 SD 6: Started (Sensing Device, Banerjee 2019).
+235000 10 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+235000 10 [INFO: Main      ] - Routing: RPL Lite
+235000 10 [INFO: Main      ] - Net: sicslowpan
+235000 10 [INFO: Main      ] - MAC: CSMA
+235000 10 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+235000 10 [INFO: Main      ] - 802.15.4 Default channel: 26
+235000 10 [INFO: Main      ] Node ID: 10
+235000 10 [INFO: Main      ] Link-layer address: 000a.000a.000a.000a
+235000 10 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20a:a:a:a
+235000 10 SD 10: Started (Sensing Device, Banerjee 2019).
+254000 12 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+254000 12 [INFO: Main      ] - Routing: RPL Lite
+254000 12 [INFO: Main      ] - Net: sicslowpan
+254000 12 [INFO: Main      ] - MAC: CSMA
+254000 12 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+254000 12 [INFO: Main      ] - 802.15.4 Default channel: 26
+254000 12 [INFO: Main      ] Node ID: 12
+254000 12 [INFO: Main      ] Link-layer address: 000c.000c.000c.000c
+254000 12 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20c:c:c:c
+254000 12 SD 12: Started (Sensing Device, Banerjee 2019).
+258000 28 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+258000 28 [INFO: Main      ] - Routing: RPL Lite
+258000 28 [INFO: Main      ] - Net: sicslowpan
+258000 28 [INFO: Main      ] - MAC: CSMA
+258000 28 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+258000 28 [INFO: Main      ] - 802.15.4 Default channel: 26
+258000 28 [INFO: Main      ] Node ID: 28
+258000 28 [INFO: Main      ] Link-layer address: 001c.001c.001c.001c
+258000 28 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21c:1c:1c:1c
+258000 28 SD 28: Started (Sensing Device, Banerjee 2019).
+258000 42 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+258000 42 [INFO: Main      ] - Routing: RPL Lite
+258000 42 [INFO: Main      ] - Net: sicslowpan
+258000 42 [INFO: Main      ] - MAC: CSMA
+258000 42 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+258000 42 [INFO: Main      ] - 802.15.4 Default channel: 26
+258000 42 [INFO: Main      ] Node ID: 42
+258000 42 [INFO: Main      ] Link-layer address: 002a.002a.002a.002a
+258000 42 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22a:2a:2a:2a
+261000 2 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+261000 2 [INFO: Main      ] - Routing: RPL Lite
+261000 2 [INFO: Main      ] - Net: sicslowpan
+261000 2 [INFO: Main      ] - MAC: CSMA
+261000 2 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+261000 2 [INFO: Main      ] - 802.15.4 Default channel: 26
+261000 2 [INFO: Main      ] Node ID: 2
+261000 2 [INFO: Main      ] Link-layer address: 0002.0002.0002.0002
+261000 2 [INFO: Main      ] Tentative link-local IPv6 address: fe80::202:2:2:2
+261000 2 SD 2: Started (Sensing Device, Banerjee 2019).
+269000 25 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+269000 25 [INFO: Main      ] - Routing: RPL Lite
+269000 25 [INFO: Main      ] - Net: sicslowpan
+269000 25 [INFO: Main      ] - MAC: CSMA
+269000 25 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+269000 25 [INFO: Main      ] - 802.15.4 Default channel: 26
+269000 25 [INFO: Main      ] Node ID: 25
+269000 25 [INFO: Main      ] Link-layer address: 0019.0019.0019.0019
+269000 25 [INFO: Main      ] Tentative link-local IPv6 address: fe80::219:19:19:19
+269000 25 SD 25: Started (Sensing Device, Banerjee 2019).
+292000 23 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+292000 23 [INFO: Main      ] - Routing: RPL Lite
+292000 23 [INFO: Main      ] - Net: sicslowpan
+292000 23 [INFO: Main      ] - MAC: CSMA
+292000 23 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+292000 23 [INFO: Main      ] - 802.15.4 Default channel: 26
+292000 23 [INFO: Main      ] Node ID: 23
+292000 23 [INFO: Main      ] Link-layer address: 0017.0017.0017.0017
+292000 23 [INFO: Main      ] Tentative link-local IPv6 address: fe80::217:17:17:17
+292000 23 SD 23: Started (Sensing Device, Banerjee 2019).
+310000 27 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+310000 27 [INFO: Main      ] - Routing: RPL Lite
+310000 27 [INFO: Main      ] - Net: sicslowpan
+310000 27 [INFO: Main      ] - MAC: CSMA
+310000 27 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+310000 27 [INFO: Main      ] - 802.15.4 Default channel: 26
+310000 27 [INFO: Main      ] Node ID: 27
+310000 27 [INFO: Main      ] Link-layer address: 001b.001b.001b.001b
+310000 27 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21b:1b:1b:1b
+310000 27 SD 27: Started (Sensing Device, Banerjee 2019).
+310000 41 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+310000 41 [INFO: Main      ] - Routing: RPL Lite
+310000 41 [INFO: Main      ] - Net: sicslowpan
+310000 41 [INFO: Main      ] - MAC: CSMA
+310000 41 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+310000 41 [INFO: Main      ] - 802.15.4 Default channel: 26
+310000 41 [INFO: Main      ] Node ID: 41
+310000 41 [INFO: Main      ] Link-layer address: 0029.0029.0029.0029
+310000 41 [INFO: Main      ] Tentative link-local IPv6 address: fe80::229:29:29:29
+343000 16 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+343000 16 [INFO: Main      ] - Routing: RPL Lite
+343000 16 [INFO: Main      ] - Net: sicslowpan
+343000 16 [INFO: Main      ] - MAC: CSMA
+343000 16 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+343000 16 [INFO: Main      ] - 802.15.4 Default channel: 26
+343000 16 [INFO: Main      ] Node ID: 16
+343000 16 [INFO: Main      ] Link-layer address: 0010.0010.0010.0010
+343000 16 [INFO: Main      ] Tentative link-local IPv6 address: fe80::210:10:10:10
+343000 16 SD 16: Started (Sensing Device, Banerjee 2019).
+362000 40 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+362000 40 [INFO: Main      ] - Routing: RPL Lite
+362000 40 [INFO: Main      ] - Net: sicslowpan
+362000 40 [INFO: Main      ] - MAC: CSMA
+362000 40 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+362000 40 [INFO: Main      ] - 802.15.4 Default channel: 26
+362000 40 [INFO: Main      ] Node ID: 40
+362000 40 [INFO: Main      ] Link-layer address: 0028.0028.0028.0028
+362000 40 [INFO: Main      ] Tentative link-local IPv6 address: fe80::228:28:28:28
+362000 40 SD 40: Started (Sensing Device, Banerjee 2019).
+379000 39 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+379000 39 [INFO: Main      ] - Routing: RPL Lite
+379000 39 [INFO: Main      ] - Net: sicslowpan
+379000 39 [INFO: Main      ] - MAC: CSMA
+379000 39 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+379000 39 [INFO: Main      ] - 802.15.4 Default channel: 26
+379000 39 [INFO: Main      ] Node ID: 39
+379000 39 [INFO: Main      ] Link-layer address: 0027.0027.0027.0027
+379000 39 [INFO: Main      ] Tentative link-local IPv6 address: fe80::227:27:27:27
+379000 39 SD 39: Started (Sensing Device, Banerjee 2019).
+389000 14 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+389000 14 [INFO: Main      ] - Routing: RPL Lite
+389000 14 [INFO: Main      ] - Net: sicslowpan
+389000 14 [INFO: Main      ] - MAC: CSMA
+389000 14 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+389000 14 [INFO: Main      ] - 802.15.4 Default channel: 26
+389000 14 [INFO: Main      ] Node ID: 14
+389000 14 [INFO: Main      ] Link-layer address: 000e.000e.000e.000e
+389000 14 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20e:e:e:e
+389000 14 SD 14: Started (Sensing Device, Banerjee 2019).
+400000 32 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+400000 32 [INFO: Main      ] - Routing: RPL Lite
+400000 32 [INFO: Main      ] - Net: sicslowpan
+400000 32 [INFO: Main      ] - MAC: CSMA
+400000 32 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+400000 32 [INFO: Main      ] - 802.15.4 Default channel: 26
+400000 32 [INFO: Main      ] Node ID: 32
+400000 32 [INFO: Main      ] Link-layer address: 0020.0020.0020.0020
+400000 32 [INFO: Main      ] Tentative link-local IPv6 address: fe80::220:20:20:20
+400000 32 SD 32: Started (Sensing Device, Banerjee 2019).
+435000 46 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+435000 46 [INFO: Main      ] - Routing: RPL Lite
+435000 46 [INFO: Main      ] - Net: sicslowpan
+435000 46 [INFO: Main      ] - MAC: CSMA
+435000 46 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+435000 46 [INFO: Main      ] - 802.15.4 Default channel: 26
+435000 46 [INFO: Main      ] Node ID: 46
+435000 46 [INFO: Main      ] Link-layer address: 002e.002e.002e.002e
+435000 46 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22e:2e:2e:2e
+446000 34 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+446000 34 [INFO: Main      ] - Routing: RPL Lite
+446000 34 [INFO: Main      ] - Net: sicslowpan
+446000 34 [INFO: Main      ] - MAC: CSMA
+446000 34 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+446000 34 [INFO: Main      ] - 802.15.4 Default channel: 26
+446000 34 [INFO: Main      ] Node ID: 34
+446000 34 [INFO: Main      ] Link-layer address: 0022.0022.0022.0022
+446000 34 [INFO: Main      ] Tentative link-local IPv6 address: fe80::222:22:22:22
+446000 34 SD 34: Started (Sensing Device, Banerjee 2019).
+459000 50 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+459000 50 [INFO: Main      ] - Routing: RPL Lite
+459000 50 [INFO: Main      ] - Net: sicslowpan
+459000 50 [INFO: Main      ] - MAC: CSMA
+459000 50 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+459000 50 [INFO: Main      ] - 802.15.4 Default channel: 26
+459000 50 [INFO: Main      ] Node ID: 50
+459000 50 [INFO: Main      ] Link-layer address: 0032.0032.0032.0032
+459000 50 [INFO: Main      ] Tentative link-local IPv6 address: fe80::232:32:32:32
+476000 15 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+476000 15 [INFO: Main      ] - Routing: RPL Lite
+476000 15 [INFO: Main      ] - Net: sicslowpan
+476000 15 [INFO: Main      ] - MAC: CSMA
+476000 15 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+476000 15 [INFO: Main      ] - 802.15.4 Default channel: 26
+476000 15 [INFO: Main      ] Node ID: 15
+476000 15 [INFO: Main      ] Link-layer address: 000f.000f.000f.000f
+476000 15 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20f:f:f:f
+476000 15 SD 15: Started (Sensing Device, Banerjee 2019).
+501000 3 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+501000 3 [INFO: Main      ] - Routing: RPL Lite
+501000 3 [INFO: Main      ] - Net: sicslowpan
+501000 3 [INFO: Main      ] - MAC: CSMA
+501000 3 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+501000 3 [INFO: Main      ] - 802.15.4 Default channel: 26
+501000 3 [INFO: Main      ] Node ID: 3
+501000 3 [INFO: Main      ] Link-layer address: 0003.0003.0003.0003
+501000 3 [INFO: Main      ] Tentative link-local IPv6 address: fe80::203:3:3:3
+501000 3 SD 3: Started (Sensing Device, Banerjee 2019).
+507000 5 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+507000 5 [INFO: Main      ] - Routing: RPL Lite
+507000 5 [INFO: Main      ] - Net: sicslowpan
+507000 5 [INFO: Main      ] - MAC: CSMA
+507000 5 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+507000 5 [INFO: Main      ] - 802.15.4 Default channel: 26
+507000 5 [INFO: Main      ] Node ID: 5
+507000 5 [INFO: Main      ] Link-layer address: 0005.0005.0005.0005
+507000 5 [INFO: Main      ] Tentative link-local IPv6 address: fe80::205:5:5:5
+507000 5 SD 5: Started (Sensing Device, Banerjee 2019).
+549000 8 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+549000 8 [INFO: Main      ] - Routing: RPL Lite
+549000 8 [INFO: Main      ] - Net: sicslowpan
+549000 8 [INFO: Main      ] - MAC: CSMA
+549000 8 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+549000 8 [INFO: Main      ] - 802.15.4 Default channel: 26
+549000 8 [INFO: Main      ] Node ID: 8
+549000 8 [INFO: Main      ] Link-layer address: 0008.0008.0008.0008
+549000 8 [INFO: Main      ] Tentative link-local IPv6 address: fe80::208:8:8:8
+549000 8 SD 8: Started (Sensing Device, Banerjee 2019).
+593000 33 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+593000 33 [INFO: Main      ] - Routing: RPL Lite
+593000 33 [INFO: Main      ] - Net: sicslowpan
+593000 33 [INFO: Main      ] - MAC: CSMA
+593000 33 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+593000 33 [INFO: Main      ] - 802.15.4 Default channel: 26
+593000 33 [INFO: Main      ] Node ID: 33
+593000 33 [INFO: Main      ] Link-layer address: 0021.0021.0021.0021
+593000 33 [INFO: Main      ] Tentative link-local IPv6 address: fe80::221:21:21:21
+593000 33 SD 33: Started (Sensing Device, Banerjee 2019).
+656000 9 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+656000 9 [INFO: Main      ] - Routing: RPL Lite
+656000 9 [INFO: Main      ] - Net: sicslowpan
+656000 9 [INFO: Main      ] - MAC: CSMA
+656000 9 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+656000 9 [INFO: Main      ] - 802.15.4 Default channel: 26
+656000 9 [INFO: Main      ] Node ID: 9
+656000 9 [INFO: Main      ] Link-layer address: 0009.0009.0009.0009
+656000 9 [INFO: Main      ] Tentative link-local IPv6 address: fe80::209:9:9:9
+656000 9 SD 9: Started (Sensing Device, Banerjee 2019).
+662000 38 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+662000 38 [INFO: Main      ] - Routing: RPL Lite
+662000 38 [INFO: Main      ] - Net: sicslowpan
+662000 38 [INFO: Main      ] - MAC: CSMA
+662000 38 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+662000 38 [INFO: Main      ] - 802.15.4 Default channel: 26
+662000 38 [INFO: Main      ] Node ID: 38
+662000 38 [INFO: Main      ] Link-layer address: 0026.0026.0026.0026
+662000 38 [INFO: Main      ] Tentative link-local IPv6 address: fe80::226:26:26:26
+662000 38 SD 38: Started (Sensing Device, Banerjee 2019).
+663000 37 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+663000 37 [INFO: Main      ] - Routing: RPL Lite
+663000 37 [INFO: Main      ] - Net: sicslowpan
+663000 37 [INFO: Main      ] - MAC: CSMA
+663000 37 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+663000 37 [INFO: Main      ] - 802.15.4 Default channel: 26
+663000 37 [INFO: Main      ] Node ID: 37
+663000 37 [INFO: Main      ] Link-layer address: 0025.0025.0025.0025
+663000 37 [INFO: Main      ] Tentative link-local IPv6 address: fe80::225:25:25:25
+663000 37 SD 37: Started (Sensing Device, Banerjee 2019).
+671000 30 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+671000 30 [INFO: Main      ] - Routing: RPL Lite
+671000 30 [INFO: Main      ] - Net: sicslowpan
+671000 30 [INFO: Main      ] - MAC: CSMA
+671000 30 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+671000 30 [INFO: Main      ] - 802.15.4 Default channel: 26
+671000 30 [INFO: Main      ] Node ID: 30
+671000 30 [INFO: Main      ] Link-layer address: 001e.001e.001e.001e
+671000 30 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21e:1e:1e:1e
+671000 30 SD 30: Started (Sensing Device, Banerjee 2019).
+696000 4 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+696000 4 [INFO: Main      ] - Routing: RPL Lite
+696000 4 [INFO: Main      ] - Net: sicslowpan
+696000 4 [INFO: Main      ] - MAC: CSMA
+696000 4 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+696000 4 [INFO: Main      ] - 802.15.4 Default channel: 26
+696000 4 [INFO: Main      ] Node ID: 4
+696000 4 [INFO: Main      ] Link-layer address: 0004.0004.0004.0004
+696000 4 [INFO: Main      ] Tentative link-local IPv6 address: fe80::204:4:4:4
+696000 4 SD 4: Started (Sensing Device, Banerjee 2019).
+753000 21 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+753000 21 [INFO: Main      ] - Routing: RPL Lite
+753000 21 [INFO: Main      ] - Net: sicslowpan
+753000 21 [INFO: Main      ] - MAC: CSMA
+753000 21 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+753000 21 [INFO: Main      ] - 802.15.4 Default channel: 26
+753000 21 [INFO: Main      ] Node ID: 21
+753000 21 [INFO: Main      ] Link-layer address: 0015.0015.0015.0015
+753000 21 [INFO: Main      ] Tentative link-local IPv6 address: fe80::215:15:15:15
+753000 21 SD 21: Started (Sensing Device, Banerjee 2019).
+765000 19 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+765000 19 [INFO: Main      ] - Routing: RPL Lite
+765000 19 [INFO: Main      ] - Net: sicslowpan
+765000 19 [INFO: Main      ] - MAC: CSMA
+765000 19 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+765000 19 [INFO: Main      ] - 802.15.4 Default channel: 26
+765000 19 [INFO: Main      ] Node ID: 19
+765000 19 [INFO: Main      ] Link-layer address: 0013.0013.0013.0013
+765000 19 [INFO: Main      ] Tentative link-local IPv6 address: fe80::213:13:13:13
+765000 19 SD 19: Started (Sensing Device, Banerjee 2019).
+775000 22 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+775000 22 [INFO: Main      ] - Routing: RPL Lite
+775000 22 [INFO: Main      ] - Net: sicslowpan
+775000 22 [INFO: Main      ] - MAC: CSMA
+775000 22 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+775000 22 [INFO: Main      ] - 802.15.4 Default channel: 26
+775000 22 [INFO: Main      ] Node ID: 22
+775000 22 [INFO: Main      ] Link-layer address: 0016.0016.0016.0016
+775000 22 [INFO: Main      ] Tentative link-local IPv6 address: fe80::216:16:16:16
+775000 22 SD 22: Started (Sensing Device, Banerjee 2019).
+782000 7 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+782000 7 [INFO: Main      ] - Routing: RPL Lite
+782000 7 [INFO: Main      ] - Net: sicslowpan
+782000 7 [INFO: Main      ] - MAC: CSMA
+782000 7 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+782000 7 [INFO: Main      ] - 802.15.4 Default channel: 26
+782000 7 [INFO: Main      ] Node ID: 7
+782000 7 [INFO: Main      ] Link-layer address: 0007.0007.0007.0007
+782000 7 [INFO: Main      ] Tentative link-local IPv6 address: fe80::207:7:7:7
+782000 7 SD 7: Started (Sensing Device, Banerjee 2019).
+809000 1 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+809000 1 [INFO: Main      ] - Routing: RPL Lite
+809000 1 [INFO: Main      ] - Net: sicslowpan
+809000 1 [INFO: Main      ] - MAC: CSMA
+809000 1 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+809000 1 [INFO: Main      ] - 802.15.4 Default channel: 26
+809000 1 [INFO: Main      ] Node ID: 1
+809000 1 [INFO: Main      ] Link-layer address: 0001.0001.0001.0001
+809000 1 [INFO: Main      ] Tentative link-local IPv6 address: fe80::201:1:1:1
+809000 1 GWN 1: Started (RPL root + Gateway Node, Banerjee 2019).
+824000 47 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+824000 47 [INFO: Main      ] - Routing: RPL Lite
+824000 47 [INFO: Main      ] - Net: sicslowpan
+824000 47 [INFO: Main      ] - MAC: CSMA
+824000 47 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+824000 47 [INFO: Main      ] - 802.15.4 Default channel: 26
+824000 47 [INFO: Main      ] Node ID: 47
+824000 47 [INFO: Main      ] Link-layer address: 002f.002f.002f.002f
+824000 47 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22f:2f:2f:2f
+866000 17 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+866000 17 [INFO: Main      ] - Routing: RPL Lite
+866000 17 [INFO: Main      ] - Net: sicslowpan
+866000 17 [INFO: Main      ] - MAC: CSMA
+866000 17 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+866000 17 [INFO: Main      ] - 802.15.4 Default channel: 26
+866000 17 [INFO: Main      ] Node ID: 17
+866000 17 [INFO: Main      ] Link-layer address: 0011.0011.0011.0011
+866000 17 [INFO: Main      ] Tentative link-local IPv6 address: fe80::211:11:11:11
+866000 17 SD 17: Started (Sensing Device, Banerjee 2019).
+873000 11 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+873000 11 [INFO: Main      ] - Routing: RPL Lite
+873000 11 [INFO: Main      ] - Net: sicslowpan
+873000 11 [INFO: Main      ] - MAC: CSMA
+873000 11 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+873000 11 [INFO: Main      ] - 802.15.4 Default channel: 26
+873000 11 [INFO: Main      ] Node ID: 11
+873000 11 [INFO: Main      ] Link-layer address: 000b.000b.000b.000b
+873000 11 [INFO: Main      ] Tentative link-local IPv6 address: fe80::20b:b:b:b
+873000 11 SD 11: Started (Sensing Device, Banerjee 2019).
+876000 29 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+876000 29 [INFO: Main      ] - Routing: RPL Lite
+876000 29 [INFO: Main      ] - Net: sicslowpan
+876000 29 [INFO: Main      ] - MAC: CSMA
+876000 29 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+876000 29 [INFO: Main      ] - 802.15.4 Default channel: 26
+876000 29 [INFO: Main      ] Node ID: 29
+876000 29 [INFO: Main      ] Link-layer address: 001d.001d.001d.001d
+876000 29 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21d:1d:1d:1d
+876000 29 SD 29: Started (Sensing Device, Banerjee 2019).
+901000 26 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+901000 26 [INFO: Main      ] - Routing: RPL Lite
+901000 26 [INFO: Main      ] - Net: sicslowpan
+901000 26 [INFO: Main      ] - MAC: CSMA
+901000 26 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+901000 26 [INFO: Main      ] - 802.15.4 Default channel: 26
+901000 26 [INFO: Main      ] Node ID: 26
+901000 26 [INFO: Main      ] Link-layer address: 001a.001a.001a.001a
+901000 26 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21a:1a:1a:1a
+901000 26 SD 26: Started (Sensing Device, Banerjee 2019).
+924000 31 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+924000 31 [INFO: Main      ] - Routing: RPL Lite
+924000 31 [INFO: Main      ] - Net: sicslowpan
+924000 31 [INFO: Main      ] - MAC: CSMA
+924000 31 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+924000 31 [INFO: Main      ] - 802.15.4 Default channel: 26
+924000 31 [INFO: Main      ] Node ID: 31
+924000 31 [INFO: Main      ] Link-layer address: 001f.001f.001f.001f
+924000 31 [INFO: Main      ] Tentative link-local IPv6 address: fe80::21f:1f:1f:1f
+924000 31 SD 31: Started (Sensing Device, Banerjee 2019).
+932000 48 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+932000 48 [INFO: Main      ] - Routing: RPL Lite
+932000 48 [INFO: Main      ] - Net: sicslowpan
+932000 48 [INFO: Main      ] - MAC: CSMA
+932000 48 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+932000 48 [INFO: Main      ] - 802.15.4 Default channel: 26
+932000 48 [INFO: Main      ] Node ID: 48
+932000 48 [INFO: Main      ] Link-layer address: 0030.0030.0030.0030
+932000 48 [INFO: Main      ] Tentative link-local IPv6 address: fe80::230:30:30:30
+962000 24 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+962000 24 [INFO: Main      ] - Routing: RPL Lite
+962000 24 [INFO: Main      ] - Net: sicslowpan
+962000 24 [INFO: Main      ] - MAC: CSMA
+962000 24 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+962000 24 [INFO: Main      ] - 802.15.4 Default channel: 26
+962000 24 [INFO: Main      ] Node ID: 24
+962000 24 [INFO: Main      ] Link-layer address: 0018.0018.0018.0018
+962000 24 [INFO: Main      ] Tentative link-local IPv6 address: fe80::218:18:18:18
+962000 24 SD 24: Started (Sensing Device, Banerjee 2019).
+966000 36 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+966000 36 [INFO: Main      ] - Routing: RPL Lite
+966000 36 [INFO: Main      ] - Net: sicslowpan
+966000 36 [INFO: Main      ] - MAC: CSMA
+966000 36 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+966000 36 [INFO: Main      ] - 802.15.4 Default channel: 26
+966000 36 [INFO: Main      ] Node ID: 36
+966000 36 [INFO: Main      ] Link-layer address: 0024.0024.0024.0024
+966000 36 [INFO: Main      ] Tentative link-local IPv6 address: fe80::224:24:24:24
+966000 36 SD 36: Started (Sensing Device, Banerjee 2019).
+967000 45 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+967000 45 [INFO: Main      ] - Routing: RPL Lite
+967000 45 [INFO: Main      ] - Net: sicslowpan
+967000 45 [INFO: Main      ] - MAC: CSMA
+967000 45 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+967000 45 [INFO: Main      ] - 802.15.4 Default channel: 26
+967000 45 [INFO: Main      ] Node ID: 45
+967000 45 [INFO: Main      ] Link-layer address: 002d.002d.002d.002d
+967000 45 [INFO: Main      ] Tentative link-local IPv6 address: fe80::22d:2d:2d:2d
+990000 49 [INFO: Main      ] Starting Contiki-NG-release/v5.1-94-gf2806d546-dirty
+990000 49 [INFO: Main      ] - Routing: RPL Lite
+990000 49 [INFO: Main      ] - Net: sicslowpan
+990000 49 [INFO: Main      ] - MAC: CSMA
+990000 49 [INFO: Main      ] - 802.15.4 PANID: 0xabcd
+990000 49 [INFO: Main      ] - 802.15.4 Default channel: 26
+990000 49 [INFO: Main      ] Node ID: 49
+990000 49 [INFO: Main      ] Link-layer address: 0031.0031.0031.0031
+990000 49 [INFO: Main      ] Tentative link-local IPv6 address: fe80::231:31:31:31
+46310000 41 U 41: Sending registration to GWN
+46364616 1 GWN 1: Registered U 41 ﾆﾒ SD 2. PID_0=57e561
+46396096 41 U 41: Registered. PID_0=57e561 A_U=cf57de
+46496536 2 SD 2: Stored credentials for U 41. PID_0=57e561
+47258000 42 U 42: Sending registration to GWN
+47280328 1 GWN 1: Registered U 42 ﾆﾒ SD 2. PID_0=8f59ed
+47325552 42 U 42: Registered. PID_0=8f59ed A_U=f97d54
+47347536 2 SD 2: Stored credentials for U 42. PID_0=8f59ed
+48123000 43 U 43: Sending registration to GWN
+48148328 1 GWN 1: Registered U 43 ﾆﾒ SD 2. PID_0=ba0e2b
+48173552 43 U 43: Registered. PID_0=ba0e2b A_U=729170
+48286536 2 SD 2: Stored credentials for U 43. PID_0=ba0e2b
+49103000 44 U 44: Sending registration to GWN
+49128328 1 GWN 1: Registered U 44 ﾆﾒ SD 2. PID_0=49204f
+49151832 44 U 44: Registered. PID_0=49204f A_U=6d373f
+49207536 2 SD 2: Stored credentials for U 44. PID_0=49204f
+50967000 45 U 45: Sending registration to GWN
+50995328 1 GWN 1: Registered U 45 ﾆﾒ SD 2. PID_0=8783fa
+51032552 45 U 45: Registered. PID_0=8783fa A_U=55a4a6
+51115536 2 SD 2: Stored credentials for U 45. PID_0=8783fa
+51435000 46 U 46: Sending registration to GWN
+51463328 1 GWN 1: Registered U 46 ﾆﾒ SD 3. PID_0=8bd1ff
+51499000 3 SD 3: Stored credentials for U 46. PID_0=8bd1ff
+51506552 46 U 46: Registered. PID_0=8bd1ff A_U=453741
+52824000 47 U 47: Sending registration to GWN
+52856328 1 GWN 1: Registered U 47 ﾆﾒ SD 3. PID_0=e136af
+52875552 47 U 47: Registered. PID_0=e136af A_U=80fa29
+52896000 3 SD 3: Stored credentials for U 47. PID_0=e136af
+53932000 48 U 48: Sending registration to GWN
+53943328 1 GWN 1: Registered U 48 ﾆﾒ SD 3. PID_0=f85213
+53955000 3 SD 3: Stored credentials for U 48. PID_0=f85213
+53970552 48 U 48: Registered. PID_0=f85213 A_U=d465db
+54990000 49 U 49: Sending registration to GWN
+55033328 1 GWN 1: Registered U 49 ﾆﾒ SD 3. PID_0=356b5f
+55069000 3 SD 3: Stored credentials for U 49. PID_0=356b5f
+55077552 49 U 49: Registered. PID_0=356b5f A_U=21dc34
+55459000 50 U 50: Sending registration to GWN
+55506328 1 GWN 1: Registered U 50 ﾆﾒ SD 3. PID_0=686d1e
+55547552 50 U 50: Registered. PID_0=686d1e A_U=1ef98c
+55555552 3 SD 3: Stored credentials for U 50. PID_0=686d1e
+92310000 41 ENROLL_ENERGY|41|cpu_s=0.086096|energy_j=0.005293
+92310000 41 U 41: Sending AuthReq to SD 2
+92506592 2 SD 2: AuthRep sent to U 41. SK=6f1154
+92578360 41 U 41: Auth OK. SK=6f1154 PID_new=2d7af1
+92578360 41 U 41: Sending ACK
+92667616 2 SD 2: Mutual auth complete for U 41. SK established.
+92749112 41 U 41: Mutual auth + key exchange complete
+92749112 41 U 41: Sending encrypted data
+92853520 2 SD 2: Data from U 41 received.
+94258000 42 ENROLL_ENERGY|42|cpu_s=0.067552|energy_j=0.004148
+94258000 42 U 42: Sending AuthReq to SD 2
+94388656 2 SD 2: AuthRep sent to U 42. SK=dd7414
+94501104 42 U 42: Auth OK. SK=dd7414 PID_new=3eff6b
+94501104 42 U 42: Sending ACK
+94618616 2 SD 2: Mutual auth complete for U 42. SK established.
+94713856 42 U 42: Mutual auth + key exchange complete
+94713856 42 U 42: Sending encrypted data
+94775520 2 SD 2: Data from U 42 received.
+96123000 43 ENROLL_ENERGY|43|cpu_s=0.050552|energy_j=0.003098
+96123000 43 U 43: Sending AuthReq to SD 2
+96267592 2 SD 2: AuthRep sent to U 43. SK=36d564
+96376104 43 U 43: Auth OK. SK=36d564 PID_new=e80041
+96376104 43 U 43: Sending ACK
+96434616 2 SD 2: Mutual auth complete for U 43. SK established.
+96497856 43 U 43: Mutual auth + key exchange complete
+96497856 43 U 43: Sending encrypted data
+96588520 2 SD 2: Data from U 43 received.
+98103000 44 ENROLL_ENERGY|44|cpu_s=0.048832|energy_j=0.002991
+98103000 44 U 44: Sending AuthReq to SD 2
+98275592 2 SD 2: AuthRep sent to U 44. SK=a41049
+98378104 44 U 44: Auth OK. SK=a41049 PID_new=829c7b
+98378104 44 U 44: Sending ACK
+98465616 2 SD 2: Mutual auth complete for U 44. SK established.
+98587856 44 U 44: Mutual auth + key exchange complete
+98587856 44 U 44: Sending encrypted data
+98657520 2 SD 2: Data from U 44 received.
+100967000 45 ENROLL_ENERGY|45|cpu_s=0.065552|energy_j=0.004025
+100967000 45 U 45: Sending AuthReq to SD 2
+101162592 2 SD 2: AuthRep sent to U 45. SK=5374e7
+101232104 45 U 45: Auth OK. SK=5374e7 PID_new=0d8b8c
+101232104 45 U 45: Sending ACK
+101309616 2 SD 2: Mutual auth complete for U 45. SK established.
+101431856 45 U 45: Mutual auth + key exchange complete
+101431856 45 U 45: Sending encrypted data
+101498520 2 SD 2: Data from U 45 received.
+102435000 46 ENROLL_ENERGY|46|cpu_s=0.071552|energy_j=0.004395
+102435000 46 U 46: Sending AuthReq to SD 3
+102568336 3 SD 3: AuthRep sent to U 46. SK=3a4635
+102609104 46 U 46: Auth OK. SK=3a4635 PID_new=1a5bfb
+102609104 46 U 46: Sending ACK
+102682360 3 SD 3: Mutual auth complete for U 46. SK established.
+102744856 46 U 46: Mutual auth + key exchange complete
+102744856 46 U 46: Sending encrypted data
+102793264 3 SD 3: Data from U 46 received.
+104824000 47 ENROLL_ENERGY|47|cpu_s=0.051552|energy_j=0.003159
+104824000 47 U 47: Sending AuthReq to SD 3
+104959336 3 SD 3: AuthRep sent to U 47. SK=fde661
+104992104 47 U 47: Auth OK. SK=fde661 PID_new=b5c8b8
+104992104 47 U 47: Sending ACK
+105065360 3 SD 3: Mutual auth complete for U 47. SK established.
+105085856 47 U 47: Mutual auth + key exchange complete
+105085856 47 U 47: Sending encrypted data
+105131264 3 SD 3: Data from U 47 received.
+106932000 48 ENROLL_ENERGY|48|cpu_s=0.038552|energy_j=0.002356
+106932000 48 U 48: Sending AuthReq to SD 3
+107029336 3 SD 3: AuthRep sent to U 48. SK=96dc8a
+107074104 48 U 48: Auth OK. SK=96dc8a PID_new=b623ca
+107074104 48 U 48: Sending ACK
+107115360 3 SD 3: Mutual auth complete for U 48. SK established.
+107180856 48 U 48: Mutual auth + key exchange complete
+107180856 48 U 48: Sending encrypted data
+107229264 3 SD 3: Data from U 48 received.
+108990000 49 ENROLL_ENERGY|49|cpu_s=0.087552|energy_j=0.005384
+108990000 49 U 49: Sending AuthReq to SD 3
+109127336 3 SD 3: AuthRep sent to U 49. SK=4315ca
+109167104 49 U 49: Auth OK. SK=4315ca PID_new=0773a2
+109167104 49 U 49: Sending ACK
+109209360 3 SD 3: Mutual auth complete for U 49. SK established.
+109267856 49 U 49: Mutual auth + key exchange complete
+109267856 49 U 49: Sending encrypted data
+109324264 3 SD 3: Data from U 49 received.
+110459000 50 ENROLL_ENERGY|50|cpu_s=0.088552|energy_j=0.005446
+110459000 50 U 50: Sending AuthReq to SD 3
+110604336 3 SD 3: AuthRep sent to U 50. SK=eee206
+110649104 50 U 50: Auth OK. SK=eee206 PID_new=21207b
+110649104 50 U 50: Sending ACK
+110669360 3 SD 3: Mutual auth complete for U 50. SK established.
+110707856 50 U 50: Mutual auth + key exchange complete
+110707856 50 U 50: Sending encrypted data
+110775264 3 SD 3: Data from U 50 received.
+138310000 41 AUTH_ENERGY|41|cpu_ticks=0|energy_ticks=0|cpu_s=0.632160|energy_j=0.038967
+138310000 41 KEYEX_ENERGY|41|cpu_s=0.439112|energy_j=0.027063
+138375520 2 SD 2: Data from U 41 received.
+141258000 42 AUTH_ENERGY|42|cpu_ticks=0|energy_ticks=0|cpu_s=0.615824|energy_j=0.037958
+141258000 42 KEYEX_ENERGY|42|cpu_s=0.455856|energy_j=0.028098
+141324520 2 SD 2: Data from U 42 received.
+144123000 43 AUTH_ENERGY|43|cpu_ticks=0|energy_ticks=0|cpu_s=0.532824|energy_j=0.032828
+144123000 43 KEYEX_ENERGY|43|cpu_s=0.374856|energy_j=0.023092
+144230520 2 SD 2: Data from U 43 received.
+147103000 44 AUTH_ENERGY|44|cpu_ticks=0|energy_ticks=0|cpu_s=0.615824|energy_j=0.037958
+147103000 44 KEYEX_ENERGY|44|cpu_s=0.484856|energy_j=0.029890
+147173520 2 SD 2: Data from U 44 received.
+150967000 45 AUTH_ENERGY|45|cpu_ticks=0|energy_ticks=0|cpu_s=0.590824|energy_j=0.036413
+150967000 45 KEYEX_ENERGY|45|cpu_s=0.464856|energy_j=0.028654
+151026520 2 SD 2: Data from U 45 received.
+153435000 46 AUTH_ENERGY|46|cpu_ticks=0|energy_ticks=0|cpu_s=0.412824|energy_j=0.025412
+153435000 46 KEYEX_ENERGY|46|cpu_s=0.309856|energy_j=0.019075
+153473264 3 SD 3: Data from U 46 received.
+156824000 47 AUTH_ENERGY|47|cpu_ticks=0|energy_ticks=0|cpu_s=0.369824|energy_j=0.022755
+156824000 47 KEYEX_ENERGY|47|cpu_s=0.261856|energy_j=0.016109
+156896264 3 SD 3: Data from U 47 received.
+159932000 48 AUTH_ENERGY|48|cpu_ticks=0|energy_ticks=0|cpu_s=0.368824|energy_j=0.022693
+159932000 48 KEYEX_ENERGY|48|cpu_s=0.248856|energy_j=0.015305
+159952496 3 SD 3: Data from U 48 received.
+162990000 49 AUTH_ENERGY|49|cpu_ticks=0|energy_ticks=0|cpu_s=0.365824|energy_j=0.022508
+162990000 49 KEYEX_ENERGY|49|cpu_s=0.277856|energy_j=0.017098
+163053264 3 SD 3: Data from U 49 received.
+165459000 50 AUTH_ENERGY|50|cpu_ticks=0|energy_ticks=0|cpu_s=0.362824|energy_j=0.022322
+165459000 50 KEYEX_ENERGY|50|cpu_s=0.248856|energy_j=0.015305
+EARLY EXIT: all 10 nodes done
+TEST OK
+Test ended at simulation time: 165459000

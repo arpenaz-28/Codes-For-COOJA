@@ -65,6 +65,17 @@ SCHEME_CFG = {
         "variant_files": ["device-node.c", "gw-node.c"],  # gw-node also modified
         "as_label": "Fog",
     },
+    "Banerjee": {
+        "base_source_dir":    os.path.join(REPO, "Banerjee-Scheme"),
+        "variant_source_dir": os.path.join(REPO, "Banerjee-Scheme", "AS-Variation"),
+        "conf_dirs": {
+            n: os.path.join(REPO, "Banerjee-Scheme", "AS-Variation", f"N{n}")
+            for n in [2, 5, 10]
+        },
+        "results_base": os.path.join(REPO, "Banerjee-Scheme", "Simulation results", "as-variation"),
+        "variant_files": ["device-node.c", "gw-node.c"],
+        "as_label": "SD",
+    },
 }
 
 RA_SOURCES = ["gw-node.c", "as-node.c", "device-node.c",
@@ -161,6 +172,9 @@ def generate_csc(scheme, n_as_count, seed):
     if scheme == "RA":
         as_block  = _motetype_block("AS Node", "as-node.c", "as-node.cooja", as_motes)
         dev_block = _motetype_block("Device Node", "device-node.c", "device-node.cooja", dev_motes)
+    elif scheme == "Banerjee":
+        as_block  = _motetype_block("SD (Sensing Device)", "as-node.c", "as-node.cooja", as_motes)
+        dev_block = _motetype_block("U (User)", "device-node.c", "device-node.cooja", dev_motes)
     else:  # LAAKA
         as_block  = _motetype_block("Fog AS Node", "as-node.c", "as-node.cooja", as_motes)
         dev_block = _motetype_block("Device Node", "device-node.c", "device-node.cooja", dev_motes)
@@ -467,9 +481,9 @@ def run_variant(scheme, n_as_count, seeds):
 
 def main():
     parser = argparse.ArgumentParser(description="Authenticator-variation simulations")
-    parser.add_argument("--scheme", nargs="+", choices=["RA", "LAAKA"],
+    parser.add_argument("--scheme", nargs="+", choices=["RA", "LAAKA", "Banerjee"],
                         default=["RA", "LAAKA"],
-                        help="Schemes to run (default: both)")
+                        help="Schemes to run (default: RA LAAKA)")
     parser.add_argument("--count", nargs="+", type=int, choices=[2, 5, 10, 15],
                         default=[2, 5, 10, 15],
                         help="Active-AS counts (default: 2 5 10 15)")
@@ -488,7 +502,10 @@ def main():
     print(f"  Build    : {MYPROJECT}")
 
     for scheme in args.scheme:
-        for n in sorted(args.count):
+        valid_counts = sorted(
+            n for n in args.count if n in SCHEME_CFG[scheme]["conf_dirs"]
+        )
+        for n in valid_counts:
             run_variant(scheme, n, seeds)
 
     print("\n" + "=" * 70)

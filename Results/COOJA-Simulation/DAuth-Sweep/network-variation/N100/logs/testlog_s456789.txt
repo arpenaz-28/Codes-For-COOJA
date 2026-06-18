@@ -1119,266 +1119,264 @@ Random seed: 456789
 106074648 3 AS 3: Reg-1 complete for device 100
 106164368 100 Node 100: Enrolled
 106164368 100 
-172408000 81 ENROLL_ENERGY|81|cpu_s=0.461368|energy_j=0.028461Node 81: Round 1 ﾀﾔ Sending auth. ts_1=1
-172514912 2 AS 2: Device 81 authenticated
-172514912 2 AS 2: Round 1 reply to device 81 (ts_2=1). Pending keyex.
-172514912 2 
-172587112 81 Node 81: Round 1 Auth OK. ts_2=1
-172587112 81 
-174572000 82 ENROLL_ENERGY|82|cpu_s=0.328368|energy_j=0.020242Node 82: Round 1 ﾀﾔ Sending auth. ts_1=1
-174659200 3 AS 3: Device 82 authenticated
-174659200 3 AS 3: Round 1 reply to device 82 (ts_2=1). Pending keyex.
-174659200 3 
-174722224 82 Node 82: Round 1 Auth OK. ts_2=1
-174722224 82 
-176373000 83 ENROLL_ENERGY|83|cpu_s=0.405368|energy_j=0.025001Node 83: Round 1 ﾀﾔ Sending auth. ts_1=1
-176471456 2  The CPU time and energy at end of authentication for server 2 are 172.253912 and 10.644508AS 2: Device 83 authenticated
-176471456 2 AS 2: Round 1 reply to device 83 (ts_2=2). Pending keyex.
-176471456 2 
-176579112 83 Node 83: Round 1 Auth OK. ts_2=2
-176579112 83 
-178012000 84 ENROLL_ENERGY|84|cpu_s=0.294368|energy_j=0.018141Node 84: Round 1 ﾀﾔ Sending auth. ts_1=1
-178103200 3  The CPU time and energy at end of authentication for server 3 are 174.158200 and 10.762139AS 3: Device 84 authenticated
-178103200 3 AS 3: Round 1 reply to device 84 (ts_2=2). Pending keyex.
-178103200 3 
-178186112 84 Node 84: Round 1 Auth OK. ts_2=2
-178186112 84 
-180729000 85 ENROLL_ENERGY|85|cpu_s=0.390368|energy_j=0.024074Node 85: Round 1 ﾀﾔ Sending auth. ts_1=1
-180825456 2  The CPU time and energy at end of authentication for server 2 are 176.210456 and 10.889002AS 2: Device 85 authenticated
-180825456 2 AS 2: Round 1 reply to device 85 (ts_2=3). Pending keyex.
-180825456 2 
-180930112 85 Node 85: Round 1 Auth OK. ts_2=3
-180930112 85 
-182048000 86 ENROLL_ENERGY|86|cpu_s=0.355368|energy_j=0.021911Node 86: Round 1 ﾀﾔ Sending auth. ts_1=1
-182114200 3  The CPU time and energy at end of authentication for server 3 are 177.602200 and 10.974958AS 3: Device 86 authenticated
-182114200 3 AS 3: Round 1 reply to device 86 (ts_2=3). Pending keyex.
-182114200 3 
-182150224 86 Node 86: Round 1 Auth OK. ts_2=3
-182150224 86 
-184544000 87 ENROLL_ENERGY|87|cpu_s=0.421368|energy_j=0.025989Node 87: Round 1 ﾀﾔ Sending auth. ts_1=1
-184607368 2  The CPU time and energy at end of authentication for server 2 are 180.564456 and 11.158059AS 2: Device 87 authenticated
-184607368 2 AS 2: Round 1 reply to device 87 (ts_2=4). Pending keyex.
-184607368 2 
-184716112 87 Node 87: Round 1 Auth OK. ts_2=4
-184716112 87 
-186566000 88 ENROLL_ENERGY|88|cpu_s=0.272368|energy_j=0.016781Node 88: Round 1 ﾀﾔ Sending auth. ts_1=1
-186684200 3  The CPU time and energy at end of authentication for server 3 are 181.613200 and 11.222813AS 3: Device 88 authenticated
-186684200 3 AS 3: Round 1 reply to device 88 (ts_2=4). Pending keyex.
-186684200 3 
-186744112 88 Node 88: Round 1 Auth OK. ts_2=4
-186744112 88 
-188317000 89 ENROLL_ENERGY|89|cpu_s=0.417736|energy_j=0.025765Node 89: Round 1 ﾀﾔ Sending auth. ts_1=1
-188440456 2  The CPU time and energy at end of authentication for server 2 are 184.346368 and 11.391761AS 2: Device 89 authenticated
-188440456 2 AS 2: Round 1 reply to device 89 (ts_2=5). Pending keyex.
-188440456 2 
-188576112 89 Node 89: Round 1 Auth OK. ts_2=5
-188576112 89 
-190648000 90 ENROLL_ENERGY|90|cpu_s=0.247368|energy_j=0.015236Node 90: Round 1 ﾀﾔ Sending auth. ts_1=1
-190741200 3  The CPU time and energy at end of authentication for server 3 are 186.183200 and 11.505214AS 3: Device 90 authenticated
-190741200 3 AS 3: Round 1 reply to device 90 (ts_2=5). Pending keyex.
-190741200 3 
-190798112 90 Node 90: Round 1 Auth OK. ts_2=5
-190798112 90 
-192722000 91 ENROLL_ENERGY|91|cpu_s=0.396368|energy_j=0.024444Node 91: Round 1 ﾀﾔ Sending auth. ts_1=1
-192841456 2  The CPU time and energy at end of authentication for server 2 are 188.179456 and 11.628625AS 2: Device 91 authenticated
-192841456 2 AS 2: Round 1 reply to device 91 (ts_2=6). Pending keyex.
-192841456 2 
-192941112 91 Node 91: Round 1 Auth OK. ts_2=6
-192941112 91 
-194713000 92 ENROLL_ENERGY|92|cpu_s=0.285368|energy_j=0.017585Node 92: Round 1 ﾀﾔ Sending auth. ts_1=1
-194799200 3  The CPU time and energy at end of authentication for server 3 are 190.240200 and 11.755916AS 3: Device 92 authenticated
-194799200 3 AS 3: Round 1 reply to device 92 (ts_2=6). Pending keyex.
-194799200 3 
-194864112 92 Node 92: Round 1 Auth OK. ts_2=6
-194864112 92 
-196366000 93 ENROLL_ENERGY|93|cpu_s=0.483368|energy_j=0.029821Node 93: Round 1 ﾀﾔ Sending auth. ts_1=1
-196450912 2  The CPU time and energy at end of authentication for server 2 are 192.580456 and 11.900565AS 2: Device 93 authenticated
-196450912 2 AS 2: Round 1 reply to device 93 (ts_2=7). Pending keyex.
-196450912 2 
-196552112 93 Node 93: Round 1 Auth OK. ts_2=7
-196552112 93 
-198442000 94 ENROLL_ENERGY|94|cpu_s=0.387368|energy_j=0.023888Node 94: Round 1 ﾀﾔ Sending auth. ts_1=1
-198521200 3  The CPU time and energy at end of authentication for server 3 are 194.298200 and 12.006676AS 3: Device 94 authenticated
-198521200 3 AS 3: Round 1 reply to device 94 (ts_2=7). Pending keyex.
-198521200 3 
-198608112 94 Node 94: Round 1 Auth OK. ts_2=7
-198608112 94 
-200289000 95 ENROLL_ENERGY|95|cpu_s=0.393368|energy_j=0.024240Node 95: Round 1 ﾀﾔ Sending auth. ts_1=1
-200401456 2  The CPU time and energy at end of authentication for server 2 are 196.189912 and 12.123609AS 2: Device 95 authenticated
-200401456 2 AS 2: Round 1 reply to device 95 (ts_2=8). Pending keyex.
-200401456 2 
-200530112 95 Node 95: Round 1 Auth OK. ts_2=8
-200530112 95 
-202832000 96 ENROLL_ENERGY|96|cpu_s=0.317368|energy_j=0.019562Node 96: Round 1 ﾀﾔ Sending auth. ts_1=1
-202942200 3  The CPU time and energy at end of authentication for server 3 are 198.020200 and 12.236675AS 3: Device 96 authenticated
-202942200 3 AS 3: Round 1 reply to device 96 (ts_2=8). Pending keyex.
-202942200 3 
-203015112 96 Node 96: Round 1 Auth OK. ts_2=8
-203015112 96 
-204499000 97 ENROLL_ENERGY|97|cpu_s=0.398368|energy_j=0.024568Node 97: Round 1 ﾀﾔ Sending auth. ts_1=1
-204624456 2  The CPU time and energy at end of authentication for server 2 are 200.140456 and 12.367732AS 2: Device 97 authenticated
-204624456 2 AS 2: Round 1 reply to device 97 (ts_2=9). Pending keyex.
-204624456 2 
-204773112 97 Node 97: Round 1 Auth OK. ts_2=9
-204773112 97 
-206065000 98 ENROLL_ENERGY|98|cpu_s=0.362736|energy_j=0.022366Node 98: Round 1 ﾀﾔ Sending auth. ts_1=1
-206167200 3  The CPU time and energy at end of authentication for server 3 are 202.441200 and 12.509872AS 3: Device 98 authenticated
-206167200 3 AS 3: Round 1 reply to device 98 (ts_2=9). Pending keyex.
-206167200 3 
-206272112 98 Node 98: Round 1 Auth OK. ts_2=9
-206272112 98 
-208983000 99 ENROLL_ENERGY|99|cpu_s=0.337368|energy_j=0.020798Node 99: Round 1 ﾀﾔ Sending auth. ts_1=1
-209114456 2  The CPU time and energy at end of authentication for server 2 are 204.363456 and 12.628693AS 2: Device 99 authenticated
-209114456 2 AS 2: Round 1 reply to device 99 (ts_2=10). Pending keyex.
-209114456 2 
-209282112 99 Node 99: Round 1 Auth OK. ts_2=10
-209282112 99 
-210808000 100 ENROLL_ENERGY|100|cpu_s=0.356368|energy_j=0.021972Node 100: Round 1 ﾀﾔ Sending auth. ts_1=1
-210867200 3  The CPU time and energy at end of authentication for server 3 are 205.666200 and 12.709148AS 3: Device 100 authenticated
-210867200 3 AS 3: Round 1 reply to device 100 (ts_2=10). Pending keyex.
-210867200 3 
-210946112 100 Node 100: Round 1 Auth OK. ts_2=10
-210946112 100 
-258408000 81 AUTH_ENERGY|81|cpu_s=0.179112|energy_j=0.011043Node 81: Round 2 ﾀﾔ Sending keyex. ts_2=1
-258523464 2  The CPU time and energy at end of authentication for server 2 are 208.853456 and 12.906155AS 2: Round 2 KeyEx reply to device 81. Forwarding token to GW.
-258654072 81 Node 81: Round 2 KeyEx OK. K_GW_D=4e76ec
-258654072 81 
-258654072 81 KEYEX_ENERGY|81|cpu_s=0.246072|energy_j=0.015186
-258682904 1 GW: Auth token for device 81 (via AS 2) stored.
-258682904 1 GW: Token processing time: 0 ms
-261572000 82 AUTH_ENERGY|82|cpu_s=0.150224|energy_j=0.009258Node 82: Round 2 ﾀﾔ Sending keyex. ts_2=1
-261648208 3  The CPU time and energy at end of authentication for server 3 are 210.366200 and 12.999588AS 3: Round 2 KeyEx reply to device 82. Forwarding token to GW.
-261689616 1 GW: Auth token for device 82 (via AS 3) stored.
-261689616 1 GW: Token processing time: 0 ms
-261715072 82 Node 82: Round 2 KeyEx OK. K_GW_D=159999
-261715072 82 
-261715072 82 KEYEX_ENERGY|82|cpu_s=0.143072|energy_j=0.008820
-264373000 83 AUTH_ENERGY|83|cpu_s=0.206112|energy_j=0.012712Node 83: Round 2 ﾀﾔ Sending keyex. ts_2=2
-264508464 2 AS 2: Round 2 KeyEx reply to device 83. Forwarding token to GW.
-264587904 1 GW: Auth token for device 83 (via AS 2) stored.
-264587904 1 GW: Token processing time: 0 ms
-264623072 83 Node 83: Round 2 KeyEx OK. K_GW_D=149cc8
-264623072 83 
-264623072 83 KEYEX_ENERGY|83|cpu_s=0.250072|energy_j=0.015433
-267012000 84 AUTH_ENERGY|84|cpu_s=0.174112|energy_j=0.010734Node 84: Round 2 ﾀﾔ Sending keyex. ts_2=2
-267122208 3 AS 3: Round 2 KeyEx reply to device 84. Forwarding token to GW.
-267166616 1 GW: Auth token for device 84 (via AS 3) stored.
-267166616 1 GW: Token processing time: 0 ms
-267221072 84 Node 84: Round 2 KeyEx OK. K_GW_D=dc78b7
-267221072 84 
-267221072 84 KEYEX_ENERGY|84|cpu_s=0.209072|energy_j=0.012899
-270729000 85 AUTH_ENERGY|85|cpu_s=0.201112|energy_j=0.012403Node 85: Round 2 ﾀﾔ Sending keyex. ts_2=3
-270820464 2 AS 2: Round 2 KeyEx reply to device 85. Forwarding token to GW.
-270914904 1 GW: Auth token for device 85 (via AS 2) stored.
-270914904 1 GW: Token processing time: 0 ms
-270944072 85 Node 85: Round 2 KeyEx OK. K_GW_D=594401
-270944072 85 
-270944072 85 KEYEX_ENERGY|85|cpu_s=0.215072|energy_j=0.013270
-273048000 86 AUTH_ENERGY|86|cpu_s=0.102224|energy_j=0.006292Node 86: Round 2 ﾀﾔ Sending keyex. ts_2=3
-273160208 3 AS 3: Round 2 KeyEx reply to device 86. Forwarding token to GW.
-273193616 1 GW: Auth token for device 86 (via AS 3) stored.
-273193616 1 GW: Token processing time: 0 ms
-273256072 86 Node 86: Round 2 KeyEx OK. K_GW_D=942df1
-273256072 86 
-273256072 86 KEYEX_ENERGY|86|cpu_s=0.208072|energy_j=0.012837
-276544000 87 AUTH_ENERGY|87|cpu_s=0.172112|energy_j=0.010611Node 87: Round 2 ﾀﾔ Sending keyex. ts_2=4
-276665464 2 AS 2: Round 2 KeyEx reply to device 87. Forwarding token to GW.
-276747904 1 GW: Auth token for device 87 (via AS 2) stored.
-276747904 1 GW: Token processing time: 0 ms
-276792144 87 Node 87: Round 2 KeyEx OK. K_GW_D=97a8c0
-276792144 87 
-276792144 87 KEYEX_ENERGY|87|cpu_s=0.248144|energy_j=0.015314
-279566000 88 AUTH_ENERGY|88|cpu_s=0.178112|energy_j=0.010981Node 88: Round 2 ﾀﾔ Sending keyex. ts_2=4
-279626208 3 AS 3: Round 2 KeyEx reply to device 88. Forwarding token to GW.
-279689616 1 GW: Auth token for device 88 (via AS 3) stored.
-279689616 1 GW: Token processing time: 0 ms
-279718072 88 Node 88: Round 2 KeyEx OK. K_GW_D=ed95ad
-279718072 88 
-279718072 88 KEYEX_ENERGY|88|cpu_s=0.152072|energy_j=0.009376
-282317000 89 AUTH_ENERGY|89|cpu_s=0.259112|energy_j=0.015987Node 89: Round 2 ﾀﾔ Sending keyex. ts_2=5
-282403464 2 AS 2: Round 2 KeyEx reply to device 89. Forwarding token to GW.
-282493904 1 GW: Auth token for device 89 (via AS 2) stored.
-282493904 1 GW: Token processing time: 0 ms
-282532072 89 Node 89: Round 2 KeyEx OK. K_GW_D=9e4dba
-282532072 89 
-282532072 89 KEYEX_ENERGY|89|cpu_s=0.215072|energy_j=0.013270
-285648000 90 AUTH_ENERGY|90|cpu_s=0.150112|energy_j=0.009251Node 90: Round 2 ﾀﾔ Sending keyex. ts_2=5
-285737208 3 AS 3: Round 2 KeyEx reply to device 90. Forwarding token to GW.
-285780616 1 GW: Auth token for device 90 (via AS 3) stored.
-285780616 1 GW: Token processing time: 0 ms
-285794760 90 Node 90: Round 2 KeyEx OK. K_GW_D=75ed1e
-285794760 90 
-285794760 90 KEYEX_ENERGY|90|cpu_s=0.146760|energy_j=0.009048
-288722000 91 AUTH_ENERGY|91|cpu_s=0.219112|energy_j=0.013515Node 91: Round 2 ﾀﾔ Sending keyex. ts_2=6
-288835464 2 AS 2: Round 2 KeyEx reply to device 91. Forwarding token to GW.
-288928904 1 GW: Auth token for device 91 (via AS 2) stored.
-288928904 1 GW: Token processing time: 0 ms
-289020072 91 Node 91: Round 2 KeyEx OK. K_GW_D=4e2e2f
-289020072 91 
-289020072 91 KEYEX_ENERGY|91|cpu_s=0.298072|energy_j=0.018399
-291713000 92 AUTH_ENERGY|92|cpu_s=0.151112|energy_j=0.009313Node 92: Round 2 ﾀﾔ Sending keyex. ts_2=6
-291777208 3 AS 3: Round 2 KeyEx reply to device 92. Forwarding token to GW.
-291844072 92 Node 92: Round 2 KeyEx OK. K_GW_D=d2b73d
-291844072 92 
-291844072 92 KEYEX_ENERGY|92|cpu_s=0.131072|energy_j=0.008079
-291854616 1 GW: Auth token for device 92 (via AS 3) stored.
-291854616 1 GW: Token processing time: 0 ms
-294366000 93 AUTH_ENERGY|93|cpu_s=0.186112|energy_j=0.011476Node 93: Round 2 ﾀﾔ Sending keyex. ts_2=7
-294492464 2 AS 2: Round 2 KeyEx reply to device 93. Forwarding token to GW.
-294574072 93 Node 93: Round 2 KeyEx OK. K_GW_D=5afb24
-294574072 93 
-294574072 93 KEYEX_ENERGY|93|cpu_s=0.208072|energy_j=0.012837
-294629904 1 GW: Auth token for device 93 (via AS 2) stored.
-294629904 1 GW: Token processing time: 0 ms
-297442000 94 AUTH_ENERGY|94|cpu_s=0.166112|energy_j=0.010240Node 94: Round 2 ﾀﾔ Sending keyex. ts_2=7
-297548208 3 AS 3: Round 2 KeyEx reply to device 94. Forwarding token to GW.
-297583616 1 GW: Auth token for device 94 (via AS 3) stored.
-297583616 1 GW: Token processing time: 0 ms
-297592072 94 Node 94: Round 2 KeyEx OK. K_GW_D=ec3f14
-297592072 94 
-297592072 94 KEYEX_ENERGY|94|cpu_s=0.150072|energy_j=0.009253
-300289000 95 AUTH_ENERGY|95|cpu_s=0.241112|energy_j=0.014875Node 95: Round 2 ﾀﾔ Sending keyex. ts_2=8
-300368464 2 AS 2: Round 2 KeyEx reply to device 95. Forwarding token to GW.
-300431904 1 GW: Auth token for device 95 (via AS 2) stored.
-300431904 1 GW: Token processing time: 0 ms
-300519072 95 Node 95: Round 2 KeyEx OK. K_GW_D=e8c423
-300519072 95 
-300519072 95 KEYEX_ENERGY|95|cpu_s=0.230072|energy_j=0.014197
-303832000 96 AUTH_ENERGY|96|cpu_s=0.183112|energy_j=0.011290Node 96: Round 2 ﾀﾔ Sending keyex. ts_2=8
-303914208 3 AS 3: Round 2 KeyEx reply to device 96. Forwarding token to GW.
-303959072 96 Node 96: Round 2 KeyEx OK. K_GW_D=51b32d
-303959072 96 
-303959072 96 KEYEX_ENERGY|96|cpu_s=0.127072|energy_j=0.007831
-303977616 1 GW: Auth token for device 96 (via AS 3) stored.
-303977616 1 GW: Token processing time: 0 ms
-306499000 97 AUTH_ENERGY|97|cpu_s=0.274112|energy_j=0.016914Node 97: Round 2 ﾀﾔ Sending keyex. ts_2=9
-306572464 2 AS 2: Round 2 KeyEx reply to device 97. Forwarding token to GW.
-306646904 1 GW: Auth token for device 97 (via AS 2) stored.
-306646904 1 GW: Token processing time: 0 ms
-306711072 97 Node 97: Round 2 KeyEx OK. K_GW_D=51bd84
-306711072 97 
-306711072 97 KEYEX_ENERGY|97|cpu_s=0.212072|energy_j=0.013084
-309065000 98 AUTH_ENERGY|98|cpu_s=0.207112|energy_j=0.012774Node 98: Round 2 ﾀﾔ Sending keyex. ts_2=9
-309141208 3 AS 3: Round 2 KeyEx reply to device 98. Forwarding token to GW.
-309196616 1 GW: Auth token for device 98 (via AS 3) stored.
-309196616 1 GW: Token processing time: 0 ms
-309221072 98 Node 98: Round 2 KeyEx OK. K_GW_D=22a664
-309221072 98 
-309221072 98 KEYEX_ENERGY|98|cpu_s=0.156072|energy_j=0.009624
-312983000 99 AUTH_ENERGY|99|cpu_s=0.299112|energy_j=0.018459Node 99: Round 2 ﾀﾔ Sending keyex. ts_2=10
-313090464 2 AS 2: Round 2 KeyEx reply to device 99. Forwarding token to GW.
-313153904 1 GW: Auth token for device 99 (via AS 2) stored.
-313153904 1 GW: Token processing time: 0 ms
-313185072 99 Node 99: Round 2 KeyEx OK. K_GW_D=6b7602
-313185072 99 
-313185072 99 KEYEX_ENERGY|99|cpu_s=0.202072|energy_j=0.012466
-315808000 100 AUTH_ENERGY|100|cpu_s=0.138112|energy_j=0.008509Node 100: Round 2 ﾀﾔ Sending keyex. ts_2=10
-315868208 3 AS 3: Round 2 KeyEx reply to device 100. Forwarding token to GW.
-315924616 1 GW: Auth token for device 100 (via AS 3) stored.
-315924616 1 GW: Token processing time: 0 ms
-315963072 100 Node 100: Round 2 KeyEx OK. K_GW_D=61694b
-315963072 100 
-315963072 100 KEYEX_ENERGY|100|cpu_s=0.155072|energy_j=0.009562
+172408000 81 ENROLL_ENERGY|81|cpu_s=0.461368|energy_j=0.028461Node 81: Round 1 ﾀﾔ Sending auth. id_hash=4ae8 ts_1=1
+172620440 2 AS 2: Device 81 authenticated
+172620440 2 AS 2: Round 1 reply to device 81 (ts_2=1). Pending keyex.
+172620440 2 
+172715112 81 Node 81: Round 1 Auth OK. ts_2=1
+172715112 81 
+174572000 82 ENROLL_ENERGY|82|cpu_s=0.328368|energy_j=0.020242Node 82: Round 1 ﾀﾔ Sending auth. id_hash=8c25 ts_1=1
+174690184 3 AS 3: Device 82 authenticated
+174690184 3 AS 3: Round 1 reply to device 82 (ts_2=1). Pending keyex.
+174690184 3 
+174778112 82 Node 82: Round 1 Auth OK. ts_2=1
+174778112 82 
+176373000 83 ENROLL_ENERGY|83|cpu_s=0.405368|energy_j=0.025001Node 83: Round 1 ﾀﾔ Sending auth. id_hash=8de0 ts_1=1
+176601440 2  The CPU time and energy at end of authentication for server 2 are 172.359440 and 10.651025AS 2: Device 83 authenticated
+176601440 2 AS 2: Round 1 reply to device 83 (ts_2=2). Pending keyex.
+176601440 2 
+176675112 83 Node 83: Round 1 Auth OK. ts_2=2
+176675112 83 
+178012000 84 ENROLL_ENERGY|84|cpu_s=0.294368|energy_j=0.018141Node 84: Round 1 ﾀﾔ Sending auth. id_hash=e632 ts_1=1
+178172184 3  The CPU time and energy at end of authentication for server 3 are 174.189184 and 10.764049AS 3: Device 84 authenticated
+178172184 3 AS 3: Round 1 reply to device 84 (ts_2=2). Pending keyex.
+178172184 3 
+178243112 84 Node 84: Round 1 Auth OK. ts_2=2
+178243112 84 
+180729000 85 ENROLL_ENERGY|85|cpu_s=0.390368|energy_j=0.024074Node 85: Round 1 ﾀﾔ Sending auth. id_hash=a255 ts_1=1
+180911440 2  The CPU time and energy at end of authentication for server 2 are 176.340440 and 10.897026AS 2: Device 85 authenticated
+180911440 2 AS 2: Round 1 reply to device 85 (ts_2=3). Pending keyex.
+180911440 2 
+181052112 85 Node 85: Round 1 Auth OK. ts_2=3
+181052112 85 
+182048000 86 ENROLL_ENERGY|86|cpu_s=0.355368|energy_j=0.021911Node 86: Round 1 ﾀﾔ Sending auth. id_hash=de5a ts_1=1
+182181184 3  The CPU time and energy at end of authentication for server 3 are 177.671184 and 10.979212AS 3: Device 86 authenticated
+182181184 3 AS 3: Round 1 reply to device 86 (ts_2=3). Pending keyex.
+182181184 3 
+182274112 86 Node 86: Round 1 Auth OK. ts_2=3
+182274112 86 
+184544000 87 ENROLL_ENERGY|87|cpu_s=0.421368|energy_j=0.025989Node 87: Round 1 ﾀﾔ Sending auth. id_hash=fcb5 ts_1=1
+184778440 2  The CPU time and energy at end of authentication for server 2 are 180.650440 and 11.163359AS 2: Device 87 authenticated
+184778440 2 AS 2: Round 1 reply to device 87 (ts_2=4). Pending keyex.
+184778440 2 
+184899112 87 Node 87: Round 1 Auth OK. ts_2=4
+184899112 87 
+186566000 88 ENROLL_ENERGY|88|cpu_s=0.272368|energy_j=0.016781Node 88: Round 1 ﾀﾔ Sending auth. id_hash=4b68 ts_1=1
+186693184 3  The CPU time and energy at end of authentication for server 3 are 181.680184 and 11.226938AS 3: Device 88 authenticated
+186693184 3 AS 3: Round 1 reply to device 88 (ts_2=4). Pending keyex.
+186693184 3 
+186742112 88 Node 88: Round 1 Auth OK. ts_2=4
+186742112 88 
+188317000 89 ENROLL_ENERGY|89|cpu_s=0.417736|energy_j=0.025765Node 89: Round 1 ﾀﾔ Sending auth. id_hash=18f5 ts_1=1
+188462440 2  The CPU time and energy at end of authentication for server 2 are 184.517440 and 11.402314AS 2: Device 89 authenticated
+188462440 2 AS 2: Round 1 reply to device 89 (ts_2=5). Pending keyex.
+188462440 2 
+188604112 89 Node 89: Round 1 Auth OK. ts_2=5
+188604112 89 
+190648000 90 ENROLL_ENERGY|90|cpu_s=0.247368|energy_j=0.015236Node 90: Round 1 ﾀﾔ Sending auth. id_hash=bbee ts_1=1
+190865184 3  The CPU time and energy at end of authentication for server 3 are 186.192184 and 11.505751AS 3: Device 90 authenticated
+190865184 3 AS 3: Round 1 reply to device 90 (ts_2=5). Pending keyex.
+190865184 3 
+190949112 90 Node 90: Round 1 Auth OK. ts_2=5
+190949112 90 
+192722000 91 ENROLL_ENERGY|91|cpu_s=0.396368|energy_j=0.024444Node 91: Round 1 ﾀﾔ Sending auth. id_hash=2458 ts_1=1
+193023440 2  The CPU time and energy at end of authentication for server 2 are 188.201440 and 11.629961AS 2: Device 91 authenticated
+193023440 2 AS 2: Round 1 reply to device 91 (ts_2=6). Pending keyex.
+193023440 2 
+193168112 91 Node 91: Round 1 Auth OK. ts_2=6
+193168112 91 
+194713000 92 ENROLL_ENERGY|92|cpu_s=0.285368|energy_j=0.017585Node 92: Round 1 ﾀﾔ Sending auth. id_hash=a925 ts_1=1
+194866184 3  The CPU time and energy at end of authentication for server 3 are 190.364184 and 11.763555AS 3: Device 92 authenticated
+194866184 3 AS 3: Round 1 reply to device 92 (ts_2=6). Pending keyex.
+194866184 3 
+194952112 92 Node 92: Round 1 Auth OK. ts_2=6
+194952112 92 
+196366000 93 ENROLL_ENERGY|93|cpu_s=0.483368|energy_j=0.029821Node 93: Round 1 ﾀﾔ Sending auth. id_hash=cfae ts_1=1
+196633440 2  The CPU time and energy at end of authentication for server 2 are 192.762440 and 11.911784AS 2: Device 93 authenticated
+196633440 2 AS 2: Round 1 reply to device 93 (ts_2=7). Pending keyex.
+196633440 2 
+196753112 93 Node 93: Round 1 Auth OK. ts_2=7
+196753112 93 
+198442000 94 ENROLL_ENERGY|94|cpu_s=0.387368|energy_j=0.023888Node 94: Round 1 ﾀﾔ Sending auth. id_hash=74cd ts_1=1
+198589184 3  The CPU time and energy at end of authentication for server 3 are 194.365184 and 12.010788AS 3: Device 94 authenticated
+198589184 3 AS 3: Round 1 reply to device 94 (ts_2=7). Pending keyex.
+198589184 3 
+198664112 94 Node 94: Round 1 Auth OK. ts_2=7
+198664112 94 
+200289000 95 ENROLL_ENERGY|95|cpu_s=0.393368|energy_j=0.024240Node 95: Round 1 ﾀﾔ Sending auth. id_hash=d2e2 ts_1=1
+200535440 2  The CPU time and energy at end of authentication for server 2 are 196.372440 and 12.134857AS 2: Device 95 authenticated
+200535440 2 AS 2: Round 1 reply to device 95 (ts_2=8). Pending keyex.
+200535440 2 
+200628224 95 Node 95: Round 1 Auth OK. ts_2=8
+200628224 95 
+202832000 96 ENROLL_ENERGY|96|cpu_s=0.317368|energy_j=0.019562Node 96: Round 1 ﾀﾔ Sending auth. id_hash=8d33 ts_1=1
+202956184 3  The CPU time and energy at end of authentication for server 3 are 198.088184 and 12.240844AS 3: Device 96 authenticated
+202956184 3 AS 3: Round 1 reply to device 96 (ts_2=8). Pending keyex.
+202956184 3 
+203038112 96 Node 96: Round 1 Auth OK. ts_2=8
+203038112 96 
+204499000 97 ENROLL_ENERGY|97|cpu_s=0.398368|energy_j=0.024568Node 97: Round 1 ﾀﾔ Sending auth. id_hash=ca97 ts_1=1
+204772440 2  The CPU time and energy at end of authentication for server 2 are 200.274440 and 12.375976AS 2: Device 97 authenticated
+204772440 2 AS 2: Round 1 reply to device 97 (ts_2=9). Pending keyex.
+204772440 2 
+204916112 97 Node 97: Round 1 Auth OK. ts_2=9
+204916112 97 
+206065000 98 ENROLL_ENERGY|98|cpu_s=0.362736|energy_j=0.022366Node 98: Round 1 ﾀﾔ Sending auth. id_hash=3e23 ts_1=1
+206235184 3  The CPU time and energy at end of authentication for server 3 are 202.455184 and 12.510700AS 3: Device 98 authenticated
+206235184 3 AS 3: Round 1 reply to device 98 (ts_2=9). Pending keyex.
+206235184 3 
+206276112 98 Node 98: Round 1 Auth OK. ts_2=9
+206276112 98 
+208983000 99 ENROLL_ENERGY|99|cpu_s=0.337368|energy_j=0.020798Node 99: Round 1 ﾀﾔ Sending auth. id_hash=2e7d ts_1=1
+209200440 2  The CPU time and energy at end of authentication for server 2 are 204.511440 and 12.637797AS 2: Device 99 authenticated
+209200440 2 AS 2: Round 1 reply to device 99 (ts_2=10). Pending keyex.
+209200440 2 
+209354112 99 Node 99: Round 1 Auth OK. ts_2=10
+209354112 99 
+210808000 100 ENROLL_ENERGY|100|cpu_s=0.356368|energy_j=0.021972Node 100: Round 1 ﾀﾔ Sending auth. id_hash=18ac ts_1=1
+210997184 3  The CPU time and energy at end of authentication for server 3 are 205.734184 and 12.713308AS 3: Device 100 authenticated
+210997184 3 AS 3: Round 1 reply to device 100 (ts_2=10). Pending keyex.
+210997184 3 
+211168112 100 Node 100: Round 1 Auth OK. ts_2=10
+211168112 100 
+258408000 81 AUTH_ENERGY|81|cpu_s=0.307112|energy_j=0.018937Node 81: Round 2 ﾀﾔ Sending keyex. ts_2=1
+258596456 2  The CPU time and energy at end of authentication for server 2 are 208.939440 and 12.911423AS 2: Round 2 KeyEx reply to device 81. Forwarding token to GW.
+258688072 81 Node 81: Round 2 KeyEx OK. K_GW_D=8303cf
+258688072 81 
+258688072 81 KEYEX_ENERGY|81|cpu_s=0.280072|energy_j=0.017283
+258719904 1 GW: Auth token for device 81 (via AS 2) stored.
+258719904 1 GW: Token processing time: 0 ms
+261572000 82 AUTH_ENERGY|82|cpu_s=0.206112|energy_j=0.012695Node 82: Round 2 ﾀﾔ Sending keyex. ts_2=1
+261641200 3  The CPU time and energy at end of authentication for server 3 are 210.496184 and 13.007575AS 3: Round 2 KeyEx reply to device 82. Forwarding token to GW.
+261682616 1 GW: Auth token for device 82 (via AS 3) stored.
+261682616 1 GW: Token processing time: 0 ms
+261745072 82 Node 82: Round 2 KeyEx OK. K_GW_D=ff850e
+261745072 82 
+261745072 82 KEYEX_ENERGY|82|cpu_s=0.173072|energy_j=0.010670
+264373000 83 AUTH_ENERGY|83|cpu_s=0.302112|energy_j=0.018628Node 83: Round 2 ﾀﾔ Sending keyex. ts_2=2
+264468456 2 AS 2: Round 2 KeyEx reply to device 83. Forwarding token to GW.
+264561904 1 GW: Auth token for device 83 (via AS 2) stored.
+264561904 1 GW: Token processing time: 0 ms
+264594072 83 Node 83: Round 2 KeyEx OK. K_GW_D=e7c590
+264594072 83 
+264594072 83 KEYEX_ENERGY|83|cpu_s=0.221072|energy_j=0.013636
+267012000 84 AUTH_ENERGY|84|cpu_s=0.231112|energy_j=0.014240Node 84: Round 2 ﾀﾔ Sending keyex. ts_2=2
+267111200 3 AS 3: Round 2 KeyEx reply to device 84. Forwarding token to GW.
+267155616 1 GW: Auth token for device 84 (via AS 3) stored.
+267155616 1 GW: Token processing time: 0 ms
+267179072 84 Node 84: Round 2 KeyEx OK. K_GW_D=35ddcb
+267179072 84 
+267179072 84 KEYEX_ENERGY|84|cpu_s=0.167072|energy_j=0.010299
+270729000 85 AUTH_ENERGY|85|cpu_s=0.323112|energy_j=0.019926Node 85: Round 2 ﾀﾔ Sending keyex. ts_2=3
+270856456 2 AS 2: Round 2 KeyEx reply to device 85. Forwarding token to GW.
+270951904 1 GW: Auth token for device 85 (via AS 2) stored.
+270951904 1 GW: Token processing time: 0 ms
+270970072 85 Node 85: Round 2 KeyEx OK. K_GW_D=9b429e
+270970072 85 
+270970072 85 KEYEX_ENERGY|85|cpu_s=0.241072|energy_j=0.014872
+273048000 86 AUTH_ENERGY|86|cpu_s=0.226112|energy_j=0.013931Node 86: Round 2 ﾀﾔ Sending keyex. ts_2=3
+273131200 3 AS 3: Round 2 KeyEx reply to device 86. Forwarding token to GW.
+273164616 1 GW: Auth token for device 86 (via AS 3) stored.
+273164616 1 GW: Token processing time: 0 ms
+273175072 86 Node 86: Round 2 KeyEx OK. K_GW_D=2f0ad4
+273175072 86 
+273175072 86 KEYEX_ENERGY|86|cpu_s=0.127072|energy_j=0.007827
+276544000 87 AUTH_ENERGY|87|cpu_s=0.355112|energy_j=0.021903Node 87: Round 2 ﾀﾔ Sending keyex. ts_2=4
+276644456 2 AS 2: Round 2 KeyEx reply to device 87. Forwarding token to GW.
+276767904 1 GW: Auth token for device 87 (via AS 2) stored.
+276767904 1 GW: Token processing time: 0 ms
+276790072 87 Node 87: Round 2 KeyEx OK. K_GW_D=b4a85a
+276790072 87 
+276790072 87 KEYEX_ENERGY|87|cpu_s=0.246072|energy_j=0.015181
+279566000 88 AUTH_ENERGY|88|cpu_s=0.176112|energy_j=0.010841Node 88: Round 2 ﾀﾔ Sending keyex. ts_2=4
+279671200 3 AS 3: Round 2 KeyEx reply to device 88. Forwarding token to GW.
+279731144 88 Node 88: Round 2 KeyEx OK. K_GW_D=78643e
+279731144 88 
+279731144 88 KEYEX_ENERGY|88|cpu_s=0.165144|energy_j=0.010180
+279763616 1 GW: Auth token for device 88 (via AS 3) stored.
+279763616 1 GW: Token processing time: 0 ms
+282317000 89 AUTH_ENERGY|89|cpu_s=0.287112|energy_j=0.017701Node 89: Round 2 ﾀﾔ Sending keyex. ts_2=5
+282406456 2 AS 2: Round 2 KeyEx reply to device 89. Forwarding token to GW.
+282468904 1 GW: Auth token for device 89 (via AS 2) stored.
+282468904 1 GW: Token processing time: 0 ms
+282491072 89 Node 89: Round 2 KeyEx OK. K_GW_D=f3a604
+282491072 89 
+282491072 89 KEYEX_ENERGY|89|cpu_s=0.174072|energy_j=0.010732
+285648000 90 AUTH_ENERGY|90|cpu_s=0.301112|energy_j=0.018566Node 90: Round 2 ﾀﾔ Sending keyex. ts_2=5
+285745200 3 AS 3: Round 2 KeyEx reply to device 90. Forwarding token to GW.
+285815072 90 Node 90: Round 2 KeyEx OK. K_GW_D=06e423
+285815072 90 
+285815072 90 KEYEX_ENERGY|90|cpu_s=0.167072|energy_j=0.010299
+285835616 1 GW: Auth token for device 90 (via AS 3) stored.
+285835616 1 GW: Token processing time: 0 ms
+288722000 91 AUTH_ENERGY|91|cpu_s=0.446112|energy_j=0.027527Node 91: Round 2 ﾀﾔ Sending keyex. ts_2=6
+288843456 2 AS 2: Round 2 KeyEx reply to device 91. Forwarding token to GW.
+288915904 1 GW: Auth token for device 91 (via AS 2) stored.
+288915904 1 GW: Token processing time: 0 ms
+288983072 91 Node 91: Round 2 KeyEx OK. K_GW_D=d25b83
+288983072 91 
+288983072 91 KEYEX_ENERGY|91|cpu_s=0.261072|energy_j=0.016108
+291713000 92 AUTH_ENERGY|92|cpu_s=0.239112|energy_j=0.014735Node 92: Round 2 ﾀﾔ Sending keyex. ts_2=6
+291763200 3 AS 3: Round 2 KeyEx reply to device 92. Forwarding token to GW.
+291803616 1 GW: Auth token for device 92 (via AS 3) stored.
+291803616 1 GW: Token processing time: 0 ms
+291863072 92 Node 92: Round 2 KeyEx OK. K_GW_D=e0ae2c
+291863072 92 
+291863072 92 KEYEX_ENERGY|92|cpu_s=0.150072|energy_j=0.009249
+294366000 93 AUTH_ENERGY|93|cpu_s=0.387112|energy_j=0.023881Node 93: Round 2 ﾀﾔ Sending keyex. ts_2=7
+294500456 2 AS 2: Round 2 KeyEx reply to device 93. Forwarding token to GW.
+294590904 1 GW: Auth token for device 93 (via AS 2) stored.
+294590904 1 GW: Token processing time: 0 ms
+294646072 93 Node 93: Round 2 KeyEx OK. K_GW_D=47aaa0
+294646072 93 
+294646072 93 KEYEX_ENERGY|93|cpu_s=0.280072|energy_j=0.017283
+297442000 94 AUTH_ENERGY|94|cpu_s=0.222112|energy_j=0.013684Node 94: Round 2 ﾀﾔ Sending keyex. ts_2=7
+297522200 3 AS 3: Round 2 KeyEx reply to device 94. Forwarding token to GW.
+297576616 1 GW: Auth token for device 94 (via AS 3) stored.
+297576616 1 GW: Token processing time: 0 ms
+297593072 94 Node 94: Round 2 KeyEx OK. K_GW_D=a1e159
+297593072 94 
+297593072 94 KEYEX_ENERGY|94|cpu_s=0.151072|energy_j=0.009310
+300289000 95 AUTH_ENERGY|95|cpu_s=0.339224|energy_j=0.020922Node 95: Round 2 ﾀﾔ Sending keyex. ts_2=8
+300383456 2 AS 2: Round 2 KeyEx reply to device 95. Forwarding token to GW.
+300497072 95 Node 95: Round 2 KeyEx OK. K_GW_D=70c8fb
+300497072 95 
+300497072 95 KEYEX_ENERGY|95|cpu_s=0.208072|energy_j=0.012833
+300512904 1 GW: Auth token for device 95 (via AS 2) stored.
+300512904 1 GW: Token processing time: 0 ms
+303832000 96 AUTH_ENERGY|96|cpu_s=0.206112|energy_j=0.012695Node 96: Round 2 ﾀﾔ Sending keyex. ts_2=8
+303881200 3 AS 3: Round 2 KeyEx reply to device 96. Forwarding token to GW.
+303938928 96 Node 96: Round 2 KeyEx OK. K_GW_D=117883
+303938928 96 
+303938928 96 KEYEX_ENERGY|96|cpu_s=0.106928|energy_j=0.006582
+303943616 1 GW: Auth token for device 96 (via AS 3) stored.
+303943616 1 GW: Token processing time: 0 ms
+306499000 97 AUTH_ENERGY|97|cpu_s=0.417112|energy_j=0.025735Node 97: Round 2 ﾀﾔ Sending keyex. ts_2=9
+306624456 2 AS 2: Round 2 KeyEx reply to device 97. Forwarding token to GW.
+306701904 1 GW: Auth token for device 97 (via AS 2) stored.
+306701904 1 GW: Token processing time: 0 ms
+306732072 97 Node 97: Round 2 KeyEx OK. K_GW_D=a97a26
+306732072 97 
+306732072 97 KEYEX_ENERGY|97|cpu_s=0.233072|energy_j=0.014378
+309065000 98 AUTH_ENERGY|98|cpu_s=0.211112|energy_j=0.013004Node 98: Round 2 ﾀﾔ Sending keyex. ts_2=9
+309155200 3 AS 3: Round 2 KeyEx reply to device 98. Forwarding token to GW.
+309232072 98 Node 98: Round 2 KeyEx OK. K_GW_D=652c54
+309232072 98 
+309232072 98 KEYEX_ENERGY|98|cpu_s=0.167072|energy_j=0.010299
+309235616 1 GW: Auth token for device 98 (via AS 3) stored.
+309235616 1 GW: Token processing time: 0 ms
+312983000 99 AUTH_ENERGY|99|cpu_s=0.371112|energy_j=0.022892Node 99: Round 2 ﾀﾔ Sending keyex. ts_2=10
+313068456 2 AS 2: Round 2 KeyEx reply to device 99. Forwarding token to GW.
+313141976 1 GW: Auth token for device 99 (via AS 2) stored.
+313141976 1 GW: Token processing time: 0 ms
+313172072 99 Node 99: Round 2 KeyEx OK. K_GW_D=1b5142
+313172072 99 
+313172072 99 KEYEX_ENERGY|99|cpu_s=0.189072|energy_j=0.011659
+315808000 100 AUTH_ENERGY|100|cpu_s=0.360112|energy_j=0.022212Node 100: Round 2 ﾀﾔ Sending keyex. ts_2=10
+315867656 3 AS 3: Round 2 KeyEx reply to device 100. Forwarding token to GW.
+315936072 100 Node 100: Round 2 KeyEx OK. K_GW_D=febc68
+315936072 100 
+315936072 100 KEYEX_ENERGY|100|cpu_s=0.128072|energy_j=0.007889
 EARLY EXIT: all 20 nodes done
 TEST OK
-Test ended at simulation time: 315963072
+Test ended at simulation time: 315936072

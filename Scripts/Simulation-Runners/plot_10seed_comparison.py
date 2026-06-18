@@ -200,8 +200,8 @@ def make_perdev_chart(scheme_records):
         fig, (ax_e, ax_c) = plt.subplots(1, 2, figsize=(14, 7))
         fig.patch.set_facecolor("white")
 
-        draw_panel(ax_e, e_stats, "Mean Energy (mJ)", ".2f")
-        draw_panel(ax_c, c_stats, "Mean CPU Time (s)", ".3f")
+        draw_panel(ax_e, e_stats, "Avg. Energy (mJ)", ".2f")
+        draw_panel(ax_c, c_stats, "Avg. CPU Time (s)", ".3f")
 
         scheme_patches = [
             mpatches.Patch(facecolor="none", edgecolor=COLORS[s],

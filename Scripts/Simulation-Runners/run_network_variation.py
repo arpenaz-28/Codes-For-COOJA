@@ -112,6 +112,19 @@ SCHEME_CFG = {
         "node_files":   ["gw-node.c", "as-node.c", "device-node.c"],
         "device_pattern_prefix": "",
     },
+    "Banerjee": {
+        "source_dir":  os.path.join(REPO, "Banerjee-Scheme"),
+        "conf_dirs": {
+            30:  os.path.join(REPO, "Banerjee-Scheme", "NetVar-N30"),
+            50:  os.path.join(REPO, "Banerjee-Scheme", "NetVar-N50"),
+            80:  os.path.join(REPO, "Banerjee-Scheme", "NetVar-N80"),
+            100: os.path.join(REPO, "Banerjee-Scheme", "NetVar-N100"),
+            120: os.path.join(REPO, "Banerjee-Scheme", "NetVar-N120"),
+        },
+        "results_base": os.path.join(REPO, "Banerjee-Scheme", "Simulation results", "network-variation"),
+        "node_files":   ["gw-node.c", "as-node.c", "device-node.c"],
+        "device_pattern_prefix": "",
+    },
 }
 
 # Zhou uses "user" nodes; RA & LAAKA use "device" nodes
@@ -121,8 +134,15 @@ RA_SOURCES   = ["gw-node.c", "as-node.c", "device-node.c",
                 "aes.c", "aes.h", "sha256.c", "sha256.h", "project-conf.h"]
 # Li adds real ECC (micro-ecc) + the ecc-util wrapper to the RA file set.
 LI_SOURCES   = ["gw-node.c", "as-node.c", "device-node.c",
-                "ecc-util.h", "uECC.c", "uECC.h", "types.h",
+                "ecc-util.h", "uECC.c", "uECC.h", "uECC_vli.h", "types.h",
+                "platform-specific.inc", "curve-specific.inc",
+                "asm_arm.inc", "asm_avr.inc",
+                "asm_arm_mult_square.inc", "asm_arm_mult_square_umaal.inc",
+                "asm_avr_mult_square.inc",
                 "aes.c", "aes.h", "sha256.c", "sha256.h", "project-conf.h"]
+# Banerjee: hash + PUF + fuzzy-extractor (no ECC), same file set as RA.
+BANERJEE_SOURCES = ["gw-node.c", "as-node.c", "device-node.c",
+                    "aes.c", "aes.h", "sha256.c", "sha256.h", "project-conf.h"]
 
 # Makefile templates with absolute CONTIKI path (relative paths break inside myproject)
 MAKEFILE_RA = f"""CONTIKI_PROJECT = device-node as-node gw-node
@@ -165,6 +185,21 @@ MODULES += os/net/app-layer/coap
 CFLAGS += -DuECC_SUPPORTS_secp256r1=1
 CFLAGS += -DuECC_SUPPORT_COMPRESSED_POINT=0
 CFLAGS += -DuECC_OPTIMIZATION_LEVEL=2
+CFLAGS += -Wno-error=unused-function
+CFLAGS += -Wno-error=unused-variable
+CFLAGS += -Wno-error=unused-result
+CFLAGS += -Wno-error=unused-but-set-variable
+
+include $(CONTIKI)/Makefile.include
+"""
+
+MAKEFILE_BANERJEE = f"""CONTIKI_PROJECT = device-node as-node gw-node
+all: $(CONTIKI_PROJECT)
+
+CONTIKI = {CONTIKI}
+PROJECT_SOURCEFILES += aes.c sha256.c
+MODULES += os/net/app-layer/coap
+
 CFLAGS += -Wno-error=unused-function
 CFLAGS += -Wno-error=unused-variable
 CFLAGS += -Wno-error=unused-result
@@ -227,7 +262,7 @@ def grid_positions(n, cols=10, spacing=30.0, x_off=0.0, y_off=0.0):
             for i in range(n)]
 
 
-def generate_csc(scheme, n_total, seed, project_dir):
+def generate_csc(scheme, n_total, seed, project_dir, timeout_ms=None):
     """
     Generate a COOJA .csc XML string for the given scheme and network size.
     project_dir is the path COOJA sees as [CONTIKI_DIR]/examples/myproject.
@@ -304,6 +339,9 @@ def generate_csc(scheme, n_total, seed, project_dir):
         if scheme in ("RA", "Li"):
             as_block  = _motetype_block("AS/SN Node", "as-node.c", "as-node.cooja", as_motes)
             dev_block = _motetype_block("Device Node", "device-node.c", "device-node.cooja", dev_motes)
+        elif scheme == "Banerjee":
+            as_block  = _motetype_block("SD (Sensing Device)", "as-node.c", "as-node.cooja", as_motes)
+            dev_block = _motetype_block("U (User)", "device-node.c", "device-node.cooja", dev_motes)
         else:  # LAAKA
             as_block  = _motetype_block("Fog AS Node", "as-node.c", "as-node.cooja", as_motes)
             dev_block = _motetype_block("Device Node", "device-node.c", "device-node.cooja", dev_motes)
@@ -312,8 +350,9 @@ def generate_csc(scheme, n_total, seed, project_dir):
     gw_block = _motetype_block("GW Node", "gw-node.c", "gw-node.cooja", gw_motes)
 
     # Per-size safety timeout (early exit fires before this in normal runs)
-    _timeouts_ms = {30: 600000, 50: 900000, 80: 1200000, 100: 1500000}
-    timeout_ms = _timeouts_ms.get(n_total, 1800000)
+    if timeout_ms is None:
+        _timeouts_ms = {30: 600000, 50: 900000, 80: 1200000, 100: 1500000}
+        timeout_ms = _timeouts_ms.get(n_total, 1800000)
 
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <simconf version="2022112801">
@@ -393,7 +432,9 @@ def prepare_build(scheme, n_total):
         shutil.rmtree(build_cooja)
 
     file_list = (LI_SOURCES if scheme == "Li"
-                 else ZHOU_SOURCES if scheme == "Zhou" else RA_SOURCES)
+                 else ZHOU_SOURCES if scheme == "Zhou"
+                 else BANERJEE_SOURCES if scheme == "Banerjee"
+                 else RA_SOURCES)
     for fname in file_list:
         src_path = os.path.join(src, fname)
         if os.path.exists(src_path):
@@ -401,7 +442,9 @@ def prepare_build(scheme, n_total):
 
     # Write Makefile with absolute CONTIKI path (relative paths break in myproject)
     makefile_content = (MAKEFILE_LI if scheme == "Li"
-                        else MAKEFILE_ZHOU if scheme == "Zhou" else MAKEFILE_RA)
+                        else MAKEFILE_ZHOU if scheme == "Zhou"
+                        else MAKEFILE_BANERJEE if scheme == "Banerjee"
+                        else MAKEFILE_RA)
     with open(os.path.join(MYPROJECT, "Makefile"), "w") as f:
         f.write(makefile_content)
 
@@ -432,9 +475,9 @@ def build_firmware():
 # ─────────────────────────────────────────────────────────────────────────────
 # Simulation runner
 # ─────────────────────────────────────────────────────────────────────────────
-def run_simulation(scheme, n_total, seed):
+def run_simulation(scheme, n_total, seed, timeout_ms=None):
     """Write CSC, run COOJA headless, return (ok, elapsed, testlog_path)."""
-    csc_content = generate_csc(scheme, n_total, seed, MYPROJECT)
+    csc_content = generate_csc(scheme, n_total, seed, MYPROJECT, timeout_ms=timeout_ms)
     csc_path = os.path.join(MYPROJECT, f"netvar_{scheme}_N{n_total}_s{seed}.csc")
     with open(csc_path, "w", encoding="utf-8") as f:
         f.write(csc_content)
@@ -447,8 +490,9 @@ def run_simulation(scheme, n_total, seed):
         "./gradlew", "--no-watch-fs", "run",
         f"--args=--no-gui --contiki={CONTIKI} --autostart {csc_path}"
     ]
+    proc_timeout = int((timeout_ms or 1800000) / 1000) + 120
     t0 = time.time()
-    r = subprocess.run(cmd, cwd=COOJA_DIR, capture_output=True, text=True, timeout=2100)
+    r = subprocess.run(cmd, cwd=COOJA_DIR, capture_output=True, text=True, timeout=proc_timeout)
     elapsed = time.time() - t0
     output = r.stdout + r.stderr
 
@@ -558,7 +602,7 @@ def avg_across_seeds(all_seeds, phase_key):
 # ─────────────────────────────────────────────────────────────────────────────
 # Main loop
 # ─────────────────────────────────────────────────────────────────────────────
-def run_variant(scheme, n_total, seeds):
+def run_variant(scheme, n_total, seeds, timeout_ms=None):
     cfg = SCHEME_CFG[scheme]
     label = f"N{n_total:03d}"
     out_dir = os.path.join(cfg["results_base"], f"N{n_total}", "csv")
@@ -590,7 +634,7 @@ def run_variant(scheme, n_total, seeds):
 
     for seed in new_seeds:
         print(f"\n  --- Seed {seed}")
-        ok, elapsed, log_tmp = run_simulation(scheme, n_total, seed)
+        ok, elapsed, log_tmp = run_simulation(scheme, n_total, seed, timeout_ms=timeout_ms)
         status = "TEST OK" if ok else "TIMEOUT/FAILED"
         print(f"  Result : {status}  ({elapsed:.0f}s)")
 
@@ -625,28 +669,32 @@ def run_variant(scheme, n_total, seeds):
 
 def main():
     parser = argparse.ArgumentParser(description="Network variation simulations")
-    parser.add_argument("--scheme", nargs="+", choices=["RA", "LAAKA", "Zhou", "Li"],
+    parser.add_argument("--scheme", nargs="+", choices=["RA", "LAAKA", "Zhou", "Li", "Banerjee"],
                         default=["RA", "LAAKA", "Zhou"],
-                        help="Which schemes to run (default: all three; add 'Li' explicitly)")
+                        help="Which schemes to run (default: RA LAAKA Zhou; add 'Li' or 'Banerjee' explicitly)")
     parser.add_argument("--size", nargs="+", type=int, choices=[30, 50, 80, 100, 120],
                         default=[30, 50, 80, 100],
                         help="Network sizes to simulate (default: all four)")
     parser.add_argument("--seeds", type=int, default=10,
                         help="Number of random seeds to use (1–10, default: 10)")
+    parser.add_argument("--timeout-ms", type=int, default=None,
+                        help="Override per-seed COOJA simulated timeout in ms (default: per-size preset)")
     args = parser.parse_args()
 
     seeds = SEEDS[:args.seeds]
+    timeout_ms = args.timeout_ms
 
     print("Network Variation Simulation Runner")
     print(f"  Schemes : {args.scheme}")
     print(f"  Sizes   : {args.size}")
     print(f"  Seeds   : {seeds}")
+    print(f"  Timeout : {timeout_ms} ms (per seed)" if timeout_ms else "  Timeout : per-size preset")
     print(f"  COOJA   : {COOJA_DIR}")
     print(f"  Build   : {MYPROJECT}")
 
     for scheme in args.scheme:
         for n in sorted(args.size):
-            run_variant(scheme, n, seeds)
+            run_variant(scheme, n, seeds, timeout_ms=timeout_ms)
 
     print("\n" + "="*70)
     print("All done.  Run plot_network_variation.py to generate charts.")
