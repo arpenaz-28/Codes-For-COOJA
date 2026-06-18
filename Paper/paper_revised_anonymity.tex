@@ -758,9 +758,8 @@ independently generated from a fresh nonce and $R_D$ is PUF-derived.
 The computational cost is a crucial deterministic factor for the efficiency of an
 authentication scheme. To obtain platform-native unit costs consistent with our hardware
 evaluation, we adopt the per-primitive execution times reported by Lee et
-al.~\cite{lee2025plakamd} and confirmed by Kim et al.~\cite{kim2025puf}, both measured on
-a Raspberry Pi~4B (quad-core 64-bit ARM Cortex-A72 @ 1.5\,GHz) using the MIRACL Core
-cryptographic library. The reference unit costs are:
+al.~\cite{lee2025plakamd}, measured on a Raspberry Pi~4B (quad-core 64-bit ARM Cortex-A72
+@ 1.5\,GHz) using the MIRACL Core cryptographic library. The reference unit costs are:
 SHA-256 hash $T_{\mathsf{hash}}=0.009$\,ms, AES-128 encryption/decryption
 $T_{\mathsf{aes}}=0.004$\,ms, PUF evaluation $T_{\mathsf{puf}}=0.0063$\,ms, and fuzzy
 extractor $T_{\mathsf{fe}}=2.353$\,ms. Following the standard code-offset
@@ -768,7 +767,7 @@ construction~\cite{dodis2004fuzzy}, the dominant cost of the fuzzy extractor is 
 elliptic-curve scalar multiplication, hence $T_{\mathsf{fe}}=T_{M}$. The cost of
 random-number generation and bitwise operations (XOR, concatenation) is negligible
 relative to these primitives and is therefore omitted, consistent with prior
-analyses~\cite{zhou2024auth,kim2025puf}.
+analyses~\cite{zhou2024auth}.
 
 The proposed scheme relies exclusively on PUF, hash, and AES operations, and employs no
 public-key or fuzzy-extractor primitive.
@@ -800,7 +799,7 @@ initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cos
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
-  RPi~4B unit costs~\cite{lee2025plakamd,kim2025puf}: $T_\mathsf{hash}$=0.009,
+  RPi~4B unit costs~\cite{lee2025plakamd}: $T_\mathsf{hash}$=0.009,
   $T_\mathsf{aes}$=0.004, $T_\mathsf{puf}$=0.0063,
   $T_\mathsf{fe}$=$T_{M}$=2.353\,ms. Random generation excluded as negligible.
 \end{table}
@@ -838,7 +837,7 @@ $T_{\mathsf{fe}}=2.353$\,ms.
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
-  RPi~4B unit costs~\cite{lee2025plakamd,kim2025puf}: $T_\mathsf{hash}$=0.009,
+  RPi~4B unit costs~\cite{lee2025plakamd}: $T_\mathsf{hash}$=0.009,
   $T_\mathsf{aes}$=0.004, $T_\mathsf{puf}$=0.0063,
   $T_\mathsf{fe}$=$T_{M}$=2.353\,ms. Random generation excluded as negligible.
 \end{table}
@@ -1267,12 +1266,6 @@ X.~Zhou, S.~Wang, K.~Wen, B.~Hu, X.~Tan, and Q.~Xie,
 ``Security-Enhanced Lightweight and Anonymity-Preserving User Authentication
 Scheme for IoT-Based Healthcare,''
 \emph{IEEE Internet of Things Journal}, vol.~11, no.~6, pp.~9718--9731, 2024.
-
-\bibitem{kim2025puf}
-C.~Kim, S.~Son, and Y.~Park,
-``A Privacy-Preserving Authentication Scheme Using PUF and Biometrics for
-IoT-Enabled Smart Cities,''
-\emph{Electronics}, vol.~14, no.~10, Art.\ no.\ 1953, 2025.
 
 \bibitem{lee2025plakamd}
 C.~Lee, M.~Oh, D.~Kwon, Y.~Park, and Y.~Park,
