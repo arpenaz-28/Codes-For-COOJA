@@ -27,7 +27,7 @@
     \setbox\@tempboxa\hbox{%
       \normalfont\footnotesize ##1\quad\scshape ##2}%
     \ifdim\wd\@tempboxa>\hsize
-      \resizebox{\hsize}{!}{\box\@tempboxa}%
+      \parbox{\hsize}{\centering\normalfont\footnotesize ##1\quad\scshape ##2}%
     \else
       \box\@tempboxa
     \fi

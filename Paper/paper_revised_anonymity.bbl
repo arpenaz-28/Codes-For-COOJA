@@ -7,7 +7,8 @@
 \providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
 \providecommand{\BIBentryALTinterwordstretchfactor}{4}
 \providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
-\BIBentryALTinterwordstretchfactor\fontdimen3\font minus \fontdimen4\font\relax}
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
 \providecommand{\BIBforeignlanguage}[2]{{%
 \expandafter\ifx\csname l@#1\endcsname\relax
 \typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
@@ -21,60 +22,106 @@
 \BIBdecl
 
 \bibitem{zhou2021iot}
-I.~Zhou, I.~Makhdoom, N.~Shariati, M.~A. Raza, R.~Keshavarz, J.~Lipman, M.~Abolhasan, and A.~Jamalipour, ``Internet of things 2.0: Concepts, applications, and future directions,'' \emph{IEEE Access}, vol.~9, pp. 70\,961--71\,012, 2021.
+I.~Zhou, I.~Makhdoom, N.~Shariati, M.~A. Raza, R.~Keshavarz, J.~Lipman,
+  M.~Abolhasan, and A.~Jamalipour, ``Internet of things 2.0: Concepts,
+  applications, and future directions,'' \emph{IEEE Access}, vol.~9, pp.
+  70\,961--71\,012, 2021.
 
 \bibitem{lajnef2022wsn}
-N.~Lajnef, A.~Mami, and F.~Derbel, ``Applications of wireless sensor networks and {IoT} frameworks in industry~4.0: A systematic literature review,'' \emph{Sensors}, vol.~22, no.~6, 2022.
+N.~Lajnef, A.~Mami, and F.~Derbel, ``Applications of wireless sensor networks
+  and {IoT} frameworks in industry~4.0: A systematic literature review,''
+  \emph{Sensors}, vol.~22, no.~6, 2022.
 
 \bibitem{khatua2024puf}
-M.~Khatua, S.~Das, and P.~M. Rana, ``{PUF}-based lightweight mutual authentication scheme for {IoT}-based smart grids,'' in \emph{Proc.\ IEEE ANTS}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2024, pp. 1--6.
+M.~Khatua, S.~Das, and P.~M. Rana, ``{PUF}-based lightweight mutual
+  authentication scheme for {IoT}-based smart grids,'' in \emph{Proc.\ IEEE
+  ANTS}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2024, pp. 1--6.
 
 \bibitem{sheik2023auth}
-S.~A. Sheik and A.~P. Muniyandi, ``Secure authentication schemes in cloud computing with glimpse of artificial neural networks: A review,'' \emph{Cyber Security and Applications}, vol.~1, p. 100002, 2023.
+S.~A. Sheik and A.~P. Muniyandi, ``Secure authentication schemes in cloud
+  computing with glimpse of artificial neural networks: A review,'' \emph{Cyber
+  Security and Applications}, vol.~1, p. 100002, 2023.
 
 \bibitem{he2023lightweight}
-D.~He, Y.~Cai, S.~Zhu, Z.~Zhao, S.~Chan, and M.~Guizani, ``A lightweight authentication and key exchange protocol with anonymity for {IoT},'' \emph{IEEE Trans.\ Wireless Communications}, vol.~22, no.~11, pp. 7862--7872, 2023.
+D.~He, Y.~Cai, S.~Zhu, Z.~Zhao, S.~Chan, and M.~Guizani, ``A lightweight
+  authentication and key exchange protocol with anonymity for {IoT},''
+  \emph{IEEE Trans.\ Wireless Communications}, vol.~22, no.~11, pp. 7862--7872,
+  2023.
 
 \bibitem{roy2025design}
-S.~Roy, M.~H. Mahalat, and B.~Sen, ``Design and implementation of cost-effective end-to-end authentication protocol for {PUF}-enabled {IoT} devices,'' \emph{IEEE Trans.\ Emerging Topics in Computing}, 2025.
+S.~Roy, M.~H. Mahalat, and B.~Sen, ``Design and implementation of
+  cost-effective end-to-end authentication protocol for {PUF}-enabled {IoT}
+  devices,'' \emph{IEEE Trans.\ Emerging Topics in Computing}, 2025.
 
 \bibitem{rosa2023lightsae}
-P.~Rosa, A.~Souto, and J.~Cec{\'i}lio, ``Light-{SAE}: A lightweight authentication protocol for large-scale {IoT} environments made with constrained devices,'' \emph{IEEE Trans.\ Network and Service Management}, vol.~20, no.~3, pp. 2428--2441, 2023.
+P.~Rosa, A.~Souto, and J.~Cec{\'i}lio, ``Light-{SAE}: A lightweight
+  authentication protocol for large-scale {IoT} environments made with
+  constrained devices,'' \emph{IEEE Trans.\ Network and Service Management},
+  vol.~20, no.~3, pp. 2428--2441, 2023.
 
 \bibitem{das2026comsnets}
-S.~Das and M.~Khatua, ``Lightweight and decoupled distributed authentication for multihop {IoT} networks,'' in \emph{Proc.\ IEEE COMSNETS}, 2026.
+S.~Das and M.~Khatua, ``Lightweight and decoupled distributed authentication
+  for multihop {IoT} networks,'' in \emph{Proc.\ IEEE COMSNETS}, 2026.
 
 \bibitem{alruwaili2025raaf}
-O.~Alruwaili, M.~Tanveer, S.~A. Aldossari, S.~Alanazi, and A.~Armghan, ``{RAAF-MEC}: Reliable and anonymous authentication framework for {IoT}-enabled mobile edge computing environment,'' \emph{Internet of Things}, vol.~29, p. 101459, 2025.
+O.~Alruwaili, M.~Tanveer, S.~A. Aldossari, S.~Alanazi, and A.~Armghan,
+  ``{RAAF-MEC}: Reliable and anonymous authentication framework for
+  {IoT}-enabled mobile edge computing environment,'' \emph{Internet of Things},
+  vol.~29, p. 101459, 2025.
 
 \bibitem{zheng2022puf}
-Y.~Zheng, W.~Liu, C.~Gu, and C.-H. Chang, ``{PUF}-based mutual authentication and key exchange protocol for peer-to-peer {IoT} applications,'' \emph{IEEE Trans.\ Dependable and Secure Computing}, vol.~20, no.~4, pp. 3299--3316, 2022.
+Y.~Zheng, W.~Liu, C.~Gu, and C.-H. Chang, ``{PUF}-based mutual authentication
+  and key exchange protocol for peer-to-peer {IoT} applications,'' \emph{IEEE
+  Trans.\ Dependable and Secure Computing}, vol.~20, no.~4, pp. 3299--3316,
+  2022.
 
 \bibitem{li2020puf}
-S.~Li, T.~Zhang, B.~Yu, and K.~He, ``A provably secure and practical {PUF}-based end-to-end mutual authentication and key exchange protocol for {IoT},'' \emph{IEEE Sensors Journal}, vol.~21, no.~4, pp. 5487--5501, 2020.
+S.~Li, T.~Zhang, B.~Yu, and K.~He, ``A provably secure and practical
+  {PUF}-based end-to-end mutual authentication and key exchange protocol for
+  {IoT},'' \emph{IEEE Sensors Journal}, vol.~21, no.~4, pp. 5487--5501, 2020.
 
 \bibitem{yang2024sakms}
-W.~Yang, C.~Hou, Y.~Wang, Z.~Zhang, X.~Wang, and Y.~Cao, ``{SAKMS}: A secure authentication and key management scheme for {IETF}~{6TiSCH} industrial wireless networks based on improved elliptic-curve cryptography,'' \emph{IEEE Trans.\ Network Science and Engineering}, vol.~11, no.~3, pp. 3174--3188, 2024.
+W.~Yang, C.~Hou, Y.~Wang, Z.~Zhang, X.~Wang, and Y.~Cao, ``{SAKMS}: A secure
+  authentication and key management scheme for {IETF}~{6TiSCH} industrial
+  wireless networks based on improved elliptic-curve cryptography,'' \emph{IEEE
+  Trans.\ Network Science and Engineering}, vol.~11, no.~3, pp. 3174--3188,
+  2024.
 
 \bibitem{zhong2025survey}
-J.~Zhong, S.~He, Z.~Liu, and L.~Xiong, ``Lightweight anonymous authentication for {IoT}: A taxonomy and survey of security frameworks,'' \emph{Sensors}, vol.~25, no.~17, p. 5594, 2025.
+J.~Zhong, S.~He, Z.~Liu, and L.~Xiong, ``Lightweight anonymous authentication
+  for {IoT}: A taxonomy and survey of security frameworks,'' \emph{Sensors},
+  vol.~25, no.~17, p. 5594, 2025.
 
 \bibitem{ali2024laaka}
-H.~Ali and I.~Ahmed, ``{LAAKA}: A lightweight anonymous authentication and key agreement scheme for {IoT}-fog environment,'' \emph{Computers \& Security}, vol. 140, p. 103770, 2024.
+H.~Ali and I.~Ahmed, ``{LAAKA}: A lightweight anonymous authentication and key
+  agreement scheme for {IoT}-fog environment,'' \emph{Computers \& Security},
+  vol. 140, p. 103770, 2024.
 
 \bibitem{zhou2024auth}
-X.~Zhou, S.~Wang, K.~Wen, B.~Hu, X.~Tan, and Q.~Xie, ``Security-enhanced lightweight and anonymity-preserving user authentication scheme for {IoT}-based healthcare,'' \emph{IEEE Internet of Things Journal}, vol.~11, no.~6, pp. 9718--9731, 2024.
+X.~Zhou, S.~Wang, K.~Wen, B.~Hu, X.~Tan, and Q.~Xie, ``Security-enhanced
+  lightweight and anonymity-preserving user authentication scheme for
+  {IoT}-based healthcare,'' \emph{IEEE Internet of Things Journal}, vol.~11,
+  no.~6, pp. 9718--9731, 2024.
 
 \bibitem{blanchet2018proverif}
-B.~Blanchet, B.~Smyth, V.~Cheval, and M.~Sylvestre, ``{ProVerif} 2.00: Automatic cryptographic protocol verifier, user manual and tutorial,'' INRIA, Tech. Rep., 2018.
+B.~Blanchet, B.~Smyth, V.~Cheval, and M.~Sylvestre, ``{ProVerif} 2.00:
+  Automatic cryptographic protocol verifier, user manual and tutorial,'' INRIA,
+  Tech. Rep., 2018.
 
 \bibitem{dolev1983security}
-D.~Dolev and A.~Yao, ``On the security of public key protocols,'' \emph{IEEE Trans.\ Information Theory}, vol.~29, no.~2, pp. 198--208, 1983.
+D.~Dolev and A.~Yao, ``On the security of public key protocols,'' \emph{IEEE
+  Trans.\ Information Theory}, vol.~29, no.~2, pp. 198--208, 1983.
 
 \bibitem{lee2025plakamd}
-C.~Lee, M.~Oh, D.~Kwon, Y.~Park, and Y.~Park, ``{PLAKA-MD}: {PUF}-based lightweight authentication and key agreement scheme for medical devices in {IoHT},'' \emph{IEEE Internet of Things Journal}, vol.~12, no.~12, pp. 19\,338--19\,353, Jun. 2025.
+C.~Lee, M.~Oh, D.~Kwon, Y.~Park, and Y.~Park, ``{PLAKA-MD}: {PUF}-based
+  lightweight authentication and key agreement scheme for medical devices in
+  {IoHT},'' \emph{IEEE Internet of Things Journal}, vol.~12, no.~12, pp.
+  19\,338--19\,353, Jun. 2025.
 
 \bibitem{dodis2004fuzzy}
-Y.~Dodis, L.~Reyzin, and A.~Smith, ``Fuzzy extractors: How to generate strong keys from biometrics and other noisy data,'' in \emph{Advances in Cryptology -- {EUROCRYPT} 2004}.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2004, pp. 523--540.
+Y.~Dodis, L.~Reyzin, and A.~Smith, ``Fuzzy extractors: How to generate strong
+  keys from biometrics and other noisy data,'' in \emph{Advances in Cryptology
+  -- {EUROCRYPT} 2004}.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2004,
+  pp. 523--540.
 
 \end{thebibliography}
