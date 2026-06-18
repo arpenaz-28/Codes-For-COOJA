@@ -7,8 +7,13 @@ an additional comparison row.
 Reference timings (avg. 100 iterations, Pycrypto / Windows — same as paper):
   T_rand = 0.0018 ms   T_puf  = 0.0522 ms
   T_hash = 0.0353 ms   T_aes  = 0.0867 ms
-  T_fe   = 4.45  ms    (fuzzy extractor — estimated by scaling Banerjee et al.'s
-                        measured T_fe/T_h ratio (63.075/0.5 ≈ 126×) to our T_hash)
+  T_fe   = 0.032 ms    (fuzzy extractor — DIRECTLY MEASURED on the same
+                        Windows/pycryptodome platform as the other primitives,
+                        avg. 100 iterations. Code-offset construction: BCH(t=40)
+                        error-correcting code + SHA-256 extractor; Gen+Rep cycle.
+                        See bench_fuzzy_extractor.py. This replaces the earlier
+                        ratio-scaled estimate (4.45 ms from Banerjee's 63 ms on a
+                        foreign platform), for methodological consistency.)
 
 Communication normalisation (same as paper):
   IDs / timestamps = 32 bits
@@ -37,7 +42,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 
 # ── Reference timings ─────────────────────────────────────────────────────────
-T = dict(rand=0.0018, puf=0.0522, h=0.0353, aes=0.0867, fe=4.45)
+T = dict(rand=0.0018, puf=0.0522, h=0.0353, aes=0.0867, fe=0.032)
 
 def cost(*pairs):
     """Sum: cost('h',11, 'aes',2, 'rand',1)"""
@@ -137,7 +142,7 @@ COMM_AUTH = [
 # ── LaTeX output ──────────────────────────────────────────────────────────────
 TIMING_NOTE = (r"$T_\mathsf{rand}$=0.0018\,ms, $T_\mathsf{puf}$=0.0522\,ms, "
                r"$T_\mathsf{hash}$=0.0353\,ms, $T_\mathsf{aes}$=0.0867\,ms, "
-               r"$T_\mathsf{fe}$=4.45\,ms (est.).")
+               r"$T_\mathsf{fe}$=0.032\,ms.")
 COMM_NOTE   = r"IDs/timestamps = 32\,b; hashes/nonces/challenges/ciphertexts = 256\,b."
 
 def print_latex():
@@ -320,7 +325,8 @@ def make_table(ax, rows, col_headers, title, col_widths=None):
 def main():
     print_latex()
 
-    REPO    = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
+    # Repo root = two levels up from this script (Scripts/Simulation-Runners/).
+    REPO    = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     OUT_DIR = os.path.join(REPO, "Results", "COOJA-Simulation", "Banerjee-Comparison")
     os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -362,14 +368,14 @@ def main():
     fig.text(0.5, 0.01,
              "Benchmark: $T_{rand}$=0.0018 ms,  $T_{puf}$=0.0522 ms,  "
              "$T_{hash}$=0.0353 ms,  $T_{aes}$=0.0867 ms,  "
-             "$T_{fe}$=4.45 ms (est.)  |  "
+             "$T_{fe}$=0.032 ms  |  "
              "Comm: IDs/timestamps=32 b; hashes/nonces=256 b",
              ha="center", va="bottom", fontsize=7.5, color="#444444",
              style="italic")
 
     out = os.path.join(OUT_DIR, "theoretical_tables.png")
     fig.savefig(out, dpi=160, bbox_inches="tight", facecolor="white")
-    print(f"\nFigure saved → {out}")
+    print(f"\nFigure saved -> {out}")
 
     # Summary to stdout
     print("\n── Computed values ─────────────────────────────────────────────")

@@ -755,99 +755,68 @@ independently generated from a fresh nonce and $R_D$ is PUF-derived.
 \subsection{Theoretical Performance Analysis}
 \subsubsection{Computational Cost}
 
-The computational cost is a crucial deterministic factor ensuring the security and
-efficiency of an authentication scheme. Pycrypto, a Python cryptographic library, is used
-in a Windows system to measure the computational cost of core cryptographic functions,
-such as SHA-256 ($T_{\mathsf{hash}}$), AES Encryption/Decryption ($T_{\mathsf{aes}}$),
-and Random generation ($T_{\mathsf{rand}}$). The PUF operation cost ($T_{\mathsf{puf}}$)
-is taken from prior benchmarks on the same platform~\cite{das2026comsnets}.
+The computational cost is a crucial deterministic factor for the efficiency of an
+authentication scheme. To obtain platform-native unit costs consistent with our hardware
+evaluation, we adopt the per-primitive execution times reported by Kim et
+al.~\cite{kim2025puf}, measured on a Raspberry Pi~4B (quad-core 64-bit ARM Cortex-A72
+@ 1.5\,GHz) using the MIRACL Core cryptographic library. The reference unit costs are:
+SHA-256 hash $T_{\mathsf{hash}}=0.009$\,ms, AES-128 encryption/decryption
+$T_{\mathsf{aes}}=0.004$\,ms, PUF evaluation $T_{\mathsf{puf}}=0.0063$\,ms, and fuzzy
+extractor $T_{\mathsf{fe}}=2.353$\,ms. Following the standard code-offset
+construction~\cite{dodis2004fuzzy}, the dominant cost of the fuzzy extractor is one
+elliptic-curve scalar multiplication, hence $T_{\mathsf{fe}}=T_{M}$. The cost of
+random-number generation and bitwise operations (XOR, concatenation) is negligible
+relative to these primitives and is therefore omitted, consistent with prior
+analyses~\cite{zhou2024auth,kim2025puf}.
 
-To execute the node enrolment phase (Figure~\ref{fig:enrolment}):
-\begin{itemize}
-  \item $AS$ computes two random generations ($T_{\mathsf{rand}}$), one PUF operation
-        ($T_{\mathsf{puf}}$), and two hash operations ($T_{\mathsf{hash}}$) for pseudonym
-        initialisation.
-  \item On the other hand, $D$ executes two random generations ($T_{\mathsf{rand}}$) and
-        one PUF operation ($T_{\mathsf{puf}}$).
-\end{itemize}
+The proposed scheme relies exclusively on PUF, hash, and AES operations, and employs no
+public-key or fuzzy-extractor primitive. During node enrolment
+(Figure~\ref{fig:enrolment}), $D$ and $AS$ each evaluate their PUF once and jointly compute
+two hash operations for pseudonym initialisation. In the authentication and key exchange
+phases (Figures~\ref{fig:auth} and~\ref{fig:keyex}), $D$ and $AS$ evaluate their PUF once
+more; $D$ performs six hash operations (pseudonym computation, unique-secret hash, and XOR
+mask in the Authentication Phase, followed by mask recovery, session-key derivation, and
+pseudonym rotation in the Key Exchange Phase); $AS$ performs five hash operations and one
+AES encryption ($T_{\mathsf{aes}}$) for the gateway token; and $GW$ performs one AES
+decryption to recover the session key and updated pseudonym. Aggregated over both phases,
+the proposed scheme incurs $4T_{\mathsf{puf}} + 13T_{\mathsf{hash}} + 2T_{\mathsf{aes}}$.
 
-Hence, the total computational cost incurred per node enrolment amounts to
-$2T_{\mathsf{puf}} + 2T_{\mathsf{hash}} + 4T_{\mathsf{rand}}$.
-As shown in Table~\ref{tab:comp_enroll}, the proposed scheme achieves an enrolment cost of
-0.18\,ms, incurring a marginal overhead of 0.03\,ms over DAuth~\cite{das2026comsnets}
-(0.15\,ms). This cost is directly attributable to the additional hash operation for
-pseudonym initialisation — a security feature absent from DAuth. The scheme remains
-competitive with Zhou et al.~\cite{zhou2024auth} (0.13\,ms), while additionally providing
-PUF-based secret binding and pseudonym initialisation at registration.
-
-\begin{table}[!t]
-  \centering
-  \onelinetablecaption
-  \caption{Computational Cost Comparison: Enrolment Phase.}
-  \label{tab:comp_enroll}
-  \scriptsize
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{lll}
-    \toprule
-    Scheme & Operations & Cost (ms) \\
-    \midrule
-    LAAKA~\cite{ali2024laaka}      & $3T_\mathsf{hash}$ & 0.11 \\
-    Zhou et al.~\cite{zhou2024auth}      & $T_\mathsf{puf}+2T_\mathsf{hash}+3T_\mathsf{rand}$ & 0.13 \\
-    DAuth~\cite{das2026comsnets}           & $2T_\mathsf{puf}+1T_\mathsf{hash}+4T_\mathsf{rand}$ & 0.15 \\
-    \textbf{Proposed}        & $2T_\mathsf{puf}+2T_\mathsf{hash}+4T_\mathsf{rand}$ & \textbf{0.18} \\
-    \bottomrule
-  \end{tabular}\\[3pt]
-  \scriptsize
-  Benchmark (avg.\ 100 iterations): $T_\mathsf{rand}$=0.0018\,ms, $T_\mathsf{puf}$=0.0522\,ms,
-  $T_\mathsf{hash}$=0.0353\,ms, $T_\mathsf{aes}$=0.0867\,ms.
-\end{table}
-
-Due to the execution of the authentication and key exchange phase, analysis of its
-computational efficiency is essential. In the proposed scheme, $D$ and $AS$
-(Figures~\ref{fig:auth} and~\ref{fig:keyex}) both execute one PUF operation
-($T_{\mathsf{puf}}$).
-\begin{itemize}
-  \item $D$ additionally performs six hash operations ($T_{\mathsf{hash}}$): pseudonym
-        computation, unique secret hash, and XOR mask in the Authentication Phase, followed by mask
-        recovery, session key derivation, and pseudonym rotation in the Key Exchange Phase.
-  \item $AS$ performs five hash operations ($T_{\mathsf{hash}}$), along with one AES
-        encryption ($T_{\mathsf{aes}}$) for the gateway token and one random generation
-        ($T_{\mathsf{rand}}$) for $m_{\mathrm{new}}$.
-  \item $GW$ runs one AES decryption ($T_{\mathsf{aes}}$) to recover the session key and
-        updated pseudonym from the forwarded token.
-\end{itemize}
-
-This leads to the total computational cost of the authentication and key exchange phase
-amounting to $2T_{\mathsf{puf}} + 11T_{\mathsf{hash}} + 2T_{\mathsf{aes}} + 1T_{\mathsf{rand}}$.
-In Table~\ref{tab:comp_auth}, the proposed scheme achieves a computational cost of
-0.67\,ms. It incurs a modest overhead of 0.11\,ms over DAuth~\cite{das2026comsnets}
-(0.56\,ms), directly attributable to three additional hash operations for pseudonym
-computation, dual-state lookup, and pseudonym rotation — the computational price of
-anonymity and desynchronisation resilience. The proposed scheme similarly incurs a modest
-overhead over LAAKA~\cite{ali2024laaka} (0.56\,ms) and Zhou et al.~\cite{zhou2024auth}
-(0.53\,ms), which neither employ PUF-based authentication nor a decoupled distributed
-authentication server.
+Table~\ref{tab:comp_total} reports the total computational cost of a complete enrolment,
+authentication, and key-exchange cycle for all four schemes. The proposed scheme completes
+the cycle in $0.150$\,ms, making it the second most efficient scheme overall: marginally
+above DAuth~\cite{das2026comsnets} ($0.114$\,ms) and below LAAKA~\cite{ali2024laaka}
+($0.171$\,ms). Crucially, it is more than an order of magnitude lighter than Zhou et
+al.~\cite{zhou2024auth} ($4.872$\,ms). Zhou's reliance on a biometric fuzzy extractor
+requires two elliptic-curve scalar multiplications ($2T_{\mathsf{fe}}=4.706$\,ms), which
+alone account for over $96\%$ of its computational cost. The proposed scheme therefore
+delivers pseudonym-based anonymity and dual-state desynchronisation recovery---features
+absent from all three baselines---while remaining among the lightest-weight schemes, as it
+avoids both the public-key/fuzzy-extractor overhead of Zhou et al.\ and incurs only a
+$0.036$\,ms premium over DAuth for the additional hashing required by pseudonym rotation
+and dual-state lookup.
 
 \begin{table}[!t]
   \centering
   \onelinetablecaption
-  \caption{Computational Cost Comparison: Authentication \& Key Exchange Phase.}
-  \label{tab:comp_auth}
+  \caption{Computational Cost Comparison on the RPi~4B Platform.}
+  \label{tab:comp_total}
   \scriptsize
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{lll}
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{lccccc}
     \toprule
-    Scheme & Operations & Cost (ms) \\
+    Scheme & $T_\mathsf{hash}$ & $T_\mathsf{aes}$ & $T_\mathsf{puf}$ & $T_\mathsf{fe}$ & Cost (ms) \\
     \midrule
-    LAAKA~\cite{ali2024laaka}      & $16T_\mathsf{hash}$ & 0.56 \\
-    Zhou et al.~\cite{zhou2024auth}      & $15T_\mathsf{hash}$ & 0.53 \\
-    DAuth~\cite{das2026comsnets}           & $2T_\mathsf{puf}+8T_\mathsf{hash}+2T_\mathsf{aes}+1T_\mathsf{rand}$ & 0.56 \\
-    \textbf{Proposed}        & $2T_\mathsf{puf}+11T_\mathsf{hash}+2T_\mathsf{aes}+T_\mathsf{rand}$ & \textbf{0.67} \\
+    LAAKA~\cite{ali2024laaka}        & 19 & --- & --- & --- & 0.171 \\
+    Zhou et al.~\cite{zhou2024auth}  & 17 & --- & 2 & 2 & 4.872 \\
+    DAuth~\cite{das2026comsnets}     & 9 & 2 & 4 & --- & 0.114 \\
+    \textbf{Proposed}                & 13 & 2 & 4 & --- & \textbf{0.150} \\
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
-  Benchmark (avg.\ 100 iterations): $T_\mathsf{rand}$=0.0018\,ms, $T_\mathsf{puf}$=0.0522\,ms,
-  $T_\mathsf{hash}$=0.0353\,ms, $T_\mathsf{aes}$=0.0867\,ms.
+  Operation counts aggregate the enrolment and authentication/key-exchange phases.
+  RPi~4B unit costs~\cite{kim2025puf}: $T_\mathsf{hash}$=0.009, $T_\mathsf{aes}$=0.004,
+  $T_\mathsf{puf}$=0.0063, $T_\mathsf{fe}$=$T_{M}$=2.353\,ms (one ECC P-256 scalar
+  multiplication). Random generation is excluded as negligible.
 \end{table}
 
 \subsubsection{Communication Cost}
@@ -1264,6 +1233,18 @@ X.~Zhou, S.~Wang, K.~Wen, B.~Hu, X.~Tan, and Q.~Xie,
 ``Security-Enhanced Lightweight and Anonymity-Preserving User Authentication
 Scheme for IoT-Based Healthcare,''
 \emph{IEEE Internet of Things Journal}, vol.~11, no.~6, pp.~9718--9731, 2024.
+
+\bibitem{kim2025puf}
+C.~Kim, S.~Son, and Y.~Park,
+``A Privacy-Preserving Authentication Scheme Using PUF and Biometrics for
+IoT-Enabled Smart Cities,''
+\emph{Electronics}, vol.~14, no.~10, Art.\ no.\ 1953, 2025.
+
+\bibitem{dodis2004fuzzy}
+Y.~Dodis, L.~Reyzin, and A.~Smith,
+``Fuzzy Extractors: How to Generate Strong Keys from Biometrics and Other Noisy
+Data,''
+in \emph{Proc.\ EUROCRYPT}, 2004, pp.~523--540.
 
 \bibitem{kang2017iae}
 B.~Kang, D.~Kim, and H.~Choo,

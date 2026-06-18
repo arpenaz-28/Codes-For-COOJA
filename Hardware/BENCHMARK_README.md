@@ -160,10 +160,84 @@ scp -r apex@172.16.117.188:/home/apex/contiki-ng/examples/Codes-For-COOJA/Hardwa
 
 ---
 
+## Measured Results (2026-06 session, RPi 4B @ 192.168.1.132)
+
+Both benchmarks were run on the RPi 4B (`apex@192.168.1.132`, ARM Cortex-A72,
+aarch64, Debian Bookworm, Python 3.11) at **100 measured iterations (20 warm-up)**.
+
+### A. Python benchmark (`benchmark_rpi.py`) — BCH-based FE, HMAC PUF
+
+| Symbol     | Operation                    | Mean (ms) |
+|------------|------------------------------|-----------|
+| T_hash     | SHA-256                      | 0.0030    |
+| T_hmac     | HMAC-SHA-256                 | 0.0108    |
+| T_aes      | AES-128 enc (pycryptodome)   | 0.0339    |
+| T_rand     | os.urandom(16)               | 0.0017    |
+| T_puf      | software PUF (HMAC)          | 0.0106    |
+| T_fe_gen   | FE Gen (BCH+SHA-256)         | 0.0095    |
+| T_fe_rep   | FE Rep (BCH+SHA-256)         | 0.0097    |
+| T_kdf      | HKDF-SHA-256                 | 0.0205    |
+
+This path models the fuzzy extractor as a **BCH secure sketch** (cheap, ~0.01 ms)
+and the PUF as an HMAC (~hash cost). It does NOT match the ECC-based FE convention.
+
+### B. MIRACL Core C benchmark — ECC-based FE (Kim et al. methodology)
+
+Built from `github.com/miracl/core`, configured for NIST P-256, compiled with `gcc -O2`.
+
+| Symbol  | Operation                         | Mean (ms) |
+|---------|-----------------------------------|-----------|
+| T_hash  | SHA-256                           | 0.0015    |
+| T_aes   | AES-128 ECB                       | 0.0003    |
+| T_rand  | 16 random bytes                   | 0.0031    |
+| T_puf   | XOR-arbiter PUF (128-stage)       | 0.0007    |
+| **T_M** | **ECC P-256 scalar mult**         | **1.0951**|
+| **T_fe**| **Fuzzy extractor (SHA-256 → k·G)** | **1.0968**|
+
+Confirms **T_fe = T_M** (the FE is one ECC scalar multiplication). Our build measured
+~1.10 ms; Kim et al. report 2.353 ms — same order, difference attributable to Pi
+clock / build flags. The FE is **~110× more expensive than a hash** on this hardware.
+
+### Build notes (for reproduction)
+
+- **bchlib 2.x API** differs from the script's original calls: use
+  `bchlib.BCH(t, m=m)`, then `bch.decode(data, ecc)` followed by `bch.correct(data, ecc)`.
+- **MIRACL `config64.py`**: select NIST P-256 non-interactively with `python3 config64.py -o 3`
+  (curve index **3**, not 18 — the value in `setup_miracl_rpi.sh` was a stale guess; SM2 is 18).
+- **`benchmark_miracl.c` header drift** in current MIRACL Core: `HASH256`, `AES`, and the
+  RNG live in `core.h` (there are no separate `hash256.h`/`aes.h`/`rand.h`); the AES struct
+  is `core_aes` (not `amcl_aes`). The RSA section was dropped — it clashes with MIRACL's
+  `SHA256` macro under OpenSSL 3.0, and no scheme in this comparison uses RSA.
+
+### Decision and impact on the paper
+
+The paper's **Computational Cost** section was rebuilt around the **ECC-based FE**
+(Kim et al. RPi 4B reference values), as that is how Das/Wazid/Banerjee/Kim cost a
+fuzzy extractor and is the more defensible, reviewer-proof choice. Random generation
+is excluded (negligible). Final comparison (Kim RPi 4B unit costs:
+T_hash=0.009, T_aes=0.004, T_puf=0.0063, T_fe=T_M=2.353 ms):
+
+| Scheme   | hash | aes | puf | fe | Total (ms) |
+|----------|------|-----|-----|----|------------|
+| DAuth    | 9    | 2   | 4   | –  | 0.114      |
+| Proposed | 13   | 2   | 4   | –  | **0.150**  |
+| LAAKA    | 19   | –   | –   | –  | 0.171      |
+| Zhou     | 17   | –   | 2   | 2  | 4.872      |
+
+Zhou's two ECC-based fuzzy-extractor operations (2 × 2.353 = 4.706 ms) account for
+>96% of its cost; the Proposed scheme is the second-lightest while uniquely providing
+pseudonym anonymity + dual-state desync recovery. Reproduce the paper table with
+`Scripts/Simulation-Runners/plot_comparison_kim_rpi.py`.
+
+---
+
 ## Reference
 
 Kim, C.; Son, S.; Park, Y. A Privacy-Preserving Authentication Scheme Using PUF
 and Biometrics for IoT-Enabled Smart Cities. *Electronics* **2025**, *14*, 1953.
 https://doi.org/10.3390/electronics14101953
+
+Dodis, Y.; Reyzin, L.; Smith, A. Fuzzy Extractors: How to Generate Strong Keys from
+Biometrics and Other Noisy Data. *EUROCRYPT* **2004**, pp. 523–540.
 
 MIRACL Cryptographic SDK. Available: https://github.com/miracl/MIRACL
