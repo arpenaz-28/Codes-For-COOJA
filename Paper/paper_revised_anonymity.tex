@@ -783,7 +783,7 @@ initialisation, giving $2T_{\mathsf{puf}}+2T_{\mathsf{hash}}=0.258$\,ms. As show
 Table~\ref{tab:comp_enroll}, this is marginally above DAuth~\cite{das2026comsnets}
 ($0.249$\,ms), the difference being exactly one additional hash for pseudonym
 initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cost
-($2.491$\,ms), dominated by the fuzzy-extractor key-generation function $\mathsf{FE.Gen}(\cdot)$
+($2.491$\,ms), dominated by the fuzzy-extractor generation function $\mathsf{Gen}(\cdot)$
 ($T_{\mathsf{fe}}=T_{\mathsf{ecc}}=2.353$\,ms).
 
 \begin{table}[!t]
@@ -822,7 +822,7 @@ DAuth~\cite{das2026comsnets} ($0.320$\,ms), the $0.027$\,ms overhead attributabl
 three additional hash operations for pseudonym computation, dual-state lookup, and
 pseudonym rotation. LAAKA~\cite{ali2024laaka} ($0.144$\,ms) achieves lower cost by
 performing only hash operations without any PUF evaluation. Zhou et al.\ ($2.608$\,ms) is
-the heaviest due to the fuzzy-extractor key-reproduction function $\mathsf{FE.Rep}(\cdot)$
+the heaviest due to the fuzzy-extractor reproduction function $\mathsf{Rep}(\cdot)$
 ($T_{\mathsf{fe}}=2.353$\,ms).
 
 \begin{table}[!t]
@@ -1016,8 +1016,8 @@ separate key-exchange round, whereas the remaining schemes include all three pha
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{fig_sim_total}
-  \caption{Per-device Average cost, all phases :
-           (a)~Energy and (b)~CPU time.}
+  \caption{Per-device Average cost for all phases :
+           (a)~Energy (b)~CPU time.}
   \label{fig:sim_total}
 \end{figure}
 
@@ -1045,8 +1045,7 @@ authentication server design in the proposed scheme.
   \small (a)\\[5pt]
   \includegraphics[width=0.78\columnwidth]{fig_sim_as_cpu}\\[2pt]
   \small (b)
-  \caption{Average authentication overhead vs.\ number of active authentication servers
-           (20 devices): (a)~energy and (b)~CPU time.}
+  \caption{Average authentication overhead vs.\ number of active authentication servers: (a)~Energy  (b)~CPU time.}
   \label{fig:sim_as}
 \end{figure}
 
@@ -1071,10 +1070,10 @@ computational efficiency of the proposed scheme in comparison to the benchmark s
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=0.78\columnwidth]{fig_sim_net_energy}\\[2pt]
-  \small (a)\\[5pt]
-  \includegraphics[width=0.78\columnwidth]{fig_sim_net_cpu}\\[2pt]
-  \small (b)
+  \small (a)\\[2pt]
+  \includegraphics[width=0.78\columnwidth]{fig_sim_net_energy}\\[5pt]
+  \small (b)\\[2pt]
+  \includegraphics[width=0.78\columnwidth]{fig_sim_net_cpu}
   \caption{Network scalability: (a)~Avg. energy and
            (b)~Avg. CPU time vs.\ network size~$N$.}
   \label{fig:sim_network}
