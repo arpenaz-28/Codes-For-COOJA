@@ -564,8 +564,8 @@ deliberate trade-off between storage overhead and recovery depth.
        \mathit{PID}_{\mathrm{curr}},\,\mathit{PID}_{\mathrm{old}})$
 \State $\mathit{PID} = H(\mathit{ID}_D \| m_{\mathrm{curr}})$
 \State $D$ sends $(\mathit{PID},\; Y_{AS\text{-}D}^H,\; ts_1)$ to $AS$
-\State verify freshness of $ts_1$
-\State $R_D' = \Phi_{AS\text{-}D} \oplus \mathsf{PUF}_{AS}(c_{AS\text{-}D})$
+\State AS verifies freshness of $ts_1$
+\State AS calculates $R_D' = \Phi_{AS\text{-}D} \oplus \mathsf{PUF}_{AS}(c_{AS\text{-}D})$
 \If{$\mathit{PID} == \mathit{PID}_{\mathrm{old}}$}
     \State $Y_D^{H'} = Y_{AS\text{-}D}^H \oplus
            H(R_D' \| m_{\mathrm{old}} \| \mathit{PID} \| ts_1)$
@@ -588,7 +588,7 @@ deliberate trade-off between storage overhead and recovery depth.
 \begin{algorithmic}[1]
 \Statex \textbf{Precondition:} desync path from Algorithm~\ref{alg:desync-auth};\;
        $AS$ uses $m_{\mathrm{old}}$, $\mathit{PID}_{\mathrm{old}}$
-\State $n_1 = \mathsf{rand}()$
+\State $AS$ generates random value $n_1$
 \State $m_{\mathrm{new}} = H(n_1)$
 \State $m^H = m_{\mathrm{new}} \oplus
        H\!\left(Y_D^{H'} \| m_{\mathrm{old}} \| R_D' \|
