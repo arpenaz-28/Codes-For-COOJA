@@ -507,7 +507,7 @@ frames under the prior session key pending re-authentication.
 \begin{figure}[!t]
   \centering
   \includegraphics[width=0.9\columnwidth]{fig_keyex}
-  \caption{Session Key Exchange Phase via open channel.}
+  \caption{Node Session Key Exchange Phase}
   \label{fig:keyex}
 \end{figure}
 
@@ -566,12 +566,18 @@ deliberate trade-off between storage overhead and recovery depth.
        \hfill\Comment{stale $m_{\mathrm{curr}}$ gives $\mathit{PID} = \mathit{PID}_{\mathrm{old}}$}
 \State $D$ sends $(\mathit{PID},\; Y_{AS\text{-}D}^H,\; ts_1)$ to $AS$
 \If{$\mathit{PID} == \mathit{PID}_{\mathrm{curr}}$}
-    \State $AS$ verifies using $m_{\mathrm{curr}}$ \hfill\Comment{normal path}
+    \State $m_x \gets m_{\mathrm{curr}}$ \hfill\Comment{normal path}
 \ElsIf{$\mathit{PID} == \mathit{PID}_{\mathrm{old}}$}
-    \State $AS$ verifies using $m_{\mathrm{old}}$ \hfill\Comment{desync detected}
+    \State $m_x \gets m_{\mathrm{old}}$ \hfill\Comment{desync detected}
 \Else
-    \State $AS$ rejects $D$
+    \State $AS$ rejects $D$ and aborts
 \EndIf
+\State verify freshness: $ts_1 \leq ts_{\max}$
+\State $R_D' \gets \Phi_{AS\text{-}D} \oplus \mathsf{PUF}_{AS}(c_{AS\text{-}D})$
+\State $Y_D^{H'} \gets Y_{AS\text{-}D}^H \oplus
+       H(R_D' \| m_x \| \mathit{PID} \| ts_1)$
+\State assert $T_\mathsf{Acc} \mathbin{\&} Y_D^{H'} = T_\mathsf{Acc}$
+       \hfill\Comment{accumulator membership check}
 \end{algorithmic}
 \end{algorithm}
 
