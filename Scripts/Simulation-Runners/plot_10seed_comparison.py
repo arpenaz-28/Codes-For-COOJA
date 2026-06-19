@@ -202,8 +202,8 @@ def make_perdev_chart(scheme_records):
 
         draw_panel(ax_e, e_stats, "Avg. Energy (mJ)", ".2f")
         draw_panel(ax_c, c_stats, "Avg. CPU Time (s)", ".3f")
-        ax_e.set_xlabel("(a)", fontsize=17, fontweight="bold")
-        ax_c.set_xlabel("(b)", fontsize=17, fontweight="bold")
+        ax_e.set_xlabel("(a)", fontsize=22, fontweight="bold")
+        ax_c.set_xlabel("(b)", fontsize=22, fontweight="bold")
 
         scheme_patches = [
             mpatches.Patch(facecolor="none", edgecolor=COLORS[s],
