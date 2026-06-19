@@ -1239,6 +1239,37 @@ scheme consumes 0.286\,J per authentication round, achieving 14.2\,\% and 52.5\,
 energy savings over Zhou et al.\ and LAAKA, respectively.
 
 % -------------------------------------------------------
+\section{Future Work}
+
+The current dual-state mechanism tolerates a single packet loss; two or
+more consecutive losses exhaust both state slots and force re-enrolment.
+A natural extension is a sliding-window state store that retains the last
+$k$ nonce--pseudonym pairs, increasing recovery depth at the cost of
+$\mathcal{O}(k)$ additional storage per device record at the
+authentication server.
+
+The scheme employs a software XOR-Arbiter PUF simulation on commodity
+hardware.  Integrating a silicon PUF (e.g., ring-oscillator or SRAM PUF)
+would eliminate the trusted-execution assumption on the device and provide
+hardware-rooted unclonability.  Extending the evaluation to
+resource-constrained microcontrollers such as the TI CC2650 or ARM
+Cortex-M0 would validate the practical energy budget on real IoT
+platforms.
+
+Pseudonym rotation currently applies only to the open-channel
+authentication messages; relay nodes along the multihop path can still
+perform traffic analysis by correlating forwarding patterns.
+Extending per-hop anonymity through mix-routing or onion-style message
+wrapping for the authentication payloads is a promising direction
+for stronger unlinkability in dense multihop deployments.
+
+Finally, as quantum-capable adversaries are expected to threaten
+hash-and-XOR constructions through pre-image and collision attacks, a
+post-quantum variant replacing the SHA-256 primitive with a lattice-based
+or XMSS-style hash function would future-proof the scheme against
+Grover-accelerated offline guessing.
+
+% -------------------------------------------------------
 \bibliographystyle{IEEEtran}
 \bibliography{ref}
 
