@@ -562,16 +562,16 @@ deliberate trade-off between storage overhead and recovery depth.
 \Statex \textbf{Precondition:} $D$ holds stale $m_{\mathrm{curr}} = m_{\mathrm{old}}$;\;
        $AS$ holds $(m_{\mathrm{curr}},\,m_{\mathrm{old}},\,
        \mathit{PID}_{\mathrm{curr}},\,\mathit{PID}_{\mathrm{old}})$
-\State $\mathit{PID} \gets H(\mathit{ID}_D \| m_{\mathrm{curr}})$
+\State $\mathit{PID} = H(\mathit{ID}_D \| m_{\mathrm{curr}})$
 \State $D$ sends $(\mathit{PID},\; Y_{AS\text{-}D}^H,\; ts_1)$ to $AS$
-\State verify freshness: $ts_1 \leq ts_{\max}$
-\State $R_D' \gets \Phi_{AS\text{-}D} \oplus \mathsf{PUF}_{AS}(c_{AS\text{-}D})$
+\State verify freshness of $ts_1$
+\State $R_D' = \Phi_{AS\text{-}D} \oplus \mathsf{PUF}_{AS}(c_{AS\text{-}D})$
 \If{$\mathit{PID} == \mathit{PID}_{\mathrm{old}}$}
-    \State $Y_D^{H'} \gets Y_{AS\text{-}D}^H \oplus
+    \State $Y_D^{H'} = Y_{AS\text{-}D}^H \oplus
            H(R_D' \| m_{\mathrm{old}} \| \mathit{PID} \| ts_1)$
 \EndIf
 \If{$\mathit{PID} == \mathit{PID}_{\mathrm{curr}}$}
-    \State $Y_D^{H'} \gets Y_{AS\text{-}D}^H \oplus
+    \State $Y_D^{H'} = Y_{AS\text{-}D}^H \oplus
            H(R_D' \| m_{\mathrm{curr}} \| \mathit{PID} \| ts_1)$
 \EndIf
 \If{$T_\mathsf{Acc} \mathbin{\&} Y_D^{H'} = T_\mathsf{Acc}$}
