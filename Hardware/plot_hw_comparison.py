@@ -65,7 +65,7 @@ def _draw_panel(ax, metric, ylabel, title, fmt):
     ax.set_xticklabels(SCHEMES, fontsize=15)
     ax.set_ylabel(ylabel, fontsize=17, fontweight="bold", labelpad=10)
     if title:
-        ax.set_title(title, fontsize=17, fontweight="bold", pad=10)
+        ax.set_xlabel(title, fontsize=17, fontweight="bold", labelpad=8)
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
     ax.tick_params(axis="y", length=0)
