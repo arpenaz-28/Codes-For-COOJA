@@ -574,7 +574,7 @@ deliberate trade-off between storage overhead and recovery depth.
     \State $Y_D^{H'} = Y_{AS\text{-}D}^H \oplus
            H(R_D' \| m_{\mathrm{curr}} \| \mathit{PID} \| ts_1)$
 \EndIf
-\If{$T_\mathsf{Acc} \mathbin{\&} Y_D^{H'} = T_\mathsf{Acc}$}
+\If{$T_\mathsf{Acc} \mathbin{\&} Y_D^{H'} == T_\mathsf{Acc}$}
     \State Node $D$ authenticated
 \Else
     \State Not authenticated
