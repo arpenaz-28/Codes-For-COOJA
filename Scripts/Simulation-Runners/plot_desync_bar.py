@@ -175,8 +175,8 @@ def main():
 
         draw_panel(ax_e, e_stats, "Avg. Energy (mJ)")
         draw_panel(ax_c, c_stats, "Avg. CPU Time (s)")
-        ax_e.set_xlabel("(a)", fontsize=17, fontweight="bold")
-        ax_c.set_xlabel("(b)", fontsize=17, fontweight="bold")
+        ax_e.set_xlabel("(a)", fontsize=22, fontweight="bold")
+        ax_c.set_xlabel("(b)", fontsize=22, fontweight="bold")
 
         # Horizontal legend at bottom — bar types, not schemes
         legend_patches = [
