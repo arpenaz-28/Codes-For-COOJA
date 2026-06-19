@@ -488,13 +488,13 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
         ax.spines["left"].set_color("#cccccc")
         ax.spines["bottom"].set_color("#cccccc")
 
-        ax.legend(loc="upper left",
-                  frameon=True, framealpha=0.92,
-                  edgecolor="#dddddd",
-                  handlelength=1.4, handleheight=1.0,
-                  borderpad=0.7, fontsize=17)
+        handles, labels = ax.get_legend_handles_labels()
+        fig.legend(handles, labels,
+                   loc="upper center", bbox_to_anchor=(0.5, 1.0),
+                   ncol=4, fontsize=19, framealpha=0.9,
+                   edgecolor="#dddddd", handlelength=2.2, handleheight=1.6)
 
-        fig.tight_layout()
+        fig.tight_layout(rect=[0, 0, 1, 0.91])
         fig.savefig(out_path, dpi=180, bbox_inches="tight", pad_inches=0.02, facecolor="white")
         if paper_path:
             fig.savefig(paper_path, dpi=180, bbox_inches="tight", pad_inches=0.02, facecolor="white")
