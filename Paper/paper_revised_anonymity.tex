@@ -538,8 +538,7 @@ $Y_{AS\text{-}D}^H$ is likewise constructed from the stale $m_{\mathrm{curr}}$,
 so $AS$ cannot reconstruct the correct mask and the accumulator check fails.
 Authentication is therefore rejected.  In schemes without a recovery mechanism,
 this failure forces $D$ to execute the full enrolment phase again, a costly
-operation for a battery-powered node that re-exposes $ID_D$ on the secure
-channel and resets all session state.
+operation for a resource-constrained node.
 
 The proposed dual-state mechanism avoids this re-enrolment cost.  If the Key
 Exchange Phase delivery $(m^H,\,ts_2)$ is lost, $D$ retains its stale
@@ -588,7 +587,7 @@ deliberate trade-off between storage overhead and recovery depth.
 \begin{algorithmic}[1]
 \Statex \textbf{Precondition:} desync path from Algorithm~\ref{alg:desync-auth};\;
        $AS$ uses $m_{\mathrm{old}}$, $\mathit{PID}_{\mathrm{old}}$
-\State $AS$ generates random value $n_1$
+\State $AS$ generates random value $n_1$,
 \State $m_{\mathrm{new}} = H(n_1)$
 \State $m^H = m_{\mathrm{new}} \oplus
        H\!\left(Y_D^{H'} \| m_{\mathrm{old}} \| R_D' \|
@@ -597,11 +596,11 @@ deliberate trade-off between storage overhead and recovery depth.
 \State $m_{\mathrm{new}} = m^H \oplus
        H\!\left(Y_D^{H} \| m_{\mathrm{curr}} \| R_D \|
        \mathit{ID}_{AS} \| \mathit{PID} \| ts_2\right)$
-       \hfill\Comment{$D$ uses $m_{\mathrm{curr}} = m_{\mathrm{old}}$ — recovers correctly}
-\State $m_{\mathrm{old}} = m_{\mathrm{curr}}$;\quad
-       $m_{\mathrm{curr}} = m_{\mathrm{new}}$;\quad
-       $\mathit{PID} = H(\mathit{ID}_D \| m_{\mathrm{curr}})$
-\Statex \textbf{Result:} $D$ and $AS$ re-synchronised; $\mathit{PID}$ rotated
+       
+\State $m_{\mathrm{old}} = m_{\mathrm{curr}}$,\quad
+       $m_{\mathrm{curr}} = m_{\mathrm{new}}$,\quad
+       $\mathit{PID} = H(\mathit{ID}_D \| m_{\mathrm{new}})$
+\Statex \textbf{Result:} $D$ and $AS$ re-synchronised, $\mathit{PID}$ is rotated.
 \end{algorithmic}
 \end{algorithm}
 
@@ -784,7 +783,7 @@ initialisation, giving $2T_{\mathsf{puf}}+2T_{\mathsf{hash}}=0.258$\,ms. As show
 Table~\ref{tab:comp_enroll}, this is marginally above DAuth~\cite{das2026comsnets}
 ($0.249$\,ms), the difference being exactly one additional hash for pseudonym
 initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cost
-($2.491$\,ms), dominated by the biometric fuzzy-extractor Gen step
+($2.491$\,ms), dominated by the fuzzy-extractor key-generation function $\mathsf{FE.Gen}(\cdot)$
 ($T_{\mathsf{fe}}=T_{\mathsf{ecc}}=2.353$\,ms).
 
 \begin{table}[!t]
@@ -823,7 +822,8 @@ DAuth~\cite{das2026comsnets} ($0.320$\,ms), the $0.027$\,ms overhead attributabl
 three additional hash operations for pseudonym computation, dual-state lookup, and
 pseudonym rotation. LAAKA~\cite{ali2024laaka} ($0.144$\,ms) achieves lower cost by
 performing only hash operations without any PUF evaluation. Zhou et al.\ ($2.608$\,ms) is
-the heaviest due to the biometric Rep step ($T_{\mathsf{fe}}=2.353$\,ms).
+the heaviest due to the fuzzy-extractor key-reproduction function $\mathsf{FE.Rep}(\cdot)$
+($T_{\mathsf{fe}}=2.353$\,ms).
 
 \begin{table}[!t]
   \centering
