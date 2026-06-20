@@ -1,57 +1,57 @@
 {
   "enrollment": {
     "phase": "Enrollment",
-    "wall_s": 0.102,
+    "wall_s": 0.0547,
     "cpu_s": 0.0009,
-    "energy_j": 0.387531
+    "energy_j": 0.207741
   },
   "rounds": [
     {
       "phase": "Round1",
-      "ak_s": 0.0295,
-      "ak_energy_j": 0.112128,
-      "auth_s": 0.0152,
-      "auth_energy_j": 0.057661,
-      "ke_s": 0.0143,
-      "ke_energy_j": 0.054411,
-      "data_s": 0.0131,
-      "data_energy_j": 0.049863,
-      "total_s": 0.0426,
-      "total_energy_j": 0.161992
+      "ak_s": 0.0274,
+      "ak_energy_j": 0.104012,
+      "auth_s": 0.0162,
+      "auth_energy_j": 0.061721,
+      "ke_s": 0.0111,
+      "ke_energy_j": 0.04223,
+      "data_s": 0.0097,
+      "data_energy_j": 0.036893,
+      "total_s": 0.0371,
+      "total_energy_j": 0.140905
     },
     {
       "phase": "Round2",
-      "ak_s": 0.0286,
-      "ak_energy_j": 0.108785,
-      "auth_s": 0.0169,
-      "auth_energy_j": 0.064261,
-      "ke_s": 0.0117,
-      "ke_energy_j": 0.044466,
-      "data_s": 0.0088,
-      "data_energy_j": 0.033265,
-      "total_s": 0.0374,
-      "total_energy_j": 0.14205
+      "ak_s": 0.0253,
+      "ak_energy_j": 0.096322,
+      "auth_s": 0.015,
+      "auth_energy_j": 0.057017,
+      "ke_s": 0.0103,
+      "ke_energy_j": 0.039243,
+      "data_s": 0.0108,
+      "data_energy_j": 0.040995,
+      "total_s": 0.0361,
+      "total_energy_j": 0.137316
     },
     {
       "phase": "Round3",
-      "ak_s": 0.026,
-      "ak_energy_j": 0.098907,
-      "auth_s": 0.0155,
-      "auth_energy_j": 0.058833,
-      "ke_s": 0.0105,
-      "ke_energy_j": 0.040003,
-      "data_s": 0.0105,
-      "data_energy_j": 0.039987,
-      "total_s": 0.0366,
-      "total_energy_j": 0.138894
+      "ak_s": 0.0309,
+      "ak_energy_j": 0.117371,
+      "auth_s": 0.017,
+      "auth_energy_j": 0.064425,
+      "ke_s": 0.0139,
+      "ke_energy_j": 0.052881,
+      "data_s": 0.0096,
+      "data_energy_j": 0.036582,
+      "total_s": 0.0405,
+      "total_energy_j": 0.153953
     }
   ],
   "summary": {
-    "ak_energy_sum_j": 0.31982,
-    "ak_time_sum_s": 0.0841,
-    "total_energy_sum_j": 0.442936,
-    "total_time_sum_s": 0.1166,
-    "avg_ak_energy_j": 0.106607,
-    "avg_ak_time_s": 0.028033
+    "ak_energy_sum_j": 0.317705,
+    "ak_time_sum_s": 0.0836,
+    "total_energy_sum_j": 0.432174,
+    "total_time_sum_s": 0.1137,
+    "avg_ak_energy_j": 0.105902,
+    "avg_ak_time_s": 0.027867
   }
 }

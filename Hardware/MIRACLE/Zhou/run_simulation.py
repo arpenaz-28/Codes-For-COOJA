@@ -160,6 +160,21 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"[ORCH] WARNING: Could not collect results JSON: {e}")
 
+    # ── Collect SN-registration one-time setup cost from SN (Pi) ──────────────
+    try:
+        sn_json = os.path.join(RESULTS_DIR, f"snreg_{run_num:02d}.json")
+        c = paramiko.SSHClient()
+        c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        c.connect(PI_IP, username="pi", password=PASSWORD, timeout=10)
+        sftp = c.open_sftp()
+        sftp.get(f"/home/pi/{REMOTE_DIR}/snreg_hw_run.json", sn_json)
+        sftp.close(); c.close()
+        sr = json.load(open(sn_json))
+        print(f"[ORCH] SN registration (one-time): "
+              f"{sr['energy_j']:.6f} J  {sr['wall_s']:.4f} s  (cpu {sr['cpu_s']:.4f} s)")
+    except Exception as e:
+        print(f"[ORCH] WARNING: Could not collect SN-reg JSON: {e}")
+
     # ── Teardown ──────────────────────────────────────────────────────────
     print("\n[ORCH] Stopping SN on Pi...")
     sn_client.exec_command("pkill -f hw_zhou_sn.py")

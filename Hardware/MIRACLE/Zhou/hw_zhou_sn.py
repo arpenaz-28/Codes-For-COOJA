@@ -16,7 +16,7 @@ Metrics:
 
 RPi 4B active power assumption: 3800 mW
 """
-import sys, os, threading, time, socket, atexit, signal
+import sys, os, json, threading, time, socket, atexit, signal
 _d = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(_d, '..')); sys.path.insert(0, _d)
 from common import *
@@ -83,6 +83,13 @@ def do_registration() -> None:
     with stats_lock:
         stats['reg_wall_s'] = wall_s
         stats['reg_cpu_s']  = cpu_s
+    try:
+        with open(os.path.join(_d, 'snreg_hw_run.json'), 'w') as f:
+            json.dump({'phase': 'SNRegistration',
+                       'wall_s': round(wall_s, 4), 'cpu_s': round(cpu_s, 4),
+                       'energy_j': energy(wall_s)}, f, indent=2)
+    except Exception:
+        pass
     print(f"[SN-ZHOU] Registration  wall={wall_s:.4f} s  cpu={cpu_s:.4f} s  "
           f"energy={energy(wall_s):.6f} J  SIDn={SIDn_new.hex()[:8]}  Cn={Cn_new}  Rn={Rn_new}")
 
