@@ -1,63 +1,69 @@
-# Compute-only MIRACL hardware benchmark (RPi 4B) — ARCHIVE, NOT IN PAPER
+# Hardware/MIRACLE — MIRACL Core hardware study (all four schemes)
 
-> **Status:** exploratory / archival. This work is **deliberately kept out of the
-> paper.** It is preserved here (logs, source, results, chart, aggregated values)
-> as a self-contained record of the MIRACL-based compute re-measurement.
+This folder holds the **MIRACL Core (NIST P-256)** hardware work for all four
+authentication schemes — **Proposed, DAuth, LAAKA, Zhou** — run on real Raspberry
+Pi 4B nodes. It is **exploratory / archival and is NOT part of the paper**; the
+paper's existing charts and tables are untouched.
 
-Companion analysis to the **network-bound** end-to-end hardware chart
-(`Hardware/Charts/hw_total_comparison.png`). This isolates **pure cryptographic
-computation** measured live on an RPi 4B via **MIRACL Core (NIST P-256)** — each
-scheme's actual operation sequence is executed (no TCP), so Zhou's ECC fuzzy
-extractor is faithfully exercised.
+All cryptography on the **measured RPi nodes** is routed through
+`libmiraclshim.so` (a thin C shim over MIRACL Core, called from Python via
+ctypes). The laptop-side node (GW/RA) stays on Python and still interoperates,
+because MIRACL SHA-256 / AES-128-ECB are **byte-identical** to hashlib /
+pycryptodome (verified on both Pis).
 
-## Files in this folder
+> Testbed: Device/Pi `192.168.1.113`, AS/Apex `192.168.1.132`, GW/RA = laptop
+> `192.168.1.201`. Energy model: `wall_time × 3.8 W` (3800 mW), as in the existing
+> hardware charts. Per-process backend toggle: `USE_MIRACL=1`.
 
-| File | What |
+## Shared MIRACL backend
+| File | Purpose |
 |---|---|
-| `scheme_compute_bench.c` | C benchmark (MIRACL Core API) — runs each scheme's op-sequence |
-| `run_01.csv` … `run_03.csv` | raw per-run output (`scheme,phase,mean_ms,sd_ms,iters`) |
-| `plot_compute_miracl.py` | self-contained aggregator + plotter (reads/writes this dir) |
-| `compute_miracl_aggregate.json` | aggregated values (mean of 3 runs) |
-| `hw_compute_miracl.png` | dual-panel chart (compute energy + compute time) |
-| `build_run.log` | build + run console log from the RPi |
+| `miracl_shim.c` | C shim over MIRACL Core: SHA-256, AES-128-ECB enc/dec, ECC P-256 fuzzy extractor |
+| `libmiraclshim.so` | built shim (aarch64; statically links `core.a`; libc-only deps) |
+| `miracl_crypto.py` | ctypes wrapper exposing `sha256 / aes_enc_blocks / aes_dec_blocks / fe_p256` |
 
-## How it was produced
+## (A) Compute-only benchmark — pure computation, no network
+Runs each scheme's exact operation sequence through MIRACL on the Pi and times it.
+- Files: `scheme_compute_bench.c`, `run_01..03.csv`, `plot_compute_miracl.py`,
+  `compute_miracl_aggregate.json`, `hw_compute_miracl.png`, `build_run.log`.
+- Details: **[COMPUTE_BENCHMARK.md](COMPUTE_BENCHMARK.md)**.
+- Result: Zhou ≈ 45× heavier (ECC fuzzy extractor); the other three are sub-0.1 mJ
+  of computation per round.
 
-- Built against the existing MIRACL Core `core.a` on `apex@192.168.1.132`
-  (`~/miracl_bench/work/`), `gcc -O2`, NIST P-256, RPi 4B @ 1.8 GHz, governor
-  `ondemand`.
-  ```bash
-  scp scheme_compute_bench.c apex@192.168.1.132:~/miracl_bench/work/
-  ssh apex@192.168.1.132 'cd ~/miracl_bench/work && \
-      gcc -O2 scheme_compute_bench.c miracl_core/core.a -lm -o scheme_compute_bench && \
-      ./scheme_compute_bench'
-  ```
-- Per phase: 200 warm-up + 2000 measured iterations, `CLOCK_MONOTONIC`.
-- 3 runs captured: `run_01.csv`, `run_02.csv`, `run_03.csv`.
-- Op-counts identical to the paper's `tab:comp_total` /
-  `Scripts/Simulation-Runners/plot_comparison_kim_rpi.py`.
-- Energy = compute_time x 3.8 W (same 3800 mW power model as end-to-end chart).
-- Regenerate chart + JSON locally: `python plot_compute_miracl.py`.
+## (B) Full end-to-end sims — real TCP + real computation, per scheme
+Each subfolder is **self-contained** (role scripts + `common.py`/`config.py` +
+MIRACL backend + orchestrator + `results/`). Run from inside it:
+```bash
+cd Hardware/MIRACLE/<scheme>
+python run_simulation.py 1            # MIRACL end-to-end -> results/run_01.json
+USE_MIRACL=0 python run_simulation.py 1   # Python-crypto baseline
+```
 
-## Results (per-round / Auth phase, mean of 3 runs)
+| Folder | Scheme | Measured node | Notes |
+|---|---|---|---|
+| [`Proposed/`](Proposed/README.md) | Proposed (this paper) | Device = Pi | push-based KeyEx |
+| [`LAAKA/`](LAAKA/README.md) | LAAKA (2024) | Device = Pi | **live Fog↔RA registration** (§4.2.1), measured |
+| [`Zhou/`](Zhou/README.md) | Zhou (2024) | User = Apex | **real ECC fuzzy extractor** (2 FE ops) |
+| [`DAuth/`](DAuth/README.md) | **Fair-DAuth** | Device = Pi | DAuth core on Proposed's transport (push, binary) |
 
-| Scheme   | Compute time (ms) | Compute energy (mJ) |
-|----------|-------------------|---------------------|
-| DAuth    | 0.0201            | 0.0764              |
-| LAAKA    | 0.0239            | 0.0908              |
-| Proposed | 0.0246            | 0.0936              |
-| Zhou     | 1.1171            | 4.2450              |
+- Cross-scheme + MIRACL-vs-Python: `batch_e2e.py`, `aggregate_e2e.py`, `e2e/`,
+  `e2e_aggregate.json`, `hw_e2e_miracl_vs_python.png`, `hw_e2e_miracl.png` —
+  details in **[E2E_README.md](E2E_README.md)**.
+- DAuth fairness study (push vs pull): `DAuth/compare_fair.py` — see `DAuth/README.md`.
 
-**Zhou is ~45x the heaviest non-ECC scheme** — its two ECC fuzzy-extractor
-operations dominate. Proposed/DAuth/LAAKA are all sub-0.1 mJ of computation.
+## Headline findings
+1. **End-to-end is network-bound.** MIRACL vs Python differs by < 1 std for every
+   scheme; even Zhou's real ECC fuzzy extractor (~1.1 ms) is invisible against
+   ~28 ms of TCP round-trip. Scheme ordering is set by **round-trip count**, not crypto.
+2. **The original "DAuth > Proposed" was an implementation artifact** (JSON + a
+   pull-based Key Exchange = one extra round-trip). With transport equalized
+   (`DAuth/`), Fair-DAuth is marginally *lighter* than Proposed — matching the
+   computational-cost table (DAuth 0.114 ms < Proposed 0.150 ms).
+3. **LAAKA Fog↔RA registration** is now performed live and measured as a one-time
+   setup cost (~0.044 J / ~12 ms on RPi 4B), instead of using hard-coded fog
+   credentials — kept separate from the per-round comparison.
 
-## Why it is not in the paper (number-consistency note)
-
-The paper's `tab:comp_total` uses Kim et al.'s **reference** RPi 4B unit costs
-(1.5 GHz, T_fe = 2.353 ms) → Proposed 0.150 ms, Zhou 4.872 ms. This benchmark
-used **our own RPi 4B at 1.8 GHz**, giving faster absolute times
-(T_fe = T_M ≈ 1.10 ms) → Proposed 0.0246 ms, Zhou 1.117 ms. The two agree in
-**structure and ranking** (Zhou FE-dominated; the other three ~50x lighter) and
-differ in absolute scale only because of clock speed / build flags. To avoid
-presenting two conflicting absolute-number sets for "RPi 4B," this measured set
-is archived here rather than added to the paper.
+## Reproducibility note
+Orchestrators use paramiko over SSH with the testbed's default RPi password; IPs
+and credentials match the lab setup above. Adjust the constants at the top of each
+`run_simulation.py` for a different testbed.
