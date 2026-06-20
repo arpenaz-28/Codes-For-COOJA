@@ -38,6 +38,37 @@ def H(*args):
 def xor_bytes(a, b):
     return bytes(x ^ y for x, y in zip(a, b))
 
+# ── Optional MIRACL Core crypto backend (measured device node) ───────────────
+# Routes SHA-256 + HMAC-SHA-256 through libmiraclshim.so. Outputs are identical
+# to hashlib/hmac, so the Python-backed AS/GW still interoperate.
+if os.environ.get("USE_MIRACL") == "1":
+    import sys as _sys
+    try:
+        from miracl_crypto import sha256 as _m_sha256
+
+        def H(*args):
+            buf = b"".join(a.encode() if isinstance(a, str) else a for a in args)
+            return _m_sha256(buf)
+
+        def _hmac_sha256_miracl(key: bytes, msg: bytes) -> bytes:
+            block = 64
+            if len(key) > block:
+                key = _m_sha256(key)
+            key = key.ljust(block, b"\x00")
+            o_pad = bytes(b ^ 0x5C for b in key)
+            i_pad = bytes(b ^ 0x36 for b in key)
+            return _m_sha256(o_pad + _m_sha256(i_pad + msg))
+
+        def APUF_D(challenge: bytes) -> bytes:
+            if len(challenge) != 8:
+                raise ValueError("Challenge must be 64 bits (8 bytes)")
+            return _hmac_sha256_miracl(APUF_MASTER_D, challenge)[:8]
+
+        print("[DAuth-dev] MIRACL Core crypto ENABLED", file=_sys.stderr)
+    except Exception as _e:
+        print(f"[DAuth-dev] MIRACL requested but unavailable ({_e}); using Python",
+              file=_sys.stderr)
+
 def load_storage():
     if not os.path.exists(STORAGE_FILE):
         return {}

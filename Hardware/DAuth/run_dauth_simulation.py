@@ -21,6 +21,9 @@ PI_IP      = "192.168.1.113"
 APEX_IP    = "192.168.1.132"
 PASSWORD   = "raspberrypi"
 REMOTE_DIR = "DAuth_HW"
+# USE_MIRACL=1 (default) routes the measured device's crypto through libmiraclshim.so.
+USE_MIRACL = os.environ.get("USE_MIRACL", "1")
+MIRACLE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "MIRACLE")
 
 
 def stream(tag, channel):
@@ -92,6 +95,10 @@ if __name__ == "__main__":
     print("\n[ORCH] Copying files to Apex (Device) ...")
     scp_file(os.path.join(here, "device.py"),      APEX_IP, "apex", REMOTE_DIR)
     scp_file(os.path.join(here, "crypto_utils.py"),APEX_IP, "apex", REMOTE_DIR)
+    if USE_MIRACL == "1":
+        print("\n[ORCH] Deploying MIRACL backend to Device (Apex) ...")
+        scp_file(os.path.join(MIRACLE_DIR, "miracl_crypto.py"), APEX_IP, "apex", REMOTE_DIR)
+        scp_file(os.path.join(MIRACLE_DIR, "libmiraclshim.so"), APEX_IP, "apex", REMOTE_DIR)
 
     # ── Step 1: Start GW locally ─────────────────────────────────────────────
     print("\n[ORCH] Starting GW on Laptop ...")
@@ -110,7 +117,10 @@ if __name__ == "__main__":
 
     # ── Step 3: Run Device on Apex (wait for completion) ─────────────────────
     print("\n[ORCH] Running Device on Apex ...")
-    rc = ssh_run_foreground(APEX_IP, "apex", "python3 device.py", "[DEV] ")
+    dev_cmd = "python3 device.py"
+    if USE_MIRACL == "1":
+        dev_cmd = f"USE_MIRACL=1 MIRACL_SO=$HOME/{REMOTE_DIR}/libmiraclshim.so " + dev_cmd
+    rc = ssh_run_foreground(APEX_IP, "apex", dev_cmd, "[DEV] ")
 
     print(f"\n[ORCH] Device finished (exit={rc}). Waiting for AS to flush ...")
     time.sleep(2)

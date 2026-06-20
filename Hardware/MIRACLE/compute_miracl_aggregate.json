@@ -1,0 +1,64 @@
+{
+  "power_mw": 3800.0,
+  "num_runs": 3,
+  "phase_reported": "auth",
+  "zhou_vs_light_ratio": 45.3,
+  "schemes": {
+    "Proposed": {
+      "auth": {
+        "time_ms": 0.024642,
+        "time_sd_ms": 2e-05,
+        "energy_mj": 0.09364,
+        "energy_sd_mj": 7.7e-05
+      },
+      "enroll": {
+        "time_ms": 0.004309,
+        "time_sd_ms": 1.6e-05,
+        "energy_mj": 0.016374,
+        "energy_sd_mj": 6e-05
+      }
+    },
+    "DAuth": {
+      "auth": {
+        "time_ms": 0.020101,
+        "time_sd_ms": 1.1e-05,
+        "energy_mj": 0.076385,
+        "energy_sd_mj": 4e-05
+      },
+      "enroll": {
+        "time_ms": 0.002803,
+        "time_sd_ms": 8e-06,
+        "energy_mj": 0.010653,
+        "energy_sd_mj": 3.1e-05
+      }
+    },
+    "LAAKA": {
+      "auth": {
+        "time_ms": 0.023906,
+        "time_sd_ms": 4e-06,
+        "energy_mj": 0.090842,
+        "energy_sd_mj": 1.3e-05
+      },
+      "enroll": {
+        "time_ms": 0.00453,
+        "time_sd_ms": 1e-06,
+        "energy_mj": 0.017215,
+        "energy_sd_mj": 4e-06
+      }
+    },
+    "Zhou": {
+      "auth": {
+        "time_ms": 1.117093,
+        "time_sd_ms": 0.000154,
+        "energy_mj": 4.244952,
+        "energy_sd_mj": 0.000586
+      },
+      "enroll": {
+        "time_ms": 1.097778,
+        "time_sd_ms": 7.1e-05,
+        "energy_mj": 4.171558,
+        "energy_sd_mj": 0.000269
+      }
+    }
+  }
+}

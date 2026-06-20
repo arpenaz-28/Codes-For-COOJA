@@ -1,0 +1,45 @@
+{
+  "enrollment": {
+    "phase": "Registration",
+    "wall_s": 0.0305,
+    "cpu_s": 0.0022,
+    "energy_j": 0.115857
+  },
+  "rounds": [
+    {
+      "phase": "Round1",
+      "auth_s": 0.0284,
+      "auth_energy_j": 0.107922,
+      "data_s": 0.011,
+      "data_energy_j": 0.041731,
+      "total_s": 0.0394,
+      "total_energy_j": 0.149653
+    },
+    {
+      "phase": "Round2",
+      "auth_s": 0.0271,
+      "auth_energy_j": 0.102922,
+      "data_s": 0.0105,
+      "data_energy_j": 0.03999,
+      "total_s": 0.0376,
+      "total_energy_j": 0.142913
+    },
+    {
+      "phase": "Round3",
+      "auth_s": 0.0282,
+      "auth_energy_j": 0.107108,
+      "data_s": 0.012,
+      "data_energy_j": 0.045497,
+      "total_s": 0.0402,
+      "total_energy_j": 0.152605
+    }
+  ],
+  "summary": {
+    "auth_energy_sum_j": 0.317952,
+    "auth_time_sum_s": 0.0837,
+    "total_energy_sum_j": 0.445171,
+    "total_time_sum_s": 0.1172,
+    "avg_auth_energy_j": 0.105984,
+    "avg_auth_time_s": 0.0279
+  }
+}

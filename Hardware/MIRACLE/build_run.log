@@ -1,0 +1,18 @@
+### Sat Jun 20 02:44:03 IST 2026 — MIRACL compute benchmark on apex@192.168.1.132 (RPi 4B)
+## cpu: 1800000 Hz  governor: ondemand
+## uname: Linux 6.12.34+rpt-rpi-v8 aarch64
+gcc (Debian 12.2.0-14+deb12u1) 12.2.0
+## build:
+BUILD_OK
+## run:
+# MIRACL Core per-scheme compute benchmark (RPi 4B, NIST P-256)
+# 200 warm-up + 2000 measured per phase
+scheme,phase,mean_ms,sd_ms,iters
+Proposed,enroll,0.004321,0.000249,2000
+Proposed,auth,0.024615,0.001222,2000
+DAuth,enroll,0.002808,0.000119,2000
+DAuth,auth,0.020143,0.000640,2000
+LAAKA,enroll,0.004529,0.000120,2000
+LAAKA,auth,0.023910,0.000410,2000
+Zhou,enroll,1.100642,0.003483,2000
+Zhou,auth,1.120035,0.003610,2000

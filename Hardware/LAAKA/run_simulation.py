@@ -18,7 +18,11 @@ APEX_IP    = "192.168.1.132"
 PI_IP      = "192.168.1.113"
 PASSWORD   = "raspberrypi"
 REMOTE_DIR = "ANUP_Hardware_Simulation"
-ENV        = "export GW_IP=192.168.1.201 AS_IP=192.168.1.132 DEV_IP=192.168.1.113"
+# USE_MIRACL=1 (default) routes Fog/device crypto through libmiraclshim.so; set 0 for Python baseline.
+USE_MIRACL = os.environ.get("USE_MIRACL", "1")
+_mir = (f" USE_MIRACL={USE_MIRACL} MIRACL_SO=$HOME/{REMOTE_DIR}/libmiraclshim.so"
+        if USE_MIRACL == "1" else "")
+ENV        = "export GW_IP=192.168.1.201 AS_IP=192.168.1.132 DEV_IP=192.168.1.113" + _mir
 
 
 def stream(tag, channel):
@@ -98,6 +102,13 @@ if __name__ == "__main__":
     scp_file(os.path.join(here, "hw_laaka_device.py"),     PI_IP, "pi", REMOTE_DIR)
     scp_file(os.path.join(here, "..", "common.py"),        PI_IP, "pi", REMOTE_DIR)
     scp_file(os.path.join(here, "..", "config.py"),        PI_IP, "pi", REMOTE_DIR)
+
+    # ── MIRACL crypto backend (Fog + device only; RA/GW stays Python) ─────
+    if USE_MIRACL == "1":
+        print("\n[ORCH] Deploying MIRACL backend to Fog + Device ...")
+        for ip, user in [(APEX_IP, "apex"), (PI_IP, "pi")]:
+            scp_file(os.path.join(here, "..", "MIRACLE", "miracl_crypto.py"),   ip, user, REMOTE_DIR)
+            scp_file(os.path.join(here, "..", "MIRACLE", "libmiraclshim.so"),   ip, user, REMOTE_DIR)
 
     # ── Step 1: Start RA on Laptop ────────────────────────────────────────
     print("\n[ORCH] Starting RA on Laptop...")

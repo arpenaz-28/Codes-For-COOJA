@@ -1,0 +1,9 @@
+scheme,phase,mean_ms,sd_ms,iters
+Proposed,enroll,0.004302,0.000895,2000
+Proposed,auth,0.024624,0.001365,2000
+DAuth,enroll,0.002808,0.000107,2000
+DAuth,auth,0.020101,0.000382,2000
+LAAKA,enroll,0.004531,0.000162,2000
+LAAKA,auth,0.023906,0.000360,2000
+Zhou,enroll,1.097801,0.005186,2000
+Zhou,auth,1.117265,0.005815,2000
