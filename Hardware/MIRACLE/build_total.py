@@ -3,7 +3,7 @@
 build_total.py — fresh same-session MIRACL end-to-end TOTAL cost per scheme,
 summing the FULL set of phases each respective paper defines:
 
-  Proposed / Fair-DAuth : Device Enrollment + Authentication + Key Exchange
+  Proposed / DAuth : Device Enrollment + Authentication + Key Exchange
   LAAKA                 : IoT-device Registration + Fog-server Registration
                           + Mutual Authentication & Key Exchange (Auth + Ack)
   Zhou                  : User Registration + Sensor-Node Registration
@@ -80,7 +80,7 @@ def per_run_total(folder, i, scheme):
         # LAAKA's key agreement = Auth + Ack (mutual authentication & key exchange)
         ke, kt = round_mean(rounds, "ack_energy_j", "ack_s")
         e += ke; t += kt; bd["keyex(ack)"] = (ke, kt)
-    # Proposed / Fair-DAuth: session key is established WITHIN the Auth (D<->AS)
+    # Proposed / DAuth: session key is established WITHIN the Auth (D<->AS)
     #   exchange; the separate D<->GW key-confirmation handshake and the Data
     #   phase are NOT counted in the Enrollment+Auth+KeyExch total.
     # Zhou: M1->M4 is a single combined auth+key step, already counted in auth.
@@ -90,7 +90,7 @@ def per_run_total(folder, i, scheme):
 
 SCHEMES = [
     ("Proposed",   "Proposed", "run_simulation.py"),
-    ("Fair-DAuth", "DAuth",    "run_simulation.py"),
+    ("DAuth", "DAuth",    "run_simulation.py"),
     ("LAAKA",      "LAAKA",    "run_simulation.py"),
     ("Zhou",       "Zhou",     "run_simulation.py"),
 ]
@@ -132,7 +132,7 @@ def main():
     print("|---|---|---|---|")
     phase_txt = {
         "Proposed":   "Enroll + Auth + KeyEx",
-        "Fair-DAuth": "Enroll + Auth + KeyEx",
+        "DAuth": "Enroll + Auth + KeyEx",
         "LAAKA":      "DevReg + FogReg + Auth + Ack",
         "Zhou":       "UserReg + SNReg + Auth&KeyEx",
     }

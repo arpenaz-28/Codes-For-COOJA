@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fair-DAuth — AS role  (Hardware/MIRACLE/DAuth)
+DAuth — AS role  (Hardware/MIRACLE/DAuth)
 
 Same transport/topology as the Proposed AS (binary framing, pushes the session
 token to the GW during Auth). DAuth core differences vs Proposed:
@@ -166,7 +166,7 @@ def _send_token_to_gw(DH, id_d, K_GW_D, ts_auth):
 
 def print_summary():
     print("\n" + "=" * 70)
-    print("[AS] ===== AS ENERGY SUMMARY (fair-DAuth) =====")
+    print("[AS] ===== AS ENERGY SUMMARY (DAuth) =====")
     with stats_lock:
         ec, ew = stats['enroll_count'], stats['enroll_wall_s']
         ac, aw = stats['auth_count'],   stats['auth_wall_s']
@@ -191,7 +191,7 @@ if __name__ == '__main__':
     for port, fn, label in [(PORT_AS_ENROLL, handle_enrollment, "enroll"),
                             (PORT_AS_AUTH,   handle_auth,       "auth")]:
         threading.Thread(target=listener, args=(port, fn, label), daemon=True).start()
-    print(f"[AS] Fair-DAuth AS (node {NODE_AS})  GW={GW_IP}")
+    print(f"[AS] DAuth AS (node {NODE_AS})  GW={GW_IP}")
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
     try:
         while True:

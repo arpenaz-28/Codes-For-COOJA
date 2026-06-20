@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fair-DAuth — Device role  (Hardware/MIRACLE/DAuth)
+DAuth — Device role  (Hardware/MIRACLE/DAuth)
 
 DAuth (das2026comsnets base scheme) re-hosted on the *Proposed* scheme's
 transport and topology so the two are compared on equal footing:
@@ -175,7 +175,7 @@ def do_auth(round_num):
 
 if __name__ == '__main__':
     print("=" * 70)
-    print("[DEV] Fair-DAuth — hardware energy + latency (Proposed transport, MIRACL)")
+    print("[DEV] DAuth — hardware energy + latency (Proposed transport, MIRACL)")
     print(f"[DEV] AS={AS_IP}  GW={GW_IP}")
     print(f"[DEV] Power assumption: {RPI_POWER_MW} mW  Rounds: {NUM_ROUNDS}  Warmup: {NUM_WARMUP}")
     print("=" * 70)

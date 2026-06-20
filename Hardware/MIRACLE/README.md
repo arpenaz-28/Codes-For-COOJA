@@ -44,7 +44,7 @@ USE_MIRACL=0 python run_simulation.py 1   # Python-crypto baseline
 | [`Proposed/`](Proposed/README.md) | Proposed (this paper) | Device = Pi | push-based KeyEx |
 | [`LAAKA/`](LAAKA/README.md) | LAAKA (2024) | Device = Pi | **live Fog↔RA registration** (§4.2.1), measured |
 | [`Zhou/`](Zhou/README.md) | Zhou (2024) | User = Apex | **real ECC fuzzy extractor** (2 FE ops) |
-| [`DAuth/`](DAuth/README.md) | **Fair-DAuth** | Device = Pi | DAuth core on Proposed's transport (push, binary) |
+| [`DAuth/`](DAuth/README.md) | **DAuth** | Device = Pi | DAuth core on Proposed's transport (push, binary) |
 
 - Cross-scheme + MIRACL-vs-Python: `batch_e2e.py`, `aggregate_e2e.py`, `e2e/`,
   `e2e_aggregate.json`, `hw_e2e_miracl_vs_python.png`, `hw_e2e_miracl.png` —
@@ -57,7 +57,7 @@ USE_MIRACL=0 python run_simulation.py 1   # Python-crypto baseline
    ~28 ms of TCP round-trip. Scheme ordering is set by **round-trip count**, not crypto.
 2. **The original "DAuth > Proposed" was an implementation artifact** (JSON + a
    pull-based Key Exchange = one extra round-trip). With transport equalized
-   (`DAuth/`), Fair-DAuth is marginally *lighter* than Proposed — matching the
+   (`DAuth/`), DAuth is marginally *lighter* than Proposed — matching the
    computational-cost table (DAuth 0.114 ms < Proposed 0.150 ms).
 3. **LAAKA Fog↔RA registration** is now performed live and measured as a one-time
    setup cost (~0.044 J / ~12 ms on RPi 4B), instead of using hard-coded fog

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-compare_fair.py — run Proposed and Fair-DAuth end-to-end interleaved in ONE
+compare_fair.py — run Proposed and DAuth end-to-end interleaved in ONE
 session (same network conditions) with MIRACL, and compare per-round Auth+KeyEx
 energy/time and the KeyEx phase specifically.
 
@@ -13,7 +13,7 @@ HW   = os.path.dirname(os.path.dirname(HERE))   # .../Hardware
 
 TARGETS = {
     "Proposed":  (os.path.join(HW, "Proposed"),      "run_simulation.py", "results"),
-    "FairDAuth": (HERE,                              "run_simulation.py", "results"),
+    "DAuth": (HERE,                              "run_simulation.py", "results"),
 }
 
 def run(name, idx):

@@ -6,12 +6,12 @@ median of 7 runs · per-round (warm-up discarded) · Data phase excluded.*
 | Scheme | Phase | Energy (J) | Time (s) |
 |---|---|---|---|
 | **Proposed** | Authentication (D↔AS) | **0.0617** | **0.0162** |
-| **Fair-DAuth** | Authentication (D↔AS) | **0.0611** | **0.0161** |
+| **DAuth** | Authentication (D↔AS) | **0.0611** | **0.0161** |
 | **LAAKA** | Mutual Auth & Key Exch (AuthReq + AuthRep + Ack) | **0.0959** | **0.0253** |
 | **Zhou** | Auth & Key Exch (M1→M4) | **0.1074** | **0.0282** |
 
 ## Notes
-- **Proposed ≈ Fair-DAuth** (~0.062 J): a single D↔AS round-trip; the session key
+- **Proposed ≈ DAuth** (~0.062 J): a single D↔AS round-trip; the session key
   is derived from the AS reply and the AS→GW token push runs server-side, off the
   device's critical path.
 - **LAAKA** (0.096 J): mutual auth = two device→Fog round-trips (AuthReq/AuthRep + Ack).

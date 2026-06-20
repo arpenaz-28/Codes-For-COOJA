@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 build_table.py — fresh same-session MIRACL end-to-end run of all four schemes
-(Proposed, Fair-DAuth, LAAKA, Zhou), aggregating per-phase Energy + Time for
+(Proposed, DAuth, LAAKA, Zhou), aggregating per-phase Energy + Time for
 Enrollment, Auth, and KeyExch. Uses the self-contained MIRACLE/<scheme> folders.
 
 Phase mapping (KeyExch column):
-  Proposed / Fair-DAuth : KeyEx  (ke_s / ke_energy_j)
+  Proposed / DAuth : KeyEx  (ke_s / ke_energy_j)
   LAAKA                 : Ack    (ack_s / ack_energy_j)   [second half of key agreement]
   Zhou                  : none   (M1->M4 is a combined auth+key step)
 
@@ -19,7 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # label -> (folder, orchestrator, auth_keys, key_keys_or_None)
 SCHEMES = [
     ("Proposed",   "Proposed", "run_simulation.py", ("auth_s","auth_energy_j"), ("ke_s","ke_energy_j")),
-    ("Fair-DAuth", "DAuth",    "run_simulation.py", ("auth_s","auth_energy_j"), ("ke_s","ke_energy_j")),
+    ("DAuth", "DAuth",    "run_simulation.py", ("auth_s","auth_energy_j"), ("ke_s","ke_energy_j")),
     ("LAAKA",      "LAAKA",    "run_simulation.py", ("auth_s","auth_energy_j"), ("ack_s","ack_energy_j")),
     ("Zhou",       "Zhou",     "run_simulation.py", ("auth_s","auth_energy_j"), None),
 ]
@@ -98,7 +98,7 @@ def main():
 
     # markdown table
     print("\n\n### End-to-end (MIRACL) per-phase Energy / Time — mean of "
-          f"{n} runs (Fair-DAuth)\n")
+          f"{n} runs (DAuth)\n")
     print("| Scheme | Enroll E (J) | Enroll T (s) | Auth E (J) | Auth T (s) | KeyExch E (J) | KeyExch T (s) |")
     print("|---|---|---|---|---|---|---|")
     for label, *_ in SCHEMES:

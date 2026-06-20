@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Orchestrator — Fair-DAuth hardware simulation (Hardware/MIRACLE/DAuth).
+Orchestrator — DAuth hardware simulation (Hardware/MIRACLE/DAuth).
 Self-contained: deploys all files from THIS folder, runs GW locally, AS on Apex,
 Device on Pi (same role placement as the Proposed scheme), collects results.
 
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     run_num  = int(sys.argv[1]) if len(sys.argv) > 1 else 1
     out_json = os.path.join(RESULTS_DIR, f"run_{run_num:02d}.json")
     print("=" * 70)
-    print(f"Fair-DAuth Hardware Simulation — run #{run_num}  (MIRACL={USE_MIRACL})")
+    print(f"DAuth Hardware Simulation — run #{run_num}  (MIRACL={USE_MIRACL})")
     print(f"  GW: Laptop   AS: Apex({APEX_IP})   Device: Pi({PI_IP})")
     print("=" * 70)
 

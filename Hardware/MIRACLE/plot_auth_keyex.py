@@ -17,13 +17,13 @@ OUT  = os.path.join(HERE, "Authentication&KeyExchange_HW.png")
 # label -> (folder, energy-keys, time-keys)
 SPECS = [
     ("Proposed",   "Proposed", ["auth_energy_j"],               ["auth_s"]),
-    ("Fair-DAuth", "DAuth",    ["auth_energy_j"],               ["auth_s"]),
+    ("DAuth", "DAuth",    ["auth_energy_j"],               ["auth_s"]),
     ("LAAKA",      "LAAKA",    ["auth_energy_j", "ack_energy_j"],["auth_s", "ack_s"]),
     ("Zhou",       "Zhou",     ["auth_energy_j"],               ["auth_s"]),
 ]
-COLORS  = {"Proposed": "#2C6FAC", "Fair-DAuth": "#7E5BA6",
+COLORS  = {"Proposed": "#2C6FAC", "DAuth": "#7E5BA6",
            "LAAKA": "#B85C2C", "Zhou": "#3A7D44"}
-HATCHES = {"Proposed": "///", "Fair-DAuth": "...", "LAAKA": "\\\\", "Zhou": "xxx"}
+HATCHES = {"Proposed": "///", "DAuth": "...", "LAAKA": "\\\\", "Zhou": "xxx"}
 
 
 def median_phase(folder, ek, tk):
