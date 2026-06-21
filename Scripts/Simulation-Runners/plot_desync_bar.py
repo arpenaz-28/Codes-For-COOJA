@@ -26,7 +26,6 @@ REPO = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 DATA = {
     "DAuth":    os.path.join(REPO, "Base-Scheme",       "Simulation-Results", "Desync-100", "csv", "summary.csv"),
     "Proposed": os.path.join(REPO, "Revised-Anonymity", "Simulation-Results", "Desync-100", "csv", "summary.csv"),
-    "Zhou":     os.path.join(REPO, "Zhou-Scheme",       "Simulation-Results", "Desync-100", "csv", "summary.csv"),
 }
 
 OUT_DIR  = os.path.join(REPO, "Results", "COOJA-Simulation", "Desync-Recovery-Analysis")
@@ -45,31 +44,29 @@ BAR_HATCHES = {
 }
 _STYLE = {
     "font.family":       "Liberation Sans",
-    "font.size":         19,
-    "axes.titlesize":    23,
+    "font.size":         26,
+    "axes.titlesize":    30,
     "axes.titleweight":  "bold",
-    "axes.labelsize":    22,
+    "axes.labelsize":    30,
     "axes.spines.top":   False,
     "axes.spines.right": False,
-    "axes.linewidth":    0.7,
-    "xtick.labelsize":   20,
-    "ytick.labelsize":   19,
+    "axes.linewidth":    0.9,
+    "xtick.labelsize":   28,
+    "ytick.labelsize":   26,
     "xtick.major.size":  0,
     "grid.color":        "#e5e5e5",
     "grid.linewidth":    0.6,
 }
 
-SCHEMES   = ["DAuth", "Proposed", "Zhou"]
-BAR_TYPES = ["Before Packet Loss", "Recovery"]
+SCHEMES   = ["DAuth", "Proposed"]
+BAR_TYPES = ["Recovery"]
 
-# Bar 1: Round 1 — normal auth+keyex (before any desync)
-# Bar 2: Round 3 — recovery auth+keyex
-#   DAuth:    failed auth + 2-step re-enrol to AS + retry auth + keyex
-#   Proposed: direct recovery via PID_old (no re-enrol)
-#   Zhou:     failed auth + 1-step re-enrol to GW + retry auth
+# Single bar per scheme: Round 3 — recovery round cost (per device).
+#   DAuth:    failed auth + full re-enrolment to AS + retry auth + keyex
+#   Proposed: direct recovery via PID_old (no re-enrolment)
+#   Zhou:     failed auth + full re-registration to GW + retry auth
 BAR_ROUNDS = {
-    "Before Packet Loss": ["Round 1"],
-    "Recovery":           ["Round 3"],
+    "Recovery": ["Round 3"],
 }
 
 
@@ -102,49 +99,39 @@ def aggregate_bar(rounds_data, round_keys):
 
 
 # ── Chart drawing ─────────────────────────────────────────────────────────────
-def draw_panel(ax, stats, ylabel):
+def draw_panel(ax, stats, ylabel, fmt):
     """
-    stats: [(scheme, bar_type, mean, ci), ...]  in order Base-Before, Base-Rec,
-           Proposed-Before, Proposed-Rec
-    Groups of 2 bars per scheme, separated by a small gap.
+    stats: [(scheme, "Recovery", mean, ci), ...]
+    One bar per scheme — the per-device recovery-round cost.
     """
-    n_schemes  = len(SCHEMES)
-    bar_w      = 0.30
-    group_gap  = 0.25
-    group_w    = 2 * bar_w + group_gap
+    n_schemes = len(SCHEMES)
+    bar_w     = 0.55
 
     max_val = max(mean + ci for _, _, mean, ci in stats)
 
     for s_idx, scheme in enumerate(SCHEMES):
-        x_center = s_idx * group_w
-        for b_idx, bar_type in enumerate(BAR_TYPES):
-            entry = next(e for e in stats
-                         if e[0] == scheme and e[1] == bar_type)
-            _, _, mean, ci = entry
-            x = x_center + (b_idx - 0.5) * bar_w
+        entry = next(e for e in stats if e[0] == scheme)
+        _, _, mean, ci = entry
+        ax.bar(s_idx, mean, bar_w,
+               facecolor="none",
+               edgecolor=SCHEME_COLORS[scheme],
+               hatch="xxx",
+               linewidth=2.2,
+               zorder=3)
+        ax.text(s_idx, mean + max_val * 0.02, fmt.format(mean),
+                ha="center", va="bottom", fontsize=22, fontweight="bold",
+                color=SCHEME_COLORS[scheme])
 
-            ax.bar(x, mean, bar_w,
-                   facecolor="none",
-                   edgecolor=SCHEME_COLORS[scheme],
-                   hatch=BAR_HATCHES[bar_type],
-                   linewidth=1.5,
-                   zorder=3)
-
-    # x-ticks centred on each scheme group
-    x_ticks  = [s * group_w for s in range(n_schemes)]
-    ax.set_xticks(x_ticks)
-    ax.set_xticklabels(SCHEMES, fontsize=20, ha="center")
-    ax.set_ylabel(ylabel, labelpad=20, fontsize=22, fontweight="bold")
+    ax.set_xticks(range(n_schemes))
+    ax.set_xticklabels(SCHEMES, fontsize=28, ha="center")
+    ax.set_ylabel(ylabel, labelpad=20, fontsize=30, fontweight="bold")
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
     ax.tick_params(axis="y", length=0)
     ax.spines["left"].set_color("#cccccc")
     ax.spines["bottom"].set_color("#cccccc")
-    ax.set_ylim(0, max_val * 1.20)
-
-    # extend x limits for breathing room
-    group_w_total = (n_schemes - 1) * group_w
-    ax.set_xlim(-group_w * 0.55, group_w_total + group_w * 0.55)
+    ax.set_ylim(0, max_val * 1.22)
+    ax.set_xlim(-0.7, n_schemes - 0.3)
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -178,23 +165,12 @@ def main():
         fig, (ax_e, ax_c) = plt.subplots(1, 2, figsize=(20, 7))
         fig.patch.set_facecolor("white")
 
-        draw_panel(ax_e, e_stats, "Avg. Energy (mJ)")
-        draw_panel(ax_c, c_stats, "Avg. CPU Time (s)")
-        ax_e.set_xlabel("(a)", fontsize=22, fontweight="bold")
-        ax_c.set_xlabel("(b)", fontsize=22, fontweight="bold")
+        draw_panel(ax_e, e_stats, "Avg. Energy (mJ)", "{:.1f}")
+        draw_panel(ax_c, c_stats, "Avg. CPU Time (s)", "{:.2f}")
+        ax_e.set_xlabel("(a)", fontsize=30, fontweight="bold")
+        ax_c.set_xlabel("(b)", fontsize=30, fontweight="bold")
 
-        # Horizontal legend at bottom — bar types, not schemes
-        legend_patches = [
-            mpatches.Patch(facecolor="none", edgecolor="#555555",
-                           hatch=BAR_HATCHES[bt], linewidth=1.5, label=bt)
-            for bt in BAR_TYPES
-        ]
-        fig.legend(handles=legend_patches,
-                   loc="lower center", bbox_to_anchor=(0.5, 0.0),
-                   ncol=2, fontsize=19, framealpha=0.9,
-                   edgecolor="#dddddd", handlelength=2.2, handleheight=1.6)
-
-        fig.tight_layout(rect=[0, 0.09, 1, 1.0])
+        fig.tight_layout(rect=[0, 0.02, 1, 1.0])
         fig.savefig(OUT_FILE,   dpi=180, bbox_inches="tight", facecolor="white")
         fig.savefig(PAPER_FILE, dpi=180, bbox_inches="tight", facecolor="white")
         plt.close(fig)

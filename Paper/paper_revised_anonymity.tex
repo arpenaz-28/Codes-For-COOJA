@@ -38,7 +38,7 @@
 
 \begin{document}
 
-\title{Anonymity Preserving, Recoverable Distributed\\Authentication for Multihop IoT Networks}
+\title{Anonymity Preserving, and Recoverable Distributed\\Authentication for Multihop IoT Networks}
 
 \author{
   \IEEEauthorblockN{Sreeparna Das, Anup Kulkarni,  Manas Khatua}
@@ -65,10 +65,10 @@ the device and server states, forcing full re-enrolment of the device. Therefore
 addressing both the identified gaps. Device anonymity is preserved through per-session
 pseudonym rotation, where a rotating pseudonym replaces the real device identity
 in all open-channel communications, preventing long-term tracking.  A
-dual-state synchronisation mechanism maintained at the authentication
+dual-state synchronisation mechanism maintained by the authentication
 server enables seamless recovery from single packet-loss
 events without re-enrolment of the device. The proposed scheme is evaluated via ProVerif-based
-formal security analysis. Further theoretical and simulation-based performance analysis confirm that the proposed scheme reduces energy by
+formal security analysis tool. Further, the theoretical and simulation-based performance analysis confirm that the proposed scheme reduces energy by
 9.5\,\% and 32.4\,\%, and CPU time by 9.5\,\% and 32.4\,\%, over the state-of-the-art
 LAAKA and Zhou et al. schemes, respectively, while maintaining the lowest overhead among all
 anonymity-preserving schemes.
@@ -98,7 +98,7 @@ schemes distribute this responsibility into the parent nodes of respective child
 overload whichever parent node a set of new devices happened to join under, while
 all other capable parent nodes remain idle~\cite{rosa2023lightsae}.
 
-DAuth~\cite{das2026comsnets} addressed this skewed-load authentication problem by proposing a
+DAuth~\cite{das2026comsnets} addressed this skewed-authentication load problem by proposing a
 lightweight decoupled distributed authentication scheme in which the gateway or root node
 pre-assigns any capable IoT node (parent or non-parent) as the
 authentication server for the newly joined devices.  By decoupling authentication
@@ -144,7 +144,7 @@ This paper makes the following key contributions.
 Section~II elaborates on related literature.  Section~III presents the
 proposed scheme.  Furthermore, Section~IV contains the detailed security
 analysis.  Finally, Section~V presents the performance analysis, with
-Section~VI stating the conclusion.
+Section~VI stating the conclusion and future work.
 
 
 
@@ -588,7 +588,7 @@ deliberate trade-off between storage overhead and recovery depth.
 \begin{algorithmic}[1]
 \Statex \textbf{Precondition:} desync path from Algorithm~\ref{alg:desync-auth};\;
        $AS$ uses $m_{\mathrm{old}}$, $\mathit{PID}_{\mathrm{old}}$
-\State $AS$ generates random value $n_1$,
+\State $AS$ generates random value $n_1$
 \State $m_{\mathrm{new}} = H(n_1)$
 \State $m^H = m_{\mathrm{new}} \oplus
        H\!\left(Y_D^{H'} \| m_{\mathrm{old}} \| R_D' \|
@@ -739,8 +739,8 @@ the pseudonym to $\mathit{PID}_{\mathrm{new}}$, while $D$ retains the
 previous $m_{\mathrm{curr}}$.  On the subsequent authentication attempt, $D$
 constructs its pseudonym from the stale $m_{\mathrm{curr}}$, producing
 $\mathit{PID}_{\mathrm{old}}$.  $AS$ recognises this via the dual-state
-lookup, which stores both $(m_{\mathrm{curr}}, \mathit{PID}_{\mathrm{curr}})$ and
-$(m_{\mathrm{old}}, \mathit{PID}_{\mathrm{old}})$, and resumes from the
+lookup --- storing both $(m_{\mathrm{curr}}, \mathit{PID}_{\mathrm{curr}})$ and
+$(m_{\mathrm{old}}, \mathit{PID}_{\mathrm{old}})$ --- and resumes from the
 consistent prior state, restoring synchronisation without any re-enrolment
 overhead.
 
@@ -1080,7 +1080,7 @@ Figure~\ref{fig:sim_total}(b), a reduction of 9.5\,\% and 32.4\,\% is demonstrat
 respect to per-device CPU time over LAAKA and Zhou et al., respectively. The dominant savings
 arise in the authentication and key exchange phase. Due to the incorporation of fewer
 message exchanges and lightweight hash-XOR operations, the proposed
-scheme minimises radio activity, which is the dominant energy cost in multihop IoT, compared to the
+scheme minimises radio activity---the dominant energy cost in multihop IoT---compared to the
 more message-intensive LAAKA and Zhou et al. schemes. For Zhou et al., the
 reported costs comprise the enrolment and authentication phases only, as that scheme
 folds session-key agreement into its authentication exchange instead of executing a
@@ -1090,7 +1090,7 @@ separate key-exchange round, whereas the remaining schemes include all three pha
   \centering
   \includegraphics[width=\columnwidth]{fig_sim_total}
   \caption{Per-device average cost for all phases:
-           (a)~Energy (b)~CPU time.}
+           (a)~Energy, (b)~CPU time.}
   \label{fig:sim_total}
 \end{figure}
 
@@ -1118,7 +1118,7 @@ authentication server design in the proposed scheme.
   \includegraphics[width=0.78\columnwidth]{fig_sim_as_energy}\\[5pt]
   \small (b)\\[2pt]
   \includegraphics[width=0.78\columnwidth]{fig_sim_as_cpu}
-  \caption{Average authentication overhead vs.\ number of active authentication servers: (a)~Energy  (b)~CPU time.}
+  \caption{Average authentication overhead vs.\ number of active authentication servers: (a)~Energy,  (b)~CPU time.}
   \label{fig:sim_as}
 \end{figure}
 
@@ -1127,7 +1127,7 @@ authentication server design in the proposed scheme.
 The performance of the authentication schemes is also analysed by considering their
 scalability with respect to total network size $N$, varied from 30 to 120 nodes,
 where 20\,\% of the nodes in each network are newly joined devices.
-Considering the total energy consumption (Figure~\ref{fig:sim_network}a), at the
+Considering the total energy consumption (Figure~\ref{fig:sim_network}(a)), at the
 maximum tested network size $N = 120$, the proposed scheme demonstrates a reduction of
 8.4\,\% over LAAKA and approximately 44\,\% over Zhou et al.  Similarly, as shown in
 Figure~\ref{fig:sim_network}(b), a reduction of 8.4\,\% and approximately 44\,\% is demonstrated
@@ -1186,53 +1186,41 @@ $\mathit{PID}_{\mathrm{old}}$ lookup and runs the full authentication protocol
 against the old state, recovering $R_D$, deriving $Y_{AS\text{-}D}^H$,
 verifying the accumulator against $m_{\mathrm{old}}$, and completing a fresh
 key exchange without re-enrolment.
-The recovery round is therefore indistinguishable in cost from a normal round.
 
-Zhou et al.\ face a different desynchronisation point.
-After verifying the device, the gateway refreshes the session credentials
-$(\mathit{DID}_{i,\mathrm{new}},\, \mathit{SID}_{n,\mathrm{new}})$ and returns
-a confirmation message~(M4) carrying these credentials and a verification
-token~$\lambda$.
-If M4 is lost, the device advances to $\mathit{SID}_{n,\mathrm{new}}$ while the
-gateway's record stays on the old $\mathit{SID}_n$.
-The next attempt then presents credentials the gateway verifies against the
-stale identifier, causing a mismatch and rejection.
-With no dual-state or fallback lookup, the device must re-register with the
-gateway for a fresh credential pair before retrying.
+Zhou et al.\ also rotate their pseudonyms, but the gateway \emph{adds} each
+device's new pseudonym $\mathit{DID}_{i,\mathrm{new}}$ to the user record while
+\emph{retaining} the previous $\mathit{DID}_i$.
+A device that misses the final confirmation message~(M4) is therefore still
+recognised on its prior pseudonym and re-synchronised through an ordinary
+authentication round, which re-delivers the current sensor pseudonym, without
+re-registration.
 
 LAAKA also rotates its temporal identifier, deriving
 $\mathit{TID}_{d,\mathrm{new}} = \mathit{TID}_d \oplus r_d$ from a fresh random
 $r_d$ each session, so it too is anonymity-preserving.
 Its update, however, is computed entirely from randoms exchanged within the
 authentication round, and the fog server retains the prior temporal identifier,
-so a device that misses the final confirmation simply re-presents its current
+so a device that misses the final confirmation simply represents its current
 $\mathit{TID}_d$ and re-authenticates without a stored-state mismatch.
-As LAAKA maintains no separately stored rotating nonce that can drift between
-parties, a like-for-like desynchronisation-recovery scenario does not apply, and
-LAAKA is excluded from this comparison.
-
-Figure~\ref{fig:desync_bar} reports per-device energy and CPU time over a
-100-node RPL network (20 devices, 5 seeds).
-For each scheme, one bar gives the cost of a normal round in which authentication
-completes with no packet loss, and the other gives the cost of a recovery round
-taken immediately after a desynchronisation event.
-The extra cost of the recovery round over the normal round is what the device
-spends to return to the synchronised state it held before the loss.
-DAuth~\cite{das2026comsnets} incurs a 118.3\,\% energy increase, as recovery
-means a failed attempt followed by full re-enrolment with PUF execution and
-accumulator reconstruction, whereas Zhou et al.\ incur a lighter 48.2\,\%
-increase from credential re-registration.
-The proposed scheme's two bars are statistically indistinguishable, confirming
-that the dual-state mechanism eliminates re-enrolment overhead and thereby
-reduces recovery energy by 35.3\,\% over DAuth and 8.8\,\% over Zhou et al., with
-CPU time (Figure~\ref{fig:desync_bar}(b)) following at 35.3\,\% and 8.9\,\%.
+Because both LAAKA and Zhou et al.\ retain the previous identifier, neither holds
+a single rotating secret that can drift irreconcilably between the parties, so a
+like-for-like desynchronisation-recovery scenario does not apply to either and
+both are excluded.
+The evaluation therefore compares DAuth and the proposed scheme only, which share the same trigger and threat model for desynchronisation but differ in their recovery mechanism.
+Figure~\ref{fig:desync_bar} reports the per-device cost of a recovery round,
+taken immediately after a desynchronisation event, over a 100-node RPL network
+(20 devices, 5 seeds).
+In DAuth~\cite{das2026comsnets}, recovery requires a failed authentication, a
+full re-enrolment, and a fresh authentication and key exchange.
+The proposed dual-state lookup instead recovers with a single re-authentication
+and key exchange, cutting per-device recovery energy and CPU time by 35.3\,\%
+over DAuth.
 
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{fig_desync_bar}
-  \caption{Per-device desynchronisation recovery cost: (a)~energy and
-           (b)~CPU time for a normal round vs.\ a recovery round,
-           averaged over 20 devices in a 100-node network (5~seeds).}
+  \caption{Per-device desynchronisation recovery cost: (a)~Energy and
+           (b)~CPU time}
   \label{fig:desync_bar}
 \end{figure}
 
@@ -1240,28 +1228,22 @@ CPU time (Figure~\ref{fig:desync_bar}(b)) following at 35.3\,\% and 8.9\,\%.
 % \FloatBarrier
 \subsection{Hardware-Based Performance Analysis}
 
-Hardware-based performance analysis validates the feasibility of the proposed
-authentication scheme by implementing it on physical IoT devices, incorporating
-real hardware environment conditions.
+Hardware-based analysis validates the feasibility of the proposed scheme under
+real device conditions.
 The proposed scheme and the three comparison schemes, DAuth~\cite{das2026comsnets},
-LAAKA~\cite{ali2024laaka}, and Zhou et al.~\cite{zhou2024auth}, are implemented on a
-Raspberry Pi 4B platform equipped with a quad-core 64-bit ARM Cortex-A72 processor
-operating at 1.5 GHz, using the MIRACL Core cryptographic library for all hash, AES,
-and elliptic-curve operations.
-A uniform hardware setup is maintained across all compared authentication schemes,
-ensuring a fair and consistent comparison of energy consumption and CPU time.
-The implementation considers two Raspberry Pi 4B platforms as IoT nodes.
-One performs the role of the newly joined device, initiating the authentication process.
-The other functions as the authentication server, performing the necessary verification
-for authentication and key exchange.
-A laptop is leveraged as the gateway, handling authentication token delivery and
-session management.
-Each of the three entities maintains direct TCP communication with the others.
-The physical testbed is shown in Figure~\ref{fig:hw_setup}.
+LAAKA~\cite{ali2024laaka}, and Zhou et al.~\cite{zhou2024auth}, are implemented
+on a uniform testbed of Raspberry Pi 4B platforms (quad-core 64-bit ARM
+Cortex-A72 at 1.5\,GHz), using the MIRACL Core library for all operations.
+Two Raspberry Pi 4B boards act as IoT nodes, one as the newly joined device
+initiating authentication and the other as the authentication server/fog node performing
+verification and key exchange, while the laptop serves as the gateway handling
+token delivery and session management.
+The three entities communicate directly over TCP, and the physical testbed is
+shown in Figure~\ref{fig:hw_setup}.
 
-\begin{figure}[!t]
+\begin{figure}[!t] 
   \centering
-  \includegraphics[width=\columnwidth,height=0.65\columnwidth,keepaspectratio]{HW_setup_signals}
+  \includegraphics[width=\columnwidth,height=0.60\columnwidth,keepaspectratio]{HW_setup_signals}
   \caption{Hardware testbed showing two Raspberry Pi 4B boards serving as the
            authentication server (left) and device (right), connected to a
            Windows laptop acting as the gateway.}
@@ -1277,13 +1259,12 @@ non-anonymous baseline.
 Both outperform LAAKA~\cite{ali2024laaka} by approximately 36\,\% and
 Zhou et al.~\cite{zhou2024auth} by approximately 43\,\% in energy consumption.
 The higher cost of Zhou et al.\ arises from a nested gateway-to-sensor-node
-sub-exchange (M2/M3) embedded within the authentication round that extends the effective
-device-side round-trip of M1$\to$M4.  In contrast, LAAKA's two consecutive round-trips carry only
+sub-exchange embedded within the authentication round that extends the effective
+device-side round-trip time.  In contrast, LAAKA's two consecutive round-trips carry only
 lightweight hash-based payloads and therefore complete faster in absolute terms.
 
 The CPU time results, as illustrated in Figure~\ref{fig:hw_comparison}(b), follow the
-same ordering with identical percentage margins, since energy is directly proportional
-to wall-clock time under a fixed active power draw.
+same ordering with identical percentage margins.
 The proposed scheme and DAuth perform equivalently, with the proposed scheme
 remaining below both LAAKA~\cite{ali2024laaka} and Zhou et al.~\cite{zhou2024auth}
 across energy and execution time.
@@ -1296,11 +1277,11 @@ cost penalty over the non-anonymous baseline on real IoT devices.
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{fig_hw_comparison}
-  \caption{Avg. Energy (a) and CPU time (b)}
+  \caption{Hardware-based performance: (a) Avg. Energy and (b) CPU time on Raspberry Pi 4B}
   \label{fig:hw_comparison}
 \end{figure}
 
-% \FloatBarrier
+\FloatBarrier
 \balance
 \section{Conclusion}
 
@@ -1331,169 +1312,6 @@ end-to-end identity unlinkability across the multihop network.
 \bibliographystyle{IEEEtran}
 \bibliography{ref}
 
-\iffalse
-\begin{thebibliography}{25}
-
-\bibitem{das2026comsnets}
-S.~Das and M.~Khatua,
-``Lightweight and Decoupled Distributed Authentication for Multihop IoT
-Networks,''
-in \emph{Proc.\ IEEE COMSNETS}, 2026.
-
-\bibitem{ali2024laaka}
-H.~Ali and I.~Ahmed,
-``LAAKA: A Lightweight Anonymous Authentication and Key Agreement Scheme for
-IoT-Fog Environment,''
-\emph{Computers \& Security}, vol.~140, p.~103770, 2024.
-
-\bibitem{zhong2025survey}
-J.~Zhong, S.~He, Z.~Liu, and L.~Xiong,
-``Lightweight Anonymous Authentication for IoT: A Taxonomy and Survey of
-Security Frameworks,''
-\emph{Sensors}, vol.~25, no.~17, p.~5594, 2025.
-
-\bibitem{zhou2021iot}
-I.~Zhou, I.~Makhdoom, N.~Shariati, M.~A.~Raza, R.~Keshavarz, J.~Lipman,
-M.~Abolhasan, and A.~Jamalipour,
-``Internet of Things 2.0: Concepts, Applications, and Future Directions,''
-\emph{IEEE Access}, vol.~9, pp.~70961--71012, 2021.
-
-\bibitem{zhou2024auth}
-X.~Zhou, S.~Wang, K.~Wen, B.~Hu, X.~Tan, and Q.~Xie,
-``Security-Enhanced Lightweight and Anonymity-Preserving User Authentication
-Scheme for IoT-Based Healthcare,''
-\emph{IEEE Internet of Things Journal}, vol.~11, no.~6, pp.~9718--9731, 2024.
-
-\bibitem{lee2025plakamd}
-C.~Lee, M.~Oh, D.~Kwon, Y.~Park, and Y.~Park,
-``{PLAKA-MD}: {PUF}-Based Lightweight Authentication and Key Agreement Scheme
-for Medical Devices in {IoHT},''
-\emph{IEEE Internet Things J.}, vol.~12, no.~12, pp.~19338--19353, Jun.~2025,
-doi:~10.1109/JIOT.2025.3543488.
-
-\bibitem{dodis2004fuzzy}
-Y.~Dodis, L.~Reyzin, and A.~Smith,
-``Fuzzy Extractors: How to Generate Strong Keys from Biometrics and Other Noisy
-Data,''
-in \emph{Proc.\ EUROCRYPT}, 2004, pp.~523--540.
-
-\bibitem{kang2017iae}
-B.~Kang, D.~Kim, and H.~Choo,
-``Internet of Everything: A Large-Scale Autonomic IoT Gateway,''
-\emph{IEEE Trans.\ Multi-Scale Computing Syst.}, vol.~3, pp.~206--214, 2017.
-
-\bibitem{lajnef2022wsn}
-N.~Lajnef, A.~Mami, and F.~Derbel,
-``Applications of Wireless Sensor Networks and IoT Frameworks in Industry~4.0:
-A Systematic Literature Review,''
-\emph{Sensors}, vol.~22, no.~6, 2022.
-
-
-\bibitem{alnahari2021auth}
-W.~Alnahari and M.~T.~Quasim,
-``Authentication of IoT Device and IoT Server using Security Key,''
-in \emph{Proc.\ ICOTEN}, pp.~1--9, IEEE, 2021.
-
-\bibitem{khatua2024puf}
-M.~Khatua, S.~Das, and P.~M.~Rana,
-``PUF-based Lightweight Mutual Authentication Scheme for IoT-based Smart
-Grids,''
-in \emph{Proc.\ IEEE ANTS}, pp.~1--6, IEEE, 2024.
-
-\bibitem{sheik2023auth}
-S.~A.~Sheik and A.~P.~Muniyandi,
-``Secure Authentication Schemes in Cloud Computing with Glimpse of Artificial
-Neural Networks: A Review,''
-\emph{Cyber Security and Applications}, vol.~1, p.~100002, 2023.
-
-\bibitem{he2023lightweight}
-D.~He, Y.~Cai, S.~Zhu, Z.~Zhao, S.~Chan, and M.~Guizani,
-``A Lightweight Authentication and Key Exchange Protocol with Anonymity for
-IoT,''
-\emph{IEEE Trans.\ Wireless Commun.}, vol.~22, no.~11, pp.~7862--7872, 2023.
-
-\bibitem{roy2025design}
-S.~Roy, M.~H.~Mahalat, and B.~Sen,
-``Design and Implementation of Cost-Effective End-to-End Authentication
-Protocol for PUF-Enabled IoT Devices,''
-\emph{IEEE Trans.\ Emerging Topics in Computing}, 2025.
-
-\bibitem{rosa2023lightsae}
-P.~Rosa, A.~Souto, and J.~Cec\'{\i}lio,
-``Light-SAE: A Lightweight Authentication Protocol for Large-Scale IoT
-Environments Made with Constrained Devices,''
-\emph{IEEE Trans.\ Network and Service Management}, vol.~20, no.~3,
-pp.~2428--2441, 2023.
-
-\bibitem{alruwaili2025raaf}
-O.~Alruwaili, M.~Tanveer, S.~A.~Aldossari, S.~Alanazi, and A.~Armghan,
-``RAAF-MEC: Reliable and Anonymous Authentication Framework for IoT-enabled
-Mobile Edge Computing Environment,''
-\emph{Internet of Things}, vol.~29, p.~101459, 2025.
-
-
-\bibitem{yang2024sakms}
-W.~Yang, C.~Hou, Y.~Wang, Z.~Zhang, X.~Wang, and Y.~Cao,
-``SAKMS: A Secure Authentication and Key Management Scheme for IETF~6TiSCH
-Industrial Wireless Networks based on Improved Elliptic-Curve Cryptography,''
-\emph{IEEE Trans.\ Network Sci.\ Eng.}, vol.~11, no.~3, pp.~3174--3188, 2024.
-
-\bibitem{li2020puf}
-S.~Li, T.~Zhang, B.~Yu, and K.~He,
-``A Provably Secure and Practical PUF-based End-to-End Mutual Authentication
-and Key Exchange Protocol for IoT,''
-\emph{IEEE Sensors Journal}, vol.~21, no.~4, pp.~5487--5501, 2020.
-
-\bibitem{zheng2022puf}
-Y.~Zheng, W.~Liu, C.~Gu, and C.-H.~Chang,
-``PUF-based Mutual Authentication and Key Exchange Protocol for Peer-to-Peer
-IoT Applications,''
-\emph{IEEE Trans.\ Dependable and Secure Computing}, vol.~20, no.~4,
-pp.~3299--3316, 2022.
-
-
-\bibitem{alriyami2003cert}
-S.~Al-Riyami and K.~G.~Paterson,
-``Certificateless Public Key Cryptography,''
-in \emph{Proc.\ ASIACRYPT}, vol.~2894, LNCS, pp.~452--473, Springer, 2003.
-
-\bibitem{zhang2023blockchain}
-P.~Zhang, Y.~Wang, G.~S.~Aujla, A.~Jindal, and Y.~D.~Al-Otaibi,
-``A Blockchain-Based Authentication Scheme and Secure Architecture for
-IoT-Enabled Maritime Transportation Systems,''
-\emph{IEEE Trans.\ Intelligent Transportation Syst.}, vol.~24, no.~2,
-pp.~2322--2331, 2023.
-
-\bibitem{ahmed2023chains}
-M.~T.~Al Ahmed, F.~Hashim, S.~J.~Hashim, and A.~Abdullah,
-``Authentication-Chains: Blockchain-Inspired Lightweight Authentication
-Protocol for IoT Networks,''
-\emph{Electronics}, vol.~12, no.~4, p.~867, 2023.
-
-\bibitem{sikarwar2020eff}
-H.~Sikarwar, D.~Das, and S.~Kalra,
-``Efficient Authentication Scheme Using Blockchain in IoT Devices,''
-in \emph{Proc.\ AINA}, vol.~1151, pp.~630--641, Springer, 2020.
-
-
-\bibitem{weerasena2024acc}
-H.~Weerasena and P.~Mishra,
-``Lightweight Multicast Authentication in NoC-based SoCs,''
-in \emph{Proc.\ 25th ISQED}, pp.~1--8, IEEE, 2024.
-
-\bibitem{blanchet2018proverif}
-B.~Blanchet, B.~Smyth, V.~Cheval, and M.~Sylvestre,
-``ProVerif 2.00: Automatic Cryptographic Protocol Verifier, User Manual and
-Tutorial,''
-Tech.\ Rep., INRIA, 2018.
-
-\bibitem{dolev1983security}
-D.~Dolev and A.~Yao,
-``On the Security of Public Key Protocols,''
-\emph{IEEE Trans.\ Information Theory}, vol.~29, no.~2, pp.~198--208, 1983.
-
-\end{thebibliography}
-\fi
 
 \end{document}
         
