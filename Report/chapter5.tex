@@ -239,9 +239,10 @@ preparing itself for secure communication with $GW$.
 
 $GW$ decrypts the token with $K_{GW\text{-}AS}$, verifies $ts_{\mathrm{auth}}$, and
 extracts $K_{GW\text{-}D}$ and $\mathit{PID}_{\mathrm{new}}$.
-$GW$ saves $\mathit{PID}_{\mathrm{curr}}$ as the previous pseudonym, sets
-$\mathit{PID}_{\mathrm{new}}$ as the current one, and stores the session key against
-both.
+Unlike $AS$, the gateway maintains no dual state; it simply updates its single
+stored pseudonym for $D$ to $\mathit{PID}_{\mathrm{new}}$ and associates the session
+key $K_{GW\text{-}D}$ with it, so that $D$'s subsequent data frames carrying
+$\mathit{PID}_{\mathrm{new}}$ are recognised and served.
 
 \section{Desynchronisation Recovery}
 

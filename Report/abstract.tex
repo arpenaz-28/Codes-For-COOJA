@@ -24,11 +24,12 @@ from a single packet-loss event without re-enrolment.
 Formal verification under a standard adversary model confirms authentication
 correspondence, session key secrecy, forward secrecy, anonymity preservation, and
 offline guessing resistance.
-COOJA\slash Contiki-NG simulations on a 100-node RPL network show a 42.8\,\% reduction
+COOJA\slash Contiki-NG simulations on a 100-node RPL network show a 9.5\,\% reduction
 in per-device energy over LAAKA and 32.4\,\% over Zhou et al., with consistent gains
 across all network sizes and authentication server pool configurations.
-Hardware evaluation on Raspberry Pi~4B confirms 52.5\,\% and 14.2\,\% energy
-reductions over LAAKA and Zhou et al., respectively; DAuth achieves the lowest
-hardware overhead as it carries no pseudonym operations, while the proposed scheme
-remains well below both LAAKA and Zhou et al.
+Hardware evaluation on Raspberry Pi~4B confirms that the proposed scheme attains
+virtually identical cost to the non-anonymous DAuth baseline (within 1\,\%), while
+reducing energy by approximately 36\,\% and 43\,\% over LAAKA and Zhou et al.,
+respectively, demonstrating that provable anonymity is achieved at no measurable
+overhead on real IoT devices.
 \end{singlespace}

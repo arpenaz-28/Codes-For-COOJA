@@ -11,20 +11,32 @@ model, covering authentication correspondence, session key secrecy, forward secr
 anonymity, and offline guessing resistance.
 
 COOJA\slash Contiki-NG simulations on 100-node networks show per-device energy
-reductions of \textbf{42.8\,\%} over LAAKA and \textbf{32.4\,\%} over Zhou et al.
+reductions of \textbf{9.5\,\%} over LAAKA and \textbf{32.4\,\%} over Zhou et al.
 The dual-state mechanism is particularly significant in the desynchronised case:
 DAuth incurs a \textbf{118.3\,\%} energy penalty per recovery round
 (134.8\,mJ vs.\ 61.8\,mJ for a normal round) because a single lost packet forces
-full re-enrolment, whereas the proposed scheme's recovery round costs 87.2\,mJ
-(close to its normal round of 98.6\,mJ), saving \textbf{35.3\,\%} in both
-energy and CPU time over DAuth.
+full re-enrolment, and Zhou et al.\ incur a \textbf{48.2\,\%} penalty, whereas the
+proposed scheme's recovery round costs 87.2\,mJ (close to its normal round of
+98.6\,mJ), saving \textbf{35.3\,\%} over DAuth and \textbf{8.8\,\%} over
+Zhou et al.\ in recovery energy.
 
-Hardware experiments on Raspberry Pi~4B confirm per-round energy reductions of
-\textbf{52.5\,\%} over LAAKA and \textbf{14.2\,\%} over Zhou et al., with an
-88\,\% overhead above DAuth attributable solely to the additional hash operations
-for pseudonym rotation.
+Hardware experiments on Raspberry Pi~4B confirm that the proposed scheme attains
+virtually identical per-round cost to the non-anonymous DAuth baseline (within
+\textbf{1\,\%}), while reducing energy by approximately \textbf{36\,\%} over LAAKA
+and \textbf{43\,\%} over Zhou et al., demonstrating that the anonymity guarantee is
+achieved at no measurable overhead on real hardware.
 
 Among the four compared schemes, the proposed scheme is the only one to simultaneously
 provide device anonymity, desynchronisation recovery, and decoupled distributed
 authentication at overhead suitable for resource-constrained IoT devices.
 \end{singlespace}
+
+\section{Future Work}
+
+Reducing the dual-state storage overhead at the authentication server while
+preserving desynchronisation resilience is a promising direction for further
+optimisation.
+The present scheme also does not conceal the authentication server identity, as
+$ID_{AS}$ appears in open-channel messages.
+Extending pseudonym rotation to authentication servers would provide full
+end-to-end identity unlinkability across the multihop network.

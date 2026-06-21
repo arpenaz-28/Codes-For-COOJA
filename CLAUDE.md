@@ -12,7 +12,7 @@
 
 1. **Pseudonym rotation (anonymity):** Real device identity `ID_D` is never sent on the open channel. Instead, a rotating pseudonym `PID = H(ID_D || m_curr)` is used, refreshed after each successful key exchange (Phase 3). GW never learns `ID_D`.
 2. **Dual-state desynchronization recovery:** Both AS and GW store `(m_curr, m_old, PID_curr, PID_old)`. If D misses a Phase 3 update packet, it still arrives with `PID_old`; AS recognizes it via the dual-state lookup and re-synchronizes — no re-enrollment needed.
-3. **Performance claim (current paper):** COOJA per-device total energy reduced **42.8% vs LAAKA and 32.4% vs Zhou** (CPU time 42.7% / 32.4%); the proposed scheme is the lowest-overhead among Proposed/DAuth/LAAKA/Zhou. (Earlier drafts also cited a 26.8% authentication-and-key-exchange byte-overhead reduction vs the base scheme on RPi 4B hardware; that phrasing is no longer in the paper text. Hardware energy = wall_time × 3800 mW everywhere.)
+3. **Performance claim (current paper):** COOJA per-device total energy (10-seed, N=100, 2 AS) — Proposed 52.19 mJ, DAuth 48.08 mJ, **LAAKA 57.68 mJ** (corrected; was 91.29 due to double-counting bug), Zhou 77.25 mJ. Ordering: DAuth < Proposed < LAAKA < Zhou on both COOJA and hardware. Proposed reduces energy **9.5% vs LAAKA and 32.4% vs Zhou**; DAuth (non-anonymous baseline) is 7.9% cheaper than Proposed — this is the anonymity overhead. Hardware (auth+keyex phase, MIRACL Core): Proposed 0.0617 J, DAuth 0.0611 J, LAAKA 0.0959 J, Zhou 0.1074 J; proposed is 36% below LAAKA and 43% below Zhou. No ordering reversal between platforms. Hardware energy = wall_time × 3800 mW everywhere.
 
 ## What was NOT changed from the base scheme
 
@@ -44,7 +44,7 @@
 | `fig_sim_as_cpu.png` | `Results/COOJA-Simulation/Charts/Authenticator_variation/02_as_variation_total_time.png` | Sim — total CPU time vs active AS count |
 | `fig_sim_net_energy.png` | `Results/COOJA-Simulation/Charts/Network_variation/12_total_energy_grouped_bar.png` | Sim — total energy vs network size (N=30,50,80,100,120; 20% newly-joined devices) |
 | `fig_sim_net_cpu.png` | `Results/COOJA-Simulation/Charts/Network_variation/13_total_cpu_grouped_bar.png` | Sim — total CPU time vs network size (N=30,50,80,100,120; 20% newly-joined devices) |
-| `fig_hw_comparison.png` | `Hardware/Charts/hw_total_comparison.png` | Hardware — per-round energy and CPU time on RPi 4B (Proposed vs LAAKA vs Zhou) |
+| `fig_hw_comparison.png` | `Hardware/MIRACLE/Authentication&KeyExchange_HW.png` | Hardware — auth+keyex phase energy and CPU time on RPi 4B, MIRACL Core (Proposed/DAuth/LAAKA/Zhou); title-free, (a)/(b) only |
 
 All phase figures are referenced with `\includegraphics[width=\columnwidth]{fig_*}` (single column).
 Simulation subfigure pairs use `\minipage[b]{0.48\columnwidth}` side-by-side layout.
@@ -53,20 +53,15 @@ Simulation subfigure pairs use `\minipage[b]{0.48\columnwidth}` side-by-side lay
 
 - **File:** `ProVerif-Security-Analysis/Revised_Anonymity_Scheme.pv`
 - **Tool:** ProVerif 2.x under Dolev–Yao adversary model
-- **Result:** All **19 queries satisfied** (`true`)
-- **Query breakdown:**
-  - Q1–Q2: Enrollment correspondence (injective + non-injective)
-  - Q3–Q6: Two-round authentication correspondence (both rounds, both directions)
-  - Q7: Cross-round binding (GW links auth round 1 to key exchange)
-  - Q8–Q9: Token delivery and data communication correspondence
-  - Q10–Q12: Session key (`SK`) secrecy — three views (D, AS, GW)
-  - Q13: `m_new` forward secrecy (new nonce not derivable from old state)
-  - Q14: `R_D` (PUF response) secrecy
-  - Q15: `ID_D` anonymity (real identity not derivable)
-  - Q16: `ts_2` (timestamp) secrecy
-  - Q17–Q19: Weak secrecy (offline dictionary/guessing resistance)
-- **Verification output image:** `ProVerif-Security-Analysis/Revised_Anonymity_Proverif.png`
-- **Partial log:** `ProVerif-Security-Analysis/Revised_Anonymity_output.txt` (Docker crashed mid-run; covers Q1–Q4)
+- **Result:** All **10 queries satisfied** (`true`). The committed `.pv`, the paper prose ("Ten queries… all satisfied"), and the figure `Paper/fig_proverif.png` (final, supplied 2026-06-20) all agree on these 10.
+- **Query breakdown (matches committed `.pv` + figure):**
+  - Q1–Q5: Correspondence — inj DeviceEnrolled, inj DeviceAuthenticated, inj AuthenticationServerEnds, inj AuthenticationEndsFull (binds auth↔keyex via R_D, m_D), non-inj DeviceKeyExDone
+  - Q6–Q7: Session key (`K_GW-D`) secrecy — two views (Device, GW)
+  - Q8: `m_new` forward secrecy
+  - Q9: `ID_D` anonymity (real identity not derivable)
+  - Q10: Weak secrecy of `K_GW-D` (offline guessing resistance)
+- **Verification output image (final):** `Paper/fig_proverif.png` — shows all 10 as `is true`.
+- NOTE: an earlier draft / CLAUDE.md claimed "19 queries" and a partial crash log — that is superseded; the live model and figure have 10.
 
 ## Key notation used in the paper
 
@@ -74,8 +69,8 @@ Simulation subfigure pairs use `\minipage[b]{0.48\columnwidth}` side-by-side lay
 |---|---|
 | `ID_D` | Real device identity (never sent on open channel in this scheme) |
 | `PID = H(ID_D \|\| m_curr)` | Current session pseudonym |
-| `PID_curr`, `PID_old` | Dual-state pseudonym pair stored at AS and GW |
-| `m_curr`, `m_old` | Dual-state nonce pair stored at AS and GW |
+| `PID_curr`, `PID_old` | Dual-state pseudonym pair stored at AS (GW stores only the current PID) |
+| `m_curr`, `m_old` | Dual-state nonce pair stored at AS (GW stores only the current PID) |
 | `SK` | Session key established in Phase 3 |
 | `R_D` | PUF response (device secret, never stored) |
 | `ts_2` | Timestamp from Phase 2 |
@@ -95,5 +90,5 @@ Simulation subfigure pairs use `\minipage[b]{0.48\columnwidth}` side-by-side lay
   - **LAAKA** — a **completely separate** scheme: Hala Ali & Irfan Ahmed, "LAAKA: Lightweight Anonymous Authentication and Key Agreement Scheme for Secure Fog-Driven IoT Systems," Computers & Security 140 (2024) 103770 (Elsevier, VCU). **This is NOT das2026comsnets.** Code in `LAAKA/` (as-node.c, device-node.c, gw-node.c) and `Hardware/LAAKA/`; paper PDF at `LAAKA/LAAKA.pdf`.
   - **Zhou** — see next bullet.
 - **Main COOJA evaluation charts now plot FOUR schemes — Proposed, DAuth, LAAKA, Zhou.** DAuth was added as a 4th series (purple `#7E5BA6`, dot hatch `...`) to `fig_sim_total`, `fig_sim_as_energy/cpu`, and `fig_sim_net_energy/cpu`; the desync chart relabels its "Base" bar to "DAuth". DAuth COOJA data comes from `Revised-Anonymity/Src-DAuth/` (3-phase, PID-stripped, fair delta enrollment) via `Scripts/Simulation-Runners/run_dauth_sweep.py`, with results under `Results/COOJA-Simulation/DAuth-Sweep/` (as-/network-variation) and `Results/COOJA-Simulation/10-Seed-Comparison/DAuth/` (total). Result: DAuth sits just below Proposed everywhere (Proposed pays ~8% for PID anonymity), both far below LAAKA/Zhou; enrollment is now fairly comparable (DAuth ~24.6 vs Proposed ~23.2 mJ).
-- The **hardware** evaluation chart (`fig_hw_comparison.png`) now plots **Proposed, DAuth, LAAKA, Zhou** — DAuth added (purple `#7E5BA6`, dot hatch `...`). DAuth hardware data: **3 RPi 4B runs** (Apex=device, Pi=AS, Laptop=GW), 1 warm-up round discarded per run; results in `Hardware/DAuth/results/`. Auth+KeyEx per round: **0.152 J ± 0.010 J**, **0.040 s ± 0.003 s**. Enrollment: 0.255 J / 0.067 s. Order: DAuth (0.152 J) < Proposed (0.286 J) < Zhou (0.333 J) < LAAKA (0.602 J). Charts have per-bar value labels.
+- The **hardware** evaluation chart (`fig_hw_comparison.png`) plots **Proposed, DAuth, LAAKA, Zhou**. **Authoritative source = `Hardware/MIRACLE/` only** (runs 2026-06-20, RPi 4B, MIRACL Core NIST P-256, governor pinned, energy = wall × 3.8 W, median of 7 runs, warm-up discarded). Generated by `Hardware/MIRACLE/plot_auth_keyex.py` (writes to both MIRACLE and `Paper/fig_hw_comparison.png`). Auth+KeyEx per round: **Proposed 0.0617 J / 0.0162 s ≈ DAuth 0.0611 J / 0.0161 s < LAAKA 0.0959 J / 0.0253 s < Zhou 0.1074 J / 0.0282 s**. Paper claims (correct vs this data): Proposed≈DAuth (<1%), both beat LAAKA ~36% and Zhou ~43%. **All other `Hardware/` contents moved to `Hardware/_archive_pre_miracle/` (stale/inconsistent — do not cite).** Note ordering vs COOJA is reversed for LAAKA/Zhou (COOJA: LAAKA>Zhou; HW: Zhou>LAAKA).
 - **Zhou scheme implemented:** Xin Zhou et al., "Security-Enhanced Lightweight and Anonymity-Preserving User Authentication Scheme for IoT-Based Healthcare," IEEE IoT Journal, Vol. 11, No. 6, 2024. Source code in `Zhou-Scheme/`. **Distinct from** `zhou2021iot` (I. Zhou et al., IEEE Access 2021, IoT survey paper — used only in the Introduction as a general IoT reference).

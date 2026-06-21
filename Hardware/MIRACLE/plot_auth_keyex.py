@@ -13,6 +13,7 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT  = os.path.join(HERE, "Authentication&KeyExchange_HW.png")
+PAPER_OUT = os.path.normpath(os.path.join(HERE, "..", "..", "Paper", "fig_hw_comparison.png"))
 
 # label -> (folder, energy-keys, time-keys)
 SPECS = [
@@ -46,8 +47,8 @@ def main():
     fig, (axe, axt) = plt.subplots(1, 2, figsize=(11, 4.6))
 
     for ax, vals, ylabel, title, fmt in [
-        (axe, E, "Energy (J)", "(a) Authentication & Key Exchange — Energy", "{:.4f}"),
-        (axt, T, "Time (s)",   "(b) Authentication & Key Exchange — Time",   "{:.4f}"),
+        (axe, E, "Energy (J)", "(a)", "{:.4f}"),
+        (axt, T, "Time (s)",   "(b)", "{:.4f}"),
     ]:
         for i, lab in enumerate(labels):
             ax.bar(i, vals[i], width=0.6, facecolor="none", edgecolor=COLORS[lab],
@@ -64,7 +65,9 @@ def main():
 
     fig.tight_layout()
     fig.savefig(OUT, dpi=180, bbox_inches="tight", facecolor="white")
+    fig.savefig(PAPER_OUT, dpi=180, bbox_inches="tight", facecolor="white")
     print("Saved:", OUT)
+    print("Saved:", PAPER_OUT)
 
 
 if __name__ == "__main__":

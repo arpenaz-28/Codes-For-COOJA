@@ -69,9 +69,9 @@ dual-state synchronisation mechanism maintained at the authentication
 server enables seamless recovery from single packet-loss
 events without re-enrolment of the device. The proposed scheme is evaluated via ProVerif-based
 formal security analysis. Further theoretical and simulation-based performance analysis confirm that the proposed scheme reduces energy by
-42.8\,\% and 32.4\,\%, and CPU time by 42.7\,\% and 32.4\,\%, over the state-of-the-art
+9.5\,\% and 32.4\,\%, and CPU time by 9.5\,\% and 32.4\,\%, over the state-of-the-art
 LAAKA and Zhou et al. schemes, respectively, while maintaining the lowest overhead among all
-compared schemes.
+anonymity-preserving schemes.
 \end{abstract}
 
 
@@ -187,16 +187,16 @@ properties together.  Their analysis demonstrates that this combination is
 absent from prior lightweight schemes, establishing GF2 as the target
 architectural pattern for a complete solution.
 LAAKA~\cite{ali2024laaka} and Zhou~et~al.~\cite{zhou2024auth} address
-anonymity in IoT authentication but, owing to larger message payloads and
-additional message exchanges, incur significantly higher communication
-overhead than DAuth.
+anonymity in IoT authentication but incur higher communication overhead than
+DAuth, owing to larger message payloads in both schemes and, in the case of
+Zhou~et~al., an additional message exchange per session.
 
 Therefore, this paper proposes an anonymity-preserving extension to DAuth,
 incorporating two lightweight mechanisms.  Per-session pseudonym rotation
 replaces the real device identity on the open channel with a refreshed
 pseudonym after every key exchange, making successive sessions unlinkable to
-an observer.  A dual-state mechanism maintained at both the authentication
-server and the gateway enables seamless recovery from single packet-loss events
+an observer.  A dual-state mechanism maintained at the authentication
+server enables seamless recovery from single packet-loss events
 without re-enrolment.
 
 As shown in Table~\ref{tab:features}, the proposed scheme is compared with
@@ -205,7 +205,7 @@ off at least one of: decoupled design, PUF-based authentication,
 accumulator-based membership verification, anonymity, or desynchronisation
 recovery.  The proposed scheme satisfies all criteria simultaneously while
 maintaining the lowest computational and communication overhead among all
-compared schemes.
+anonymity-preserving schemes.
 
 \begin{table}[!t]
   \centering
@@ -223,7 +223,7 @@ compared schemes.
     Li et al.~\cite{li2020puf}         & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & H & L \\
     Zheng et al.~\cite{zheng2022puf}      & \checkmark & \checkmark & $\times$ & \checkmark & $\times$ & $\times$ & M & L \\
     LAAKA~\cite{ali2024laaka}     & $\times$ & $\times$ & $\times$ & \checkmark & \checkmark & $\times$ & L & L \\
-    Zhou et al.~\cite{zhou2024auth} & $\times$ & \checkmark & $\times$ & \checkmark & \checkmark & $\times$ & M & M \\
+    Zhou et al.~\cite{zhou2024auth} & $\times$ & \checkmark & $\times$ & \checkmark & \checkmark & $\times$ & H & M \\
     DAuth~\cite{das2026comsnets}  & \checkmark & \checkmark & \checkmark & \checkmark & $\times$ & $\times$ & L & L \\
     Proposed                 & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & L & L \\
     \bottomrule
@@ -294,11 +294,14 @@ session key exchange.  The following sections elaborate on these phases.
     $\|$ & Concatenation operation \\
     $\oplus$ & Bitwise XOR operation \\
     $\mathbin{\&}$ & Bitwise AND operation \\
-    $c_D$, $c_{AS\text{-}D}$ & PUF challenges for $D$ (issued by $AS$) and $AS$ (by $D$) \\
+    $c_D$, $c_{AS\text{-}D}$ & PUF challenges issued by $AS$ and $D$) \\
     $m_D$ & Session-based random issued by $AS$ during enrolment \\
     $m_{\mathrm{curr}}$, $m_{\mathrm{old}}$ & Current and previous session-based randoms at $D$ and $AS$ \\
     $y_D$, $R_D$ & Unique secret and PUF response of $D$ \\
+    $R_{AS\text{-}D}$ & PUF response of $AS$ to challenge $c_{AS\text{-}D}$ \\
     $Y_D^H$ & Hashed unique secret: $H(y_D)$ \\
+    $Y_{AS\text{-}D}^H$ & Masked hashed secret sent by $D$\\
+    $Y_D^{H'}$, $R_D'$ & Hashed secret and PUF response recovered by $AS$ \\
     $T_\mathsf{Acc}$ & Accumulated authentication value at $AS$ \\
     $\Phi_{AS\text{-}D}$ & PUF-response binding: $\mathsf{PUF}_{AS}(c_{AS\text{-}D}) \oplus R_D$ \\
     $\mathit{PID}_{\mathrm{curr}}$, $\mathit{PID}_{\mathrm{old}}$ & Current and previous pseudonyms of $D$ \\
@@ -335,13 +338,13 @@ phase.
 
 $D$ initiates the phase by sending a registration request along with its unique
 identity $ID_D$ to $AS$.  As a response, $AS$ generates a challenge $c_D$ from
-the predefined challenge set $\mathbb{C}_D$ and a session-based random $m_D$;
-these are then forwarded securely to $D$.  Both of these credentials act to
-secure the communication during authentication: $c_D$ enables $D$ to regenerate
+the predefined challenge set $\mathbb{C}_D$ and a session-based random $m_D$, which are
+then forwarded securely to $D$.  Both of these credentials act to
+secure the communication during authentication.  $c_D$ enables $D$ to regenerate
 its PUF response, while $m_D$ introduces unpredictability into subsequent
 open-channel messages, preventing adversarial prediction.  With $c_D$ as input
 to its embedded $\mathsf{PUF}_D$, $D$ obtains a unique PUF response $R_D$.  After this, $D$ generates its own unique secret
-value $y_D$, which is also a random number; the security of the entire scheme
+value $y_D$, which is also a random number.  The security of the entire scheme
 critically depends on maintaining the confidentiality of $y_D$.  $D$ also picks
 a reverse challenge $c_{AS\text{-}D}$ from the predefined challenge set
 $\mathbb{C}_{AS\text{-}D}$ and sends $(y_D,\, R_D,\, c_{AS\text{-}D})$ back to
@@ -377,7 +380,7 @@ $\mathit{PID}_{\mathrm{curr}}$ as the hash of $ID_D$ concatenated with $m_{\math
 $\mathit{PID}_{\mathrm{old}} = \varepsilon$, $m_{\mathrm{old}} = \varepsilon$, forming the
 initial \emph{dual state}.  This dual state
 ($m_{\mathrm{curr}}$, $m_{\mathrm{old}}$, $\mathit{PID}_{\mathrm{curr}}$,
-$\mathit{PID}_{\mathrm{old}}$) is maintained to handle desynchronisation: if the
+$\mathit{PID}_{\mathrm{old}}$) is maintained to handle desynchronisation.  If the
 updated $m_{\mathrm{new}}$, delivered in the Key Exchange Phase, is lost in
 transit, $AS$ can still recognise $D$ by its previous pseudonym and restore
 synchronisation without requiring re-enrolment.  $AS$ therefore stores
@@ -421,7 +424,7 @@ knowing $R_D$ (which can only be generated by $D$'s PUF) and $m_{\mathrm{curr}}$
 
 After receiving the message, $AS$ checks for the existence of an entry matching
 the received $\mathit{PID}$.  In a departure from DAuth~\cite{das2026comsnets}, $AS$ performs
-a dual-state lookup: it checks whether the received $\mathit{PID}$ matches
+a dual-state lookup, checking whether the received $\mathit{PID}$ matches
 $\mathit{PID}_{\mathrm{curr}}$ or $\mathit{PID}_{\mathrm{old}}$ in its records.
 A match on $\mathit{PID}_{\mathrm{old}}$ indicates that $D$ missed the Key
 Exchange Phase delivery in the previous session and still holds the prior
@@ -495,12 +498,10 @@ and rotates its pseudonym $\mathit{PID}_{\mathrm{curr}}$ by hashing $ID_D$ with 
 thus preparing itself for secure communication with $GW$.
 
 $GW$ decrypts the token with $K_{GW\text{-}AS}$, verifies $ts_{\mathrm{auth}}$,
-and extracts $K_{GW\text{-}D}$ and $\mathit{PID}_{\mathrm{new}}$.  $GW$ saves
-$\mathit{PID}_{\mathrm{curr}}$ as the previous pseudonym, sets
-$\mathit{PID}_{\mathrm{new}}$ as the current one, and stores the session key
-against both.  Retaining $\mathit{PID}_{\mathrm{old}}$ ensures that if the
-delivery $(m^H,\, ts_2)$ to $D$ was lost, $GW$ can still service $D$'s data
-frames under the prior session key pending re-authentication.
+and extracts $K_{GW\text{-}D}$ and $\mathit{PID}_{\mathrm{new}}$.  $GW$ updates
+its stored pseudonym for $D$ to $\mathit{PID}_{\mathrm{new}}$ and associates the
+session key $K_{GW\text{-}D}$ with it, so that $D$'s subsequent data frames
+carrying $\mathit{PID}_{\mathrm{new}}$ are recognised and served.
 
 \subsection{Desynchronisation Recovery}
 
@@ -521,7 +522,7 @@ If the packet from $AS$ to $GW$ is lost, $D$ has already received $(m^H,\, ts_2)
 and updated its state to $\mathit{PID}_{\mathrm{new}}$ and $K_{GW\text{-}D}$.
 $GW$, however, never received $\mathit{PID}_{\mathrm{new}}$ or the session key,
 so it rejects $D$'s subsequent data frames.
-$D$ detects the failure and re-initiates Phase~2 (Authentication) with its
+$D$ detects the failure and re-initiates the Authentication Phase with its
 current $\mathit{PID}_{\mathrm{curr}}$.
 Since $D$ and $AS$ are already synchronised, $AS$ recognises $\mathit{PID}_{\mathrm{curr}}$
 on the normal path, completes authentication, and forwards a fresh
@@ -545,8 +546,8 @@ Exchange Phase delivery $(m^H,\,ts_2)$ is lost, $D$ retains its stale
 $m_{\mathrm{curr}}$, so the pseudonym it computes in the next session equals
 $\mathit{PID}_{\mathrm{old}}$ from $AS$'s perspective.  Algorithms~\ref{alg:desync-auth} and~\ref{alg:desync-keyex}
 show how the scheme adapts the Authentication and Key Exchange Phases to recover without re-enrolment.
-$D$'s behaviour is \emph{identical} in both paths: it always uses its own
-$m_{\mathrm{curr}}$ and $\mathit{PID}$.  Only $AS$ adapts: the dual-state
+$D$'s behaviour is \emph{identical} in both paths, as it always uses its own
+$m_{\mathrm{curr}}$ and $\mathit{PID}$.  Only $AS$ adapts.  The dual-state
 lookup detects which nonce $D$ is on, then constructs $m^H$ with the matching
 $(m_{\mathrm{old}},\,\mathit{PID}_{\mathrm{old}})$ so that $D$'s symmetric
 decryption succeeds and the states converge.
@@ -628,27 +629,27 @@ Figure~\ref{fig:proverif} shows the verification summary.
 Five correspondence queries verify that the protocol steps happen in the correct
 order and that no adversary can skip or forge a step.
 
-The first query checks enrolment integrity: a device can only be registered at
+The first query checks enrolment integrity.  A device can only be registered at
 the authentication server after it has explicitly initiated the enrolment
 process.  This rules out any possibility of a device being enrolled without
 its own participation.
 
-The second query checks the device side of the authentication phase: the device
+The second query checks the device side of the authentication phase.  The device
 receives the server's acknowledgement and the fresh timestamp $ts_2$ only after
 it first sent a valid authentication request.  This prevents an adversary from
 replaying a stale acknowledgement to trick the device into advancing its state.
 
-The third query checks the server side of the authentication phase: the authentication
+The third query checks the server side of the authentication phase.  The authentication
 server completes its processing only after it received a structurally correct
 request from the device.  A forged or replayed message cannot push the server
 into a completed state.
 
-The fourth query binds the Authentication and Key Exchange phases: the PUF response $R_D$ and
+The fourth query binds the Authentication and Key Exchange phases.  The PUF response $R_D$ and
 the session seed $m_{\mathrm{curr}}$ that the device commits during authentication are proven to be
 exactly the same values used in the key exchange.  This rules out an active
 adversary who might try to substitute credentials between phases.
 
-The fifth query covers key exchange: the device recovers the new session seed
+The fifth query covers key exchange.  The device recovers the new session seed
 $m_{\mathrm{new}}$ only after it legitimately sent the key-exchange request.
 No key material can be delivered to the device out of sequence.
 
@@ -661,7 +662,7 @@ traffic on the public channel, it cannot reconstruct $K_{GW\text{-}D}$
 because the PUF response $R_D$ is never transmitted and
 $m_{\mathrm{new}}$ is always delivered XOR-masked.
 
-A separate query confirms forward secrecy: the rotated session seed
+A separate query confirms forward secrecy, proving that the rotated session seed
 $m_{\mathrm{new}}$ itself remains secret.  This means that even if an
 adversary somehow recovers a current session key, it gains nothing about
 future sessions, because each $m_{\mathrm{new}}$ is derived from an
@@ -678,7 +679,7 @@ message on the network, can recover $ID_D$ from the observed traffic.
 
 This result supports device anonymity.  However, anonymity is only meaningful
 if the pseudonym used in one session cannot be linked to the pseudonym used in
-the next.  The forward-secrecy query addresses this: because
+the next.  The forward-secrecy query addresses this.  Because
 $m_{\mathrm{new}}$ is proven secret, consecutive pseudonyms
 $H(ID_D \| m_{\mathrm{curr}})$ and $H(ID_D \| m_{\mathrm{new}})$ are
 computationally indistinguishable to any observer, making it difficult for an
@@ -718,8 +719,10 @@ is derived from a freshly generated nonce $n_1$, successive pseudonyms are
 computationally unlinkable.
 
 \subsubsection{Desynchronisation Recovery}
-Packet loss can occur at three distinct points in the Authentication and Key Exchange Phases, each
-handled without requiring re-enrolment.
+Packet loss can occur at three distinct points across the Authentication and Key
+Exchange Phases, all handled without re-enrolment.  Of these, only the loss of the
+Key Exchange response causes a genuine state divergence between $D$ and $AS$.  The
+other two are resolved by simple retransmission or routine re-authentication.
 
 If the acknowledgement and fresh timestamp $ts_2$ sent by $AS$ to $D$ at the
 end of the authentication phase are lost in transit, $D$ does not advance its internal state
@@ -736,15 +739,15 @@ the pseudonym to $\mathit{PID}_{\mathrm{new}}$, while $D$ retains the
 previous $m_{\mathrm{curr}}$.  On the subsequent authentication attempt, $D$
 constructs its pseudonym from the stale $m_{\mathrm{curr}}$, producing
 $\mathit{PID}_{\mathrm{old}}$.  $AS$ recognises this via the dual-state
-lookup — storing both $(m_{\mathrm{curr}}, \mathit{PID}_{\mathrm{curr}})$ and
-$(m_{\mathrm{old}}, \mathit{PID}_{\mathrm{old}})$ — and resumes from the
+lookup, which stores both $(m_{\mathrm{curr}}, \mathit{PID}_{\mathrm{curr}})$ and
+$(m_{\mathrm{old}}, \mathit{PID}_{\mathrm{old}})$, and resumes from the
 consistent prior state, restoring synchronisation without any re-enrolment
 overhead.
 
 If the token forwarded from $AS$ to $GW$ is lost, $GW$ does not receive
 $\mathit{PID}_{\mathrm{new}}$ or the associated session key $K_{GW\text{-}D}$.
 Consequently, $D$'s subsequent data packet, carrying $\mathit{PID}_{\mathrm{new}}$,
-is not recognised by $GW$.  $D$ re-initiates from the Authentication Phase; the dual-state
+is not recognised by $GW$.  $D$ re-initiates from the Authentication Phase, and the dual-state
 storage at $AS$ ensures that this re-authentication succeeds and a fresh
 token is forwarded to $GW$, restoring normal operation.
 
@@ -778,11 +781,11 @@ The proposed scheme relies exclusively on PUF, hash, and AES operations, and emp
 public-key or fuzzy-extractor primitive.
 
 During node enrolment (Figure~\ref{fig:enrolment}), $D$ and $AS$ each evaluate the PUF
-once to derive the shared secret, and execute two hash operations for pseudonym
-initialisation, giving $2T_{\mathsf{puf}}+2T_{\mathsf{hash}}=0.258$\,ms. As shown in
+once and two hash evaluations are performed, giving
+$2T_{\mathsf{puf}}+2T_{\mathsf{hash}}=0.258$\,ms. As shown in
 Table~\ref{tab:comp_enroll}, this is marginally above DAuth~\cite{das2026comsnets}
-($0.249$\,ms), the difference being exactly one additional hash for pseudonym
-initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cost
+($0.249$\,ms), the difference being exactly one additional hash evaluation.
+Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cost
 ($2.491$\,ms), dominated by the fuzzy-extractor generation function $\mathsf{Gen}(\cdot)$
 ($T_{\mathsf{fe}}=T_{\mathsf{ecc}}=2.353$\,ms).
 
@@ -793,14 +796,14 @@ initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cos
   \label{tab:comp_enroll}
   \scriptsize
   \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{lll}
+  \begin{tabular}{llcl}
     \toprule
-    Scheme & Operations & Cost (ms) \\
+    Scheme & Operations & PUF & Cost (ms) \\
     \midrule
-    LAAKA~\cite{ali2024laaka}       & $3T_\mathsf{hash}$ & 0.027 \\
-    Zhou et al.~\cite{zhou2024auth} & $T_\mathsf{puf}+2T_\mathsf{hash}+T_\mathsf{fe}$ & 2.491 \\
-    DAuth~\cite{das2026comsnets}    & $2T_\mathsf{puf}+T_\mathsf{hash}$ & 0.249 \\
-    \textbf{Proposed}               & $2T_\mathsf{puf}+2T_\mathsf{hash}$ & \textbf{0.258} \\
+    LAAKA~\cite{ali2024laaka}       & $3T_\mathsf{hash}$ & $\times$ & 0.027 \\
+    Zhou et al.~\cite{zhou2024auth} & $T_\mathsf{puf}+2T_\mathsf{hash}+T_\mathsf{fe}$ & \checkmark & 2.491 \\
+    DAuth~\cite{das2026comsnets}    & $2T_\mathsf{puf}+T_\mathsf{hash}$ & \checkmark & 0.249 \\
+    \textbf{Proposed}               & $2T_\mathsf{puf}+2T_\mathsf{hash}$ & \checkmark & \textbf{0.258} \\
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
@@ -810,20 +813,20 @@ initialisation. Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cos
 \end{table}
 
 In the authentication and key exchange phases (Figures~\ref{fig:auth}
-and~\ref{fig:keyex}), $D$ and $AS$ evaluate the PUF once more; $D$ performs six hash
-operations (pseudonym computation, unique-secret hash, and XOR mask in the Authentication
-Phase, followed by mask recovery, session-key derivation, and pseudonym rotation in the Key
-Exchange Phase); $AS$ performs five hash operations and one AES encryption
-($T_{\mathsf{aes}}$) for the gateway token; and $GW$ performs one AES decryption to
-recover the session key and updated pseudonym. This yields
+and~\ref{fig:keyex}), $D$ and $AS$ each evaluate the PUF once, $D$ performs six hash
+evaluations, $AS$ performs five hash evaluations and one AES encryption, and $GW$
+performs one AES decryption. This yields
 $2T_{\mathsf{puf}}+11T_{\mathsf{hash}}+2T_{\mathsf{aes}}=0.347$\,ms, as shown in
 Table~\ref{tab:comp_auth}. The proposed scheme is second only to
 DAuth~\cite{das2026comsnets} ($0.320$\,ms), the $0.027$\,ms overhead attributable to
-three additional hash operations for pseudonym computation, dual-state lookup, and
-pseudonym rotation. LAAKA~\cite{ali2024laaka} ($0.144$\,ms) achieves lower cost by
-performing only hash operations without any PUF evaluation. Zhou et al.\ ($2.608$\,ms) is
-the heaviest due to the fuzzy-extractor reproduction function $\mathsf{Rep}(\cdot)$
-($T_{\mathsf{fe}}=2.353$\,ms).
+three additional hash evaluations. LAAKA~\cite{ali2024laaka} ($0.144$\,ms) achieves
+lower cost by performing only hash operations without any PUF evaluation.
+Excluding the two PUF evaluations, however, the proposed scheme's remaining hash and
+AES operations total only $11T_{\mathsf{hash}}+2T_{\mathsf{aes}}=0.107$\,ms below
+LAAKA's $0.144$\,ms so the gap is attributable entirely to hardware-rooted PUF
+authentication rather than to protocol inefficiency.
+Zhou et al.\ ($2.608$\,ms) is the heaviest due to the fuzzy-extractor reproduction
+function $\mathsf{Rep}(\cdot)$ ($T_{\mathsf{fe}}=2.353$\,ms).
 
 \begin{table}[!t]
   \centering
@@ -832,14 +835,14 @@ the heaviest due to the fuzzy-extractor reproduction function $\mathsf{Rep}(\cdo
   \label{tab:comp_auth}
   \scriptsize
   \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{lll}
+  \begin{tabular}{llcl}
     \toprule
-    Scheme & Operations & Cost (ms) \\
+    Scheme & Operations & PUF & Cost (ms) \\
     \midrule
-    LAAKA~\cite{ali2024laaka}       & $16T_\mathsf{hash}$ & 0.144 \\
-    Zhou et al.~\cite{zhou2024auth} & $T_\mathsf{puf}+15T_\mathsf{hash}+T_\mathsf{fe}$ & 2.608 \\
-    DAuth~\cite{das2026comsnets}    & $2T_\mathsf{puf}+8T_\mathsf{hash}+2T_\mathsf{aes}$ & 0.320 \\
-    \textbf{Proposed}               & $2T_\mathsf{puf}+11T_\mathsf{hash}+2T_\mathsf{aes}$ & \textbf{0.347} \\
+    LAAKA~\cite{ali2024laaka}       & $16T_\mathsf{hash}$ & $\times$ & 0.144 \\
+    Zhou et al.~\cite{zhou2024auth} & $T_\mathsf{puf}+15T_\mathsf{hash}+T_\mathsf{fe}$ & \checkmark & 2.608 \\
+    DAuth~\cite{das2026comsnets}    & $2T_\mathsf{puf}+8T_\mathsf{hash}+2T_\mathsf{aes}$ & \checkmark & 0.320 \\
+    \textbf{Proposed}               & $2T_\mathsf{puf}+11T_\mathsf{hash}+2T_\mathsf{aes}$ & \checkmark & \textbf{0.347} \\
     \bottomrule
   \end{tabular}\\[3pt]
   \scriptsize
@@ -855,9 +858,8 @@ PUF-based schemes (Proposed and DAuth) rely on four PUF evaluations
 LAAKA~\cite{ali2024laaka} ($0.171$\,ms) achieves lower cost by forgoing PUF-based device
 authentication. Zhou et al.~\cite{zhou2024auth} ($5.099$\,ms) is the heaviest, with two
 ECC-based fuzzy-extractor operations ($2T_{\mathsf{fe}}=4.706$\,ms) accounting for over
-$92\%$ of its total cost. The proposed scheme incurs only a $0.036$\,ms premium over DAuth
-for pseudonym rotation and dual-state lookup---the direct cost of anonymity and
-desynchronisation resilience.
+$92\%$ of its total cost. The proposed scheme incurs only a $0.036$\,ms premium over DAuth,
+corresponding to four additional hash evaluations across both phases.
 
 \subsubsection{Communication Cost}
 
@@ -940,10 +942,81 @@ scheme directly reflecting the widening of the device identifier from a 32-bit $
 a 256-bit pseudonym $\mathit{PID}$, the direct cost of adding device anonymity to all
 open-channel communications.
 
+\subsubsection{Storage Cost}
 
+The storage cost captures the number of persistent credentials each entity must
+retain after enrolment, which is a decisive constraint for memory-limited IoT
+endpoints. To enable a consistent cross-scheme comparison, all cryptographic
+values hashes, nonces, challenges, PUF responses, ciphertexts, and symmetric
+keys are normalised to 256\,bits, while device and server identities are taken
+as 32\,bits, in line with the assumptions adopted for the communication-cost
+analysis. For Zhou et al.~\cite{zhou2024auth}, the elliptic-curve--derived dynamic
+identity and the PUF challenge--response values are likewise counted at 256\,bits
+each. The per-entity footprints obtained under these assumptions are summarised in
+Table~\ref{tab:storage}.
 
+In LAAKA~\cite{ali2024laaka}, the registration authority (RA) is the root of trust
+and stores, for every device, the real identity $ID_d$ together with the temporary
+identity $TID_d$ and the two hashed authentication anchors $A_d$ and $B_k$,
+requiring 800\,bits. The fog server (FS) authenticates devices locally and therefore
+retains $TID_d$, $A_d$, and $B_k$ (768\,bits), whereas the IoT device must keep its
+own $TID_d$, the fog identity $TID_f$, the masked secret $A_f$, and the shared
+anchor $B_k$, amounting to 1024\,bits.
 
-\FloatBarrier
+In Zhou et al.~\cite{zhou2024auth}, the gateway acts as the combined authenticator
+and router. Per device it maintains the secret key $k_i$, the identity $ID_i$, the
+dynamic identity $DID_i$, the sensor identity $SID_n$, and the PUF
+challenge--response pair $(C_n, R_n)$, totalling 1312\,bits. The user device holds
+the hashed identity $hid_i$, the masked credential $CPW_i$, $DID_i$, and $SID_n$
+(1024\,bits), while the sensor node, serving only as the data endpoint, stores the
+single identifier $SID_n$ (256\,bits).
+
+In DAuth~\cite{das2026comsnets}, the PUF-based device avoids any long-term key
+storage and persists only the challenge $c_D$ and the current session nonce
+$m_{\mathrm{curr}}$ (512\,bits), since the device secret $y_D$ is regenerated on
+demand from its embedded PUF rather than stored. The gateway-selected AS validates
+the device through a one-way accumulator and retains the accumulated value
+$T_{\mathsf{Acc}}$, the identity $ID_D$, the PUF-binding $\Phi_{AS\text{-}D}$, the
+reverse challenge $c_{AS\text{-}D}$, and $m_{\mathrm{curr}}$ (1056\,bits), while the
+gateway, as the secure-channel endpoint, keeps the session key $K_{GW\text{-}D}$ and
+$ID_D$ (288\,bits).
+
+The proposed scheme inherits the same minimal device footprint as DAuth (512\,bits),
+because the rotating pseudonym $\mathit{PID} = H(ID_D \| m_{\mathrm{curr}})$ is
+derived on-the-fly rather than stored. To support single-loss desynchronisation
+recovery, the AS additionally retains the previous nonce $m_{\mathrm{old}}$ and the
+dual pseudonym pair $(\mathit{PID}_{\mathrm{curr}}, \mathit{PID}_{\mathrm{old}})$ on
+top of the DAuth state, raising its footprint to 1824\,bits. Because the real
+identity is never exposed on the open channel, the gateway substitutes
+$\mathit{PID}_{\mathrm{curr}}$ for $ID_D$ and stores it alongside $K_{GW\text{-}D}$
+(512\,bits).
+
+As shown in Table~\ref{tab:storage}, the proposed scheme attains the lowest
+device-side storage (512\,bits, tied with DAuth) among all compared schemes less
+than half the 1024\,bits required by both LAAKA and Zhou et al. making it
+well-suited for memory-constrained IoT endpoints where minimising resource usage is
+crucial. The modest additional state introduced for anonymity and desynchronisation
+recovery is confined to the AS, a gateway-selected node with ample resources, and
+therefore imposes no burden on the constrained device.
+
+\begin{table}[!t]
+  \centering
+  \caption{Per-device persistent storage cost (bits). }
+  \label{tab:storage}
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}lrrrrr@{}}
+    \toprule
+    Scheme & Device & AS / FS & GW & RA & SN \\
+    \midrule
+    LAAKA~\cite{ali2024laaka}       & 1024 & 768  & ---  & 800 & ---  \\
+    Zhou et al.~\cite{zhou2024auth}  & 1024 & ---  & 1312 & --- & 256  \\
+    DAuth~\cite{das2026comsnets}     & 512  & 1056 & 288  & --- & ---  \\
+    \textbf{Proposed}               & \textbf{512} & \textbf{1824} & \textbf{512} & --- & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% \FloatBarrier
 \subsection{Simulation-Based Performance Analysis}
 \label{sec:sim}
 
@@ -1001,13 +1074,13 @@ complete authentication cycle (enrolment, authentication, and key exchange) per 
 For 20 newly joined nodes in a 100-node network with one gateway/root and two
 authentication servers in use, the proposed scheme demonstrated a consistent advantage
 over LAAKA~\cite{ali2024laaka} and Zhou et al.~\cite{zhou2024auth} by achieving a reduction of
-42.8\,\% and 32.4\,\% with respect to per-device energy consumption
+9.5\,\% and 32.4\,\% with respect to per-device energy consumption
 (Figure~\ref{fig:sim_total}a), respectively. Similarly, as shown in
-Figure~\ref{fig:sim_total}(b), a reduction of 42.8\,\% and 32.4\,\% is demonstrated with
+Figure~\ref{fig:sim_total}(b), a reduction of 9.5\,\% and 32.4\,\% is demonstrated with
 respect to per-device CPU time over LAAKA and Zhou et al., respectively. The dominant savings
 arise in the authentication and key exchange phase. Due to the incorporation of fewer
 message exchanges and lightweight hash-XOR operations, the proposed
-scheme minimises radio activity---the dominant energy cost in multihop IoT---compared to the
+scheme minimises radio activity, which is the dominant energy cost in multihop IoT, compared to the
 more message-intensive LAAKA and Zhou et al. schemes. For Zhou et al., the
 reported costs comprise the enrolment and authentication phases only, as that scheme
 folds session-key agreement into its authentication exchange instead of executing a
@@ -1016,7 +1089,7 @@ separate key-exchange round, whereas the remaining schemes include all three pha
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{fig_sim_total}
-  \caption{Per-device Average cost for all phases :
+  \caption{Per-device average cost for all phases:
            (a)~Energy (b)~CPU time.}
   \label{fig:sim_total}
 \end{figure}
@@ -1029,7 +1102,7 @@ the authentication load is distributed. To isolate the benefit of decoupling rat
 the raw per-device cost, each scheme is evaluated as the authentication server pool grows
 from 2 to 10 servers. Considering the total energy consumption (Figure~\ref{fig:sim_as}a),
 the proposed scheme demonstrated a consistent advantage over LAAKA, achieving a reduction
-of approximately 42\,\% at every pool size, and the same advantage is demonstrated for
+of approximately 6--8\,\% at every pool size, and the same advantage is demonstrated for
 total CPU time in Figure~\ref{fig:sim_as}(b). Both distributed schemes also scale
 favourably with the pool, their total cost falling by roughly 11--12\,\% as the pool grows
 from 2 to 10 servers, since additional servers absorb the join load of the newly joined
@@ -1056,14 +1129,14 @@ scalability with respect to total network size $N$, varied from 30 to 120 nodes,
 where 20\,\% of the nodes in each network are newly joined devices.
 Considering the total energy consumption (Figure~\ref{fig:sim_network}a), at the
 maximum tested network size $N = 120$, the proposed scheme demonstrates a reduction of
-42.7\,\% over LAAKA and 37.6\,\% over Zhou et al.  Similarly, as shown in
-Figure~\ref{fig:sim_network}(b), a reduction of 42.7\,\% and 37.6\,\% is demonstrated
+8.4\,\% over LAAKA and approximately 44\,\% over Zhou et al.  Similarly, as shown in
+Figure~\ref{fig:sim_network}(b), a reduction of 8.4\,\% and approximately 44\,\% is demonstrated
 with respect to total CPU time over LAAKA and Zhou et al., respectively, at $N = 120$.
 LAAKA and Zhou et al. exhibit steeper energy and CPU growth with increasing $N$ because their
 larger per-device message payloads and additional exchanges accumulate faster as the device count grows.
 Due to the incorporation of lightweight XOR-hash operations and a decoupled authentication
-server design, the proposed scheme keeps per-device cost low and achieves the lowest total cost among all
-anonymity-preserving schemes (LAAKA and Zhou et al.) across all measured network sizes, while incurring
+server design, the proposed scheme keeps per-device cost low and achieves consistently lower total cost than
+Zhou et al.\ and lower or comparable cost to LAAKA across all measured network sizes, while incurring
 only a modest overhead above DAuth attributable to the additional pseudonym-rotation mechanism.
 These consistent reductions across $N = 30$ to $120$ demonstrate the scalability and
 computational efficiency of the proposed scheme in comparison to the benchmark schemes.
@@ -1083,135 +1156,151 @@ computational efficiency of the proposed scheme in comparison to the benchmark s
 \subsubsection{Performance Analysis for Desynchronisation Recovery}
 \label{sec:desync_perf}
 
-During the Key Exchange Phase, the authentication server simultaneously dispatches two
-packets: one to the gateway/root carrying
-$(\mathit{PID}_{\mathrm{new}},\, ID_{AS},\, \mathsf{auth\_token}_D)$, and one to the
-device carrying $(m^H,\, ts_2)$.
-Desynchronisation arises when the packet destined for the device is
-lost in transit, for any reason.
-After such a loss, the device retains its old state $m_{\mathrm{curr}}$
-while the authentication server has already rotated to a new state, causing subsequent
-authentication attempts to fail.
+Desynchronisation affects protocols that rotate session state after each
+successful authentication.
+It arises when the packet delivering the updated state to one party is lost,
+leaving the sender on the new state while the receiver retains the old one.
+The next authentication attempt then fails from this mismatch, and the cost of
+recovery depends on what fallback mechanism the scheme provides.
 
-DAuth~\cite{das2026comsnets} stores only a single nonce state at the authentication server.
-When the device re-authenticates using the old $m_{\mathrm{curr}}$,
-the authentication server has no means to recognise it and rejects the request outright.
-The device must therefore undergo a full re-enrolment
-(Phase~1: PUF challenge-response and accumulator setup) before a new
-authentication and key exchange can succeed.
-The proposed scheme eliminates this penalty through its dual-state
-mechanism: the authentication server retains both $(m_{\mathrm{curr}},\,\mathit{PID}_{\mathrm{curr}})$
-and $(m_{\mathrm{old}},\,\mathit{PID}_{\mathrm{old}})$.
-When the device arrives with the old pseudonym, the authentication server recognises it
-via the $\mathit{PID}_{\mathrm{old}}$ lookup and runs the full
-authentication protocol: recovering the PUF response $R_D$, deriving
-$Y_{AS\text{-}D}^H$ from the device's unique secret $y_D$, and
-verifying the accumulator using $m_{\mathrm{old}}$, then completing
-a fresh key exchange, all without re-enrolment.
+In DAuth~\cite{das2026comsnets}, desynchronisation is triggered when the
+key-delivery packet $(m^H,\, ts_2)$ sent to the device at the end of the Key
+Exchange Phase is lost.
+The authentication server has already advanced its nonce to $m_{\mathrm{new}}$
+while the device retains $m_{\mathrm{curr}}$.
+As DAuth stores only a single nonce state, the device's next attempt uses the
+stale $m_{\mathrm{curr}}$ and produces a pseudonym the server cannot recognise,
+so the request is rejected.
+Recovery then demands a complete re-enrolment, re-executing the PUF
+challenge-response exchange and reconstructing the hash-accumulator-based
+group-membership credential before authentication can resume.
 
-Since the dual-state desynchronisation recovery mechanism is a direct extension
-of DAuth's single-state protocol, only DAuth serves as the meaningful baseline
-for this comparison. LAAKA and Zhou et al.\ employ fundamentally different
-authentication architectures with no equivalent session-state nonce rotation,
-making a like-for-like desynchronisation comparison inapplicable.
+The proposed scheme shares the same protocol structure as DAuth and is exposed
+to the identical trigger, but differs in its server state model.
+The authentication server retains a dual state,
+$(m_{\mathrm{curr}},\,\mathit{PID}_{\mathrm{curr}})$ and
+$(m_{\mathrm{old}},\,\mathit{PID}_{\mathrm{old}})$.
+When the device re-authenticates with the stale pseudonym
+$\mathit{PID}_{\mathrm{old}}$, the server recognises it via the
+$\mathit{PID}_{\mathrm{old}}$ lookup and runs the full authentication protocol
+against the old state, recovering $R_D$, deriving $Y_{AS\text{-}D}^H$,
+verifying the accumulator against $m_{\mathrm{old}}$, and completing a fresh
+key exchange without re-enrolment.
+The recovery round is therefore indistinguishable in cost from a normal round.
 
-Figure~\ref{fig:desync_bar} presents a per-device energy and CPU time
-comparison of a single authentication round under two conditions:
-normal operation (before any packet loss) and recovery (the round
-immediately following a desynchronisation event), evaluated over a
-100-node multi-hop RPL network with 20 devices and 5 independent seeds.
-As shown in Figure~\ref{fig:desync_bar}(a), DAuth~\cite{das2026comsnets}
-incurs a 118.3\,\% increase in per-device energy on a recovery round
-over its normal round, reflecting the overhead of a failed
-authentication attempt followed by full re-enrolment.
-In contrast, the proposed scheme's recovery round is statistically
-indistinguishable from its normal round, confirming that the
-dual-state mechanism incurs negligible additional overhead during
-recovery.
-Compared directly, the proposed scheme reduces per-device recovery
-energy by 35.3\,\% over DAuth~\cite{das2026comsnets}.
-The CPU time results in Figure~\ref{fig:desync_bar}(b) exhibit the
-same pattern, yielding a 35.3\,\% reduction in execution time over
-DAuth~\cite{das2026comsnets}.
+Zhou et al.\ face a different desynchronisation point.
+After verifying the device, the gateway refreshes the session credentials
+$(\mathit{DID}_{i,\mathrm{new}},\, \mathit{SID}_{n,\mathrm{new}})$ and returns
+a confirmation message~(M4) carrying these credentials and a verification
+token~$\lambda$.
+If M4 is lost, the device advances to $\mathit{SID}_{n,\mathrm{new}}$ while the
+gateway's record stays on the old $\mathit{SID}_n$.
+The next attempt then presents credentials the gateway verifies against the
+stale identifier, causing a mismatch and rejection.
+With no dual-state or fallback lookup, the device must re-register with the
+gateway for a fresh credential pair before retrying.
+
+LAAKA also rotates its temporal identifier, deriving
+$\mathit{TID}_{d,\mathrm{new}} = \mathit{TID}_d \oplus r_d$ from a fresh random
+$r_d$ each session, so it too is anonymity-preserving.
+Its update, however, is computed entirely from randoms exchanged within the
+authentication round, and the fog server retains the prior temporal identifier,
+so a device that misses the final confirmation simply re-presents its current
+$\mathit{TID}_d$ and re-authenticates without a stored-state mismatch.
+As LAAKA maintains no separately stored rotating nonce that can drift between
+parties, a like-for-like desynchronisation-recovery scenario does not apply, and
+LAAKA is excluded from this comparison.
+
+Figure~\ref{fig:desync_bar} reports per-device energy and CPU time over a
+100-node RPL network (20 devices, 5 seeds).
+For each scheme, one bar gives the cost of a normal round in which authentication
+completes with no packet loss, and the other gives the cost of a recovery round
+taken immediately after a desynchronisation event.
+The extra cost of the recovery round over the normal round is what the device
+spends to return to the synchronised state it held before the loss.
+DAuth~\cite{das2026comsnets} incurs a 118.3\,\% energy increase, as recovery
+means a failed attempt followed by full re-enrolment with PUF execution and
+accumulator reconstruction, whereas Zhou et al.\ incur a lighter 48.2\,\%
+increase from credential re-registration.
+The proposed scheme's two bars are statistically indistinguishable, confirming
+that the dual-state mechanism eliminates re-enrolment overhead and thereby
+reduces recovery energy by 35.3\,\% over DAuth and 8.8\,\% over Zhou et al., with
+CPU time (Figure~\ref{fig:desync_bar}(b)) following at 35.3\,\% and 8.9\,\%.
 
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{fig_desync_bar}
   \caption{Per-device desynchronisation recovery cost: (a)~energy and
            (b)~CPU time for a normal round vs.\ a recovery round,
-           averaged over 20 devices in a 100-node
-           network.}
+           averaged over 20 devices in a 100-node network (5~seeds).}
   \label{fig:desync_bar}
 \end{figure}
 
 
-\FloatBarrier
+% \FloatBarrier
 \subsection{Hardware-Based Performance Analysis}
 
-Hardware-based performance analysis plays a crucial role as it validates the feasibility
-of the proposed authentication scheme by implementing it on physical IoT devices,
-incorporating real hardware environment conditions.
-The proposed scheme and the three comparison schemes---DAuth~\cite{das2026comsnets},
-LAAKA~\cite{ali2024laaka}, and Zhou et al.~\cite{zhou2024auth}---are implemented on a
-Raspberry Pi~4B platform, equipped with a quad-core 64-bit ARM Cortex-A72
-processor operating at 1.5\,GHz.
+Hardware-based performance analysis validates the feasibility of the proposed
+authentication scheme by implementing it on physical IoT devices, incorporating
+real hardware environment conditions.
+The proposed scheme and the three comparison schemes, DAuth~\cite{das2026comsnets},
+LAAKA~\cite{ali2024laaka}, and Zhou et al.~\cite{zhou2024auth}, are implemented on a
+Raspberry Pi 4B platform equipped with a quad-core 64-bit ARM Cortex-A72 processor
+operating at 1.5 GHz, using the MIRACL Core cryptographic library for all hash, AES,
+and elliptic-curve operations.
 A uniform hardware setup is maintained across all compared authentication schemes,
 ensuring a fair and consistent comparison of energy consumption and CPU time.
-The implementation considers two Raspberry Pi~4B platforms as IoT nodes.
-One performs the role of the newly joined device, initiating the authentication
-process. The other functions as the authentication server, performing the necessary
-verification for authentication and session key exchange.
-A Windows laptop is leveraged as the gateway, handling authentication
-verification and session key delivery. Each of the three entities maintains
-direct TCP communication with the others. Energy consumption is estimated using
-the active power profile of the Raspberry Pi~4B ($3.8\,\text{W}$) multiplied by
-the measured wall-clock time per authentication round, capturing both
-cryptographic computation and network round-trip latency.
+The implementation considers two Raspberry Pi 4B platforms as IoT nodes.
+One performs the role of the newly joined device, initiating the authentication process.
+The other functions as the authentication server, performing the necessary verification
+for authentication and key exchange.
+A laptop is leveraged as the gateway, handling authentication token delivery and
+session management.
+Each of the three entities maintains direct TCP communication with the others.
 The physical testbed is shown in Figure~\ref{fig:hw_setup}.
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=\columnwidth,height=0.65\columnwidth,keepaspectratio]{RPI_HW}
-  \caption{Hardware testbed: two Raspberry Pi~4B boards (left: authentication
-           server; right: device) connected
-            to a Windows laptop
-           (gateway).}
+  \includegraphics[width=\columnwidth,height=0.65\columnwidth,keepaspectratio]{HW_setup_signals}
+  \caption{Hardware testbed showing two Raspberry Pi 4B boards serving as the
+           authentication server (left) and device (right), connected to a
+           Windows laptop acting as the gateway.}
   \label{fig:hw_setup}
 \end{figure}
 
-As illustrated in Figure~\ref{fig:hw_comparison}(a), DAuth achieves the lowest
-per-round energy of $0.152\,\text{J}$, as it performs no pseudonym operations.
-The proposed scheme consumes $0.286\,\text{J}$ per round---an overhead of
-approximately $88\,\%$ over DAuth attributable to the additional SHA-256
-evaluations for PID rotation and dual-state verification.
-Despite this overhead, the proposed scheme remains $14.2\,\%$ and $52.5\,\%$
-more energy-efficient than Zhou et al. ($0.333\,\text{J}$) and LAAKA ($0.602\,\text{J}$),
-respectively, confirming that the anonymity guarantee is achieved at a cost
-well within the range of existing non-anonymous schemes.
+As illustrated in Figure~\ref{fig:hw_comparison}(a), the proposed scheme and
+DAuth~\cite{das2026comsnets} achieve virtually identical energy consumption, differing
+by less than 1\,\%, which confirms that the additional SHA-256 evaluations for PID
+pseudonym rotation and the dual-state nonce lookup are sub-millisecond relative to
+the network round-trip time and introduce no measurable overhead over the
+non-anonymous baseline.
+Both outperform LAAKA~\cite{ali2024laaka} by approximately 36\,\% and
+Zhou et al.~\cite{zhou2024auth} by approximately 43\,\% in energy consumption.
+The higher cost of Zhou et al.\ arises from a nested gateway-to-sensor-node
+sub-exchange (M2/M3) embedded within the authentication round that extends the effective
+device-side round-trip of M1$\to$M4.  In contrast, LAAKA's two consecutive round-trips carry only
+lightweight hash-based payloads and therefore complete faster in absolute terms.
 
-The CPU time results in Figure~\ref{fig:hw_comparison}(b) follow the same ordering:
-DAuth ($0.040\,\text{s}$), Proposed ($0.075\,\text{s}$), Zhou et al. ($0.088\,\text{s}$),
-and LAAKA ($0.159\,\text{s}$).
-The proposed scheme reduces CPU time by $14.8\,\%$ and $52.8\,\%$ relative to
-Zhou et al. and LAAKA, respectively, while incurring an $87.5\,\%$ overhead compared
-to DAuth---consistent with the energy results.
-These reductions are consistent with the lightweight XOR-hash operations and
-decoupled authentication server design of the proposed scheme, which translate directly to
-measurable gains in physical energy and execution time on real hardware.
-The inconsistency between hardware and simulation-based results arises due to
-the disparity in scale, where a 100-node network is assumed in simulation whereas
-the hardware setup involves only two Raspberry Pi platforms.
+The CPU time results, as illustrated in Figure~\ref{fig:hw_comparison}(b), follow the
+same ordering with identical percentage margins, since energy is directly proportional
+to wall-clock time under a fixed active power draw.
+The proposed scheme and DAuth perform equivalently, with the proposed scheme
+remaining below both LAAKA~\cite{ali2024laaka} and Zhou et al.~\cite{zhou2024auth}
+across energy and execution time.
+The ordering of schemes is consistent between the COOJA simulation and the hardware
+evaluation, confirming that the proposed scheme's advantage reflects protocol design
+rather than platform-specific effects.
+The hardware evaluation validates that provable anonymity is achieved at no measurable
+cost penalty over the non-anonymous baseline on real IoT devices.
 
 \begin{figure}[!t]
   \centering
   \includegraphics[width=\columnwidth]{fig_hw_comparison}
-  \caption{Hardware-based performance:Avg. Energy~(a) and CPU time~(b)
-           on Raspberry Pi~4B.
-           }
+  \caption{Avg. Energy (a) and CPU time (b)}
   \label{fig:hw_comparison}
 \end{figure}
 
-\FloatBarrier
+% \FloatBarrier
 \balance
 \section{Conclusion}
 
@@ -1221,34 +1310,22 @@ authentication server, which may or may not be the parent of the newly joined
 device, performs authentication (Authentication Phase) and session key
 establishment (Key Exchange Phase) in sequential phases.  Device anonymity is preserved
 through per-session pseudonym rotation, preventing adversarial tracking across
-sessions.  A dual-state mechanism at both the authentication server and the
-gateway provides transparent desynchronisation recovery without re-enrolment.
+sessions.  A dual-state mechanism at the authentication server provides transparent
+desynchronisation recovery without re-enrolment.
 PUF-based authentication eliminates long-term secret storage, and
 hash-based accumulator operations with XOR masking keep the computational
 overhead low.
 
-Formal verification in ProVerif confirms authentication correspondence,
-session key secrecy, resistance to offline guessing attacks, and
-observational-equivalence-based anonymity.  COOJA/Contiki-NG simulations confirm practical
-suitability. The proposed scheme achieves a per-device three-phase energy of
-52.19\,mJ, reducing total energy by 42.8\,\% over LAAKA~\cite{ali2024laaka}
-and 32.4\,\% over Zhou et al.~\cite{zhou2024auth}, with consistent gains across
-varying network sizes and authentication server pool sizes.
-Hardware evaluation on an RPi~4B testbed corroborates these findings: the proposed
-scheme consumes 0.286\,J per authentication round, achieving 14.2\,\% and 52.5\,\%
-energy savings over Zhou et al.\ and LAAKA, respectively.
 
 % -------------------------------------------------------
 \section{Future Work}
 
-The dual-state mechanism currently stores two nonce--pseudonym pairs per
-device at the authentication server; reducing this storage overhead while
-maintaining desynchronisation resilience is a promising direction.
-Additionally, the present scheme preserves anonymity for devices but does
-not hide the identity of the authentication server, whose $\mathit{ID}_{AS}$
-appears in open-channel messages.  Extending pseudonym rotation to
-authentication servers would provide full end-to-end identity
-unlinkability across the multihop network.
+Reducing the dual-state storage overhead at the AS while preserving
+desynchronisation resilience is a promising direction for further optimisation.
+The present scheme also does not conceal the authentication server identity,
+as $\mathit{ID}_{AS}$ appears in open-channel messages.
+Extending pseudonym rotation to authentication servers would provide full
+end-to-end identity unlinkability across the multihop network.
 
 % -------------------------------------------------------
 \bibliographystyle{IEEEtran}

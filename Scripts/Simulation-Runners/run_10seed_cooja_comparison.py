@@ -158,7 +158,9 @@ SCHEMES = {
         "csc_src":      os.path.join(REPO, "LAAKA", "test-sim-100.csc"),
         "makefile":     RA_LAAKA_MAKEFILE,
         "custom_conf":  None,
-        "has_keyex":    True,
+        "has_keyex":    False,   # LAAKA AUTH_ENERGY already covers the full round
+                                 # (auth+ack+data); KEYEX_ENERGY is a sub-window of
+                                 # AUTH_ENERGY, so adding it would double-count.
         "build_targets": ["gw-node.cooja", "as-node.cooja", "device-node.cooja"],
     },
     "Zhou": {

@@ -26,15 +26,18 @@ REPO = "/home/apex/contiki-ng/examples/Codes-For-COOJA"
 DATA = {
     "DAuth":    os.path.join(REPO, "Base-Scheme",       "Simulation-Results", "Desync-100", "csv", "summary.csv"),
     "Proposed": os.path.join(REPO, "Revised-Anonymity", "Simulation-Results", "Desync-100", "csv", "summary.csv"),
+    "Zhou":     os.path.join(REPO, "Zhou-Scheme",       "Simulation-Results", "Desync-100", "csv", "summary.csv"),
 }
 
 OUT_DIR  = os.path.join(REPO, "Results", "COOJA-Simulation", "Desync-Recovery-Analysis")
 OUT_FILE = os.path.join(OUT_DIR, "desync_bar.png")
+PAPER_FILE = os.path.join(REPO, "Paper", "fig_desync_bar.png")
 
 # ── Style (matches existing comparison charts) ────────────────────────────────
 SCHEME_COLORS = {
-    "DAuth":    "#7E5BA6",   # muted purple (consistent with all other figures)
+    "DAuth":    "#7E5BA6",   # muted purple  (consistent with all other figures)
     "Proposed": "#2C6FAC",   # deep steel blue
+    "Zhou":     "#2E8B57",   # sea green     (consistent with all other figures)
 }
 BAR_HATCHES = {
     "Before Packet Loss": "///",
@@ -56,12 +59,14 @@ _STYLE = {
     "grid.linewidth":    0.6,
 }
 
-SCHEMES   = ["DAuth", "Proposed"]
+SCHEMES   = ["DAuth", "Proposed", "Zhou"]
 BAR_TYPES = ["Before Packet Loss", "Recovery"]
 
 # Bar 1: Round 1 — normal auth+keyex (before any desync)
-# Bar 2: Round 3 — recovery auth+keyex (Base: failed re-auth + re-enrollment + re-auth;
-#                                        Proposed: direct recovery via PID_old)
+# Bar 2: Round 3 — recovery auth+keyex
+#   DAuth:    failed auth + 2-step re-enrol to AS + retry auth + keyex
+#   Proposed: direct recovery via PID_old (no re-enrol)
+#   Zhou:     failed auth + 1-step re-enrol to GW + retry auth
 BAR_ROUNDS = {
     "Before Packet Loss": ["Round 1"],
     "Recovery":           ["Round 3"],
@@ -128,7 +133,7 @@ def draw_panel(ax, stats, ylabel):
     # x-ticks centred on each scheme group
     x_ticks  = [s * group_w for s in range(n_schemes)]
     ax.set_xticks(x_ticks)
-    ax.set_xticklabels(["DAuth", "Proposed"], fontsize=20, ha="center")
+    ax.set_xticklabels(SCHEMES, fontsize=20, ha="center")
     ax.set_ylabel(ylabel, labelpad=20, fontsize=22, fontweight="bold")
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
@@ -170,7 +175,7 @@ def main():
             c_stats.append((scheme, bar_type, d["avg_cpu_s"],     d["ci_cpu_s"]))
 
     with plt.rc_context(_STYLE):
-        fig, (ax_e, ax_c) = plt.subplots(1, 2, figsize=(14, 7))
+        fig, (ax_e, ax_c) = plt.subplots(1, 2, figsize=(20, 7))
         fig.patch.set_facecolor("white")
 
         draw_panel(ax_e, e_stats, "Avg. Energy (mJ)")
@@ -190,10 +195,12 @@ def main():
                    edgecolor="#dddddd", handlelength=2.2, handleheight=1.6)
 
         fig.tight_layout(rect=[0, 0.09, 1, 1.0])
-        fig.savefig(OUT_FILE, dpi=180, bbox_inches="tight", facecolor="white")
+        fig.savefig(OUT_FILE,   dpi=180, bbox_inches="tight", facecolor="white")
+        fig.savefig(PAPER_FILE, dpi=180, bbox_inches="tight", facecolor="white")
         plt.close(fig)
 
     print(f"\nSaved: {OUT_FILE}")
+    print(f"Saved: {PAPER_FILE}")
 
 
 if __name__ == "__main__":

@@ -6,33 +6,36 @@
 
 Computational cost directly determines how efficiently an authentication scheme
 can be deployed on resource-constrained hardware.
-The Python cryptographic library \texttt{pycrypto} is used in a Windows environment
-to measure the computational cost of core cryptographic functions, such as SHA-256
-($T_{\mathsf{hash}}$), AES Encryption/Decryption ($T_{\mathsf{aes}}$), and random
-generation ($T_{\mathsf{rand}}$).
-The PUF operation cost ($T_{\mathsf{puf}}$) is taken from prior benchmarks on the
-same platform~\cite{zheng2022puf}.
-Benchmark averages over 100 iterations are: $T_{\mathsf{rand}} = 0.0018$\,ms,
-$T_{\mathsf{puf}} = 0.0522$\,ms, $T_{\mathsf{hash}} = 0.0353$\,ms,
-$T_{\mathsf{aes}} = 0.0867$\,ms.
+To obtain platform-native unit costs consistent with the hardware evaluation
+(Section~\ref{sec:hw}), the per-primitive execution times reported by Lee et
+al.~\cite{lee2025plakamd} are adopted, measured on a Raspberry Pi~4B (quad-core
+64-bit ARM Cortex-A72 @ 1.5\,GHz) using the MIRACL Core cryptographic library.
+The reference unit costs are: SHA-256 hash $T_{\mathsf{hash}} = 0.009$\,ms,
+AES-128 encryption/decryption $T_{\mathsf{aes}} = 0.004$\,ms, PUF evaluation
+$T_{\mathsf{puf}} = 0.12$\,ms, and fuzzy extractor $T_{\mathsf{fe}} = 2.353$\,ms.
+Following the standard code-offset construction~\cite{dodis2004fuzzy}, the dominant
+cost of the fuzzy extractor is one elliptic-curve scalar multiplication, hence
+$T_{\mathsf{fe}} = T_{\mathsf{ecc}}$.
+The cost of random-number generation and bitwise operations (XOR, concatenation)
+is negligible relative to these primitives and is therefore omitted, consistent
+with prior analyses~\cite{zhou2024auth}.
+The proposed scheme relies exclusively on PUF, hash, and AES operations, and
+employs no public-key or fuzzy-extractor primitive.
 
 \subsubsection{Enrolment Phase}
 
-To execute the node enrolment phase:
-\begin{itemize}
-  \item $AS$ computes two random generations ($T_{\mathsf{rand}}$), one PUF
-    operation ($T_{\mathsf{puf}}$), and two hash operations ($T_{\mathsf{hash}}$)
-    for pseudonym initialisation.
-  \item $D$ executes two random generations ($T_{\mathsf{rand}}$) and one PUF
-    operation ($T_{\mathsf{puf}}$).
-\end{itemize}
-
-Hence, the total computational cost per node enrolment amounts to
-$2T_{\mathsf{puf}} + 2T_{\mathsf{hash}} + 4T_{\mathsf{rand}} = \mathbf{0.18}$\,ms.
-The proposed scheme incurs a marginal overhead of 0.03\,ms over DAuth~\cite{das2026comsnets}
-(0.15\,ms), directly attributable to the additional hash operation for pseudonym
-initialisation, a security feature absent from DAuth.
-Table~\ref{tab:comp_enroll} compares the enrolment computational cost.
+During node enrolment, $D$ and $AS$ each evaluate the PUF once, and two hash
+evaluations are performed (the unique-secret hash $H(y_D)$ and the pseudonym
+initialisation $H(ID_D \| m_{\mathrm{curr}})$), giving
+$2T_{\mathsf{puf}} + 2T_{\mathsf{hash}} = \mathbf{0.258}$\,ms.
+As shown in Table~\ref{tab:comp_enroll}, this is marginally above
+DAuth~\cite{das2026comsnets} (0.249\,ms), the difference being exactly one
+additional hash evaluation for pseudonym initialisation, a security feature absent
+from DAuth.
+Zhou et al.~\cite{zhou2024auth} incurs the highest enrolment cost (2.491\,ms),
+dominated by the fuzzy-extractor generation function ($T_{\mathsf{fe}} =
+T_{\mathsf{ecc}} = 2.353$\,ms), whereas LAAKA~\cite{ali2024laaka} (0.027\,ms) uses
+only hash operations and no PUF.
 
 \begin{table}[!ht]
   \centering
@@ -40,47 +43,38 @@ Table~\ref{tab:comp_enroll} compares the enrolment computational cost.
   \label{tab:comp_enroll}
   \small
   \setlength{\tabcolsep}{5pt}
-  \begin{tabular}{lll}
+  \begin{tabular}{llcl}
     \toprule
-    Scheme & Operations & Cost (ms) \\
+    Scheme & Operations & PUF & Cost (ms) \\
     \midrule
-    LAAKA~\cite{ali2024laaka}          & $3T_\mathsf{hash}$ & 0.11 \\
-    Zhou~\cite{zhou2024auth}           & $T_\mathsf{puf}+2T_\mathsf{hash}+3T_\mathsf{rand}$ & 0.13 \\
-    Zheng et al.~\cite{zheng2022puf}   & $2T_\mathsf{puf}+8T_\mathsf{hash}+4T_\mathsf{aes}+5T_\mathsf{rand}$ & 0.69 \\
-    He et al.~\cite{he2023lightweight} & $4T_\mathsf{hash}+T_\mathsf{aes}+T_\mathsf{rand}$ & 0.23 \\
-    DAuth~\cite{das2026comsnets}        & $2T_\mathsf{puf}+1T_\mathsf{hash}+4T_\mathsf{rand}$ & 0.15 \\
-    \textbf{Proposed}                  & $2T_\mathsf{puf}+2T_\mathsf{hash}+4T_\mathsf{rand}$ & \textbf{0.18} \\
+    LAAKA~\cite{ali2024laaka}       & $3T_\mathsf{hash}$ & $\times$ & 0.027 \\
+    Zhou et al.~\cite{zhou2024auth} & $T_\mathsf{puf}+2T_\mathsf{hash}+T_\mathsf{fe}$ & \checkmark & 2.491 \\
+    DAuth~\cite{das2026comsnets}    & $2T_\mathsf{puf}+T_\mathsf{hash}$ & \checkmark & 0.249 \\
+    \textbf{Proposed}               & $2T_\mathsf{puf}+2T_\mathsf{hash}$ & \checkmark & \textbf{0.258} \\
     \bottomrule
   \end{tabular}\\[4pt]
-  \small Benchmark (avg.\ 100 iterations): $T_\mathsf{rand}$=0.0018\,ms,
-  $T_\mathsf{puf}$=0.0522\,ms, $T_\mathsf{hash}$=0.0353\,ms, $T_\mathsf{aes}$=0.0867\,ms.
+  \small $T_\mathsf{hash}$=0.009\,ms, $T_\mathsf{aes}$=0.004\,ms,
+  $T_\mathsf{puf}$=0.12\,ms, $T_\mathsf{fe}$=$T_{\mathsf{ecc}}$=2.353\,ms.
 \end{table}
 
 \subsubsection{Authentication and Key Exchange Phase}
 
-In the proposed scheme, $D$ and $AS$ both execute one PUF operation
-($T_{\mathsf{puf}}$).
-\begin{itemize}
-  \item $D$ additionally performs six hash operations ($T_{\mathsf{hash}}$):
-    pseudonym computation, unique secret hash, and XOR mask in the Authentication
-    Phase, followed by mask recovery, session key derivation, and pseudonym
-    rotation in the Key Exchange Phase.
-  \item $AS$ performs five hash operations ($T_{\mathsf{hash}}$), along with one
-    AES encryption ($T_{\mathsf{aes}}$) for the gateway token and one random
-    generation ($T_{\mathsf{rand}}$) for $m_{\mathrm{new}}$.
-  \item $GW$ runs one AES decryption ($T_{\mathsf{aes}}$) to recover the session
-    key and updated pseudonym from the forwarded token.
-\end{itemize}
-
-This leads to a total cost of
-$2T_{\mathsf{puf}} + 11T_{\mathsf{hash}} + 2T_{\mathsf{aes}} + T_{\mathsf{rand}}
-= \mathbf{0.67}$\,ms.
-The proposed scheme incurs a modest overhead of 0.11\,ms over DAuth~\cite{das2026comsnets}
-(0.56\,ms), attributable to three additional hash operations for pseudonym computation,
-dual-state lookup, and pseudonym rotation, which is the price paid for anonymity and
-desynchronisation resilience.
-Table~\ref{tab:comp_auth} compares the authentication and key exchange computational
-cost.
+In the authentication and key exchange phases, $D$ and $AS$ each evaluate the PUF
+once, $D$ performs six hash evaluations, $AS$ performs five hash evaluations and one
+AES encryption, and $GW$ performs one AES decryption.
+This yields $2T_{\mathsf{puf}} + 11T_{\mathsf{hash}} + 2T_{\mathsf{aes}} =
+\mathbf{0.347}$\,ms, as shown in Table~\ref{tab:comp_auth}.
+The proposed scheme is second only to DAuth~\cite{das2026comsnets} (0.320\,ms), the
+0.027\,ms overhead being attributable to three additional hash evaluations for
+pseudonym computation, dual-state lookup, and pseudonym rotation.
+LAAKA~\cite{ali2024laaka} (0.144\,ms) achieves lower cost by performing only hash
+operations without any PUF evaluation; excluding the two PUF evaluations, however,
+the proposed scheme's remaining hash and AES operations total only
+$11T_{\mathsf{hash}} + 2T_{\mathsf{aes}} = 0.107$\,ms, below LAAKA's 0.144\,ms, so
+the gap is attributable entirely to hardware-rooted PUF authentication rather than
+to protocol inefficiency.
+Zhou et al.\ (2.608\,ms) is the heaviest, owing to the fuzzy-extractor reproduction
+function ($T_{\mathsf{fe}} = 2.353$\,ms).
 
 \begin{table}[!ht]
   \centering
@@ -88,22 +82,31 @@ cost.
   \label{tab:comp_auth}
   \small
   \setlength{\tabcolsep}{5pt}
-  \begin{tabular}{lll}
+  \begin{tabular}{llcl}
     \toprule
-    Scheme & Operations & Cost (ms) \\
+    Scheme & Operations & PUF & Cost (ms) \\
     \midrule
-    LAAKA~\cite{ali2024laaka}          & $16T_\mathsf{hash}$ & 0.56 \\
-    Zhou~\cite{zhou2024auth}           & $15T_\mathsf{hash}$ & 0.53 \\
-    Zheng et al.~\cite{zheng2022puf}   & $2T_\mathsf{puf}+6T_\mathsf{hash}+4T_\mathsf{aes}+5T_\mathsf{rand}$ & 0.67 \\
-    He et al.~\cite{he2023lightweight} & $11T_\mathsf{hash}+5T_\mathsf{aes}+2T_\mathsf{ecc}$ & 1.74 \\
-    DAuth~\cite{das2026comsnets}        & $2T_\mathsf{puf}+8T_\mathsf{hash}+2T_\mathsf{aes}+T_\mathsf{rand}$ & 0.56 \\
-    \textbf{Proposed}                  & $2T_\mathsf{puf}+11T_\mathsf{hash}+2T_\mathsf{aes}+T_\mathsf{rand}$ & \textbf{0.67} \\
+    LAAKA~\cite{ali2024laaka}       & $16T_\mathsf{hash}$ & $\times$ & 0.144 \\
+    Zhou et al.~\cite{zhou2024auth} & $T_\mathsf{puf}+15T_\mathsf{hash}+T_\mathsf{fe}$ & \checkmark & 2.608 \\
+    DAuth~\cite{das2026comsnets}    & $2T_\mathsf{puf}+8T_\mathsf{hash}+2T_\mathsf{aes}$ & \checkmark & 0.320 \\
+    \textbf{Proposed}               & $2T_\mathsf{puf}+11T_\mathsf{hash}+2T_\mathsf{aes}$ & \checkmark & \textbf{0.347} \\
     \bottomrule
   \end{tabular}\\[4pt]
-  \small Benchmark (avg.\ 100 iterations): $T_\mathsf{rand}$=0.0018\,ms,
-  $T_\mathsf{puf}$=0.0522\,ms, $T_\mathsf{hash}$=0.0353\,ms, $T_\mathsf{aes}$=0.0867\,ms;
-  $T_\mathsf{ecc}$=0.461\,ms (scaled from He et al.~\cite{he2023lightweight} hardware ratios).
+  \small $T_\mathsf{hash}$=0.009\,ms, $T_\mathsf{aes}$=0.004\,ms,
+  $T_\mathsf{puf}$=0.12\,ms, $T_\mathsf{fe}$=$T_{\mathsf{ecc}}$=2.353\,ms.
 \end{table}
+
+Combining both phases, the proposed scheme completes the full cycle in 0.605\,ms,
+second only to DAuth~\cite{das2026comsnets} (0.569\,ms) among PUF-based schemes.
+Both PUF-based schemes rely on four PUF evaluations
+($4T_{\mathsf{puf}} = 0.480$\,ms), which dominate their total costs.
+LAAKA~\cite{ali2024laaka} (0.171\,ms) achieves lower cost by forgoing PUF-based
+device authentication, while Zhou et al.~\cite{zhou2024auth} (5.099\,ms) is the
+heaviest, with two ECC-based fuzzy-extractor operations
+($2T_{\mathsf{fe}} = 4.706$\,ms) accounting for over 92\,\% of its total cost.
+The proposed scheme thus incurs only a 0.036\,ms premium over DAuth, corresponding
+to four additional hash evaluations across both phases, the price paid for anonymity
+and desynchronisation resilience.
 
 \subsection{Communication Cost}
 
@@ -133,9 +136,7 @@ Table~\ref{tab:comm_enroll} shows the comparison.
     Scheme & \# Messages & Cost (bits) \\
     \midrule
     LAAKA~\cite{ali2024laaka}          & 3 & 2592 \\
-    Zhou~\cite{zhou2024auth}           & 5 & 1344 \\
-    Zheng et al.~\cite{zheng2022puf}   & 3 & 1600 \\
-    He et al.~\cite{he2023lightweight} & 2 & 1280 \\
+    Zhou et al.~\cite{zhou2024auth}    & 5 & 1344 \\
     DAuth~\cite{das2026comsnets}        & 3 & 1312 \\
     \textbf{Proposed}                  & 3 & \textbf{1312} \\
     \bottomrule
@@ -166,9 +167,7 @@ Table~\ref{tab:comm_auth} shows the comparison.
     Scheme & \# Messages & Cost (bits) \\
     \midrule
     LAAKA~\cite{ali2024laaka}          & 3 & 2400 \\
-    Zhou~\cite{zhou2024auth}           & 4 & 2464 \\
-    Zheng et al.~\cite{zheng2022puf}   & 3 & 1600 \\
-    He et al.~\cite{he2023lightweight} & 3 & 1120 \\
+    Zhou et al.~\cite{zhou2024auth}    & 4 & 2464 \\
     DAuth~\cite{das2026comsnets}        & 3 & 928 \\
     \textbf{Proposed}                  & 3 & \textbf{1376} \\
     \bottomrule
@@ -183,6 +182,72 @@ anonymity to all open-channel communications.
 The proposed scheme matches DAuth exactly in the enrolment phase (1312\,bits),
 demonstrating that pseudonym initialisation adds no communication overhead over the
 DAuth at registration.
+
+\subsection{Storage Cost}
+
+Storage cost captures the number of persistent credentials each entity must retain
+after enrolment, a decisive constraint for memory-limited IoT endpoints.
+For a consistent cross-scheme comparison, all cryptographic values (hashes, nonces,
+challenges, PUF responses, ciphertexts, and symmetric keys) are normalised to
+256\,bits, while device and server identities are taken as 32\,bits, in line with the
+communication-cost assumptions.
+The per-entity footprints obtained under these assumptions are summarised in
+Table~\ref{tab:storage}.
+
+In LAAKA~\cite{ali2024laaka}, the registration authority (RA) is the root of trust
+and stores, for every device, the real identity together with the temporary identity
+and two hashed authentication anchors (800\,bits).
+The fog server (FS) retains the temporary identity and the two anchors (768\,bits),
+whereas the IoT device keeps its own temporary identity, the fog identity, a masked
+secret, and the shared anchor (1024\,bits).
+In Zhou et al.~\cite{zhou2024auth}, the gateway acts as the combined authenticator
+and router, maintaining per device a secret key, the identity, the dynamic identity,
+the sensor identity, and a PUF challenge--response pair (1312\,bits); the user device
+holds a hashed identity, a masked credential, the dynamic identity, and the sensor
+identity (1024\,bits), while the sensor node stores only its own identifier
+(256\,bits).
+In DAuth~\cite{das2026comsnets}, the PUF-based device avoids any long-term key storage
+and persists only the challenge $c_D$ and the current session nonce
+$m_{\mathrm{curr}}$ (512\,bits), since the device secret $y_D$ is regenerated on
+demand from its PUF; the AS retains $T_{\mathsf{Acc}}$, $ID_D$, $\Phi_{AS\text{-}D}$,
+$c_{AS\text{-}D}$, and $m_{\mathrm{curr}}$ (1056\,bits), and the gateway keeps the
+session key $K_{GW\text{-}D}$ and $ID_D$ (288\,bits).
+
+The proposed scheme inherits the same minimal device footprint as DAuth
+(512\,bits), because the rotating pseudonym
+$\mathit{PID} = H(ID_D \| m_{\mathrm{curr}})$ is derived on the fly rather than
+stored.
+To support single-loss desynchronisation recovery, the AS additionally retains the
+previous nonce $m_{\mathrm{old}}$ and the dual pseudonym pair
+$(\mathit{PID}_{\mathrm{curr}}, \mathit{PID}_{\mathrm{old}})$ on top of the DAuth
+state, raising its footprint to 1824\,bits.
+Because the real identity is never exposed on the open channel, the gateway
+substitutes $\mathit{PID}_{\mathrm{curr}}$ for $ID_D$ and stores it alongside
+$K_{GW\text{-}D}$ (512\,bits).
+As Table~\ref{tab:storage} shows, the proposed scheme attains the lowest device-side
+storage (512\,bits, tied with DAuth), less than half the 1024\,bits required by both
+LAAKA and Zhou et al., making it well-suited for memory-constrained endpoints.
+The modest additional state introduced for anonymity and desynchronisation recovery
+is confined to the AS, a gateway-selected node with ample resources, and therefore
+imposes no burden on the constrained device.
+
+\begin{table}[!ht]
+  \centering
+  \caption{Per-device persistent storage cost (bits).}
+  \label{tab:storage}
+  \small
+  \setlength{\tabcolsep}{6pt}
+  \begin{tabular}{@{}lrrrrr@{}}
+    \toprule
+    Scheme & Device & AS / FS & GW & RA & SN \\
+    \midrule
+    LAAKA~\cite{ali2024laaka}       & 1024 & 768  & ---  & 800 & ---  \\
+    Zhou et al.~\cite{zhou2024auth}  & 1024 & ---  & 1312 & --- & 256  \\
+    DAuth~\cite{das2026comsnets}     & 512  & 1056 & 288  & --- & ---  \\
+    \textbf{Proposed}               & \textbf{512} & \textbf{1824} & \textbf{512} & --- & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \FloatBarrier
 \section{Simulation-Based Performance Analysis}
@@ -233,9 +298,9 @@ Table~\ref{tab:simparams} lists the common simulation parameters.
 For 20 newly joined nodes in a fixed 100-node network with two active authentication
 servers, the proposed scheme demonstrated a consistent advantage over LAAKA and Zhou.
 As shown in Figure~\ref{fig:sim_total}(a), the proposed scheme achieves a reduction
-of \textbf{42.8\,\%} and \textbf{32.4\,\%} in per-device energy consumption
+of \textbf{9.5\,\%} and \textbf{32.4\,\%} in per-device energy consumption
 over LAAKA and Zhou et al., respectively.
-Similarly, a reduction of \textbf{42.8\,\%} and \textbf{32.4\,\%} is demonstrated
+Similarly, a reduction of \textbf{9.5\,\%} and \textbf{32.4\,\%} is demonstrated
 in per-device CPU time (Figure~\ref{fig:sim_total}(b)).
 DAuth~\cite{das2026comsnets} sits just below the proposed scheme in both metrics,
 as it requires no pseudonym operations; the proposed scheme pays a small overhead
@@ -263,13 +328,15 @@ The performance of the proposed scheme, DAuth, LAAKA, and Zhou is evaluated by
 varying the number of active AS nodes from 2 to 10.
 
 Considering the total energy consumption (Figure~\ref{fig:sim_as}(a)), a reduction
-of approximately \textbf{42\,\%} is demonstrated by the proposed scheme over LAAKA
-at every AS count.
-Both the proposed scheme and DAuth improve as the pool grows from 2 to 10 servers,
-since additional authenticators absorb the join load of newly arrived devices.
-As shown in Figure~\ref{fig:sim_as}(b), a reduction of approximately 42\,\% in
-total CPU time is demonstrated over LAAKA across all AS counts.
-Zhou et al.\ shows essentially flat cost across all AS pool sizes.
+of approximately \textbf{6--8\,\%} is demonstrated by the proposed scheme over LAAKA
+at every AS count, and the same advantage holds for total CPU time
+(Figure~\ref{fig:sim_as}(b)).
+Both distributed schemes also scale favourably with the pool, their total cost
+falling by roughly \textbf{11--12\,\%} as the pool grows from 2 to 10 servers, since
+additional authenticators absorb the join load of newly arrived devices.
+Zhou et al., included as a gateway-coupled baseline, has no authentication server
+pool and its cost remains essentially flat across all pool sizes, confirming that a
+centralised design cannot convert authentication server diversity into load relief.
 DAuth sits consistently just below the proposed scheme, reflecting the absence of
 pseudonym-rotation overhead.
 
@@ -294,11 +361,11 @@ The performance of authentication schemes is also analysed by considering their
 scalability with respect to total network size $N$, varied from 30 to 120 nodes,
 where 20\,\% of nodes in each network are newly joined devices.
 Considering the total energy consumption (Figure~\ref{fig:sim_network}(a)), at
-$N = 120$ the proposed scheme demonstrates a reduction of \textbf{42.7\,\%} over
-LAAKA and \textbf{37.6\,\%} over Zhou et al.
-Similarly, as shown in Figure~\ref{fig:sim_network}(b), a reduction of 42.7\,\% and
-37.6\,\% is demonstrated with respect to total CPU time over LAAKA and Zhou et al.,
-respectively, at $N = 120$.
+$N = 120$ the proposed scheme demonstrates a reduction of \textbf{8.4\,\%} over
+LAAKA and approximately \textbf{44\,\%} over Zhou et al.
+Similarly, as shown in Figure~\ref{fig:sim_network}(b), a reduction of 8.4\,\% and
+approximately 44\,\% is demonstrated with respect to total CPU time over LAAKA and
+Zhou et al., respectively, at $N = 120$.
 LAAKA and Zhou et al.\ exhibit steeper energy and CPU growth with increasing $N$
 because their larger per-device message payloads and additional exchanges accumulate
 faster as the device count grows.
@@ -335,27 +402,40 @@ means to recognise it and rejects the request.
 The device must therefore undergo a full re-enrolment before a new authentication
 and key exchange can succeed.
 The proposed scheme eliminates this penalty through its dual-state mechanism.
-
-Since the dual-state desynchronisation recovery mechanism is a direct extension of
-DAuth's single-state protocol, only DAuth serves as the meaningful baseline for this
-comparison.
+Zhou et al.~\cite{zhou2024auth} face a different desynchronisation point: if the
+gateway's credential-refresh confirmation is lost, the device advances to the new
+session identifier while the gateway retains the old one, and the device must
+re-register for a fresh credential pair before retrying.
+This re-registration is lighter than DAuth's re-enrolment, as it avoids PUF and
+accumulator operations, but the penalty remains significant.
+LAAKA~\cite{ali2024laaka} also rotates its temporal identifier, but the update is
+computed entirely from randoms exchanged within the authentication round and the fog
+server retains the prior identifier, so a device that misses the final confirmation
+simply re-presents its current temporal identifier and re-authenticates without a
+stored-state mismatch.
+As LAAKA maintains no separately stored rotating nonce that can drift between
+parties, a like-for-like desynchronisation-recovery scenario does not apply, and
+LAAKA is therefore excluded from this comparison.
 
 Figure~\ref{fig:desync_bar} presents a per-device energy and CPU time comparison
 of a single authentication round under two conditions: normal operation (before any
 packet loss) and recovery (the round immediately following a desynchronisation
 event), evaluated over a 100-node multi-hop RPL network, 20 devices, and 5 seeds.
-As shown in Figure~\ref{fig:desync_bar}(a), DAuth~\cite{das2026comsnets} incurs
-134.8\,mJ per recovery round, a 118.3\,\% increase over its normal round cost of
-61.8\,mJ, reflecting the overhead of a failed authentication attempt followed by
-full re-enrolment.
+As shown in Figure~\ref{fig:desync_bar}(a), DAuth~\cite{das2026comsnets} incurs a
+\textbf{118.3\,\%} energy increase on a recovery round (134.8\,mJ versus 61.8\,mJ
+for a normal round), reflecting a failed authentication attempt followed by full
+re-enrolment with PUF execution and accumulator reconstruction.
+Zhou et al.\ incur a smaller \textbf{48.2\,\%} increase, as their credential-refresh
+re-registration avoids PUF and accumulator operations, though the penalty remains
+significant.
 The proposed scheme's recovery round costs 87.2\,mJ, statistically indistinguishable
-from its normal round (98.6\,mJ), confirming that the dual-state mechanism incurs
-zero additional overhead during recovery.
-Compared directly, the proposed scheme reduces per-device recovery energy by
-\textbf{47.6\,mJ (35.3\,\%)} over DAuth~\cite{das2026comsnets}.
-The CPU time results in Figure~\ref{fig:desync_bar}(b) exhibit the same pattern:
-DAuth~\cite{das2026comsnets} incurs 2.185\,s per recovery round against 1.413\,s for
-the proposed scheme, yielding a \textbf{35.3\,\% reduction} in execution time.
+from its normal round (98.6\,mJ), confirming that the dual-state mechanism eliminates
+re-enrolment overhead during recovery.
+Overall, the proposed scheme reduces per-device recovery energy by \textbf{35.3\,\%}
+over DAuth~\cite{das2026comsnets} and \textbf{8.8\,\%} over Zhou et al.
+The CPU time results in Figure~\ref{fig:desync_bar}(b) follow the same pattern,
+yielding \textbf{35.3\,\%} and \textbf{8.9\,\%} reductions over DAuth and
+Zhou et al., respectively.
 
 \begin{figure}[!ht]
   \centering
@@ -368,6 +448,7 @@ the proposed scheme, yielding a \textbf{35.3\,\% reduction} in execution time.
 
 \FloatBarrier
 \section{Hardware-Based Performance Analysis}
+\label{sec:hw}
 
 Hardware-based evaluation validates the feasibility of the proposed scheme by
 measuring its performance on physical devices under real operating conditions.
@@ -375,7 +456,8 @@ measuring its performance on physical devices under real operating conditions.
 All four schemes (the proposed scheme, DAuth~\cite{das2026comsnets},
 LAAKA~\cite{ali2024laaka}, and Zhou et al.~\cite{zhou2024auth}) are implemented on a
 \textbf{Raspberry Pi~4B} platform, equipped with a quad-core 64-bit ARM Cortex-A72
-processor operating at 1.5\,GHz.
+processor operating at 1.5\,GHz, using the MIRACL Core cryptographic library for all
+hash, AES, and elliptic-curve operations.
 Identical hardware is used across all four schemes to ensure a fair comparison of
 energy consumption and CPU time.
 The implementation considers two Raspberry Pi~4B platforms as IoT nodes: one
@@ -389,30 +471,37 @@ The physical testbed is shown in Figure~\ref{fig:hw_setup}.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.8\textwidth,height=0.52\textwidth,keepaspectratio]{RPI_HW}
+  \includegraphics[width=0.8\textwidth,height=0.52\textwidth,keepaspectratio]{HW_setup_signals}
   \caption{Hardware testbed: two Raspberry Pi~4B boards (left: authentication
            server; right: device) connected to a Windows laptop (gateway).}
   \label{fig:hw_setup}
 \end{figure}
 
-As illustrated in Figure~\ref{fig:hw_comparison}(a), DAuth achieves the lowest
-per-round energy of \textbf{0.152\,J}, as it performs no pseudonym operations.
-The proposed scheme consumes \textbf{0.286\,J} per round, which is approximately
-88\,\% more than DAuth due to the additional SHA-256 evaluations for pseudonym
-rotation and dual-state verification.
-Despite this overhead, the proposed scheme remains \textbf{14.2\,\%} and
-\textbf{52.5\,\%} more energy-efficient than Zhou et al.\ (0.333\,J) and LAAKA
-(0.602\,J), respectively, confirming that the anonymity guarantee is achieved at a
-cost well within the range of existing non-anonymous schemes.
+As illustrated in Figure~\ref{fig:hw_comparison}(a), the proposed scheme
+(\textbf{0.0617\,J} per round) and DAuth~\cite{das2026comsnets}
+(\textbf{0.0611\,J}) achieve virtually identical energy consumption, differing by
+less than \textbf{1\,\%}.
+This confirms that the additional SHA-256 evaluations for pseudonym rotation and the
+dual-state nonce lookup are sub-millisecond relative to the network round-trip time
+and introduce no measurable overhead over the non-anonymous baseline.
+Both outperform LAAKA~\cite{ali2024laaka} (0.0959\,J) by approximately
+\textbf{36\,\%} and Zhou et al.~\cite{zhou2024auth} (0.1074\,J) by approximately
+\textbf{43\,\%} in energy consumption.
+The higher cost of Zhou et al.\ arises from a nested gateway-to-sensor-node
+sub-exchange embedded within the authentication round that extends the effective
+device-side round-trip, whereas LAAKA's two consecutive round-trips carry only
+lightweight hash-based payloads and therefore complete faster in absolute terms.
 
-The CPU time results in Figure~\ref{fig:hw_comparison}(b) follow the same ordering:
-DAuth (0.040\,s), Proposed (0.075\,s), Zhou et al.\ (0.088\,s), and LAAKA (0.159\,s).
-The proposed scheme reduces CPU time by \textbf{14.8\,\%} and \textbf{52.8\,\%}
-relative to Zhou et al.\ and LAAKA, respectively, while incurring an 87.5\,\%
-overhead compared to DAuth, consistent with the energy results.
-These reductions are consistent with the lightweight XOR-hash operations and
-decoupled AS design of the proposed scheme, which translate directly to measurable
-gains in physical energy and execution time on real hardware.
+The CPU time results in Figure~\ref{fig:hw_comparison}(b) follow the same ordering
+with identical percentage margins, since energy is directly proportional to
+wall-clock time under a fixed active power draw: the proposed scheme (0.0162\,s) and
+DAuth (0.0161\,s) perform equivalently, both remaining below LAAKA (0.0253\,s) and
+Zhou et al.\ (0.0282\,s) by approximately 36\,\% and 43\,\%, respectively.
+The ordering of schemes is consistent between the COOJA simulation and the hardware
+evaluation, confirming that the proposed scheme's advantage reflects protocol design
+rather than platform-specific effects.
+The hardware evaluation thus validates that provable anonymity is achieved at no
+measurable cost penalty over the non-anonymous baseline on real IoT devices.
 
 \begin{figure}[!ht]
   \centering
@@ -422,7 +511,3 @@ gains in physical energy and execution time on real hardware.
            (Proposed vs.\ DAuth vs.\ LAAKA vs.\ Zhou et al.).}
   \label{fig:hw_comparison}
 \end{figure}
-
-The inconsistency between hardware and simulation-based results arises due to the
-disparity in scale, where a 100-node network is assumed in simulation whereas the
-hardware setup involves only two Raspberry Pi platforms.
