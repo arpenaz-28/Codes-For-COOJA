@@ -946,26 +946,30 @@ open-channel communications.
 
 The storage cost captures the persistent credentials each entity must retain to
 run authentication after enrolment, which is a decisive constraint for
-memory-limited IoT endpoints. To enable a consistent cross-scheme comparison, the
-storage set declared by each scheme is taken from its own specification, and all
-cryptographic values---hashes, nonces, challenges, PUF responses, ciphertexts,
-symmetric keys, and rotating pseudonymous identifiers---are normalised to
-256\,bits, while fixed real identities are taken as 32\,bits, in line with the
-assumptions adopted for the communication-cost analysis. For Zhou
+memory-limited IoT endpoints. To enable a consistent cross-scheme comparison, a
+single common rule is applied to every scheme: each entity is charged with the
+persistent state it must retain between sessions to authenticate again, excluding
+per-session ephemerals (random nonces, timestamps, session keys) and any value
+regenerated on demand (PUF responses, fuzzy-extractor secrets). All cryptographic
+values---hashes, nonces, challenges, PUF responses, ciphertexts, symmetric keys,
+and rotating pseudonymous identifiers---are normalised to 256\,bits, while fixed
+real identities are taken as 32\,bits, in line with the assumptions adopted for the
+communication-cost analysis. For Zhou
 et al.~\cite{zhou2024auth}, the elliptic-curve--derived dynamic identity and the
 PUF challenge--response values are likewise counted at 256\,bits each. The
 per-entity footprints obtained under these assumptions are summarised in
 Table~\ref{tab:storage}.
 
-In LAAKA~\cite{ali2024laaka}, following the scheme's own storage accounting
-(Table~6 of~\cite{ali2024laaka}, re-normalised here to the common 256-bit unit),
-the IoT device keeps its temporary identity $TID_d$, the fog temporary identity
-$TID_f$, the masked secret $A_f$, and the shared anchor $B_k$ (1024\,bits). The fog
-server (FS) authenticates devices locally and stores $TID_d$, $TID_f$, $A_d$, and
-$B_k$ (1024\,bits). The registration authority (RA) is the root of trust and
-retains $TID_d$, $TID_f$, $A_d$, $A_f$, $B_k$, and the long-term master key $K$
+In LAAKA~\cite{ali2024laaka}, the IoT device keeps its temporary identity $TID_d$,
+the fog temporary identity $TID_f$, the masked secret $A_f$, the shared anchor
+$B_k$, and its own authentication anchor $A_d = h(ID_d \| r_2)$, which it must
+retain to recompute the authentication tag
+$G_d = h(A_d \| TID_{d,\mathrm{new}} \| B_k \| r_d)$ on every round (1280\,bits).
+The fog server (FS) authenticates devices locally and stores $TID_d$, $TID_f$,
+$A_d$, and $B_k$ (1024\,bits). The registration authority (RA) is the root of trust
+and retains $TID_d$, $TID_f$, $A_d$, $A_f$, $B_k$, and the long-term master key $K$
 (1536\,bits); it never stores the real identity $ID_d$, as the device registers by
-sending only $A_d = h(ID_d \| r_2)$.
+sending only $A_d$.
 
 In Zhou et al.~\cite{zhou2024auth}, the gateway acts as the combined authenticator
 and router. Per device it maintains the secret key $k_i$, the identity $ID_i$, the
@@ -998,7 +1002,7 @@ $\mathit{PID}_{\mathrm{curr}}$ for $ID_D$ and stores it alongside $K_{GW\text{-}
 (512\,bits).
 
 As shown in Table~\ref{tab:storage}, the proposed scheme and DAuth attain the
-lowest device-side storage (768\,bits), roughly 25\,\% below LAAKA (1024\,bits)
+lowest device-side storage (768\,bits), roughly 40\,\% below LAAKA (1280\,bits)
 and 27\,\% below Zhou et al.\ (1056\,bits), making them well-suited for
 memory-constrained IoT endpoints where minimising resource usage is crucial. The
 modest additional state introduced for anonymity and desynchronisation recovery is
@@ -1014,7 +1018,7 @@ imposes no burden on the constrained device.
     \toprule
     Scheme & Device & AS / FS & GW & RA & SN \\
     \midrule
-    LAAKA~\cite{ali2024laaka}       & 1024 & 1024 & ---  & 1536 & ---  \\
+    LAAKA~\cite{ali2024laaka}       & 1280 & 1024 & ---  & 1536 & ---  \\
     Zhou et al.~\cite{zhou2024auth}  & 1056 & ---  & 1344 & --- & 256  \\
     DAuth~\cite{das2026comsnets}     & 768  & 1056 & 288  & --- & ---  \\
     \textbf{Proposed}               & \textbf{768} & \textbf{1824} & \textbf{512} & --- & --- \\
