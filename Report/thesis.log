@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.5.29)  21 JUN 2026 02:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.5.29)  22 JUN 2026 15:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -761,7 +761,12 @@ Chapter 3.
 
 
 
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [10]) [11] [12
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Overfull \hbox (5.8217pt too wide) in paragraph at lines 57--64
+\OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OMS/cmsy/m/n/12 g[]$ \OT1/cmr/m/n/12 be a cryp-to-graph-i-cally se-cure hash func-tion. Given a set of items $\OML/cmm/m/it/12 Y \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 y[]; y[]; [] ; y[]\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 ,
+ []
+
+[10]) [11] [12
 
 
 
@@ -775,18 +780,18 @@ Chapter 4.
 
 
 ]
-<EnrollmentPhase.png, id=480, 988.69376pt x 767.86874pt>
+<EnrollmentPhase.png, id=481, 988.69376pt x 767.86874pt>
 File: EnrollmentPhase.png Graphic file (type png)
 <use EnrollmentPhase.png>
 Package pdftex.def Info: EnrollmentPhase.png  used on input line 42.
 (pdftex.def)             Requested size: 379.27599pt x 294.5583pt.
  [14 <./EnrollmentPhase.png>]
-<AuthenticationPhase.png, id=488, 1056.94875pt x 904.37875pt>
+<AuthenticationPhase.png, id=489, 1056.94875pt x 904.37875pt>
 File: AuthenticationPhase.png Graphic file (type png)
 <use AuthenticationPhase.png>
 Package pdftex.def Info: AuthenticationPhase.png  used on input line 65.
 (pdftex.def)             Requested size: 379.27599pt x 324.52733pt.
-<KeyExchange.png, id=492, 1554.80875pt x 923.45pt>
+<KeyExchange.png, id=493, 1554.80875pt x 923.45pt>
 File: KeyExchange.png Graphic file (type png)
 <use KeyExchange.png>
 Package pdftex.def Info: KeyExchange.png  used on input line 82.
@@ -805,19 +810,19 @@ Chapter 5.
 
 
 ] [20]
-<fig_enrollment.jpg, id=524, 530.73282pt x 610.53094pt>
+<fig_enrollment.jpg, id=525, 530.73282pt x 610.53094pt>
 File: fig_enrollment.jpg Graphic file (type jpg)
 <use fig_enrollment.jpg>
 Package pdftex.def Info: fig_enrollment.jpg  used on input line 87.
 (pdftex.def)             Requested size: 416.27199pt x 478.86726pt.
  [21 <./fig_enrollment.jpg>]
-<fig_auth.jpg, id=533, 539.01375pt x 650.43pt>
+<fig_auth.jpg, id=534, 539.01375pt x 650.43pt>
 File: fig_auth.jpg Graphic file (type jpg)
 <use fig_auth.jpg>
 Package pdftex.def Info: fig_auth.jpg  used on input line 147.
 (pdftex.def)             Requested size: 416.27199pt x 502.32135pt.
  [22] [23 <./fig_auth.jpg>] [24]
-<fig_keyex.jpg, id=551, 580.41844pt x 621.82312pt>
+<fig_keyex.jpg, id=552, 580.41844pt x 621.82312pt>
 File: fig_keyex.jpg Graphic file (type jpg)
 <use fig_keyex.jpg>
 Package pdftex.def Info: fig_keyex.jpg  used on input line 202.
@@ -830,7 +835,7 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
 
 (./chapter6.tex
 Chapter 6.
-<fig_proverif.png, id=576, 1926.19624pt x 792.9625pt>
+<fig_proverif.png, id=577, 1926.19624pt x 792.9625pt>
 File: fig_proverif.png Graphic file (type png)
 <use fig_proverif.png>
 Package pdftex.def Info: fig_proverif.png  used on input line 14.
@@ -857,47 +862,47 @@ Chapter 7.
 <fig_sim_total.png, id=678, 972.433pt x 477.3835pt>
 File: fig_sim_total.png Graphic file (type png)
 <use fig_sim_total.png>
-Package pdftex.def Info: fig_sim_total.png  used on input line 316.
+Package pdftex.def Info: fig_sim_total.png  used on input line 326.
 (pdftex.def)             Requested size: 425.5245pt x 208.89847pt.
  [39]
-<fig_sim_as_energy.png, id=687, 632.3625pt x 342.881pt>
+<fig_sim_as_energy.png, id=688, 632.3625pt x 342.881pt>
 File: fig_sim_as_energy.png Graphic file (type png)
 <use fig_sim_as_energy.png>
-Package pdftex.def Info: fig_sim_as_energy.png  used on input line 346.
+Package pdftex.def Info: fig_sim_as_energy.png  used on input line 356.
 (pdftex.def)             Requested size: 333.02042pt x 180.57503pt.
-<fig_sim_as_cpu.png, id=688, 631.961pt x 342.881pt>
+<fig_sim_as_cpu.png, id=689, 631.961pt x 342.881pt>
 File: fig_sim_as_cpu.png Graphic file (type png)
 <use fig_sim_as_cpu.png>
-Package pdftex.def Info: fig_sim_as_cpu.png  used on input line 351.
+Package pdftex.def Info: fig_sim_as_cpu.png  used on input line 361.
 (pdftex.def)             Requested size: 333.02042pt x 180.69014pt.
  [40 <./fig_sim_total.png>] [41 <./fig_sim_as_energy.png> <./fig_sim_as_cpu.png>]
-<fig_sim_net_energy.png, id=702, 837.1275pt x 447.271pt>
+<fig_sim_net_energy.png, id=703, 837.1275pt x 447.271pt>
 File: fig_sim_net_energy.png Graphic file (type png)
 <use fig_sim_net_energy.png>
-Package pdftex.def Info: fig_sim_net_energy.png  used on input line 379.
+Package pdftex.def Info: fig_sim_net_energy.png  used on input line 389.
 (pdftex.def)             Requested size: 333.02042pt x 177.92928pt.
-<fig_sim_net_cpu.png, id=703, 837.1275pt x 447.271pt>
+<fig_sim_net_cpu.png, id=704, 837.1275pt x 447.271pt>
 File: fig_sim_net_cpu.png Graphic file (type png)
 <use fig_sim_net_cpu.png>
-Package pdftex.def Info: fig_sim_net_cpu.png  used on input line 384.
+Package pdftex.def Info: fig_sim_net_cpu.png  used on input line 394.
 (pdftex.def)             Requested size: 333.02042pt x 177.92928pt.
- [42 <./fig_sim_net_energy.png> <./fig_sim_net_cpu.png>]
-<fig_desync_bar.png, id=718, 1417.6965pt x 490.2315pt>
+ [42 <./fig_sim_net_energy.png> <./fig_sim_net_cpu.png>] [43]
+<fig_desync_bar.png, id=719, 1402.038pt x 452.892pt>
 File: fig_desync_bar.png Graphic file (type png)
 <use fig_desync_bar.png>
-Package pdftex.def Info: fig_desync_bar.png  used on input line 442.
-(pdftex.def)             Requested size: 439.39978pt x 151.94026pt.
- [43]
-<HW_setup_signals.jpg, id=727, 963.6pt x 1284.8pt>
+Package pdftex.def Info: fig_desync_bar.png  used on input line 453.
+(pdftex.def)             Requested size: 439.39978pt x 141.93611pt.
+ [44 <./fig_desync_bar.png>]
+<HW_setup_signals.jpg, id=729, 963.6pt x 1284.8pt>
 File: HW_setup_signals.jpg Graphic file (type jpg)
 <use HW_setup_signals.jpg>
-Package pdftex.def Info: HW_setup_signals.jpg  used on input line 474.
+Package pdftex.def Info: HW_setup_signals.jpg  used on input line 484.
 (pdftex.def)             Requested size: 180.3805pt x 240.50732pt.
- [44 <./fig_desync_bar.png>] [45 <./HW_setup_signals.jpg>]
-<fig_hw_comparison.png, id=743, 781.7205pt x 316.382pt>
+ [45 <./HW_setup_signals.jpg>]
+<fig_hw_comparison.png, id=740, 781.7205pt x 316.382pt>
 File: fig_hw_comparison.png Graphic file (type png)
 <use fig_hw_comparison.png>
-Package pdftex.def Info: fig_hw_comparison.png  used on input line 508.
+Package pdftex.def Info: fig_hw_comparison.png  used on input line 518.
 (pdftex.def)             Requested size: 439.39978pt x 177.83891pt.
 ) [46 <./fig_hw_comparison.png>]
 
@@ -932,18 +937,18 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 884E10CB9AE80F10EB198EDAD7A1ADBF;8207.
  ) 
 Here is how much of TeX's memory you used:
- 24677 strings out of 474222
- 461143 string characters out of 5748733
+ 24679 strings out of 474222
+ 461176 string characters out of 5748733
  1936975 words of memory out of 5000000
- 46255 multiletter control sequences out of 15000+600000
+ 46256 multiletter control sequences out of 15000+600000
  574657 words of font info for 96 fonts, out of 8000000 for 9000
  1146 hyphenation exceptions out of 8191
- 84i,13n,93p,590b,568s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,93p,590b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on thesis.pdf (67 pages, 2456097 bytes).
+Output written on thesis.pdf (67 pages, 2435083 bytes).
 PDF statistics:
- 901 PDF objects out of 1000 (max. 8388607)
- 754 compressed objects within 8 object streams
- 170 named destinations out of 1000 (max. 500000)
+ 898 PDF objects out of 1000 (max. 8388607)
+ 751 compressed objects within 8 object streams
+ 171 named destinations out of 1000 (max. 500000)
  461 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -13,12 +13,10 @@ anonymity, and offline guessing resistance.
 COOJA\slash Contiki-NG simulations on 100-node networks show per-device energy
 reductions of \textbf{9.5\,\%} over LAAKA and \textbf{32.4\,\%} over Zhou et al.
 The dual-state mechanism is particularly significant in the desynchronised case:
-DAuth incurs a \textbf{118.3\,\%} energy penalty per recovery round
-(134.8\,mJ vs.\ 61.8\,mJ for a normal round) because a single lost packet forces
-full re-enrolment, and Zhou et al.\ incur a \textbf{48.2\,\%} penalty, whereas the
-proposed scheme's recovery round costs 87.2\,mJ (close to its normal round of
-98.6\,mJ), saving \textbf{35.3\,\%} over DAuth and \textbf{8.8\,\%} over
-Zhou et al.\ in recovery energy.
+a single lost key-exchange packet forces DAuth into a full re-enrolment
+(134.8\,mJ per recovery round), whereas the proposed scheme recovers through its
+dual-state lookup at 87.2\,mJ, saving \textbf{35.3\,\%} in per-device recovery
+energy (and the same in CPU time) over DAuth.
 
 Hardware experiments on Raspberry Pi~4B confirm that the proposed scheme attains
 virtually identical per-round cost to the non-anonymous DAuth baseline (within
