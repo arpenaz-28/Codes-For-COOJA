@@ -188,9 +188,9 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
 
     # Centre ticks on each group
     ax.set_xticks(x + offsets[n_schemes // 2] / 2)
-    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=16)
-    ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="bold")
-    ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
+    ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=20)
+    ax.set_xlabel("Number of Active Authentication Servers", fontsize=24, fontweight="normal")
+    ax.set_ylabel(ylabel, fontsize=24, fontweight="normal")
     # chart title removed (figure caption describes it)
     ax.yaxis.grid(True, linestyle="--", alpha=0.45, zorder=0)
     ax.set_axisbelow(True)
@@ -203,7 +203,7 @@ def grouped_bar_chart(data, metric_key, ci_key, ylabel, title, out_path,
     handles, labels = ax.get_legend_handles_labels()
     fig.legend(handles, labels,
                loc="upper center", bbox_to_anchor=(0.5, 0.99),
-               ncol=4, fontsize=15, framealpha=0.9,
+               ncol=4, fontsize=18, framealpha=0.9,
                edgecolor="#dddddd", handlelength=2.0, handleheight=1.4)
     fig.tight_layout(rect=[0, 0, 1, 0.90])
     save_fig(fig, out_path)
@@ -269,8 +269,8 @@ def stacked_bar_chart(data, metric_key_prefix, ci_key_prefix, ylabel, title, out
 
     ax.set_xticks(x + (bar_width / 2) * (n_schemes - 1) / n_schemes * 0.5)
     ax.set_xticklabels([str(n) for n in AS_COUNTS], fontsize=16)
-    ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="bold")
-    ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
+    ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="normal")
+    ax.set_ylabel(ylabel, fontsize=19, fontweight="normal")
     # chart title removed (figure caption describes it)
     ax.yaxis.grid(True, linestyle="--", alpha=0.45, zorder=0)
     ax.set_axisbelow(True)
@@ -401,8 +401,8 @@ def _plot_per_device_line(data, out_dir):
             ax.plot(xs_arr, ys_arr, marker="o", label=scheme,
                     color=COLORS[scheme], linewidth=1.8)
 
-        ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="bold")
-        ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
+        ax.set_xlabel("Number of Active Authentication Servers", fontsize=19, fontweight="normal")
+        ax.set_ylabel(ylabel, fontsize=19, fontweight="normal")
         ax.set_xticks(AS_COUNTS)
         ax.yaxis.grid(True, linestyle="--", alpha=0.45)
         ax.set_axisbelow(True)

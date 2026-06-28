@@ -35,17 +35,17 @@ HATCHES      = {"Proposed": "///",     "DAuth": "...",     "LAAKA": "\\\\\\", "Z
 
 _STYLE = {
     "font.family":       "Liberation Sans",
-    "font.size":         19,
-    "axes.titlesize":    23,
-    "axes.titleweight":  "bold",
-    "axes.labelsize":    22,
+    "font.size":         23,
+    "axes.titlesize":    27,
+    "axes.titleweight":  "normal",
+    "axes.labelsize":    26,
     "axes.spines.top":   False,
     "axes.spines.right": False,
     "axes.linewidth":    0.7,
-    "xtick.labelsize":   20,
-    "ytick.labelsize":   19,
+    "xtick.labelsize":   24,
+    "ytick.labelsize":   23,
     "xtick.major.size":  0,
-    "legend.fontsize":   18,
+    "legend.fontsize":   21,
     "legend.framealpha": 0.9,
     "legend.edgecolor":  "#cccccc",
     "grid.color":        "#e5e5e5",
@@ -129,8 +129,8 @@ def draw_panel(ax, stats, ylabel, fmt):
 
     ax.set_xticks(pos)
     ax.set_xticklabels([SCHEME_LABEL[s] for s, _, _ in stats],
-                       fontsize=20, ha="center")
-    ax.set_ylabel(ylabel, labelpad=20, fontsize=22, fontweight="bold")
+                       fontsize=24, ha="center")
+    ax.set_ylabel(ylabel, labelpad=20, fontsize=26, fontweight="normal")
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
     ax.tick_params(axis="y", length=0)
@@ -202,8 +202,8 @@ def make_perdev_chart(scheme_records):
 
         draw_panel(ax_e, e_stats, "Avg. Energy (mJ)", ".2f")
         draw_panel(ax_c, c_stats, "Avg. CPU Time (s)", ".3f")
-        ax_e.set_xlabel("(a)", fontsize=22, fontweight="bold")
-        ax_c.set_xlabel("(b)", fontsize=22, fontweight="bold")
+        ax_e.set_xlabel("(a)", fontsize=26, fontweight="normal")
+        ax_c.set_xlabel("(b)", fontsize=26, fontweight="normal")
 
         scheme_patches = [
             mpatches.Patch(facecolor="none", edgecolor=COLORS[s],
@@ -213,7 +213,7 @@ def make_perdev_chart(scheme_records):
         ]
         fig.legend(handles=scheme_patches,
                    loc="upper center", bbox_to_anchor=(0.5, 1.0),
-                   ncol=4, fontsize=19, framealpha=0.9,
+                   ncol=4, fontsize=22, framealpha=0.9,
                    edgecolor="#dddddd", handlelength=2.2, handleheight=1.6)
 
         fig.tight_layout(rect=[0, 0, 1, 0.91])

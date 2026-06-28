@@ -44,15 +44,15 @@ BAR_HATCHES = {
 }
 _STYLE = {
     "font.family":       "Liberation Sans",
-    "font.size":         26,
-    "axes.titlesize":    30,
-    "axes.titleweight":  "bold",
-    "axes.labelsize":    30,
+    "font.size":         29,
+    "axes.titlesize":    33,
+    "axes.titleweight":  "normal",
+    "axes.labelsize":    34,
     "axes.spines.top":   False,
     "axes.spines.right": False,
     "axes.linewidth":    0.9,
-    "xtick.labelsize":   28,
-    "ytick.labelsize":   26,
+    "xtick.labelsize":   31,
+    "ytick.labelsize":   29,
     "xtick.major.size":  0,
     "grid.color":        "#e5e5e5",
     "grid.linewidth":    0.6,
@@ -119,12 +119,12 @@ def draw_panel(ax, stats, ylabel, fmt):
                linewidth=2.2,
                zorder=3)
         ax.text(s_idx, mean + max_val * 0.02, fmt.format(mean),
-                ha="center", va="bottom", fontsize=22, fontweight="bold",
+                ha="center", va="bottom", fontsize=26, fontweight="normal",
                 color=SCHEME_COLORS[scheme])
 
     ax.set_xticks(range(n_schemes))
-    ax.set_xticklabels(SCHEMES, fontsize=28, ha="center")
-    ax.set_ylabel(ylabel, labelpad=20, fontsize=30, fontweight="bold")
+    ax.set_xticklabels(SCHEMES, fontsize=31, ha="center")
+    ax.set_ylabel(ylabel, labelpad=20, fontsize=34, fontweight="normal")
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
     ax.tick_params(axis="y", length=0)
@@ -167,8 +167,8 @@ def main():
 
         draw_panel(ax_e, e_stats, "Avg. Energy (mJ)", "{:.1f}")
         draw_panel(ax_c, c_stats, "Avg. CPU Time (s)", "{:.2f}")
-        ax_e.set_xlabel("(a)", fontsize=30, fontweight="bold")
-        ax_c.set_xlabel("(b)", fontsize=30, fontweight="bold")
+        ax_e.set_xlabel("(a)", fontsize=34, fontweight="normal")
+        ax_c.set_xlabel("(b)", fontsize=34, fontweight="normal")
 
         fig.tight_layout(rect=[0, 0.02, 1, 1.0])
         fig.savefig(OUT_FILE,   dpi=180, bbox_inches="tight", facecolor="white")

@@ -103,17 +103,17 @@ SCHEME_HATCHES = {
 # Global aesthetic style applied to both charts
 _CHART_STYLE = {
     "font.family":        "Liberation Sans",
-    "font.size":          15,
-    "axes.titlesize":     18,
-    "axes.titleweight":   "bold",
-    "axes.labelsize":     19,
+    "font.size":          18,
+    "axes.titlesize":     22,
+    "axes.titleweight":   "normal",
+    "axes.labelsize":     23,
     "axes.spines.top":    False,
     "axes.spines.right":  False,
     "axes.linewidth":     0.7,
-    "xtick.labelsize":    15,
-    "ytick.labelsize":    15,
+    "xtick.labelsize":    18,
+    "ytick.labelsize":    18,
     "xtick.major.size":   0,
-    "legend.fontsize":    15,
+    "legend.fontsize":    18,
     "legend.framealpha":  0.9,
     "legend.edgecolor":   "#cccccc",
     "grid.color":         "#e5e5e5",
@@ -284,8 +284,8 @@ def build_series(phase_name, metric):
 # ─────────────────────────────────────────────────────────name = "Energy"───────
 # ─────────────────────────────────────────────────────────────────────────────
 def _apply_style(ax, xlabel, ylabel, title):
-    ax.set_xlabel(xlabel, fontsize=19, fontweight="bold")
-    ax.set_ylabel(ylabel, fontsize=19, fontweight="bold")
+    ax.set_xlabel(xlabel, fontsize=19, fontweight="normal")
+    ax.set_ylabel(ylabel, fontsize=19, fontweight="normal")
     # chart title removed (figure caption describes it)
     ax.yaxis.grid(True, linestyle="--", alpha=0.5)
     ax.set_axisbelow(True)
@@ -477,21 +477,21 @@ def _grouped_bar(metric, ylabel, title, out_path, paper_path=None, show=False):
                    linewidth=1.5)
 
         ax.set_xticks(x)
-        ax.set_xticklabels([str(n) for n in SIZES], fontsize=19)
-        ax.set_xlabel("Total Network Nodes", labelpad=8, fontsize=21, fontweight="bold")
-        ax.set_ylabel(ylabel, labelpad=8, fontsize=21, fontweight="bold")
+        ax.set_xticklabels([str(n) for n in SIZES], fontsize=22)
+        ax.set_xlabel("Total Network Nodes", labelpad=8, fontsize=25, fontweight="normal")
+        ax.set_ylabel(ylabel, labelpad=8, fontsize=25, fontweight="normal")
         # chart title removed (figure caption describes it)
 
         ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
         ax.set_axisbelow(True)
-        ax.tick_params(axis="y", length=0, labelsize=18)
+        ax.tick_params(axis="y", length=0, labelsize=21)
         ax.spines["left"].set_color("#cccccc")
         ax.spines["bottom"].set_color("#cccccc")
 
         handles, labels = ax.get_legend_handles_labels()
         fig.legend(handles, labels,
                    loc="upper center", bbox_to_anchor=(0.5, 1.0),
-                   ncol=4, fontsize=19, framealpha=0.9,
+                   ncol=4, fontsize=22, framealpha=0.9,
                    edgecolor="#dddddd", handlelength=2.2, handleheight=1.6)
 
         fig.tight_layout(rect=[0, 0, 1, 0.91])

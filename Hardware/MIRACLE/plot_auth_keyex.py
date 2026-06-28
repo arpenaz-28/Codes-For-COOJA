@@ -43,7 +43,7 @@ def main():
         print(f"{label:11}: {e:.4f} J / {t:.4f} s")
 
     x = np.arange(len(labels))
-    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 13})
+    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 16})
     fig, (axe, axt) = plt.subplots(1, 2, figsize=(11, 4.6))
 
     for ax, vals, ylabel, title, fmt in [
@@ -54,10 +54,10 @@ def main():
             ax.bar(i, vals[i], width=0.6, facecolor="none", edgecolor=COLORS[lab],
                    hatch=HATCHES[lab], linewidth=1.8, zorder=3)
             ax.text(i, vals[i] + max(vals) * 0.02, fmt.format(vals[i]),
-                    ha="center", va="bottom", fontsize=11, fontweight="bold", color=COLORS[lab])
-        ax.set_xticks(x); ax.set_xticklabels(labels, fontsize=12)
-        ax.set_ylabel(ylabel, fontsize=13, fontweight="bold")
-        ax.set_title(title, fontsize=12, fontweight="bold", pad=8)
+                    ha="center", va="bottom", fontsize=14, fontweight="normal", color=COLORS[lab])
+        ax.set_xticks(x); ax.set_xticklabels(labels, fontsize=15)
+        ax.set_ylabel(ylabel, fontsize=16, fontweight="normal")
+        ax.set_title(title, fontsize=15, fontweight="normal", pad=8)
         ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
         ax.set_axisbelow(True)
         ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
