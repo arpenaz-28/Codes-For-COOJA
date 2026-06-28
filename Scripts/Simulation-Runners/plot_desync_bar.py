@@ -123,7 +123,7 @@ def draw_panel(ax, stats, ylabel, fmt):
                 color=SCHEME_COLORS[scheme])
 
     ax.set_xticks(range(n_schemes))
-    ax.set_xticklabels(SCHEMES, fontsize=31, ha="center")
+    ax.set_xticklabels(SCHEMES, fontsize=31, rotation=45, ha="right", rotation_mode="anchor")
     ax.set_ylabel(ylabel, labelpad=20, fontsize=34, fontweight="normal")
     ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
     ax.set_axisbelow(True)
