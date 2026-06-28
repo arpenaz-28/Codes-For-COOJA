@@ -118,9 +118,6 @@ def draw_panel(ax, stats, ylabel, fmt):
                hatch="xxx",
                linewidth=2.2,
                zorder=3)
-        ax.text(s_idx, mean + max_val * 0.02, fmt.format(mean),
-                ha="center", va="bottom", fontsize=26, fontweight="normal",
-                color=SCHEME_COLORS[scheme])
 
     ax.set_xticks(range(n_schemes))
     ax.set_xticklabels(SCHEMES, fontsize=31, rotation=20, ha="right", rotation_mode="anchor")
