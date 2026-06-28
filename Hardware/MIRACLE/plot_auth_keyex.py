@@ -55,7 +55,7 @@ def main():
                    hatch=HATCHES[lab], linewidth=1.8, zorder=3)
             ax.text(i, vals[i] + max(vals) * 0.02, fmt.format(vals[i]),
                     ha="center", va="bottom", fontsize=14, fontweight="normal", color=COLORS[lab])
-        ax.set_xticks(x); ax.set_xticklabels(labels, fontsize=15, rotation=45, ha="right", rotation_mode="anchor")
+        ax.set_xticks(x); ax.set_xticklabels(labels, fontsize=15, rotation=20, ha="right", rotation_mode="anchor")
         ax.set_ylabel(ylabel, fontsize=16, fontweight="normal")
         ax.set_title(title, fontsize=15, fontweight="normal", pad=8)
         ax.yaxis.grid(True, linestyle="--", linewidth=0.6, color="#e5e5e5")
